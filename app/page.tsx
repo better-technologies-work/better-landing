@@ -6,13 +6,13 @@ export default function Home() {
       
       {/* HEADER - TOOLBAR EN NEGRO (LOGO ORIGINAL) */}
       <header className="fixed top-0 left-0 w-full flex justify-between items-center px-10 md:px-24 py-5 z-50 backdrop-blur-md bg-black/90 border-b border-white/10">
-        <div className="bg-white/10 p-2 rounded-lg"> {/* Un ligero fondo sutil para proteger los colores del logo si es necesario */}
+        <div className="bg-white/10 p-2 rounded-lg">
           <Image 
             src="/logo.jpeg" 
             alt="Better Technologies" 
             width={140} 
             height={40} 
-            className="object-contain" // Eliminamos el invert para que se vea original
+            className="object-contain"
           />
         </div>
         <button className="text-[10px] tracking-[0.2em] font-black border border-white/30 text-white px-6 py-2 hover:bg-white hover:text-black transition-all uppercase rounded-sm">
@@ -30,6 +30,7 @@ export default function Home() {
             playsInline
             className="w-full h-full object-cover"
           >
+            {/* Asegúrate de que el video se llame hero.mp4 o cambia el nombre aquí */}
             <source src="/hero.mp4" type="video/mp4" />
           </video>
           <div className="absolute inset-0 bg-white/50 backdrop-brightness-110"></div>
@@ -93,7 +94,6 @@ export default function Home() {
       <section className="py-40 px-6 max-w-7xl mx-auto">
         <h2 className="text-center text-4xl md:text-5xl font-black mb-20 text-slate-900 uppercase tracking-tighter">What you <span className="text-blue-600">can</span> afford</h2>
         <div className="grid md:grid-cols-2 gap-12">
-          
           <div className="group border-2 border-slate-100 p-12 rounded-3xl hover:border-black transition-all duration-500 bg-white">
             <div className="flex justify-between items-center mb-10">
               <h3 className="text-2xl font-bold text-slate-900 uppercase">72h Innovation Sprint</h3>
@@ -117,47 +117,6 @@ export default function Home() {
               <li className="font-medium">• Beta testing (with real users)</li>
             </ul>
           </div>
-        </div>
-        
-        <div className="mt-20 text-center bg-black p-12 rounded-3xl text-white">
-            <p className="uppercase tracking-[0.3em] text-xs mb-4 font-bold opacity-60">Also available</p>
-            <h3 className="text-3xl md:text-4xl font-black uppercase tracking-tight">Growth / Scale (Tailor Made)</h3>
-            <p className="mt-6 text-slate-400 max-w-3xl mx-auto text-lg italic font-light">
-                Business Engineering + Organic Growth + Product Engineering + Social Lab + Content Solutions.
-            </p>
-        </div>
-      </section>
-
-      {/* 72H CHALLENGE */}
-      <section className="py-40 px-6 bg-blue-600 text-white">
-        <div className="max-w-5xl mx-auto">
-          <h2 className="text-5xl md:text-7xl font-black mb-12 uppercase leading-[0.8] tracking-tighter italic">While others <br /> pitch, <span className="text-black/40">we do.</span></h2>
-          <p className="text-xl md:text-2xl leading-relaxed mb-16 text-blue-100 max-w-3xl font-medium">
-            Once a month we choose a pain in society and we build and test viable prototypes any user in the world could test.
-          </p>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
-            {["Industry 4.0", "AI Automation", "IOT", "Fintech", "Agile Frameworks", "Organic Growth"].map((item) => (
-              <div key={item} className="border border-white/20 p-6 rounded-xl hover:bg-white hover:text-blue-600 transition-all cursor-default font-black uppercase text-[10px] tracking-widest">
-                {item}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* WHY WE EXIST */}
-      <section className="py-40 px-6 text-center bg-white">
-        <h2 className="text-blue-600 uppercase tracking-widest text-xs font-black mb-12">Why we exist</h2>
-        <p className="text-3xl md:text-5xl font-bold max-w-4xl mx-auto leading-relaxed text-slate-900">
-          "Because times of uncertainty require answers. We build businesses in <span className="underline decoration-blue-600 decoration-4">weeks, not months</span>."
-        </p>
-        <div className="mt-32 flex flex-col items-center">
-            <div className="flex gap-4 md:gap-8 mb-4">
-                {['S','M','A','R','T'].map((l) => (
-                    <span key={l} className="text-4xl md:text-6xl font-black text-slate-100">{l}</span>
-                ))}
-            </div>
-            <p className="text-slate-400 max-w-md text-xs font-bold tracking-widest uppercase">Simple • Marketable • Agile • Results-driven • Time-bounded</p>
         </div>
       </section>
 
