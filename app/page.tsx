@@ -24,7 +24,7 @@ const team = [
   },
   {
     name: "Ezequiel Alonso",
-    role: "Backend Developer",
+    role: "Founder Backend Developer",
     desc: "Ezequiel is the engine room of every product we ship. He architects scalable, production-ready systems at startup speed — writing clean, fast, reliable code that makes the impossible 72h timelines actually possible.",
     initials: "EA",
     photo: "/team/ezequiel.jpg",    
@@ -32,7 +32,7 @@ const team = [
   },
   {
     name: "Victor Menendez",
-    role: "Frontend Developer",
+    role: "Founder Frontend Developer",
     desc: "Victor is the one who makes it beautiful and fast. He crafts interfaces that feel inevitable — intuitive, polished, and ready for real users from the very first sprint. He doesn't just build UIs, he builds experiences.",
     initials: "VM",
     photo: "/team/victor.jpg",      
@@ -40,7 +40,7 @@ const team = [
   },
   {
     name: "Yanina Soto",
-    role: "Data Scientist",
+    role: "Founder Data Scientist",
     desc: "Yanina speaks the language of data fluently — and translates it into decisions that matter. She extracts signal from noise, builds intelligence layers into every product, and ensures that what we ship isn't just functional — it's smart.",
     initials: "YS",
     photo: "/team/yanina.jpg",      
