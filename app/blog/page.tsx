@@ -22,61 +22,56 @@ export default function BlogPage() {
   // Load posts
   useEffect(() => {
     const loadPosts = async () => {
-      console.log('Starting to load posts...')
+      console.log('🚀 Starting blog page load...')
 
       try {
-        console.log('Importing Supabase client...')
+        console.log('📦 Importing Supabase...')
         const { createClient } = await import('@/lib/supabase/client')
-        console.log('Creating Supabase client...')
+
+        console.log('🔧 Creating client...')
         const client = createClient()
-        console.log('Supabase client created, testing connection...')
 
-        // First test the connection
-        const { data: testData, error: testError } = await client
+        console.log('🧪 Testing connection with simple query...')
+        const { count, error: countError } = await client
           .from('blog_posts')
-          .select('count', { count: 'exact', head: true })
+          .select('*', { count: 'exact', head: true })
 
-        console.log('Connection test result:', { count: testData, error: testError })
+        console.log('📊 Count result:', { count, error: countError })
 
-        if (testError) {
-          throw new Error(`Connection test failed: ${testError.message}`)
+        if (countError) {
+          throw new Error(`Count failed: ${countError.message}`)
         }
 
-        console.log('Connection successful, loading posts...')
+        console.log('✅ Connection works! Loading full posts...')
         const { data, error } = await client
           .from('blog_posts')
           .select('*')
           .order('published_at', { ascending: false })
 
-        console.log('Posts query result:', { data: data?.length || 0, error })
+        console.log('📝 Full query result:', {
+          postsCount: data?.length || 0,
+          error: error?.message || null,
+          hasData: !!data
+        })
 
         if (error) {
-          console.error('Database error:', error)
-          setError(`Database error: ${error.message}`)
-        } else {
-          console.log('Posts loaded successfully:', data?.length || 0, 'posts')
-          setPosts(data || [])
+          throw new Error(`Query failed: ${error.message}`)
         }
+
+        console.log('🎉 Success! Setting posts...')
+        setPosts(data || [])
+        setError(null)
+
       } catch (err) {
-        console.error('Error in loadPosts:', err)
-        setError(`Error: ${err instanceof Error ? err.message : 'Unknown error'}`)
+        console.error('❌ Error:', err)
+        setError(err instanceof Error ? err.message : 'Unknown error occurred')
       } finally {
+        console.log('🏁 Loading complete')
         setLoading(false)
       }
     }
 
-    // Add a timeout to show error if loading takes too long
-    const timeout = setTimeout(() => {
-      if (loading) {
-        console.error('Loading timeout reached - this means the database query is taking too long or failing')
-        setError('Loading timeout - please check your connection. The database query may be failing.')
-        setLoading(false)
-      }
-    }, 15000) // Increased to 15 seconds
-
     loadPosts()
-
-    return () => clearTimeout(timeout)
   }, [])
 
   if (loading) {
