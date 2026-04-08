@@ -1,7 +1,8 @@
 "use client";
-export const dynamic = 'force-dynamic'; // Prevents prerendering issues with Supabase
+export const dynamic = 'force-dynamic';
+export const runtime = 'nodejs';
 import { useState, useEffect } from "react";
-import { createClient } from "@/lib/supabase/client";
+// import { createClient } from "@/lib/supabase/client"; // Moved to useEffect to avoid prerendering issues
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 
@@ -38,7 +39,16 @@ const CATEGORIES = [
 
 export default function DashboardPage() {
   const router = useRouter();
-  const supabase = createClient();
+  const [supabase, setSupabase] = useState<any>(null);
+
+  // ── Initialize Supabase client ──────────────────────────────────────────────
+  useEffect(() => {
+    const initSupabase = async () => {
+      const { createClient } = await import("@/lib/supabase/client");
+      setSupabase(createClient());
+    };
+    initSupabase();
+  }, []);
 
   // ── Tabs state ──
   const [activeTab, setActiveTab] = useState<"blog" | "news">("blog");
@@ -75,6 +85,7 @@ export default function DashboardPage() {
 
   // ── Load blog posts ──
   const loadBlogPosts = async () => {
+    if (!supabase) return;
     setBlogLoading(true);
     const { data } = await supabase
       .from("blog_posts")
@@ -86,6 +97,7 @@ export default function DashboardPage() {
 
   // ── Load news posts ──
   const loadNewsPosts = async () => {
+    if (!supabase) return;
     setNewsLoading(true);
     const { data } = await supabase
       .from("blog_posts")
@@ -97,9 +109,11 @@ export default function DashboardPage() {
   };
 
   useEffect(() => {
-    loadBlogPosts();
-    loadNewsPosts();
-  }, []);
+    if (supabase) {
+      loadBlogPosts();
+      loadNewsPosts();
+    }
+  }, [supabase]);
 
   const handleBlogChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -116,6 +130,7 @@ export default function DashboardPage() {
   // ── Submit blog ──
   const handleBlogSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!supabase) return;
     setBlogSaving(true);
     setBlogSuccess(false);
 
@@ -141,6 +156,7 @@ export default function DashboardPage() {
   // ── Submit news ──
   const handleNewsSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!supabase) return;
     setNewsSaving(true);
     setNewsSuccess(false);
 
@@ -166,6 +182,7 @@ export default function DashboardPage() {
 
   // ── Delete blog ──
   const handleBlogDelete = async (id: string) => {
+    if (!supabase) return;
     await supabase.from("blog_posts").delete().eq("id", id);
     setBlogDeleteId(null);
     loadBlogPosts();
@@ -173,6 +190,7 @@ export default function DashboardPage() {
 
   // ── Delete news ──
   const handleNewsDelete = async (id: string) => {
+    if (!supabase) return;
     await supabase.from("blog_posts").delete().eq("id", id);
     setNewsDeleteId(null);
     loadNewsPosts();
@@ -180,6 +198,7 @@ export default function DashboardPage() {
 
   // ── Sign out ──
   const handleSignOut = async () => {
+    if (!supabase) return;
     await supabase.auth.signOut();
   };
 
