@@ -22,8 +22,16 @@ export default function BlogPage() {
   // Initialize Supabase client
   useEffect(() => {
     const initSupabase = async () => {
-      const { createClient } = await import('@/lib/supabase/client')
-      setSupabase(createClient())
+      try {
+        const { createClient } = await import('@/lib/supabase/client')
+        const client = createClient()
+        setSupabase(client)
+        console.log('Supabase initialized successfully')
+      } catch (err) {
+        console.error('Error initializing Supabase:', err)
+        setError('Error initializing database connection')
+        setLoading(false)
+      }
     }
     initSupabase()
   }, [])
@@ -31,8 +39,12 @@ export default function BlogPage() {
   // Load posts
   useEffect(() => {
     const loadPosts = async () => {
-      if (!supabase) return
+      if (!supabase) {
+        console.log('Supabase not ready yet')
+        return
+      }
 
+      console.log('Loading posts...')
       try {
         const { data, error } = await supabase
           .from('blog_posts')
@@ -40,11 +52,14 @@ export default function BlogPage() {
           .order('published_at', { ascending: false })
 
         if (error) {
+          console.error('Database error:', error)
           setError('Error al conectar con la base de datos...')
         } else {
+          console.log('Posts loaded:', data?.length || 0)
           setPosts(data || [])
         }
       } catch (err) {
+        console.error('Error loading posts:', err)
         setError('Error al cargar los posts...')
       } finally {
         setLoading(false)
