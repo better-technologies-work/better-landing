@@ -455,6 +455,15 @@ export default function Home() {
     const video = heroVideoRef.current;
     if (!video) return;
     video.muted = true;
+    video.style.cssText = `
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100% !important;
+  object-fit: cover;
+  z-index: 0;
+`;
     video.play().catch(() => {});
   }, []);
 
@@ -475,7 +484,7 @@ export default function Home() {
   ];
 
   return (
-    <main className="relative w-full min-h-screen bg-white" id="top">
+    <main className="relative w-full bg-white" id="top">
 
       {/* HEADER */}
       <header className="fixed top-0 left-0 w-full flex justify-between items-center px-6 md:px-24 py-5 z-[50] backdrop-blur-md bg-black/90 border-b border-white/10">
@@ -500,50 +509,58 @@ export default function Home() {
         </button>
       </header>
 
-      {/* HERO SECTION */}
-      <section className="relative h-screen w-full flex flex-col justify-center items-center text-center overflow-hidden bg-slate-100"> 
-        <div className="absolute inset-0 z-0 w-full h-full">
-          <video 
-            ref={heroVideoRef}
-            autoPlay 
-            loop 
-            muted 
-            playsInline 
-            preload="metadata"
-            className="w-full h-full object-cover block"
-            poster="https://res.cloudinary.com/djp2qzp9f/video/upload/q_auto,f_auto,w_960/v1775676329/IMG_2919_l50wan.jpg"
-          >
-            <source 
-  src="https://res.cloudinary.com/djp2qzp9f/video/upload/q_auto,vc_h264/v1775676329/IMG_2919_l50wan.mp4" 
-  type="video/mp4" 
-/>
-          </video>
-          <div className="absolute inset-0 bg-white/40 backdrop-brightness-110"></div>
-        </div>
+    {/* HERO SECTION */}
+<section 
+  className="relative w-full overflow-hidden" 
+  style={{ height: '100dvh', paddingTop: '60px' }}
+  id="top"
+>
 
-        <div className="relative z-10 px-6 mt-20">
-          <p className="text-blue-600 uppercase tracking-[0.4em] mb-6 text-xs font-black">What we are?</p>
-          <h1 className="text-5xl md:text-8xl font-black leading-[0.9] tracking-tighter max-w-5xl text-slate-900">
-            We operate LATAM for <br /> Global companies
-          </h1>
-          {/* NUEVO: 4 roles debajo del headline */}
-          <p className="mt-5 text-slate-500 text-[10px] uppercase tracking-widest font-bold">
-            Nearshoring Operator · Supply Chain Partner · Talent Hub · Entry &amp; Ops Partner
-          </p>
-          <p className="mt-6 text-lg md:text-xl text-slate-600 max-w-2xl mx-auto font-medium leading-relaxed">
-            20th century told us the future would be built somewhere else<br />
-            <span className="text-slate-900 font-bold">We think Differently</span>
-          </p>
-          <a 
-            href="/latam40.pdf" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="mt-12 inline-block px-10 py-4 bg-blue-600 text-white rounded-full font-bold hover:bg-slate-900 transition-all shadow-2xl shadow-blue-600/20 uppercase tracking-widest"
-          >
-            LATAM 4.0 — 21st century&apos;s golden child
-          </a>
-        </div>
-      </section>
+  {/* VIDEO */}
+  <video 
+  ref={heroVideoRef}
+  autoPlay 
+  loop 
+  muted 
+  playsInline 
+  preload="auto"
+>
+  <source 
+    src="https://res.cloudinary.com/djp2qzp9f/video/upload/q_auto,vc_h264/v1775676329/IMG_2919_l50wan.mp4" 
+    type="video/mp4" 
+  />
+</video>
+
+  {/* OVERLAY */}
+  <div className="absolute inset-0 bg-white/10" style={{ zIndex: 1 }} />
+
+  {/* CONTENIDO */}
+  <div 
+    className="flex flex-col items-center justify-center w-full px-6 py-12 text-center"
+    style={{ position: 'relative', zIndex: 2, height: '100%' }}
+  >
+    <p className="text-blue-600 uppercase tracking-[0.4em] mb-3 text-[10px] font-black">
+      What we are?
+    </p>
+    <h1 className="text-3xl md:text-8xl font-black leading-[1] tracking-tighter max-w-4xl text-slate-900 uppercase">
+      We operate LATAM for <br /> Global companies
+    </h1>
+    <p className="mt-3 text-slate-500 text-[9px] md:text-[10px] uppercase tracking-widest font-bold">
+      Nearshoring Operator · Supply Chain Partner · Talent Hub · Entry Ops Partner
+    </p>
+    <p className="mt-4 text-sm md:text-xl text-slate-700 max-w-xl mx-auto font-medium leading-tight">
+      20th century told us the future would be built somewhere else<br />
+      <span className="text-slate-900 font-bold text-base md:text-xl">We think Differently</span>
+    </p>
+    <a 
+      href="/latam40.pdf" 
+      target="_blank" 
+      className="mt-8 inline-block px-8 py-3 bg-blue-600 text-white rounded-full font-bold shadow-lg uppercase tracking-widest text-[10px] transition-transform active:scale-95"
+    >
+      LATAM 4.0 - 21st century&apos;s golden child
+    </a>
+  </div>
+</section>
 
       {/* WHY WE EXIST */}
       <section id="what-we-are" className="py-20 px-6 text-center bg-white border-b border-slate-100">

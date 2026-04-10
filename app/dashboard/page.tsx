@@ -13,8 +13,8 @@ type Content = {
   id: string;
   title: string;
   description: string;
-  post_url: string; // URL del artículo o enlace al documento subido
-  cover_url: string; // URL de la imagen de portada
+  post_url: string;
+  cover_url: string;
   author: string;
   category: string;
   published_at: string;
@@ -24,14 +24,12 @@ type Content = {
 const AUTHORS = ["Diego Vargas", "Charlotte Götz", "Ezequiel Alonso", "Victor Menendez", "Yanina Soto"];
 const CATEGORIES = ["Framework", "Strategy", "Data", "Engineering", "Marketing", "Case Study", "Actualidad", "Global"];
 
-// Buckets de Supabase Storage
-const DOCUMENTS_BUCKET = "documents"; // Para PDFs, Docs, etc.
-const COVERS_BUCKET = "covers";       // Para imágenes de portada (¡Crea este bucket en Supabase!)
+const DOCUMENTS_BUCKET = "documents";
+const COVERS_BUCKET = "covers";
 
 export default function DashboardPage() {
   const router = useRouter();
 
-  // 1. Hooks de estado (Siempre arriba)
   const [supabase, setSupabase] = useState<any>(null);
   const [supabaseError, setSupabaseError] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState<"blog" | "news">("blog");
@@ -43,20 +41,18 @@ export default function DashboardPage() {
   const [blogSuccess, setBlogSuccess] = useState(false);
   const [blogDeleteId, setBlogDeleteId] = useState<string | null>(null);
 
-  // Estado para el documento (PDF/Doc)
   const [blogFile, setBlogFile] = useState<File | null>(null);
   const blogFileRef = useRef<HTMLInputElement | null>(null);
 
-  // Estado para la imagen de portada (¡NUEVO!)
   const [blogImageFile, setBlogImageFile] = useState<File | null>(null);
-  const [blogImagePreview, setBlogImagePreview] = useState<string | null>(null); // Para vista previa
+  const [blogImagePreview, setBlogImagePreview] = useState<string | null>(null);
   const blogImageFileRef = useRef<HTMLInputElement | null>(null);
 
   const [blogForm, setBlogForm] = useState({
     title: "",
     description: "",
-    post_url: "", // Se llenará con URL externa o URL de documento subido
-    cover_url: "", // Se llenará con la URL de la imagen subida
+    post_url: "",
+    cover_url: "",
     author: AUTHORS[0],
     category: CATEGORIES[0],
   });
@@ -68,13 +64,11 @@ export default function DashboardPage() {
   const [newsSuccess, setNewsSuccess] = useState(false);
   const [newsDeleteId, setNewsDeleteId] = useState<string | null>(null);
 
-  // Estado para el documento (PDF/Doc)
   const [newsFile, setNewsFile] = useState<File | null>(null);
   const newsFileRef = useRef<HTMLInputElement | null>(null);
 
-  // Estado para la imagen de portada (¡NUEVO!)
   const [newsImageFile, setNewsImageFile] = useState<File | null>(null);
-  const [newsImagePreview, setNewsImagePreview] = useState<string | null>(null); // Para vista previa
+  const [newsImagePreview, setNewsImagePreview] = useState<string | null>(null);
   const newsImageFileRef = useRef<HTMLInputElement | null>(null);
 
   const [newsForm, setNewsForm] = useState({
@@ -86,7 +80,6 @@ export default function DashboardPage() {
     category: "Actualidad",
   });
 
-  // 2. Inicialización de Cliente
   useEffect(() => {
     const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
     const key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
@@ -97,7 +90,6 @@ export default function DashboardPage() {
     }
   }, []);
 
-  // 3. Carga inicial de datos
   useEffect(() => {
     if (supabase) {
       loadBlogPosts();
@@ -105,7 +97,6 @@ export default function DashboardPage() {
     }
   }, [supabase]);
 
-  // 4. Manejo de vistas previas de imágenes (¡NUEVO!)
   useEffect(() => {
     if (!blogImageFile) {
       setBlogImagePreview(null);
@@ -113,7 +104,6 @@ export default function DashboardPage() {
     }
     const objectUrl = URL.createObjectURL(blogImageFile);
     setBlogImagePreview(objectUrl);
-    // Limpieza de memoria
     return () => URL.revokeObjectURL(objectUrl);
   }, [blogImageFile]);
 
@@ -124,11 +114,9 @@ export default function DashboardPage() {
     }
     const objectUrl = URL.createObjectURL(newsImageFile);
     setNewsImagePreview(objectUrl);
-    // Limpieza de memoria
     return () => URL.revokeObjectURL(objectUrl);
   }, [newsImageFile]);
 
-  // --- Funciones de Lógica ---
   const loadBlogPosts = async () => {
     if (!supabase) return;
     setBlogLoading(true);
@@ -158,7 +146,6 @@ export default function DashboardPage() {
   const handleBlogChange = (e: any) => setBlogForm(prev => ({ ...prev, [e.target.name]: e.target.value }));
   const handleNewsChange = (e: any) => setNewsForm(prev => ({ ...prev, [e.target.name]: e.target.value }));
 
-  // Función genérica para subir archivos (documentos o imágenes)
   const uploadFileToSupabase = async (file: File, bucketName: string): Promise<string | null> => {
     if (!supabase) return null;
     const fileName = `${Date.now()}-${file.name.replace(/[^a-z0-9.]/gi, "-").toLowerCase()}`;
@@ -178,9 +165,8 @@ export default function DashboardPage() {
     setSupabaseError(null);
 
     let finalPostUrl = blogForm.post_url;
-    let finalCoverUrl = ""; // Empezamos vacío
+    let finalCoverUrl = "";
 
-    // 1. Subir documento si existe (reemplaza post_url)
     if (blogFile) {
       const uploadedDoc = await uploadFileToSupabase(blogFile, DOCUMENTS_BUCKET);
       if (uploadedDoc) finalPostUrl = uploadedDoc;
@@ -191,7 +177,6 @@ export default function DashboardPage() {
       }
     }
 
-    // 2. Subir imagen de portada si existe (¡NUEVO!)
     if (blogImageFile) {
         const uploadedCover = await uploadFileToSupabase(blogImageFile, COVERS_BUCKET);
         if (uploadedCover) finalCoverUrl = uploadedCover;
@@ -200,20 +185,14 @@ export default function DashboardPage() {
             setBlogSaving(false);
             return;
         }
-    } else {
-        // Validación opcional: ¿Es obligatoria la imagen?
-        // setSupabaseError("Please upload a cover image.");
-        // setBlogSaving(false);
-        // return;
     }
 
-    // 3. Insertar en Base de Datos
     const slug = `${blogForm.title.toLowerCase().trim().replace(/[^a-z0-9]+/g, "-")}-${Date.now()}`;
     
     const payload = {
         ...blogForm,
         post_url: finalPostUrl,
-        cover_url: finalCoverUrl, // Usamos la URL de la imagen subida
+        cover_url: finalCoverUrl,
         slug,
         published_at: new Date().toISOString()
     };
@@ -222,12 +201,11 @@ export default function DashboardPage() {
 
     if (!error) {
       setBlogSuccess(true);
-      // Resetear formulario y archivos
       setBlogForm({ title: "", description: "", post_url: "", cover_url: "", author: AUTHORS[0], category: CATEGORIES[0] });
       setBlogFile(null);
       if (blogFileRef.current) blogFileRef.current.value = "";
-      setBlogImageFile(null); // Resetear archivo de imagen
-      if (blogImageFileRef.current) blogImageFileRef.current.value = ""; // Resetear input de imagen
+      setBlogImageFile(null);
+      if (blogImageFileRef.current) blogImageFileRef.current.value = "";
 
       loadBlogPosts();
       setTimeout(() => setBlogSuccess(false), 3000);
@@ -246,7 +224,6 @@ export default function DashboardPage() {
     let finalPostUrl = newsForm.post_url;
     let finalCoverUrl = "";
 
-    // 1. Subir documento si existe
     if (newsFile) {
       const uploadedDoc = await uploadFileToSupabase(newsFile, DOCUMENTS_BUCKET);
       if (uploadedDoc) finalPostUrl = uploadedDoc;
@@ -257,7 +234,6 @@ export default function DashboardPage() {
       }
     }
 
-    // 2. Subir imagen de portada si existe (¡NUEVO!)
     if (newsImageFile) {
         const uploadedCover = await uploadFileToSupabase(newsImageFile, COVERS_BUCKET);
         if (uploadedCover) finalCoverUrl = uploadedCover;
@@ -268,7 +244,6 @@ export default function DashboardPage() {
         }
     }
 
-    // 3. Insertar en Base de Datos
     const slug = `${newsForm.title.toLowerCase().trim().replace(/[^a-z0-9]+/g, "-")}-${Date.now()}`;
     
     const payload = {
@@ -310,7 +285,7 @@ export default function DashboardPage() {
     loadNewsPosts();
   };
 
-  // --- Sub-componente de Archivo (Documentos) ---
+  // --- Componentes Internos ---
   const FileUploadField = ({ file, setFile, inputRef, urlValue, urlName, onUrlChange }: any) => (
     <div className="flex flex-col gap-3">
       <div className="flex flex-col gap-1.5">
@@ -340,22 +315,14 @@ export default function DashboardPage() {
     </div>
   );
 
-  // --- Sub-componente de Imagen (¡NUEVO!) ---
   const ImageUploadField = ({ file, setFile, inputRef, previewUrl }: any) => (
     <div className="flex flex-col gap-1.5">
         <label className="text-[10px] font-black uppercase tracking-widest text-slate-400">Cover Image (Required)</label>
-        
         {previewUrl ? (
             <div className="relative group rounded-xl overflow-hidden border-2 border-slate-100 shadow-inner">
                 <img src={previewUrl} alt="Preview" className="w-full h-40 object-cover" />
                 <div className="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                    <button 
-                        type="button" 
-                        onClick={() => { setFile(null); if (inputRef.current) inputRef.current.value = ""; }}
-                        className="px-4 py-2 bg-red-600 text-white rounded-full text-[10px] font-black uppercase tracking-widest hover:bg-red-700"
-                    >
-                        Remove Image
-                    </button>
+                    <button type="button" onClick={() => { setFile(null); if (inputRef.current) inputRef.current.value = ""; }} className="px-4 py-2 bg-red-600 text-white rounded-full text-[10px] font-black uppercase tracking-widest hover:bg-red-700">Remove Image</button>
                 </div>
             </div>
         ) : (
@@ -363,23 +330,12 @@ export default function DashboardPage() {
                 <span className="text-slate-300 text-4xl">🖼️</span>
                 <span className="text-[11px] font-black uppercase tracking-widest text-slate-400">Click to upload cover image</span>
                 <p className="text-[9px] text-slate-300 font-bold uppercase tracking-widest">JPG, PNG, WEBP · Max 5MB</p>
-                <input 
-                    ref={inputRef} 
-                    type="file" 
-                    accept="image/jpeg,image/png,image/webp" 
-                    className="hidden" 
-                    onChange={(e) => {
-                        const f = e.target.files?.[0];
-                        if (f) setFile(f);
-                    }} 
-                    required // Imagen obligatoria
-                />
+                <input ref={inputRef} type="file" accept="image/jpeg,image/png,image/webp" className="hidden" onChange={(e) => { const f = e.target.files?.[0]; if (f) setFile(f); }} required />
             </label>
         )}
     </div>
   );
 
-  // --- Renders de carga/error ---
   if (supabaseError) return <div className="min-h-screen flex items-center justify-center bg-red-50 text-red-600 p-8 text-center font-bold border border-red-200 m-10 rounded-3xl"><p>Error: {supabaseError}</p></div>;
   if (!supabase) return <div className="min-h-screen flex items-center justify-center bg-slate-50 text-slate-400 font-black uppercase tracking-widest">Initializing Better Dashboard...</div>;
 
@@ -402,13 +358,13 @@ export default function DashboardPage() {
         </div>
       </div>
 
-      <div className="max-w-6xl mx-auto px-6 py-12 grid md:grid-cols-2 gap-12 items-start">
+      <div className="max-w-6xl mx-auto px-4 md:px-6 py-8 md:py-12 flex flex-col md:grid md:grid-cols-2 gap-8 md:gap-12 items-start">
         {activeTab === "blog" ? (
           <>
-            <div className="bg-white border border-slate-100 rounded-3xl p-8 shadow-sm flex flex-col gap-6 sticky top-[130px]">
+            <div className="w-full bg-white border border-slate-100 rounded-3xl p-6 md:p-8 shadow-sm flex flex-col gap-6 md:sticky md:top-[130px]">
               <div>
                 <p className="text-blue-600 uppercase tracking-[0.2em] text-[10px] font-black mb-1">New post</p>
-                <h2 className="text-2xl font-black text-slate-900 tracking-tighter uppercase">Publish blog post</h2>
+                <h2 className="text-xl md:text-2xl font-black text-slate-900 tracking-tighter uppercase">Publish blog post</h2>
               </div>
 
               <form onSubmit={handleBlogSubmit} className="flex flex-col gap-5">
@@ -422,13 +378,10 @@ export default function DashboardPage() {
                     <textarea name="description" value={blogForm.description} onChange={handleBlogChange} required rows={3} placeholder="Brief summary..." className="w-full px-4 py-3 rounded-xl border-2 border-slate-100 text-sm font-medium resize-none focus:border-blue-600 focus:outline-none transition-colors" />
                 </div>
                 
-                {/* Selector de Imagen de Portada (¡NUEVO!) */}
                 <ImageUploadField file={blogImageFile} setFile={setBlogImageFile} inputRef={blogImageFileRef} previewUrl={blogImagePreview} />
-
-                {/* Selector de Documento/Link */}
                 <FileUploadField file={blogFile} setFile={setBlogFile} inputRef={blogFileRef} urlValue={blogForm.post_url} urlName="post_url" onUrlChange={handleBlogChange} />
                 
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div className="flex flex-col gap-1.5">
                     <label className="text-[10px] font-black uppercase tracking-widest text-slate-400">Author</label>
                     <select name="author" value={blogForm.author} onChange={handleBlogChange} className="w-full px-4 py-3 rounded-xl border-2 border-slate-100 text-sm font-medium focus:border-blue-600 focus:outline-none bg-white">{AUTHORS.map(a => <option key={a}>{a}</option>)}</select>
@@ -446,24 +399,23 @@ export default function DashboardPage() {
               </form>
             </div>
 
-            <div>
-              <div className="mb-6">
+            <div className="w-full">
+              <div className="mb-6 mt-8 md:mt-0">
                 <p className="text-blue-600 uppercase tracking-[0.2em] text-[10px] font-black mb-1">Published</p>
-                <h2 className="text-2xl font-black text-slate-900 tracking-tighter uppercase">Your posts</h2>
+                <h2 className="text-xl md:text-2xl font-black text-slate-900 tracking-tighter uppercase">Your posts</h2>
               </div>
               
               {blogLoading ? <p className="text-slate-400 text-[10px] font-bold uppercase tracking-widest">Loading...</p> : (
                 <div className="flex flex-col gap-4">
                   {blogPosts.map(post => (
-                    <div key={post.id} className="bg-white border border-slate-100 rounded-2xl p-5 flex gap-4 items-start hover:border-blue-100 transition-colors shadow-sm">
-                      <div className="w-16 h-16 rounded-xl bg-slate-100 overflow-hidden flex-shrink-0 border border-slate-100">
-                        {post.cover_url ? <img src={post.cover_url} className="w-full h-full object-cover" alt={post.title} /> : <div className="w-full h-full flex items-center justify-center text-2xl bg-slate-50 text-slate-300">Better</div>}
+                    <div key={post.id} className="bg-white border border-slate-100 rounded-2xl p-4 md:p-5 flex gap-4 items-start hover:border-blue-100 transition-colors shadow-sm">
+                      <div className="w-12 h-12 md:w-16 md:h-16 rounded-xl bg-slate-100 overflow-hidden flex-shrink-0 border border-slate-100">
+                        {post.cover_url ? <img src={post.cover_url} className="w-full h-full object-cover" alt={post.title} /> : <div className="w-full h-full flex items-center justify-center text-[10px] bg-slate-50 text-slate-300 font-bold">Better</div>}
                       </div>
                       <div className="flex-1 min-w-0">
-                        <span className="text-[9px] font-black text-white bg-blue-600 px-2.5 py-1 rounded-full uppercase tracking-widest">{post.category}</span>
-                        <p className="text-slate-900 font-black text-sm mt-1.5 truncate">{post.title}</p>
-                        <p className="text-slate-400 text-[10px] font-bold uppercase tracking-wide mt-0.5">{post.author} · {new Date(post.published_at).toLocaleDateString('en-US', {month: 'short', day: 'numeric', year: 'numeric'})}</p>
-                        {post.post_url && <a href={post.post_url} target="_blank" className="text-[9px] text-blue-500 hover:underline font-bold uppercase mt-1 block truncate">Link/File →</a>}
+                        <span className="text-[8px] md:text-[9px] font-black text-white bg-blue-600 px-2.5 py-1 rounded-full uppercase tracking-widest">{post.category}</span>
+                        <p className="text-slate-900 font-black text-xs md:text-sm mt-1.5 truncate">{post.title}</p>
+                        <p className="text-slate-400 text-[9px] md:text-[10px] font-bold uppercase tracking-wide mt-0.5">{post.author} · {new Date(post.published_at).toLocaleDateString()}</p>
                       </div>
                       
                       {blogDeleteId === post.id ? (
@@ -484,19 +436,17 @@ export default function DashboardPage() {
         ) : (
           /* --- NEWS TAB --- */
           <>
-             <div className="bg-white border border-slate-100 rounded-3xl p-8 shadow-sm flex flex-col gap-6 sticky top-[130px]">
+             <div className="w-full bg-white border border-slate-100 rounded-3xl p-6 md:p-8 shadow-sm flex flex-col gap-6 md:sticky md:top-[130px]">
               <div>
                 <p className="text-green-600 uppercase tracking-[0.2em] text-[10px] font-black mb-1">New news</p>
-                <h2 className="text-2xl font-black text-slate-900 tracking-tighter uppercase">Publish News</h2>
+                <h2 className="text-xl md:text-2xl font-black text-slate-900 tracking-tighter uppercase">Publish News</h2>
               </div>
               
               <form onSubmit={handleNewsSubmit} className="flex flex-col gap-5">
                 <input type="text" name="title" value={newsForm.title} onChange={handleNewsChange} required placeholder="News Title" className="w-full px-4 py-3 rounded-xl border-2 border-slate-100 text-sm font-medium focus:border-green-600 focus:outline-none" />
                 <textarea name="description" value={newsForm.description} onChange={handleNewsChange} required rows={3} placeholder="Brief summary" className="w-full px-4 py-3 rounded-xl border-2 border-slate-100 text-sm font-medium resize-none focus:border-green-600 focus:outline-none" />
                 
-                {/* Selector de Imagen de Portada (News) (¡NUEVO!) */}
                 <ImageUploadField file={newsImageFile} setFile={setNewsImageFile} inputRef={newsImageFileRef} previewUrl={newsImagePreview} />
-
                 <FileUploadField file={newsFile} setFile={setNewsFile} inputRef={newsFileRef} urlValue={newsForm.post_url} urlName="post_url" onUrlChange={handleNewsChange} />
                 
                 <div className="flex flex-col gap-1.5">
@@ -511,22 +461,22 @@ export default function DashboardPage() {
               </form>
             </div>
             
-            <div>
-              <div className="mb-6">
+            <div className="w-full">
+              <div className="mb-6 mt-8 md:mt-0">
                 <p className="text-green-600 uppercase tracking-[0.2em] text-[10px] font-black mb-1">Published</p>
-                <h2 className="text-2xl font-black text-slate-900 tracking-tighter uppercase">Your news</h2>
+                <h2 className="text-xl md:text-2xl font-black text-slate-900 tracking-tighter uppercase">Your news</h2>
               </div>
               
               <div className="flex flex-col gap-4">
                 {newsPosts.map(post => (
-                    <div key={post.id} className="bg-white border border-slate-100 rounded-2xl p-5 flex gap-4 items-start shadow-sm">
-                         <div className="w-16 h-16 rounded-xl bg-slate-100 overflow-hidden flex-shrink-0 border border-slate-100">
-                            {post.cover_url ? <img src={post.cover_url} className="w-full h-full object-cover" alt={post.title} /> : <div className="w-full h-full flex items-center justify-center text-2xl bg-slate-50 text-slate-300">Better</div>}
+                    <div key={post.id} className="bg-white border border-slate-100 rounded-2xl p-4 md:p-5 flex gap-4 items-start shadow-sm">
+                         <div className="w-12 h-12 md:w-16 md:h-16 rounded-xl bg-slate-100 overflow-hidden flex-shrink-0 border border-slate-100">
+                            {post.cover_url ? <img src={post.cover_url} className="w-full h-full object-cover" alt={post.title} /> : <div className="w-full h-full flex items-center justify-center text-[10px] bg-slate-50 text-slate-300 font-bold">Better</div>}
                         </div>
                         <div className="flex-1 min-w-0">
-                            <span className="text-[9px] font-black text-white bg-green-600 px-2.5 py-1 rounded-full uppercase tracking-widest">News</span>
-                            <p className="text-slate-900 font-black text-sm mt-1.5">{post.title}</p>
-                            <p className="text-slate-400 text-[10px] font-bold uppercase tracking-wide mt-0.5">{post.author} · {new Date(post.published_at).toLocaleDateString()}</p>
+                            <span className="text-[8px] md:text-[9px] font-black text-white bg-green-600 px-2.5 py-1 rounded-full uppercase tracking-widest">News</span>
+                            <p className="text-slate-900 font-black text-xs md:text-sm mt-1.5 truncate">{post.title}</p>
+                            <p className="text-slate-400 text-[9px] md:text-[10px] font-bold uppercase tracking-wide mt-0.5">{post.author} · {new Date(post.published_at).toLocaleDateString()}</p>
                         </div>
                         
                         {newsDeleteId === post.id ? (
