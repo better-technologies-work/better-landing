@@ -451,12 +451,15 @@ const ChatSection = () => {
 
 export default function Home() {
   const heroVideoRef = useRef<HTMLVideoElement>(null);
-  useEffect(() => {
-    const video = heroVideoRef.current;
-    if (!video) return;
-    video.muted = true;
-    video.play().catch(() => { });
-  }, []);
+useEffect(() => {
+  const video = heroVideoRef.current;
+  if (!video) return;
+  video.muted = true;
+  video.setAttribute('playsinline', '');
+  video.setAttribute('webkit-playsinline', '');
+  video.load();
+  video.play().catch(() => {});
+}, []);
 
   const [isOpen, setIsOpen] = useState(false);
   const [selected, setSelected] = useState<number | null>(null);
@@ -543,13 +546,9 @@ src="https://res.cloudinary.com/djp2qzp9f/video/upload/c_fill,ar_16:9,w_800,f_au
           <h1 className="text-3xl md:text-8xl font-black leading-[1] tracking-tighter max-w-4xl text-slate-900 uppercase">
             We operate LATAM for <br /> Global companies
           </h1>
-          <p className="mt-3 text-slate-500 text-[9px] md:text-[10px] uppercase tracking-widest font-bold">
-            Nearshoring Operator · Supply Chain Partner · Talent Hub · Entry Ops Partner
-          </p>
-          <p className="mt-4 text-sm md:text-xl text-slate-700 max-w-xl mx-auto font-medium leading-tight">
-            20th century told us the future would be built somewhere else<br />
-            <span className="text-slate-900 font-bold text-base md:text-xl">We think Differently</span>
-          </p>
+          <p className="mt-3 text-[#FF6B00] text-[9px] md:text-[10px] uppercase tracking-widest font-bold">
+  Nearshoring Operator · Supply Chain Partner · Talent Hub · Entry Ops Partner
+</p>
 
          <a href="/latam40.pdf"
           target="_blank"
@@ -565,9 +564,16 @@ src="https://res.cloudinary.com/djp2qzp9f/video/upload/c_fill,ar_16:9,w_800,f_au
   <section id="what-we-are" className="py-20 px-6 text-center bg-white border-b border-slate-100">
     <div className="max-w-5xl mx-auto">
       <h2 className="text-blue-600 uppercase tracking-widest text-xs font-bold mb-8">Why we exist</h2>
+
       <p className="text-4xl md:text-6xl font-bold max-w-5xl mx-auto leading-tight tracking-tight text-slate-800 italic">
         Because times of change require strategic capacities —<br /> and Latin America is the most underleveraged opportunity to build them.
       </p>
+      <p className="mt-4 text-sm md:text-xl text-slate-700 max-w-xl mx-auto font-medium leading-tight">
+            20th century told us the future would be built somewhere else<br />
+             </p>
+            
+            <p className="text-slate-900 font-bold text-base md:text-xl">We think Differently
+          </p>
     </div>
   </section>
 
