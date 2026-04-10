@@ -525,10 +525,11 @@ export default function Home() {
   muted
   playsInline
   preload="auto"
+  poster="https://res.cloudinary.com/djp2qzp9f/video/upload/c_fill,ar_16:9,w_800,f_auto,q_auto,so_0/v1775676329/IMG_2919_l50wan.jpg"
 >
         
           <source
-    src="https://res.cloudinary.com/djp2qzp9f/video/upload/c_fill,ar_16:9,q_auto/f_auto/v1775676329/IMG_2919_l50wan.mp4"
+src="https://res.cloudinary.com/djp2qzp9f/video/upload/c_fill,ar_16:9,w_800,f_auto,q_auto/v1775676329/IMG_2919_l50wan.mp4" 
     type="video/mp4"
   />
         </video>
