@@ -448,25 +448,38 @@ const ChatSection = () => {
 };
 
 // --- MAIN HOME COMPONENT ---
-
 export default function Home() {
   const heroVideoRef = useRef<HTMLVideoElement>(null);
-useEffect(() => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  const [selected, setSelected] = useState<number | null>(null);
+
+  useEffect(() => {
   const video = heroVideoRef.current;
   if (!video) return;
-  video.muted = true;
-  video.setAttribute('playsinline', '');
-  video.setAttribute('webkit-playsinline', '');
-  video.load();
-  video.play().catch(() => {});
-}, []);
 
-  const [isOpen, setIsOpen] = useState(false);
-  const [selected, setSelected] = useState<number | null>(null);
+  video.muted = true;
+  video.defaultMuted = true;
+
+  const play = () => {
+    video.play().catch(() => {});
+  };
+
+  play();
+
+  document.addEventListener("touchstart", play, { once: true });
+}, []);
 
   useEffect(() => {
     document.body.style.overflow = isOpen ? "hidden" : "unset";
   }, [isOpen]);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const menuItems = [
     { name: "Home", href: "#top" },
@@ -476,25 +489,15 @@ useEffect(() => {
     { name: "About", href: "#about" },
     { name: "Blog", href: "/blog" },
   ];
-  const [isMobile, setIsMobile] = useState(false);
 
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-
-    handleResize();
-    window.addEventListener("resize", handleResize);
-
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
+    
   return (
     <main className="relative w-full bg-white">
 
       {/* HEADER */}
       <header className="fixed top-0 left-0 w-full flex justify-between items-center px-6 md:px-24 py-5 z-[50] backdrop-blur-md bg-black/90 border-b border-white/10">
         <div className="relative w-[120px] md:w-[140px] h-[35px] md:h-[40px] flex items-center justify-start">
-          <Image src="/logo.png" alt="Logo" fill sizes="(max-width: 768px) 120px, 140px" className="object-contain" priority />
+          <Image src="/logo.png" alt="Logo" fill sizes="(max-width: 768px) 120px, 140px" className="object-contain" />
         </div>
 
         <nav className="hidden md:flex gap-8 text-white font-black uppercase text-xs tracking-widest">
@@ -516,38 +519,39 @@ useEffect(() => {
 
       {/* HERO SECTION */}
       <section
-        className="relative w-full h-screen overflow-hidden"
+        className="relative w-full h-[100dvh] overflow-hidden"
         id="top"
       >
-        <video
-  key={isMobile ? "mobile" : "desktop"}
+ <video
+  
   ref={heroVideoRef}
-  className="absolute inset-0 w-full h-full object-cover scale-110"
+  className="absolute top-1/2 left-1/2 min-w-full min-h-full w-auto h-auto -translate-x-1/2 -translate-y-1/2 object-cover"
   autoPlay
   loop
-  muted
-  playsInline
+  muted 
+  playsInline 
+  webkit-playsinline="true" 
   preload="auto"
-  poster="https://res.cloudinary.com/djp2qzp9f/video/upload/c_fill,ar_16:9,w_800,f_auto,q_auto,so_0/v1775676329/IMG_2919_l50wan.jpg"
+ 
 >
-        
-          <source
-src="https://res.cloudinary.com/djp2qzp9f/video/upload/c_fill,ar_16:9,w_800,f_auto,q_auto/v1775676329/IMG_2919_l50wan.mp4" 
+  <source
+    src={`https://res.cloudinary.com/djp2qzp9f/video/upload/${
+      isMobile ? "c_fill,ar_9:16" : "c_fill,ar_16:9"
+    }/v1775676329/IMG_2919_l50wan.mp4`} 
     type="video/mp4"
   />
-        </video>
-
+</video>
         <div className="absolute inset-0 bg-white/10 z-[1]" />
 
         <div className="absolute inset-0 z-[2] flex flex-col items-center justify-center px-6 text-center">
           <p className="text-blue-600 uppercase tracking-[0.4em] mb-3 text-[10px] font-black">
             What we are?
           </p>
-          <h1 className="text-3xl md:text-8xl font-black leading-[1] tracking-tighter max-w-4xl text-slate-900 uppercase">
-            We operate LATAM for <br /> Global companies
-          </h1>
+          <h1 className="text-3xl md:text-8xl font-black leading-[1] tracking-tighter max-w-4xl text-white uppercase">
+  We operate LATAM for <br /> Global companies
+</h1>
           <p className="mt-3 text-[#FF6B00] text-[9px] md:text-[10px] uppercase tracking-widest font-bold">
-  Nearshoring Operator · Supply Chain Partner · Talent Hub · Entry Ops Partner
+  Nearshoring Operator · Supply Chain Partner · Talent Hub · Entry &amp; Ops Partner
 </p>
 
          <a href="/latam40.pdf"
