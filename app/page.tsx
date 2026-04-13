@@ -459,15 +459,21 @@ export default function Home() {
   if (!video) return;
 
   video.muted = true;
-  video.defaultMuted = true;
 
-  const play = () => {
+  const tryPlay = () => {
     video.play().catch(() => {});
   };
 
-  play();
+  // 👇 SOLO intenta reproducir cuando ya cargó
+  if (video.readyState >= 2) {
+    tryPlay();
+  } else {
+    video.addEventListener("loadeddata", tryPlay);
+  }
 
-  document.addEventListener("touchstart", play, { once: true });
+  // 👇 fallback por interacción (iPhone)
+  document.addEventListener("touchstart", tryPlay, { once: true });
+
 }, []);
 
   useEffect(() => {
@@ -531,7 +537,7 @@ export default function Home() {
   muted 
   playsInline 
   webkit-playsinline="true" 
-  preload="auto"
+  preload="metadata"
  
 >
   <source
