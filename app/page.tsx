@@ -222,8 +222,7 @@ const NewsSection = () => {
 
           <div className="flex-1 flex flex-col items-center text-center">
             <div className="mt-8 inline-flex flex-col items-center">
-              <p className="text-slate-400 uppercase tracking-[0.2em] text-[10px] mb-2 font-bold">Real Time Certainty (RTC)</p>
-              <p className="text-3xl font-light border-b-2 border-blue-600 pb-2 text-slate-900 uppercase">Our kitchen is always open.</p>
+              
             </div>
             <span className="text-blue-600 font-black uppercase tracking-[0.3em] text-xs mt-6 mb-4 block italic">Global Intelligence Feed</span>
             <h2 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter leading-none">
@@ -328,7 +327,7 @@ const NewsSection = () => {
   );
 };
 
-// --- CHAT SECTION COMPONENT ---
+ // --- CHAT SECTION COMPONENT ---
 const ChatSection = () => {
   const [step, setStep] = useState<number>(1);
   const [selection, setSelection] = useState<string>("");
@@ -347,105 +346,74 @@ const ChatSection = () => {
     window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
   };
 
-  const handleSelect = (e: React.MouseEvent<HTMLButtonElement>, opt: string) => {
-    e.preventDefault();
-    e.stopPropagation();
-    setSelection(opt);
-    setStep(2);
-  };
-
-  const handleBack = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-    e.stopPropagation();
-    setStep(1);
-  };
-
-  const handleConnect = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-    e.stopPropagation();
-    handleWhatsApp(selection);
-  };
-
-
   return (
-    <section className="w-full py-24 bg-white border-t border-slate-100">
-      <div className="max-w-4xl mx-auto px-6">
-
-        {/* Eyebrow — mismo estilo que About */}
-        <p className="text-blue-600 uppercase tracking-[0.25em] text-[10px] font-black mb-3">
-          Start your 72h validation
+    <section className="py-24 bg-white border-t border-slate-100">
+      <div className="max-w-4xl mx-auto px-6 text-center">
+        {/* TITULARES  */}
+        <p className="text-blue-600 uppercase tracking-[0.2em] text-[10px] mb-4 font-bold">
+          WE DELIVER
+        </p>
+        <p className="text-dark-600 uppercase tracking-[0.2em] text-[10px] mb-4 font-bold">
+          REAL TIME CERTAINTY (RTC)
+        </p>
+        <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-12 uppercase tracking-tighter">
+          OUR KITCHEN IS ALWAYS <span className="italic underline decoration-blue-100"> OPEN </span>
+        </h2>
+        <p className="text-blue-600 uppercase tracking-[0.2em] text-[10px] mb-4 font-bold"> 20th century told us the future would
+          be built somewhere else We think Differently
         </p>
 
-        {/* Quote block — mismo estilo que About */}
-        <div className="border-l-[3px] border-blue-600 pl-5 bg-slate-50 py-4 pr-5 rounded-r-2xl mb-8">
-          <p className="text-slate-900 font-black italic text-sm leading-relaxed tracking-tight">
-            &quot;We were told the future would be built somewhere else. We chose to prove them wrong!&quot;
-          </p>
-        </div>
-
-        {/* Main title — mismo estilo que About */}
-        <h2 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter leading-none uppercase mb-10">
-          Let&apos;s build the future.{" "}
-          <em className="italic underline decoration-blue-100 text-blue-600">Today.</em>
-        </h2>
-
-        <div className="relative bg-white border border-slate-100 rounded-3xl p-8 md:p-12 transition-all hover:border-blue-600/30">
-
-          {step === 1 && (
-            <div>
+        {/* CAJA DEL CHAT */}
+        <div className="relative bg-slate-50 border border-slate-100 rounded-3xl p-8 md:p-12 transition-all hover:border-blue-600/30 text-center">
+          {step === 1 ? (
+            <>
               <p className="text-xl text-slate-600 mb-8 font-light">
                 How can <span className="text-slate-900 font-semibold underline decoration-blue-600 underline-offset-4">the team</span> help you today?
               </p>
-              <div className="grid grid-cols-2 gap-2">
+              <div className="flex flex-wrap justify-center gap-3">
                 {options.map((opt) => (
                   <button
-                    type="button"
                     key={opt}
-                    onClick={(e) => handleSelect(e, opt)}
-                    className={`text-[10px] font-black uppercase tracking-widest px-4 py-2 rounded-full border-2 transition-all duration-200 active:scale-95 touch-manipulation
-                      ${selection === opt
-                        ? "bg-blue-600 text-white border-blue-600"
-                        : "bg-white text-slate-500 border-slate-200 hover:border-blue-600 hover:text-blue-600"
-                      }`}
+                    onClick={() => {
+                      setSelection(opt);
+                      setStep(2);
+                    }}
+                    className="text-[10px] font-black uppercase tracking-widest px-6 py-3 rounded-full border-2 border-slate-200 bg-white hover:border-blue-600 hover:text-blue-600 transition-all active:scale-95 shadow-sm"
                   >
                     {opt}
                   </button>
                 ))}
               </div>
-            </div>
-          )}
-
-          {step === 2 && (
-            <div className="text-center py-4">
-              <p className="text-xl md:text-2xl text-slate-900 mb-8 font-medium leading-tight">
-                Great! Connecting you with our specialists regarding <br />
-                <span className="text-blue-600 font-black block mt-2 text-2xl uppercase tracking-tighter">
+            </>
+          ) : (
+            <div className="py-4">
+              <p className="text-xl text-slate-900 mb-8 font-medium">
+                Connecting you with our specialists regarding <br />
+                <span className="text-blue-600 font-black block mt-2 uppercase tracking-tight italic">
                   {selection}
                 </span>
               </p>
               <button
-                type="button"
-                onClick={(e) => handleConnect(e)}
-                className="inline-flex items-center gap-3 bg-blue-600 text-white px-10 py-4 rounded-full font-black text-lg hover:bg-blue-700 transition-all hover:scale-105 active:scale-95 uppercase tracking-widest shadow-xl shadow-blue-600/20 touch-manipulation"
+                onClick={() => handleWhatsApp(selection)}
+                className="bg-blue-600 text-white px-10 py-4 rounded-full font-black text-sm hover:bg-blue-700 transition-all uppercase tracking-widest shadow-xl shadow-blue-600/20 active:scale-95"
               >
                 Connect with the team
               </button>
               <button
-                type="button"
-                onClick={(e) => handleBack(e)}
-                className="block mx-auto mt-8 text-slate-400 hover:text-blue-600 text-xs uppercase font-bold tracking-widest transition-colors touch-manipulation"
+                onClick={() => setStep(1)}
+                className="block mx-auto mt-8 text-slate-400 hover:text-blue-600 text-[10px] uppercase font-black tracking-widest transition-colors"
               >
                 ← Go back
               </button>
             </div>
           )}
-
         </div>
-
       </div>
     </section>
   );
 };
+  
+    
 
 // --- MAIN HOME COMPONENT ---
 export default function Home() {
@@ -454,26 +422,33 @@ export default function Home() {
   const [isMobile, setIsMobile] = useState(false);
   const [selected, setSelected] = useState<number | null>(null);
 
-  useEffect(() => {
+ useEffect(() => {
   const video = heroVideoRef.current;
   if (!video) return;
 
   video.muted = true;
+  video.playsInline = true;
 
   const tryPlay = () => {
     video.play().catch(() => {});
   };
 
-  // 👇 SOLO intenta reproducir cuando ya cargó
-  if (video.readyState >= 2) {
-    tryPlay();
-  } else {
-    video.addEventListener("loadeddata", tryPlay);
-  }
+  
+  video.addEventListener("loadedmetadata", tryPlay);
+  video.addEventListener("loadeddata", tryPlay);
+  video.addEventListener("canplay", tryPlay);
 
-  // 👇 fallback por interacción (iPhone)
-  document.addEventListener("touchstart", tryPlay, { once: true });
+  
+  tryPlay();
 
+  
+  video.addEventListener("touchstart", tryPlay, { once: true });
+
+  return () => {
+    video.removeEventListener("loadedmetadata", tryPlay);
+    video.removeEventListener("loadeddata", tryPlay);
+    video.removeEventListener("canplay", tryPlay);
+  };
 }, []);
 
   useEffect(() => {
@@ -497,7 +472,8 @@ export default function Home() {
   ];
 
     
-  return (
+  
+    return (
     <main className="relative w-full bg-white">
 
       {/* HEADER */}
@@ -524,341 +500,222 @@ export default function Home() {
       </header>
 
       {/* HERO SECTION */}
-      <section
-        className="relative w-full h-[100dvh] overflow-hidden"
-        id="top"
-      >
- <video
-  
-  ref={heroVideoRef}
-  className="absolute top-1/2 left-1/2 min-w-full min-h-full w-auto h-auto -translate-x-1/2 -translate-y-1/2 object-cover"
-  autoPlay
-  loop
-  muted 
-  playsInline 
-  webkit-playsinline="true" 
-  preload="metadata"
- 
->
-  <source
-    src={`https://res.cloudinary.com/djp2qzp9f/video/upload/${
-      isMobile ? "c_fill,ar_9:16" : "c_fill,ar_16:9"
-    }/v1775676329/IMG_2919_l50wan.mp4`} 
-    type="video/mp4"
-  />
-</video>
+      <section className="relative w-full h-[100dvh] overflow-hidden" id="top">
+        <video
+          ref={heroVideoRef}
+          className="absolute top-1/2 left-1/2 min-w-full min-h-full w-auto h-auto -translate-x-1/2 -translate-y-1/2 object-cover"
+          autoPlay loop muted playsInline webkit-playsinline="true" preload="auto"
+        >
+          <source
+            src={`https://res.cloudinary.com/djp2qzp9f/video/upload/${isMobile ? "c_fill,ar_9:16" : "c_fill,ar_16:9"}/v1775676329/IMG_2919_l50wan.mp4`} 
+            type="video/mp4"
+          />
+        </video>
         <div className="absolute inset-0 bg-white/10 z-[1]" />
-
         <div className="absolute inset-0 z-[2] flex flex-col items-center justify-center px-6 text-center">
-          <p className="text-blue-600 uppercase tracking-[0.4em] mb-3 text-[10px] font-black">
-            What we are?
-          </p>
+          <p className="text-blue-600 uppercase tracking-[0.4em] mb-3 text-[10px] font-black">What we are?</p>
           <h1 className="text-3xl md:text-8xl font-black leading-[1] tracking-tighter max-w-4xl text-white uppercase">
-  We operate LATAM for <br /> Global companies
-</h1>
+            We operate LATAM for <br /> Global companies
+          </h1>
           <p className="mt-3 text-[#FF6B00] text-[9px] md:text-[10px] uppercase tracking-widest font-bold">
-  Nearshoring Operator · Supply Chain Partner · Talent Hub · Entry &amp; Ops Partner
-</p>
-
-         <a href="/latam40.pdf"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="mt-8 inline-block px-8 py-3 bg-blue-600 text-white rounded-full font-bold shadow-lg uppercase tracking-widest text-[10px] transition-transform active:scale-95"
-    >
-          LATAM 4.0 - 21st century&apos;s golden child
-        </a>
-      </div>
-    </section>
-
-      {/* WHY WE EXIST */ }
-  <section id="what-we-are" className="py-20 px-6 text-center bg-white border-b border-slate-100">
-    <div className="max-w-5xl mx-auto">
-      <h2 className="text-blue-600 uppercase tracking-widest text-xs font-bold mb-8">Why we exist</h2>
-
-      <p className="text-4xl md:text-6xl font-bold max-w-5xl mx-auto leading-tight tracking-tight text-slate-800 italic">
-        Because times of change require strategic capacities —<br /> and Latin America is the most underleveraged opportunity to build them.
-      </p>
-      <p className="mt-4 text-sm md:text-xl text-slate-700 max-w-xl mx-auto font-medium leading-tight">
-            20th century told us the future would be built somewhere else<br />
-             </p>
-            
-            <p className="text-slate-900 font-bold text-base md:text-xl">We think Differently
+            Nearshoring Operator · Supply Chain Partner · Talent Hub · Entry &amp; Ops Partner
           </p>
-    </div>
-  </section>
+          <a href="/latam40.pdf" target="_blank" rel="noopener noreferrer" className="mt-8 inline-block px-8 py-3 bg-blue-600 text-white rounded-full font-bold shadow-lg uppercase tracking-widest text-[10px] transition-transform active:scale-95">
+            LATAM 4.0 - 21st century&apos;s golden child
+          </a>
+        </div>
+      </section>
 
-  {/* NEWS FEED */ }
-  <NewsSection />
+      {/* 1. NEWS FEED (In times of Change...) */}
+      <NewsSection />
 
-  {/* TARGET CLIENT: MITTELSTAND */ }
-  <section id="mittelstand" className="py-40 px-6 bg-slate-50 border-y border-slate-200">
-    <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-20 items-center">
-      <div>
-        <h2 className="text-4xl md:text-6xl font-black mb-8 text-slate-900 leading-[1.1] tracking-tighter">
-          Our Customer: <br />
-          <span className="text-blue-600">Medium Sized<br />Global Companies</span>
-        </h2>
-
-        <ul className="space-y-6 text-xl text-slate-600 font-medium mb-10">
-          <li className="flex items-center gap-4">
-            <span className="w-2 h-2 bg-blue-600 rounded-full flex-shrink-0" />
-            50–500 employees
-          </li>
-          <li className="flex items-center gap-4">
-            <span className="w-2 h-2 bg-blue-600 rounded-full flex-shrink-0" />
-            Ops in different countries / regions
-          </li>
-          <li className="flex items-center gap-4">
-            <span className="w-2 h-2 bg-blue-600 rounded-full flex-shrink-0" />
-            Long Supply Chain dependent
-          </li>
-          <li className="flex items-center gap-4">
-            <span className="w-2 h-2 bg-blue-600 rounded-full flex-shrink-0" />
-            Traditional business
-          </li>
-        </ul>
-
-        <h3 className="text-sm text-slate-400 italic font-normal tracking-wide">
-          Example: industrial manufacturers, retail, logistics, services.
-        </h3>
-      </div>
-
-      <div className="bg-white p-12 rounded-3xl border border-slate-200 shadow-sm transition-all hover:shadow-md">
-        <h3 className="text-xl font-bold mb-6 uppercase tracking-wider text-slate-900">
-          The Problem we solve
-        </h3>
-
-        <p className="text-slate-600 text-lg leading-relaxed mb-10">
-          Long supply chains (Asia / Middle East) are falling due to conflict. Latin America is the obvious alternative — but remains impossible to execute.
-        </p>
-
-        <div className="space-y-4 mb-8">
-          <div className="flex items-center">
-            <p className="text-base line-through decoration-red-600 decoration-2 font-bold italic text-slate-400">
-              BCG Digital Ventures
+      {/* 2. CHAT SECTION (How can the team help you today?) */}
+      
+      <ChatSection />
+{/* 3. TARGET CLIENT: MITTELSTAND */}
+      <section id="mittelstand" className="py-40 px-6 bg-slate-50 border-y border-slate-200">
+        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-20 items-center">
+          
+          {/* THE PROBLEM  */}
+          <div className="bg-white p-12 rounded-3xl border border-slate-200 shadow-sm transition-all hover:shadow-md">
+            <h3 className="text-xl font-bold mb-6 uppercase tracking-wider text-slate-900">
+              The Problem we solve
+            </h3>
+            <p className="text-slate-600 text-lg leading-relaxed mb-10">
+              Long supply chains (Asia / Middle East) are falling due to conflict. Latin America is the obvious alternative — but remains impossible to execute.
             </p>
-          </div>
-          <div className="flex items-center">
-            <p className="text-base line-through decoration-red-600 decoration-2 font-bold italic text-slate-400">
-              McKinsey &amp; Company
-            </p>
-          </div>
-          <div className="flex items-center">
-            <p className="text-base line-through decoration-red-600 decoration-2 font-bold italic text-slate-400">
-              Accenture
-            </p>
-          </div>
-        </div>
-        <div className="pt-6 border-t border-slate-100">
-          <p className="text-sm font-bold italic text-slate-900 tracking-tight">
-            Typical tickets: <span className="text-blue-600">€150k - €1M+</span>
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  {/* PRICING */ }
-  <section id="pricing" className="py-40 px-6 bg-white">
-    <div className="max-w-7xl mx-auto text-center">
-      <h2 className="text-4xl md:text-5xl font-black mb-20 text-slate-900 uppercase tracking-tighter">
-        What you <span className="text-blue-600">can</span> afford
-      </h2>
-      <div className="grid md:grid-cols-3 gap-12 text-left">
-
-        {/* TIER 1 */}
-        <div className="group border-2 border-slate-100 p-12 rounded-3xl hover:border-blue-600 transition-all duration-500 bg-slate-50/50">
-          <div className="flex flex-col gap-4 mb-10">
-            <h3 className="text-2xl font-bold text-slate-900 uppercase">72h Validation Challenge</h3>
-            <span className="self-start bg-blue-600 text-white px-4 py-1 rounded-full text-xs font-black italic">€3k – €10k</span>
-          </div>
-          <ul className="space-y-4 text-slate-600">
-            <li className="font-bold flex items-start gap-2"><span className="text-blue-600 mt-0.5">→</span> Opportunity Validation: Problem + Executable Solution hypothesis</li>
-            <li className="font-bold flex items-start gap-2"><span className="text-blue-600 mt-0.5">→</span> Feasibility Study: Financial overview + Operations forecast</li>
-          </ul>
-        </div>
-
-        {/* TIER 2 */}
-        <div className="group border-2 border-slate-100 p-12 rounded-3xl hover:border-blue-600 transition-all duration-500 bg-slate-50/50 shadow-xl shadow-slate-100">
-          <div className="flex flex-col gap-4 mb-10">
-            <h3 className="text-2xl font-bold text-slate-900 uppercase">MVP Stage — 90 days</h3>
-            <span className="self-start bg-blue-600 text-white px-4 py-1 rounded-full text-xs font-black italic">€30k – €120k</span>
-          </div>
-          <ul className="space-y-4 text-slate-600">
-            <li className="font-bold flex items-center gap-2"><span className="text-blue-600">✓</span> Solution engineering</li>
-            <li className="font-bold flex items-center gap-2"><span className="text-blue-600">✓</span> Functional MVP</li>
-            <li className="font-bold flex items-center gap-2"><span className="text-blue-600">✓</span> Beta testing (with real users)</li>
-          </ul>
-        </div>
-
-        {/* TIER 3 — NUEVO */}
-        <div className="group border-2 border-slate-100 p-12 rounded-3xl hover:border-blue-600 transition-all duration-500 bg-slate-50/50">
-          <div className="flex flex-col gap-4 mb-10">
-            <h3 className="text-2xl font-bold text-slate-900 uppercase">Growth / Scale</h3>
-            <span className="self-start bg-slate-900 text-white px-4 py-1 rounded-full text-xs font-black italic">Tailor made</span>
-          </div>
-          <ul className="space-y-4 text-slate-600">
-            <li className="font-bold flex items-center gap-2"><span className="text-blue-600">✓</span> Local + Digital operation</li>
-            <li className="font-bold flex items-center gap-2"><span className="text-blue-600">✓</span> Success oriented business execution</li>
-            <li className="font-bold flex items-center gap-2"><span className="text-blue-600">✓</span> Reduced operational costs</li>
-            <li className="font-bold flex items-center gap-2"><span className="text-blue-600">✓</span> Scale faster and better</li>
-          </ul>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  {/* ABOUT US */}
-<section id="about" className="py-12 md:py-16 px-6 bg-white border-t border-slate-100">
-  <div className="max-w-4xl mx-auto">
-
-    <p className="text-blue-600 uppercase tracking-[0.25em] text-[10px] font-black mb-2">
-      About our Team
-    </p>
-
-    <h2 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter leading-[0.9] uppercase mb-6">
-      High{" "}
-      <em className="italic underline decoration-blue-100">Performance execution team</em>{" "}
-      built in high
-      <br />
-      pressure environments.
-    </h2>
-
-    <div className="border-l-[3px] border-blue-600 pl-5 bg-slate-50 py-4 pr-5 rounded-r-2xl mb-8">
-      <p className="text-slate-900 font-black italic text-sm leading-relaxed tracking-tight">
-        &ldquo;We were told the future would be built somewhere else.
-        <br />
-        <span className="text-blue-600">We chose to prove them wrong.&rdquo;</span>
-      </p>
-    </div>
-
-    
-
-      <AnimatePresence mode="wait">
-        {selected !== null && (
-          <motion.div
-            key={selected}
-            initial={{ opacity: 0, y: -8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.2 }}
-            className="flex items-center gap-5 border border-slate-100 rounded-3xl p-5 mb-6 hover:border-blue-600/30 transition-colors duration-300"
-          >
-            <Avatar member={team[selected]} />
-
-            <div className="flex-1 min-w-0">
-              <div className="flex items-start justify-between gap-3">
-                <div>
-                  <p className="text-slate-900 font-black uppercase tracking-tight text-sm">
-                    {team[selected].name}
-                  </p>
-                  <p className="text-blue-600 font-black uppercase tracking-[0.15em] text-[10px] mt-0.5 mb-2">
-                    {team[selected].role}
-                  </p>
-                </div>
-
-                <a
-                  href={team[selected].linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-1.5 border border-slate-200 rounded-full px-3 py-1.5 hover:border-blue-600 hover:bg-blue-50 transition-all flex-shrink-0"
-                >
-                  <LinkedInIcon />
-                  <span className="text-[9px] font-black uppercase tracking-widest text-slate-500 hover:text-blue-600">
-                    LinkedIn
-                  </span>
-                </a>
-              </div>
-
-              <p className="text-slate-500 text-xs leading-relaxed font-medium">
-                {team[selected].desc}
+            <div className="space-y-4 mb-8">
+              <p className="text-base line-through decoration-red-600 decoration-2 font-bold italic text-slate-400">BCG Digital Ventures</p>
+              <p className="text-base line-through decoration-red-600 decoration-2 font-bold italic text-slate-400">McKinsey &amp; Company</p>
+              <p className="text-base line-through decoration-red-600 decoration-2 font-bold italic text-slate-400">Accenture</p>
+            </div>
+            <div className="pt-6 border-t border-slate-100">
+              <p className="text-sm font-bold italic text-slate-900 tracking-tight">
+                Typical tickets: <span className="text-blue-600">€150k - €1M+</span>
               </p>
             </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+          </div>
 
-      <div className="flex flex-wrap gap-2">
-        {team.map((member, i) => (
-          <button
-            key={i}
-            type="button"
-            onClick={() => setSelected(selected === i ? null : i)}
-            className={`text-[10px] font-black uppercase tracking-widest px-4 py-2 rounded-full border-2 transition-all duration-200 active:scale-95
-                  ${selected === i
-                ? "bg-blue-600 text-white border-blue-600"
-                : "bg-white text-slate-500 border-slate-200 hover:border-blue-600 hover:text-blue-600"
-              }`}
-          >
-            {member.name.split(" ")[0]} {member.name.split(" ")[1]}
-          </button>
-        ))}
-      </div>
+          {/*  OUR CUSTOMER  */}
+          <div>
+            <h2 className="text-4xl md:text-6xl font-black mb-8 text-slate-900 leading-[1.1] tracking-tighter">
+              Our Customer: <br />
+              <span className="text-blue-600">Medium Sized<br />Global Companies</span>
+            </h2>
+            <ul className="space-y-6 text-xl text-slate-600 font-medium mb-10">
+              <li className="flex items-center gap-4">
+                <span className="w-2 h-2 bg-blue-600 rounded-full flex-shrink-0" />
+                50–500 employees
+              </li>
+              <li className="flex items-center gap-4">
+                <span className="w-2 h-2 bg-blue-600 rounded-full flex-shrink-0" />
+                Ops in different countries / regions
+              </li>
+              <li className="flex items-center gap-4">
+                <span className="w-2 h-2 bg-blue-600 rounded-full flex-shrink-0" />
+                Long Supply Chain dependent
+              </li>
+              <li className="flex items-center gap-4">
+                <span className="w-2 h-2 bg-blue-600 rounded-full flex-shrink-0" />
+                Traditional business
+              </li>
+            </ul>
+          </div>
 
-    </div>
-  </section>
-
-  {/* CHAT SECTION */ }
-  <ChatSection />
-
- {/* BLOG CTA SECTION */}
-<section className="py-24 bg-white border-t border-slate-100">
-  <div className="max-w-4xl mx-auto text-center px-6">
-    <p className="text-blue-600 uppercase tracking-[0.2em] text-[10px] mb-4 font-bold">Stay updated with our</p>
-    <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-8 uppercase tracking-tighter">
-      Latest <span className="italic underline decoration-blue-100">Insights</span>
-    </h2>
-    <p className="text-slate-500 text-lg mb-12 max-w-2xl mx-auto">
-Explore our blog for industry trends,tech updates,and innovation stories from the Better Technologies team.</p>
-    <a href="/blog" className="inline-block">
-      <button type="button" className="px-10 py-4 bg-slate-900 text-white rounded-full font-black uppercase tracking-widest hover:bg-blue-600 transition-all shadow-xl text-xs hover:scale-105 active:scale-95">
-        Read the Blog 
-      </button>
-    </a>
-  </div>
-</section>
-
-  {/* FOOTER */ }
-  <footer className="py-20 text-center border-t border-slate-100 bg-white">
-    <div className="flex justify-center gap-8 mb-10 text-[11px] font-black uppercase tracking-[0.2em]">
-      <a href="https://www.linkedin.com/company/bettertechnologies/" className="text-slate-900 hover:text-blue-600 transition-colors">LinkedIn</a>
-      <a href="https://www.instagram.com/better.technologies?igsh=cjQ1c3F4OWpoYWhq" className="text-slate-900 hover:text-blue-600 transition-colors">Instagram</a>
-    </div>
-    <p className="text-slate-400 text-[9px] font-black uppercase tracking-[0.3em]">
-      &copy; {new Date().getFullYear()} Better Technologies. All rights reserved.
-    </p>
-  </footer>
-
-  {/* MOBILE MENU OVERLAY */ }
-  <AnimatePresence>
-    {isOpen && (
-      <motion.div
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: -20 }}
-        className="fixed inset-0 z-[55] bg-black flex flex-col items-center justify-center gap-8"
-      >
-        <nav className="flex flex-col items-center gap-6">
-          {menuItems.map((item) => (
-            <a
-              key={item.name}
-              href={item.href}
-              onClick={() => setIsOpen(false)}
-              className="text-white text-3xl font-black uppercase tracking-tighter hover:text-blue-600 transition-colors"
-            >
-              {item.name}
-            </a>
-          ))}
-        </nav>
-
-        <div className="absolute bottom-12 flex gap-8">
-          <a href="https://www.linkedin.com/company/bettertechnologies/" className="text-white/50 text-[10px] font-black uppercase tracking-widest">LinkedIn</a>
-          <a href="https://www.instagram.com/better.technologies" className="text-white/50 text-[10px] font-black uppercase tracking-widest">Instagram</a>
         </div>
-      </motion.div>
-    )}
-  </AnimatePresence>
-    </main >
+      </section>
+
+      {/* 4. PRICING (What you can afford) */}
+      <section id="pricing" className="py-40 px-6 bg-white">
+        <div className="max-w-7xl mx-auto text-center">
+          <h2 className="text-4xl md:text-5xl font-black mb-20 text-slate-900 uppercase tracking-tighter">
+            What you <span className="text-blue-600">can</span> afford
+          </h2>
+          <div className="grid md:grid-cols-3 gap-12 text-left">
+            <div className="group border-2 border-slate-100 p-12 rounded-3xl hover:border-blue-600 transition-all duration-500 bg-slate-50/50">
+              <div className="flex flex-col gap-4 mb-10">
+                <h3 className="text-2xl font-bold text-slate-900 uppercase">72h Validation Challenge</h3>
+                <span className="self-start bg-blue-600 text-white px-4 py-1 rounded-full text-xs font-black italic">€3k – €10k</span>
+              </div>
+              <ul className="space-y-4 text-slate-600">
+                <li className="font-bold flex items-start gap-2"><span className="text-blue-600 mt-0.5">→</span> Opportunity Validation: Problem + Executable Solution hypothesis</li>
+                <li className="font-bold flex items-start gap-2"><span className="text-blue-600 mt-0.5">→</span> Feasibility Study: Financial overview + Operations forecast</li>
+              </ul>
+            </div>
+
+            <div className="group border-2 border-slate-100 p-12 rounded-3xl hover:border-blue-600 transition-all duration-500 bg-slate-50/50 shadow-xl shadow-slate-100">
+              <div className="flex flex-col gap-4 mb-10">
+                <h3 className="text-2xl font-bold text-slate-900 uppercase">MVP Stage — 90 days</h3>
+                <span className="self-start bg-blue-600 text-white px-4 py-1 rounded-full text-xs font-black italic">€30k – €120k</span>
+              </div>
+              <ul className="space-y-4 text-slate-600">
+                <li className="font-bold flex items-center gap-2"><span className="text-blue-600">✓</span> Solution engineering</li>
+                <li className="font-bold flex items-center gap-2"><span className="text-blue-600">✓</span> Functional MVP</li>
+                <li className="font-bold flex items-center gap-2"><span className="text-blue-600">✓</span> Beta testing (with real users)</li>
+              </ul>
+            </div>
+
+            <div className="group border-2 border-slate-100 p-12 rounded-3xl hover:border-blue-600 transition-all duration-500 bg-slate-50/50">
+              <div className="flex flex-col gap-4 mb-10">
+                <h3 className="text-2xl font-bold text-slate-900 uppercase">Growth / Scale</h3>
+                <span className="self-start bg-slate-900 text-white px-4 py-1 rounded-full text-xs font-black italic">Tailor made</span>
+              </div>
+              <ul className="space-y-4 text-slate-600">
+                <li className="font-bold flex items-center gap-2"><span className="text-blue-600">✓</span> Local + Digital operation</li>
+                <li className="font-bold flex items-center gap-2"><span className="text-blue-600">✓</span> Success oriented business execution</li>
+                <li className="font-bold flex items-center gap-2"><span className="text-blue-600">✓</span> Reduced operational costs</li>
+                <li className="font-bold flex items-center gap-2"><span className="text-blue-600">✓</span> Scale faster and better</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+     
+      {/* --- SECCIÓN EQUIPO --- */}
+      <section id="about" className="py-24 px-6 bg-white border-t border-slate-100">
+        <div className="max-w-4xl mx-auto">
+          <p className="text-blue-600 uppercase tracking-[0.25em] text-[10px] font-black mb-2">About our Team</p>
+          <h2 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter leading-[0.9] uppercase mb-6">
+            High <em className="italic underline decoration-blue-100">Performance execution team</em> 
+          </h2>
+
+          <div className="border-l-[3px] border-blue-600 pl-5 bg-slate-50 py-4 pr-5 rounded-r-2xl mb-8">
+            <p className="text-slate-900 font-black italic text-sm leading-relaxed tracking-tight">
+              &ldquo;We were told the future would be built somewhere else. <br />
+              <span className="text-blue-600">We chose to prove them wrong.&rdquo;</span>
+            </p>
+          </div>
+
+          <AnimatePresence mode="wait">
+            {selected !== null && (
+              <motion.div
+                key={selected}
+                initial={{ opacity: 0, y: -8 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -8 }}
+                transition={{ duration: 0.2 }}
+                className="flex items-center gap-5 border border-slate-100 rounded-3xl p-5 mb-6 hover:border-blue-600/30 transition-colors"
+              >
+                <Avatar member={team[selected]} />
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-start justify-between gap-3">
+                    <div>
+                      <p className="text-slate-900 font-black uppercase tracking-tight text-sm">{team[selected].name}</p>
+                      <p className="text-blue-600 font-black uppercase tracking-[0.15em] text-[10px] mt-0.5 mb-2">{team[selected].role}</p>
+                    </div>
+                    <a href={team[selected].linkedin} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 border border-slate-200 rounded-full px-3 py-1.5 hover:border-blue-600 hover:bg-blue-50 transition-all flex-shrink-0">
+                      <LinkedInIcon />
+                      <span className="text-[9px] font-black uppercase tracking-widest text-slate-500">LinkedIn</span>
+                    </a>
+                  </div>
+                  <p className="text-slate-500 text-xs leading-relaxed font-medium">{team[selected].desc}</p>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+
+          <div className="flex flex-wrap gap-2">
+            {team.map((member, i) => (
+              <button
+                key={i}
+                type="button"
+                onClick={() => setSelected(selected === i ? null : i)}
+                className={`px-4 py-2 rounded-full text-[10px] font-black uppercase tracking-widest border transition-all ${
+                  selected === i ? "bg-blue-600 border-blue-600 text-white shadow-lg" : "bg-white border-slate-200 text-slate-400 hover:border-blue-600 hover:text-blue-600"
+                }`}
+              >
+                {member.name}
+              </button>
+            ))}
+          </div>
+        </div>
+      </section>
+      <section id="about" className="py-12 md:py-16 px-6 bg-white border-t border-slate-100">
+        
+      </section>
+
+       <h2 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter leading-[0.9] uppercase mb-6">
+            LETS BUILD THE FUTURE  <em className="italic underline decoration-blue-100"> TODAY </em> 
+          </h2>
+
+      {/* 6. LATEST INSIGHTS (Blog CTA) */}
+      <section className="py-24 bg-slate-50 text-center">
+         <p className="text-blue-600 uppercase tracking-[0.25em] text-[10px] font-black mb-4">Stay updated with us</p>
+         <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-6 uppercase">Latest Insights</h2>
+         <p className="text-slate-500 max-w-lg mx-auto mb-10">Explore our blog for industry trends, tech updates, and innovation stories.</p>
+         <a href="/blog" className="inline-block bg-slate-900 text-white px-10 py-4 rounded-full font-black text-xs uppercase tracking-widest hover:bg-blue-600 transition-colors">Read the Blog</a>
+      </section>
+
+      {/* 7. FOOTER */}
+      <footer className="py-20 text-center bg-white">
+        <div className="flex justify-center gap-8 mb-10 text-[11px] font-black uppercase tracking-[0.2em]">
+          <a href="#" className="text-slate-900 hover:text-blue-600">LinkedIn</a>
+          <a href="#" className="text-slate-900 hover:text-blue-600">Instagram</a>
+        </div>
+        <p className="text-slate-400 text-[9px] font-black uppercase tracking-[0.3em]">&copy; 2026 Better Technologies.</p>
+      </footer>
+
+    </main>
   );
 }
