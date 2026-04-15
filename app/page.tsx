@@ -42,7 +42,7 @@ const team = [
     role: "Data Science Chief Operator",
     desc: "Yanina speaks the language of data fluently — and translates it into decisions that matter. She extracts signal from noise, builds intelligence layers into every product, and ensures that what we ship isn't just functional — it's smart.",
     initials: "YS",
-    photo: "/team/yanina.jpg",
+    photo: "/Yanina.jpeg",
     linkedin: "https://www.linkedin.com/in/yanina-soto/",
   },
 ];
@@ -468,7 +468,7 @@ export default function Home() {
     { name: "Mittelstand", href: "#mittelstand" },
     { name: "Pricing", href: "#pricing" },
     { name: "About", href: "#about" },
-    { name: "Blog", href: "/blog" },
+    { name: "Blog", href: "#blog" },
   ];
 
     
@@ -476,29 +476,64 @@ export default function Home() {
     return (
     <main className="relative w-full bg-white">
 
-      {/* HEADER */}
-      <header className="fixed top-0 left-0 w-full flex justify-between items-center px-6 md:px-24 py-5 z-[50] backdrop-blur-md bg-black/90 border-b border-white/10">
-        <div className="relative w-[120px] md:w-[140px] h-[35px] md:h-[40px] flex items-center justify-start">
-          <Image src="/logo.png" alt="Logo" fill sizes="(max-width: 768px) 120px, 140px" className="object-contain" />
+     
+      {/* HEADER  */}
+<header className="fixed top-0 left-0 w-full flex justify-between items-center px-6 md:px-24 py-5 z-[100] backdrop-blur-md bg-black border-b border-white/10">  
+<div className="relative w-[120px] md:w-[140px] h-[40px] flex items-center justify-start">
+          <Image 
+            src="/logo.png" 
+            alt="Logo" 
+            fill 
+            sizes="(max-width: 768px) 120px, 140px" 
+            className="object-contain" 
+          />
         </div>
 
-        <nav className="hidden md:flex gap-8 text-white font-black uppercase text-xs tracking-widest">
-          {menuItems.map((item) => (
-            <a key={item.name} href={item.href} className="hover:text-blue-600 transition-colors">{item.name}</a>
-          ))}
-        </nav>
 
-        <button
-          type="button"
-          onClick={() => setIsOpen(!isOpen)}
-          className="md:hidden relative z-[60] flex flex-col gap-1.5 p-4"
+  {/* Navegación Desktop */}
+  <nav className="hidden md:flex gap-8 text-white font-black uppercase text-xs tracking-widest">
+    {menuItems.map((item) => (
+      <a key={item.name} href={item.href} className="hover:text-blue-600 transition-colors">{item.name}</a>
+    ))}
+  </nav>
+
+  {/* BOTÓN HAMBURGUESA*/}
+  <button
+  type="button"
+  onClick={() => setIsOpen(!isOpen)}
+ className="md:hidden relative z-[110] flex flex-col justify-center items-center w-10 h-10 gap-1.5 focus:outline-none"
+          aria-label="Menu"
+>
+  <div className={`w-7 h-[2px] bg-white transition-all duration-300 ${isOpen ? "rotate-45 translate-y-2" : ""}`}></div>
+  <div className={`w-7 h-[2px] bg-white transition-all duration-300 ${isOpen ? "opacity-0" : ""}`}></div>
+  <div className={`w-7 h-[2px] bg-white transition-all duration-300 ${isOpen ? "-rotate-45 -translate-y-2" : ""}`}></div>
+</button>
+
+
+</header>
+   <AnimatePresence>
+  {isOpen && (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="fixed top-0 left-0 right-0 bottom-0 bg-black flex flex-col items-center justify-center gap-8 z-[105] md:hidden"
+
+    >
+      {menuItems.map((item) => (
+        <a
+          key={item.name}
+          href={item.href}
+          onClick={() => setIsOpen(false)} // Para que se cierre al elegir una sección
+          className="text-white text-4xl font-black uppercase tracking-tighter hover:text-blue-600 transition-colors"
         >
-          <div className={`w-7 h-0.5 bg-white transition-all ${isOpen ? "rotate-45 translate-y-2" : ""}`}></div>
-          <div className={`w-7 h-0.5 bg-white transition-all ${isOpen ? "opacity-0" : ""}`}></div>
-          <div className={`w-7 h-0.5 bg-white transition-all ${isOpen ? "-rotate-45 -translate-y-2" : ""}`}></div>
-        </button>
-      </header>
-
+          {item.name}
+        </a>
+      ))}
+    </motion.div>
+  )}
+</AnimatePresence>  
+  
       {/* HERO SECTION */}
       <section className="relative w-full h-[100dvh] overflow-hidden" id="top">
         <video
@@ -517,12 +552,15 @@ export default function Home() {
           <h1 className="text-3xl md:text-8xl font-black leading-[1] tracking-tighter max-w-4xl text-white uppercase">
             We operate LATAM for <br /> Global companies
           </h1>
-          <p className="mt-3 text-[#FF6B00] text-[9px] md:text-[10px] uppercase tracking-widest font-bold">
+          <p className="mt-3 text-white text-[9px] md:text-[10px] uppercase tracking-widest font-bold">
             Nearshoring Operator · Supply Chain Partner · Talent Hub · Entry &amp; Ops Partner
           </p>
           <a href="/latam40.pdf" target="_blank" rel="noopener noreferrer" className="mt-8 inline-block px-8 py-3 bg-blue-600 text-white rounded-full font-bold shadow-lg uppercase tracking-widest text-[10px] transition-transform active:scale-95">
             LATAM 4.0 - 21st century&apos;s golden child
           </a>
+          <a href="https://wa.me/593995269974?text=Hi!%20I%27d%20like%20to%20get%20in%20touch%20with%20the%20team." className="mt-3 inline-block px-8 py-3 bg-[#FF6B00] text-white rounded-full font-bold shadow-lg uppercase tracking-widest text-[10px] transition-transform active:scale-95">
+  Get in touch
+</a>
         </div>
       </section>
 
@@ -695,9 +733,9 @@ export default function Home() {
         
       </section>
 
-       <h2 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter leading-[0.9] uppercase mb-6">
-            LETS BUILD THE FUTURE  <em className="italic underline decoration-blue-100"> TODAY </em> 
-          </h2>
+       <h2 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter leading-[0.9] uppercase mb-6 text-center">
+  LETS BUILD THE FUTURE <em className="italic underline decoration-blue-100"> TODAY </em> 
+</h2>
 
       {/* 6. LATEST INSIGHTS (Blog CTA) */}
       <section className="py-24 bg-slate-50 text-center">
@@ -708,13 +746,23 @@ export default function Home() {
       </section>
 
       {/* 7. FOOTER */}
-      <footer className="py-20 text-center bg-white">
-        <div className="flex justify-center gap-8 mb-10 text-[11px] font-black uppercase tracking-[0.2em]">
-          <a href="#" className="text-slate-900 hover:text-blue-600">LinkedIn</a>
-          <a href="#" className="text-slate-900 hover:text-blue-600">Instagram</a>
-        </div>
-        <p className="text-slate-400 text-[9px] font-black uppercase tracking-[0.3em]">&copy; 2026 Better Technologies.</p>
-      </footer>
+      <footer className="py-20 text-center bg-white border-t border-slate-100">
+  <p className="text-slate-400 text-[9px] font-black uppercase tracking-[0.3em] mb-4">Don't miss a move</p>
+  <h3 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter uppercase mb-10">
+    Follow our <em className="italic underline decoration-blue-100">journey</em>
+  </h3>
+  <div className="flex justify-center gap-6 mb-12">
+    <a href="https://www.linkedin.com/company/bettertechnologies/" target="_blank" rel="noopener noreferrer"
+      className="px-8 py-3 rounded-full border-2 border-slate-200 text-slate-900 font-black text-[11px] uppercase tracking-widest hover:border-blue-600 hover:text-blue-600 transition-all">
+      LinkedIn
+    </a>
+    <a href="https://www.instagram.com/better.technologies?igsh=cjQ1c3F4OWpoYWhq" target="_blank" rel="noopener noreferrer"
+      className="px-8 py-3 rounded-full border-2 border-slate-200 text-slate-900 font-black text-[11px] uppercase tracking-widest hover:border-blue-600 hover:text-blue-600 transition-all">
+      Instagram
+    </a>
+  </div>
+  <p className="text-slate-400 text-[9px] font-black uppercase tracking-[0.3em]">&copy; 2026 Better Technologies.</p>
+</footer>
 
     </main>
   );
