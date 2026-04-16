@@ -360,9 +360,21 @@ const ChatSection = () => {
           OUR KITCHEN IS ALWAYS <span className="italic underline decoration-blue-100"> OPEN </span>
         </h2>
         <p className="text-blue-600 uppercase tracking-[0.2em] text-[10px] mb-4 font-bold"> 20th century told us the future would
-          be built somewhere else We think Differently
+          be built somewhere else We think Differently.
         </p>
-
+        <p className="text-dark-600 uppercase tracking-[0.2em] text-[10px] mb-4 font-bold">
+          See your self - Follow us on Social Media. 
+        </p>
+         <div className="flex justify-center gap-6 mb-12">
+    <a href="https://www.linkedin.com/company/bettertechnologies/" target="_blank" rel="noopener noreferrer"
+      className="px-8 py-3 rounded-full border-2 border-slate-200 text-slate-900 font-black text-[11px] uppercase tracking-widest hover:border-blue-600 hover:text-blue-600 transition-all">
+      LinkedIn
+    </a>
+    <a href="https://www.instagram.com/better.technologies?igsh=cjQ1c3F4OWpoYWhq" target="_blank" rel="noopener noreferrer"
+      className="px-8 py-3 rounded-full border-2 border-slate-200 text-slate-900 font-black text-[11px] uppercase tracking-widest hover:border-blue-600 hover:text-blue-600 transition-all">
+      Instagram
+    </a>
+  </div>
         {/* CAJA DEL CHAT */}
         <div className="relative bg-slate-50 border border-slate-100 rounded-3xl p-8 md:p-12 transition-all hover:border-blue-600/30 text-center">
           {step === 1 ? (
@@ -468,7 +480,7 @@ export default function Home() {
     { name: "Mittelstand", href: "#mittelstand" },
     { name: "Pricing", href: "#pricing" },
     { name: "About", href: "#about" },
-    { name: "Blog", href: "#blog" },
+    { name: "Blog", href: "/blog" },
   ];
 
     
