@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from 'framer-motion';
-
+import { createClient } from '@/lib/supabase/client'
 
 const team = [
   {
@@ -55,6 +55,23 @@ const LinkedInIcon = () => (
       d="M7 9H5v10h2V9zm-1-1.5A1.25 1.25 0 1 0 6 5a1.25 1.25 0 0 0 0 2.5zM19 13.2c0-2.3-1.1-4.2-3.3-4.2a3.2 3.2 0 0 0-2.7 1.4V9H11v10h2v-5.4c0-1.4.7-2.3 1.9-2.3 1.1 0 1.6.8 1.6 2.2V19h2v-5.8z"
       fill="#fff"
     />
+  </svg>
+);
+// INSTAGRAM ICON  ← ACÁ, pegalo justo después
+const InstagramIcon = () => (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <radialGradient id="ig-gradient" cx="30%" cy="107%" r="150%">
+        <stop offset="0%" stopColor="#fdf497"/>
+        <stop offset="5%" stopColor="#fdf497"/>
+        <stop offset="45%" stopColor="#fd5949"/>
+        <stop offset="60%" stopColor="#d6249f"/>
+        <stop offset="90%" stopColor="#285AEB"/>
+      </radialGradient>
+    </defs>
+    <rect width="24" height="24" rx="6" fill="url(#ig-gradient)"/>
+    <circle cx="12" cy="12" r="4.5" stroke="white" strokeWidth="1.8" fill="none"/>
+    <circle cx="17.5" cy="6.5" r="1.2" fill="white"/>
   </svg>
 );
 
@@ -366,15 +383,15 @@ const ChatSection = () => {
           See your self - Follow us on Social Media. 
         </p>
          <div className="flex justify-center gap-6 mb-12">
-    <a href="https://www.linkedin.com/company/bettertechnologies/" target="_blank" rel="noopener noreferrer"
-      className="px-8 py-3 rounded-full border-2 border-slate-200 text-slate-900 font-black text-[11px] uppercase tracking-widest hover:border-blue-600 hover:text-blue-600 transition-all">
-      LinkedIn
-    </a>
-    <a href="https://www.instagram.com/better.technologies?igsh=cjQ1c3F4OWpoYWhq" target="_blank" rel="noopener noreferrer"
-      className="px-8 py-3 rounded-full border-2 border-slate-200 text-slate-900 font-black text-[11px] uppercase tracking-widest hover:border-blue-600 hover:text-blue-600 transition-all">
-      Instagram
-    </a>
-  </div>
+  <a href="https://www.linkedin.com/company/bettertechnologies/" target="_blank" rel="noopener noreferrer"
+    className="flex items-center gap-2 px-6 py-3 rounded-full border-2 border-slate-200 text-slate-900 font-black text-[11px] uppercase tracking-widest hover:border-blue-600 hover:text-blue-600 transition-all">
+    <LinkedInIcon /> LinkedIn
+  </a>
+  <a href="https://www.instagram.com/better.technologies?igsh=cjQ1c3F4OWpoYWhq" target="_blank" rel="noopener noreferrer"
+    className="flex items-center gap-2 px-6 py-3 rounded-full border-2 border-slate-200 text-slate-900 font-black text-[11px] uppercase tracking-widest hover:border-[#d6249f] hover:text-[#d6249f] transition-all">
+    <InstagramIcon /> Instagram
+  </a>
+</div>
         {/* CAJA DEL CHAT */}
         <div className="relative bg-slate-50 border border-slate-100 rounded-3xl p-8 md:p-12 transition-all hover:border-blue-600/30 text-center">
           {step === 1 ? (
@@ -429,12 +446,27 @@ const ChatSection = () => {
 
 // --- MAIN HOME COMPONENT ---
 export default function Home() {
+  const [posts, setPosts] = useState<any[]>([]);
+
+  useEffect(() => {
+    const fetchPosts = async () => {
+      const supabase = createClient();
+      const { data } = await supabase
+        .from('blog_posts')
+        .select('*')
+        .order('published_at', { ascending: false })
+        .limit(3);
+      if (data) setPosts(data);
+    };
+    fetchPosts();
+  }, []);
+
   const heroVideoRef = useRef<HTMLVideoElement>(null);
   const [isOpen, setIsOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [selected, setSelected] = useState<number | null>(null);
 
- useEffect(() => {
+  useEffect(() => {
   const video = heroVideoRef.current;
   if (!video) return;
 
@@ -487,9 +519,6 @@ export default function Home() {
   
     return (
     <main className="relative w-full bg-white">
-
-     
-      {/* HEADER  */}
 <header className="fixed top-0 left-0 w-full flex justify-between items-center px-6 md:px-24 py-5 z-[100] backdrop-blur-md bg-black border-b border-white/10">  
 <div className="relative w-[120px] md:w-[140px] h-[40px] flex items-center justify-start">
           <Image 
@@ -748,14 +777,57 @@ export default function Home() {
        <h2 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter leading-[0.9] uppercase mb-6 text-center">
   LETS BUILD THE FUTURE <em className="italic underline decoration-blue-100"> TODAY </em> 
 </h2>
+{/* 6. LATEST INSIGHTS (Blog CTA) */}
+<section className="py-24 bg-slate-50">
+  <div className="container mx-auto px-6 text-center">
+    <p className="text-blue-600 uppercase tracking-[0.25em] text-[10px] font-black mb-4">
+      Stay updated with us
+    </p>
+    <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-6 uppercase">
+      Latest Insights
+    </h2>
+    <p className="text-slate-500 max-w-lg mx-auto mb-10">
+      Explore our blog for industry trends, tech updates, and innovation stories.
+    </p>
 
-      {/* 6. LATEST INSIGHTS (Blog CTA) */}
-      <section className="py-24 bg-slate-50 text-center">
-         <p className="text-blue-600 uppercase tracking-[0.25em] text-[10px] font-black mb-4">Stay updated with us</p>
-         <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-6 uppercase">Latest Insights</h2>
-         <p className="text-slate-500 max-w-lg mx-auto mb-10">Explore our blog for industry trends, tech updates, and innovation stories.</p>
-         <a href="/blog" className="inline-block bg-slate-900 text-white px-10 py-4 rounded-full font-black text-xs uppercase tracking-widest hover:bg-blue-600 transition-colors">Read the Blog</a>
-      </section>
+    {/* Renderizado de las Cards (Previos) */}
+    {posts && posts.length > 0 ? (
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12 text-left">
+        {posts.map((post) => (
+          <div key={post.id} className="bg-white p-6 rounded-3xl border border-slate-100 shadow-sm">
+            <div className="relative h-40 mb-4 rounded-xl overflow-hidden bg-slate-100">
+              {post.cover_url ? (
+                <img src={post.cover_url} alt={post.title} className="w-full h-full object-cover" />
+              ) : (
+                <div className="w-full h-full flex items-center justify-center text-slate-300 text-xs font-bold">NO IMAGE</div>
+              )}
+            </div>
+            <h3 className="font-black text-lg mb-3 uppercase text-slate-900 line-clamp-2">
+              {post.title}
+            </h3>
+            
+            {/* Limpiamos el HTML para el preview */}
+            <p className="text-slate-500 text-sm mb-6 line-clamp-3">
+              {post.description?.replace(/<[^>]*>?/gm, '') || 'No description available'}
+            </p>
+            
+            <a href={`/blog/${post.id}`} className="text-blue-600 font-black text-[10px] uppercase tracking-widest hover:text-slate-900 transition-colors">
+              Read More →
+            </a>
+          </div>
+        ))}
+      </div>
+    ) : (
+      <div className="py-12 text-center">
+        <p className="text-slate-400 text-sm">No posts available yet.</p>
+      </div>
+    )}
+
+    <a href="/blog" className="inline-block bg-slate-900 text-white px-10 py-4 rounded-full font-black text-xs uppercase tracking-widest hover:bg-blue-600 transition-colors">
+      View All Posts
+    </a>
+  </div>
+</section>
 
       {/* 7. FOOTER */}
       <footer className="py-20 text-center bg-white border-t border-slate-100">
@@ -764,15 +836,15 @@ export default function Home() {
     Follow our <em className="italic underline decoration-blue-100">journey</em>
   </h3>
   <div className="flex justify-center gap-6 mb-12">
-    <a href="https://www.linkedin.com/company/bettertechnologies/" target="_blank" rel="noopener noreferrer"
-      className="px-8 py-3 rounded-full border-2 border-slate-200 text-slate-900 font-black text-[11px] uppercase tracking-widest hover:border-blue-600 hover:text-blue-600 transition-all">
-      LinkedIn
-    </a>
-    <a href="https://www.instagram.com/better.technologies?igsh=cjQ1c3F4OWpoYWhq" target="_blank" rel="noopener noreferrer"
-      className="px-8 py-3 rounded-full border-2 border-slate-200 text-slate-900 font-black text-[11px] uppercase tracking-widest hover:border-blue-600 hover:text-blue-600 transition-all">
-      Instagram
-    </a>
-  </div>
+  <a href="https://www.linkedin.com/company/bettertechnologies/" target="_blank" rel="noopener noreferrer"
+    className="flex items-center gap-2 px-6 py-3 rounded-full border-2 border-slate-200 text-slate-900 font-black text-[11px] uppercase tracking-widest hover:border-blue-600 hover:text-blue-600 transition-all">
+    <LinkedInIcon /> LinkedIn
+  </a>
+  <a href="https://www.instagram.com/better.technologies?igsh=cjQ1c3F4OWpoYWhq" target="_blank" rel="noopener noreferrer"
+    className="flex items-center gap-2 px-6 py-3 rounded-full border-2 border-slate-200 text-slate-900 font-black text-[11px] uppercase tracking-widest hover:border-[#d6249f] hover:text-[#d6249f] transition-all">
+    <InstagramIcon /> Instagram
+  </a>
+</div>
   <p className="text-slate-400 text-[9px] font-black uppercase tracking-[0.3em]">&copy; 2026 Better Technologies.</p>
 </footer>
 

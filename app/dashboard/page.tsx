@@ -1,496 +1,887 @@
 "use client";
 
-export const dynamic = 'force-dynamic';
-export const runtime = 'nodejs';
-
 import { useState, useEffect, useRef } from "react";
-import { useRouter } from "next/navigation";
 import Image from "next/image";
-import { createClient } from "@supabase/supabase-js";
+import { createClient } from "@/lib/supabase/client";
+import { decodeHTML } from "@/lib/utils";
+import dynamicImport from 'next/dynamic';
 
-// --- Tipos y Constantes ---
-type Content = {
+// Estilos del editor
+import 'react-quill-new/dist/quill.snow.css';
+
+// Cargamos el editor de forma segura para Next.js
+const ReactQuill = dynamicImport(() => import('react-quill-new'), { 
+  ssr: false,
+  loading: () => <div className="h-[200px] bg-slate-50 animate-pulse rounded-xl" />
+});
+
+const AUTHORS = ["Diego Vargas", "Charlotte Götz", "Ezequiel Alonso", "Victor Menendez", "Yanina Soto"];
+const CATEGORIES = ["Framework", "Strategy", "Data", "Engineering", "Marketing", "Case Study"];
+
+// Tipos
+type Link = {
+  id: string;
+  title: string;
+  url: string;
+};
+
+type Document = {
+  id: string;
+  name: string;
+  url: string;
+  type: string;
+  file?: File | null;
+};
+
+type BlogPost = {
   id: string;
   title: string;
   description: string;
   post_url: string;
-  cover_url: string;
-  author: string;
+  cover_url?: string;
   category: string;
-  published_at: string;
   slug: string;
+  published_at: string;
+  author: string;
+  links?: Link[];
+  documents?: Document[];
 };
 
-const AUTHORS = ["Diego Vargas", "Charlotte Götz", "Ezequiel Alonso", "Victor Menendez", "Yanina Soto"];
-const CATEGORIES = ["Framework", "Strategy", "Data", "Engineering", "Marketing", "Case Study", "Actualidad", "Global"];
-
-const DOCUMENTS_BUCKET = "documents";
-const COVERS_BUCKET = "covers";
-
 export default function DashboardPage() {
-  const router = useRouter();
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
+  const [posts, setPosts] = useState<BlogPost[]>([]);
+  const [loadingPosts, setLoadingPosts] = useState(true);
+  const [editingPost, setEditingPost] = useState<BlogPost | null>(null);
+  const [activeTab, setActiveTab] = useState<'create' | 'manage' | 'news'>('create');
 
-  const [supabase, setSupabase] = useState<any>(null);
-  const [supabaseError, setSupabaseError] = useState<string | null>(null);
-  const [activeTab, setActiveTab] = useState<"blog" | "news">("blog");
+  // Estados para la imagen
+  const [imageFile, setImageFile] = useState<File | null>(null);
+  const [preview, setPreview] = useState<string | null>(null);
 
-  // --- Blog State ---
-  const [blogPosts, setBlogPosts] = useState<Content[]>([]);
-  const [blogLoading, setBlogLoading] = useState(true);
-  const [blogSaving, setBlogSaving] = useState(false);
-  const [blogSuccess, setBlogSuccess] = useState(false);
-  const [blogDeleteId, setBlogDeleteId] = useState<string | null>(null);
+  // Estados para links y documentos
+  const [links, setLinks] = useState<{ title: string; url: string }[]>([]);
+  const [documents, setDocuments] = useState<{ name: string; file: File | null; url: string; type?: string }[]>([]);
 
-  const [blogFile, setBlogFile] = useState<File | null>(null);
-  const blogFileRef = useRef<HTMLInputElement | null>(null);
-
-  const [blogImageFile, setBlogImageFile] = useState<File | null>(null);
-  const [blogImagePreview, setBlogImagePreview] = useState<string | null>(null);
-  const blogImageFileRef = useRef<HTMLInputElement | null>(null);
-
-  const [blogForm, setBlogForm] = useState({
-    title: "",
-    description: "",
-    post_url: "",
-    cover_url: "",
-    author: AUTHORS[0],
-    category: CATEGORIES[0],
-  });
-
-  // --- News State ---
-  const [newsPosts, setNewsPosts] = useState<Content[]>([]);
-  const [newsLoading, setNewsLoading] = useState(true);
-  const [newsSaving, setNewsSaving] = useState(false);
-  const [newsSuccess, setNewsSuccess] = useState(false);
-  const [newsDeleteId, setNewsDeleteId] = useState<string | null>(null);
-
-  const [newsFile, setNewsFile] = useState<File | null>(null);
-  const newsFileRef = useRef<HTMLInputElement | null>(null);
-
-  const [newsImageFile, setNewsImageFile] = useState<File | null>(null);
-  const [newsImagePreview, setNewsImagePreview] = useState<string | null>(null);
-  const newsImageFileRef = useRef<HTMLInputElement | null>(null);
-
+  // Estados para News
+  const [newsPosts, setNewsPosts] = useState<BlogPost[]>([]);
+  const [loadingNews, setLoadingNews] = useState(true);
+  const [editingNews, setEditingNews] = useState<BlogPost | null>(null);
   const [newsForm, setNewsForm] = useState({
     title: "",
     description: "",
-    post_url: "",
-    cover_url: "",
-    author: AUTHORS[0],
+    author: "Yanina Soto",
     category: "Actualidad",
+    post_url: "",
+  });
+  const [newsImageFile, setNewsImageFile] = useState<File | null>(null);
+  const [newsPreview, setNewsPreview] = useState<string | null>(null);
+
+  const [form, setForm] = useState({
+    title: "",
+    description: "",
+    author: "Yanina Soto",
+    category: "Data",
+    post_url: "",
   });
 
   useEffect(() => {
-    const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
-    const key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
-    if (url && key) {
-      setSupabase(createClient(url, key));
-    } else {
-      setSupabaseError("Missing Supabase Environment Variables");
-    }
+    loadPosts();
+    loadNews();
   }, []);
 
-  useEffect(() => {
-    if (supabase) {
-      loadBlogPosts();
-      loadNewsPosts();
-    }
-  }, [supabase]);
-
-  useEffect(() => {
-    if (!blogImageFile) {
-      setBlogImagePreview(null);
-      return;
-    }
-    const objectUrl = URL.createObjectURL(blogImageFile);
-    setBlogImagePreview(objectUrl);
-    return () => URL.revokeObjectURL(objectUrl);
-  }, [blogImageFile]);
-
-  useEffect(() => {
-    if (!newsImageFile) {
-      setNewsImagePreview(null);
-      return;
-    }
-    const objectUrl = URL.createObjectURL(newsImageFile);
-    setNewsImagePreview(objectUrl);
-    return () => URL.revokeObjectURL(objectUrl);
-  }, [newsImageFile]);
-
-  const loadBlogPosts = async () => {
-    if (!supabase) return;
-    setBlogLoading(true);
-    const { data, error } = await supabase
-      .from("blog_posts")
-      .select("*")
-      .neq("category", "Actualidad")
-      .order("published_at", { ascending: false });
-    if (error) setSupabaseError(error.message);
-    else setBlogPosts(data || []);
-    setBlogLoading(false);
-  };
-
-  const loadNewsPosts = async () => {
-    if (!supabase) return;
-    setNewsLoading(true);
-    const { data, error } = await supabase
-      .from("blog_posts")
-      .select("*")
-      .eq("category", "Actualidad")
-      .order("published_at", { ascending: false });
-    if (error) setSupabaseError(error.message);
-    else setNewsPosts(data || []);
-    setNewsLoading(false);
-  };
-
-  const handleBlogChange = (e: any) => setBlogForm(prev => ({ ...prev, [e.target.name]: e.target.value }));
-  const handleNewsChange = (e: any) => setNewsForm(prev => ({ ...prev, [e.target.name]: e.target.value }));
-
-  const uploadFileToSupabase = async (file: File, bucketName: string): Promise<string | null> => {
-    if (!supabase) return null;
-    const fileName = `${Date.now()}-${file.name.replace(/[^a-z0-9.]/gi, "-").toLowerCase()}`;
-    const { error } = await supabase.storage.from(bucketName).upload(fileName, file);
-    if (error) {
-        console.error(`Error uploading to ${bucketName}:`, error);
-        return null;
-    }
-    const { data: urlData } = supabase.storage.from(bucketName).getPublicUrl(fileName);
-    return urlData?.publicUrl || null;
-  };
-
-  const handleBlogSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!supabase) return;
-    setBlogSaving(true);
-    setSupabaseError(null);
-
-    let finalPostUrl = blogForm.post_url;
-    let finalCoverUrl = blogForm.cover_url;
-
-    if (blogFile) {
-      const uploadedDoc = await uploadFileToSupabase(blogFile, DOCUMENTS_BUCKET);
-      if (uploadedDoc) finalPostUrl = uploadedDoc;
-      else {
-          setSupabaseError("Failed to upload document.");
-          setBlogSaving(false);
-          return;
+  const loadPosts = async () => {
+    setLoadingPosts(true);
+    try {
+      const client = createClient();
+      console.log('Supabase client created:', !!client);
+      const { data, error } = await client
+        .from('blog_posts')
+        .select('*')
+        .order('published_at', { ascending: false });
+      
+      if (error) {
+        console.error('Supabase error loading posts:', error);
+        throw error;
       }
+      if (data) setPosts(data);
+    } catch (err) {
+      console.error('Error loading posts:', err);
+    } finally {
+      setLoadingPosts(false);
     }
+  };
 
-    if (blogImageFile) {
-        const uploadedCover = await uploadFileToSupabase(blogImageFile, COVERS_BUCKET);
-        if (uploadedCover) finalCoverUrl = uploadedCover;
-        else {
-            setSupabaseError("Failed to upload cover image.");
-            setBlogSaving(false);
-            return;
-        }
+  const loadNews = async () => {
+    setLoadingNews(true);
+    try {
+      const client = createClient();
+      const { data } = await client
+        .from('blog_posts')
+        .select('*')
+        .ilike('category', 'actualidad')
+        .order('published_at', { ascending: false });
+      
+      if (data) setNewsPosts(data);
+    } catch (err) {
+      console.error('Error loading news:', err);
+    } finally {
+      setLoadingNews(false);
     }
+  };
 
-    const slug = `${blogForm.title.toLowerCase().trim().replace(/[^a-z0-9]+/g, "-")}-${Date.now()}`;
-    
-    const payload = {
-        ...blogForm,
-        post_url: finalPostUrl,
-        cover_url: finalCoverUrl,
-        slug,
-        published_at: new Date().toISOString()
-    };
+  const resetForm = () => {
+    setForm({ title: "", description: "", author: "Yanina Soto", category: "Data", post_url: "" });
+    setImageFile(null);
+    setPreview(null);
+    setLinks([]);
+    setDocuments([]);
+    setEditingPost(null);
+  };
 
-    const { error } = await supabase.from("blog_posts").insert([payload]);
+  const resetNewsForm = () => {
+    setNewsForm({ title: "", description: "", author: "Yanina Soto", category: "Actualidad", post_url: "" });
+    setNewsImageFile(null);
+    setNewsPreview(null);
+    setEditingNews(null);
+  };
 
-    if (!error) {
-      setBlogSuccess(true);
-      setBlogForm({ title: "", description: "", post_url: "", cover_url: "", author: AUTHORS[0], category: CATEGORIES[0] });
-      setBlogFile(null);
-      if (blogFileRef.current) blogFileRef.current.value = "";
-      setBlogImageFile(null);
-      if (blogImageFileRef.current) blogImageFileRef.current.value = "";
+  const handleAddLink = () => {
+    setLinks([...links, { title: "", url: "" }]);
+  };
 
-      loadBlogPosts();
-      setTimeout(() => setBlogSuccess(false), 3000);
+  const handleRemoveLink = (index: number) => {
+    setLinks(links.filter((_, i) => i !== index));
+  };
+
+  const handleLinkChange = (index: number, field: 'title' | 'url', value: string) => {
+    const newLinks = [...links];
+    newLinks[index][field] = value;
+    setLinks(newLinks);
+  };
+
+  const handleAddDocument = () => {
+    setDocuments([...documents, { name: "", file: null, url: "" }]);
+  };
+
+  const handleRemoveDocument = (index: number) => {
+    setDocuments(documents.filter((_, i) => i !== index));
+  };
+
+  const handleDocumentChange = (index: number, field: 'name' | 'file', value: string | File) => {
+    const newDocs = [...documents];
+    if (field === 'file') {
+      newDocs[index].file = value as File;
+      if (value && newDocs[index].name === "") {
+        newDocs[index].name = (value as File).name;
+      }
     } else {
-        setSupabaseError(`Database error: ${error.message}`);
+      newDocs[index].name = value as string;
     }
-    setBlogSaving(false);
+    setDocuments(newDocs);
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    setErrorMsg(null);
+
+    try {
+      try {
+        console.log('Creating Supabase client...');
+        let client;
+        try {
+          client = createClient();
+          console.log('Client created:', client ? 'yes' : 'no');
+          console.log('Client type:', typeof client);
+        } catch (clientErr) {
+          console.error('Failed to create client:', clientErr);
+          throw new Error('Failed to initialize Supabase client: ' + clientErr);
+        }
+        
+        let finalCoverUrl = editingPost?.cover_url || "";
+
+        // 1. Subir imagen si existe
+        if (imageFile) {
+          console.log('Uploading image...');
+          const fileName = `${Date.now()}-${imageFile.name.replace(/\s+/g, '-')}`;
+          const { data: uploadData, error: uploadError } = await client.storage
+            .from("covers")
+            .upload(fileName, imageFile);
+          
+          console.log('Upload result:', { data: uploadData, error: uploadError });
+          if (uploadError) throw new Error("Error subiendo imagen: " + uploadError.message);
+          
+          const { data } = client.storage.from("covers").getPublicUrl(fileName);
+          finalCoverUrl = data.publicUrl;
+        }
+
+        // 2. Subir documentos
+        const uploadedDocs: Document[] = [];
+        for (const doc of documents) {
+          if (doc.file) {
+            const fileName = `docs/${Date.now()}-${doc.file.name.replace(/\s+/g, '-')}`;
+            const { error: uploadError } = await client.storage
+              .from("covers")
+              .upload(fileName, doc.file);
+            
+            if (!uploadError) {
+              const { data } = client.storage.from("covers").getPublicUrl(fileName);
+              uploadedDocs.push({
+                id: Date.now().toString() + Math.random(),
+                name: doc.name,
+                url: data.publicUrl,
+                type: doc.file.type
+              });
+            }
+          } else if (doc.url) {
+            uploadedDocs.push({
+              id: Date.now().toString() + Math.random(),
+              name: doc.name,
+              url: doc.url,
+              type: 'link'
+            });
+          }
+        }
+
+        // 3. Preparar datos del post
+        const postData: any = {
+          title: form.title,
+          description: form.description,
+          author: form.author,
+          category: form.category,
+          cover_url: finalCoverUrl,
+          slug: `${form.title.toLowerCase().replace(/[^a-z0-9]+/g, "-")}-${Date.now()}`,
+          published_at: new Date().toISOString(),
+          post_url: form.post_url || "",
+          links: links.filter(l => l.title && l.url),
+          documents: uploadedDocs
+        };
+
+        // 4. Guardar o actualizar en la base de datos
+        console.log('Saving post to database:', postData);
+        if (editingPost) {
+          const { data: updateData, error: dbError } = await client
+            .from("blog_posts")
+            .update(postData)
+            .eq("id", editingPost.id);
+
+          console.log('Update result:', { data: updateData, error: dbError });
+          if (dbError) throw dbError;
+        } else {
+          const { data: insertData, error: dbError } = await client.from("blog_posts").insert([postData]);
+          console.log('Insert result:', { data: insertData, error: dbError });
+          if (dbError) throw dbError;
+        }
+
+        // 5. Éxito y Limpieza
+        setSuccess(true);
+        resetForm();
+        loadPosts();
+        setActiveTab('manage');
+        setTimeout(() => setSuccess(false), 3000);
+      } catch (innerErr: any) {
+        // Safely extract error message
+        let errorMessage = 'Error al publicar el post';
+        
+        console.error('=== ERROR SUBMISSION ===');
+        console.error('Raw error:', innerErr);
+        console.error('Error constructor:', innerErr?.constructor?.name);
+        console.error('Error message property:', innerErr?.message);
+        
+        if (innerErr) {
+          // Try to get the message in various ways
+          if (typeof innerErr === 'string') {
+            errorMessage = innerErr;
+          } else if (innerErr.message) {
+            errorMessage = String(innerErr.message);
+          } else if (innerErr.error?.message) {
+            errorMessage = String(innerErr.error.message);
+          } else if (innerErr.error_description) {
+            errorMessage = String(innerErr.error_description);
+          } else {
+            // Last resort: try JSON stringify
+            try {
+              errorMessage = 'Error: ' + JSON.stringify(innerErr);
+            } catch {
+              errorMessage = 'Error: Unknown error occurred';
+            }
+          }
+        }
+        
+        console.error('Final error message:', errorMessage);
+        console.error('=======================');
+        setErrorMsg(errorMessage);
+      }
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleEdit = (post: BlogPost) => {
+    setEditingPost(post);
+    setForm({
+      title: post.title,
+      description: post.description,
+      author: post.author || "Yanina Soto",
+      category: post.category || "Data",
+      post_url: post.post_url || "",
+    });
+    setPreview(post.cover_url || null);
+    setLinks(post.links || []);
+    setDocuments((post.documents || []).map((d: Document) => ({ name: d.name, file: null, url: d.url, type: d.type })));
+    setActiveTab('create');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleDelete = async (postId: string) => {
+    if (!confirm("¿Estás seguro de que quieres eliminar este post?")) return;
+    
+    try {
+      const client = createClient();
+      const { error } = await client.from("blog_posts").delete().eq("id", postId);
+      if (error) throw error;
+      loadPosts();
+    } catch (err: any) {
+      setErrorMsg(err.message);
+    }
   };
 
   const handleNewsSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!supabase) return;
-    setNewsSaving(true);
-    setSupabaseError(null);
+    setLoading(true);
+    setErrorMsg(null);
 
-    let finalPostUrl = newsForm.post_url;
-    let finalCoverUrl = newsForm.cover_url;
+    try {
+      const client = createClient();
+      let finalCoverUrl = editingNews?.cover_url || "";
 
-    if (newsFile) {
-      const uploadedDoc = await uploadFileToSupabase(newsFile, DOCUMENTS_BUCKET);
-      if (uploadedDoc) finalPostUrl = uploadedDoc;
-      else {
-        setSupabaseError("Failed to upload document.");
-        setNewsSaving(false);
-        return;
+      // 1. Subir imagen si existe
+      if (newsImageFile) {
+        const fileName = `${Date.now()}-${newsImageFile.name.replace(/\s+/g, '-')}`;
+        const { error: uploadError } = await client.storage
+          .from("covers")
+          .upload(fileName, newsImageFile);
+        
+        if (uploadError) throw new Error("Error subiendo imagen: " + uploadError.message);
+        
+        const { data } = client.storage.from("covers").getPublicUrl(fileName);
+        finalCoverUrl = data.publicUrl;
       }
-    }
 
-    if (newsImageFile) {
-        const uploadedCover = await uploadFileToSupabase(newsImageFile, COVERS_BUCKET);
-        if (uploadedCover) finalCoverUrl = uploadedCover;
-        else {
-            setSupabaseError("Failed to upload cover image.");
-            setNewsSaving(false);
-            return;
-        }
-    }
-
-    const slug = `${newsForm.title.toLowerCase().trim().replace(/[^a-z0-9]+/g, "-")}-${Date.now()}`;
-    
-    const payload = {
-        ...newsForm,
-        post_url: finalPostUrl,
-        cover_url: finalCoverUrl,
+      // 2. Preparar datos del post (News siempre tiene categoría "Actualidad")
+      const postData: any = {
+        title: newsForm.title,
+        description: newsForm.description,
+        author: newsForm.author,
         category: "Actualidad",
-        slug,
-        published_at: new Date().toISOString()
-    };
+        cover_url: finalCoverUrl,
+        slug: `${newsForm.title.toLowerCase().replace(/[^a-z0-9]+/g, "-")}-${Date.now()}`,
+        published_at: new Date().toISOString(),
+        post_url: newsForm.post_url || "",
+      };
 
-    const { error } = await supabase.from("blog_posts").insert([payload]);
+      // 3. Guardar o actualizar en la base de datos
+      if (editingNews) {
+        const { error: dbError } = await client
+          .from("blog_posts")
+          .update(postData)
+          .eq("id", editingNews.id);
 
-    if (!error) {
-      setNewsSuccess(true);
-      setNewsForm({ title: "", description: "", post_url: "", cover_url: "", author: AUTHORS[0], category: "Actualidad" });
-      setNewsFile(null);
-      if (newsFileRef.current) newsFileRef.current.value = "";
-      setNewsImageFile(null);
-      if (newsImageFileRef.current) newsImageFileRef.current.value = "";
-      
-      loadNewsPosts();
-      setTimeout(() => setNewsSuccess(false), 3000);
-    } else {
-        setSupabaseError(`Database error: ${error.message}`);
+        if (dbError) throw dbError;
+      } else {
+        const { error: dbError } = await client.from("blog_posts").insert([postData]);
+        if (dbError) throw dbError;
+      }
+
+      // 4. Éxito y Limpieza
+      setSuccess(true);
+      resetNewsForm();
+      loadNews();
+      setTimeout(() => setSuccess(false), 3000);
+
+    } catch (err: any) {
+      console.error('Error submitting news:', err);
+      setErrorMsg(err.message || 'Error al publicar la news');
+    } finally {
+      setLoading(false);
     }
-    setNewsSaving(false);
   };
 
-  const handleBlogDelete = async (id: string) => {
-    await supabase.from("blog_posts").delete().eq("id", id);
-    setBlogDeleteId(null);
-    loadBlogPosts();
+  const handleEditNews = (post: BlogPost) => {
+    setEditingNews(post);
+    setNewsForm({
+      title: post.title,
+      description: post.description,
+      author: post.author || "Yanina Soto",
+      category: "Actualidad",
+      post_url: post.post_url || "",
+    });
+    setNewsPreview(post.cover_url || null);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const handleNewsDelete = async (id: string) => {
-    await supabase.from("blog_posts").delete().eq("id", id);
-    setNewsDeleteId(null);
-    loadNewsPosts();
+  const handleDeleteNews = async (postId: string) => {
+    if (!confirm("¿Estás seguro de que quieres eliminar esta news?")) return;
+    
+    try {
+      const client = createClient();
+      const { error } = await client.from("blog_posts").delete().eq("id", postId);
+      if (error) throw error;
+      loadNews();
+    } catch (err: any) {
+      setErrorMsg(err.message);
+    }
   };
-
-  // --- Componentes Internos ---
-  const FileUploadField = ({ file, setFile, inputRef, urlValue, urlName, onUrlChange }: any) => (
-    <div className="flex flex-col gap-3">
-      <div className="flex flex-col gap-1.5">
-        <label className="text-[10px] font-black uppercase tracking-widest text-slate-400">Article Link (Optional)</label>
-        <input type="url" name={urlName} value={urlValue} onChange={onUrlChange} disabled={!!file} className="w-full px-4 py-3 rounded-xl border-2 border-slate-100 text-sm focus:border-blue-600 focus:outline-none disabled:opacity-50" placeholder="https://..." />
-      </div>
-      <div className="flex items-center gap-3">
-        <div className="flex-1 h-px bg-slate-100" />
-        <span className="text-[10px] font-black uppercase text-slate-300">or</span>
-        <div className="flex-1 h-px bg-slate-100" />
-      </div>
-      <div className="flex flex-col gap-1.5">
-        <label className="text-[10px] font-black uppercase tracking-widest text-slate-400">Upload PDF / DOC (Optional)</label>
-        {file ? (
-          <div className="flex items-center justify-between px-4 py-3 rounded-xl border-2 border-blue-600 bg-blue-50 text-xs font-black text-blue-600">
-            <span className="truncate">📄 {file.name}</span>
-            <button type="button" onClick={() => { setFile(null); if (inputRef.current) inputRef.current.value = ""; }} className="text-slate-400 hover:text-red-500">×</button>
-          </div>
-        ) : (
-          <label className={`flex items-center justify-center gap-2 px-4 py-3 rounded-xl border-2 border-dashed border-slate-200 cursor-pointer hover:border-blue-600 hover:bg-blue-50 transition-all ${urlValue ? "opacity-40 pointer-events-none" : ""}`}>
-            <span className="text-slate-400 text-lg">📎</span>
-            <span className="text-[11px] font-black uppercase tracking-widest text-slate-400">Click to upload file</span>
-            <input ref={inputRef} type="file" accept=".pdf,.doc,.docx" className="hidden" onChange={(e) => setFile(e.target.files?.[0])} />
-          </label>
-        )}
-      </div>
-    </div>
-  );
-
-  const ImageUploadField = ({ file, setFile, inputRef, previewUrl }: any) => (
-    <div className="flex flex-col gap-1.5">
-        <label className="text-[10px] font-black uppercase tracking-widest text-slate-400">Cover Image (Required)</label>
-        {previewUrl ? (
-            <div className="relative group rounded-xl overflow-hidden border-2 border-slate-100 shadow-inner">
-                <img src={previewUrl} alt="Preview" className="w-full h-40 object-cover" />
-                <div className="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                    <button type="button" onClick={() => { setFile(null); if (inputRef.current) inputRef.current.value = ""; }} className="px-4 py-2 bg-red-600 text-white rounded-full text-[10px] font-black uppercase tracking-widest hover:bg-red-700">Remove Image</button>
-                </div>
-            </div>
-        ) : (
-            <label className="flex flex-col items-center justify-center gap-2 h-40 rounded-xl border-2 border-dashed border-slate-200 cursor-pointer hover:border-blue-600 hover:bg-blue-50 transition-all text-center p-4">
-                <span className="text-slate-300 text-4xl">🖼️</span>
-                <span className="text-[11px] font-black uppercase tracking-widest text-slate-400">Click to upload cover image</span>
-                <p className="text-[9px] text-slate-300 font-bold uppercase tracking-widest">JPG, PNG, WEBP · Max 5MB</p>
-<input ref={inputRef} type="file" accept="image/jpeg,image/png,image/webp" className="hidden" onChange={(e) => { const f = e.target.files?.[0]; if (f) setFile(f); }} />            </label>
-        )}
-    </div>
-  );
-
-  if (supabaseError) return <div className="min-h-screen flex items-center justify-center bg-red-50 text-red-600 p-8 text-center font-bold border border-red-200 m-10 rounded-3xl"><p>Error: {supabaseError}</p></div>;
-  if (!supabase) return <div className="min-h-screen flex items-center justify-center bg-slate-50 text-slate-400 font-black uppercase tracking-widest">Initializing Better Dashboard...</div>;
 
   return (
-    <main className="min-h-screen bg-slate-50">
-      <header className="bg-white border-b border-slate-100 px-6 md:px-12 py-4 flex justify-between items-center sticky top-0 z-50">
-        <div className="relative w-[120px] h-[34px]">
-          <Image src="/logo.png" alt="Better Technologies" fill className="object-contain" />
-        </div>
-        <div className="flex items-center gap-4">
-            <p className="text-[10px] font-black uppercase tracking-widest text-slate-400">Content Dashboard</p>
-            <button onClick={() => supabase.auth.signOut()} className="text-[10px] font-black uppercase tracking-widest text-slate-400 hover:text-red-500">Sign out →</button>
-        </div>
-      </header>
+    <main className="min-h-screen bg-slate-50 p-4 md:p-12">
+      <div className="max-w-5xl mx-auto">
+        {/* Header */}
+        <header className="mb-8 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+          <div>
+            <h1 className="text-3xl font-black tracking-tighter uppercase text-slate-900">Better Editor</h1>
+            <p className="text-slate-400 text-xs font-bold uppercase tracking-widest">Data Science & Frontend Dashboard</p>
+          </div>
+          <div className="flex gap-2">
+            <button
+              type="button"
+              onClick={() => { setActiveTab('create'); resetForm(); }}
+              className={`px-4 py-2 rounded-full text-[10px] font-black uppercase tracking-widest transition-all ${
+                activeTab === 'create' ? 'bg-blue-600 text-white' : 'bg-white text-slate-400 border border-slate-200'
+              }`}
+            >
+              + Nuevo Post
+            </button>
+            <button
+              type="button"
+              onClick={() => { setActiveTab('news'); resetNewsForm(); }}
+              className={`px-4 py-2 rounded-full text-[10px] font-black uppercase tracking-widest transition-all ${
+                activeTab === 'news' ? 'bg-blue-600 text-white' : 'bg-white text-slate-400 border border-slate-200'
+              }`}
+            >
+              + Nueva News
+            </button>
+            <button
+              type="button"
+              onClick={() => setActiveTab('manage')}
+              className={`px-4 py-2 rounded-full text-[10px] font-black uppercase tracking-widest transition-all ${
+                activeTab === 'manage' ? 'bg-blue-600 text-white' : 'bg-white text-slate-400 border border-slate-200'
+              }`}
+            >
+              Gestionar Posts
+            </button>
+          </div>
+        </header>
 
-      <div className="bg-white border-b border-slate-100 sticky top-[57px] z-40 px-6 md:px-12">
-        <div className="max-w-6xl mx-auto flex gap-8">
-          <button onClick={() => setActiveTab("blog")} className={`py-4 font-black uppercase text-sm tracking-widest border-b-2 transition-colors ${activeTab === "blog" ? "border-blue-600 text-blue-600" : "border-transparent text-slate-400 hover:text-slate-600"}`}>📝 Blog Posts</button>
-          <button onClick={() => setActiveTab("news")} className={`py-4 font-black uppercase text-sm tracking-widest border-b-2 transition-colors ${activeTab === "news" ? "border-blue-600 text-blue-600" : "border-transparent text-slate-400 hover:text-slate-600"}`}>📰 News</button>
-        </div>
-      </div>
+        {activeTab === 'create' ? (
+          <div className="bg-white rounded-[2rem] p-4 md:p-8 shadow-2xl border border-slate-100">
+            {editingPost && (
+              <div className="mb-6 p-4 bg-blue-50 rounded-xl flex justify-between items-center">
+                <span className="text-blue-600 text-xs font-black uppercase truncate">Editando: {editingPost.title}</span>
+                <button onClick={resetForm} className="text-slate-400 hover:text-red-500 text-xs font-bold whitespace-nowrap">Cancelar</button>
+              </div>
+            )}
 
-      <div className="max-w-6xl mx-auto px-4 md:px-6 py-8 md:py-12 flex flex-col md:grid md:grid-cols-2 gap-8 md:gap-12 items-start">
-        {activeTab === "blog" ? (
-          <>
-            <div className="w-full bg-white border border-slate-100 rounded-3xl p-6 md:p-8 shadow-sm flex flex-col gap-6 md:sticky md:top-[130px]">
-              <div>
-                <p className="text-blue-600 uppercase tracking-[0.2em] text-[10px] font-black mb-1">New post</p>
-                <h2 className="text-xl md:text-2xl font-black text-slate-900 tracking-tighter uppercase">Publish blog post</h2>
+            <form onSubmit={handleSubmit} className="space-y-6">
+              {/* Título */}
+              <div className="space-y-2">
+                <label className="text-[10px] font-black uppercase text-slate-400 tracking-widest">Post Title</label>
+                <input 
+                  className="w-full px-5 py-4 rounded-2xl border-2 border-slate-100 font-bold focus:border-blue-600 outline-none transition-all"
+                  placeholder="Ej: Reporte de Suministros Abril"
+                  value={form.title}
+                  onChange={(e) => setForm({...form, title: e.target.value})}
+                  required
+                />
               </div>
 
-              <form onSubmit={handleBlogSubmit} className="flex flex-col gap-5">
-                <div className="flex flex-col gap-1.5">
-                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-400">Title *</label>
-                    <input type="text" name="title" value={blogForm.title} onChange={handleBlogChange} required placeholder="Post Title" className="w-full px-4 py-3 rounded-xl border-2 border-slate-100 text-sm font-medium focus:border-blue-600 focus:outline-none transition-colors" />
+              {/* Editor de Texto (Copia y pega aquí tus cuadros/textos) */}
+              <div className="space-y-2">
+                <label className="text-[10px] font-black uppercase text-slate-400 tracking-widest">Content (Pega imágenes, tablas, texto con formato)</label>
+                <div className="border-2 border-slate-100 rounded-2xl overflow-hidden bg-white">
+                  {/* @ts-ignore */}
+                  <ReactQuill 
+                    theme="snow" 
+                    value={form.description} 
+                    onChange={(content) => setForm({...form, description: content})} 
+                    placeholder="Pega aquí tus visualizaciones de datos, tablas, imágenes..."
+                    modules={{
+                      toolbar: [
+                        [{ 'header': [1, 2, 3, false] }],
+                        ['bold', 'italic', 'underline', 'strike'],
+                        [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+                        ['link', 'image'],
+                        ['clean']
+                      ]
+                    }}
+                  />
                 </div>
-                
-                <div className="flex flex-col gap-1.5">
-                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-400">Description *</label>
-                    <textarea name="description" value={blogForm.description} onChange={handleBlogChange} required rows={3} placeholder="Brief summary..." className="w-full px-4 py-3 rounded-xl border-2 border-slate-100 text-sm font-medium resize-none focus:border-blue-600 focus:outline-none transition-colors" />
-                </div>
-                
-                <ImageUploadField file={blogImageFile} setFile={setBlogImageFile} inputRef={blogImageFileRef} previewUrl={blogImagePreview} />
-                <FileUploadField file={blogFile} setFile={setBlogFile} inputRef={blogFileRef} urlValue={blogForm.post_url} urlName="post_url" onUrlChange={handleBlogChange} />
-                
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div className="flex flex-col gap-1.5">
-                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-400">Author</label>
-                    <select name="author" value={blogForm.author} onChange={handleBlogChange} className="w-full px-4 py-3 rounded-xl border-2 border-slate-100 text-sm font-medium focus:border-blue-600 focus:outline-none bg-white">{AUTHORS.map(a => <option key={a}>{a}</option>)}</select>
-                  </div>
-                  <div className="flex flex-col gap-1.5">
-                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-400">Category</label>
-                    <select name="category" value={blogForm.category} onChange={handleBlogChange} className="w-full px-4 py-3 rounded-xl border-2 border-slate-100 text-sm font-medium focus:border-blue-600 focus:outline-none bg-white">{CATEGORIES.filter(c => c !== "Actualidad").map(c => <option key={c}>{c}</option>)}</select>
-                  </div>
-                </div>
-                
-                <button type="submit" disabled={blogSaving} className="w-full py-4 bg-blue-600 text-white rounded-full font-black uppercase text-sm tracking-widest hover:bg-blue-700 transition-all hover:scale-[1.01] disabled:opacity-50 shadow-lg shadow-blue-500/20 mt-2">
-                    {blogSaving ? "Publishing..." : "Publish post →"}
-                </button>
-                {blogSuccess && <p className="text-center text-[11px] font-black text-green-600 uppercase tracking-widest">✓ Post published successfully!</p>}
-              </form>
-            </div>
-
-            <div className="w-full">
-              <div className="mb-6 mt-8 md:mt-0">
-                <p className="text-blue-600 uppercase tracking-[0.2em] text-[10px] font-black mb-1">Published</p>
-                <h2 className="text-xl md:text-2xl font-black text-slate-900 tracking-tighter uppercase">Your posts</h2>
               </div>
+
+              {/* URL externa opcional */}
+              <div className="space-y-2">
+                <label className="text-[10px] font-black uppercase text-slate-400 tracking-widest">External URL (Optional)</label>
+                <input 
+                  className="w-full px-5 py-4 rounded-2xl border-2 border-slate-100 font-bold focus:border-blue-600 outline-none transition-all"
+                  placeholder="https://ejemplo.com (opcional)"
+                  value={form.post_url}
+                  onChange={(e) => setForm({...form, post_url: e.target.value})}
+                />
+              </div>
+
+              {/* Subida de Imagen */}
+              <div className="space-y-2">
+                <label className="text-[10px] font-black uppercase text-slate-400 tracking-widest">Featured Image</label>
+                <div className={`relative border-2 border-dashed rounded-2xl p-8 transition-all flex flex-col items-center ${preview ? 'border-blue-200 bg-blue-50' : 'border-slate-200 hover:border-blue-400'}`}>
+                  {preview ? (
+                    <div className="relative w-full h-48 mb-4">
+                      <img src={preview} className="w-full h-full object-contain rounded-lg" alt="Preview" />
+                      <button type="button" onClick={() => {setPreview(null); setImageFile(null);}} className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center font-bold">×</button>
+                    </div>
+                  ) : (
+                    <div className="text-center">
+                      <span className="text-4xl mb-2 block">📊</span>
+                      <p className="text-slate-400 text-[10px] font-bold uppercase">Arrastra o selecciona tu imagen</p>
+                    </div>
+                  )}
+                  <input 
+                    type="file" 
+                    accept="image/*"
+                    onChange={(e) => {
+                      const file = e.target.files?.[0];
+                      if (file) {
+                        setImageFile(file);
+                        setPreview(URL.createObjectURL(file));
+                      }
+                    }}
+                    className="absolute inset-0 opacity-0 cursor-pointer"
+                  />
+                </div>
+              </div>
+
+              {/* Links Opcionales */}
+              <div className="space-y-2">
+                <div className="flex justify-between items-center">
+                  <label className="text-[10px] font-black uppercase text-slate-400 tracking-widest">Links (Opcional)</label>
+                  <button type="button" onClick={handleAddLink} className="text-blue-600 text-[10px] font-black uppercase hover:underline">
+                    + Agregar Link
+                  </button>
+                </div>
+                {links.map((link, index) => (
+                  <div key={index} className="flex gap-2 items-center">
+                    <input 
+                      className="flex-1 px-4 py-3 rounded-xl border-2 border-slate-100 text-sm font-bold focus:border-blue-600 outline-none"
+                      placeholder="Título del link"
+                      value={link.title}
+                      onChange={(e) => handleLinkChange(index, 'title', e.target.value)}
+                    />
+                    <input 
+                      className="flex-1 px-4 py-3 rounded-xl border-2 border-slate-100 text-sm font-bold focus:border-blue-600 outline-none"
+                      placeholder="https://..."
+                      value={link.url}
+                      onChange={(e) => handleLinkChange(index, 'url', e.target.value)}
+                    />
+                    <button type="button" onClick={() => handleRemoveLink(index)} className="text-red-500 hover:text-red-700 font-bold px-2">×</button>
+                  </div>
+                ))}
+              </div>
+
+              {/* Documentos Opcionales */}
+              <div className="space-y-2">
+                <div className="flex justify-between items-center">
+                  <label className="text-[10px] font-black uppercase text-slate-400 tracking-widest">Documentos (Opcional)</label>
+                  <button type="button" onClick={handleAddDocument} className="text-blue-600 text-[10px] font-black uppercase hover:underline">
+                    + Agregar Documento
+                  </button>
+                </div>
+                {documents.map((doc, index) => (
+                  <div key={index} className="flex gap-2 items-center">
+                    <input 
+                      className="flex-1 px-4 py-3 rounded-xl border-2 border-slate-100 text-sm font-bold focus:border-blue-600 outline-none"
+                      placeholder="Nombre del documento"
+                      value={doc.name}
+                      onChange={(e) => handleDocumentChange(index, 'name', e.target.value)}
+                    />
+                    <input 
+                      type="file"
+                      className="flex-1 px-4 py-3 rounded-xl border-2 border-slate-100 text-sm"
+                      onChange={(e) => {
+                        const file = e.target.files?.[0];
+                        if (file) handleDocumentChange(index, 'file', file);
+                      }}
+                    />
+                    <button type="button" onClick={() => handleRemoveDocument(index)} className="text-red-500 hover:text-red-700 font-bold px-2">×</button>
+                  </div>
+                ))}
+              </div>
+
+              {/* Autor y Categoría */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <label className="text-[10px] font-black uppercase text-slate-400 tracking-widest">Author</label>
+                  <select 
+                    className="w-full px-5 py-4 rounded-2xl border-2 border-slate-100 font-bold focus:border-blue-600 outline-none"
+                    value={form.author}
+                    onChange={(e) => setForm({...form, author: e.target.value})}
+                  >
+                    {AUTHORS.map(author => (
+                      <option key={author} value={author}>{author}</option>
+                    ))}
+                  </select>
+                </div>
+                <div className="space-y-2">
+                  <label className="text-[10px] font-black uppercase text-slate-400 tracking-widest">Category</label>
+                  <select 
+                    className="w-full px-5 py-4 rounded-2xl border-2 border-slate-100 font-bold focus:border-blue-600 outline-none"
+                    value={form.category}
+                    onChange={(e) => setForm({...form, category: e.target.value})}
+                  >
+                    {CATEGORIES.map(cat => (
+                      <option key={cat} value={cat}>{cat}</option>
+                    ))}
+                  </select>
+                </div>
+              </div>
+
+              <button 
+                type="submit" 
+                disabled={loading}
+                className="w-full bg-slate-900 text-white py-5 rounded-2xl font-black uppercase tracking-[0.2em] text-xs hover:bg-blue-600 transition-all shadow-xl disabled:opacity-50"
+              >
+                {loading ? (editingPost ? "Actualizando..." : "Publicando...") : (editingPost ? "Actualizar Post →" : "Publicar Reporte Ahora →")}
+              </button>
+
+              {/* Preview del contenido */}
+              {form.description && (
+                <div className="space-y-2 mt-8">
+                  <label className="text-[10px] font-black uppercase text-slate-400 tracking-widest">Vista Previa</label>
+                  <div className="border-2 border-slate-100 rounded-2xl p-6 bg-slate-50">
+                    <div 
+                      className="prose prose-slate max-w-none text-slate-700 text-sm
+                        [&>p]:mb-4 [&>img]:my-4 [&>img]:rounded-xl [&>img]:max-w-full
+                        [&>strong]:text-slate-900 [&>strong]:font-bold
+                        [&>h1]:text-2xl [&>h1]:font-black [&>h1]:mt-6 [&>h1]:mb-3
+                        [&>h2]:text-xl [&>h2]:font-bold [&>h2]:mt-5 [&>h2]:mb-2
+                        [&>h3]:text-lg [&>h3]:font-bold [&>h3]:mt-4 [&>h3]:mb-2
+                        [&>ul]:list-disc [&>ul]:pl-5 [&>ul]:mb-4
+                        [&>ol]:list-decimal [&>ol]:pl-5 [&>ol]:mb-4
+                        [&>table]:w-full [&>table]:border-collapse [&>table]:my-4
+                        [&>table>th]:bg-slate-200 [&>table>th]:p-2 [&>table>th]:text-left
+                        [&>table>td]:p-2 [&>table>td]:border [&>table>td]:border-slate-200"
+                      dangerouslySetInnerHTML={{ __html: decodeHTML(form.description) }}
+                    />
+                  </div>
+                </div>
+              )}
+
+              {success && <div className="p-4 bg-green-50 text-green-600 rounded-xl text-center text-xs font-black uppercase tracking-widest animate-bounce">✓ {editingPost ? 'Actualizado con éxito' : 'Publicado con éxito'} en Better Blog</div>}
+              {errorMsg && <div className="p-4 bg-red-50 text-red-600 rounded-xl text-center text-xs font-bold">{errorMsg}</div>}
+            </form>
+          </div>
+        ) : activeTab === 'news' ? (
+          /* Formulario de News */
+          <div className="bg-white rounded-[2rem] p-4 md:p-8 shadow-2xl border border-slate-100">
+            {editingNews && (
+              <div className="mb-6 p-4 bg-blue-50 rounded-xl flex justify-between items-center">
+                <span className="text-blue-600 text-xs font-black uppercase">Editando: {editingNews.title}</span>
+                <button onClick={resetNewsForm} className="text-slate-400 hover:text-red-500 text-xs font-bold">Cancelar</button>
+              </div>
+            )}
+
+            <form onSubmit={handleNewsSubmit} className="space-y-6">
+              {/* Título */}
+              <div className="space-y-2">
+                <label className="text-[10px] font-black uppercase text-slate-400 tracking-widest">News Title</label>
+                <input 
+                  className="w-full px-5 py-4 rounded-2xl border-2 border-slate-100 font-bold focus:border-blue-600 outline-none transition-all"
+                  placeholder="Ej: Nueva tendencia en supply chain"
+                  value={newsForm.title}
+                  onChange={(e) => setNewsForm({...newsForm, title: e.target.value})}
+                  required
+                />
+              </div>
+
+              {/* Descripción */}
+              <div className="space-y-2">
+                <label className="text-[10px] font-black uppercase text-slate-400 tracking-widest">Description</label>
+                <textarea 
+                  className="w-full px-5 py-4 rounded-2xl border-2 border-slate-100 font-bold focus:border-blue-600 outline-none transition-all min-h-[120px]"
+                  placeholder="Breve descripción de la noticia..."
+                  value={newsForm.description}
+                  onChange={(e) => setNewsForm({...newsForm, description: e.target.value})}
+                  required
+                />
+              </div>
+
+              {/* URL externa */}
+              <div className="space-y-2">
+                <label className="text-[10px] font-black uppercase text-slate-400 tracking-widest">Source URL</label>
+                <input 
+                  className="w-full px-5 py-4 rounded-2xl border-2 border-slate-100 font-bold focus:border-blue-600 outline-none transition-all"
+                  placeholder="https://ejemplo.com (opcional)"
+                  value={newsForm.post_url}
+                  onChange={(e) => setNewsForm({...newsForm, post_url: e.target.value})}
+                />
+              </div>
+
+              {/* Subida de Imagen */}
+              <div className="space-y-2">
+                <label className="text-[10px] font-black uppercase text-slate-400 tracking-widest">Featured Image</label>
+                <div className={`relative border-2 border-dashed rounded-2xl p-8 transition-all flex flex-col items-center ${newsPreview ? 'border-blue-200 bg-blue-50' : 'border-slate-200 hover:border-blue-400'}`}>
+                  {newsPreview ? (
+                    <div className="relative w-full h-48 mb-4">
+                      <img src={newsPreview} className="w-full h-full object-contain rounded-lg" alt="Preview" />
+                      <button type="button" onClick={() => {setNewsPreview(null); setNewsImageFile(null);}} className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center font-bold">×</button>
+                    </div>
+                  ) : (
+                    <div className="text-center">
+                      <span className="text-4xl mb-2 block">📰</span>
+                      <p className="text-slate-400 text-[10px] font-bold uppercase">Arrastra o selecciona tu imagen</p>
+                    </div>
+                  )}
+                  <input 
+                    type="file" 
+                    accept="image/*"
+                    onChange={(e) => {
+                      const file = e.target.files?.[0];
+                      if (file) {
+                        setNewsImageFile(file);
+                        setNewsPreview(URL.createObjectURL(file));
+                      }
+                    }}
+                    className="absolute inset-0 opacity-0 cursor-pointer"
+                  />
+                </div>
+              </div>
+
+              {/* Autor */}
+              <div className="space-y-2">
+                <label className="text-[10px] font-black uppercase text-slate-400 tracking-widest">Author</label>
+                <select 
+                  className="w-full px-5 py-4 rounded-2xl border-2 border-slate-100 font-bold focus:border-blue-600 outline-none"
+                  value={newsForm.author}
+                  onChange={(e) => setNewsForm({...newsForm, author: e.target.value})}
+                >
+                  {AUTHORS.map(author => (
+                    <option key={author} value={author}>{author}</option>
+                  ))}
+                </select>
+              </div>
+
+              <button 
+                type="submit" 
+                disabled={loadingNews}
+                className="w-full bg-slate-900 text-white py-5 rounded-2xl font-black uppercase tracking-[0.2em] text-xs hover:bg-blue-600 transition-all shadow-xl disabled:opacity-50"
+              >
+                {loadingNews ? (editingNews ? "Actualizando..." : "Publicando...") : (editingNews ? "Actualizar News →" : "Publicar News Ahora →")}
+              </button>
+
+              {/* Preview del contenido */}
+              {newsForm.description && (
+                <div className="space-y-2 mt-8">
+                  <label className="text-[10px] font-black uppercase text-slate-400 tracking-widest">Vista Previa</label>
+                  <div className="border-2 border-slate-100 rounded-2xl p-6 bg-slate-50">
+                    <h3 className="font-black text-lg text-slate-900 mb-2">{newsForm.title}</h3>
+                    <p className="text-slate-600 text-sm">{newsForm.description}</p>
+                  </div>
+                </div>
+              )}
+
+              {success && <div className="p-4 bg-green-50 text-green-600 rounded-xl text-center text-xs font-black uppercase tracking-widest animate-bounce">✓ {editingNews ? 'Actualizado con éxito' : 'Publicado con éxito'} en News</div>}
+              {errorMsg && <div className="p-4 bg-red-50 text-red-600 rounded-xl text-center text-xs font-bold">{errorMsg}</div>}
+            </form>
+
+            {/* Lista de News Existentes */}
+            <div className="mt-8 md:mt-12 pt-6 md:pt-8 border-t border-slate-100">
+              <h2 className="text-lg md:text-xl font-black uppercase text-slate-900 mb-4 md:mb-6">News Existentes</h2>
               
-              {blogLoading ? <p className="text-slate-400 text-[10px] font-bold uppercase tracking-widest">Loading...</p> : (
-                <div className="flex flex-col gap-4">
-                  {blogPosts.map(post => (
-                    <div key={post.id} className="bg-white border border-slate-100 rounded-2xl p-4 md:p-5 flex gap-4 items-start hover:border-blue-100 transition-colors shadow-sm">
-                      <div className="w-12 h-12 md:w-16 md:h-16 rounded-xl bg-slate-100 overflow-hidden flex-shrink-0 border border-slate-100">
-                        {post.cover_url ? <img src={post.cover_url} className="w-full h-full object-cover" alt={post.title} /> : <div className="w-full h-full flex items-center justify-center text-[10px] bg-slate-50 text-slate-300 font-bold">Better</div>}
+              {loadingNews ? (
+                <div className="text-center py-8">
+                  <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600 mx-auto"></div>
+                </div>
+              ) : newsPosts.length === 0 ? (
+                <p className="text-slate-400 text-center py-8">No hay news publicadas aún.</p>
+              ) : (
+                <div className="space-y-4">
+                  {newsPosts.map((post) => (
+                    <div key={post.id} className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4 p-3 sm:p-4 border border-slate-100 rounded-xl hover:border-blue-200 transition-all">
+                      <div className="w-full sm:w-16 h-16 relative rounded-lg overflow-hidden bg-slate-100 flex-shrink-0">
+                        {post.cover_url ? (
+                          <img src={post.cover_url} alt={post.title} className="w-full h-full object-cover" />
+                        ) : (
+                          <div className="w-full h-full flex items-center justify-center text-slate-300 text-xs font-bold">SIN IMG</div>
+                        )}
                       </div>
-                      <div className="flex-1 min-w-0">
-                        <span className="text-[8px] md:text-[9px] font-black text-white bg-blue-600 px-2.5 py-1 rounded-full uppercase tracking-widest">{post.category}</span>
-                        <p className="text-slate-900 font-black text-xs md:text-sm mt-1.5 truncate">{post.title}</p>
-                        <p className="text-slate-400 text-[9px] md:text-[10px] font-bold uppercase tracking-wide mt-0.5">{post.author} · {new Date(post.published_at).toLocaleDateString()}</p>
+                      <div className="flex-1 min-w-0 w-full">
+                        <h3 className="font-black text-sm text-slate-900 truncate">{post.title}</h3>
+                        <p className="text-[10px] text-slate-400 uppercase">{post.category} · {new Date(post.published_at).toLocaleDateString()}</p>
                       </div>
-                      
-                      {blogDeleteId === post.id ? (
-                        <div className="flex flex-col items-end gap-1 flex-shrink-0">
-                            <span className="text-[9px] font-black text-red-500 uppercase">Sure?</span>
-                            <button onClick={() => handleBlogDelete(post.id)} className="text-[10px] font-black text-red-500 hover:underline">YES</button>
-                            <button onClick={() => setBlogDeleteId(null)} className="text-[10px] font-black text-slate-400 hover:underline">NO</button>
-                        </div>
-                      ) : (
-                        <button onClick={() => setBlogDeleteId(post.id)} className="text-slate-300 hover:text-red-500 text-2xl flex-shrink-0 leading-none">×</button>
-                      )}
+                      <div className="flex gap-2 w-full sm:w-auto">
+                        <button 
+                          onClick={() => handleEditNews(post)}
+                          className="flex-1 sm:flex-none px-3 py-2 bg-blue-600 text-white text-[10px] font-black uppercase rounded-full hover:bg-blue-700 transition-all"
+                        >
+                          Editar
+                        </button>
+                        <button 
+                          onClick={() => handleDeleteNews(post.id)}
+                          className="flex-1 sm:flex-none px-3 py-2 bg-red-50 text-red-500 text-[10px] font-black uppercase rounded-full hover:bg-red-100 transition-all"
+                        >
+                          Eliminar
+                        </button>
+                      </div>
                     </div>
                   ))}
                 </div>
               )}
             </div>
-          </>
+          </div>
         ) : (
-          /* --- NEWS TAB --- */
-          <>
-             <div className="w-full bg-white border border-slate-100 rounded-3xl p-6 md:p-8 shadow-sm flex flex-col gap-6 md:sticky md:top-[130px]">
-              <div>
-                <p className="text-green-600 uppercase tracking-[0.2em] text-[10px] font-black mb-1">New news</p>
-                <h2 className="text-xl md:text-2xl font-black text-slate-900 tracking-tighter uppercase">Publish News</h2>
-              </div>
-              
-              <form onSubmit={handleNewsSubmit} className="flex flex-col gap-5">
-                <input type="text" name="title" value={newsForm.title} onChange={handleNewsChange} required placeholder="News Title" className="w-full px-4 py-3 rounded-xl border-2 border-slate-100 text-sm font-medium focus:border-green-600 focus:outline-none" />
-                <textarea name="description" value={newsForm.description} onChange={handleNewsChange} required rows={3} placeholder="Brief summary" className="w-full px-4 py-3 rounded-xl border-2 border-slate-100 text-sm font-medium resize-none focus:border-green-600 focus:outline-none" />
-                
-                <ImageUploadField file={newsImageFile} setFile={setNewsImageFile} inputRef={newsImageFileRef} previewUrl={newsImagePreview} />
-                <FileUploadField file={newsFile} setFile={setNewsFile} inputRef={newsFileRef} urlValue={newsForm.post_url} urlName="post_url" onUrlChange={handleNewsChange} />
-                
-                <div className="flex flex-col gap-1.5">
-                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-400">Author</label>
-                    <select name="author" value={newsForm.author} onChange={handleNewsChange} className="w-full px-4 py-3 rounded-xl border-2 border-slate-100 text-sm font-medium focus:border-green-600 focus:outline-none bg-white">{AUTHORS.map(a => <option key={a}>{a}</option>)}</select>
-                </div>
-
-                <button type="submit" disabled={newsSaving} className="w-full py-4 bg-green-600 text-white rounded-full font-black uppercase text-sm tracking-widest hover:bg-green-700 transition-all hover:scale-[1.01] disabled:opacity-50 mt-2 shadow-lg shadow-green-500/20">
-                    {newsSaving ? "Publishing..." : "Publish News →"}
-                </button>
-                {newsSuccess && <p className="text-center text-[11px] font-black text-green-600 uppercase tracking-widest">✓ News published successfully!</p>}
-              </form>
-            </div>
+          <div className="bg-white rounded-[2rem] p-4 md:p-8 shadow-2xl border border-slate-100">
+            <h2 className="text-lg md:text-xl font-black uppercase text-slate-900 mb-4 md:mb-6">Posts Existentes</h2>
             
-            <div className="w-full">
-              <div className="mb-6 mt-8 md:mt-0">
-                <p className="text-green-600 uppercase tracking-[0.2em] text-[10px] font-black mb-1">Published</p>
-                <h2 className="text-xl md:text-2xl font-black text-slate-900 tracking-tighter uppercase">Your news</h2>
+            {loadingPosts ? (
+              <div className="text-center py-8">
+                <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600 mx-auto"></div>
               </div>
-              
-              <div className="flex flex-col gap-4">
-                {newsPosts.map(post => (
-                    <div key={post.id} className="bg-white border border-slate-100 rounded-2xl p-4 md:p-5 flex gap-4 items-start shadow-sm">
-                         <div className="w-12 h-12 md:w-16 md:h-16 rounded-xl bg-slate-100 overflow-hidden flex-shrink-0 border border-slate-100">
-                            {post.cover_url ? <img src={post.cover_url} className="w-full h-full object-cover" alt={post.title} /> : <div className="w-full h-full flex items-center justify-center text-[10px] bg-slate-50 text-slate-300 font-bold">Better</div>}
-                        </div>
-                        <div className="flex-1 min-w-0">
-                            <span className="text-[8px] md:text-[9px] font-black text-white bg-green-600 px-2.5 py-1 rounded-full uppercase tracking-widest">News</span>
-                            <p className="text-slate-900 font-black text-xs md:text-sm mt-1.5 truncate">{post.title}</p>
-                            <p className="text-slate-400 text-[9px] md:text-[10px] font-bold uppercase tracking-wide mt-0.5">{post.author} · {new Date(post.published_at).toLocaleDateString()}</p>
-                        </div>
-                        
-                        {newsDeleteId === post.id ? (
-                            <div className="flex flex-col items-end gap-1 flex-shrink-0">
-                                <button onClick={() => handleNewsDelete(post.id)} className="text-[10px] font-black text-red-500 hover:underline">YES</button>
-                                <button onClick={() => setNewsDeleteId(null)} className="text-[10px] font-black text-slate-400 hover:underline">NO</button>
-                            </div>
-                        ) : (
-                            <button onClick={() => setNewsDeleteId(post.id)} className="text-slate-300 hover:text-red-500 text-2xl flex-shrink-0 leading-none">×</button>
-                        )}
+            ) : posts.length === 0 ? (
+              <p className="text-slate-400 text-center py-8">No hay posts publicados aún.</p>
+            ) : (
+              <div className="space-y-4">
+                {posts.map((post) => (
+                  <div key={post.id} className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4 p-3 sm:p-4 border border-slate-100 rounded-xl hover:border-blue-200 transition-all">
+                    <div className="w-full sm:w-16 h-16 relative rounded-lg overflow-hidden bg-slate-100 flex-shrink-0">
+                      {post.cover_url ? (
+                        <img src={post.cover_url} alt={post.title} className="w-full h-full object-cover" />
+                      ) : (
+                        <div className="w-full h-full flex items-center justify-center text-slate-300 text-xs font-bold">SIN IMG</div>
+                      )}
                     </div>
+                    <div className="flex-1 min-w-0 w-full">
+                      <h3 className="font-black text-sm text-slate-900 truncate">{post.title}</h3>
+                      <p className="text-[10px] text-slate-400 uppercase">{post.category} · {new Date(post.published_at).toLocaleDateString()}</p>
+                    </div>
+                    <div className="flex gap-2 w-full sm:w-auto">
+                      <button 
+                        onClick={() => handleEdit(post)}
+                        className="flex-1 sm:flex-none px-3 py-2 bg-blue-600 text-white text-[10px] font-black uppercase rounded-full hover:bg-blue-700 transition-all"
+                      >
+                        Editar
+                      </button>
+                      <button 
+                        onClick={() => handleDelete(post.id)}
+                        className="flex-1 sm:flex-none px-3 py-2 bg-red-50 text-red-500 text-[10px] font-black uppercase rounded-full hover:bg-red-100 transition-all"
+                      >
+                        Eliminar
+                      </button>
+                    </div>
+                  </div>
                 ))}
               </div>
-            </div>
-          </>
+            )}
+          </div>
         )}
       </div>
     </main>

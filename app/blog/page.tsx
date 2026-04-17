@@ -82,21 +82,23 @@ export default function BlogPage() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-900 p-8 font-sans">
+    <div className="min-h-screen bg-slate-50 text-slate-900 p-4 md:p-8 font-sans">
       <div className="max-w-6xl mx-auto">
-        <header className="mb-16 text-center">
-          <h1 className="text-5xl font-extrabold text-slate-900 mb-4 tracking-tighter">Better Blog</h1>
-          <p className="text-slate-500 uppercase tracking-widest text-sm font-bold">Better Technologies Insight</p>
+        <header className="mb-8 md:mb-16 text-center">
+          <h1 className="text-3xl md:text-5xl font-extrabold text-slate-900 mb-2 md:mb-4 tracking-tighter">Better Blog</h1>
+          <p className="text-slate-500 uppercase tracking-widest text-xs md:text-sm font-bold">Better Technologies Insight</p>
         </header>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10">
           {posts?.map((post: BlogPost) => (
             <a 
-              key={post.id} 
-              href={`/blog/${post.id}`} // <--- Cambiado a ruta interna
-              className="group border border-slate-200 rounded-3xl overflow-hidden bg-white hover:shadow-2xl transition-all duration-300 flex flex-col"
-            >
-              <div className="relative h-56 overflow-hidden bg-slate-100">
+  key={post.id} 
+  href={post.post_url && post.post_url.startsWith('http') ? post.post_url : `/blog/${post.id}`}
+  target={post.post_url && post.post_url.startsWith('http') ? '_blank' : '_self'}
+  rel="noopener noreferrer"
+  className="group border border-slate-200 rounded-2xl md:rounded-3xl overflow-hidden bg-white hover:shadow-2xl transition-all duration-300 flex flex-col"
+>                                                                                                                                                                                        
+              <div className="relative h-40 md:h-56 overflow-hidden bg-slate-100">
                 <img 
                   src={post.cover_url || 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800'} 
                   alt={post.title} 
@@ -107,14 +109,14 @@ export default function BlogPage() {
                 </div>
               </div>
 
-              <div className="p-7 flex-1 flex flex-col">
-                <h2 className="text-xl font-bold leading-tight mb-3 group-hover:text-blue-600 transition-colors">
+              <div className="p-5 md:p-7 flex-1 flex flex-col">
+                <h2 className="text-lg md:text-xl font-bold leading-tight mb-2 md:mb-3 group-hover:text-blue-600 transition-colors">
                   {post.title}
                 </h2>
-                <p className="text-slate-500 text-sm line-clamp-3 mb-6 flex-1">
+                <p className="text-slate-500 text-sm line-clamp-2 md:line-clamp-3 mb-4 md:mb-6 flex-1">
                   {post.description}
                 </p>
-                <div className="pt-4 border-t border-slate-200 flex justify-between items-center">
+                <div className="pt-3 md:pt-4 border-t border-slate-200 flex justify-between items-center">
                   <span className="text-xs font-bold text-slate-500 uppercase">Leer más</span>
                   <span className="text-[10px] text-slate-400">{new Date(post.published_at).toLocaleDateString()}</span>
                 </div>

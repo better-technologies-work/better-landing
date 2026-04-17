@@ -1,5 +1,20 @@
 import { createClient } from '@/lib/supabase/client'
+import { decodeHTML } from '@/lib/utils'
 import Image from 'next/image'
+import ReactMarkdown from 'react-markdown'
+
+type Link = {
+  id: string;
+  title: string;
+  url: string;
+};
+
+type Document = {
+  id: string;
+  name: string;
+  url: string;
+  type: string;
+};
 
 type BlogPost = {
   id: string
@@ -12,6 +27,8 @@ type BlogPost = {
   slug: string
   published_at: string
   author: string
+  links?: Link[]
+  documents?: Document[]
 }
 
 type Props = {
@@ -20,8 +37,7 @@ type Props = {
 
 export default async function BlogPostPage({ params }: Props) {
   const { id } = params
-
-  let post = null
+  let post: BlogPost | null = null
 
   try {
     const supabase = createClient()
@@ -43,10 +59,7 @@ export default async function BlogPostPage({ params }: Props) {
         <div className="text-center max-w-xl rounded-3xl border border-slate-200 bg-slate-50 p-10 shadow-sm">
           <h1 className="text-4xl font-black text-slate-900 mb-4">Unable to load post</h1>
           <p className="text-slate-600 mb-8">{message}</p>
-          <a
-            href="/blog"
-            className="inline-block px-6 py-3 bg-blue-600 text-white rounded-full font-bold hover:bg-blue-700 transition-colors"
-          >
+          <a href="/blog" className="inline-block px-6 py-3 bg-blue-600 text-white rounded-full font-bold hover:bg-blue-700 transition-colors">
             ← Back to Blog
           </a>
         </div>
@@ -60,10 +73,7 @@ export default async function BlogPostPage({ params }: Props) {
         <div className="text-center">
           <h1 className="text-4xl font-black text-slate-900 mb-4">Post Not Found</h1>
           <p className="text-slate-600 mb-8">The post you're looking for doesn't exist.</p>
-          <a
-            href="/blog"
-            className="inline-block px-6 py-3 bg-blue-600 text-white rounded-full font-bold hover:bg-blue-700 transition-colors"
-          >
+          <a href="/blog" className="inline-block px-6 py-3 bg-blue-600 text-white rounded-full font-bold hover:bg-blue-700 transition-colors">
             ← Back to Blog
           </a>
         </div>
@@ -73,39 +83,26 @@ export default async function BlogPostPage({ params }: Props) {
 
   return (
     <main className="min-h-screen bg-white">
-
       {/* ── HEADER ── */}
-      <header className="fixed top-0 left-0 w-full flex justify-between items-center px-6 md:px-24 py-5 z-50 backdrop-blur-md bg-black/90 border-b border-white/10">
-        <div className="relative w-[120px] md:w-[140px] h-[35px] md:h-[40px]">
+      <header className="fixed top-0 left-0 w-full flex justify-between items-center px-4 md:px-24 py-4 md:py-5 z-50 backdrop-blur-md bg-black/90 border-b border-white/10">
+        <div className="relative w-[100px] md:w-[140px] h-[30px] md:h-[40px]">
           <Image src="/logo.png" alt="Better Technologies" fill sizes="140px" className="object-contain" priority />
         </div>
-        <a
-          href="/#blog"
-          className="text-white text-[10px] font-black uppercase tracking-widest hover:text-blue-600 transition-colors"
-        >
-          ← Back to Blog
+        <a href="/#blog" className="text-white text-[8px] md:text-[10px] font-black uppercase tracking-widest hover:text-blue-600 transition-colors">
+          ← Back
         </a>
       </header>
 
       {/* ── HERO IMAGE ── */}
       <div className="w-full h-[50vh] relative overflow-hidden mt-[72px]">
         {post.cover_url ? (
-          <img
-            src={post.cover_url}
-            alt={post.title}
-            className="w-full h-full object-cover"
-          />
+          <img src={post.cover_url} alt={post.title} className="w-full h-full object-cover" />
         ) : (
           <div className="w-full h-full bg-slate-100 flex items-center justify-center">
-            <span className="text-slate-300 text-[10px] font-black uppercase tracking-widest">
-              No Cover Image
-            </span>
+            <span className="text-slate-300 text-[10px] font-black uppercase tracking-widest">No Cover Image</span>
           </div>
         )}
-        {/* Gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-t from-white via-white/20 to-transparent" />
-
-        {/* Category badge */}
         <div className="absolute top-6 left-6">
           <span className="text-[9px] font-black text-white bg-blue-600 px-3 py-1 rounded-full uppercase tracking-widest shadow-lg">
             {post.category}
@@ -114,73 +111,114 @@ export default async function BlogPostPage({ params }: Props) {
       </div>
 
       {/* ── CONTENT ── */}
-      <article className="max-w-3xl mx-auto px-6 pb-24 -mt-8 relative z-10">
-
-        {/* Meta */}
+      <article className="max-w-3xl mx-auto px-4 md:px-6 pb-24 -mt-6 md:-mt-8 relative z-10">
         <div className="flex items-center gap-3 mb-6">
-          <span className="text-[10px] font-black uppercase tracking-widest text-slate-400">
-            {post.author}
-          </span>
+          <span className="text-[10px] font-black uppercase tracking-widest text-slate-400">{post.author}</span>
           <span className="text-slate-200 font-black">·</span>
           <span className="text-[10px] font-black uppercase tracking-widest text-slate-400">
-            {new Date(post.published_at).toLocaleDateString('en-US', {
-              month: 'long',
-              day: 'numeric',
-              year: 'numeric',
-            })}
+            {new Date(post.published_at).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
           </span>
         </div>
 
-        {/* Title */}
-        <h1 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter leading-none uppercase mb-6">
+        <h1 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter leading-none uppercase mb-10">
           {post.title}
         </h1>
 
-        {/* Description / lead */}
-        <div className="border-l-[3px] border-blue-600 pl-5 bg-slate-50 py-4 pr-5 rounded-r-2xl mb-10">
-          <p className="text-slate-700 font-black italic text-sm leading-relaxed tracking-tight">
-            {post.description}
-          </p>
+        {/* ── BODY CONTENT ── */}
+        <div className="prose prose-slate max-w-none">
+          <div 
+            className="text-slate-700 text-lg leading-relaxed font-medium 
+                       [&>p]:mb-6 [&>img]:my-10 [&>img]:rounded-3xl [&>img]:shadow-2xl
+                       [&>strong]:text-slate-900 [&>strong]:font-black
+                       [&>h2]:text-2xl [&>h2]:font-black [&>h2]:mt-8 [&>h2]:mb-4"
+            dangerouslySetInnerHTML={{ __html: decodeHTML(post.description) }} 
+          />
         </div>
 
-        {/* Body content */}
-        {post.content ? (
-          <div className="prose prose-slate max-w-none text-slate-600 leading-relaxed text-base">
-            {post.content.split('\n').map((paragraph: string, i: number) =>
-              paragraph.trim() ? (
-                <p key={i} className="mb-5 font-medium leading-relaxed">
-                  {paragraph}
-                </p>
-              ) : null
-            )}
+        {/* ── MARKDOWN CONTENT ── */}
+        {post.content && (
+          <div className="prose prose-slate max-w-none mt-8">
+            <ReactMarkdown
+              components={{
+                a: ({ href, children }) => {
+                  // Handle internal links
+                  if (href && href.startsWith('/')) {
+                    return (
+                      <a href={href} className="text-blue-600 hover:underline">
+                        {children}
+                      </a>
+                    );
+                  }
+                  // External links
+                  return (
+                    <a href={href} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
+                      {children}
+                    </a>
+                  );
+                }
+              }}
+            >
+              {post.content}
+            </ReactMarkdown>
           </div>
-        ) : (
-          <div className="py-12 text-center border border-dashed border-slate-200 rounded-3xl">
-            <p className="text-slate-400 text-[10px] font-black uppercase tracking-widest">
-              Full content coming soon.
-            </p>
-            <p className="text-slate-300 text-[10px] font-bold uppercase tracking-widest mt-1">
-              Add a &apos;content&apos; field in Supabase to display the full article.
-            </p>
+        )}
+
+        {/* ── LINKS ── */}
+        {post.links && post.links.length > 0 && (
+          <div className="mt-12 p-4 md:p-6 bg-slate-50 rounded-2xl">
+            <h3 className="text-sm font-black uppercase text-slate-900 mb-4 tracking-wider">Links Relacionados</h3>
+            <div className="space-y-3">
+              {post.links.map((link) => (
+                <a 
+                  key={link.id} 
+                  href={link.url} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-3 p-3 bg-white rounded-xl border border-slate-200 hover:border-blue-600 hover:text-blue-600 transition-all group"
+                >
+                  <svg className="w-5 h-5 text-slate-400 group-hover:text-blue-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                  <span className="text-sm font-bold truncate">{link.title}</span>
+                </a>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* ── DOCUMENTS ── */}
+        {post.documents && post.documents.length > 0 && (
+          <div className="mt-8 p-4 md:p-6 bg-slate-50 rounded-2xl">
+            <h3 className="text-sm font-black uppercase text-slate-900 mb-4 tracking-wider">Documentos Adjuntos</h3>
+            <div className="space-y-3">
+              {post.documents.map((doc) => (
+                <a 
+                  key={doc.id} 
+                  href={doc.url} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-3 p-3 bg-white rounded-xl border border-slate-200 hover:border-blue-600 hover:text-blue-600 transition-all group"
+                >
+                  <svg className="w-5 h-5 text-slate-400 group-hover:text-blue-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                  </svg>
+                  <span className="text-sm font-bold truncate">{doc.name}</span>
+                  <span className="text-[10px] text-slate-400 uppercase ml-auto hidden md:inline">{doc.type?.split('/')[1] || 'file'}</span>
+                </a>
+              ))}
+            </div>
           </div>
         )}
 
         {/* Back CTA */}
         <div className="mt-16 pt-8 border-t border-slate-100 flex justify-between items-center">
-          <a
-            href="/#blog"
-            className="text-[10px] font-black uppercase tracking-widest text-slate-400 hover:text-blue-600 transition-colors"
-          >
+          <a href="/#blog" className="text-[10px] font-black uppercase tracking-widest text-slate-400 hover:text-blue-600 transition-colors">
             ← All posts
           </a>
-          <a
-            href="/#about"
-            className="text-[10px] font-black uppercase tracking-widest text-blue-600 hover:underline"
-          >
+          <a href="/#about" className="text-[10px] font-black uppercase tracking-widest text-blue-600 hover:underline">
             Meet the team →
           </a>
         </div>
-
       </article>
     </main>
   )
