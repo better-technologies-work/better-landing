@@ -9,7 +9,7 @@ import dynamicImport from 'next/dynamic';
 // Estilos del editor
 import 'react-quill-new/dist/quill.snow.css';
 
-// Cargamos el editor de forma segura para Next.js
+
 const ReactQuill = dynamicImport(() => import('react-quill-new'), { 
   ssr: false,
   loading: () => <div className="h-[200px] bg-slate-50 animate-pulse rounded-xl" />
@@ -245,7 +245,7 @@ export default function DashboardPage() {
           }
         }
 
-        // 3. Preparar datos del post
+        // 3.  datos del post
         const postData: any = {
           title: form.title,
           description: form.description,
@@ -442,7 +442,7 @@ export default function DashboardPage() {
         <header className="mb-8 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
           <div>
             <h1 className="text-3xl font-black tracking-tighter uppercase text-slate-900">Better Editor</h1>
-            <p className="text-slate-400 text-xs font-bold uppercase tracking-widest">Data Science & Frontend Dashboard</p>
+            <p className="text-slate-400 text-xs font-bold uppercase tracking-widest">Hi Team</p>
           </div>
           <div className="flex gap-2">
             <button
@@ -461,7 +461,7 @@ export default function DashboardPage() {
                 activeTab === 'news' ? 'bg-blue-600 text-white' : 'bg-white text-slate-400 border border-slate-200'
               }`}
             >
-              + Nueva News
+              +  News
             </button>
             <button
               type="button"
@@ -470,7 +470,7 @@ export default function DashboardPage() {
                 activeTab === 'manage' ? 'bg-blue-600 text-white' : 'bg-white text-slate-400 border border-slate-200'
               }`}
             >
-              Gestionar Posts
+              Edit Posts
             </button>
           </div>
         </header>

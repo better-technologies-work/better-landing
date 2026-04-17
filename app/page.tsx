@@ -806,9 +806,14 @@ export default function Home() {
               {post.title}
             </h3>
             
-            {/* Limpiamos el HTML para el preview */}
+            
             <p className="text-slate-500 text-sm mb-6 line-clamp-3">
-              {post.description?.replace(/<[^>]*>?/gm, '') || 'No description available'}
+              {(() => {
+  const raw = post.description?.replace(/<[^>]*>?/gm, '') || 'No description available';
+  const txt = document.createElement('textarea');
+  txt.innerHTML = raw;
+  return txt.value;
+})()}
             </p>
             
             <a href={`/blog/${post.id}`} className="text-blue-600 font-black text-[10px] uppercase tracking-widest hover:text-slate-900 transition-colors">
