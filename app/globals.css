@@ -25,3 +25,11 @@ body {
   color: var(--foreground);
   font-family: 'Raleway', sans-serif;
 }
+.prose-content a {
+  color: #2563eb;
+  text-decoration: underline;
+}
+
+.prose-content a:hover {
+  color: #1d4ed8;
+}

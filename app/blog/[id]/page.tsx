@@ -32,11 +32,11 @@ type BlogPost = {
 }
 
 type Props = {
-  params: { id: string }
+  params: Promise <{ id: string }>
 }
 
 export default async function BlogPostPage({ params }: Props) {
-  const { id } = params
+  const { id } = await params
   let post: BlogPost | null = null
 
   try {
@@ -126,14 +126,15 @@ export default async function BlogPostPage({ params }: Props) {
 
         {/* ── BODY CONTENT ── */}
         <div className="prose prose-slate max-w-none">
-          <div 
-            className="text-slate-700 text-lg leading-relaxed font-medium 
-                       [&>p]:mb-6 [&>img]:my-10 [&>img]:rounded-3xl [&>img]:shadow-2xl
-                       [&>strong]:text-slate-900 [&>strong]:font-black
-                       [&>h2]:text-2xl [&>h2]:font-black [&>h2]:mt-8 [&>h2]:mb-4"
-            dangerouslySetInnerHTML={{ __html: decodeHTML(post.description) }} 
-          />
-        </div>
+  <div 
+    className="text-slate-700 text-lg leading-relaxed font-medium 
+               [&>p]:mb-6 [&>img]:my-10 [&>img]:rounded-3xl [&>img]:shadow-2xl
+               [&>strong]:text-slate-900 [&>strong]:font-black
+               [&>h2]:text-2xl [&>h2]:font-black [&>h2]:mt-8 [&>h2]:mb-4
+               [&_a]:text-blue-600 [&_a]:underline [&_a:hover]:text-blue-800"
+    dangerouslySetInnerHTML={{ __html: decodeHTML(post.description) }} 
+  />
+</div>
 
         {/* ── MARKDOWN CONTENT ── */}
         {post.content && (

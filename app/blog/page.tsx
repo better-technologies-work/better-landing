@@ -113,9 +113,10 @@ export default function BlogPage() {
                 <h2 className="text-lg md:text-xl font-bold leading-tight mb-2 md:mb-3 group-hover:text-blue-600 transition-colors">
                   {post.title}
                 </h2>
-                <p className="text-slate-500 text-sm line-clamp-2 md:line-clamp-3 mb-4 md:mb-6 flex-1">
-                  {post.description}
-                </p>
+                <p 
+  className="text-slate-500 text-sm line-clamp-2 md:line-clamp-3 mb-4 md:mb-6 flex-1"
+  dangerouslySetInnerHTML={{ __html: post.description || 'No description available' }}
+/>
                 <div className="pt-3 md:pt-4 border-t border-slate-200 flex justify-between items-center">
                   <span className="text-xs font-bold text-slate-500 uppercase">Leer más</span>
                   <span className="text-[10px] text-slate-400">{new Date(post.published_at).toLocaleDateString()}</span>
