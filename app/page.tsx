@@ -27,7 +27,7 @@ const team = [
     role: "Backend & Infrastructure Chief Engineer",
     desc: "Ezequiel is the engine room of every product we ship. He architects scalable, production-ready systems at startup speed — writing clean, fast, reliable code that makes the impossible 72h timelines actually possible.",
     initials: "EA",
-    photo: "/team/ezequiel.jpg",
+    photo: "/ezequiel.jpeg",
     linkedin: "https://linkedin.com/",
   },
   {
