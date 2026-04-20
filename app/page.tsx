@@ -570,7 +570,7 @@ export default function Home() {
       <ChatSection />
 
       {/* 4. MITTELSTAND */}
-      <section id="mittelstand" className="py-40 px-6 bg-slate-50 border-y border-slate-200">
+      <section id="mittelstand" className="py-16 md:py-40 px-6 bg-slate-50 border-y border-slate-200">
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-20 items-center">
           <div className="bg-white p-12 rounded-3xl border border-slate-200 shadow-sm transition-all hover:shadow-md">
             <h3 className="text-xl font-bold mb-6 uppercase tracking-wider text-slate-900">The Problem we solve</h3>
