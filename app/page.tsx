@@ -399,8 +399,8 @@ const CasosDeExito = () => {
               onTouchEnd={handleTouchEnd}
             >
               {/* Phone frame */}
-              <div className="relative aspect-[9/19] w-full overflow-hidden rounded-[2.5rem] border-[6px] border-slate-900 bg-black shadow-2xl">
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-20 h-5 bg-black rounded-b-xl z-20" />
+              <div className="relative aspect-[9/19] w-full overflow-hidden rounded-[2.5rem] border-[6px] border-white bg-white shadow-2xl">
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-20 h-5 bg-white rounded-b-xl z-20" />
                 {belandScreenshots.map((screenshot, index) => (
                   <div key={index} className={`absolute inset-0 transition-opacity duration-700 ${index === currentSlide ? "opacity-100" : "opacity-0 pointer-events-none"}`}>
                     <Image src={screenshot.src} alt={screenshot.alt} fill className="object-contain" priority={index === 0} sizes="300px" />
@@ -621,7 +621,7 @@ export default function Home() {
           <p className="text-blue-600 uppercase tracking-[0.25em] text-[10px] font-black mb-2">About our Team</p>
           <h2 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter leading-[0.9] uppercase mb-6">High <em className="italic underline decoration-blue-100">Performance execution team</em></h2>
           <div className="border-l-[3px] border-blue-600 pl-5 bg-slate-50 py-4 pr-5 rounded-r-2xl mb-8">
-            <p className="text-slate-900 font-black italic text-sm leading-relaxed tracking-tight">&ldquo;We were told the future would be built somewhere else. <br /><span className="text-blue-600">We chose to prove them wrong.&rdquo;</span></p>
+            <p className="text-slate-900 font-black italic text-sm leading-relaxed tracking-tight">Built in hight <br /><span className="text-blue-600">pressure environments</span></p>
           </div>
           <AnimatePresence mode="wait">
             {selected !== null && (
