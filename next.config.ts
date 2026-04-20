@@ -1,22 +1,24 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Eliminamos 'allowedDevOrigins' que es lo que causa el aviso
+  // Se comenta o elimina porque Next.js 15+ ya no acepta esta clave aquí
+  /*
   eslint: {
-    // Esto permite que el build de Vercel termine aunque haya errores de comillas o tipos
     ignoreDuringBuilds: true,
   },
+  */
+  
   typescript: {
-    // Esto evita que el build falle por los errores de 'any' que vimos antes
+    // Mantenemos esto para que el despliegue no falle por tipos estrictos
     ignoreBuildErrors: true,
   },
-  // Si necesitas permitir imágenes externas de BBC/CNN/Reuters de forma optimizada:
+
   images: {
     remotePatterns: [
       { protocol: 'https', hostname: '**.bbci.co.uk' },
       { protocol: 'https', hostname: '**.cnn.com' },
       { protocol: 'https', hostname: '**.reuters.com' },
       { protocol: 'https', hostname: '**.static.bbc.co.uk' },
-       { protocol: 'https', hostname: '**.supabase.co' },
+      { protocol: 'https', hostname: '**.supabase.co' },
     ],
   },
 };
