@@ -4,6 +4,7 @@ import Image from "next/image";
 import { motion, AnimatePresence } from 'framer-motion';
 import { createClient } from '@/lib/supabase/client'
 import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
+import Header from "../components/Header";
 
 const team = [
   {
@@ -50,54 +51,14 @@ const team = [
 
 // ─── BELAND SCREENSHOTS ─
 const belandScreenshots = [
-  { 
-    src: "/home1.jpeg", 
-    alt: "Main Home", 
-    title: "Home", 
-    text: "Main dashboard where you can track your wallet, accounts, and overall impact." 
-  },
-  { 
-    src: "/registrate.jpeg", 
-    alt: "Registration", 
-    title: "Join the App", 
-    text: "Sign up, explore, participate, and turn your consumption into meaningful action." 
-  },
-  { 
-    src: "/home.jpeg", 
-    alt: "Login", 
-    title: "Start Exploring", 
-    text: "Top up your balance, shop for products, get them delivered, and transform habits into impact." 
-  },
-  { 
-    src: "/mismonedas.jpeg", 
-    alt: "Wallet", 
-    title: "Recharge & Shop", 
-    text: "Seamless transactions designed to generate social and environmental value." 
-  },
-  { 
-    src: "/grupos.jpeg", 
-    alt: "Groups", 
-    title: "Build or Join Communities", 
-    text: "Join existing groups or create your own to organize circular economy events." 
-  },
-  { 
-    src: "/carrito2.jpeg", 
-    alt: "Cart", 
-    title: "Delivery with Purpose", 
-    text: "Every delivery fuels a network built on circular impact and sustainability." 
-  },
-  { 
-    src: "/impacto.jpeg", 
-    alt: "Impact", 
-    title: "Your Impact", 
-    text: "Track recycled kilograms, liters of water saved, and Becoins earned." 
-  },
-  { 
-    src: "/ordenes.jpeg", 
-    alt: "Orders", 
-    title: "My Orders", 
-    text: "View and manage your active or completed purchases." 
-  },
+  { src: "/home1.jpeg",      alt: "Main Home",    title: "Home",                    text: "Main dashboard where you can track your wallet, accounts, and overall impact." },
+  { src: "/registrate.jpeg", alt: "Registration", title: "Join the App",            text: "Sign up, explore, participate, and turn your consumption into meaningful action." },
+  { src: "/home.jpeg",       alt: "Login",        title: "Start Exploring",         text: "Top up your balance, shop for products, get them delivered, and transform habits into impact." },
+  { src: "/mismonedas.jpeg", alt: "Wallet",       title: "Recharge & Shop",         text: "Seamless transactions designed to generate social and environmental value." },
+  { src: "/grupos.jpeg",     alt: "Groups",       title: "Build or Join Communities",text: "Join existing groups or create your own to organize circular economy events." },
+  { src: "/carrito2.jpeg",   alt: "Cart",         title: "Delivery with Purpose",   text: "Every delivery fuels a network built on circular impact and sustainability." },
+  { src: "/impacto.jpeg",    alt: "Impact",       title: "Your Impact",             text: "Track recycled kilograms, liters of water saved, and Becoins earned." },
+  { src: "/ordenes.jpeg",    alt: "Orders",       title: "My Orders",               text: "View and manage your active or completed purchases." },
 ];
 
 const belandTags = ["React Native", "Payments", "Delivery", "Circular Economy"];
@@ -114,8 +75,8 @@ const InstagramIcon = () => (
   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
     <defs>
       <radialGradient id="ig-gradient" cx="30%" cy="107%" r="150%">
-        <stop offset="0%" stopColor="#fdf497"/>
-        <stop offset="5%" stopColor="#fdf497"/>
+        <stop offset="0%"  stopColor="#fdf497"/>
+        <stop offset="5%"  stopColor="#fdf497"/>
         <stop offset="45%" stopColor="#fd5949"/>
         <stop offset="60%" stopColor="#d6249f"/>
         <stop offset="90%" stopColor="#285AEB"/>
@@ -143,9 +104,9 @@ const Avatar = ({ member }: { member: (typeof team)[0] }) => {
 
 // ─── NEWS SECTION ───────
 const NewsSection = () => {
-  const [loading, setLoading] = useState(true);
-  const [articles, setArticles] = useState<any[]>([]);
-  const [newsError, setNewsError] = useState<string | null>(null);
+  const [loading, setLoading]       = useState(true);
+  const [articles, setArticles]     = useState<any[]>([]);
+  const [newsError, setNewsError]   = useState<string | null>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const videoRef = useRef<HTMLVideoElement>(null);
 
@@ -171,13 +132,13 @@ const NewsSection = () => {
       try {
         const [externalResult, localResult] = await Promise.allSettled([fetchExternal(), fetchLocal()]);
         let externalData: any = null;
-        let localData: any = null;
+        let localData: any   = null;
         if (externalResult.status === 'fulfilled') { externalData = externalResult.value; } else { console.error('External news fetch failed:', externalResult.reason); setNewsError('Unable to load external news.'); }
-        if (localResult.status === 'fulfilled') { localData = localResult.value; } else { console.warn('Local news fetch failed:', localResult.reason); setNewsError((prev) => prev ? `${prev} Local news feed is unavailable.` : 'Unable to load local news.'); }
+        if (localResult.status === 'fulfilled')    { localData    = localResult.value;    } else { console.warn('Local news fetch failed:', localResult.reason); setNewsError((prev) => prev ? `${prev} Local news feed is unavailable.` : 'Unable to load local news.'); }
         const externalArticles: any[] = Array.isArray(externalData?.articles)
           ? (() => {
-              const bbc = externalData.articles.find((a: any) => a.source?.name?.toLowerCase().includes('bbc'));
-              const cnn = externalData.articles.find((a: any) => a.source?.name?.toLowerCase().includes('cnn'));
+              const bbc     = externalData.articles.find((a: any) => a.source?.name?.toLowerCase().includes('bbc'));
+              const cnn     = externalData.articles.find((a: any) => a.source?.name?.toLowerCase().includes('cnn'));
               const reuters = externalData.articles.find((a: any) => a.source?.name?.toLowerCase().includes('reuters'));
               const selected = [bbc, cnn, reuters].filter(Boolean);
               if (selected.length < 3) { const fillers = externalData.articles.filter((a: any) => !selected.includes(a)); return [...selected, ...fillers].slice(0, 3); }
@@ -198,7 +159,7 @@ const NewsSection = () => {
   }, []);
 
   const goToPrevious = () => setCurrentIndex((p) => (p === 0 ? articles.length - 1 : p - 1));
-  const goToNext    = () => setCurrentIndex((p) => (p === articles.length - 1 ? 0 : p + 1));
+  const goToNext     = () => setCurrentIndex((p) => (p === articles.length - 1 ? 0 : p + 1));
 
   if (loading) return <div className="py-20 text-center text-slate-400 uppercase tracking-widest text-[10px] font-bold">Loading Intelligence Feed...</div>;
 
@@ -273,7 +234,7 @@ const NewsSection = () => {
 
 // ─── CHAT SECTION ───────
 const ChatSection = () => {
-  const [step, setStep] = useState<number>(1);
+  const [step, setStep]           = useState<number>(1);
   const [selection, setSelection] = useState<string>("");
   const options = ["Industrial Acceleration", "Smart Supply Chain", "Talent Infrastructure", "Market Entry LATAM", "72h Validation"];
   const handleWhatsApp = (option: string) => {
@@ -305,39 +266,23 @@ const ChatSection = () => {
             </>
           ) : (
             <div className="py-4 text-left">
-  {/* Título y Descripción */}
-  <div className="mb-6">
-    <h3 className="text-xl font-black text-slate-900 uppercase tracking-tighter">
-      Industrial Acceleration 
-    </h3>
-    <p className="text-blue-600 text-xs font-bold tracking-widest uppercase mb-3">
-      (Nearshoring + Smart Maquila)
-    </p>
-    <p className="text-slate-500 text-sm leading-relaxed border-l-2 border-blue-600 pl-4">
-      Relocating global production to LATAM with speed and cost efficiency.
-    </p>
-  </div>
-
-  {/* Lista de Ventas */}
-  <div className="mb-8 space-y-2">
-    <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">What we sell:</p>
-    <ul className="text-sm text-slate-700 space-y-1">
-      <li className="flex items-start gap-2"><span>●</span> Operational setup in PY / MX / CO</li>
-      <li className="flex items-start gap-2"><span>●</span> Industrial supplier networks</li>
-      <li className="flex items-start gap-2 text-blue-600 font-bold"><span>●</span> Cost optimization (30–60%)</li>
-      <li className="flex items-start gap-2"><span>●</span> Local operational management</li>
-    </ul>
-  </div>
-
-  {/* Botones */}
-  <button onClick={() => handleWhatsApp(selection)} className="w-full bg-blue-600 text-white py-4 rounded-full font-black text-sm hover:bg-blue-700 transition-all uppercase tracking-widest shadow-xl shadow-blue-600/20 active:scale-95">
-    Connect with the team
-  </button>
-  
-  <button onClick={() => setStep(1)} className="block mx-auto mt-6 text-slate-400 hover:text-blue-600 text-[10px] uppercase font-black tracking-widest transition-colors">
-    ← Go back
-  </button>
-</div>
+              <div className="mb-6">
+                <h3 className="text-xl font-black text-slate-900 uppercase tracking-tighter">Industrial Acceleration</h3>
+                <p className="text-blue-600 text-xs font-bold tracking-widest uppercase mb-3">(Nearshoring + Smart Maquila)</p>
+                <p className="text-slate-500 text-sm leading-relaxed border-l-2 border-blue-600 pl-4">Relocating global production to LATAM with speed and cost efficiency.</p>
+              </div>
+              <div className="mb-8 space-y-2">
+                <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">What we sell:</p>
+                <ul className="text-sm text-slate-700 space-y-1">
+                  <li className="flex items-start gap-2"><span>●</span> Operational setup in PY / MX / CO</li>
+                  <li className="flex items-start gap-2"><span>●</span> Industrial supplier networks</li>
+                  <li className="flex items-start gap-2 text-blue-600 font-bold"><span>●</span> Cost optimization (30–60%)</li>
+                  <li className="flex items-start gap-2"><span>●</span> Local operational management</li>
+                </ul>
+              </div>
+              <button onClick={() => handleWhatsApp(selection)} className="w-full bg-blue-600 text-white py-4 rounded-full font-black text-sm hover:bg-blue-700 transition-all uppercase tracking-widest shadow-xl shadow-blue-600/20 active:scale-95">Connect with the team</button>
+              <button onClick={() => setStep(1)} className="block mx-auto mt-6 text-slate-400 hover:text-blue-600 text-[10px] uppercase font-black tracking-widest transition-colors">← Go back</button>
+            </div>
           )}
         </div>
       </div>
@@ -348,25 +293,17 @@ const ChatSection = () => {
 // ─── CASOS DE ÉXITO ────────────────
 const CasosDeExito = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const touchStartX = useRef<number | null>(null);
+  const touchStartX   = useRef<number | null>(null);
   const touchCurrentX = useRef<number | null>(null);
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % belandScreenshots.length);
-    }, 4000);
+    const timer = setInterval(() => { setCurrentSlide((prev) => (prev + 1) % belandScreenshots.length); }, 4000);
     return () => clearInterval(timer);
   }, []);
 
-  const goToPrevious = (e?: React.MouseEvent) => {
-    e?.stopPropagation();
-    setCurrentSlide((prev) => (prev - 1 + belandScreenshots.length) % belandScreenshots.length);
-  };
-  const goToNext = (e?: React.MouseEvent) => {
-    e?.stopPropagation();
-    setCurrentSlide((prev) => (prev + 1) % belandScreenshots.length);
-  };
-  const handleTouchStart = (e: React.TouchEvent) => (touchStartX.current = e.touches[0].clientX);
+  const goToPrevious = (e?: React.MouseEvent) => { e?.stopPropagation(); setCurrentSlide((prev) => (prev - 1 + belandScreenshots.length) % belandScreenshots.length); };
+  const goToNext     = (e?: React.MouseEvent) => { e?.stopPropagation(); setCurrentSlide((prev) => (prev + 1) % belandScreenshots.length); };
+  const handleTouchStart = (e: React.TouchEvent) => (touchStartX.current   = e.touches[0].clientX);
   const handleTouchMove  = (e: React.TouchEvent) => (touchCurrentX.current = e.touches[0].clientX);
   const handleTouchEnd   = () => {
     if (touchStartX.current == null || touchCurrentX.current == null) return;
@@ -378,27 +315,13 @@ const CasosDeExito = () => {
   return (
     <section className="py-24 px-6 bg-white border-t border-slate-100">
       <div className="max-w-6xl mx-auto">
-
-        {/* Header */}
         <div className="mb-16 text-center">
           <p className="text-blue-600 uppercase tracking-[0.25em] text-[10px] font-black mb-2">Our Success Stories</p>
-          <h2 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter leading-[0.9] uppercase">
-            Built by us. <em className="italic underline decoration-blue-100">Used by people.</em>
-          </h2>
+          <h2 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter leading-[0.9] uppercase">Built by us. <em className="italic underline decoration-blue-100">Used by people.</em></h2>
         </div>
-
-        {/* Split layout */}
         <div className="grid md:grid-cols-2 gap-16 items-center">
-
-          {/* LEFT — Phone carousel */}
           <div className="flex justify-center">
-            <div
-              className="relative w-full max-w-[260px] sm:max-w-[300px] cursor-grab active:cursor-grabbing"
-              onTouchStart={handleTouchStart}
-              onTouchMove={handleTouchMove}
-              onTouchEnd={handleTouchEnd}
-            >
-              {/* Phone frame */}
+            <div className="relative w-full max-w-[260px] sm:max-w-[300px] cursor-grab active:cursor-grabbing" onTouchStart={handleTouchStart} onTouchMove={handleTouchMove} onTouchEnd={handleTouchEnd}>
               <div className="relative aspect-[9/19] w-full overflow-hidden rounded-[2.5rem] border-[6px] border-white bg-white shadow-2xl">
                 <div className="absolute top-0 left-1/2 -translate-x-1/2 w-20 h-5 bg-white rounded-b-xl z-20" />
                 {belandScreenshots.map((screenshot, index) => (
@@ -407,62 +330,28 @@ const CasosDeExito = () => {
                   </div>
                 ))}
               </div>
-
-              {/* Nav arrows */}
-              <button onClick={goToPrevious} className="absolute -left-5 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white border border-slate-200 shadow flex items-center justify-center hover:border-blue-600 transition-colors z-30">
-                <ChevronLeft className="w-4 h-4 text-slate-600" />
-              </button>
-              <button onClick={goToNext} className="absolute -right-5 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white border border-slate-200 shadow flex items-center justify-center hover:border-blue-600 transition-colors z-30">
-                <ChevronRight className="w-4 h-4 text-slate-600" />
-              </button>
-
-              {/* Dots */}
+              <button onClick={goToPrevious} className="absolute -left-5 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white border border-slate-200 shadow flex items-center justify-center hover:border-blue-600 transition-colors z-30"><ChevronLeft className="w-4 h-4 text-slate-600" /></button>
+              <button onClick={goToNext}     className="absolute -right-5 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white border border-slate-200 shadow flex items-center justify-center hover:border-blue-600 transition-colors z-30"><ChevronRight className="w-4 h-4 text-slate-600" /></button>
               <div className="flex justify-center gap-1.5 mt-5">
-                {belandScreenshots.map((_, i) => (
-                  <button key={i} onClick={() => setCurrentSlide(i)} className={`rounded-full transition-all duration-300 ${i === currentSlide ? "w-5 h-1.5 bg-blue-600" : "w-1.5 h-1.5 bg-slate-300"}`} />
-                ))}
+                {belandScreenshots.map((_, i) => (<button key={i} onClick={() => setCurrentSlide(i)} className={`rounded-full transition-all duration-300 ${i === currentSlide ? "w-5 h-1.5 bg-blue-600" : "w-1.5 h-1.5 bg-slate-300"}`} />))}
               </div>
             </div>
           </div>
-
-          {/* RIGHT — Info */}
           <div className="flex flex-col gap-6">
-
-{/* Logo Beland  */}
-<div className="inline-flex flex-col items-start">
-  
-  <div style={{ width: '200px', height: '50px' }} className="relative -ml-4">
-  <Image 
-    src="/beland.titulo.png" 
-    alt="Beland Logo" 
-    fill
-    className="object-contain object-left" 
-    priority 
-  />
-</div>
-</div>
-            {/* Slide caption */}
+            <div className="inline-flex flex-col items-start">
+              <div style={{ width: '200px', height: '50px' }} className="relative -ml-4">
+                <Image src="/beland.titulo.png" alt="Beland Logo" fill className="object-contain object-left" priority />
+              </div>
+            </div>
             <div key={currentSlide} className="border-l-4 border-blue-600 pl-4 transition-all duration-500">
               <p className="text-[10px] font-black uppercase tracking-widest text-blue-600 mb-1">{belandScreenshots[currentSlide].title}</p>
               <p className="text-slate-500 text-sm leading-relaxed">{belandScreenshots[currentSlide].text}</p>
             </div>
-
-            {/* Description */}
-            <p className="text-slate-700 text-base leading-relaxed font-medium">
-          A <span className="text-slate-900 font-black">circular ecosystem</span> that integrates payments, delivery, and rewards within a single system, driving a network where every <span className="text-blue-600 font-bold">positive action</span> strengthens the entire community.
-        </p>
-
-            {/* Tech tags */}
+            <p className="text-slate-700 text-base leading-relaxed font-medium">A <span className="text-slate-900 font-black">circular ecosystem</span> that integrates payments, delivery, and rewards within a single system, driving a network where every <span className="text-blue-600 font-bold">positive action</span> strengthens the entire community.</p>
             <div className="flex flex-wrap gap-2">
-              {belandTags.map((tag) => (
-                <span key={tag} className="text-[10px] font-black uppercase tracking-widest px-4 py-1.5 rounded-full border border-slate-200 text-slate-500 bg-slate-50">{tag}</span>
-              ))}
+              {belandTags.map((tag) => (<span key={tag} className="text-[10px] font-black uppercase tracking-widest px-4 py-1.5 rounded-full border border-slate-200 text-slate-500 bg-slate-50">{tag}</span>))}
             </div>
-
-            {/* CTA */}
-            <a href="https://beland.app" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 self-start bg-blue-600 text-white px-8 py-3 rounded-full font-black text-[11px] uppercase tracking-widest hover:bg-blue-700 transition-colors shadow-lg shadow-blue-600/20 active:scale-95">
-              View the app <ArrowRight className="w-4 h-4" />
-            </a>
+            <a href="https://beland.app" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 self-start bg-blue-600 text-white px-8 py-3 rounded-full font-black text-[11px] uppercase tracking-widest hover:bg-blue-700 transition-colors shadow-lg shadow-blue-600/20 active:scale-95">View the app <ArrowRight className="w-4 h-4" /></a>
           </div>
         </div>
       </div>
@@ -472,7 +361,10 @@ const CasosDeExito = () => {
 
 // ─── MAIN HOME ──────────────────
 export default function Home() {
-  const [posts, setPosts] = useState<any[]>([]);
+  const [posts, setPosts]     = useState<any[]>([]);
+  const heroVideoRef          = useRef<HTMLVideoElement>(null);
+  const [isMobile, setIsMobile] = useState(false);
+  const [selected, setSelected] = useState<number | null>(null);
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -482,11 +374,6 @@ export default function Home() {
     };
     fetchPosts();
   }, []);
-
-  const heroVideoRef = useRef<HTMLVideoElement>(null);
-  const [isOpen, setIsOpen]   = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
-  const [selected, setSelected] = useState<number | null>(null);
 
   useEffect(() => {
     const video = heroVideoRef.current;
@@ -501,8 +388,6 @@ export default function Home() {
     return () => { video.removeEventListener("loadedmetadata", tryPlay); video.removeEventListener("loadeddata", tryPlay); video.removeEventListener("canplay", tryPlay); };
   }, []);
 
-  useEffect(() => { document.body.style.overflow = isOpen ? "hidden" : "unset"; }, [isOpen]);
-
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth < 768);
     handleResize();
@@ -510,55 +395,22 @@ export default function Home() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const menuItems = [
-    { name: "Home",         href: "#top" },
-    { name: "What we are",  href: "#what-we-are" },
-    { name: "Mittelstand",  href: "#mittelstand" },
-    { name: "Pricing",      href: "#pricing" },
-    { name: "About",        href: "#about" },
-    { name: "Blog",         href: "/blog" },
-  ];
-
   return (
     <main className="relative w-full bg-white">
 
-      {/* HEADER */}
-      <header className="fixed top-0 left-0 w-full flex justify-between items-center px-6 md:px-24 py-5 z-[100] backdrop-blur-md bg-black border-b border-white/10">
-        <div className="relative w-[120px] md:w-[140px] h-[40px] flex items-center justify-start">
-          <Image src="/logo.png" alt="Logo" fill sizes="(max-width: 768px) 120px, 140px" className="object-contain" />
-        </div>
-        <nav className="hidden md:flex gap-8 text-white font-black uppercase text-xs tracking-widest">
-          {menuItems.map((item) => (<a key={item.name} href={item.href} className="hover:text-blue-600 transition-colors">{item.name}</a>))}
-        </nav>
-        <button type="button" onClick={() => setIsOpen(!isOpen)} className="md:hidden relative z-[110] flex flex-col justify-center items-center w-10 h-10 gap-1.5 focus:outline-none" aria-label="Menu">
-          <div className={`w-7 h-[2px] bg-white transition-all duration-300 ${isOpen ? "rotate-45 translate-y-2" : ""}`}></div>
-          <div className={`w-7 h-[2px] bg-white transition-all duration-300 ${isOpen ? "opacity-0" : ""}`}></div>
-          <div className={`w-7 h-[2px] bg-white transition-all duration-300 ${isOpen ? "-rotate-45 -translate-y-2" : ""}`}></div>
-        </button>
-      </header>
-
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed top-0 left-0 right-0 bottom-0 bg-black flex flex-col items-center justify-center gap-8 z-[105] md:hidden">
-            {menuItems.map((item) => (<a key={item.name} href={item.href} onClick={() => setIsOpen(false)} className="text-white text-4xl font-black uppercase tracking-tighter hover:text-blue-600 transition-colors">{item.name}</a>))}
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {/* SHARED HEADER */}
+      <Header />
 
       {/* 1. HERO */}
       <section className="relative w-full h-[100dvh] overflow-hidden" id="top">
         <video ref={heroVideoRef} className="absolute top-1/2 left-1/2 min-w-full min-h-full w-auto h-auto -translate-x-1/2 -translate-y-1/2 object-cover" autoPlay loop muted playsInline preload="auto">
-          <source 
-  src={`https://res.cloudinary.com/djp2qzp9f/video/upload/q_auto,vc_h264/${isMobile ? "c_fill,ar_9:16" : "c_fill,ar_16:9"}/v1775676329/IMG_2919_l50wan.mp4`} 
-  type="video/mp4" 
-/>
+          <source src={`https://res.cloudinary.com/djp2qzp9f/video/upload/q_auto,vc_h264/${isMobile ? "c_fill,ar_9:16" : "c_fill,ar_16:9"}/v1775676329/IMG_2919_l50wan.mp4`} type="video/mp4" />
         </video>
         <div className="absolute inset-0 bg-white/10 z-[1]" />
         <div className="absolute inset-0 z-[2] flex flex-col items-center justify-center px-6 text-center">
           <p className="text-blue-600 uppercase tracking-[0.4em] mb-3 text-[10px] font-black">What we are?</p>
           <h1 className="text-3xl md:text-8xl font-black leading-[1] tracking-tighter max-w-4xl text-white uppercase">We operate LATAM for <br /> Global companies</h1>
           <p className="mt-3 text-white text-[9px] md:text-[10px] uppercase tracking-widest font-bold">Nearshoring Operator · Supply Chain Partner · Talent Hub · Entry &amp; Ops Partner</p>
-          
           <a href="https://wa.me/593995269974?text=Hi!%20I%27d%20like%20to%20get%20in%20touch%20with%20the%20team." className="mt-3 inline-block px-8 py-3 bg-[#FF6B00] text-white rounded-full font-bold shadow-lg uppercase tracking-widest text-[10px] transition-transform active:scale-95">Get in touch</a>
         </div>
       </section>
@@ -648,15 +500,15 @@ export default function Home() {
         </div>
       </section>
 
-      {/*  CASOS DE ÉXITO — BELAND */}
+      {/* CASOS DE ÉXITO — BELAND */}
       <CasosDeExito />
 
-      {/*  CIERRE */}
+      {/* CIERRE */}
       <h2 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter leading-[0.9] uppercase mb-6 text-center py-16 px-6">
         LETS BUILD THE FUTURE <em className="italic underline decoration-blue-100"> TODAY </em>
       </h2>
 
-      {/*  LATEST INSIGHTS */}
+      {/* LATEST INSIGHTS */}
       <section className="py-24 bg-slate-50">
         <div className="container mx-auto px-6 text-center">
           <p className="text-blue-600 uppercase tracking-[0.25em] text-[10px] font-black mb-4">Stay updated with us</p>
@@ -682,7 +534,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/*  FOOTER */}
+      {/* FOOTER */}
       <footer className="py-20 text-center bg-white border-t border-slate-100">
         <p className="text-slate-400 text-[9px] font-black uppercase tracking-[0.3em] mb-4">Don&apos;t miss a move</p>
         <h3 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter uppercase mb-10">Follow our <em className="italic underline decoration-blue-100">journey</em></h3>

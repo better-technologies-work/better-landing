@@ -247,17 +247,19 @@ export default function DashboardPage() {
 
         // 3.  datos del post
         const postData: any = {
-          title: form.title,
-          description: form.description,
-          author: form.author,
-          category: form.category,
-          cover_url: finalCoverUrl,
-          slug: `${form.title.toLowerCase().replace(/[^a-z0-9]+/g, "-")}-${Date.now()}`,
-          published_at: new Date().toISOString(),
-          post_url: form.post_url || "",
-          links: links.filter(l => l.title && l.url),
-          documents: uploadedDocs
-        };
+  title: form.title,
+  description: form.description,
+  author: form.author,
+  category: form.category,
+  cover_url: finalCoverUrl,
+  slug: editingPost
+    ? editingPost.slug
+    : `${form.title.toLowerCase().replace(/[^a-z0-9]+/g, "-")}-${Date.now()}`,
+  published_at: editingPost ? editingPost.published_at : new Date().toISOString(),
+  post_url: form.post_url || "",
+  links: links.filter(l => l.title && l.url),
+  documents: uploadedDocs
+};
 
         // 4. Guardar o actualizar en la base de datos
         console.log('Saving post to database:', postData);
