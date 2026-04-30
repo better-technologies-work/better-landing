@@ -184,7 +184,7 @@ const NewsSection = () => {
           <div className="flex-1 flex flex-col items-center text-center">
             <div className="mt-8 inline-flex flex-col items-center"></div>
             <span className="text-blue-600 font-black uppercase tracking-[0.3em] text-xs mt-6 mb-4 block italic">Global Intelligence Feed</span>
-            <h2 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter leading-none">In times of <br /> <span className="text-blue-600 italic underline decoration-slate-200">Change...</span></h2>
+            <h2 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter leading-none">In times of <br /> <span className="text-blue-600 italic underline decoration-slate-200">Change and Turbulence</span></h2>
           </div>
           <div className="text-center md:text-right md:w-48">
             <p className="text-slate-400 font-mono text-[10px] uppercase tracking-widest">Live updates // April 2026</p>
@@ -248,8 +248,8 @@ const ChatSection = () => {
         <p className="text-blue-600 uppercase tracking-[0.2em] text-[10px] mb-4 font-bold">WE DELIVER</p>
         <p className="text-dark-600 uppercase tracking-[0.2em] text-[10px] mb-4 font-bold">REAL TIME CERTAINTY (RTC)</p>
         <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-12 uppercase tracking-tighter">OUR KITCHEN IS ALWAYS <span className="italic underline decoration-blue-100"> OPEN </span></h2>
-        <p className="text-blue-600 uppercase tracking-[0.2em] text-[10px] mb-4 font-bold">20th century told us the future would be built somewhere else We think Differently.</p>
-        <p className="text-dark-600 uppercase tracking-[0.2em] text-[10px] mb-4 font-bold">See your self - Follow us on Social Media.</p>
+        <p className="text-blue-600 uppercase tracking-[0.2em] text-[10px] mb-4 font-bold">The 20th century said the future would be built elsewhere. Today, we see a better alternative. We think differently.</p>
+        <p className="text-dark-600 uppercase tracking-[0.2em] text-[10px] mb-4 font-bold">See for your self - Follow us on Social Media.</p>
         <div className="flex justify-center gap-6 mb-12">
           <a href="https://www.linkedin.com/company/bettertechnologies/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-6 py-3 rounded-full border-2 border-slate-200 text-slate-900 font-black text-[11px] uppercase tracking-widest hover:border-blue-600 hover:text-blue-600 transition-all"><LinkedInIcon /> LinkedIn</a>
           <a href="https://www.instagram.com/better.technologies?igsh=cjQ1c3F4OWpoYWhq" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-6 py-3 rounded-full border-2 border-slate-200 text-slate-900 font-black text-[11px] uppercase tracking-widest hover:border-[#d6249f] hover:text-[#d6249f] transition-all"><InstagramIcon /> Instagram</a>
@@ -408,8 +408,8 @@ export default function Home() {
         </video>
         <div className="absolute inset-0 bg-white/10 z-[1]" />
         <div className="absolute inset-0 z-[2] flex flex-col items-center justify-center px-6 text-center">
-          <p className="text-blue-600 uppercase tracking-[0.4em] mb-3 text-[10px] font-black">What we are?</p>
-          <h1 className="text-3xl md:text-8xl font-black leading-[1] tracking-tighter max-w-4xl text-white uppercase">We operate LATAM for <br /> Global companies</h1>
+          <p className="text-blue-600 uppercase tracking-[0.4em] mb-3 text-[10px] font-black">What we do?</p>
+          <h1 className="text-3xl md:text-8xl font-black leading-[1] tracking-tighter max-w-4xl text-white uppercase">We open LATAM for <br /> Global companies</h1>
           <p className="mt-3 text-white text-[9px] md:text-[10px] uppercase tracking-widest font-bold">Nearshoring Operator · Supply Chain Partner · Talent Hub · Entry &amp; Ops Partner</p>
           <a href="https://wa.me/593995269974?text=Hi!%20I%27d%20like%20to%20get%20in%20touch%20with%20the%20team." className="mt-3 inline-block px-8 py-3 bg-[#FF6B00] text-white rounded-full font-bold shadow-lg uppercase tracking-widest text-[10px] transition-transform active:scale-95">Get in touch</a>
         </div>
@@ -426,7 +426,7 @@ export default function Home() {
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-20 items-center">
           <div className="bg-white p-12 rounded-3xl border border-slate-200 shadow-sm transition-all hover:shadow-md">
             <h3 className="text-xl font-bold mb-6 uppercase tracking-wider text-slate-900">The Problem we solve</h3>
-            <p className="text-slate-600 text-lg leading-relaxed mb-10">Long supply chains (Asia / Middle East) are falling due to conflict. Latin America is the obvious alternative — but remains impossible to execute.</p>
+            <p className="text-slate-600 text-lg leading-relaxed mb-10">Long supply chains in Asia and the Middle East are under pressure due to conflict. Latin America is the obvious alternative — but hard to operationalize.</p>
             <div className="space-y-4 mb-8">
               <p className="text-base line-through decoration-red-600 decoration-2 font-bold italic text-slate-400">BCG Digital Ventures</p>
               <p className="text-base line-through decoration-red-600 decoration-2 font-bold italic text-slate-400">McKinsey &amp; Company</p>
@@ -435,12 +435,12 @@ export default function Home() {
             <div className="pt-6 border-t border-slate-100"><p className="text-sm font-bold italic text-slate-900 tracking-tight">Typical tickets: <span className="text-blue-600">€150k - €1M+</span></p></div>
           </div>
           <div>
-            <h2 className="text-4xl md:text-6xl font-black mb-8 text-slate-900 leading-[1.1] tracking-tighter">Our Customer: <br /><span className="text-blue-600">Medium Sized<br />Global Companies</span></h2>
+            <h2 className="text-4xl md:text-6xl font-black mb-8 text-slate-900 leading-[1.1] tracking-tighter">Our Customers: <br /><span className="text-blue-600">Mid-Sized<br />Global Companies</span></h2>
             <ul className="space-y-6 text-xl text-slate-600 font-medium mb-10">
               <li className="flex items-center gap-4"><span className="w-2 h-2 bg-blue-600 rounded-full flex-shrink-0" />50–500 employees</li>
-              <li className="flex items-center gap-4"><span className="w-2 h-2 bg-blue-600 rounded-full flex-shrink-0" />Ops in different countries / regions</li>
-              <li className="flex items-center gap-4"><span className="w-2 h-2 bg-blue-600 rounded-full flex-shrink-0" />Long Supply Chain dependent</li>
-              <li className="flex items-center gap-4"><span className="w-2 h-2 bg-blue-600 rounded-full flex-shrink-0" />Traditional business</li>
+              <li className="flex items-center gap-4"><span className="w-2 h-2 bg-blue-600 rounded-full flex-shrink-0" />Operations across multiple countries / regions</li>
+              <li className="flex items-center gap-4"><span className="w-2 h-2 bg-blue-600 rounded-full flex-shrink-0" />Dependent on long supply chains</li>
+              <li className="flex items-center gap-4"><span className="w-2 h-2 bg-blue-600 rounded-full flex-shrink-0" />Traditional business models</li>
             </ul>
           </div>
         </div>
@@ -449,11 +449,11 @@ export default function Home() {
       {/* 5. PRICING */}
       <section id="pricing" className="pt-10 pb-40 px-6 bg-white">
         <div className="max-w-7xl mx-auto text-center">
-          <h2 className="text-4xl md:text-5xl font-black mb-20 text-slate-900 uppercase tracking-tighter">What you <span className="text-blue-600">can</span> afford</h2>
+          <h2 className="text-4xl md:text-5xl font-black mb-20 text-slate-900 uppercase tracking-tighter">What <span className="text-blue-600"> we </span> deliver </h2>
           <div className="grid md:grid-cols-3 gap-12 text-left">
             <div className="group border-2 border-slate-100 p-12 rounded-3xl hover:border-blue-600 transition-all duration-500 bg-slate-50/50">
               <div className="flex flex-col gap-4 mb-10"><h3 className="text-2xl font-bold text-slate-900 uppercase">72h Validation Challenge</h3><span className="self-start bg-blue-600 text-white px-4 py-1 rounded-full text-xs font-black italic">€3k – €10k</span></div>
-              <ul className="space-y-4 text-slate-600"><li className="font-bold flex items-start gap-2"><span className="text-blue-600 mt-0.5">→</span> Opportunity Validation: Problem + Executable Solution hypothesis</li><li className="font-bold flex items-start gap-2"><span className="text-blue-600 mt-0.5">→</span> Feasibility Study: Financial overview + Operations forecast</li></ul>
+              <ul className="space-y-4 text-slate-600"><li className="font-bold flex items-start gap-2"><span className="text-blue-600 mt-0.5">→</span> Opportunity Validation: Problem + viable solution hypothesis</li><li className="font-bold flex items-start gap-2"><span className="text-blue-600 mt-0.5">→</span> Feasibility Study: Financial overview + Operational forecast</li></ul>
             </div>
             <div className="group border-2 border-slate-100 p-12 rounded-3xl hover:border-blue-600 transition-all duration-500 bg-slate-50/50 shadow-xl shadow-slate-100">
               <div className="flex flex-col gap-4 mb-10"><h3 className="text-2xl font-bold text-slate-900 uppercase">MVP Stage — 90 days</h3><span className="self-start bg-blue-600 text-white px-4 py-1 rounded-full text-xs font-black italic">€30k – €120k</span></div>
@@ -461,7 +461,7 @@ export default function Home() {
             </div>
             <div className="group border-2 border-slate-100 p-12 rounded-3xl hover:border-blue-600 transition-all duration-500 bg-slate-50/50">
               <div className="flex flex-col gap-4 mb-10"><h3 className="text-2xl font-bold text-slate-900 uppercase">Growth / Scale</h3><span className="self-start bg-slate-900 text-white px-4 py-1 rounded-full text-xs font-black italic">Tailor made</span></div>
-              <ul className="space-y-4 text-slate-600"><li className="font-bold flex items-center gap-2"><span className="text-blue-600">✓</span> Local + Digital operation</li><li className="font-bold flex items-center gap-2"><span className="text-blue-600">✓</span> Success oriented business execution</li><li className="font-bold flex items-center gap-2"><span className="text-blue-600">✓</span> Reduced operational costs</li><li className="font-bold flex items-center gap-2"><span className="text-blue-600">✓</span> Scale faster and better</li></ul>
+              <ul className="space-y-4 text-slate-600"><li className="font-bold flex items-center gap-2"><span className="text-blue-600">✓</span> Local + Digital operations</li><li className="font-bold flex items-center gap-2"><span className="text-blue-600">✓</span> Success oriented business execution</li><li className="font-bold flex items-center gap-2"><span className="text-blue-600">✓</span> Reduced operational costs</li><li className="font-bold flex items-center gap-2"><span className="text-blue-600">✓</span> Faster and better scaling</li></ul>
             </div>
           </div>
         </div>
@@ -471,9 +471,9 @@ export default function Home() {
       <section id="about" className="pt-12 pb-24 px-6 bg-white border-t border-slate-100">
         <div className="max-w-4xl mx-auto">
           <p className="text-blue-600 uppercase tracking-[0.25em] text-[10px] font-black mb-2">About our Team</p>
-          <h2 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter leading-[0.9] uppercase mb-6">High <em className="italic underline decoration-blue-100">Performance execution team</em></h2>
+          <h2 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter leading-[0.9] uppercase mb-6">High <em className="italic underline decoration-blue-100">Performance execution</em></h2>
           <div className="border-l-[3px] border-blue-600 pl-5 bg-slate-50 py-4 pr-5 rounded-r-2xl mb-8">
-            <p className="text-slate-900 font-black italic text-sm leading-relaxed tracking-tight">Built in hight <br /><span className="text-blue-600">pressure environments</span></p>
+            <p className="text-slate-900 font-black italic text-sm leading-relaxed tracking-tight">Forged in hight <br /><span className="text-blue-600">pressure environments</span></p>
           </div>
           <AnimatePresence mode="wait">
             {selected !== null && (
@@ -505,7 +505,8 @@ export default function Home() {
 
       {/* CIERRE */}
       <h2 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter leading-[0.9] uppercase mb-6 text-center py-16 px-6">
-        LETS BUILD THE FUTURE <em className="italic underline decoration-blue-100"> TODAY </em>
+        Understand the past — build what’s next.
+LET'S START <em className="italic underline decoration-blue-100"> TODAY </em>
       </h2>
 
       {/* LATEST INSIGHTS */}

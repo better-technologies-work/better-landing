@@ -1,14 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Se comenta o elimina porque Next.js 15+ ya no acepta esta clave aquí
-  /*
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
-  */
-  
+  allowedDevOrigins: ['192.168.0.9'],
+
   typescript: {
-    // Mantenemos esto para que el despliegue no falle por tipos estrictos
+    
     ignoreBuildErrors: true,
   },
 
