@@ -32,11 +32,11 @@ type BlogPost = {
 }
 
 type Props = {
-  params: Promise <{ id: string }>
+  params: Promise<{ slug: string }>
 }
 
 export default async function BlogPostPage({ params }: Props) {
-  const { id } = await params
+  const { slug } = await params
   let post: BlogPost | null = null
 
   try {
@@ -44,7 +44,7 @@ export default async function BlogPostPage({ params }: Props) {
     const { data, error } = await supabase
       .from('blog_posts')
       .select('*')
-      .eq('id', id)
+      .eq('slug', slug)
       .single()
 
     if (error || !data) {
@@ -124,7 +124,6 @@ export default async function BlogPostPage({ params }: Props) {
           {post.title}
         </h1>
 
-        {/* ── BODY CONTENT ── */}
         <div className="prose prose-slate max-w-none">
           <div
             className="text-slate-700 text-lg leading-relaxed font-medium
@@ -139,26 +138,15 @@ export default async function BlogPostPage({ params }: Props) {
           />
         </div>
 
-        {/* ── MARKDOWN CONTENT ── */}
         {post.content && (
           <div className="prose prose-slate max-w-none mt-8">
             <ReactMarkdown
               components={{
                 a: ({ href, children }) => {
-                  // Handle internal links
                   if (href && href.startsWith('/')) {
-                    return (
-                      <a href={href} className="text-blue-600 hover:underline">
-                        {children}
-                      </a>
-                    );
+                    return <a href={href} className="text-blue-600 hover:underline">{children}</a>;
                   }
-                  // External links
-                  return (
-                    <a href={href} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
-                      {children}
-                    </a>
-                  );
+                  return <a href={href} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">{children}</a>;
                 }
               }}
             >
@@ -167,19 +155,13 @@ export default async function BlogPostPage({ params }: Props) {
           </div>
         )}
 
-        {/* ── LINKS ── */}
         {post.links && post.links.length > 0 && (
           <div className="mt-12 p-4 md:p-6 bg-slate-50 rounded-2xl">
             <h3 className="text-sm font-black uppercase text-slate-900 mb-4 tracking-wider">Links Relacionados</h3>
             <div className="space-y-3">
               {post.links.map((link) => (
-                <a
-                  key={link.id}
-                  href={link.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-3 p-3 bg-white rounded-xl border border-slate-200 hover:border-blue-600 hover:text-blue-600 transition-all group"
-                >
+                <a key={link.id} href={link.url} target="_blank" rel="noopener noreferrer"
+                  className="flex items-center gap-3 p-3 bg-white rounded-xl border border-slate-200 hover:border-blue-600 hover:text-blue-600 transition-all group">
                   <svg className="w-5 h-5 text-slate-400 group-hover:text-blue-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                   </svg>
@@ -190,19 +172,13 @@ export default async function BlogPostPage({ params }: Props) {
           </div>
         )}
 
-        {/* ── DOCUMENTS ── */}
         {post.documents && post.documents.length > 0 && (
           <div className="mt-8 p-4 md:p-6 bg-slate-50 rounded-2xl">
             <h3 className="text-sm font-black uppercase text-slate-900 mb-4 tracking-wider">Documentos Adjuntos</h3>
             <div className="space-y-3">
               {post.documents.map((doc) => (
-                <a
-                  key={doc.id}
-                  href={doc.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-3 p-3 bg-white rounded-xl border border-slate-200 hover:border-blue-600 hover:text-blue-600 transition-all group"
-                >
+                <a key={doc.id} href={doc.url} target="_blank" rel="noopener noreferrer"
+                  className="flex items-center gap-3 p-3 bg-white rounded-xl border border-slate-200 hover:border-blue-600 hover:text-blue-600 transition-all group">
                   <svg className="w-5 h-5 text-slate-400 group-hover:text-blue-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
                   </svg>
@@ -214,7 +190,6 @@ export default async function BlogPostPage({ params }: Props) {
           </div>
         )}
 
-        {/* Back CTA */}
         <div className="mt-16 pt-8 border-t border-slate-100 flex justify-between items-center">
           <a href="/#blog" className="text-[10px] font-black uppercase tracking-widest text-slate-400 hover:text-blue-600 transition-colors">
             ← All posts

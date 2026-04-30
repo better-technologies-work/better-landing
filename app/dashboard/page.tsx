@@ -83,6 +83,7 @@ export default function DashboardPage() {
     author: "Yanina Soto",
     category: "Data",
     post_url: "",
+    slug: "",
   });
 
   useEffect(() => {
@@ -131,7 +132,7 @@ export default function DashboardPage() {
   };
 
   const resetForm = () => {
-    setForm({ title: "", description: "", author: "Yanina Soto", category: "Data", post_url: "" });
+    setForm({ title: "", description: "", author: "Yanina Soto", category: "Data", post_url: "",slug: "", });
     setImageFile(null);
     setPreview(null);
     setLinks([]);
@@ -251,9 +252,10 @@ export default function DashboardPage() {
   author: form.author,
   category: form.category,
   cover_url: finalCoverUrl,
-  slug: editingPost
-    ? editingPost.slug
-    : `${form.title.toLowerCase().replace(/[^a-z0-9]+/g, "-")}-${Date.now()}`,
+  slug: form.slug || form.title.toLowerCase()
+  .replace(/[^a-z0-9\s]+/g, "")
+  .trim()
+  .replace(/\s+/g, "-"),
   published_at: editingPost ? editingPost.published_at : new Date().toISOString(),
   post_url: form.post_url || "",
   links: links.filter(l => l.title && l.url),
@@ -327,6 +329,7 @@ export default function DashboardPage() {
       author: post.author || "Yanina Soto",
       category: post.category || "Data",
       post_url: post.post_url || "",
+      slug: post.slug || "",
     });
     setPreview(post.cover_url || null);
     setLinks(post.links || []);

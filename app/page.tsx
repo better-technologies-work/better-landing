@@ -249,7 +249,7 @@ const ChatSection = () => {
         <p className="text-dark-600 uppercase tracking-[0.2em] text-[10px] mb-4 font-bold">REAL TIME CERTAINTY (RTC)</p>
         <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-12 uppercase tracking-tighter">OUR KITCHEN IS ALWAYS <span className="italic underline decoration-blue-100"> OPEN </span></h2>
         <p className="text-blue-600 uppercase tracking-[0.2em] text-[10px] mb-4 font-bold">The 20th century said the future would be built elsewhere. Today, we see a better alternative. We think differently.</p>
-        <p className="text-dark-600 uppercase tracking-[0.2em] text-[10px] mb-4 font-bold">See for your self - Follow us on Social Media.</p>
+        <p className="text-dark-600 uppercase tracking-[0.2em] text-[10px] mb-4 font-bold">See for yourself - Follow us on Social Media.</p>
         <div className="flex justify-center gap-6 mb-12">
           <a href="https://www.linkedin.com/company/bettertechnologies/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-6 py-3 rounded-full border-2 border-slate-200 text-slate-900 font-black text-[11px] uppercase tracking-widest hover:border-blue-600 hover:text-blue-600 transition-all"><LinkedInIcon /> LinkedIn</a>
           <a href="https://www.instagram.com/better.technologies?igsh=cjQ1c3F4OWpoYWhq" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-6 py-3 rounded-full border-2 border-slate-200 text-slate-900 font-black text-[11px] uppercase tracking-widest hover:border-[#d6249f] hover:text-[#d6249f] transition-all"><InstagramIcon /> Instagram</a>
