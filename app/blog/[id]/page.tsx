@@ -126,15 +126,18 @@ export default async function BlogPostPage({ params }: Props) {
 
         {/* ── BODY CONTENT ── */}
         <div className="prose prose-slate max-w-none">
-  <div 
-    className="text-slate-700 text-lg leading-relaxed font-medium 
-               [&>p]:mb-6 [&>img]:my-10 [&>img]:rounded-3xl [&>img]:shadow-2xl
-               [&>strong]:text-slate-900 [&>strong]:font-black
-               [&>h2]:text-2xl [&>h2]:font-black [&>h2]:mt-8 [&>h2]:mb-4
-               [&_a]:text-blue-600 [&_a]:underline [&_a:hover]:text-blue-800"
-    dangerouslySetInnerHTML={{ __html: decodeHTML(post.description) }} 
-  />
-</div>
+          <div
+            className="text-slate-700 text-lg leading-relaxed font-medium
+                       [&>p]:mb-6 [&>img]:my-10 [&>img]:rounded-3xl [&>img]:shadow-2xl
+                       [&>strong]:text-slate-900 [&>strong]:font-black
+                       [&>h2]:text-2xl [&>h2]:font-black [&>h2]:mt-8 [&>h2]:mb-4
+                       [&_a]:text-blue-600 [&_a]:underline [&_a:hover]:text-blue-800
+                       [&_ul]:list-disc [&_ul]:pl-6 [&_ul]:mb-6 [&_ul]:space-y-2
+                       [&_ol]:list-decimal [&_ol]:pl-6 [&_ol]:mb-6 [&_ol]:space-y-2
+                       [&_li]:text-slate-700"
+            dangerouslySetInnerHTML={{ __html: decodeHTML(post.description) }}
+          />
+        </div>
 
         {/* ── MARKDOWN CONTENT ── */}
         {post.content && (
@@ -170,10 +173,10 @@ export default async function BlogPostPage({ params }: Props) {
             <h3 className="text-sm font-black uppercase text-slate-900 mb-4 tracking-wider">Links Relacionados</h3>
             <div className="space-y-3">
               {post.links.map((link) => (
-                <a 
-                  key={link.id} 
-                  href={link.url} 
-                  target="_blank" 
+                <a
+                  key={link.id}
+                  href={link.url}
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-3 p-3 bg-white rounded-xl border border-slate-200 hover:border-blue-600 hover:text-blue-600 transition-all group"
                 >
@@ -193,10 +196,10 @@ export default async function BlogPostPage({ params }: Props) {
             <h3 className="text-sm font-black uppercase text-slate-900 mb-4 tracking-wider">Documentos Adjuntos</h3>
             <div className="space-y-3">
               {post.documents.map((doc) => (
-                <a 
-                  key={doc.id} 
-                  href={doc.url} 
-                  target="_blank" 
+                <a
+                  key={doc.id}
+                  href={doc.url}
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-3 p-3 bg-white rounded-xl border border-slate-200 hover:border-blue-600 hover:text-blue-600 transition-all group"
                 >

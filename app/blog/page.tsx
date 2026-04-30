@@ -56,7 +56,7 @@ export default function BlogPage() {
   if (loading) {
     return (
       <>
-        <Header showBackButton />
+        <Header />
         <div className="min-h-screen bg-slate-50 text-slate-900 font-sans flex items-center justify-center pt-20">
           <div className="text-center">
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4" />
@@ -70,7 +70,7 @@ export default function BlogPage() {
   if (error) {
     return (
       <>
-        <Header showBackButton />
+        <Header />
         <div className="min-h-screen bg-slate-50 text-slate-900 font-sans flex items-center justify-center pt-20">
           <div className="text-center">
             <p className="text-red-600 mb-4">{error}</p>
@@ -88,7 +88,7 @@ export default function BlogPage() {
 
   return (
     <>
-      <Header showBackButton />
+      <Header />
 
       <div className="min-h-screen bg-slate-50 text-slate-900 font-sans pt-24 pb-16 px-4 md:px-8">
         <div className="max-w-6xl mx-auto">

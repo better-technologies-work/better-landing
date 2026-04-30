@@ -1,7 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
-import Image from "next/image";
+import { useState, useEffect } from "react";
 import { createClient } from "@/lib/supabase/client";
 import { decodeHTML } from "@/lib/utils";
 import dynamicImport from 'next/dynamic';
@@ -98,7 +97,7 @@ export default function DashboardPage() {
       console.log('Supabase client created:', !!client);
       const { data, error } = await client
         .from('blog_posts')
-        .select('*')
+        .select('id,title,description,post_url,cover_url,category,slug,published_at,author,links,documents')
         .order('published_at', { ascending: false });
       
       if (error) {
@@ -119,8 +118,8 @@ export default function DashboardPage() {
       const client = createClient();
       const { data } = await client
         .from('blog_posts')
-        .select('*')
-        .ilike('category', 'actualidad')
+        .select('id,title,description,post_url,cover_url,category,slug,published_at,author')
+        .eq('category', 'Actualidad')
         .order('published_at', { ascending: false });
       
       if (data) setNewsPosts(data);
@@ -246,7 +245,7 @@ export default function DashboardPage() {
         }
 
         // 3.  datos del post
-        const postData: any = {
+        const postData = {
   title: form.title,
   description: form.description,
   author: form.author,
@@ -283,29 +282,28 @@ export default function DashboardPage() {
         loadPosts();
         setActiveTab('manage');
         setTimeout(() => setSuccess(false), 3000);
-      } catch (innerErr: any) {
+      } catch (innerErr: unknown) {
         // Safely extract error message
         let errorMessage = 'Error al publicar el post';
         
         console.error('=== ERROR SUBMISSION ===');
         console.error('Raw error:', innerErr);
-        console.error('Error constructor:', innerErr?.constructor?.name);
-        console.error('Error message property:', innerErr?.message);
         
-        if (innerErr) {
-          // Try to get the message in various ways
-          if (typeof innerErr === 'string') {
-            errorMessage = innerErr;
-          } else if (innerErr.message) {
-            errorMessage = String(innerErr.message);
-          } else if (innerErr.error?.message) {
-            errorMessage = String(innerErr.error.message);
-          } else if (innerErr.error_description) {
-            errorMessage = String(innerErr.error_description);
+        if (typeof innerErr === 'string') {
+          errorMessage = innerErr;
+        } else if (innerErr instanceof Error) {
+          errorMessage = innerErr.message;
+          console.error('Error constructor:', innerErr.constructor.name);
+        } else if (typeof innerErr === 'object' && innerErr !== null) {
+          const errObj = innerErr as Record<string, unknown>;
+          const errorField = (errObj as { error?: unknown }).error;
+          if (typeof errorField === 'object' && errorField !== null && typeof (errorField as { message?: unknown }).message === 'string') {
+            errorMessage = (errorField as { message: string }).message;
+          } else if (typeof errObj.error_description === 'string') {
+            errorMessage = errObj.error_description;
           } else {
-            // Last resort: try JSON stringify
             try {
-              errorMessage = 'Error: ' + JSON.stringify(innerErr);
+              errorMessage = 'Error: ' + JSON.stringify(errObj);
             } catch {
               errorMessage = 'Error: Unknown error occurred';
             }
@@ -345,14 +343,15 @@ export default function DashboardPage() {
       const { error } = await client.from("blog_posts").delete().eq("id", postId);
       if (error) throw error;
       loadPosts();
-    } catch (err: any) {
-      setErrorMsg(err.message);
+    } catch (err: unknown) {
+      const errorMessage = err instanceof Error ? err.message : String(err);
+      setErrorMsg(errorMessage);
     }
   };
 
   const handleNewsSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setLoading(true);
+    setLoadingNews(true);
     setErrorMsg(null);
 
     try {
@@ -373,14 +372,14 @@ export default function DashboardPage() {
       }
 
       // 2. Preparar datos del post (News siempre tiene categoría "Actualidad")
-      const postData: any = {
+      const postData = {
         title: newsForm.title,
         description: newsForm.description,
         author: newsForm.author,
         category: "Actualidad",
         cover_url: finalCoverUrl,
-        slug: `${newsForm.title.toLowerCase().replace(/[^a-z0-9]+/g, "-")}-${Date.now()}`,
-        published_at: new Date().toISOString(),
+        slug: editingNews?.slug || `${newsForm.title.toLowerCase().replace(/[^a-z0-9]+/g, "-")}-${Date.now()}`,
+        published_at: editingNews?.published_at || new Date().toISOString(),
         post_url: newsForm.post_url || "",
       };
 
@@ -403,11 +402,12 @@ export default function DashboardPage() {
       loadNews();
       setTimeout(() => setSuccess(false), 3000);
 
-    } catch (err: any) {
+    } catch (err: unknown) {
       console.error('Error submitting news:', err);
-      setErrorMsg(err.message || 'Error al publicar la news');
+      const errorMessage = err instanceof Error ? err.message : 'Error al publicar la news';
+      setErrorMsg(errorMessage);
     } finally {
-      setLoading(false);
+      setLoadingNews(false);
     }
   };
 
@@ -432,8 +432,9 @@ export default function DashboardPage() {
       const { error } = await client.from("blog_posts").delete().eq("id", postId);
       if (error) throw error;
       loadNews();
-    } catch (err: any) {
-      setErrorMsg(err.message);
+    } catch (err: unknown) {
+      const errorMessage = err instanceof Error ? err.message : String(err);
+      setErrorMsg(errorMessage);
     }
   };
 
@@ -503,7 +504,6 @@ export default function DashboardPage() {
               <div className="space-y-2">
                 <label className="text-[10px] font-black uppercase text-slate-400 tracking-widest">Content (Pega imágenes, tablas, texto con formato)</label>
                 <div className="border-2 border-slate-100 rounded-2xl overflow-hidden bg-white">
-                  {/* @ts-ignore */}
                   <ReactQuill 
                     theme="snow" 
                     value={form.description} 
