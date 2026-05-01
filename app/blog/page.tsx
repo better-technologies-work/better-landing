@@ -109,7 +109,7 @@ export default function BlogPage() {
               {posts.map((post: BlogPost) => (
                 <a
                   key={post.id}
-                  href={post.post_url && post.post_url.startsWith('http') ? post.post_url : `/blog/${post.id}`}
+                  href={post.post_url && post.post_url.startsWith('http') ? post.post_url : `/blog/${post.slug}`}
                   target={post.post_url && post.post_url.startsWith('http') ? '_blank' : '_self'}
                   rel="noopener noreferrer"
                   className="group border border-slate-200 rounded-2xl md:rounded-3xl overflow-hidden bg-white hover:shadow-2xl transition-all duration-300 flex flex-col"

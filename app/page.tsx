@@ -524,7 +524,7 @@ LET'S START <em className="italic underline decoration-blue-100"> TODAY </em>
                   </div>
                   <h3 className="font-black text-lg mb-3 uppercase text-slate-900 line-clamp-2">{post.title}</h3>
                   <p className="text-slate-500 text-sm mb-6 line-clamp-3">{(() => { const raw = post.description?.replace(/<[^>]*>?/gm, '') || 'No description available'; const txt = document.createElement('textarea'); txt.innerHTML = raw; return txt.value; })()}</p>
-                  <a href={`/blog/${post.id}`} className="text-blue-600 font-black text-[10px] uppercase tracking-widest hover:text-slate-900 transition-colors">Read More →</a>
+                  <a href={`/blog/${post.slug}`} className="text-blue-600 font-black text-[10px] uppercase tracking-widest hover:text-slate-900 transition-colors">Read More →</a>
                 </div>
               ))}
             </div>
