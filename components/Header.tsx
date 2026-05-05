@@ -12,7 +12,7 @@ type HeaderProps = {
 };
 
 const LANG_OPTIONS = [
-  { code: "en" as const, label: "EN", flagSrc: "https://flagcdn.com/w160/de.png", flagAlt: "Alemania — idioma inglés" },
+  { code: "en" as const, label: "DE", flagSrc: "https://flagcdn.com/w160/de.png", flagAlt: "Alemania — idioma inglés" },
   { code: "es" as const, label: "ES", flagSrc: "https://flagcdn.com/w160/es.png", flagAlt: "España — idioma español" },
 ];
 
@@ -158,7 +158,7 @@ export default function Header({ showBackButton = false }: HeaderProps) {
             ))}
           </nav>
 
-          {/* Mobile hamburger - Movido antes del Dropdown para que quede a la izquierda de la bandera */}
+          {/* Mobile hamburger  */}
           <button
             type="button"
             onClick={() => setIsOpen(!isOpen)}
@@ -170,7 +170,7 @@ export default function Header({ showBackButton = false }: HeaderProps) {
             <div className={`w-7 h-[2px] bg-white transition-all duration-300 ${isOpen ? "-rotate-45 -translate-y-2" : ""}`} />
           </button>
 
-          {/* Language Selector - Ahora aparece después de la hamburguesa en móvil */}
+          
           <div className="flex items-center md:border-l md:border-white/20 md:ml-1 md:pl-4">
             <SquareLanguageDropdown locale={locale} onSelect={(code) => handleLanguageChange(code)} />
           </div>
