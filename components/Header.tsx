@@ -1,8 +1,8 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, ChevronDown } from "lucide-react";
 import { useRouter, usePathname } from "next/navigation";
 import { useLocale } from "next-intl";
 import { useTranslations } from "next-intl";
@@ -11,12 +11,96 @@ type HeaderProps = {
   showBackButton?: boolean;
 };
 
+const LANG_OPTIONS = [
+  { code: "en" as const, label: "EN", flagSrc: "https://flagcdn.com/w160/de.png", flagAlt: "Alemania — idioma inglés" },
+  { code: "es" as const, label: "ES", flagSrc: "https://flagcdn.com/w160/es.png", flagAlt: "España — idioma español" },
+];
+
+function SquareLanguageDropdown({
+  locale,
+  onSelect,
+}: {
+  locale: string;
+  onSelect: (code: string) => void;
+}) {
+  const [open, setOpen] = useState(false);
+  const rootRef = useRef<HTMLDivElement>(null);
+  const current = LANG_OPTIONS.find((l) => l.code === locale) ?? LANG_OPTIONS[0];
+  const other = LANG_OPTIONS.filter((l) => l.code !== locale);
+
+  useEffect(() => {
+    if (!open) return;
+    const close = (e: MouseEvent) => {
+      if (rootRef.current && !rootRef.current.contains(e.target as Node)) setOpen(false);
+    };
+    document.addEventListener("mousedown", close);
+    return () => document.removeEventListener("mousedown", close);
+  }, [open]);
+
+  return (
+    <div className="relative z-[120]" ref={rootRef}>
+      <button
+        type="button"
+        onClick={() => setOpen((v) => !v)}
+        className={`flex items-center gap-2 rounded-[3px] border bg-white/10 px-1.5 py-1 shadow-inner transition-all ${
+          open
+            ? "border-blue-400 ring-[3px] ring-blue-400 ring-offset-[3px] ring-offset-neutral-950"
+            : "border-white/55 ring-[3px] ring-blue-500/90 ring-offset-[3px] ring-offset-neutral-950"
+        }`}
+        aria-expanded={open}
+        aria-haspopup="listbox"
+        aria-label="Seleccionar idioma"
+      >
+        <span className="relative flex h-8 w-8 shrink-0 overflow-hidden rounded-[3px] border border-white/40 bg-neutral-900 shadow-sm">
+          <img src={current.flagSrc} alt={current.flagAlt} width={64} height={64} className="h-full w-full object-cover" />
+        </span>
+        <span className="pr-1 text-[11px] font-black tracking-widest text-white">{current.label}</span>
+        <ChevronDown className={`h-4 w-4 shrink-0 text-white transition-transform ${open ? "rotate-180" : ""}`} />
+      </button>
+
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ opacity: 0, y: -6 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -6 }}
+            transition={{ duration: 0.15 }}
+            className="absolute right-0 top-[calc(100%+4px)] z-[130] min-w-[9.75rem] overflow-hidden rounded-[3px] border border-white/30 bg-neutral-950 py-1 shadow-xl"
+            role="listbox"
+          >
+            {other.map((opt) => (
+              <button
+                key={opt.code}
+                type="button"
+                role="option"
+                aria-selected={false}
+                onClick={() => {
+                  onSelect(opt.code);
+                  setOpen(false);
+                }}
+                className="flex w-full items-center gap-2 px-2 py-2 text-left hover:bg-blue-900/40"
+              >
+                <span className="relative flex h-8 w-8 shrink-0 overflow-hidden rounded-[3px] border border-white/35 bg-neutral-900">
+                  <img src={opt.flagSrc} alt={opt.flagAlt} width={64} height={64} className="h-full w-full object-cover" />
+                </span>
+                <span className="text-[11px] font-black tracking-widest text-white">{opt.label}</span>
+              </button>
+            ))}
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+}
+
 export default function Header({ showBackButton = false }: HeaderProps) {
   const [isOpen, setIsOpen] = useState(false);
-  const locale = useLocale();
+  const pathname = usePathname();
+  const localeFromPath = pathname.match(/^\/(en|es)(?=\/|$)/)?.[1];
+  const localeIntl = useLocale();
+  const locale = localeFromPath === "es" || localeFromPath === "en" ? localeFromPath : localeIntl;
   const t = useTranslations("Header");
   const router = useRouter();
-  const pathname = usePathname();
   const menuItems = [
     { name: t("home"), href: `/${locale}` },
     { name: t("whatWeAre"), href: `/${locale}/#what-we-are` },
@@ -75,39 +159,8 @@ export default function Header({ showBackButton = false }: HeaderProps) {
 
         </nav>
 
-        <div className="flex items-center gap-2 md:gap-3 md:border-l md:border-white/20 md:ml-1 md:pl-4">
-          <button
-            onClick={() => handleLanguageChange("en")}
-            className={`h-10 px-2 md:h-11 md:px-3 rounded-full border border-white/40 bg-white/10 flex items-center justify-center gap-1.5 text-xl md:text-2xl transition-all ${
-              locale === "en"
-                ? "grayscale-0 opacity-100 ring-2 ring-blue-400"
-                : "grayscale opacity-70 hover:opacity-100"
-            }`}
-            aria-label="Cambiar a inglés"
-          >
-            <img
-              src="https://flagcdn.com/w40/de.png"
-              alt="Bandera de Alemania"
-              className="h-4 w-6 rounded-sm object-cover"
-            />
-            <span className="text-[10px] md:text-xs font-black tracking-widest text-white">EN</span>
-          </button>
-          <button
-            onClick={() => handleLanguageChange("es")}
-            className={`h-10 px-2 md:h-11 md:px-3 rounded-full border border-white/40 bg-white/10 flex items-center justify-center gap-1.5 text-xl md:text-2xl transition-all ${
-              locale === "es"
-                ? "grayscale-0 opacity-100 ring-2 ring-blue-400"
-                : "grayscale opacity-70 hover:opacity-100"
-            }`}
-            aria-label="Cambiar a español"
-          >
-            <img
-              src="https://flagcdn.com/w40/es.png"
-              alt="Bandera de España"
-              className="h-4 w-6 rounded-sm object-cover"
-            />
-            <span className="text-[10px] md:text-xs font-black tracking-widest text-white">ES</span>
-          </button>
+        <div className="flex items-center md:border-l md:border-white/20 md:ml-1 md:pl-4">
+          <SquareLanguageDropdown locale={locale} onSelect={(code) => handleLanguageChange(code)} />
         </div>
 
         {/* Mobile hamburger - Ahora no chocará con las banderas */}
@@ -153,10 +206,8 @@ export default function Header({ showBackButton = false }: HeaderProps) {
                 {item.name}
               </a>
             ))}
-            {/* Banderas Mobile */}
-            <div className="mt-8 flex gap-8 scale-150 border-t border-white/10 pt-8 w-1/2 justify-center">
-               <button onClick={() => handleLanguageChange("en")} className={locale === "en" ? "grayscale-0" : "grayscale opacity-40"}>🇩🇪</button>
-               <button onClick={() => handleLanguageChange("es")} className={locale === "es" ? "grayscale-0" : "grayscale opacity-40"}>🇪🇸</button>
+            <div className="mt-8 flex justify-center border-t border-white/10 pt-8 w-full">
+              <SquareLanguageDropdown locale={locale} onSelect={(code) => handleLanguageChange(code)} />
             </div>
           </motion.div>
         )}

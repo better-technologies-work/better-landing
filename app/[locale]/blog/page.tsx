@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react'
 import { createClient } from '@/lib/supabase/client'
 import Header from '../../../components/Header'
-import { useLocale } from 'next-intl'
+import { usePathname } from 'next/navigation'
 
 type BlogPost = {
   id: string
@@ -16,7 +16,9 @@ type BlogPost = {
 }
 
 export default function BlogPage() {
-  const locale = useLocale()
+  const pathname = usePathname()
+  const localePrefix = pathname.match(/^\/(en|es)(?=\/|$)/)?.[1]
+  const locale = localePrefix === 'es' ? 'es' : 'en'
   const [posts, setPosts] = useState<BlogPost[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
@@ -59,7 +61,7 @@ export default function BlogPage() {
     }
 
     loadPosts()
-  }, [])
+  }, [locale])
 
   if (loading) {
     return (
@@ -104,10 +106,22 @@ export default function BlogPage() {
           {/* Page header */}
           <header className="mb-8 md:mb-16 text-center">
             <p className="text-blue-600 uppercase tracking-[0.25em] text-[10px] font-black mb-4">
-              {locale === 'es' ? 'Insight de Better Technologies' : 'Better Technologies Insight'}
+              {locale === 'es'
+                ? 'Insights de Better Technologies'
+                : 'Better Technologies Insight'}
             </p>
             <h1 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter uppercase leading-none">
-              Better <em className="italic underline decoration-blue-100">{locale === 'es' ? 'Blog' : 'Blog'}</em>
+              {locale === 'es' ? (
+                <>
+                  Better Technologies{' '}
+                  <em className="italic underline decoration-blue-100">Blog</em>
+                </>
+              ) : (
+                <>
+                  Better{' '}
+                  <em className="italic underline decoration-blue-100">Blog</em>
+                </>
+              )}
             </h1>
           </header>
 
