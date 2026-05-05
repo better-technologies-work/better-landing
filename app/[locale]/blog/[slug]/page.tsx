@@ -32,11 +32,12 @@ type BlogPost = {
 }
 
 type Props = {
-  params: Promise<{ slug: string }>
+  params: Promise<{ slug: string; locale: string }>
 }
 
 export default async function BlogPostPage({ params }: Props) {
-  const { slug } = await params
+  const { slug, locale } = await params
+  const isEs = locale === 'es'
   let post: BlogPost | null = null
 
   try {
@@ -53,14 +54,14 @@ export default async function BlogPostPage({ params }: Props) {
       post = data
     }
   } catch (err) {
-    const message = err instanceof Error ? err.message : 'Unexpected error loading the post.'
+    const message = err instanceof Error ? err.message : isEs ? 'Error inesperado cargando el post.' : 'Unexpected error loading the post.'
     return (
       <main className="min-h-screen bg-white flex items-center justify-center p-8">
         <div className="text-center max-w-xl rounded-3xl border border-slate-200 bg-slate-50 p-10 shadow-sm">
-          <h1 className="text-4xl font-black text-slate-900 mb-4">Unable to load post</h1>
+          <h1 className="text-4xl font-black text-slate-900 mb-4">{isEs ? 'No se pudo cargar el post' : 'Unable to load post'}</h1>
           <p className="text-slate-600 mb-8">{message}</p>
-          <a href="/blog" className="inline-block px-6 py-3 bg-blue-600 text-white rounded-full font-bold hover:bg-blue-700 transition-colors">
-            ← Back to Blog
+          <a href={`/${locale}/blog`} className="inline-block px-6 py-3 bg-blue-600 text-white rounded-full font-bold hover:bg-blue-700 transition-colors">
+            {isEs ? '← Volver al Blog' : '← Back to Blog'}
           </a>
         </div>
       </main>
@@ -71,10 +72,10 @@ export default async function BlogPostPage({ params }: Props) {
     return (
       <main className="min-h-screen bg-white flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-4xl font-black text-slate-900 mb-4">Post Not Found</h1>
-          <p className="text-slate-600 mb-8">The post you're looking for doesn't exist.</p>
-          <a href="/blog" className="inline-block px-6 py-3 bg-blue-600 text-white rounded-full font-bold hover:bg-blue-700 transition-colors">
-            ← Back to Blog
+          <h1 className="text-4xl font-black text-slate-900 mb-4">{isEs ? 'Post no encontrado' : 'Post Not Found'}</h1>
+          <p className="text-slate-600 mb-8">{isEs ? 'El post que buscas no existe.' : "The post you're looking for doesn't exist."}</p>
+          <a href={`/${locale}/blog`} className="inline-block px-6 py-3 bg-blue-600 text-white rounded-full font-bold hover:bg-blue-700 transition-colors">
+            {isEs ? '← Volver al Blog' : '← Back to Blog'}
           </a>
         </div>
       </main>
@@ -88,8 +89,8 @@ export default async function BlogPostPage({ params }: Props) {
         <div className="relative w-[100px] md:w-[140px] h-[30px] md:h-[40px]">
           <Image src="/logo.png" alt="Better Technologies" fill sizes="140px" className="object-contain" priority />
         </div>
-        <a href="/#blog" className="text-white text-[8px] md:text-[10px] font-black uppercase tracking-widest hover:text-blue-600 transition-colors">
-          ← Back
+        <a href={`/${locale}/#blog`} className="text-white text-[8px] md:text-[10px] font-black uppercase tracking-widest hover:text-blue-600 transition-colors">
+          {isEs ? '← Volver' : '← Back'}
         </a>
       </header>
 
@@ -99,7 +100,7 @@ export default async function BlogPostPage({ params }: Props) {
           <img src={post.cover_url} alt={post.title} className="w-full h-full object-cover" />
         ) : (
           <div className="w-full h-full bg-slate-100 flex items-center justify-center">
-            <span className="text-slate-300 text-[10px] font-black uppercase tracking-widest">No Cover Image</span>
+            <span className="text-slate-300 text-[10px] font-black uppercase tracking-widest">{isEs ? 'Sin imagen de portada' : 'No Cover Image'}</span>
           </div>
         )}
         <div className="absolute inset-0 bg-gradient-to-t from-white via-white/20 to-transparent" />
@@ -116,7 +117,7 @@ export default async function BlogPostPage({ params }: Props) {
           <span className="text-[10px] font-black uppercase tracking-widest text-slate-400">{post.author}</span>
           <span className="text-slate-200 font-black">·</span>
           <span className="text-[10px] font-black uppercase tracking-widest text-slate-400">
-            {new Date(post.published_at).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
+            {new Date(post.published_at).toLocaleDateString(isEs ? 'es-ES' : 'en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
           </span>
         </div>
 
@@ -157,7 +158,7 @@ export default async function BlogPostPage({ params }: Props) {
 
         {post.links && post.links.length > 0 && (
           <div className="mt-12 p-4 md:p-6 bg-slate-50 rounded-2xl">
-            <h3 className="text-sm font-black uppercase text-slate-900 mb-4 tracking-wider">Links Relacionados</h3>
+            <h3 className="text-sm font-black uppercase text-slate-900 mb-4 tracking-wider">{isEs ? 'Links relacionados' : 'Related links'}</h3>
             <div className="space-y-3">
               {post.links.map((link) => (
                 <a key={link.id} href={link.url} target="_blank" rel="noopener noreferrer"
@@ -174,7 +175,7 @@ export default async function BlogPostPage({ params }: Props) {
 
         {post.documents && post.documents.length > 0 && (
           <div className="mt-8 p-4 md:p-6 bg-slate-50 rounded-2xl">
-            <h3 className="text-sm font-black uppercase text-slate-900 mb-4 tracking-wider">Documentos Adjuntos</h3>
+            <h3 className="text-sm font-black uppercase text-slate-900 mb-4 tracking-wider">{isEs ? 'Documentos adjuntos' : 'Attached documents'}</h3>
             <div className="space-y-3">
               {post.documents.map((doc) => (
                 <a key={doc.id} href={doc.url} target="_blank" rel="noopener noreferrer"
@@ -183,7 +184,7 @@ export default async function BlogPostPage({ params }: Props) {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
                   </svg>
                   <span className="text-sm font-bold truncate">{doc.name}</span>
-                  <span className="text-[10px] text-slate-400 uppercase ml-auto hidden md:inline">{doc.type?.split('/')[1] || 'file'}</span>
+                  <span className="text-[10px] text-slate-400 uppercase ml-auto hidden md:inline">{doc.type?.split('/')[1] || (isEs ? 'archivo' : 'file')}</span>
                 </a>
               ))}
             </div>
@@ -191,11 +192,11 @@ export default async function BlogPostPage({ params }: Props) {
         )}
 
         <div className="mt-16 pt-8 border-t border-slate-100 flex justify-between items-center">
-          <a href="/#blog" className="text-[10px] font-black uppercase tracking-widest text-slate-400 hover:text-blue-600 transition-colors">
-            ← All posts
+          <a href={`/${locale}/#blog`} className="text-[10px] font-black uppercase tracking-widest text-slate-400 hover:text-blue-600 transition-colors">
+            {isEs ? '← Todos los posts' : '← All posts'}
           </a>
-          <a href="/#about" className="text-[10px] font-black uppercase tracking-widest text-blue-600 hover:underline">
-            Meet the team →
+          <a href={`/${locale}/#about`} className="text-[10px] font-black uppercase tracking-widest text-blue-600 hover:underline">
+            {isEs ? 'Conoce al equipo →' : 'Meet the team →'}
           </a>
         </div>
       </article>

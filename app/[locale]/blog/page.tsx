@@ -1,7 +1,8 @@
 'use client'
 import { useState, useEffect } from 'react'
 import { createClient } from '@/lib/supabase/client'
-import Header from '../../components/Header'
+import Header from '../../../components/Header'
+import { useLocale } from 'next-intl'
 
 type BlogPost = {
   id: string
@@ -15,6 +16,7 @@ type BlogPost = {
 }
 
 export default function BlogPage() {
+  const locale = useLocale()
   const [posts, setPosts] = useState<BlogPost[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
@@ -22,7 +24,11 @@ export default function BlogPage() {
   useEffect(() => {
     const loadPosts = async () => {
       if (!process.env.NEXT_PUBLIC_SUPABASE_URL || !process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY) {
-        setError('Supabase is not configured. Please set NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY.')
+        setError(
+          locale === 'es'
+            ? 'Supabase no esta configurado. Define NEXT_PUBLIC_SUPABASE_URL y NEXT_PUBLIC_SUPABASE_ANON_KEY.'
+            : 'Supabase is not configured. Please set NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY.'
+        )
         setLoading(false)
         return
       }
@@ -43,7 +49,9 @@ export default function BlogPage() {
         setError(
           err instanceof Error
             ? err.message
-            : 'Unable to load blog posts at this time.'
+            : locale === 'es'
+              ? 'No se pudieron cargar los posts del blog en este momento.'
+              : 'Unable to load blog posts at this time.'
         )
       } finally {
         setLoading(false)
@@ -60,7 +68,7 @@ export default function BlogPage() {
         <div className="min-h-screen bg-slate-50 text-slate-900 font-sans flex items-center justify-center pt-20">
           <div className="text-center">
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4" />
-            <p className="text-slate-500">Loading posts...</p>
+            <p className="text-slate-500">{locale === 'es' ? 'Cargando posts...' : 'Loading posts...'}</p>
           </div>
         </div>
       </>
@@ -78,7 +86,7 @@ export default function BlogPage() {
               onClick={() => window.location.reload()}
               className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-500 transition-colors"
             >
-              Retry
+              {locale === 'es' ? 'Reintentar' : 'Retry'}
             </button>
           </div>
         </div>
@@ -96,10 +104,10 @@ export default function BlogPage() {
           {/* Page header */}
           <header className="mb-8 md:mb-16 text-center">
             <p className="text-blue-600 uppercase tracking-[0.25em] text-[10px] font-black mb-4">
-              Better Technologies Insight
+              {locale === 'es' ? 'Insight de Better Technologies' : 'Better Technologies Insight'}
             </p>
             <h1 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter uppercase leading-none">
-              Better <em className="italic underline decoration-blue-100">Blog</em>
+              Better <em className="italic underline decoration-blue-100">{locale === 'es' ? 'Blog' : 'Blog'}</em>
             </h1>
           </header>
 
@@ -109,7 +117,7 @@ export default function BlogPage() {
               {posts.map((post: BlogPost) => (
                 <a
                   key={post.id}
-                  href={post.post_url && post.post_url.startsWith('http') ? post.post_url : `/blog/${post.slug}`}
+                  href={post.post_url && post.post_url.startsWith('http') ? post.post_url : `/${locale}/blog/${post.slug}`}
                   target={post.post_url && post.post_url.startsWith('http') ? '_blank' : '_self'}
                   rel="noopener noreferrer"
                   className="group border border-slate-200 rounded-2xl md:rounded-3xl overflow-hidden bg-white hover:shadow-2xl transition-all duration-300 flex flex-col"
@@ -121,7 +129,7 @@ export default function BlogPage() {
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                     />
                     <div className="absolute top-4 left-4 bg-blue-600 text-white text-[10px] font-black px-2 py-1 rounded-md uppercase">
-                      {post.category || 'Global'}
+                      {post.category || (locale === 'es' ? 'Global' : 'Global')}
                     </div>
                   </div>
 
@@ -131,12 +139,12 @@ export default function BlogPage() {
                     </h2>
                     <p
                       className="text-slate-500 text-sm line-clamp-2 md:line-clamp-3 mb-4 md:mb-6 flex-1"
-                      dangerouslySetInnerHTML={{ __html: post.description || 'No description available' }}
+                      dangerouslySetInnerHTML={{ __html: post.description || (locale === 'es' ? 'No hay descripción disponible' : 'No description available') }}
                     />
                     <div className="pt-3 md:pt-4 border-t border-slate-200 flex justify-between items-center">
-                      <span className="text-xs font-bold text-slate-500 uppercase">Read more →</span>
+                      <span className="text-xs font-bold text-slate-500 uppercase">{locale === 'es' ? 'Leer más →' : 'Read more →'}</span>
                       <span className="text-[10px] text-slate-400">
-                        {new Date(post.published_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+                        {new Date(post.published_at).toLocaleDateString(locale === 'es' ? 'es-ES' : 'en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
                       </span>
                     </div>
                   </div>
@@ -145,7 +153,7 @@ export default function BlogPage() {
             </div>
           ) : (
             <div className="py-24 text-center">
-              <p className="text-slate-400 text-sm font-bold uppercase tracking-widest">No posts available yet.</p>
+              <p className="text-slate-400 text-sm font-bold uppercase tracking-widest">{locale === 'es' ? 'No hay posts todavía.' : 'No posts available yet.'}</p>
             </div>
           )}
         </div>

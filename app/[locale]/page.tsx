@@ -4,7 +4,11 @@ import Image from "next/image";
 import { motion, AnimatePresence } from 'framer-motion';
 import { createClient } from '@/lib/supabase/client'
 import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
-import Header from "../components/Header";
+import Header from "@/components/Header";
+import { useLocale } from 'next-intl'; 
+import { useTranslations } from 'next-intl';
+
+
 
 const team = [
   {
@@ -49,6 +53,49 @@ const team = [
   },
 ];
 
+const teamEs = [
+  {
+    name: "Diego Vargas",
+    role: "Chief Business Engineering Operator",
+    desc: "La mente detras del framework de 72h. Diego construyo Better Technologies desde una conviccion: la innovacion real no necesita presupuestos millonarios, necesita ejecucion implacable. Lidera la vision, el equipo y cada sprint desde el dia uno.",
+    initials: "DV",
+    photo: "/diego.jpeg",
+    linkedin: "https://www.linkedin.com/in/diegoe-vargas/",
+  },
+  {
+    name: "Charlotte Gotz",
+    role: "Organic Growth Chief Developer",
+    desc: "Charlotte convierte ideas audaces en movimientos de mercado. Con una mirada precisa para el posicionamiento y un enfoque guiado por datos, garantiza que cada producto no solo funcione: se note, se adopte y se recuerde.",
+    initials: "CG",
+    photo: "/charlotte.jpeg",
+    linkedin: "https://www.linkedin.com/in/charlotte-goetz-public/",
+  },
+  {
+    name: "Ezequiel Alonso",
+    role: "Backend & Infrastructure Chief Engineer",
+    desc: "Ezequiel es la sala de maquinas de cada producto que lanzamos. Arquitecta sistemas escalables listos para produccion a velocidad startup, escribiendo codigo limpio, rapido y confiable para hacer posible lo que parece imposible en 72h.",
+    initials: "EA",
+    photo: "/ezequiel.jpeg",
+    linkedin: "https://linkedin.com/",
+  },
+  {
+    name: "Victor Menendez",
+    role: "UX & Frontend Chief Developer",
+    desc: "Victor es quien lo vuelve hermoso y rapido. Disena interfaces intuitivas, pulidas y listas para usuarios reales desde el primer sprint. No solo construye UIs, construye experiencias.",
+    initials: "VM",
+    photo: "/victor.jpeg",
+    linkedin: "https://www.linkedin.com/in/demenezesvictor/",
+  },
+  {
+    name: "Yanina Soto",
+    role: "Data Science Chief Operator",
+    desc: "Yanina habla el lenguaje de los datos con fluidez y lo traduce en decisiones que importan. Extrae senal del ruido, incorpora inteligencia a cada producto y asegura que lo que lanzamos no solo funcione: sea inteligente.",
+    initials: "YS",
+    photo: "/Yanina.jpeg",
+    linkedin: "https://www.linkedin.com/in/yanina-soto/",
+  },
+];
+
 // ─── BELAND SCREENSHOTS ─
 const belandScreenshots = [
   { src: "/home1.jpeg",      alt: "Main Home",    title: "Home",                    text: "Main dashboard where you can track your wallet, accounts, and overall impact." },
@@ -59,6 +106,17 @@ const belandScreenshots = [
   { src: "/carrito2.jpeg",   alt: "Cart",         title: "Delivery with Purpose",   text: "Every delivery fuels a network built on circular impact and sustainability." },
   { src: "/impacto.jpeg",    alt: "Impact",       title: "Your Impact",             text: "Track recycled kilograms, liters of water saved, and Becoins earned." },
   { src: "/ordenes.jpeg",    alt: "Orders",       title: "My Orders",               text: "View and manage your active or completed purchases." },
+];
+
+const belandScreenshotsEs = [
+  { src: "/home1.jpeg", alt: "Inicio", title: "Inicio", text: "Panel principal para seguir tu billetera, cuentas e impacto general." },
+  { src: "/registrate.jpeg", alt: "Registro", title: "Unete a la App", text: "Registrate, explora, participa y transforma tu consumo en accion con sentido." },
+  { src: "/home.jpeg", alt: "Acceso", title: "Comienza a explorar", text: "Recarga saldo, compra productos, recibelos y convierte habitos en impacto." },
+  { src: "/mismonedas.jpeg", alt: "Billetera", title: "Recarga y compra", text: "Transacciones fluidas pensadas para generar valor social y ambiental." },
+  { src: "/grupos.jpeg", alt: "Grupos", title: "Crea o unete a comunidades", text: "Unete a grupos existentes o crea el tuyo para organizar eventos de economia circular." },
+  { src: "/carrito2.jpeg", alt: "Carrito", title: "Entregas con proposito", text: "Cada entrega impulsa una red basada en impacto circular y sostenibilidad." },
+  { src: "/impacto.jpeg", alt: "Impacto", title: "Tu impacto", text: "Sigue kilos reciclados, litros de agua ahorrados y Becoins ganados." },
+  { src: "/ordenes.jpeg", alt: "Ordenes", title: "Mis ordenes", text: "Visualiza y gestiona compras activas o completadas." },
 ];
 
 const belandTags = ["React Native", "Payments", "Delivery", "Circular Economy"];
@@ -104,6 +162,8 @@ const Avatar = ({ member }: { member: (typeof team)[0] }) => {
 
 // ─── NEWS SECTION ───────
 const NewsSection = () => {
+  const locale = useLocale();
+  const isEs = locale === "es";
   const [loading, setLoading]       = useState(true);
   const [articles, setArticles]     = useState<any[]>([]);
   const [newsError, setNewsError]   = useState<string | null>(null);
@@ -161,15 +221,15 @@ const NewsSection = () => {
   const goToPrevious = () => setCurrentIndex((p) => (p === 0 ? articles.length - 1 : p - 1));
   const goToNext     = () => setCurrentIndex((p) => (p === articles.length - 1 ? 0 : p + 1));
 
-  if (loading) return <div className="py-20 text-center text-slate-400 uppercase tracking-widest text-[10px] font-bold">Loading Intelligence Feed...</div>;
+  if (loading) return <div className="py-20 text-center text-slate-400 uppercase tracking-widest text-[10px] font-bold">{isEs ? "Cargando feed de inteligencia..." : "Loading Intelligence Feed..."}</div>;
 
   if (articles.length === 0) {
     return (
       <section className="py-24 bg-white border-t border-slate-100">
         <div className="max-w-7xl mx-auto px-6 text-center">
-          <p className="text-slate-500 uppercase tracking-[0.25em] text-[10px] font-black mb-2">Global Intelligence Feed</p>
-          <h3 className="text-2xl md:text-3xl font-bold text-slate-900 mb-3">News currently unavailable.</h3>
-          <p className="text-slate-500 text-sm max-w-2xl mx-auto">{newsError || 'We could not fetch the latest intelligence right now. Please try again soon.'}</p>
+          <p className="text-slate-500 uppercase tracking-[0.25em] text-[10px] font-black mb-2">{isEs ? "Feed global de inteligencia" : "Global Intelligence Feed"}</p>
+          <h3 className="text-2xl md:text-3xl font-bold text-slate-900 mb-3">{isEs ? "Noticias no disponibles por ahora." : "News currently unavailable."}</h3>
+          <p className="text-slate-500 text-sm max-w-2xl mx-auto">{newsError || (isEs ? "No pudimos cargar la inteligencia mas reciente. Intenta nuevamente pronto." : "We could not fetch the latest intelligence right now. Please try again soon.")}</p>
         </div>
       </section>
     );
@@ -183,14 +243,14 @@ const NewsSection = () => {
           <div className="hidden md:block w-48"></div>
           <div className="flex-1 flex flex-col items-center text-center">
             <div className="mt-8 inline-flex flex-col items-center"></div>
-            <span className="text-blue-600 font-black uppercase tracking-[0.3em] text-xs mt-6 mb-4 block italic">Global Intelligence Feed</span>
-            <h2 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter leading-none">In times of <br /> <span className="text-blue-600 italic underline decoration-slate-200">Change and Turbulence</span></h2>
+            <span className="text-blue-600 font-black uppercase tracking-[0.3em] text-xs mt-6 mb-4 block italic">{isEs ? "Feed global de inteligencia" : "Global Intelligence Feed"}</span>
+            <h2 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter leading-none">{isEs ? "En tiempos de" : "In times of"} <br /> <span className="text-blue-600 italic underline decoration-slate-200">{isEs ? "Cambio y Turbulencia" : "Change and Turbulence"}</span></h2>
           </div>
           <div className="text-center md:text-right md:w-48">
-            <p className="text-slate-400 font-mono text-[10px] uppercase tracking-widest">Live updates // April 2026</p>
+            <p className="text-slate-400 font-mono text-[10px] uppercase tracking-widest">{isEs ? "Actualizaciones en vivo // Abril 2026" : "Live updates // April 2026"}</p>
             <div className="flex gap-2 justify-center md:justify-end mt-2 items-center">
               <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
-              <span className="text-[10px] font-black text-slate-900 uppercase">System Active</span>
+              <span className="text-[10px] font-black text-slate-900 uppercase">{isEs ? "Sistema activo" : "System Active"}</span>
             </div>
           </div>
         </div>
@@ -200,31 +260,31 @@ const NewsSection = () => {
               {currentArticle.urlToImage ? (
                 <img src={currentArticle.urlToImage} alt={currentArticle.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
               ) : (
-                <div className="w-full h-full flex items-center justify-center bg-slate-200"><span className="text-slate-400 text-[10px] font-bold uppercase tracking-widest">No Preview Available</span></div>
+                <div className="w-full h-full flex items-center justify-center bg-slate-200"><span className="text-slate-400 text-[10px] font-bold uppercase tracking-widest">{isEs ? "Sin vista previa" : "No Preview Available"}</span></div>
               )}
               <div className="absolute top-4 left-4"><span className="text-[9px] font-black text-white bg-blue-600 px-3 py-1 rounded-full uppercase tracking-widest shadow-lg">{currentArticle.source.name}</span></div>
             </div>
             <div className="p-8 md:w-1/2 flex flex-col justify-between">
               <div>
                 <h3 className="text-lg font-bold text-slate-900 mb-3 group-hover:text-blue-600 transition-colors leading-tight line-clamp-2">{currentArticle.title}</h3>
-                <p className="text-slate-500 text-xs leading-relaxed mb-6 line-clamp-2 font-medium">{currentArticle.description || "Click to read the full coverage of this digital transformation update."}</p>
+                <p className="text-slate-500 text-xs leading-relaxed mb-6 line-clamp-2 font-medium">{currentArticle.description || (isEs ? "Haz clic para leer la cobertura completa de esta actualizacion de transformacion digital." : "Click to read the full coverage of this digital transformation update.")}</p>
               </div>
               <div className="flex justify-between items-center pt-4 border-t border-slate-50">
-                <span className="text-[10px] font-bold uppercase text-slate-400">{new Date(currentArticle.publishedAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}</span>
-                <span className="text-blue-600 font-black text-[10px] uppercase tracking-widest group-hover:translate-x-1 transition-transform">Read →</span>
+                <span className="text-[10px] font-bold uppercase text-slate-400">{new Date(currentArticle.publishedAt).toLocaleDateString(isEs ? 'es-ES' : 'en-US', { month: 'short', day: 'numeric' })}</span>
+                <span className="text-blue-600 font-black text-[10px] uppercase tracking-widest group-hover:translate-x-1 transition-transform">{isEs ? "Leer →" : "Read →"}</span>
               </div>
             </div>
           </motion.a>
           <div className="flex justify-center items-center gap-4 mt-8">
-            <button onClick={goToPrevious} className="w-10 h-10 rounded-full border border-slate-200 flex items-center justify-center hover:bg-slate-50 transition-colors" aria-label="Previous article"><span className="text-slate-500 font-black">←</span></button>
+            <button onClick={goToPrevious} className="w-10 h-10 rounded-full border border-slate-200 flex items-center justify-center hover:bg-slate-50 transition-colors" aria-label={isEs ? "Articulo anterior" : "Previous article"}><span className="text-slate-500 font-black">←</span></button>
             <div className="flex gap-2">
               {articles.map((article: any, index: number) => (
                 <button key={index} onClick={() => setCurrentIndex(index)} className={`px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest transition-all ${index === currentIndex ? 'bg-blue-600 text-white' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'}`}>
-                  {new Date(article.publishedAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
+                  {new Date(article.publishedAt).toLocaleDateString(isEs ? 'es-ES' : 'en-US', { month: 'short', day: 'numeric' })}
                 </button>
               ))}
             </div>
-            <button onClick={goToNext} className="w-10 h-10 rounded-full border border-slate-200 flex items-center justify-center hover:bg-slate-50 transition-colors" aria-label="Next article"><span className="text-slate-500 font-black">→</span></button>
+            <button onClick={goToNext} className="w-10 h-10 rounded-full border border-slate-200 flex items-center justify-center hover:bg-slate-50 transition-colors" aria-label={isEs ? "Siguiente articulo" : "Next article"}><span className="text-slate-500 font-black">→</span></button>
           </div>
         </div>
       </div>
@@ -234,12 +294,20 @@ const NewsSection = () => {
 
 // ─── CHAT SECTION ───────
 const ChatSection = () => {
+  const locale = useLocale();
+  const isEs = locale === "es";
   const [step, setStep]           = useState<number>(1);
   const [selection, setSelection] = useState<string>("");
-  const options = ["Industrial Acceleration", "Smart Supply Chain", "Talent Infrastructure", "Market Entry LATAM", "72h Validation"];
+  const options = isEs
+    ? ["Aceleracion industrial", "Supply chain inteligente", "Infraestructura de talento", "Entrada a mercado LATAM", "Validacion 72h"]
+    : ["Industrial Acceleration", "Smart Supply Chain", "Talent Infrastructure", "Market Entry LATAM", "72h Validation"];
   const handleWhatsApp = (option: string) => {
     const phoneNumber = "593995269974";
-    const message = encodeURIComponent(`Hi! I'm interested in ${option}. I'd like to talk to the team about a new project.`);
+    const message = encodeURIComponent(
+      isEs
+        ? `Hola! Estoy interesado en ${option}. Me gustaria hablar con el equipo sobre un nuevo proyecto.`
+        : `Hi! I'm interested in ${option}. I'd like to talk to the team about a new project.`
+    );
     window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
   };
   return (
@@ -247,9 +315,9 @@ const ChatSection = () => {
       <div className="max-w-4xl mx-auto px-6 text-center">
         <p className="text-blue-600 uppercase tracking-[0.2em] text-[10px] mb-4 font-bold">WE DELIVER</p>
         <p className="text-dark-600 uppercase tracking-[0.2em] text-[10px] mb-4 font-bold">REAL TIME CERTAINTY (RTC)</p>
-        <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-12 uppercase tracking-tighter">OUR KITCHEN IS ALWAYS <span className="italic underline decoration-blue-100"> OPEN </span></h2>
-        <p className="text-blue-600 uppercase tracking-[0.2em] text-[10px] mb-4 font-bold">The 20th century said the future would be built elsewhere. Today, we see a better alternative. We think differently.</p>
-        <p className="text-dark-600 uppercase tracking-[0.2em] text-[10px] mb-4 font-bold">See for yourself - Follow us on Social Media.</p>
+        <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-12 uppercase tracking-tighter">{isEs ? "NUESTRA COCINA SIEMPRE ESTA" : "OUR KITCHEN IS ALWAYS"} <span className="italic underline decoration-blue-100"> {isEs ? "ABIERTA" : "OPEN"} </span></h2>
+        <p className="text-blue-600 uppercase tracking-[0.2em] text-[10px] mb-4 font-bold">{isEs ? "El siglo XX decia que el futuro se construiria en otro lugar. Hoy vemos una mejor alternativa. Pensamos diferente." : "The 20th century said the future would be built elsewhere. Today, we see a better alternative. We think differently."}</p>
+        <p className="text-dark-600 uppercase tracking-[0.2em] text-[10px] mb-4 font-bold">{isEs ? "Compruebalo tu mismo - Siguenos en redes sociales." : "See for yourself - Follow us on Social Media."}</p>
         <div className="flex justify-center gap-6 mb-12">
           <a href="https://www.linkedin.com/company/bettertechnologies/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-6 py-3 rounded-full border-2 border-slate-200 text-slate-900 font-black text-[11px] uppercase tracking-widest hover:border-blue-600 hover:text-blue-600 transition-all"><LinkedInIcon /> LinkedIn</a>
           <a href="https://www.instagram.com/better.technologies?igsh=cjQ1c3F4OWpoYWhq" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-6 py-3 rounded-full border-2 border-slate-200 text-slate-900 font-black text-[11px] uppercase tracking-widest hover:border-[#d6249f] hover:text-[#d6249f] transition-all"><InstagramIcon /> Instagram</a>
@@ -257,7 +325,7 @@ const ChatSection = () => {
         <div className="relative bg-slate-50 border border-slate-100 rounded-3xl p-8 md:p-12 transition-all hover:border-blue-600/30 text-center">
           {step === 1 ? (
             <>
-              <p className="text-xl text-slate-600 mb-8 font-light">How can <span className="text-slate-900 font-semibold underline decoration-blue-600 underline-offset-4">the team</span> help you today?</p>
+              <p className="text-xl text-slate-600 mb-8 font-light">{isEs ? "Como puede ayudarte hoy" : "How can"} <span className="text-slate-900 font-semibold underline decoration-blue-600 underline-offset-4">{isEs ? "el equipo" : "the team"}</span> {isEs ? "?" : " help you today?"}</p>
               <div className="flex flex-wrap justify-center gap-3">
                 {options.map((opt) => (
                   <button key={opt} onClick={() => { setSelection(opt); setStep(2); }} className="text-[10px] font-black uppercase tracking-widest px-6 py-3 rounded-full border-2 border-slate-200 bg-white hover:border-blue-600 hover:text-blue-600 transition-all active:scale-95 shadow-sm">{opt}</button>
@@ -267,21 +335,21 @@ const ChatSection = () => {
           ) : (
             <div className="py-4 text-left">
               <div className="mb-6">
-                <h3 className="text-xl font-black text-slate-900 uppercase tracking-tighter">Industrial Acceleration</h3>
+                <h3 className="text-xl font-black text-slate-900 uppercase tracking-tighter">{isEs ? "Aceleracion industrial" : "Industrial Acceleration"}</h3>
                 <p className="text-blue-600 text-xs font-bold tracking-widest uppercase mb-3">(Nearshoring + Smart Maquila)</p>
-                <p className="text-slate-500 text-sm leading-relaxed border-l-2 border-blue-600 pl-4">Relocating global production to LATAM with speed and cost efficiency.</p>
+                <p className="text-slate-500 text-sm leading-relaxed border-l-2 border-blue-600 pl-4">{isEs ? "Relocalizamos produccion global en LATAM con velocidad y eficiencia de costos." : "Relocating global production to LATAM with speed and cost efficiency."}</p>
               </div>
               <div className="mb-8 space-y-2">
-                <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">What we sell:</p>
+                <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">{isEs ? "Que vendemos:" : "What we sell:"}</p>
                 <ul className="text-sm text-slate-700 space-y-1">
-                  <li className="flex items-start gap-2"><span>●</span> Operational setup in PY / MX / CO</li>
-                  <li className="flex items-start gap-2"><span>●</span> Industrial supplier networks</li>
-                  <li className="flex items-start gap-2 text-blue-600 font-bold"><span>●</span> Cost optimization (30–60%)</li>
-                  <li className="flex items-start gap-2"><span>●</span> Local operational management</li>
+                  <li className="flex items-start gap-2"><span>●</span>{isEs ? " Setup operativo en PY / MX / CO" : " Operational setup in PY / MX / CO"}</li>
+                  <li className="flex items-start gap-2"><span>●</span>{isEs ? " Redes industriales de proveedores" : " Industrial supplier networks"}</li>
+                  <li className="flex items-start gap-2 text-blue-600 font-bold"><span>●</span>{isEs ? " Optimizacion de costos (30–60%)" : " Cost optimization (30–60%)"}</li>
+                  <li className="flex items-start gap-2"><span>●</span>{isEs ? " Gestion operativa local" : " Local operational management"}</li>
                 </ul>
               </div>
-              <button onClick={() => handleWhatsApp(selection)} className="w-full bg-blue-600 text-white py-4 rounded-full font-black text-sm hover:bg-blue-700 transition-all uppercase tracking-widest shadow-xl shadow-blue-600/20 active:scale-95">Connect with the team</button>
-              <button onClick={() => setStep(1)} className="block mx-auto mt-6 text-slate-400 hover:text-blue-600 text-[10px] uppercase font-black tracking-widest transition-colors">← Go back</button>
+              <button onClick={() => handleWhatsApp(selection)} className="w-full bg-blue-600 text-white py-4 rounded-full font-black text-sm hover:bg-blue-700 transition-all uppercase tracking-widest shadow-xl shadow-blue-600/20 active:scale-95">{isEs ? "Conectar con el equipo" : "Connect with the team"}</button>
+              <button onClick={() => setStep(1)} className="block mx-auto mt-6 text-slate-400 hover:text-blue-600 text-[10px] uppercase font-black tracking-widest transition-colors">{isEs ? "← Volver" : "← Go back"}</button>
             </div>
           )}
         </div>
@@ -292,17 +360,20 @@ const ChatSection = () => {
 
 // ─── CASOS DE ÉXITO ────────────────
 const CasosDeExito = () => {
+  const locale = useLocale();
+  const isEs = locale === "es";
+  const screenshots = isEs ? belandScreenshotsEs : belandScreenshots;
   const [currentSlide, setCurrentSlide] = useState(0);
   const touchStartX   = useRef<number | null>(null);
   const touchCurrentX = useRef<number | null>(null);
 
   useEffect(() => {
-    const timer = setInterval(() => { setCurrentSlide((prev) => (prev + 1) % belandScreenshots.length); }, 4000);
+    const timer = setInterval(() => { setCurrentSlide((prev) => (prev + 1) % screenshots.length); }, 4000);
     return () => clearInterval(timer);
-  }, []);
+  }, [screenshots.length]);
 
-  const goToPrevious = (e?: React.MouseEvent) => { e?.stopPropagation(); setCurrentSlide((prev) => (prev - 1 + belandScreenshots.length) % belandScreenshots.length); };
-  const goToNext     = (e?: React.MouseEvent) => { e?.stopPropagation(); setCurrentSlide((prev) => (prev + 1) % belandScreenshots.length); };
+  const goToPrevious = (e?: React.MouseEvent) => { e?.stopPropagation(); setCurrentSlide((prev) => (prev - 1 + screenshots.length) % screenshots.length); };
+  const goToNext     = (e?: React.MouseEvent) => { e?.stopPropagation(); setCurrentSlide((prev) => (prev + 1) % screenshots.length); };
   const handleTouchStart = (e: React.TouchEvent) => (touchStartX.current   = e.touches[0].clientX);
   const handleTouchMove  = (e: React.TouchEvent) => (touchCurrentX.current = e.touches[0].clientX);
   const handleTouchEnd   = () => {
@@ -316,15 +387,15 @@ const CasosDeExito = () => {
     <section className="py-24 px-6 bg-white border-t border-slate-100">
       <div className="max-w-6xl mx-auto">
         <div className="mb-16 text-center">
-          <p className="text-blue-600 uppercase tracking-[0.25em] text-[10px] font-black mb-2">Our Success Stories</p>
-          <h2 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter leading-[0.9] uppercase">Built by us. <em className="italic underline decoration-blue-100">Used by people.</em></h2>
+          <p className="text-blue-600 uppercase tracking-[0.25em] text-[10px] font-black mb-2">{isEs ? "Nuestros casos de exito" : "Our Success Stories"}</p>
+          <h2 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter leading-[0.9] uppercase">{isEs ? "Construido por nosotros." : "Built by us."} <em className="italic underline decoration-blue-100">{isEs ? "Usado por personas." : "Used by people."}</em></h2>
         </div>
         <div className="grid md:grid-cols-2 gap-16 items-center">
           <div className="flex justify-center">
             <div className="relative w-full max-w-[260px] sm:max-w-[300px] cursor-grab active:cursor-grabbing" onTouchStart={handleTouchStart} onTouchMove={handleTouchMove} onTouchEnd={handleTouchEnd}>
               <div className="relative aspect-[9/19] w-full overflow-hidden rounded-[2.5rem] border-[6px] border-white bg-white shadow-2xl">
                 <div className="absolute top-0 left-1/2 -translate-x-1/2 w-20 h-5 bg-white rounded-b-xl z-20" />
-                {belandScreenshots.map((screenshot, index) => (
+                {screenshots.map((screenshot, index) => (
                   <div key={index} className={`absolute inset-0 transition-opacity duration-700 ${index === currentSlide ? "opacity-100" : "opacity-0 pointer-events-none"}`}>
                     <Image src={screenshot.src} alt={screenshot.alt} fill className="object-contain" priority={index === 0} sizes="300px" />
                   </div>
@@ -333,7 +404,7 @@ const CasosDeExito = () => {
               <button onClick={goToPrevious} className="absolute -left-5 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white border border-slate-200 shadow flex items-center justify-center hover:border-blue-600 transition-colors z-30"><ChevronLeft className="w-4 h-4 text-slate-600" /></button>
               <button onClick={goToNext}     className="absolute -right-5 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white border border-slate-200 shadow flex items-center justify-center hover:border-blue-600 transition-colors z-30"><ChevronRight className="w-4 h-4 text-slate-600" /></button>
               <div className="flex justify-center gap-1.5 mt-5">
-                {belandScreenshots.map((_, i) => (<button key={i} onClick={() => setCurrentSlide(i)} className={`rounded-full transition-all duration-300 ${i === currentSlide ? "w-5 h-1.5 bg-blue-600" : "w-1.5 h-1.5 bg-slate-300"}`} />))}
+                {screenshots.map((_, i) => (<button key={i} onClick={() => setCurrentSlide(i)} className={`rounded-full transition-all duration-300 ${i === currentSlide ? "w-5 h-1.5 bg-blue-600" : "w-1.5 h-1.5 bg-slate-300"}`} />))}
               </div>
             </div>
           </div>
@@ -344,14 +415,14 @@ const CasosDeExito = () => {
               </div>
             </div>
             <div key={currentSlide} className="border-l-4 border-blue-600 pl-4 transition-all duration-500">
-              <p className="text-[10px] font-black uppercase tracking-widest text-blue-600 mb-1">{belandScreenshots[currentSlide].title}</p>
-              <p className="text-slate-500 text-sm leading-relaxed">{belandScreenshots[currentSlide].text}</p>
+              <p className="text-[10px] font-black uppercase tracking-widest text-blue-600 mb-1">{screenshots[currentSlide].title}</p>
+              <p className="text-slate-500 text-sm leading-relaxed">{screenshots[currentSlide].text}</p>
             </div>
-            <p className="text-slate-700 text-base leading-relaxed font-medium">A <span className="text-slate-900 font-black">circular ecosystem</span> that integrates payments, delivery, and rewards within a single system, driving a network where every <span className="text-blue-600 font-bold">positive action</span> strengthens the entire community.</p>
+            <p className="text-slate-700 text-base leading-relaxed font-medium">{isEs ? "Un" : "A"} <span className="text-slate-900 font-black">{isEs ? "ecosistema circular" : "circular ecosystem"}</span> {isEs ? "que integra pagos, entregas y recompensas en un solo sistema, impulsando una red donde cada" : "that integrates payments, delivery, and rewards within a single system, driving a network where every"} <span className="text-blue-600 font-bold">{isEs ? "accion positiva" : "positive action"}</span> {isEs ? "fortalece a toda la comunidad." : "strengthens the entire community."}</p>
             <div className="flex flex-wrap gap-2">
               {belandTags.map((tag) => (<span key={tag} className="text-[10px] font-black uppercase tracking-widest px-4 py-1.5 rounded-full border border-slate-200 text-slate-500 bg-slate-50">{tag}</span>))}
             </div>
-            <a href="https://beland.app" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 self-start bg-blue-600 text-white px-8 py-3 rounded-full font-black text-[11px] uppercase tracking-widest hover:bg-blue-700 transition-colors shadow-lg shadow-blue-600/20 active:scale-95">View the app <ArrowRight className="w-4 h-4" /></a>
+            <a href="https://beland.app" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 self-start bg-blue-600 text-white px-8 py-3 rounded-full font-black text-[11px] uppercase tracking-widest hover:bg-blue-700 transition-colors shadow-lg shadow-blue-600/20 active:scale-95">{isEs ? "Ver la app" : "View the app"} <ArrowRight className="w-4 h-4" /></a>
           </div>
         </div>
       </div>
@@ -361,11 +432,14 @@ const CasosDeExito = () => {
 
 // ─── MAIN HOME ──────────────────
 export default function Home() {
+  const t = useTranslations('Home');
   const [posts, setPosts]     = useState<any[]>([]);
   const heroVideoRef          = useRef<HTMLVideoElement>(null);
   const [isMobile, setIsMobile] = useState(false);
   const [selected, setSelected] = useState<number | null>(null);
-
+  const locale = useLocale();
+  const isEs = locale === "es";
+  const teamData = isEs ? teamEs : team;
   useEffect(() => {
     const fetchPosts = async () => {
       const supabase = createClient();
@@ -408,10 +482,12 @@ export default function Home() {
         </video>
         <div className="absolute inset-0 bg-white/10 z-[1]" />
         <div className="absolute inset-0 z-[2] flex flex-col items-center justify-center px-6 text-center">
-          <p className="text-blue-600 uppercase tracking-[0.4em] mb-3 text-[10px] font-black">What we do?</p>
-          <h1 className="text-3xl md:text-8xl font-black leading-[1] tracking-tighter max-w-4xl text-white uppercase">We open LATAM for <br /> Global companies</h1>
-          <p className="mt-3 text-white text-[9px] md:text-[10px] uppercase tracking-widest font-bold">Nearshoring Operator · Supply Chain Partner · Talent Hub · Entry &amp; Ops Partner</p>
-          <a href="https://wa.me/593995269974?text=Hi!%20I%27d%20like%20to%20get%20in%20touch%20with%20the%20team." className="mt-3 inline-block px-8 py-3 bg-[#FF6B00] text-white rounded-full font-bold shadow-lg uppercase tracking-widest text-[10px] transition-transform active:scale-95">Get in touch</a>
+          <p className="text-blue-600 uppercase tracking-[0.4em] mb-3 text-[10px] font-black">
+  {t('whatWeDo')}
+</p>
+          <h1 className="text-3xl md:text-8xl font-black leading-[1] tracking-tighter max-w-4xl text-white uppercase">{isEs ? "Abrimos LATAM para" : "We open LATAM for"} <br /> {isEs ? "empresas globales" : "Global companies"}</h1>
+          <p className="mt-3 text-white text-[9px] md:text-[10px] uppercase tracking-widest font-bold">{isEs ? "Operador de nearshoring · Partner de supply chain · Hub de talento · Partner de entrada y operaciones" : "Nearshoring Operator · Supply Chain Partner · Talent Hub · Entry & Ops Partner"}</p>
+          <a href="https://wa.me/593995269974?text=Hi!%20I%27d%20like%20to%20get%20in%20touch%20with%20the%20team." className="mt-3 inline-block px-8 py-3 bg-[#FF6B00] text-white rounded-full font-bold shadow-lg uppercase tracking-widest text-[10px] transition-transform active:scale-95">{isEs ? "Contactar ahora" : "Get in touch"}</a>
         </div>
       </section>
 
@@ -425,22 +501,22 @@ export default function Home() {
       <section id="mittelstand" className="py-16 md:py-40 px-6 bg-slate-50 border-y border-slate-200">
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-20 items-center">
           <div className="bg-white p-12 rounded-3xl border border-slate-200 shadow-sm transition-all hover:shadow-md">
-            <h3 className="text-xl font-bold mb-6 uppercase tracking-wider text-slate-900">The Problem we solve</h3>
-            <p className="text-slate-600 text-lg leading-relaxed mb-10">Long supply chains in Asia and the Middle East are under pressure due to conflict. Latin America is the obvious alternative — but hard to operationalize.</p>
+            <h3 className="text-xl font-bold mb-6 uppercase tracking-wider text-slate-900">{isEs ? "El problema que resolvemos" : "The Problem we solve"}</h3>
+            <p className="text-slate-600 text-lg leading-relaxed mb-10">{isEs ? "Las cadenas de suministro largas en Asia y Medio Oriente estan bajo presion por los conflictos. Latinoamerica es la alternativa obvia, pero dificil de operar." : "Long supply chains in Asia and the Middle East are under pressure due to conflict. Latin America is the obvious alternative — but hard to operationalize."}</p>
             <div className="space-y-4 mb-8">
               <p className="text-base line-through decoration-red-600 decoration-2 font-bold italic text-slate-400">BCG Digital Ventures</p>
               <p className="text-base line-through decoration-red-600 decoration-2 font-bold italic text-slate-400">McKinsey &amp; Company</p>
               <p className="text-base line-through decoration-red-600 decoration-2 font-bold italic text-slate-400">Accenture</p>
             </div>
-            <div className="pt-6 border-t border-slate-100"><p className="text-sm font-bold italic text-slate-900 tracking-tight">Typical tickets: <span className="text-blue-600">€150k - €1M+</span></p></div>
+            <div className="pt-6 border-t border-slate-100"><p className="text-sm font-bold italic text-slate-900 tracking-tight">{isEs ? "Tickets tipicos:" : "Typical tickets:"} <span className="text-blue-600">€150k - €1M+</span></p></div>
           </div>
           <div>
-            <h2 className="text-4xl md:text-6xl font-black mb-8 text-slate-900 leading-[1.1] tracking-tighter">Our Customers: <br /><span className="text-blue-600">Mid-Sized<br />Global Companies</span></h2>
+            <h2 className="text-4xl md:text-6xl font-black mb-8 text-slate-900 leading-[1.1] tracking-tighter">{isEs ? "Nuestros clientes:" : "Our Customers:"} <br /><span className="text-blue-600">{isEs ? "Empresas globales" : "Mid-Sized"}<br />{isEs ? "de tamano medio" : "Global Companies"}</span></h2>
             <ul className="space-y-6 text-xl text-slate-600 font-medium mb-10">
-              <li className="flex items-center gap-4"><span className="w-2 h-2 bg-blue-600 rounded-full flex-shrink-0" />50–500 employees</li>
-              <li className="flex items-center gap-4"><span className="w-2 h-2 bg-blue-600 rounded-full flex-shrink-0" />Operations across multiple countries / regions</li>
-              <li className="flex items-center gap-4"><span className="w-2 h-2 bg-blue-600 rounded-full flex-shrink-0" />Dependent on long supply chains</li>
-              <li className="flex items-center gap-4"><span className="w-2 h-2 bg-blue-600 rounded-full flex-shrink-0" />Traditional business models</li>
+              <li className="flex items-center gap-4"><span className="w-2 h-2 bg-blue-600 rounded-full flex-shrink-0" />{isEs ? "50–500 empleados" : "50–500 employees"}</li>
+              <li className="flex items-center gap-4"><span className="w-2 h-2 bg-blue-600 rounded-full flex-shrink-0" />{isEs ? "Operaciones en multiples paises / regiones" : "Operations across multiple countries / regions"}</li>
+              <li className="flex items-center gap-4"><span className="w-2 h-2 bg-blue-600 rounded-full flex-shrink-0" />{isEs ? "Dependientes de cadenas de suministro largas" : "Dependent on long supply chains"}</li>
+              <li className="flex items-center gap-4"><span className="w-2 h-2 bg-blue-600 rounded-full flex-shrink-0" />{isEs ? "Modelos de negocio tradicionales" : "Traditional business models"}</li>
             </ul>
           </div>
         </div>
@@ -449,19 +525,19 @@ export default function Home() {
       {/* 5. PRICING */}
       <section id="pricing" className="pt-10 pb-40 px-6 bg-white">
         <div className="max-w-7xl mx-auto text-center">
-          <h2 className="text-4xl md:text-5xl font-black mb-20 text-slate-900 uppercase tracking-tighter">What <span className="text-blue-600"> we </span> deliver </h2>
+          <h2 className="text-4xl md:text-5xl font-black mb-20 text-slate-900 uppercase tracking-tighter">{isEs ? "Que" : "What"} <span className="text-blue-600"> {isEs ? "entregamos" : "we"} </span> {isEs ? "" : "deliver"} </h2>
           <div className="grid md:grid-cols-3 gap-12 text-left">
             <div className="group border-2 border-slate-100 p-12 rounded-3xl hover:border-blue-600 transition-all duration-500 bg-slate-50/50">
               <div className="flex flex-col gap-4 mb-10"><h3 className="text-2xl font-bold text-slate-900 uppercase">72h Validation Challenge</h3><span className="self-start bg-blue-600 text-white px-4 py-1 rounded-full text-xs font-black italic">€3k – €10k</span></div>
-              <ul className="space-y-4 text-slate-600"><li className="font-bold flex items-start gap-2"><span className="text-blue-600 mt-0.5">→</span> Opportunity Validation: Problem + viable solution hypothesis</li><li className="font-bold flex items-start gap-2"><span className="text-blue-600 mt-0.5">→</span> Feasibility Study: Financial overview + Operational forecast</li></ul>
+              <ul className="space-y-4 text-slate-600"><li className="font-bold flex items-start gap-2"><span className="text-blue-600 mt-0.5">→</span>{isEs ? " Validacion de oportunidad: problema + hipotesis de solucion viable" : " Opportunity Validation: Problem + viable solution hypothesis"}</li><li className="font-bold flex items-start gap-2"><span className="text-blue-600 mt-0.5">→</span>{isEs ? " Estudio de factibilidad: overview financiero + pronostico operativo" : " Feasibility Study: Financial overview + Operational forecast"}</li></ul>
             </div>
             <div className="group border-2 border-slate-100 p-12 rounded-3xl hover:border-blue-600 transition-all duration-500 bg-slate-50/50 shadow-xl shadow-slate-100">
               <div className="flex flex-col gap-4 mb-10"><h3 className="text-2xl font-bold text-slate-900 uppercase">MVP Stage — 90 days</h3><span className="self-start bg-blue-600 text-white px-4 py-1 rounded-full text-xs font-black italic">€30k – €120k</span></div>
-              <ul className="space-y-4 text-slate-600"><li className="font-bold flex items-center gap-2"><span className="text-blue-600">✓</span> Solution engineering</li><li className="font-bold flex items-center gap-2"><span className="text-blue-600">✓</span> Functional MVP</li><li className="font-bold flex items-center gap-2"><span className="text-blue-600">✓</span> Beta testing (with real users)</li></ul>
+              <ul className="space-y-4 text-slate-600"><li className="font-bold flex items-center gap-2"><span className="text-blue-600">✓</span>{isEs ? " Ingenieria de solucion" : " Solution engineering"}</li><li className="font-bold flex items-center gap-2"><span className="text-blue-600">✓</span>{isEs ? " MVP funcional" : " Functional MVP"}</li><li className="font-bold flex items-center gap-2"><span className="text-blue-600">✓</span>{isEs ? " Beta testing (con usuarios reales)" : " Beta testing (with real users)"}</li></ul>
             </div>
             <div className="group border-2 border-slate-100 p-12 rounded-3xl hover:border-blue-600 transition-all duration-500 bg-slate-50/50">
-              <div className="flex flex-col gap-4 mb-10"><h3 className="text-2xl font-bold text-slate-900 uppercase">Growth / Scale</h3><span className="self-start bg-slate-900 text-white px-4 py-1 rounded-full text-xs font-black italic">Tailor made</span></div>
-              <ul className="space-y-4 text-slate-600"><li className="font-bold flex items-center gap-2"><span className="text-blue-600">✓</span> Local + Digital operations</li><li className="font-bold flex items-center gap-2"><span className="text-blue-600">✓</span> Success oriented business execution</li><li className="font-bold flex items-center gap-2"><span className="text-blue-600">✓</span> Reduced operational costs</li><li className="font-bold flex items-center gap-2"><span className="text-blue-600">✓</span> Faster and better scaling</li></ul>
+              <div className="flex flex-col gap-4 mb-10"><h3 className="text-2xl font-bold text-slate-900 uppercase">Growth / Scale</h3><span className="self-start bg-slate-900 text-white px-4 py-1 rounded-full text-xs font-black italic">{isEs ? "A medida" : "Tailor made"}</span></div>
+              <ul className="space-y-4 text-slate-600"><li className="font-bold flex items-center gap-2"><span className="text-blue-600">✓</span>{isEs ? " Operaciones locales + digitales" : " Local + Digital operations"}</li><li className="font-bold flex items-center gap-2"><span className="text-blue-600">✓</span>{isEs ? " Ejecucion orientada a resultados" : " Success oriented business execution"}</li><li className="font-bold flex items-center gap-2"><span className="text-blue-600">✓</span>{isEs ? " Reduccion de costos operativos" : " Reduced operational costs"}</li><li className="font-bold flex items-center gap-2"><span className="text-blue-600">✓</span>{isEs ? " Escalamiento mas rapido y mejor" : " Faster and better scaling"}</li></ul>
             </div>
           </div>
         </div>
@@ -470,30 +546,30 @@ export default function Home() {
       {/* 6. EQUIPO */}
       <section id="about" className="pt-12 pb-24 px-6 bg-white border-t border-slate-100">
         <div className="max-w-4xl mx-auto">
-          <p className="text-blue-600 uppercase tracking-[0.25em] text-[10px] font-black mb-2">About our Team</p>
-          <h2 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter leading-[0.9] uppercase mb-6">High <em className="italic underline decoration-blue-100">Performance execution</em></h2>
+          <p className="text-blue-600 uppercase tracking-[0.25em] text-[10px] font-black mb-2">{isEs ? "Sobre nuestro equipo" : "About our Team"}</p>
+          <h2 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter leading-[0.9] uppercase mb-6">{isEs ? "Ejecucion de" : "High"} <em className="italic underline decoration-blue-100">{isEs ? "alto rendimiento" : "Performance execution"}</em></h2>
           <div className="border-l-[3px] border-blue-600 pl-5 bg-slate-50 py-4 pr-5 rounded-r-2xl mb-8">
-            <p className="text-slate-900 font-black italic text-sm leading-relaxed tracking-tight">Forged in hight <br /><span className="text-blue-600">pressure environments</span></p>
+            <p className="text-slate-900 font-black italic text-sm leading-relaxed tracking-tight">{isEs ? "Forjados en entornos de" : "Forged in hight"} <br /><span className="text-blue-600">{isEs ? "alta presion" : "pressure environments"}</span></p>
           </div>
           <AnimatePresence mode="wait">
             {selected !== null && (
               <motion.div key={selected} initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }} transition={{ duration: 0.2 }} className="flex items-center gap-5 border border-slate-100 rounded-3xl p-5 mb-6 hover:border-blue-600/30 transition-colors">
-                <Avatar member={team[selected]} />
+                <Avatar member={teamData[selected]} />
                 <div className="flex-1 min-w-0">
                   <div className="flex items-start justify-between gap-3">
                     <div>
-                      <p className="text-slate-900 font-black uppercase tracking-tight text-sm">{team[selected].name}</p>
-                      <p className="text-blue-600 font-black uppercase tracking-[0.15em] text-[10px] mt-0.5 mb-2">{team[selected].role}</p>
+                      <p className="text-slate-900 font-black uppercase tracking-tight text-sm">{teamData[selected].name}</p>
+                      <p className="text-blue-600 font-black uppercase tracking-[0.15em] text-[10px] mt-0.5 mb-2">{teamData[selected].role}</p>
                     </div>
-                    <a href={team[selected].linkedin} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 border border-slate-200 rounded-full px-3 py-1.5 hover:border-blue-600 hover:bg-blue-50 transition-all flex-shrink-0"><LinkedInIcon /><span className="text-[9px] font-black uppercase tracking-widest text-slate-500">LinkedIn</span></a>
+                    <a href={teamData[selected].linkedin} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 border border-slate-200 rounded-full px-3 py-1.5 hover:border-blue-600 hover:bg-blue-50 transition-all flex-shrink-0"><LinkedInIcon /><span className="text-[9px] font-black uppercase tracking-widest text-slate-500">LinkedIn</span></a>
                   </div>
-                  <p className="text-slate-500 text-xs leading-relaxed font-medium">{team[selected].desc}</p>
+                  <p className="text-slate-500 text-xs leading-relaxed font-medium">{teamData[selected].desc}</p>
                 </div>
               </motion.div>
             )}
           </AnimatePresence>
           <div className="flex flex-wrap gap-2">
-            {team.map((member, i) => (
+            {teamData.map((member, i) => (
               <button key={i} type="button" onClick={() => setSelected(selected === i ? null : i)} className={`px-4 py-2 rounded-full text-[10px] font-black uppercase tracking-widest border transition-all ${selected === i ? "bg-blue-600 border-blue-600 text-white shadow-lg" : "bg-white border-slate-200 text-slate-400 hover:border-blue-600 hover:text-blue-600"}`}>{member.name}</button>
             ))}
           </div>
@@ -505,40 +581,40 @@ export default function Home() {
 
       {/* CIERRE */}
       <h2 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter leading-[0.9] uppercase mb-6 text-center py-16 px-6">
-        Understand the past — build what’s next.
-LET'S START <em className="italic underline decoration-blue-100"> TODAY </em>
+        {isEs ? "Comprende el pasado — construye lo que viene." : "Understand the past — build what’s next."}
+{isEs ? "COMENCEMOS" : "LET'S START"} <em className="italic underline decoration-blue-100"> {isEs ? "HOY" : "TODAY"} </em>
       </h2>
 
       {/* LATEST INSIGHTS */}
       <section className="py-24 bg-slate-50">
         <div className="container mx-auto px-6 text-center">
-          <p className="text-blue-600 uppercase tracking-[0.25em] text-[10px] font-black mb-4">Stay updated with us</p>
-          <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-6 uppercase">Latest Insights</h2>
-          <p className="text-slate-500 max-w-lg mx-auto mb-10">Explore our blog for industry trends, tech updates, and innovation stories.</p>
+          <p className="text-blue-600 uppercase tracking-[0.25em] text-[10px] font-black mb-4">{isEs ? "Mantente actualizado con nosotros" : "Stay updated with us"}</p>
+          <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-6 uppercase">{isEs ? "Ultimos insights" : "Latest Insights"}</h2>
+          <p className="text-slate-500 max-w-lg mx-auto mb-10">{isEs ? "Explora nuestro blog para ver tendencias, actualizaciones tecnologicas e historias de innovacion." : "Explore our blog for industry trends, tech updates, and innovation stories."}</p>
           {posts && posts.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12 text-left">
               {posts.map((post) => (
                 <div key={post.id} className="bg-white p-6 rounded-3xl border border-slate-100 shadow-sm">
                   <div className="relative h-40 mb-4 rounded-xl overflow-hidden bg-slate-100">
-                    {post.cover_url ? (<img src={post.cover_url} alt={post.title} className="w-full h-full object-cover" />) : (<div className="w-full h-full flex items-center justify-center text-slate-300 text-xs font-bold">NO IMAGE</div>)}
+                    {post.cover_url ? (<img src={post.cover_url} alt={post.title} className="w-full h-full object-cover" />) : (<div className="w-full h-full flex items-center justify-center text-slate-300 text-xs font-bold">{isEs ? "SIN IMAGEN" : "NO IMAGE"}</div>)}
                   </div>
                   <h3 className="font-black text-lg mb-3 uppercase text-slate-900 line-clamp-2">{post.title}</h3>
-                  <p className="text-slate-500 text-sm mb-6 line-clamp-3">{(() => { const raw = post.description?.replace(/<[^>]*>?/gm, '') || 'No description available'; const txt = document.createElement('textarea'); txt.innerHTML = raw; return txt.value; })()}</p>
-                  <a href={`/blog/${post.slug}`} className="text-blue-600 font-black text-[10px] uppercase tracking-widest hover:text-slate-900 transition-colors">Read More →</a>
+                  <p className="text-slate-500 text-sm mb-6 line-clamp-3">{(() => { const raw = post.description?.replace(/<[^>]*>?/gm, '') || (isEs ? 'No hay descripcion disponible' : 'No description available'); const txt = document.createElement('textarea'); txt.innerHTML = raw; return txt.value; })()}</p>
+                  <a href={`/${locale}/blog/${post.slug}`} className="text-blue-600 font-black text-[10px] uppercase tracking-widest hover:text-slate-900 transition-colors">{isEs ? "Leer mas →" : "Read More →"}</a>
                 </div>
               ))}
             </div>
           ) : (
-            <div className="py-12 text-center"><p className="text-slate-400 text-sm">No posts available yet.</p></div>
+            <div className="py-12 text-center"><p className="text-slate-400 text-sm">{isEs ? "Aun no hay posts disponibles." : "No posts available yet."}</p></div>
           )}
-          <a href="/blog" className="inline-block bg-slate-900 text-white px-10 py-4 rounded-full font-black text-xs uppercase tracking-widest hover:bg-blue-600 transition-colors">View All Posts</a>
+          <a href={`/${locale}/blog`} className="inline-block bg-slate-900 text-white px-10 py-4 rounded-full font-black text-xs uppercase tracking-widest hover:bg-blue-600 transition-colors">{t('viewAllPosts')}</a>
         </div>
       </section>
 
       {/* FOOTER */}
       <footer className="py-20 text-center bg-white border-t border-slate-100">
-        <p className="text-slate-400 text-[9px] font-black uppercase tracking-[0.3em] mb-4">Don&apos;t miss a move</p>
-        <h3 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter uppercase mb-10">Follow our <em className="italic underline decoration-blue-100">journey</em></h3>
+        <p className="text-slate-400 text-[9px] font-black uppercase tracking-[0.3em] mb-4">{isEs ? "No te pierdas ningun movimiento" : "Don't miss a move"}</p>
+        <h3 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter uppercase mb-10">{isEs ? "Sigue nuestro" : "Follow our"} <em className="italic underline decoration-blue-100">{isEs ? "camino" : "journey"}</em></h3>
         <div className="flex justify-center gap-6 mb-12">
           <a href="https://www.linkedin.com/company/bettertechnologies/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-6 py-3 rounded-full border-2 border-slate-200 text-slate-900 font-black text-[11px] uppercase tracking-widest hover:border-blue-600 hover:text-blue-600 transition-all"><LinkedInIcon /> LinkedIn</a>
           <a href="https://www.instagram.com/better.technologies?igsh=cjQ1c3F4OWpoYWhq" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-6 py-3 rounded-full border-2 border-slate-200 text-slate-900 font-black text-[11px] uppercase tracking-widest hover:border-[#d6249f] hover:text-[#d6249f] transition-all"><InstagramIcon /> Instagram</a>

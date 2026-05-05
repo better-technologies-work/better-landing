@@ -4,6 +4,8 @@ import { useState, useEffect } from "react";
 import { createClient } from "@/lib/supabase/client";
 import { decodeHTML } from "@/lib/utils";
 import dynamicImport from 'next/dynamic';
+import { useLocale } from "next-intl";
+import Header from "@/components/Header";
 
 // Estilos del editor
 import 'react-quill-new/dist/quill.snow.css';
@@ -47,6 +49,47 @@ type BlogPost = {
 };
 
 export default function DashboardPage() {
+  const locale = useLocale();
+  const isEs = locale === "es";
+  const ui = {
+    hiTeam: isEs ? "Hola equipo" : "Hi Team",
+    newPost: isEs ? "+ Nuevo Post" : "+ New Post",
+    news: isEs ? "+ Noticias" : "+ News",
+    editPosts: isEs ? "Editar Posts" : "Edit Posts",
+    editing: isEs ? "Editando" : "Editing",
+    cancel: isEs ? "Cancelar" : "Cancel",
+    postTitle: isEs ? "Titulo del post" : "Post Title",
+    content: isEs ? "Contenido (pega imagenes, tablas y texto con formato)" : "Content (paste images, tables, formatted text)",
+    contentPlaceholder: isEs ? "Pega aqui tus visualizaciones, tablas e imagenes..." : "Paste your data visualizations, tables, images...",
+    externalUrl: isEs ? "URL externa (opcional)" : "External URL (Optional)",
+    featuredImage: isEs ? "Imagen destacada" : "Featured Image",
+    dragImage: isEs ? "Arrastra o selecciona tu imagen" : "Drag or select your image",
+    linksOptional: isEs ? "Links (Opcional)" : "Links (Optional)",
+    addLink: isEs ? "+ Agregar Link" : "+ Add Link",
+    documentsOptional: isEs ? "Documentos (Opcional)" : "Documents (Optional)",
+    addDocument: isEs ? "+ Agregar Documento" : "+ Add Document",
+    author: isEs ? "Autor" : "Author",
+    category: isEs ? "Categoria" : "Category",
+    updating: isEs ? "Actualizando..." : "Updating...",
+    publishing: isEs ? "Publicando..." : "Publishing...",
+    updatePost: isEs ? "Actualizar Post →" : "Update Post →",
+    publishNow: isEs ? "Publicar Reporte Ahora →" : "Publish Report Now →",
+    preview: isEs ? "Vista Previa" : "Preview",
+    successPost: isEs ? "Actualizado con exito" : "Updated successfully",
+    successPostCreate: isEs ? "Publicado con exito" : "Published successfully",
+    newsTitle: isEs ? "Titulo de noticia" : "News Title",
+    description: isEs ? "Descripcion" : "Description",
+    sourceUrl: isEs ? "URL fuente" : "Source URL",
+    publishNewsNow: isEs ? "Publicar Noticia Ahora →" : "Publish News Now →",
+    updateNews: isEs ? "Actualizar Noticia →" : "Update News →",
+    existingNews: isEs ? "Noticias existentes" : "Existing News",
+    noNewsYet: isEs ? "No hay noticias publicadas aun." : "No news published yet.",
+    edit: isEs ? "Editar" : "Edit",
+    delete: isEs ? "Eliminar" : "Delete",
+    existingPosts: isEs ? "Posts existentes" : "Existing Posts",
+    noPostsYet: isEs ? "No hay posts publicados aun." : "No posts published yet.",
+    noImg: isEs ? "SIN IMG" : "NO IMG",
+  };
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
@@ -286,7 +329,7 @@ export default function DashboardPage() {
         setTimeout(() => setSuccess(false), 3000);
       } catch (innerErr: unknown) {
         // Safely extract error message
-        let errorMessage = 'Error al publicar el post';
+        let errorMessage = isEs ? 'Error al publicar el post' : 'Error publishing post';
         
         console.error('=== ERROR SUBMISSION ===');
         console.error('Raw error:', innerErr);
@@ -339,7 +382,7 @@ export default function DashboardPage() {
   };
 
   const handleDelete = async (postId: string) => {
-    if (!confirm("¿Estás seguro de que quieres eliminar este post?")) return;
+    if (!confirm(isEs ? "¿Estás seguro de que quieres eliminar este post?" : "Are you sure you want to delete this post?")) return;
     
     try {
       const client = createClient();
@@ -407,7 +450,7 @@ export default function DashboardPage() {
 
     } catch (err: unknown) {
       console.error('Error submitting news:', err);
-      const errorMessage = err instanceof Error ? err.message : 'Error al publicar la news';
+      const errorMessage = err instanceof Error ? err.message : (isEs ? 'Error al publicar la news' : 'Error publishing news');
       setErrorMsg(errorMessage);
     } finally {
       setLoadingNews(false);
@@ -428,7 +471,7 @@ export default function DashboardPage() {
   };
 
   const handleDeleteNews = async (postId: string) => {
-    if (!confirm("¿Estás seguro de que quieres eliminar esta news?")) return;
+    if (!confirm(isEs ? "¿Estás seguro de que quieres eliminar esta news?" : "Are you sure you want to delete this news?")) return;
     
     try {
       const client = createClient();
@@ -442,41 +485,42 @@ export default function DashboardPage() {
   };
 
   return (
-    <main className="min-h-screen bg-slate-50 p-4 md:p-12">
-      <div className="max-w-5xl mx-auto">
+    <main className="min-h-screen bg-slate-50">
+      <Header />
+      <div className="max-w-5xl mx-auto p-4 md:p-12 pt-24 md:pt-28">
         {/* Header */}
         <header className="mb-8 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
           <div>
             <h1 className="text-3xl font-black tracking-tighter uppercase text-slate-900">Better Editor</h1>
-            <p className="text-slate-400 text-xs font-bold uppercase tracking-widest">Hi Team</p>
+            <p className="text-slate-400 text-xs font-bold uppercase tracking-widest">{ui.hiTeam}</p>
           </div>
-          <div className="flex gap-2">
+          <div className="flex gap-2 flex-wrap">
             <button
               type="button"
               onClick={() => { setActiveTab('create'); resetForm(); }}
               className={`px-4 py-2 rounded-full text-[10px] font-black uppercase tracking-widest transition-all ${
-                activeTab === 'create' ? 'bg-blue-600 text-white' : 'bg-white text-slate-400 border border-slate-200'
+                activeTab === 'create' ? 'bg-blue-600 text-white' : 'bg-white text-slate-700 border border-slate-300 hover:border-blue-300 hover:text-blue-700'
               }`}
             >
-              + Nuevo Post
+              {ui.newPost}
             </button>
             <button
               type="button"
               onClick={() => { setActiveTab('news'); resetNewsForm(); }}
               className={`px-4 py-2 rounded-full text-[10px] font-black uppercase tracking-widest transition-all ${
-                activeTab === 'news' ? 'bg-blue-600 text-white' : 'bg-white text-slate-400 border border-slate-200'
+                activeTab === 'news' ? 'bg-blue-600 text-white' : 'bg-white text-slate-700 border border-slate-300 hover:border-blue-300 hover:text-blue-700'
               }`}
             >
-              +  News
+              {ui.news}
             </button>
             <button
               type="button"
               onClick={() => setActiveTab('manage')}
               className={`px-4 py-2 rounded-full text-[10px] font-black uppercase tracking-widest transition-all ${
-                activeTab === 'manage' ? 'bg-blue-600 text-white' : 'bg-white text-slate-400 border border-slate-200'
+                activeTab === 'manage' ? 'bg-blue-600 text-white' : 'bg-white text-slate-700 border border-slate-300 hover:border-blue-300 hover:text-blue-700'
               }`}
             >
-              Edit Posts
+              {ui.editPosts}
             </button>
           </div>
         </header>
@@ -485,15 +529,15 @@ export default function DashboardPage() {
           <div className="bg-white rounded-[2rem] p-4 md:p-8 shadow-2xl border border-slate-100">
             {editingPost && (
               <div className="mb-6 p-4 bg-blue-50 rounded-xl flex justify-between items-center">
-                <span className="text-blue-600 text-xs font-black uppercase truncate">Editando: {editingPost.title}</span>
-                <button onClick={resetForm} className="text-slate-400 hover:text-red-500 text-xs font-bold whitespace-nowrap">Cancelar</button>
+                <span className="text-blue-600 text-xs font-black uppercase truncate">{ui.editing}: {editingPost.title}</span>
+                <button onClick={resetForm} className="text-slate-400 hover:text-red-500 text-xs font-bold whitespace-nowrap">{ui.cancel}</button>
               </div>
             )}
 
             <form onSubmit={handleSubmit} className="space-y-6">
               {/* Título */}
               <div className="space-y-2">
-                <label className="text-[10px] font-black uppercase text-slate-400 tracking-widest">Post Title</label>
+                <label className="text-[10px] font-black uppercase text-slate-400 tracking-widest">{ui.postTitle}</label>
                 <input 
                   className="w-full px-5 py-4 rounded-2xl border-2 border-slate-100 font-bold focus:border-blue-600 outline-none transition-all"
                   placeholder="Ej: Reporte de Suministros Abril"
@@ -505,13 +549,13 @@ export default function DashboardPage() {
 
               {/* Editor de Texto (Copia y pega aquí tus cuadros/textos) */}
               <div className="space-y-2">
-                <label className="text-[10px] font-black uppercase text-slate-400 tracking-widest">Content (Pega imágenes, tablas, texto con formato)</label>
+                <label className="text-[10px] font-black uppercase text-slate-400 tracking-widest">{ui.content}</label>
                 <div className="border-2 border-slate-100 rounded-2xl overflow-hidden bg-white">
                   <ReactQuill 
                     theme="snow" 
                     value={form.description} 
                     onChange={(content) => setForm({...form, description: content})} 
-                    placeholder="Pega aquí tus visualizaciones de datos, tablas, imágenes..."
+                    placeholder={ui.contentPlaceholder}
                     modules={{
                       toolbar: [
                         [{ 'header': [1, 2, 3, false] }],
@@ -527,7 +571,7 @@ export default function DashboardPage() {
 
               {/* URL externa opcional */}
               <div className="space-y-2">
-                <label className="text-[10px] font-black uppercase text-slate-400 tracking-widest">External URL (Optional)</label>
+                <label className="text-[10px] font-black uppercase text-slate-400 tracking-widest">{ui.externalUrl}</label>
                 <input 
                   className="w-full px-5 py-4 rounded-2xl border-2 border-slate-100 font-bold focus:border-blue-600 outline-none transition-all"
                   placeholder="https://ejemplo.com (opcional)"
@@ -538,7 +582,7 @@ export default function DashboardPage() {
 
               {/* Subida de Imagen */}
               <div className="space-y-2">
-                <label className="text-[10px] font-black uppercase text-slate-400 tracking-widest">Featured Image</label>
+                <label className="text-[10px] font-black uppercase text-slate-400 tracking-widest">{ui.featuredImage}</label>
                 <div className={`relative border-2 border-dashed rounded-2xl p-8 transition-all flex flex-col items-center ${preview ? 'border-blue-200 bg-blue-50' : 'border-slate-200 hover:border-blue-400'}`}>
                   {preview ? (
                     <div className="relative w-full h-48 mb-4">
@@ -548,7 +592,7 @@ export default function DashboardPage() {
                   ) : (
                     <div className="text-center">
                       <span className="text-4xl mb-2 block">📊</span>
-                      <p className="text-slate-400 text-[10px] font-bold uppercase">Arrastra o selecciona tu imagen</p>
+                      <p className="text-slate-400 text-[10px] font-bold uppercase">{ui.dragImage}</p>
                     </div>
                   )}
                   <input 
@@ -569,9 +613,9 @@ export default function DashboardPage() {
               {/* Links Opcionales */}
               <div className="space-y-2">
                 <div className="flex justify-between items-center">
-                  <label className="text-[10px] font-black uppercase text-slate-400 tracking-widest">Links (Opcional)</label>
+                  <label className="text-[10px] font-black uppercase text-slate-400 tracking-widest">{ui.linksOptional}</label>
                   <button type="button" onClick={handleAddLink} className="text-blue-600 text-[10px] font-black uppercase hover:underline">
-                    + Agregar Link
+                    {ui.addLink}
                   </button>
                 </div>
                 {links.map((link, index) => (
@@ -596,9 +640,9 @@ export default function DashboardPage() {
               {/* Documentos Opcionales */}
               <div className="space-y-2">
                 <div className="flex justify-between items-center">
-                  <label className="text-[10px] font-black uppercase text-slate-400 tracking-widest">Documentos (Opcional)</label>
+                  <label className="text-[10px] font-black uppercase text-slate-400 tracking-widest">{ui.documentsOptional}</label>
                   <button type="button" onClick={handleAddDocument} className="text-blue-600 text-[10px] font-black uppercase hover:underline">
-                    + Agregar Documento
+                    {ui.addDocument}
                   </button>
                 </div>
                 {documents.map((doc, index) => (
@@ -625,7 +669,7 @@ export default function DashboardPage() {
               {/* Autor y Categoría */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <label className="text-[10px] font-black uppercase text-slate-400 tracking-widest">Author</label>
+                  <label className="text-[10px] font-black uppercase text-slate-400 tracking-widest">{ui.author}</label>
                   <select 
                     className="w-full px-5 py-4 rounded-2xl border-2 border-slate-100 font-bold focus:border-blue-600 outline-none"
                     value={form.author}
@@ -637,7 +681,7 @@ export default function DashboardPage() {
                   </select>
                 </div>
                 <div className="space-y-2">
-                  <label className="text-[10px] font-black uppercase text-slate-400 tracking-widest">Category</label>
+                  <label className="text-[10px] font-black uppercase text-slate-400 tracking-widest">{ui.category}</label>
                   <select 
                     className="w-full px-5 py-4 rounded-2xl border-2 border-slate-100 font-bold focus:border-blue-600 outline-none"
                     value={form.category}
@@ -655,13 +699,13 @@ export default function DashboardPage() {
                 disabled={loading}
                 className="w-full bg-slate-900 text-white py-5 rounded-2xl font-black uppercase tracking-[0.2em] text-xs hover:bg-blue-600 transition-all shadow-xl disabled:opacity-50"
               >
-                {loading ? (editingPost ? "Actualizando..." : "Publicando...") : (editingPost ? "Actualizar Post →" : "Publicar Reporte Ahora →")}
+                {loading ? (editingPost ? ui.updating : ui.publishing) : (editingPost ? ui.updatePost : ui.publishNow)}
               </button>
 
               {/* Preview del contenido */}
               {form.description && (
                 <div className="space-y-2 mt-8">
-                  <label className="text-[10px] font-black uppercase text-slate-400 tracking-widest">Vista Previa</label>
+                  <label className="text-[10px] font-black uppercase text-slate-400 tracking-widest">{ui.preview}</label>
                   <div className="border-2 border-slate-100 rounded-2xl p-6 bg-slate-50">
                     <div 
                       className="prose prose-slate max-w-none text-slate-700 text-sm
@@ -681,7 +725,7 @@ export default function DashboardPage() {
                 </div>
               )}
 
-              {success && <div className="p-4 bg-green-50 text-green-600 rounded-xl text-center text-xs font-black uppercase tracking-widest animate-bounce">✓ {editingPost ? 'Actualizado con éxito' : 'Publicado con éxito'} en Better Blog</div>}
+              {success && <div className="p-4 bg-green-50 text-green-600 rounded-xl text-center text-xs font-black uppercase tracking-widest animate-bounce">✓ {editingPost ? ui.successPost : ui.successPostCreate} en Better Blog</div>}
               {errorMsg && <div className="p-4 bg-red-50 text-red-600 rounded-xl text-center text-xs font-bold">{errorMsg}</div>}
             </form>
           </div>
@@ -690,15 +734,15 @@ export default function DashboardPage() {
           <div className="bg-white rounded-[2rem] p-4 md:p-8 shadow-2xl border border-slate-100">
             {editingNews && (
               <div className="mb-6 p-4 bg-blue-50 rounded-xl flex justify-between items-center">
-                <span className="text-blue-600 text-xs font-black uppercase">Editando: {editingNews.title}</span>
-                <button onClick={resetNewsForm} className="text-slate-400 hover:text-red-500 text-xs font-bold">Cancelar</button>
+                <span className="text-blue-600 text-xs font-black uppercase">{ui.editing}: {editingNews.title}</span>
+                <button onClick={resetNewsForm} className="text-slate-400 hover:text-red-500 text-xs font-bold">{ui.cancel}</button>
               </div>
             )}
 
             <form onSubmit={handleNewsSubmit} className="space-y-6">
               {/* Título */}
               <div className="space-y-2">
-                <label className="text-[10px] font-black uppercase text-slate-400 tracking-widest">News Title</label>
+                <label className="text-[10px] font-black uppercase text-slate-400 tracking-widest">{ui.newsTitle}</label>
                 <input 
                   className="w-full px-5 py-4 rounded-2xl border-2 border-slate-100 font-bold focus:border-blue-600 outline-none transition-all"
                   placeholder="Ej: Nueva tendencia en supply chain"
@@ -710,7 +754,7 @@ export default function DashboardPage() {
 
               {/* Descripción */}
               <div className="space-y-2">
-                <label className="text-[10px] font-black uppercase text-slate-400 tracking-widest">Description</label>
+                <label className="text-[10px] font-black uppercase text-slate-400 tracking-widest">{ui.description}</label>
                 <textarea 
                   className="w-full px-5 py-4 rounded-2xl border-2 border-slate-100 font-bold focus:border-blue-600 outline-none transition-all min-h-[120px]"
                   placeholder="Breve descripción de la noticia..."
@@ -722,7 +766,7 @@ export default function DashboardPage() {
 
               {/* URL externa */}
               <div className="space-y-2">
-                <label className="text-[10px] font-black uppercase text-slate-400 tracking-widest">Source URL</label>
+                <label className="text-[10px] font-black uppercase text-slate-400 tracking-widest">{ui.sourceUrl}</label>
                 <input 
                   className="w-full px-5 py-4 rounded-2xl border-2 border-slate-100 font-bold focus:border-blue-600 outline-none transition-all"
                   placeholder="https://ejemplo.com (opcional)"
@@ -733,7 +777,7 @@ export default function DashboardPage() {
 
               {/* Subida de Imagen */}
               <div className="space-y-2">
-                <label className="text-[10px] font-black uppercase text-slate-400 tracking-widest">Featured Image</label>
+                <label className="text-[10px] font-black uppercase text-slate-400 tracking-widest">{ui.featuredImage}</label>
                 <div className={`relative border-2 border-dashed rounded-2xl p-8 transition-all flex flex-col items-center ${newsPreview ? 'border-blue-200 bg-blue-50' : 'border-slate-200 hover:border-blue-400'}`}>
                   {newsPreview ? (
                     <div className="relative w-full h-48 mb-4">
@@ -743,7 +787,7 @@ export default function DashboardPage() {
                   ) : (
                     <div className="text-center">
                       <span className="text-4xl mb-2 block">📰</span>
-                      <p className="text-slate-400 text-[10px] font-bold uppercase">Arrastra o selecciona tu imagen</p>
+                      <p className="text-slate-400 text-[10px] font-bold uppercase">{ui.dragImage}</p>
                     </div>
                   )}
                   <input 
@@ -763,7 +807,7 @@ export default function DashboardPage() {
 
               {/* Autor */}
               <div className="space-y-2">
-                <label className="text-[10px] font-black uppercase text-slate-400 tracking-widest">Author</label>
+                <label className="text-[10px] font-black uppercase text-slate-400 tracking-widest">{ui.author}</label>
                 <select 
                   className="w-full px-5 py-4 rounded-2xl border-2 border-slate-100 font-bold focus:border-blue-600 outline-none"
                   value={newsForm.author}
@@ -780,13 +824,13 @@ export default function DashboardPage() {
                 disabled={loadingNews}
                 className="w-full bg-slate-900 text-white py-5 rounded-2xl font-black uppercase tracking-[0.2em] text-xs hover:bg-blue-600 transition-all shadow-xl disabled:opacity-50"
               >
-                {loadingNews ? (editingNews ? "Actualizando..." : "Publicando...") : (editingNews ? "Actualizar News →" : "Publicar News Ahora →")}
+                {loadingNews ? (editingNews ? ui.updating : ui.publishing) : (editingNews ? ui.updateNews : ui.publishNewsNow)}
               </button>
 
               {/* Preview del contenido */}
               {newsForm.description && (
                 <div className="space-y-2 mt-8">
-                  <label className="text-[10px] font-black uppercase text-slate-400 tracking-widest">Vista Previa</label>
+                  <label className="text-[10px] font-black uppercase text-slate-400 tracking-widest">{ui.preview}</label>
                   <div className="border-2 border-slate-100 rounded-2xl p-6 bg-slate-50">
                     <h3 className="font-black text-lg text-slate-900 mb-2">{newsForm.title}</h3>
                     <p className="text-slate-600 text-sm">{newsForm.description}</p>
@@ -800,14 +844,14 @@ export default function DashboardPage() {
 
             {/* Lista de News Existentes */}
             <div className="mt-8 md:mt-12 pt-6 md:pt-8 border-t border-slate-100">
-              <h2 className="text-lg md:text-xl font-black uppercase text-slate-900 mb-4 md:mb-6">News Existentes</h2>
+              <h2 className="text-lg md:text-xl font-black uppercase text-slate-900 mb-4 md:mb-6">{ui.existingNews}</h2>
               
               {loadingNews ? (
                 <div className="text-center py-8">
                   <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600 mx-auto"></div>
                 </div>
               ) : newsPosts.length === 0 ? (
-                <p className="text-slate-400 text-center py-8">No hay news publicadas aún.</p>
+                <p className="text-slate-400 text-center py-8">{ui.noNewsYet}</p>
               ) : (
                 <div className="space-y-4">
                   {newsPosts.map((post) => (
@@ -816,7 +860,7 @@ export default function DashboardPage() {
                         {post.cover_url ? (
                           <img src={post.cover_url} alt={post.title} className="w-full h-full object-cover" />
                         ) : (
-                          <div className="w-full h-full flex items-center justify-center text-slate-300 text-xs font-bold">SIN IMG</div>
+                          <div className="w-full h-full flex items-center justify-center text-slate-300 text-xs font-bold">{ui.noImg}</div>
                         )}
                       </div>
                       <div className="flex-1 min-w-0 w-full">
@@ -828,13 +872,13 @@ export default function DashboardPage() {
                           onClick={() => handleEditNews(post)}
                           className="flex-1 sm:flex-none px-3 py-2 bg-blue-600 text-white text-[10px] font-black uppercase rounded-full hover:bg-blue-700 transition-all"
                         >
-                          Editar
+                          {ui.edit}
                         </button>
                         <button 
                           onClick={() => handleDeleteNews(post.id)}
                           className="flex-1 sm:flex-none px-3 py-2 bg-red-50 text-red-500 text-[10px] font-black uppercase rounded-full hover:bg-red-100 transition-all"
                         >
-                          Eliminar
+                          {ui.delete}
                         </button>
                       </div>
                     </div>
@@ -845,14 +889,14 @@ export default function DashboardPage() {
           </div>
         ) : (
           <div className="bg-white rounded-[2rem] p-4 md:p-8 shadow-2xl border border-slate-100">
-            <h2 className="text-lg md:text-xl font-black uppercase text-slate-900 mb-4 md:mb-6">Posts Existentes</h2>
+            <h2 className="text-lg md:text-xl font-black uppercase text-slate-900 mb-4 md:mb-6">{ui.existingPosts}</h2>
             
             {loadingPosts ? (
               <div className="text-center py-8">
                 <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600 mx-auto"></div>
               </div>
             ) : posts.length === 0 ? (
-              <p className="text-slate-400 text-center py-8">No hay posts publicados aún.</p>
+              <p className="text-slate-400 text-center py-8">{ui.noPostsYet}</p>
             ) : (
               <div className="space-y-4">
                 {posts.map((post) => (
@@ -861,7 +905,7 @@ export default function DashboardPage() {
                       {post.cover_url ? (
                         <img src={post.cover_url} alt={post.title} className="w-full h-full object-cover" />
                       ) : (
-                        <div className="w-full h-full flex items-center justify-center text-slate-300 text-xs font-bold">SIN IMG</div>
+                        <div className="w-full h-full flex items-center justify-center text-slate-300 text-xs font-bold">{ui.noImg}</div>
                       )}
                     </div>
                     <div className="flex-1 min-w-0 w-full">
@@ -873,13 +917,13 @@ export default function DashboardPage() {
                         onClick={() => handleEdit(post)}
                         className="flex-1 sm:flex-none px-3 py-2 bg-blue-600 text-white text-[10px] font-black uppercase rounded-full hover:bg-blue-700 transition-all"
                       >
-                        Editar
+                        {ui.edit}
                       </button>
                       <button 
                         onClick={() => handleDelete(post.id)}
                         className="flex-1 sm:flex-none px-3 py-2 bg-red-50 text-red-500 text-[10px] font-black uppercase rounded-full hover:bg-red-100 transition-all"
                       >
-                        Eliminar
+                        {ui.delete}
                       </button>
                     </div>
                   </div>

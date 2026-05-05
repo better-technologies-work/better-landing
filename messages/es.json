@@ -1,0 +1,15 @@
+{
+  "Header": {
+    "home": "Inicio",
+    "whatWeAre": "Qué somos",
+    "mittelstand": "Mittelstand",
+    "pricing": "Precios",
+    "about": "Nosotros",
+    "blog": "Blog",
+    "backToHome": "Volver al Inicio"
+  },
+  "Home": {
+    "whatWeDo": "¿Qué hacemos?",
+    "viewAllPosts": "Ver todos los posts"
+  }
+}

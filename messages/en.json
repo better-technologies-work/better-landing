@@ -1,0 +1,16 @@
+
+{
+  "Header": {
+    "home": "Home",
+    "whatWeAre": "What we are",
+    "mittelstand": "Mittelstand",
+    "pricing": "Pricing",
+    "about": "About",
+    "blog": "Blog",
+    "backToHome": "Back to Home"
+  },
+  "Home": {
+    "whatWeDo": "What we do?",
+    "viewAllPosts": "View All Posts"
+  }
+}
