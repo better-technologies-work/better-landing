@@ -136,44 +136,44 @@ export default function Header({ showBackButton = false }: HeaderProps) {
         </a>
 
         <div className="flex items-center gap-3 md:gap-8">
-        {/* Desktop nav */}
-        <nav className="hidden md:flex gap-8 text-white font-black uppercase text-xs tracking-widest items-center">
-          {showBackButton && (
-            <a
-              href={`/${locale}`}
-              className="flex items-center gap-1.5 text-blue-400 hover:text-blue-300 transition-colors border border-blue-500/40 rounded-full px-4 py-1.5"
-            >
-              <ArrowLeft className="w-3 h-3" />
-              {t("backToHome")}
-            </a>
-          )}
-          {menuItems.map((item) => (
-            <a
-              key={item.name}
-              href={item.href}
-              className="hover:text-blue-400 transition-colors"
-            >
-              {item.name}
-            </a>
-          ))}
+          {/* Desktop nav */}
+          <nav className="hidden md:flex gap-8 text-white font-black uppercase text-xs tracking-widest items-center">
+            {showBackButton && (
+              <a
+                href={`/${locale}`}
+                className="flex items-center gap-1.5 text-blue-400 hover:text-blue-300 transition-colors border border-blue-500/40 rounded-full px-4 py-1.5"
+              >
+                <ArrowLeft className="w-3 h-3" />
+                {t("backToHome")}
+              </a>
+            )}
+            {menuItems.map((item) => (
+              <a
+                key={item.name}
+                href={item.href}
+                className="hover:text-blue-400 transition-colors"
+              >
+                {item.name}
+              </a>
+            ))}
+          </nav>
 
-        </nav>
+          {/* Mobile hamburger - Movido antes del Dropdown para que quede a la izquierda de la bandera */}
+          <button
+            type="button"
+            onClick={() => setIsOpen(!isOpen)}
+            className="md:hidden relative z-[110] flex flex-col justify-center items-center w-10 h-10 gap-1.5 focus:outline-none"
+            aria-label="Menu"
+          >
+            <div className={`w-7 h-[2px] bg-white transition-all duration-300 ${isOpen ? "rotate-45 translate-y-2" : ""}`} />
+            <div className={`w-7 h-[2px] bg-white transition-all duration-300 ${isOpen ? "opacity-0" : ""}`} />
+            <div className={`w-7 h-[2px] bg-white transition-all duration-300 ${isOpen ? "-rotate-45 -translate-y-2" : ""}`} />
+          </button>
 
-        <div className="flex items-center md:border-l md:border-white/20 md:ml-1 md:pl-4">
-          <SquareLanguageDropdown locale={locale} onSelect={(code) => handleLanguageChange(code)} />
-        </div>
-
-        {/* Mobile hamburger - Ahora no chocará con las banderas */}
-        <button
-          type="button"
-          onClick={() => setIsOpen(!isOpen)}
-          className="md:hidden relative z-[110] flex flex-col justify-center items-center w-10 h-10 gap-1.5 focus:outline-none"
-          aria-label="Menu"
-        >
-          <div className={`w-7 h-[2px] bg-white transition-all duration-300 ${isOpen ? "rotate-45 translate-y-2" : ""}`} />
-          <div className={`w-7 h-[2px] bg-white transition-all duration-300 ${isOpen ? "opacity-0" : ""}`} />
-          <div className={`w-7 h-[2px] bg-white transition-all duration-300 ${isOpen ? "-rotate-45 -translate-y-2" : ""}`} />
-        </button>
+          {/* Language Selector - Ahora aparece después de la hamburguesa en móvil */}
+          <div className="flex items-center md:border-l md:border-white/20 md:ml-1 md:pl-4">
+            <SquareLanguageDropdown locale={locale} onSelect={(code) => handleLanguageChange(code)} />
+          </div>
         </div>
       </header>
 
