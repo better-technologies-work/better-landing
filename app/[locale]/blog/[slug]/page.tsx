@@ -2,6 +2,7 @@ import { createClient } from '@/lib/supabase/client'
 import { decodeHTML } from '@/lib/utils'
 import Image from 'next/image'
 import ReactMarkdown from 'react-markdown'
+import { translatePosts } from '@/lib/translate'
 
 type Link = {
   id: string;
@@ -82,19 +83,13 @@ export default async function BlogPostPage({ params }: Props) {
     )
   }
 // Traducir si es español
+
 if (isEs && post) {
   try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/translate-posts`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ posts: [post], full: true })
-    })
-    if (response.ok) {
-      const [translated] = await response.json()
-      post = { ...post, title: translated.title, description: translated.description }
-    }
+    const [translated] = await translatePosts([post], true)
+    post = { ...post, title: translated.title, description: translated.description }
   } catch {
-    // Si falla, usa el post original
+    
   }
 }
   return (
