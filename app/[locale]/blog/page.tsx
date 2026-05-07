@@ -4,6 +4,7 @@ import { createClient } from '@/lib/supabase/client'
 import Header from '../../../components/Header'
 import { usePathname } from 'next/navigation'
 
+
 type BlogPost = {
   id: string
   title: string

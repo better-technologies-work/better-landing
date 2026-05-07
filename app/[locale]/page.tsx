@@ -440,14 +440,33 @@ export default function Home() {
   const locale = useLocale();
   const isEs = locale === "es";
   const teamData = isEs ? teamEs : team;
-  useEffect(() => {
+  
     const fetchPosts = async () => {
-      const supabase = createClient();
-      const { data } = await supabase.from('blog_posts').select('*').order('published_at', { ascending: false }).limit(3);
-      if (data) setPosts(data);
-    };
-    fetchPosts();
-  }, []);
+  const supabase = createClient();
+  const { data } = await supabase.from('blog_posts').select('*').order('published_at', { ascending: false }).limit(3);
+  if (data) {
+   
+    if (isEs && data.length > 0) {
+      try {
+        const response = await fetch('/api/translate-posts', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ posts: data })
+        })
+        if (response.ok) {
+          const translated = await response.json()
+          setPosts(translated)
+          return
+        }
+      } catch {
+        // Si falla, usa los posts originales
+      }
+    }
+    setPosts(data)
+  }
+};
+fetchPosts();
+   
 
   useEffect(() => {
     const video = heroVideoRef.current;
