@@ -24,44 +24,59 @@ export default function BlogPage() {
   const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
-    const loadPosts = async () => {
-      if (!process.env.NEXT_PUBLIC_SUPABASE_URL || !process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY) {
-        setError(
-          locale === 'es'
-            ? 'Supabase no esta configurado. Define NEXT_PUBLIC_SUPABASE_URL y NEXT_PUBLIC_SUPABASE_ANON_KEY.'
-            : 'Supabase is not configured. Please set NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY.'
-        )
-        setLoading(false)
-        return
-      }
-
-      try {
-        const client = createClient()
-        const { data, error } = await client
-          .from('blog_posts')
-          .select('*')
-          .order('published_at', { ascending: false })
-
-        if (error) throw error
-
-        setPosts(data || [])
-        setError(null)
-      } catch (err) {
-        console.error('Blog page load error:', err)
-        setError(
-          err instanceof Error
-            ? err.message
-            : locale === 'es'
-              ? 'No se pudieron cargar los posts del blog en este momento.'
-              : 'Unable to load blog posts at this time.'
-        )
-      } finally {
-        setLoading(false)
-      }
+  const loadPosts = async () => {
+    if (!process.env.NEXT_PUBLIC_SUPABASE_URL || !process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY) {
+      setError(
+        locale === 'es'
+          ? 'Supabase no esta configurado.'
+          : 'Supabase is not configured.'
+      )
+      setLoading(false)
+      return
     }
 
-    loadPosts()
-  }, [locale])
+    try {
+      const client = createClient()
+      const { data, error } = await client
+        .from('blog_posts')
+        .select('*')
+        .order('published_at', { ascending: false })
+
+      if (error) throw error
+
+      let result = data || []
+
+      // Si el idioma es español, traducir con google-translate-api-x
+      if (locale === 'es' && result.length > 0) {
+        const response = await fetch('/api/translate-posts', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ posts: result })
+        })
+        if (response.ok) {
+          const translated = await response.json()
+          result = translated
+        }
+      }
+
+      setPosts(result)
+      setError(null)
+    } catch (err) {
+      console.error('Blog page load error:', err)
+      setError(
+        err instanceof Error
+          ? err.message
+          : locale === 'es'
+            ? 'No se pudieron cargar los posts.'
+            : 'Unable to load blog posts.'
+      )
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  loadPosts()
+}, [locale])
 
   if (loading) {
     return (
