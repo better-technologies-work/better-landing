@@ -8,6 +8,13 @@
     "blog": "Blog",
     "backToHome": "Voltar"
   },
+  "Home": {
+    "whatWeDo": "O que fazemos?",
+    "viewAllPosts": "Ver todos os posts"
+  },
+  "Footer": {
+    "createdBy": "Criado por"
+  },
   "Dashboard": {
     "hiTeam": "Olá equipe",
     "newPost": "+ Novo Post",
@@ -16,14 +23,14 @@
     "editing": "Editando",
     "cancel": "Cancelar",
     "postTitle": "Título do post",
-    "content": "Conteúdo",
-    "contentPlaceholder": "Cole aqui...",
-    "externalUrl": "URL externa",
+    "content": "Conteúdo (cole imagens, tabelas e texto formatado)",
+    "contentPlaceholder": "Cole aqui suas visualizações de dados, tabelas, imagens...",
+    "externalUrl": "URL externa (opcional)",
     "featuredImage": "Imagem de destaque",
-    "dragImage": "Arraste ou selecione",
-    "linksOptional": "Links",
+    "dragImage": "Arraste ou selecione sua imagem",
+    "linksOptional": "Links (opcional)",
     "addLink": "+ Adicionar Link",
-    "documentsOptional": "Documentos",
+    "documentsOptional": "Documentos (opcional)",
     "addDocument": "+ Adicionar Documento",
     "author": "Autor",
     "category": "Categoria",
@@ -47,9 +54,8 @@
     "noPostsYet": "Ainda não há posts publicados.",
     "noImg": "SEM IMG"
   },
-  "Home": {
-    "title": "Inovação para o futuro",
-    "subtitle": "Criando tecnologias que transformam o mundo.",
-    "button": "Saiba mais"
+  "News": {
+    "news": "Notícias",
+    "viewAllNews": "Ver todas as notícias"
   }
 }

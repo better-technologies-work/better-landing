@@ -9,19 +9,17 @@
     "backToHome": "Zurück zur Startseite"
   },
   "Home": {
-    "whatWeDo": "Was wir tun",
-    "viewAllPosts": "Alle Beiträge anzeigen"
+    "whatWeDo": "Was wir tun?",
+    "viewAllPosts": "Alle Beiträge ansehen"
   },
   "Hero": {
-  "title": "Verstehe die Vergangenheit — baue die Zukunft.",
-  "ctaPart1": "LASST UNS",
-  "ctaPart2": "HEUTE BEGINNEN"
-},
-  "WhatWeDo": {
-    "title": "Was wir tun",
-    "description": "Wir bieten eine umfassende Plattform, die es Unternehmen ermöglicht, ihre Daten zu verstehen und zu nutzen, um fundierte Entscheidungen zu treffen. Unsere Lösungen sind darauf ausgelegt, die Datenanalyse zu vereinfachen und gleichzeitig leistungsstarke Einblicke zu liefern."
+    "title": "Verstehe die Vergangenheit — baue die Zukunft.",
+    "ctaPart1": "LASST UNS",
+    "ctaPart2": "HEUTE BEGINNEN"
   },
-  
+  "Footer": {
+    "createdBy": "Erstellt von"
+  },
   "Dashboard": {
     "hiTeam": "Hallo Team",
     "newPost": "+ Neuer Beitrag",
@@ -64,5 +62,5 @@
   "News": {
     "news": "Nachrichten",
     "viewAllNews": "Alle Nachrichten anzeigen"
-}
+  }
 }
