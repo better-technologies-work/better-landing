@@ -600,9 +600,19 @@ fetchPosts();
 
       {/* CIERRE */}
       <h2 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter leading-[0.9] uppercase mb-6 text-center py-16 px-6">
-        {isEs ? "Comprende el pasado — construye lo que viene." : "Understand the past — build what’s next."}
-{isEs ? "COMENCEMOS" : "LET'S START"} <em className="italic underline decoration-blue-100"> {isEs ? "HOY" : "TODAY"} </em>
-      </h2>
+  {/* Primera línea */}
+  <span className="block mb-4">
+    {isEs ? "Comprende el pasado — construye lo que viene." : "Understand the past — build what’s next."}
+  </span>
+
+  {/* Segunda línea */}
+  <span className="block">
+    {isEs ? "COMENCEMOS" : "LET'S START"}{" "}
+    <em className="italic underline decoration-blue-100">
+      {isEs ? "HOY" : "TODAY"}
+    </em>
+  </span>
+</h2>
 
       {/* LATEST INSIGHTS */}
       <section className="py-24 bg-slate-50">
