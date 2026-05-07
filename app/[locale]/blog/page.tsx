@@ -36,66 +36,62 @@ export default function BlogPage() {
   }
 
   useEffect(() => {
-    const loadPosts = async () => {
-      // Verificación de variables de entorno de Supabase
-      if (!process.env.NEXT_PUBLIC_SUPABASE_URL || !process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY) {
-        setError(locale === 'es' ? 'Supabase no está configurado.' : 'Supabase is not configured.')
-        setLoading(false)
-        return
+  const loadPosts = async () => {
+    if (!process.env.NEXT_PUBLIC_SUPABASE_URL || !process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY) {
+      setError(locale === 'es' ? 'Supabase no está configurado.' : 'Supabase is not configured.')
+      setLoading(false)
+      return
+    }
+
+    try {
+      const client = createClient()
+      
+      // TRAEMOS TODO (Sin filtro de idioma para que la API traduzca lo que encuentre)
+      const { data, error: supabaseError } = await client
+        .from('blog_posts')
+        .select('*')
+        .order('published_at', { ascending: false })
+
+      if (supabaseError) throw supabaseError
+
+      let result = data || []
+
+      // Si el idioma no es inglés, enviamos TODO el contenido a traducir "al vuelo"
+      if (locale !== 'en' && result.length > 0) {
+        try {
+          const response = await fetch('/api/translate-posts', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ 
+              posts: result, 
+              targetLocale: locale, 
+              full: false // Solo traduce títulos y descripciones para que sea rápido
+            })
+          });
+
+          if (response.ok) {
+            const translated = await response.json();
+            result = translated;
+          } else {
+            console.warn(`Translation API error for ${locale}. Using original.`);
+          }
+        } catch (err) {
+          console.error("Translation fetch failed:", err);
+        }
       }
 
-      try {
-        const client = createClient()
-        const { data, error: supabaseError } = await client
-          .from('blog_posts')
-          .select('*')
-          .eq('language', locale)
-          .order('published_at', { ascending: false })
-
-        if (supabaseError) throw supabaseError
-
-        let result = data || []
-
-        
-if (locale !== 'en' && result.length > 0) {
-  try {
-    const response = await fetch('/api/translate-posts', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ 
-        posts: result, 
-        targetLocale: locale, 
-        full: false           
-      })
-    });
-
-    if (response.ok) {
-      const translated = await response.json();
-      result = translated;
-    } else {
-      console.warn(`Translation API error for ${locale}. Using original English.`);
+      setPosts(result)
+      setError(null)
+    } catch (err) {
+      console.error('Blog page load error:', err)
+      setError(err instanceof Error ? err.message : 'Error loading posts.')
+    } finally {
+      setLoading(false)
     }
-  } catch (err) {
-    
-    console.error("Translation fetch failed:", err);
   }
-}
 
-        setPosts(result)
-        setError(null)
-      } catch (err) {
-        console.error('Blog page load error:', err)
-        setError(
-          err instanceof Error ? err.message : 
-          locale === 'es' ? 'No se pudieron cargar los posts.' : 'Unable to load blog posts.'
-        )
-      } finally {
-        setLoading(false)
-      }
-    }
-
-    loadPosts()
-  }, [locale])
+  loadPosts()
+}, [locale])
   
   // Pantalla de Carga
   if (loading) {
