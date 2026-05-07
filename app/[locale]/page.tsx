@@ -5,8 +5,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { createClient } from '@/lib/supabase/client'
 import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import Header from "@/components/Header";
-import { useLocale } from 'next-intl'; 
-import { useTranslations } from 'next-intl';
+import { useLocale , useTranslations } from 'next-intl'; 
+
 
 
 
@@ -178,45 +178,60 @@ const NewsSection = () => {
   }, []);
 
   useEffect(() => {
-    const fetchNews = async () => {
-      const fetchExternal = async () => {
-        const response = await fetch('/api/news');
-        if (!response.ok) { const errorBody = await response.json().catch(() => null); throw new Error(errorBody?.error || 'External news fetch failed.'); }
-        return response.json();
-      };
-      const fetchLocal = async () => {
-        const response = await fetch('/api/local-news');
-        if (!response.ok) { const errorBody = await response.json().catch(() => null); throw new Error(errorBody?.error || 'Local news fetch failed.'); }
-        return response.json();
-      };
+  const fetchNews = async () => {
+    
+    // 1. Función para noticias externas
+    const fetchExternal = async () => {
       try {
-        const [externalResult, localResult] = await Promise.allSettled([fetchExternal(), fetchLocal()]);
-        let externalData: any = null;
-        let localData: any   = null;
-        if (externalResult.status === 'fulfilled') { externalData = externalResult.value; } else { console.error('External news fetch failed:', externalResult.reason); setNewsError('Unable to load external news.'); }
-        if (localResult.status === 'fulfilled')    { localData    = localResult.value;    } else { console.warn('Local news fetch failed:', localResult.reason); setNewsError((prev) => prev ? `${prev} Local news feed is unavailable.` : 'Unable to load local news.'); }
-        const externalArticles: any[] = Array.isArray(externalData?.articles)
-          ? (() => {
-              const bbc     = externalData.articles.find((a: any) => a.source?.name?.toLowerCase().includes('bbc'));
-              const cnn     = externalData.articles.find((a: any) => a.source?.name?.toLowerCase().includes('cnn'));
-              const reuters = externalData.articles.find((a: any) => a.source?.name?.toLowerCase().includes('reuters'));
-              const selected = [bbc, cnn, reuters].filter(Boolean);
-              if (selected.length < 3) { const fillers = externalData.articles.filter((a: any) => !selected.includes(a)); return [...selected, ...fillers].slice(0, 3); }
-              return selected;
-            })()
-          : [];
-        const localArticles = Array.isArray(localData?.news)
-          ? localData.news.map((item: any) => ({ title: item.title, description: item.description, url: item.post_url, urlToImage: item.cover_url, source: { name: item.category || 'Actualidad' }, publishedAt: item.published_at || new Date().toISOString() }))
-          : [];
-        const combined = [...localArticles, ...externalArticles].slice(0, 3);
-        if (combined.length > 0) { setArticles(combined); } else { setNewsError((prev) => prev || 'No news available at the moment.'); }
-      } catch (error) {
-        console.error('Error fetching news:', error);
-        setNewsError(error instanceof Error ? error.message : 'Unable to fetch news feeds.');
-      } finally { setLoading(false); }
+        const response = await fetch('/api/news');
+        if (!response.ok) {
+          console.warn('Servicio de noticias externas no disponible.');
+          return null; // Retornamos null para manejarlo luego
+        }
+        return await response.json();
+      } catch (err) {
+        console.error('Error fetchExternal:', err);
+        return null;
+      }
     };
-    fetchNews();
-  }, []);
+
+    // 2. Función para noticias locales
+    const fetchLocal = async () => {
+      try {
+        const response = await fetch('/api/local-news');
+        if (!response.ok) {
+          console.warn('Servicio de noticias locales no disponible.');
+          return null;
+        }
+        return await response.json();
+      } catch (err) {
+        console.error('Error fetchLocal:', err);
+        return null;
+      }
+    };
+
+    // 3. Ejecución segura
+    try {
+      const [externalData, localData] = await Promise.all([
+        fetchExternal(),
+        fetchLocal()
+      ]);
+
+      // Aquí actualizas tus estados solo si recibiste datos
+      if (externalData) {
+        // setExternalNews(externalData); 
+      }
+      if (localData) {
+        // setLocalNews(localData);
+      }
+
+    } catch (err) {
+      console.error("Error general en fetchNews:", err);
+    }
+  };
+
+  fetchNews();
+}, [locale]); 
 
   const goToPrevious = () => setCurrentIndex((p) => (p === 0 ? articles.length - 1 : p - 1));
   const goToNext     = () => setCurrentIndex((p) => (p === articles.length - 1 ? 0 : p + 1));
@@ -411,7 +426,14 @@ const CasosDeExito = () => {
           <div className="flex flex-col gap-6">
             <div className="inline-flex flex-col items-start">
               <div style={{ width: '200px', height: '50px' }} className="relative -ml-4">
-                <Image src="/beland.titulo.png" alt="Beland Logo" fill className="object-contain object-left" priority />
+                <Image 
+  src="/beland.titulo.png" 
+  alt="Beland Logo" 
+  fill 
+  className="object-contain object-left" 
+  priority 
+  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+/>
               </div>
             </div>
             <div key={currentSlide} className="border-l-4 border-blue-600 pl-4 transition-all duration-500">

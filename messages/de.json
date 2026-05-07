@@ -1,0 +1,68 @@
+{
+  "Header": {
+    "home": "Startseite",
+    "whatWeAre": "Wer wir sind",
+    "mittelstand": "Mittelstand",
+    "pricing": "Preise",
+    "about": "Über uns",
+    "blog": "Blog",
+    "backToHome": "Zurück zur Startseite"
+  },
+  "Home": {
+    "whatWeDo": "Was wir tun",
+    "viewAllPosts": "Alle Beiträge anzeigen"
+  },
+  "Hero": {
+  "title": "Verstehe die Vergangenheit — baue die Zukunft.",
+  "ctaPart1": "LASST UNS",
+  "ctaPart2": "HEUTE BEGINNEN"
+},
+  "WhatWeDo": {
+    "title": "Was wir tun",
+    "description": "Wir bieten eine umfassende Plattform, die es Unternehmen ermöglicht, ihre Daten zu verstehen und zu nutzen, um fundierte Entscheidungen zu treffen. Unsere Lösungen sind darauf ausgelegt, die Datenanalyse zu vereinfachen und gleichzeitig leistungsstarke Einblicke zu liefern."
+  },
+  
+  "Dashboard": {
+    "hiTeam": "Hallo Team",
+    "newPost": "+ Neuer Beitrag",
+    "news": "+ Nachrichten",
+    "editPosts": "Beiträge bearbeiten",
+    "editing": "Bearbeiten",
+    "cancel": "Abbrechen",
+    "postTitle": "Beitragstitel",
+    "content": "Inhalt (Bilder, Tabellen und formatierten Text einfügen)",
+    "contentPlaceholder": "Fügen Sie hier Ihre Datenvisualisierungen, Tabellen und Bilder ein...",
+    "externalUrl": "Externe URL (optional)",
+    "featuredImage": "Beitragsbild",
+    "dragImage": "Bild hierher ziehen oder auswählen",
+    "linksOptional": "Links (optional)",
+    "addLink": "+ Link hinzufügen",
+    "documentsOptional": "Dokumente (optional)",
+    "addDocument": "+ Dokument hinzufügen",
+    "author": "Autor",
+    "category": "Kategorie",
+    "updating": "Aktualisierung...",
+    "publishing": "Veröffentlichung...",
+    "updatePost": "Beitrag aktualisieren →",
+    "publishNow": "Bericht jetzt veröffentlichen →",
+    "preview": "Vorschau",
+    "successPost": "Erfolgreich aktualisiert",
+    "successPostCreate": "Erfolgreich veröffentlicht",
+    "newsTitle": "Nachrichtentitel",
+    "description": "Beschreibung",
+    "sourceUrl": "Quell-URL",
+    "publishNewsNow": "Nachricht jetzt veröffentlichen →",
+    "updateNews": "Nachricht aktualisieren →",
+    "existingNews": "Existierende Nachrichten",
+    "noNewsYet": "Noch keine Nachrichten veröffentlicht.",
+    "edit": "Bearbeiten",
+    "delete": "Löschen",
+    "existingPosts": "Existierende Beiträge",
+    "noPostsYet": "Noch keine Beiträge veröffentlicht.",
+    "noImg": "KEIN BILD"
+  },
+  "News": {
+    "news": "Nachrichten",
+    "viewAllNews": "Alle Nachrichten anzeigen"
+}
+}

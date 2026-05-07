@@ -84,11 +84,25 @@ export default async function BlogPostPage({ params }: Props) {
   }
 // Traducir si es español
 
-if (isEs && post) {
+
+if (locale !== 'en' && post) {
   try {
-    const [translated] = await translatePosts([post], true)
-    post = { ...post, title: translated.title, description: translated.description }
-  } catch {
+    
+    const translatedArray = await translatePosts([post], true, locale);
+    
+    if (translatedArray && translatedArray.length > 0) {
+      const translated = translatedArray[0];
+      
+     
+      post = { 
+        ...post, 
+        title: translated.title, 
+        description: translated.description,
+        content: translated.content 
+      };
+    }
+  } catch (error) {
+    console.error("Error traduciendo el post individual:", error);
     
   }
 }

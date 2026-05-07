@@ -12,5 +12,46 @@
   "Home": {
     "whatWeDo": "What we do?",
     "viewAllPosts": "View All Posts"
+  },
+  
+  "Dashboard": {
+    "hiTeam": "Hi Team",
+    "newPost": "+ New Post",
+    "news": "+ News",
+    "editPosts": "Edit Posts",
+    "editing": "Editing",
+    "cancel": "Cancel",
+    "postTitle": "Post Title",
+    "content": "Content (paste images, tables, formatted text)",
+    "contentPlaceholder": "Paste your data visualizations, tables, images...",
+    "externalUrl": "External URL (Optional)",
+    "featuredImage": "Featured Image",
+    "dragImage": "Drag or select your image",
+    "linksOptional": "Links (Optional)",
+    "addLink": "+ Add Link",
+    "documentsOptional": "Documents (Optional)",
+    "addDocument": "+ Add Document",
+    "author": "Author",
+    "category": "Category",
+    "updating": "Updating...",
+    "publishing": "Publishing...",
+    "updatePost": "Update Post →",
+    "publishNow": "Publish Report Now →",
+    "preview": "Preview",
+    "successPost": "Updated successfully",
+    "successPostCreate": "Published successfully",
+    "newsTitle": "News Title",
+    "description": "Description",
+    "sourceUrl": "Source URL",
+    "publishNewsNow": "Publish News Now →",
+    "updateNews": "Update News →",
+    "existingNews": "Existing News",
+    "noNewsYet": "No news published yet.",
+    "edit": "Edit",
+    "delete": "Delete",
+    "existingPosts": "Existing Posts",
+    "noPostsYet": "No posts published yet.",
+    "noImg": "NO IMG"
   }
+
 }
