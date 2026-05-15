@@ -1,7 +1,6 @@
 import "@/app/globals.css";
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
-import GoogleAnalytics from '@/components/GoogleAnalytics';
 
 // 1. GENERATE METADATA
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
@@ -33,12 +32,20 @@ export default async function RootLayout({
 }) {
   const { locale } = await params;
   const messages = await getMessages({ locale });
+  const gaId = process.env.NEXT_PUBLIC_GA_ID;
 
   return (
     <html lang={locale} className="scroll-smooth" data-scroll-behavior="smooth">
       <head>
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         {/* GOOGLE ANALYTICS 4 */}
-        <GoogleAnalytics />
+        {gaId && (
+          <>
+            <script async src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}></script>
+            <script dangerouslySetInnerHTML={{__html: `window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', '${gaId}');`}}></script>
+          </>
+        )}
       </head>
       <body>
         <NextIntlClientProvider messages={messages} locale={locale}>
