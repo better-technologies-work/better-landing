@@ -1,6 +1,7 @@
 import "@/app/globals.css";
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
+import GoogleAnalytics from '@/components/GoogleAnalytics';
 
 // 1. GENERATE METADATA
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
@@ -34,8 +35,11 @@ export default async function RootLayout({
   const messages = await getMessages({ locale });
 
   return (
-    
     <html lang={locale} className="scroll-smooth" data-scroll-behavior="smooth">
+      <head>
+        {/* GOOGLE ANALYTICS 4 */}
+        <GoogleAnalytics />
+      </head>
       <body>
         <NextIntlClientProvider messages={messages} locale={locale}>
           {children}
