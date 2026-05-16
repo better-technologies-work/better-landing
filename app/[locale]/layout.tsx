@@ -1,10 +1,14 @@
 import "@/app/globals.css";
-import { NextIntlClientProvider } from 'next-intl';
-import { getMessages } from 'next-intl/server';
+import { NextIntlClientProvider } from "next-intl";
+import { getMessages } from "next-intl/server";
+import Script from "next/script";
 
-// 1. GENERATE METADATA
-export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
-  const { locale } = await params;
+export async function generateMetadata({
+  params,
+}: {
+  params: { locale: string };
+}) {
+  const { locale } = params;
 
   const titles: Record<string, string> = {
     en: "Better Technologies - Global Operations",
@@ -13,9 +17,10 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 
   return {
     title: titles[locale] || titles.en,
-    description: locale === "es" 
-      ? "Operamos en LATAM para empresas globales" 
-      : "We operate LATAM for Global companies",
+    description:
+      locale === "es"
+        ? "Operamos en LATAM para empresas globales"
+        : "We operate LATAM for Global companies",
   };
 }
 
@@ -28,25 +33,35 @@ export default async function RootLayout({
   params,
 }: {
   children: React.ReactNode;
-  params: Promise<{ locale: string }>;
+  params: { locale: string };
 }) {
-  const { locale } = await params;
+  const { locale } = params;
   const messages = await getMessages({ locale });
   const gaId = process.env.NEXT_PUBLIC_GA_ID;
 
   return (
     <html lang={locale} className="scroll-smooth" data-scroll-behavior="smooth">
       <head>
-        <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        {/* GOOGLE ANALYTICS 4 */}
-        {gaId && (
-          <>
-            <script async src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}></script>
-            <script dangerouslySetInnerHTML={{__html: `window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', '${gaId}');`}}></script>
-          </>
-        )}
-      </head>
+  <meta charSet="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  {gaId && (
+    <>
+      <Script
+        src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}
+        strategy="afterInteractive"
+      />
+      <Script id="google-analytics" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', '${gaId}');
+        `}
+      </Script>
+    </>
+  )}
+</head>
       <body>
         <NextIntlClientProvider messages={messages} locale={locale}>
           {children}
