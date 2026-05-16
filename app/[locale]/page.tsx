@@ -757,9 +757,17 @@ export default function Home() {
 
       {/* 1. HERO */}
       <section className="relative w-full h-[100dvh] overflow-hidden" id="top">
-        <video ref={heroVideoRef} className="absolute top-1/2 left-1/2 min-w-full min-h-full w-auto h-auto -translate-x-1/2 -translate-y-1/2 object-cover" autoPlay loop muted playsInline preload="auto">
-          <source src={`https://res.cloudinary.com/djp2qzp9f/video/upload/q_auto,vc_h264/${isMobile ? "c_fill,ar_9:16" : "c_fill,ar_16:9"}/v1775676329/IMG_2919_l50wan.mp4`} type="video/mp4" />
-        </video>
+        <video 
+  ref={heroVideoRef} 
+  className="absolute top-1/2 left-1/2 min-w-full min-h-full w-auto h-auto -translate-x-1/2 -translate-y-1/2 object-cover" 
+  autoPlay 
+  loop 
+  muted 
+  playsInline 
+  preload="auto"
+>
+  <source src="/hero.mp4" type="video/mp4" />
+</video>
         <div className="absolute inset-0 bg-white/10 z-[1]" />
         <div className="absolute inset-0 z-[2] flex flex-col items-center justify-center px-6 text-center">
           <p className="text-blue-600 uppercase tracking-[0.4em] mb-3 text-[10px] font-black">
