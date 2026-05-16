@@ -6,9 +6,9 @@ import { getMessages } from "next-intl/server";
 export async function generateMetadata({
   params,
 }: {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }) {
-  const { locale } = params;
+  const { locale } = await params;
 
   const titles: Record<string, string> = {
     en: "Better Technologies - Global Operations",
