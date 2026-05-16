@@ -1,7 +1,7 @@
 import "@/app/globals.css";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
-import Script from "next/script";
+//import Script from "next/script";
 
 export async function generateMetadata({
   params,
@@ -45,22 +45,7 @@ export default async function RootLayout({
   <meta charSet="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  {gaId && (
-    <>
-      <Script
-        src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}
-        strategy="afterInteractive"
-      />
-      <Script id="google-analytics" strategy="afterInteractive">
-        {`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', '${gaId}');
-        `}
-      </Script>
-    </>
-  )}
+  
 </head>
       <body>
         <NextIntlClientProvider messages={messages} locale={locale}>
