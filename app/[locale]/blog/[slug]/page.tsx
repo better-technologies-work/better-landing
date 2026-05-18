@@ -38,6 +38,7 @@ type Props = {
 
 export default async function BlogPostPage({ params }: Props) {
   const { slug, locale } = await params
+  const localeBase = locale === 'en' ? '' : `/${locale}`
   const isEs = locale === 'es'
   let post: BlogPost | null = null
 
@@ -61,7 +62,7 @@ export default async function BlogPostPage({ params }: Props) {
         <div className="text-center max-w-xl rounded-3xl border border-slate-200 bg-slate-50 p-10 shadow-sm">
           <h1 className="text-4xl font-black text-slate-900 mb-4">{isEs ? 'No se pudo cargar el post' : 'Unable to load post'}</h1>
           <p className="text-slate-600 mb-8">{message}</p>
-          <a href={`/${locale}/blog`} className="inline-block px-6 py-3 bg-blue-600 text-white rounded-full font-bold hover:bg-blue-700 transition-colors">
+          <a href={`${localeBase}/blog`} className="inline-block px-6 py-3 bg-blue-600 text-white rounded-full font-bold hover:bg-blue-700 transition-colors">
             {isEs ? '← Volver al Blog' : '← Back to Blog'}
           </a>
         </div>
@@ -75,7 +76,7 @@ export default async function BlogPostPage({ params }: Props) {
         <div className="text-center">
           <h1 className="text-4xl font-black text-slate-900 mb-4">{isEs ? 'Post no encontrado' : 'Post Not Found'}</h1>
           <p className="text-slate-600 mb-8">{isEs ? 'El post que buscas no existe.' : "The post you're looking for doesn't exist."}</p>
-          <a href={`/${locale}/blog`} className="inline-block px-6 py-3 bg-blue-600 text-white rounded-full font-bold hover:bg-blue-700 transition-colors">
+          <a href={`${localeBase}/blog`} className="inline-block px-6 py-3 bg-blue-600 text-white rounded-full font-bold hover:bg-blue-700 transition-colors">
             {isEs ? '← Volver al Blog' : '← Back to Blog'}
           </a>
         </div>
@@ -113,7 +114,7 @@ if (locale !== 'en' && post) {
         <div className="relative w-[100px] md:w-[140px] h-[30px] md:h-[40px]">
           <Image src="/logo.png" alt="Better Technologies" fill sizes="140px" className="object-contain" priority />
         </div>
-        <a href={`/${locale}/#blog`} className="text-white text-[8px] md:text-[10px] font-black uppercase tracking-widest hover:text-blue-600 transition-colors">
+        <a href={`${localeBase}/#blog`} className="text-white text-[8px] md:text-[10px] font-black uppercase tracking-widest hover:text-blue-600 transition-colors">
           {isEs ? '← Volver' : '← Back'}
         </a>
       </header>

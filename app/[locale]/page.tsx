@@ -414,22 +414,52 @@ const NewsSection = () => {
       const fetchExternal = async () => {
         try {
           const response = await fetch('/api/news');
-          if (!response.ok) { console.warn('Servicio de noticias externas no disponible.'); return null; }
+          if (!response.ok) {
+            console.warn('Servicio de noticias externas no disponible.');
+            return null;
+          }
           return await response.json();
-        } catch (err) { console.error('Error fetchExternal:', err); return null; }
+        } catch (err) {
+          console.error('Error fetchExternal:', err);
+          return null;
+        }
       };
       const fetchLocal = async () => {
         try {
           const response = await fetch('/api/local-news');
-          if (!response.ok) { console.warn('Servicio de noticias locales no disponible.'); return null; }
+          if (!response.ok) {
+            console.warn('Servicio de noticias locales no disponible.');
+            return null;
+          }
           return await response.json();
-        } catch (err) { console.error('Error fetchLocal:', err); return null; }
+        } catch (err) {
+          console.error('Error fetchLocal:', err);
+          return null;
+        }
       };
       try {
         const [externalData, localData] = await Promise.all([fetchExternal(), fetchLocal()]);
-        if (externalData) { /* setExternalNews(externalData) */ }
-        if (localData) { /* setLocalNews(localData) */ }
-      } catch (err) { console.error("Error general en fetchNews:", err); }
+        const externalArticles = externalData?.articles ?? null;
+        const localArticles = localData?.news ?? null;
+
+        if (externalArticles?.length) {
+          setArticles(externalArticles);
+          setCurrentIndex(0);
+        } else if (localArticles?.length) {
+          setArticles(localArticles);
+          setCurrentIndex(0);
+        } else {
+          const externalError = externalData?.error || null;
+          const localError = localData?.error || null;
+          setNewsError(externalError || localError || tx('newsError'));
+          setArticles([]);
+        }
+      } catch (err) {
+        console.error('Error general en fetchNews:', err);
+        setNewsError(tx('newsError'));
+      } finally {
+        setLoading(false);
+      }
     };
     fetchNews();
   }, [locale]);
@@ -508,13 +538,6 @@ const NewsSection = () => {
             <button onClick={goToPrevious} className="w-10 h-10 rounded-full border border-slate-200 flex items-center justify-center hover:bg-slate-50 transition-colors" aria-label={tx('prevArticle') as string}>
               <span className="text-slate-500 font-black">←</span>
             </button>
-            <div className="flex gap-2">
-              {articles.map((article: any, index: number) => (
-                <button key={index} onClick={() => setCurrentIndex(index)} className={`px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest transition-all ${index === currentIndex ? 'bg-blue-600 text-white' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'}`}>
-                  {new Date(article.publishedAt).toLocaleDateString(dateLang, { month: 'short', day: 'numeric' })}
-                </button>
-              ))}
-            </div>
             <button onClick={goToNext} className="w-10 h-10 rounded-full border border-slate-200 flex items-center justify-center hover:bg-slate-50 transition-colors" aria-label={tx('nextArticle') as string}>
               <span className="text-slate-500 font-black">→</span>
             </button>
@@ -673,7 +696,6 @@ const CasosDeExito = () => {
     </section>
   );
 };
-
 // ─── MAIN HOME ───────────────────────────────────────────────────────────────
 export default function Home() {
   const t = useTranslations('Home');
@@ -687,6 +709,7 @@ export default function Home() {
 
   const teamMap = { en: team, es: teamEs, de: teamDe, pt: teamPt };
   const teamData = teamMap[locale] ?? team;
+  const localeBase = locale === 'en' ? '' : `/${locale}`;
 
   // ── Fetch posts con traducción multi-idioma ────────────────────────────────
   useEffect(() => {
@@ -725,17 +748,24 @@ export default function Home() {
   useEffect(() => {
     const video = heroVideoRef.current;
     if (!video) return;
-    video.muted = true; video.playsInline = true;
-    const tryPlay = () => { video.play().catch(() => {}); };
+    video.muted = true;
+    video.playsInline = true;
+    const tryPlay = () => {
+      video.play().catch(() => {
+        // Autoplay blocked until user interacts; try again on touch
+      });
+    };
     video.addEventListener("loadedmetadata", tryPlay);
     video.addEventListener("loadeddata", tryPlay);
     video.addEventListener("canplay", tryPlay);
+    video.addEventListener("canplaythrough", tryPlay);
     tryPlay();
     video.addEventListener("touchstart", tryPlay, { once: true });
     return () => {
       video.removeEventListener("loadedmetadata", tryPlay);
       video.removeEventListener("loadeddata", tryPlay);
       video.removeEventListener("canplay", tryPlay);
+      video.removeEventListener("canplaythrough", tryPlay);
     };
   }, []);
 
@@ -942,14 +972,14 @@ export default function Home() {
                       return txt.value;
                     })()}
                   </p>
-                  <a href={`/${locale}/blog/${post.slug}`} className="text-blue-600 font-black text-[10px] uppercase tracking-widest hover:text-slate-900 transition-colors">{tx('readMore')}</a>
+                  <a href={`${localeBase}/blog/${post.slug}`} className="text-blue-600 font-black text-[10px] uppercase tracking-widest hover:text-slate-900 transition-colors">{tx('readMore')}</a>
                 </div>
               ))}
             </div>
           ) : (
             <div className="py-12 text-center"><p className="text-slate-400 text-sm">{tx('noPostsYet')}</p></div>
           )}
-          <a href={`/${locale}/blog`} className="inline-block bg-slate-900 text-white px-10 py-4 rounded-full font-black text-xs uppercase tracking-widest hover:bg-blue-600 transition-colors">
+          <a href={`${localeBase}/blog`} className="inline-block bg-slate-900 text-white px-10 py-4 rounded-full font-black text-xs uppercase tracking-widest hover:bg-blue-600 transition-colors">
             {t('viewAllPosts')}
           </a>
         </div>

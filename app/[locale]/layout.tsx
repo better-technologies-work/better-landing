@@ -42,8 +42,10 @@ export default async function RootLayout({
   return (
     <html lang={locale} className="scroll-smooth" data-scroll-behavior="smooth">
       <head>
+       
   <meta charSet="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+   <link rel="icon" href="/logo.png" type="image/png" />
 <Script
   src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}
   strategy="afterInteractive"

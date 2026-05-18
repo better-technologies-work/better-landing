@@ -21,6 +21,7 @@ export default function BlogPage() {
   // 1. Detectar el idioma actual desde la URL (en, es, de, pt)
   const localePrefix = pathname.match(/^\/(en|es|de|pt)(?=\/|$)/)?.[1]
   const locale = localePrefix || 'en'
+  const localeBase = locale === 'en' ? '' : `/${locale}`
   
   const [posts, setPosts] = useState<BlogPost[]>([])
   const [loading, setLoading] = useState(true)
@@ -152,7 +153,7 @@ export default function BlogPage() {
               {posts.map((post: BlogPost) => (
                 <a
                   key={post.id}
-                  href={post.post_url?.startsWith('http') ? post.post_url : `/${locale}/blog/${post.slug}`}
+                  href={post.post_url?.startsWith('http') ? post.post_url : `${localeBase}/blog/${post.slug}`}
                   target={post.post_url?.startsWith('http') ? '_blank' : '_self'}
                   rel="noopener noreferrer"
                   className="group border border-slate-200 rounded-2xl md:rounded-3xl overflow-hidden bg-white hover:shadow-2xl transition-all duration-300 flex flex-col"

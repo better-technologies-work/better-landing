@@ -19,5 +19,11 @@ const nextConfig = {
     ],
   },
 };
-
+redirects: async () => [
+  {
+    source: '/blog/918a60ad-2d5f-4302-a92a-71cf57f60153',
+    destination: '/blog',
+    permanent: true,
+  }
+]
 export default withNextIntl(nextConfig);
