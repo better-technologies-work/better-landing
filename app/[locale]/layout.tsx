@@ -15,12 +15,36 @@ export async function generateMetadata({
     es: "Better Technologies - Operaciones Globales",
   };
 
+  const descriptions: Record<string, string> = {
+    en: "We operate LATAM for Global companies",
+    es: "Operamos en LATAM para empresas globales",
+  };
+
   return {
     title: titles[locale] || titles.en,
-    description:
-      locale === "es"
-        ? "Operamos en LATAM para empresas globales"
-        : "We operate LATAM for Global companies",
+    description: descriptions[locale] || descriptions.en,
+    openGraph: {
+      title: titles[locale] || titles.en,
+      description: descriptions[locale] || descriptions.en,
+      url: "https://bettertechnologies.lat",
+      siteName: "Better Technologies",
+      images: [
+        {
+          url: "https://bettertechnologies.lat/logo.png",
+          width: 1200,
+          height: 630,
+          alt: "Better Technologies Logo",
+        },
+      ],
+      locale: locale === "es" ? "es_ES" : "en_US",
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: titles[locale] || titles.en,
+      description: descriptions[locale] || descriptions.en,
+      images: ["https://bettertechnologies.lat/logo.png"],
+    },
   };
 }
 
@@ -45,7 +69,29 @@ export default async function RootLayout({
        
   <meta charSet="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-   <link rel="icon" href="/logo.png" type="image/png" />
+  <link rel="icon" href="/logo.png" type="image/png" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://bettertechnologies.lat/logo.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://bettertechnologies.lat/logo.png" />
+  
+  <Script id="organization-schema" type="application/ld+json">
+    {`{
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Better Technologies",
+      "url": "https://bettertechnologies.lat",
+      "logo": "https://bettertechnologies.lat/logo.png",
+      "description": "We operate LATAM for Global companies",
+      "sameAs": [
+        "https://www.linkedin.com/company/bettertechnologies/",
+        "https://www.instagram.com/better.technologies"
+      ]
+    }`}
+  </Script>
+
 <Script
   src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}
   strategy="afterInteractive"
