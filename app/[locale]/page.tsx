@@ -744,7 +744,7 @@ export default function Home() {
     fetchPosts();
   }, [locale]);
 
-  // ── Hero video ────────────────────────────────────────────────────────────
+  // ── Hero video ─────────────────────────────────────────────────────
   useEffect(() => {
     const video = heroVideoRef.current;
     if (!video) return;
