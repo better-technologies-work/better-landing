@@ -174,7 +174,7 @@ const teamPt = [
     linkedin: "https://www.linkedin.com/in/demenezesvictor/",
   },
   {
-    name: "Yanina Soto",
+    name: "Yanina Soto ",
     role: "Data Science Chief Operator",
     desc: "Yanina fala a linguagem dos dados com fluência — e os traduz em decisões que importam. Ela extrai sinal do ruído, adiciona camadas de inteligência a cada produto e garante que o que lançamos não seja apenas funcional — seja inteligente.",
     initials: "YS",
