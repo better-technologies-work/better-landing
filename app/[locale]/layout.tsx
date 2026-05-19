@@ -26,11 +26,11 @@ export async function generateMetadata({
     openGraph: {
       title: titles[locale] || titles.en,
       description: descriptions[locale] || descriptions.en,
-      url: "https://bettertechnologies.lat",
+      url: "https://better-technologies.com",
       siteName: "Better Technologies",
       images: [
         {
-          url: "https://bettertechnologies.lat/logo.png",
+          url: "https://better-technologies.com/logo.png",
           width: 1200,
           height: 630,
           alt: "Better Technologies Logo",
@@ -43,7 +43,7 @@ export async function generateMetadata({
       card: "summary_large_image",
       title: titles[locale] || titles.en,
       description: descriptions[locale] || descriptions.en,
-      images: ["https://bettertechnologies.lat/logo.png"],
+      images: ["https://better-technologies.com/logo.png"],
     },
   };
 }
@@ -71,19 +71,19 @@ export default async function RootLayout({
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="icon" href="/logo.png" type="image/png" />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="https://bettertechnologies.lat/logo.png" />
+  <meta property="og:image" content="https://better-technologies.com/logo.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:image" content="https://bettertechnologies.lat/logo.png" />
+  <meta name="twitter:image" content="https://better-technologies.com/logo.png" />
   
   <Script id="organization-schema" type="application/ld+json">
     {`{
       "@context": "https://schema.org",
       "@type": "Organization",
       "name": "Better Technologies",
-      "url": "https://bettertechnologies.lat",
-      "logo": "https://bettertechnologies.lat/logo.png",
+      "url": "https://better-technologies.com",
+      "logo": "https://better-technologies.com/logo.png",
       "description": "We operate LATAM for Global companies",
       "sameAs": [
         "https://www.linkedin.com/company/bettertechnologies/",

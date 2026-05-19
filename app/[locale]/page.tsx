@@ -744,31 +744,51 @@ export default function Home() {
     fetchPosts();
   }, [locale]);
 
-  // ── Hero video ────────────────────────────────────────────────────────────
-  useEffect(() => {
-    const video = heroVideoRef.current;
-    if (!video) return;
-    video.muted = true;
-    video.playsInline = true;
-    const tryPlay = () => {
-      video.play().catch(() => {
-        // Autoplay blocked until user interacts; try again on touch
-      });
-    };
-    video.addEventListener("loadedmetadata", tryPlay);
-    video.addEventListener("loadeddata", tryPlay);
-    video.addEventListener("canplay", tryPlay);
-    video.addEventListener("canplaythrough", tryPlay);
-    tryPlay();
-    video.addEventListener("touchstart", tryPlay, { once: true });
-    return () => {
-      video.removeEventListener("loadedmetadata", tryPlay);
-      video.removeEventListener("loadeddata", tryPlay);
-      video.removeEventListener("canplay", tryPlay);
-      video.removeEventListener("canplaythrough", tryPlay);
-    };
-  }, []);
+ // ── Hero video ────────────────────────────────────────────────────────────
+useEffect(() => {
+  const video = heroVideoRef.current;
+  if (!video) return;
 
+  video.muted = true;
+  video.playsInline = true;
+  video.autoplay = true;
+  video.loop = true;
+
+  const tryPlay = () => {
+    video.play().catch(() => {
+      // Autoplay bloqueado en iOS, esperar interacción
+    });
+  };
+
+  // Intentar reproducción inmediatamente
+  tryPlay();
+
+  // Listeners para cuando hay datos
+  video.addEventListener("loadedmetadata", tryPlay);
+  video.addEventListener("loadeddata", tryPlay);
+  video.addEventListener("canplay", tryPlay);
+  video.addEventListener("canplaythrough", tryPlay);
+
+  // Para iOS: reproducir con cualquier interacción (scroll, touch, click)
+  // Sin necesidad de botón visible
+  const handleInteraction = () => {
+    tryPlay();
+  };
+
+  document.addEventListener("touchstart", handleInteraction, { once: true });
+  document.addEventListener("scroll", handleInteraction, { once: true });
+  document.addEventListener("click", handleInteraction, { once: true });
+
+  return () => {
+    video.removeEventListener("loadedmetadata", tryPlay);
+    video.removeEventListener("loadeddata", tryPlay);
+    video.removeEventListener("canplay", tryPlay);
+    video.removeEventListener("canplaythrough", tryPlay);
+    document.removeEventListener("touchstart", handleInteraction);
+    document.removeEventListener("scroll", handleInteraction);
+    document.removeEventListener("click", handleInteraction);
+  };
+}, []);
   // ── Resize ────────────────────────────────────────────────────────────────
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth < 768);
