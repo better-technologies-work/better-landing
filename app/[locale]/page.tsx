@@ -174,7 +174,7 @@ const teamPt = [
     linkedin: "https://www.linkedin.com/in/demenezesvictor/",
   },
   {
-    name: "Yanina Soto",
+    name: "Yanina Soto ",
     role: "Data Science Chief Operator",
     desc: "Yanina fala a linguagem dos dados com fluência — e os traduz em decisões que importam. Ela extrai sinal do ruído, adiciona camadas de inteligência a cada produto e garante que o que lançamos não seja apenas funcional — seja inteligente.",
     initials: "YS",
@@ -744,10 +744,37 @@ export default function Home() {
     fetchPosts();
   }, [locale]);
 
+<<<<<<< HEAD
  // ── Hero video ────────────────────────────────────────────────────────────
 useEffect(() => {
   const video = heroVideoRef.current;
   if (!video) return;
+=======
+  // ── Hero video ─────────────────────────────────────────────────────
+  useEffect(() => {
+    const video = heroVideoRef.current;
+    if (!video) return;
+    video.muted = true;
+    video.playsInline = true;
+    const tryPlay = () => {
+      video.play().catch(() => {
+        // Autoplay blocked until user interacts; try again on touch
+      });
+    };
+    video.addEventListener("loadedmetadata", tryPlay);
+    video.addEventListener("loadeddata", tryPlay);
+    video.addEventListener("canplay", tryPlay);
+    video.addEventListener("canplaythrough", tryPlay);
+    tryPlay();
+    video.addEventListener("touchstart", tryPlay, { once: true });
+    return () => {
+      video.removeEventListener("loadedmetadata", tryPlay);
+      video.removeEventListener("loadeddata", tryPlay);
+      video.removeEventListener("canplay", tryPlay);
+      video.removeEventListener("canplaythrough", tryPlay);
+    };
+  }, []);
+>>>>>>> 6892a240c23adc7dd589eae3e1e8162d3fa83fe8
 
   video.muted = true;
   video.playsInline = true;
