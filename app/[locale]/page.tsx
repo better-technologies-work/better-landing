@@ -7,6 +7,7 @@ import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import Header from "@/components/Header";
 import { useLocale, useTranslations } from 'next-intl';
 
+
 // ─── TYPES ───────────────────────────────────────────────────────────────────
 type Locale = 'en' | 'es' | 'de' | 'pt';
 
@@ -298,7 +299,14 @@ const ui = {
   positiveAction: { en: "positive action",             es: "accion positiva",                 de: "positive Aktion",                    pt: "ação positiva" },
   strengthens:    { en: "strengthens the entire community.", es: "fortalece a toda la comunidad.", de: "die gesamte Gemeinschaft stärkt.", pt: "fortalece toda a comunidade." },
   viewApp:        { en: "View the app",                es: "Ver la app",                      de: "App ansehen",                        pt: "Ver o app" },
+  
 
+viewMachines: {
+  en: "View Machines",
+  es: "Ver Máquinas",
+  de: "Maschinen ansehen",
+  pt: "Ver Máquinas",
+},
   // Mittelstand
   problemTitle:   { en: "The Problem we solve",        es: "El problema que resolvemos",      de: "Das Problem, das wir lösen",         pt: "O problema que resolvemos" },
   problemDesc:    { en: "Long supply chains in Asia and the Middle East are under pressure due to conflict. Latin America is the obvious alternative — but hard to operationalize.", es: "Las cadenas de suministro largas en Asia y Medio Oriente estan bajo presion por los conflictos. Latinoamerica es la alternativa obvia, pero dificil de operar.", de: "Lange Lieferketten in Asien und dem Nahen Osten stehen durch Konflikte unter Druck. Lateinamerika ist die naheliegende Alternative — aber schwer zu operationalisieren.", pt: "As longas cadeias de suprimento na Ásia e no Oriente Médio estão sob pressão. A América Latina é a alternativa óbvia — mas difícil de operacionalizar." },
@@ -475,7 +483,7 @@ const NewsSection = () => {
 
   if (articles.length === 0) {
     return (
-      <section className="py-24 bg-white border-t border-slate-100">
+      <section className="py-16 bg-white border-t border-slate-100">
         <div className="max-w-7xl mx-auto px-6 text-center">
           <p className="text-slate-500 uppercase tracking-[0.25em] text-[10px] font-black mb-2">{tx('globalFeed')}</p>
           <h3 className="text-2xl md:text-3xl font-bold text-slate-900 mb-3">{tx('newsUnavailable')}</h3>
@@ -489,9 +497,9 @@ const NewsSection = () => {
   const dateLang = locale === 'es' ? 'es-ES' : locale === 'de' ? 'de-DE' : locale === 'pt' ? 'pt-BR' : 'en-US';
 
   return (
-    <section className="py-24 bg-white border-t border-slate-100">
+    <section className="py-16 bg-white border-t border-slate-100">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="flex flex-col md:flex-row justify-between items-center md:items-end mb-16 gap-8">
+        <div className="flex flex-col md:flex-row justify-between items-center md:items-end mb-12 gap-8">
           <div className="hidden md:block w-48"></div>
           <div className="flex-1 flex flex-col items-center text-center">
             <div className="mt-8 inline-flex flex-col items-center"></div>
@@ -565,7 +573,7 @@ const ChatSection = () => {
   };
 
   return (
-    <section className="py-24 bg-white border-t border-slate-100">
+    <section className="py-16 bg-white border-t border-slate-100">
       <div className="max-w-4xl mx-auto px-6 text-center">
         <p className="text-blue-600 uppercase tracking-[0.2em] text-[10px] mb-4 font-bold">WE DELIVER</p>
         <p className="text-dark-600 uppercase tracking-[0.2em] text-[10px] mb-4 font-bold">REAL TIME CERTAINTY (RTC)</p>
@@ -617,7 +625,7 @@ const ChatSection = () => {
 };
 
 //  CASOS DE ÉXITO 
-const CasosDeExito = () => {
+const CasosDeExito = ({ showMachinesModal, setShowMachinesModal }: { showMachinesModal: boolean; setShowMachinesModal: React.Dispatch<React.SetStateAction<boolean>> }) => {
   const locale = useLocale() as Locale;
   const tx = (key: keyof typeof ui) => (ui[key] as any)[locale] ?? (ui[key] as any)['en'];
 
@@ -645,9 +653,9 @@ const CasosDeExito = () => {
   };
 
   return (
-    <section className="py-24 px-6 bg-white border-t border-slate-100">
+    <section className="py-16 px-6 bg-white border-t border-slate-100">
       <div className="max-w-6xl mx-auto">
-        <div className="mb-16 text-center">
+        <div className="mb-12 text-center">
           <p className="text-blue-600 uppercase tracking-[0.25em] text-[10px] font-black mb-2">{tx('successStories')}</p>
           <h2 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter leading-[0.9] uppercase">
             {tx('builtByUs')} <em className="italic underline decoration-blue-100">{tx('usedByPeople')}</em>
@@ -687,9 +695,35 @@ const CasosDeExito = () => {
             <div className="flex flex-wrap gap-2">
               {belandTags.map((tag) => (<span key={tag} className="text-[10px] font-black uppercase tracking-widest px-4 py-1.5 rounded-full border border-slate-200 text-slate-500 bg-slate-50">{tag}</span>))}
             </div>
-            <a href="https://beland.app" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 self-start bg-blue-600 text-white px-8 py-3 rounded-full font-black text-[11px] uppercase tracking-widest hover:bg-blue-700 transition-colors shadow-lg shadow-blue-600/20 active:scale-95">
-              {tx('viewApp')} <ArrowRight className="w-4 h-4" />
-            </a>
+           <div className="flex flex-col gap-3 self-start w-full sm:w-auto mt-4">
+  <a
+    href="https://beland.app"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="inline-flex items-center justify-center gap-2 w-full sm:w-auto bg-blue-600 text-white px-6 py-3 rounded-full font-black text-[10px] sm:text-[11px] uppercase tracking-[0.15em] shadow-lg shadow-blue-600/20 hover:bg-blue-700 transition-colors"
+  >
+    {tx('viewApp')}
+    <ArrowRight className="w-4 h-4" />
+  </a>
+
+  <a
+    href="https://beland.land"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="inline-flex items-center justify-center gap-2 w-full sm:w-auto border border-slate-300 text-slate-700 px-6 py-3 rounded-full font-black text-[10px] sm:text-[11px] uppercase tracking-[0.15em] hover:border-blue-600 hover:text-blue-600 transition-colors"
+  >
+    Landing
+    <ArrowRight className="w-4 h-4" />
+  </a>
+
+  <button
+    onClick={() => setShowMachinesModal(true)}
+    className="inline-flex items-center justify-center gap-2 w-full sm:w-auto border border-slate-300 text-slate-700 px-6 py-3 rounded-full font-black text-[10px] sm:text-[11px] uppercase tracking-[0.15em] hover:border-blue-600 hover:text-blue-600 transition-colors"
+  >
+    {tx('viewMachines')}
+    <ArrowRight className="w-4 h-4" />
+  </button>
+</div>
           </div>
         </div>
       </div>
@@ -706,6 +740,7 @@ export default function Home() {
   const heroVideoRef = useRef<HTMLVideoElement>(null);
   const [isMobile, setIsMobile] = useState(false);
   const [selected, setSelected] = useState<number | null>(null);
+  const [showMachinesModal, setShowMachinesModal] = useState(false);
 
   const teamMap = { en: team, es: teamEs, de: teamDe, pt: teamPt };
   const teamData = teamMap[locale] ?? team;
@@ -795,6 +830,7 @@ useEffect(() => {
   const dateLang = locale === 'es' ? 'es-ES' : locale === 'de' ? 'de-DE' : locale === 'pt' ? 'pt-BR' : 'en-US';
 
   return (
+     
     <main className="relative w-full bg-white">
 
       {/* SHARED HEADER */}
@@ -835,7 +871,7 @@ useEffect(() => {
       <ChatSection />
 
       {/* 4. MITTELSTAND */}
-      <section id="mittelstand" className="py-16 md:py-40 px-6 bg-slate-50 border-y border-slate-200">
+      <section id="mittelstand" className="py-12 md:py-24 px-6 bg-slate-50 border-y border-slate-200">
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-20 items-center">
           <div className="bg-white p-12 rounded-3xl border border-slate-200 shadow-sm transition-all hover:shadow-md">
             <h3 className="text-xl font-bold mb-6 uppercase tracking-wider text-slate-900">{tx('problemTitle')}</h3>
@@ -865,9 +901,9 @@ useEffect(() => {
       </section>
 
       {/* 5. PRICING */}
-      <section id="pricing" className="pt-10 pb-40 px-6 bg-white">
+      <section id="pricing" className="py-20 px-6 bg-white">
         <div className="max-w-7xl mx-auto text-center">
-          <h2 className="text-4xl md:text-5xl font-black mb-20 text-slate-900 uppercase tracking-tighter">
+          <h2 className="text-4xl md:text-5xl font-black mb-12 text-slate-900 uppercase tracking-tighter">
             {tx('whatWeDeliver')} <span className="text-blue-600"> {tx('weDeliver')} </span>
           </h2>
           <div className="grid md:grid-cols-3 gap-12 text-left">
@@ -909,7 +945,7 @@ useEffect(() => {
       </section>
 
       {/* 6. EQUIPO */}
-      <section id="about" className="pt-12 pb-24 px-6 bg-white border-t border-slate-100">
+      <section id="about" className="py-16 px-6 bg-white border-t border-slate-100">
         <div className="max-w-4xl mx-auto">
           <p className="text-blue-600 uppercase tracking-[0.25em] text-[10px] font-black mb-2">{tx('aboutTeam')}</p>
           <h2 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter leading-[0.9] uppercase mb-6">
@@ -950,10 +986,10 @@ useEffect(() => {
       </section>
 
       {/* CASOS DE ÉXITO — BELAND */}
-      <CasosDeExito />
+      <CasosDeExito showMachinesModal={showMachinesModal} setShowMachinesModal={setShowMachinesModal} />
 
       {/* CIERRE */}
-      <h2 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter leading-[0.9] uppercase mb-6 text-center py-16 px-6">
+      <h2 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter leading-[0.9] uppercase mb-6 text-center py-10 px-6">
         <span className="block mb-4">{tx('closingLine')}</span>
         <span className="block">
           {tx('letsStart')}{" "}
@@ -962,7 +998,7 @@ useEffect(() => {
       </h2>
 
       {/* LATEST INSIGHTS */}
-      <section className="py-24 bg-slate-50">
+      <section className="py-16 bg-slate-50">
         <div className="container mx-auto px-6 text-center">
           <p className="text-blue-600 uppercase tracking-[0.25em] text-[10px] font-black mb-4">{tx('stayUpdated')}</p>
           <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-6 uppercase">{tx('latestInsights')}</h2>
@@ -999,9 +1035,9 @@ useEffect(() => {
           </a>
         </div>
       </section>
-
+   
       {/* FOOTER */}
-      <footer className="py-20 text-center bg-white border-t border-slate-100">
+      <footer className="py-16 text-center bg-white border-t border-slate-100">
         <p className="text-slate-400 text-[9px] font-black uppercase tracking-[0.3em] mb-4">{tx('dontMiss')}</p>
         <h3 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter uppercase mb-10">
           {tx('followJourney')} <em className="italic underline decoration-blue-100">{tx('journey')}</em>
@@ -1013,6 +1049,72 @@ useEffect(() => {
         <p className="text-slate-400 text-[9px] font-black uppercase tracking-[0.3em]">&copy; 2026 Better Technologies.</p>
       </footer>
 
-    </main>
+    
+{showMachinesModal && (
+  <div className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-6">
+    <div className="relative bg-white rounded-[2.5rem] shadow-2xl w-full max-w-[380px] h-[85vh] overflow-y-auto">
+
+      {/* cerrar */}
+      <button
+        onClick={() => setShowMachinesModal(false)}
+        className="sticky top-4 ml-auto mr-4 mt-4 z-20 w-9 h-9 rounded-full bg-slate-100 flex items-center justify-center text-slate-700 font-bold"
+      >
+        ✕
+      </button>
+
+      {/* contenido */}
+      <div className="px-6 pb-8">
+        <p className="text-[#7A9B3C] uppercase tracking-[0.25em] text-[10px] font-black mb-3">
+          TECNOLOGÍA CIRCULAR
+        </p>
+
+        <h2 className="text-4xl font-black leading-none uppercase mb-6">
+          <span className="text-black">ESTACIÓN</span>
+          <br />
+          <span className="text-orange-500 italic">AUTÓNOMA</span>
+          <br />
+          <span className="text-lime-600 italic">DE RECICLAJE</span>
+        </h2>
+
+        <p className="text-slate-600 text-sm leading-7 mb-8">
+          Nuestra máquina inteligente recibe tus residuos, los escanea y te
+          recompensa al instante. Convierte el reciclaje en una experiencia
+          visible, social y viral.
+        </p>
+
+        <div className="relative w-full h-[220px] mb-8">
+          <Image
+            src="/maquina-beland.png"
+            alt="Beland machine"
+            fill
+            className="object-contain"
+          />
+        </div>
+
+        <div className="space-y-4 text-sm font-semibold text-slate-800 mb-8">
+          <p>♻️ Acepta vidrio, aluminio, plástico y tetrapack</p>
+          <p>📸 Captura tu reacción y genera un QR único</p>
+          <p>🪙 Gana monedas digitales por cada reciclaje</p>
+          <p>📊 Monitoreo remoto y panel administrativo</p>
+        </div>
+
+        <a
+          href="https://beland.app"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="w-full flex justify-center items-center bg-[#7A9B3C] text-white py-4 rounded-2xl font-black text-sm uppercase tracking-widest"
+        >
+          COTIZA LA TUYA
+        </a>
+      </div>
+    </div>
+  </div>
+)}
+</main>
   );
-}
+};
+
+
+      
+  
+

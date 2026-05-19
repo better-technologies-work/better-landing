@@ -57,5 +57,13 @@
   "News": {
     "news": "Notícias",
     "viewAllNews": "Ver todas as notícias"
+  },
+  "viewMachines": {
+    "title": "Ver Máquinas",
+    "description": "Explore nossa coleção de máquinas e seus detalhes."
+  },
+  "quoteNow": {
+    "title": "Solicitar Cotação",
+    "description": "Contate-nos para uma cotação personalizada e descubra como podemos ajudar seu negócio a prosperar."
   }
 }

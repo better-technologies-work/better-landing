@@ -55,5 +55,13 @@
     "existingPosts": "Posts existentes",
     "noPostsYet": "No hay posts publicados aun.",
     "noImg": "SIN IMG"
+  },
+  "viewMachines": {
+    "title": "Ver Máquinas",
+    "description": "Explora nuestra colección de máquinas y sus detalles."
+  },
+  "quoteNow": {
+    "title": "Solicitar Cotización",
+    "description": "Contáctanos para una cotización personalizada y descubre cómo podemos ayudar a tu negocio a prosperar."
   }
 }

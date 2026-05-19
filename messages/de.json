@@ -62,5 +62,13 @@
   "News": {
     "news": "Nachrichten",
     "viewAllNews": "Alle Nachrichten anzeigen"
+  },
+  "viewMachines": {
+    "title": "Maschinen anzeigen",
+    "description": "Entdecken Sie unsere Sammlung von Maschinen und deren Details."
+  },
+  "quoteNow": {
+    "title": "Angebot anfordern",
+    "description": "Kontaktieren Sie uns für ein persönliches Angebot und erfahren Sie, wie wir Ihrem Unternehmen zum Erfolg verhelfen können."
   }
 }

@@ -52,6 +52,14 @@
     "existingPosts": "Existing Posts",
     "noPostsYet": "No posts published yet.",
     "noImg": "NO IMG"
+  },
+  "viewMachines": {
+    "title": "View Machines",
+    "description": "Explore our collection of machines and their details."
+  },
+  "quoteNow": {
+    "title": "Get a Quote",
+    "description": "Contact us for a personalized quote and discover how we can help your business thrive."
   }
 
 }
