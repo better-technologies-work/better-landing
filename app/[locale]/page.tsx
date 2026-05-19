@@ -1057,7 +1057,7 @@ useEffect(() => {
       {/* cerrar */}
       <button
         onClick={() => setShowMachinesModal(false)}
-        className="sticky top-4 ml-auto mr-4 mt-4 z-20 w-9 h-9 rounded-full bg-slate-100 flex items-center justify-center text-slate-700 font-bold"
+        className="absolute top-4 right-4 z-30 w-10 h-10 rounded-full bg-white shadow shadow-slate-200 flex items-center justify-center text-slate-700 text-xl font-bold"
       >
         ✕
       </button>
@@ -1065,21 +1065,20 @@ useEffect(() => {
       {/* contenido */}
       <div className="px-6 pb-8">
         <p className="text-[#7A9B3C] uppercase tracking-[0.25em] text-[10px] font-black mb-3">
-          TECNOLOGÍA CIRCULAR
+          CIRCULAR TECHNOLOGY
         </p>
 
         <h2 className="text-4xl font-black leading-none uppercase mb-6">
-          <span className="text-black">ESTACIÓN</span>
+          <span className="text-black">AUTONOMOUS</span>
           <br />
-          <span className="text-orange-500 italic">AUTÓNOMA</span>
+          <span className="text-orange-500 italic">RECYCLING</span>
           <br />
-          <span className="text-lime-600 italic">DE RECICLAJE</span>
+          <span className="text-lime-600 italic">STATION</span>
         </h2>
 
         <p className="text-slate-600 text-sm leading-7 mb-8">
-          Nuestra máquina inteligente recibe tus residuos, los escanea y te
-          recompensa al instante. Convierte el reciclaje en una experiencia
-          visible, social y viral.
+          Our smart machine receives your waste, scans it, and rewards you
+          instantly. Turn recycling into a visible, social, and viral experience.
         </p>
 
         <div className="relative w-full h-[220px] mb-8">
@@ -1092,19 +1091,19 @@ useEffect(() => {
         </div>
 
         <div className="space-y-4 text-sm font-semibold text-slate-800 mb-8">
-          <p>♻️ Acepta vidrio, aluminio, plástico y tetrapack</p>
-          <p>📸 Captura tu reacción y genera un QR único</p>
-          <p>🪙 Gana monedas digitales por cada reciclaje</p>
-          <p>📊 Monitoreo remoto y panel administrativo</p>
+          <p>♻️ Accepts glass, aluminum, plastic and tetrapack</p>
+          <p>📸 Capture your reaction and generate a unique QR</p>
+          <p>💰 Earn digital coins with every recycle</p>
+          <p>📊 Remote monitoring and admin panel</p>
         </div>
 
         <a
-          href="https://beland.app"
+          href="https://wa.me/593995269974?text=Hi!%20I%20would%20like%20to%20quote%20a%20recycling%20machine%20for%20my%20business."
           target="_blank"
           rel="noopener noreferrer"
           className="w-full flex justify-center items-center bg-[#7A9B3C] text-white py-4 rounded-2xl font-black text-sm uppercase tracking-widest"
         >
-          COTIZA LA TUYA
+          QUOTE YOURS
         </a>
       </div>
     </div>
