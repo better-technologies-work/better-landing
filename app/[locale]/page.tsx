@@ -174,7 +174,7 @@ const teamPt = [
     linkedin: "https://www.linkedin.com/in/demenezesvictor/",
   },
   {
-    name: "Yanina Soto ",
+    name: "Yanina Soto",
     role: "Data Science Chief Operator",
     desc: "Yanina fala a linguagem dos dados com fluência — e os traduz em decisões que importam. Ela extrai sinal do ruído, adiciona camadas de inteligência a cada produto e garante que o que lançamos não seja apenas funcional — seja inteligente.",
     initials: "YS",
@@ -548,7 +548,7 @@ const NewsSection = () => {
   );
 };
 
-// ─── CHAT SECTION ────────────────────────────────────────────────────────────
+// CHAT SECTION 
 const ChatSection = () => {
   const locale = useLocale() as Locale;
   const tx = (key: keyof typeof ui) => (ui[key] as any)[locale] ?? (ui[key] as any)['en'];
@@ -616,7 +616,7 @@ const ChatSection = () => {
   );
 };
 
-// ─── CASOS DE ÉXITO ──────────────────────────────────────────────────────────
+//  CASOS DE ÉXITO 
 const CasosDeExito = () => {
   const locale = useLocale() as Locale;
   const tx = (key: keyof typeof ui) => (ui[key] as any)[locale] ?? (ui[key] as any)['en'];
@@ -696,7 +696,7 @@ const CasosDeExito = () => {
     </section>
   );
 };
-// ─── MAIN HOME ───────────────────────────────────────────────────────────────
+//  MAIN HOME
 export default function Home() {
   const t = useTranslations('Home');
   const locale = useLocale() as Locale;
@@ -711,7 +711,7 @@ export default function Home() {
   const teamData = teamMap[locale] ?? team;
   const localeBase = locale === 'en' ? '' : `/${locale}`;
 
-  // ── Fetch posts con traducción multi-idioma ────────────────────────────────
+  // Fetch posts con traducción multi-idioma
   useEffect(() => {
     const fetchPosts = async () => {
       const supabase = createClient();
@@ -744,37 +744,10 @@ export default function Home() {
     fetchPosts();
   }, [locale]);
 
-<<<<<<< HEAD
- // ── Hero video ────────────────────────────────────────────────────────────
+// ── Hero video ────────────────────────────────────────────────────────────
 useEffect(() => {
   const video = heroVideoRef.current;
   if (!video) return;
-=======
-  // ── Hero video ─────────────────────────────────────────────────────
-  useEffect(() => {
-    const video = heroVideoRef.current;
-    if (!video) return;
-    video.muted = true;
-    video.playsInline = true;
-    const tryPlay = () => {
-      video.play().catch(() => {
-        // Autoplay blocked until user interacts; try again on touch
-      });
-    };
-    video.addEventListener("loadedmetadata", tryPlay);
-    video.addEventListener("loadeddata", tryPlay);
-    video.addEventListener("canplay", tryPlay);
-    video.addEventListener("canplaythrough", tryPlay);
-    tryPlay();
-    video.addEventListener("touchstart", tryPlay, { once: true });
-    return () => {
-      video.removeEventListener("loadedmetadata", tryPlay);
-      video.removeEventListener("loadeddata", tryPlay);
-      video.removeEventListener("canplay", tryPlay);
-      video.removeEventListener("canplaythrough", tryPlay);
-    };
-  }, []);
->>>>>>> 6892a240c23adc7dd589eae3e1e8162d3fa83fe8
 
   video.muted = true;
   video.playsInline = true;
@@ -783,21 +756,16 @@ useEffect(() => {
 
   const tryPlay = () => {
     video.play().catch(() => {
-      // Autoplay bloqueado en iOS, esperar interacción
+      // Autoplay bloqueado en iOS
     });
   };
 
-  // Intentar reproducción inmediatamente
   tryPlay();
-
-  // Listeners para cuando hay datos
   video.addEventListener("loadedmetadata", tryPlay);
   video.addEventListener("loadeddata", tryPlay);
   video.addEventListener("canplay", tryPlay);
   video.addEventListener("canplaythrough", tryPlay);
 
-  // Para iOS: reproducir con cualquier interacción (scroll, touch, click)
-  // Sin necesidad de botón visible
   const handleInteraction = () => {
     tryPlay();
   };
@@ -816,7 +784,7 @@ useEffect(() => {
     document.removeEventListener("click", handleInteraction);
   };
 }, []);
-  // ── Resize ────────────────────────────────────────────────────────────────
+  
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth < 768);
     handleResize();
