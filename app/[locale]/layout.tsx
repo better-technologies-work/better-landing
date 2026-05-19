@@ -23,7 +23,7 @@ export async function generateMetadata({
   return {
     title: titles[locale] || titles.en,
     description: descriptions[locale] || descriptions.en,
-    // Aquí le decimos a Next.js que maneje tu logo de forma oficial
+    
     icons: {
       icon: "/logo.png", 
       apple: "/logo.png", // Opcional, para dispositivos Apple
@@ -74,9 +74,8 @@ export default async function RootLayout({
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         
-        {/* PASO EXTRA: Pega aquí la etiqueta que te dé Google Search Console */}
-        {/* Elige el método "Etiqueta HTML" en Search Console y copia solo el contenido de 'content' */}
-        <meta name="google-site-verification" content="google-site-verification=J7VCxn6EbL_NSAY-uf38AMFBYwIUmpiGW_SGCjZ34Xg" />
+        
+        <meta name="google-site-verification" content="J7VCxn6EbL_NSAY-uf38AMFBYwIUmpiGW_SGCjZ34Xg" />
 
         <Script id="organization-schema" type="application/ld+json">
           {`{
