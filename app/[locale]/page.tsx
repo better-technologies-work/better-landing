@@ -1044,7 +1044,7 @@ useEffect(() => {
         </h3>
         <div className="flex justify-center gap-6 mb-12">
           <a href="https://www.linkedin.com/company/bettertechnologies/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-6 py-3 rounded-full border-2 border-slate-200 text-slate-900 font-black text-[11px] uppercase tracking-widest hover:border-blue-600 hover:text-blue-600 transition-all"><LinkedInIcon /> LinkedIn</a>
-          <a href="https://www.instagram.com/better.technologies?igsh=cjQ1c3F4OWpoYWhq" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-6 py-3 rounded-full border-2 border-slate-200 text-slate-900 font-black text-[11px] uppercase tracking-widest hover:border-[#d6249f] hover:text-[#d6249f] transition-all"><InstagramIcon /> Instagram</a>
+          <a href="https://www.instagram.com/better.technologies?igsh=NXk4bWhpbzJhNm5y" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-6 py-3 rounded-full border-2 border-slate-200 text-slate-900 font-black text-[11px] uppercase tracking-widest hover:border-[#d6249f] hover:text-[#d6249f] transition-all"><InstagramIcon /> Instagram</a>
         </div>
         <p className="text-slate-400 text-[9px] font-black uppercase tracking-[0.3em]">&copy; 2026 Better Technologies.</p>
       </footer>
