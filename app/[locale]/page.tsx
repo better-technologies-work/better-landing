@@ -584,7 +584,7 @@ const ChatSection = () => {
         <p className="text-dark-600 uppercase tracking-[0.2em] text-[10px] mb-4 font-bold">{tx('followSocial')}</p>
         <div className="flex justify-center gap-6 mb-12">
           <a href="https://www.linkedin.com/company/bettertechnologies/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-6 py-3 rounded-full border-2 border-slate-200 text-slate-900 font-black text-[11px] uppercase tracking-widest hover:border-blue-600 hover:text-blue-600 transition-all"><LinkedInIcon /> LinkedIn</a>
-          <a href="https://www.instagram.com/better.technologies?igsh=cjQ1c3F4OWpoYWhq" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-6 py-3 rounded-full border-2 border-slate-200 text-slate-900 font-black text-[11px] uppercase tracking-widest hover:border-[#d6249f] hover:text-[#d6249f] transition-all"><InstagramIcon /> Instagram</a>
+          <a href="https://www.instagram.com/better_technologies?igsh=MWUwYmkyYXVhdWRucA==" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-6 py-3 rounded-full border-2 border-slate-200 text-slate-900 font-black text-[11px] uppercase tracking-widest hover:border-[#d6249f] hover:text-[#d6249f] transition-all"><InstagramIcon /> Instagram</a>
         </div>
         <div className="relative bg-slate-50 border border-slate-100 rounded-3xl p-8 md:p-12 transition-all hover:border-blue-600/30 text-center">
           {step === 1 ? (
