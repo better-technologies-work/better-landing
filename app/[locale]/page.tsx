@@ -1097,8 +1097,8 @@ useEffect(() => {
 
     
 {showMachinesModal && (
-  <div className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4">
-    <div className="relative bg-white rounded-3xl shadow-2xl w-full max-w-xs sm:max-w-sm md:max-w-lg h-[90vh] sm:h-[85vh] md:h-[75vh] overflow-y-auto">
+  <div className="fixed inset-0 bg-black/80 z-50 flex flex-col items-center justify-start pt-20 md:pt-32 p-4 overflow-y-auto">
+    <div className="relative bg-white rounded-3xl shadow-2xl w-full max-w-xs sm:max-w-sm md:max-w-lg h-auto overflow-visible">
 
       {/* cerrar */}
       <button

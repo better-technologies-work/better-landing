@@ -25,8 +25,8 @@ export async function generateMetadata({
     description: descriptions[locale] || descriptions.en,
     
     icons: {
-      icon: "/logo.png", 
-      apple: "/logo.png", // Opcional, para dispositivos Apple
+      icon: "/favicon-search.png", 
+      apple: "/favicon-search.png",
     },
     openGraph: {
       title: titles[locale] || titles.en,
@@ -35,7 +35,7 @@ export async function generateMetadata({
       siteName: "Better Technologies",
       images: [
         {
-          url: "https://better-technologies.com/logo.png",
+          url: "https://better-technologies.com/logo.png", // Aquí sí va el rectangular para redes sociales
           width: 1200,
           height: 630,
           alt: "Better Technologies Logo",
@@ -71,10 +71,6 @@ export default async function RootLayout({
   return (
     <html lang={locale} className="scroll-smooth" data-scroll-behavior="smooth">
       <head>
-        <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        
-        
         <meta name="google-site-verification" content="J7VCxn6EbL_NSAY-uf38AMFBYwIUmpiGW_SGCjZ34Xg" />
 
         <Script id="organization-schema" type="application/ld+json">
