@@ -307,6 +307,52 @@ viewMachines: {
   de: "Maschinen ansehen",
   pt: "Ver Máquinas",
 },
+  // Beland Modal
+  belandTitle: {
+    en: "CIRCULAR TECHNOLOGY",
+    es: "TECNOLOGÍA CIRCULAR",
+    de: "KREISLAUFTECHNOLOGIE",
+    pt: "TECNOLOGIA CIRCULAR",
+  },
+  belandHeading1: { en: "AUTONOMOUS", es: "ESTACIÓN", de: "AUTONOME", pt: "AUTÔNOMA" },
+  belandHeading2: { en: "RECYCLING", es: "AUTÓNOMA", de: "RECYCLING", pt: "RECICLAGEM" },
+  belandHeading3: { en: "STATION", es: "DE RECICLAJE", de: "STATION", pt: "ESTAÇÃO" },
+  belandDesc: {
+    en: "Our smart machine receives your waste, scans it, and rewards you instantly. Turn recycling into a visible, social, and viral experience.",
+    es: "Nuestra máquina inteligente recibe tus residuos, los escanea y te recompensa al instante. Convierte el reciclaje en una experiencia visible, social y viral.",
+    de: "Unsere intelligente Maschine nimmt deinen Müll an, scannt ihn und belohnt dich sofort. Verwandle Recycling in ein sichtbares, soziales und virales Erlebnis.",
+    pt: "Nossa máquina inteligente recebe seu resíduo, escaneia e o recompensa instantaneamente. Transforme a reciclagem em uma experiência visível, social e viral.",
+  },
+  belandFeature1: {
+    en: "Accepts glass, aluminum, plastic and tetrapack",
+    es: "Acepta vidrio, aluminio, plástico y tetrapack",
+    de: "Akzeptiert Glas, Aluminium, Kunststoff und Tetrapak",
+    pt: "Aceita vidro, alumínio, plástico e tetrapak",
+  },
+  belandFeature2: {
+    en: "Capture your reaction and generate a unique QR",
+    es: "Captura tu reacción y genera un QR único",
+    de: "Erfasse deine Reaktion und generiere einen eindeutigen QR-Code",
+    pt: "Capture sua reação e gere um QR único",
+  },
+  belandFeature3: {
+    en: "Earn digital coins with every recycle",
+    es: "Gana monedas digitales por cada reciclaje",
+    de: "Verdiene digitale Münzen mit jedem Recycling",
+    pt: "Ganhe moedas digitais a cada reciclagem",
+  },
+  belandFeature4: {
+    en: "Remote monitoring and admin panel",
+    es: "Monitoreo remoto y panel administrativo",
+    de: "Remote-Überwachung und Admin-Panel",
+    pt: "Monitoramento remoto e painel administrativo",
+  },
+  belandQuote: {
+    en: "QUOTE YOURS",
+    es: "COTIZA LA TUYA",
+    de: "BERECHNE DEINE",
+    pt: "COTAR A SUA",
+  },
   // Mittelstand
   problemTitle:   { en: "The Problem we solve",        es: "El problema que resolvemos",      de: "Das Problem, das wir lösen",         pt: "O problema que resolvemos" },
   problemDesc:    { en: "Long supply chains in Asia and the Middle East are under pressure due to conflict. Latin America is the obvious alternative — but hard to operationalize.", es: "Las cadenas de suministro largas en Asia y Medio Oriente estan bajo presion por los conflictos. Latinoamerica es la alternativa obvia, pero dificil de operar.", de: "Lange Lieferketten in Asien und dem Nahen Osten stehen durch Konflikte unter Druck. Lateinamerika ist die naheliegende Alternative — aber schwer zu operationalisieren.", pt: "As longas cadeias de suprimento na Ásia e no Oriente Médio estão sob pressão. A América Latina é a alternativa óbvia — mas difícil de operacionalizar." },
@@ -1051,37 +1097,36 @@ useEffect(() => {
 
     
 {showMachinesModal && (
-  <div className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-6">
-    <div className="relative bg-white rounded-[2.5rem] shadow-2xl w-full max-w-[380px] h-[85vh] overflow-y-auto">
+  <div className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4">
+    <div className="relative bg-white rounded-3xl shadow-2xl w-full max-w-xs sm:max-w-sm md:max-w-lg h-[90vh] sm:h-[85vh] md:h-[75vh] overflow-y-auto">
 
       {/* cerrar */}
       <button
         onClick={() => setShowMachinesModal(false)}
-        className="absolute top-4 right-4 z-30 w-10 h-10 rounded-full bg-white shadow shadow-slate-200 flex items-center justify-center text-slate-700 text-xl font-bold"
+        className="absolute top-3 right-3 sm:top-4 sm:right-4 md:top-6 md:right-6 z-30 w-9 h-9 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-700 text-lg md:text-xl font-bold hover:bg-slate-50 transition-colors"
       >
         ✕
       </button>
 
       {/* contenido */}
-      <div className="px-6 pb-8">
-        <p className="text-[#7A9B3C] uppercase tracking-[0.25em] text-[10px] font-black mb-3">
-          CIRCULAR TECHNOLOGY
+      <div className="px-6 pt-12 pb-8 sm:pt-8 md:px-10 md:pt-10">
+        <p className="text-[#7A9B3C] uppercase tracking-[0.25em] text-[10px] md:text-xs font-black mb-3">
+          {tx('belandTitle')}
         </p>
 
-        <h2 className="text-4xl font-black leading-none uppercase mb-6">
-          <span className="text-black">AUTONOMOUS</span>
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-black leading-none uppercase mb-6 md:mb-8">
+          <span className="text-black">{tx('belandHeading1')}</span>
           <br />
-          <span className="text-orange-500 italic">RECYCLING</span>
+          <span className="text-orange-500 italic">{tx('belandHeading2')}</span>
           <br />
-          <span className="text-lime-600 italic">STATION</span>
+          <span className="text-lime-600 italic">{tx('belandHeading3')}</span>
         </h2>
 
-        <p className="text-slate-600 text-sm leading-7 mb-8">
-          Our smart machine receives your waste, scans it, and rewards you
-          instantly. Turn recycling into a visible, social, and viral experience.
+        <p className="text-slate-600 text-sm md:text-base leading-7 md:leading-8 mb-8 md:mb-10">
+          {tx('belandDesc')}
         </p>
 
-        <div className="relative w-full h-[220px] mb-8">
+        <div className="relative w-full h-[180px] sm:h-[220px] md:h-[280px] mb-8 md:mb-10">
           <Image
             src="/maquina-beland.png"
             alt="Beland machine"
@@ -1090,20 +1135,20 @@ useEffect(() => {
           />
         </div>
 
-        <div className="space-y-4 text-sm font-semibold text-slate-800 mb-8">
-          <p>♻️ Accepts glass, aluminum, plastic and tetrapack</p>
-          <p>📸 Capture your reaction and generate a unique QR</p>
-          <p>💰 Earn digital coins with every recycle</p>
-          <p>📊 Remote monitoring and admin panel</p>
+        <div className="space-y-4 md:space-y-5 text-xs sm:text-sm md:text-base font-semibold text-slate-800 mb-8 md:mb-10">
+          <p>♻️ {tx('belandFeature1')}</p>
+          <p>📸 {tx('belandFeature2')}</p>
+          <p>💰 {tx('belandFeature3')}</p>
+          <p>📊 {tx('belandFeature4')}</p>
         </div>
 
         <a
           href="https://wa.me/593995269974?text=Hi!%20I%20would%20like%20to%20quote%20a%20recycling%20machine%20for%20my%20business."
           target="_blank"
           rel="noopener noreferrer"
-          className="w-full flex justify-center items-center bg-[#7A9B3C] text-white py-4 rounded-2xl font-black text-sm uppercase tracking-widest"
+          className="w-full flex justify-center items-center bg-[#7A9B3C] text-white py-3 sm:py-4 md:py-5 rounded-2xl font-black text-xs sm:text-sm md:text-base uppercase tracking-widest hover:bg-[#6b8a2f] transition-colors"
         >
-          QUOTE YOURS
+          {tx('belandQuote')}
         </a>
       </div>
     </div>
