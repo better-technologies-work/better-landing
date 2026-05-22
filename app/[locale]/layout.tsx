@@ -25,8 +25,8 @@ export async function generateMetadata({
     description: descriptions[locale] || descriptions.en,
     
     icons: {
-      icon: "/favicon-search.png", 
-      apple: "/favicon-search.png",
+      icon: "/favicon-search.jpg", 
+      apple: "/favicon-search.jpg",
     },
     openGraph: {
       title: titles[locale] || titles.en,
@@ -35,7 +35,7 @@ export async function generateMetadata({
       siteName: "Better Technologies",
       images: [
         {
-          url: "https://better-technologies.com/logo.png", // Aquí sí va el rectangular para redes sociales
+          url: "https://better-technologies.com/logo.jpg", // Aquí sí va el rectangular para redes sociales
           width: 1200,
           height: 630,
           alt: "Better Technologies Logo",
@@ -48,7 +48,7 @@ export async function generateMetadata({
       card: "summary_large_image",
       title: titles[locale] || titles.en,
       description: descriptions[locale] || descriptions.en,
-      images: ["https://better-technologies.com/logo.png"],
+      images: ["https://better-technologies.com/logo.jpg"],
     },
   };
 }
@@ -79,7 +79,7 @@ export default async function RootLayout({
             "@type": "Organization",
             "name": "Better Technologies",
             "url": "https://better-technologies.com",
-            "logo": "https://better-technologies.com/logo.png",
+            "logo": "https://better-technologies.com/logo.jpg",
             "description": "We operate LATAM for Global companies",
             "sameAs": [
               "https://www.linkedin.com/company/bettertechnologies/",
