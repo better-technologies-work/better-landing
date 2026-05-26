@@ -57,7 +57,7 @@ export default function BlogPage() {
 
       let result = data || []
 
-      // Si el idioma no es inglés, enviamos TODO el contenido a traducir "al vuelo"
+      
       if (locale !== 'en' && result.length > 0) {
         try {
           const response = await fetch('/api/translate-posts', {
