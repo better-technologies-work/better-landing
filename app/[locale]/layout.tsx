@@ -35,7 +35,7 @@ export async function generateMetadata({
       siteName: "Better Technologies",
       images: [
         {
-          url: "https://better-technologies.com/logo.png", // Aquí sí va el rectangular para redes sociales
+          url: "https://better-technologies.com/logo.png", 
           width: 1200,
           height: 630,
           alt: "Better Technologies Logo",

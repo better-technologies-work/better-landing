@@ -3,6 +3,7 @@ import { decodeHTML } from '@/lib/utils'
 import Image from 'next/image'
 import ReactMarkdown from 'react-markdown'
 import { translatePosts } from '@/lib/translate'
+import { Metadata } from 'next'
 
 type Link = {
   id: string;
@@ -34,6 +35,64 @@ type BlogPost = {
 
 type Props = {
   params: Promise<{ slug: string; locale: string }>
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug, locale } = await params
+  
+  try {
+    const supabase = createClient()
+    const { data: post } = await supabase
+      .from('blog_posts')
+      .select('title, description, cover_url, published_at, author')
+      .eq('slug', slug)
+      .single()
+
+    if (!post) {
+      return {
+        title: locale === 'es' ? 'Post no encontrado' : 'Post Not Found',
+      }
+    }
+
+    const baseUrl = 'https://better-technologies.com'
+    const postUrl = `${baseUrl}${locale === 'en' ? '' : `/${locale}`}/blog/${slug}`
+    const cleanDescription = post.description?.replace(/<[^>]*>/g, '').substring(0, 160) || ''
+
+    return {
+      title: `${post.title} | Better Technologies`,
+      description: cleanDescription,
+      alternates: {
+        canonical: postUrl,
+      },
+      openGraph: {
+        title: post.title,
+        description: cleanDescription,
+        url: postUrl,
+        type: 'article',
+        publishedTime: post.published_at,
+        authors: [post.author || 'Better Technologies'],
+        images: post.cover_url ? [
+          {
+            url: post.cover_url,
+            width: 1200,
+            height: 630,
+            alt: post.title,
+          }
+        ] : undefined,
+      },
+      twitter: {
+        card: 'summary_large_image',
+        title: post.title,
+        description: cleanDescription,
+        images: post.cover_url ? [post.cover_url] : undefined,
+      },
+    }
+  } catch (error) {
+    console.error('Error generating metadata:', error)
+    return {
+      title: 'Better Technologies Blog',
+    }
+  }
 }
 
 export default async function BlogPostPage({ params }: Props) {
@@ -83,30 +142,26 @@ export default async function BlogPostPage({ params }: Props) {
       </main>
     )
   }
-// Traducir si es español
 
-
-if (locale !== 'en' && post) {
-  try {
-    
-    const translatedArray = await translatePosts([post], true, locale);
-    
-    if (translatedArray && translatedArray.length > 0) {
-      const translated = translatedArray[0];
+  // Traducir si no es inglés
+  if (locale !== 'en' && post) {
+    try {
+      const translatedArray = await translatePosts([post], true, locale)
       
-     
-      post = { 
-        ...post, 
-        title: translated.title, 
-        description: translated.description,
-        content: translated.content 
-      };
+      if (translatedArray && translatedArray.length > 0) {
+        const translated = translatedArray[0]
+        post = { 
+          ...post, 
+          title: translated.title, 
+          description: translated.description,
+          content: translated.content 
+        }
+      }
+    } catch (error) {
+      console.error("Error traduciendo el post individual:", error)
     }
-  } catch (error) {
-    console.error("Error traduciendo el post individual:", error);
-    
   }
-}
+
   return (
     <main className="min-h-screen bg-white">
       {/* ── HEADER ── */}
@@ -170,9 +225,9 @@ if (locale !== 'en' && post) {
               components={{
                 a: ({ href, children }) => {
                   if (href && href.startsWith('/')) {
-                    return <a href={href} className="text-blue-600 hover:underline">{children}</a>;
+                    return <a href={href} className="text-blue-600 hover:underline">{children}</a>
                   }
-                  return <a href={href} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">{children}</a>;
+                  return <a href={href} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">{children}</a>
                 }
               }}
             >
