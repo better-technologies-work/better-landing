@@ -1,4 +1,5 @@
-import { createClient } from '@/lib/supabase/client'
+
+import { createClient as createServerClient } from '@/lib/supabase/server'
 import { decodeHTML } from '@/lib/utils'
 import Image from 'next/image'
 import ReactMarkdown from 'react-markdown'
@@ -41,7 +42,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug, locale } = await params
   
   try {
-    const supabase = createClient()
+    const supabase = await createServerClient()
     const { data: post } = await supabase
       .from('blog_posts')
       .select('title, description, cover_url, published_at, author')
@@ -102,7 +103,7 @@ export default async function BlogPostPage({ params }: Props) {
   let post: BlogPost | null = null
 
   try {
-    const supabase = createClient()
+    const supabase = await createServerClient()
     const { data, error } = await supabase
       .from('blog_posts')
       .select('*')
