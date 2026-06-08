@@ -25,8 +25,8 @@ export async function generateMetadata({
     description: descriptions[locale] || descriptions.en,
     
     icons: {
-      icon: "/favicon-search.jpg", 
-      apple: "/favicon-search.jpg",
+      icon: "/favicon.jpeg", 
+      apple: "/favicon.jpeg",
     },
     openGraph: {
       title: titles[locale] || titles.en,
