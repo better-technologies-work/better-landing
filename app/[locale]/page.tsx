@@ -969,8 +969,7 @@ useEffect(() => {
         </div>
       </section>
 
-      {/* 2. NEWS FEED */}
-      <NewsSection />
+      
 
       {/* 3. CHAT */}
       <ChatSection />
@@ -1128,12 +1127,10 @@ useEffect(() => {
       {/* CIERRE */}
       <h2 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter leading-[0.9] uppercase mb-6 text-center py-10 px-6">
         <span className="block mb-4">{tx('closingLine')}</span>
-        <span className="block">
-          {tx('letsStart')}{" "}
-          <em className="italic underline decoration-blue-100">{tx('today')}</em>
-        </span>
+        
       </h2>
-
+{/*  NEWS FEED */}
+      <NewsSection />
       {/* LATEST INSIGHTS */}
       <section className="py-16 bg-slate-50">
         <div className="container mx-auto px-6 text-center">
