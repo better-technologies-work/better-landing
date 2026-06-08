@@ -44,10 +44,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   try {
     const supabase = await createServerClient()
     const { data: post } = await supabase
-      .from('blog_posts')
-      .select('title, description, cover_url, published_at, author')
-      .eq('slug', slug)
-      .single()
+  .from('blog_posts')
+  .select('title, description, excerpt, cover_url, published_at, author')
+  .eq('slug', slug)
+  .single()
 
     if (!post) {
       return {
@@ -57,8 +57,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
     const baseUrl = 'https://better-technologies.com'
     const postUrl = `${baseUrl}${locale === 'en' ? '' : `/${locale}`}/blog/${slug}`
-    const cleanDescription = post.description?.replace(/<[^>]*>/g, '').substring(0, 160) || ''
-
+const cleanDescription = post.excerpt?.trim() ||
+  post.description
+    ?.replace(/<[^>]*>/g, ' ')
+    .replace(/&nbsp;/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim()
+    .substring(0, 155) + '...' || ''
+    
     return {
       title: `${post.title} | Better Technologies`,
       description: cleanDescription,
@@ -144,7 +150,7 @@ export default async function BlogPostPage({ params }: Props) {
     )
   }
 
-  // Traducir si no es inglés
+  
   if (locale !== 'en' && post) {
     try {
       const translatedArray = await translatePosts([post], true, locale)
