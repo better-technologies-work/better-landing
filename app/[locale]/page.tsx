@@ -234,13 +234,16 @@ const belandTags = ["React Native", "Payments", "Delivery", "Circular Economy"];
 // ─── DICCIONARIO MULTI-IDIOMA ─────────────────────────────────────────────────
 const ui = {
   // Hero
-  openLatam:       { en: "We open LATAM for",    es: "Abrimos LATAM para",        de: "Wir öffnen LATAM für",       pt: "Abrimos LATAM para" },
-  globalCompanies: { en: "Global companies",      es: "empresas globales",          de: "Globale Unternehmen",        pt: "empresas globais" },
-  subtagline:      {
-    en: "Nearshoring Operator · Supply Chain Partner · Talent Hub · Entry & Ops Partner",
-    es: "Operador de nearshoring · Partner de supply chain · Hub de talento · Partner de entrada y operaciones",
-    de: "Nearshoring-Betreiber · Supply-Chain-Partner · Talent Hub · Markteinstieg & Ops",
-    pt: "Operador de nearshoring · Parceiro de supply chain · Hub de talentos · Parceiro de entrada e operações",
+  openLatam:       { en: "We Increase Your Digital Reach and Growth", 
+    es: "Aumentamos tu alcance digital y crecimiento", 
+    de: "Wir steigern Ihre digitale Reichweite und Ihr Wachstum", 
+    pt: "Aumentamos o seu alcance digital e crescimento" },
+   globalCompanies: { en: "", es: "", de: "", pt: "" },
+  subtagline: {
+    en: "Dream beyond limits. Build better. Be found.",
+    es: "Sueña sin límites. Construye mejor. Hazte notar.",
+    de: "Träumen Sie grenzenlos. Bauen Sie besser. Werden Sie gefunden.",
+    pt: "Sonhe além dos limites. Construa melhor. Seja encontrado.",
   },
   getInTouch: { en: "Get in touch", es: "Contactar ahora", de: "Kontakt aufnehmen", pt: "Entre em contato" },
 
