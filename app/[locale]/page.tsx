@@ -670,6 +670,8 @@ const ChatSection = () => {
   const locale = useLocale() as Locale;
   const tx = (key: keyof typeof ui) => (ui[key] as any)[locale] ?? (ui[key] as any)['en'];
 
+  const [showYesModal, setShowYesModal] = useState(false);
+const [showNoModal, setShowNoModal] = useState(false);
   const [step, setStep] = useState<number>(1);
   const [selection, setSelection] = useState<string>("");
   const options = (ui.chatOptions as any)[locale] ?? ui.chatOptions.en;
@@ -693,16 +695,48 @@ const ChatSection = () => {
         
         <div className="relative bg-slate-50 border border-slate-100 rounded-3xl p-8 md:p-12 transition-all hover:border-blue-600/30 text-center">
           {step === 1 ? (
-            <>
-              <p className="text-xl text-slate-600 mb-8 font-light">
-                {tx('howCanHelp')} <span className="text-slate-900 font-semibold underline decoration-blue-600 underline-offset-4">{tx('theTeam')}</span>{tx('helpToday')}
-              </p>
-              <div className="flex flex-wrap justify-center gap-3">
-                {options.map((opt: string) => (
-                  <button key={opt} onClick={() => { setSelection(opt); setStep(2); }} className="text-[10px] font-black uppercase tracking-widest px-6 py-3 rounded-full border-2 border-slate-200 bg-white hover:border-blue-600 hover:text-blue-600 transition-all active:scale-95 shadow-sm">{opt}</button>
-                ))}
-              </div>
-            </>
+           <>
+  <p className="text-xl text-slate-600 mb-6 font-light">
+    {tx('howCanHelp')}{" "}
+    <span className="text-slate-900 font-semibold underline decoration-blue-600 underline-offset-4">
+      {tx('theTeam')}
+    </span>
+    {tx('helpToday')}
+  </p>
+
+  {/* Botones Yes / No */}
+  <div className="flex justify-center gap-4 mb-8">
+  <button
+    onClick={() => setShowYesModal(true)}
+    className="px-8 py-3 rounded-full border-2 border-slate-200 bg-white text-slate-700 font-black uppercase tracking-widest text-[10px] hover:border-blue-600 hover:text-blue-600 transition-all active:scale-95 shadow-sm"
+  >
+    Yes
+  </button>
+
+  <button
+    onClick={() => setShowNoModal(true)}
+    className="px-8 py-3 rounded-full border-2 border-slate-200 bg-white text-slate-700 font-black uppercase tracking-widest text-[10px] hover:border-blue-600 hover:text-blue-600 transition-all active:scale-95 shadow-sm"
+  >
+    No
+  </button>
+</div>
+
+  {/* Píldoras quedan debajo */}
+  <div className="flex flex-wrap justify-center gap-3">
+    {options.map((opt: string) => (
+      <button
+        key={opt}
+        onClick={() => {
+          setSelection(opt);
+          setStep(2);
+        }}
+        className="text-[10px] font-black uppercase tracking-widest px-6 py-3 rounded-full border-2 border-slate-200 bg-white hover:border-blue-600 hover:text-blue-600 transition-all active:scale-95 shadow-sm"
+      >
+        {opt}
+      </button>
+    ))}
+  </div>
+</>
           ) : (
             <div className="py-4 text-left">
               <div className="mb-6">
