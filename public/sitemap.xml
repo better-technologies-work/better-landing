@@ -1,58 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <!-- Home EN -->
   <url>
-    <loc>https://better-technologies.com/en/</loc>
+    <loc>https://better-technologies.com/</loc>
     <lastmod>2026-05-26</lastmod>
     <priority>1.0</priority>
   </url>
-  <!-- Home ES -->
   <url>
     <loc>https://better-technologies.com/es/</loc>
     <lastmod>2026-05-26</lastmod>
     <priority>1.0</priority>
   </url>
-  <!-- Home DE -->
   <url>
     <loc>https://better-technologies.com/de/</loc>
     <lastmod>2026-05-26</lastmod>
     <priority>1.0</priority>
   </url>
-  <!-- Home PT -->
   <url>
     <loc>https://better-technologies.com/pt/</loc>
     <lastmod>2026-05-26</lastmod>
     <priority>1.0</priority>
   </url>
 
-  <!-- Blog Index EN -->
   <url>
-    <loc>https://better-technologies.com/en/blog</loc>
+    <loc>https://better-technologies.com/blog</loc>
     <lastmod>2026-05-26</lastmod>
     <priority>0.9</priority>
   </url>
-  <!-- Blog Index ES -->
   <url>
     <loc>https://better-technologies.com/es/blog</loc>
     <lastmod>2026-05-26</lastmod>
     <priority>0.9</priority>
   </url>
-  <!-- Blog Index DE -->
   <url>
     <loc>https://better-technologies.com/de/blog</loc>
     <lastmod>2026-05-26</lastmod>
     <priority>0.9</priority>
   </url>
-  <!-- Blog Index PT -->
   <url>
     <loc>https://better-technologies.com/pt/blog</loc>
     <lastmod>2026-05-26</lastmod>
     <priority>0.9</priority>
   </url>
 
-  <!-- Blog Posts 1 - Nearshoring Supply Chains -->
   <url>
-    <loc>https://better-technologies.com/en/blog/nearshoring-supply-chains-the-structural-shift</loc>
+    <loc>https://better-technologies.com/blog/nearshoring-supply-chains-the-structural-shift</loc>
     <lastmod>2026-05-26</lastmod>
     <priority>0.8</priority>
   </url>
@@ -72,9 +63,8 @@
     <priority>0.8</priority>
   </url>
 
-  <!-- Blog Posts 2 - Supply Chain Resilience Strategies -->
   <url>
-    <loc>https://better-technologies.com/en/blog/supply-chain-resilience-strategies</loc>
+    <loc>https://better-technologies.com/blog/supply-chain-resilience-strategies</loc>
     <lastmod>2026-05-26</lastmod>
     <priority>0.8</priority>
   </url>
@@ -94,9 +84,8 @@
     <priority>0.8</priority>
   </url>
 
-  <!-- Blog Posts 3 - Latin America Supply Chain Solutions -->
   <url>
-    <loc>https://better-technologies.com/en/blog/latin-america-supply-chain-solutions</loc>
+    <loc>https://better-technologies.com/blog/latin-america-supply-chain-solutions</loc>
     <lastmod>2026-05-26</lastmod>
     <priority>0.8</priority>
   </url>
