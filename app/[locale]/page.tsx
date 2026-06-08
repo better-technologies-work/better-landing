@@ -250,8 +250,18 @@ const ui = {
   // News section
   loadingFeed:       { en: "Loading Intelligence Feed...", es: "Cargando feed de inteligencia...", de: "Intelligence Feed wird geladen...", pt: "Carregando feed de inteligência..." },
   globalFeed:        { en: "Global Intelligence Feed",     es: "Feed global de inteligencia",     de: "Globaler Intelligence Feed",        pt: "Feed global de inteligência" },
-  inTimesOf:         { en: "In times of",                  es: "En tiempos de",                   de: "In Zeiten von",                     pt: "Em tempos de" },
-  changeTurbulence:  { en: "Change and Turbulence",        es: "Cambio y Turbulencia",            de: "Wandel und Turbulenz",              pt: "Mudança e Turbulência" },
+ inTimesOf: { 
+    en: "Let's Start Today", 
+    es: "Empecemos hoy mismo", 
+    de: "Lass uns heute anfangen", 
+    pt: "Vamos começar hoje" 
+  },
+  changeTurbulence: { 
+    en: "Just the way you dream. Only Better.", 
+    es: "Exactamente como lo sueñas. Solo Mejor.", 
+    de: "Genauso wie du es dir erträumst. Nur Besser.", 
+    pt: "Exatamente como você sonha. Apenas Melhor." 
+  },
   liveUpdates:       { en: "Live updates // April 2026",   es: "Actualizaciones en vivo // Abril 2026", de: "Live-Updates // April 2026",   pt: "Atualizações ao vivo // Abril 2026" },
   systemActive:      { en: "System Active",                es: "Sistema activo",                  de: "System aktiv",                      pt: "Sistema ativo" },
   newsUnavailable:   { en: "News currently unavailable.",  es: "Noticias no disponibles por ahora.", de: "Nachrichten derzeit nicht verfügbar.", pt: "Notícias indisponíveis no momento." },
@@ -366,20 +376,43 @@ viewMachines: {
     pt: "COTAR A SUA",
   },
   // Mittelstand
-  problemTitle:   { en: "The Problem we solve",        es: "El problema que resolvemos",      de: "Das Problem, das wir lösen",         pt: "O problema que resolvemos" },
-  problemDesc:    { en: "Long supply chains in Asia and the Middle East are under pressure due to conflict. Latin America is the obvious alternative — but hard to operationalize.", es: "Las cadenas de suministro largas en Asia y Medio Oriente estan bajo presion por los conflictos. Latinoamerica es la alternativa obvia, pero dificil de operar.", de: "Lange Lieferketten in Asien und dem Nahen Osten stehen durch Konflikte unter Druck. Lateinamerika ist die naheliegende Alternative — aber schwer zu operationalisieren.", pt: "As longas cadeias de suprimento na Ásia e no Oriente Médio estão sob pressão. A América Latina é a alternativa óbvia — mas difícil de operacionalizar." },
-  typicalTickets: { en: "Typical tickets:",            es: "Tickets tipicos:",                de: "Typische Tickets:",                  pt: "Tickets típicos:" },
-  ourCustomers:   { en: "Our Customers:",              es: "Nuestros clientes:",              de: "Unsere Kunden:",                     pt: "Nossos Clientes:" },
-  midSized1:      { en: "Mid-Sized",                   es: "Empresas globales",               de: "Mittelständische",                   pt: "Empresas Globais" },
-  midSized2:      { en: "Global Companies",            es: "de tamano medio",                 de: "Globale Unternehmen",                pt: "de Médio Porte" },
+
+  problemTitle:   { en: "HOW CAN WE HELP?",         es: "¿CÓMO PODEMOS AYUDAR?",       de: "WIE KÖNNEN WIR HELFEN?",      pt: "COMO PODEMOS AJUDAR?" },
+  problemSubtitle: {
+    en: "Building Digital Relevance.",
+    es: "Construyendo Relevancia Digital.",
+    de: "Digitale Relevanz Aufbauen.",
+    pt: "Construindo Relevância Digital.",
+  },
+  problemDesc:    { 
+    en: "We design digital experiences, identities, and growth systems that help businesses thrive in the digital economy.", 
+    es: "Diseñamos experiencias digitales, identidades y sistemas de crecimiento que ayudan a las empresas a prosperar en la economía digital.", 
+    de: "Wir entwerfen digitale Erlebnisse, Identitäten und Wachstumssysteme, die Unternehmen helfen, in der digitalen Wirtschaft erfolgreich zu sein.", 
+    pt: "Designer de experiências digitais, identidades e sistemas de crescimento que ajudam as empresas a prosperar na economia digital." 
+  },
+  typicalTickets: { en: "Typical tickets:", es: "Tickets típicos:", de: "Typische Tickets:", pt: "Tickets típicos:" },
+ ourCustomers:   { en: "WHATS NEXT?",              es: "¿QUÉ SIGUE?",                 de: "WAS KOMMT ALS NÄCHSTES?",     pt: "O QUE VEM A SEGUIR?" },
+  midSized1:      { en: "Grow by Design",           es: "Crecer por Diseño",           de: "Wachsen durch Design",        pt: "Crescer por Design" },
+  midSized2:      { 
+    en: "Build a business that customers, search engines, and AI can understand, trust and recommend.", 
+    es: "Construye un negocio que los clientes, los motores de búsqueda y la IA puedan entender, confiar y recomendar.", 
+    de: "Bauen Sie ein Unternehmen auf, das Kunden, Suchmaschinen und KI verstehen, dem sie vertrauen und das sie weiterempfehlen können.", 
+    pt: "Construa um negócio que clientes, mecanismos de busca e IA possam entender, confiar e recomendar." 
+  },
   employees:      { en: "50–500 employees",            es: "50–500 empleados",                de: "50–500 Mitarbeiter",                 pt: "50–500 funcionários" },
   multiOps:       { en: "Operations across multiple countries / regions", es: "Operaciones en multiples paises / regiones", de: "Betrieb in mehreren Ländern / Regionen", pt: "Operações em vários países / regiões" },
   longChains:     { en: "Dependent on long supply chains", es: "Dependientes de cadenas de suministro largas", de: "Abhängig von langen Lieferketten", pt: "Dependentes de longas cadeias de suprimento" },
   tradModels:     { en: "Traditional business models", es: "Modelos de negocio tradicionales", de: "Traditionelle Geschäftsmodelle",    pt: "Modelos de negócios tradicionais" },
 
   // Pricing
-  whatWeDeliver:  { en: "What",         es: "Que",           de: "Was wir",      pt: "O que" },
-  weDeliver:      { en: "we deliver",   es: "entregamos",    de: "liefern",      pt: "entregamos" },
+whatWeDeliver:  { en: "Our",            es: "Nuestros",          de: "Unsere",         pt: "Nossos" },
+  weDeliver:      { en: "Services",       es: "Servicios",         de: "Dienstleistungen", pt: "Serviços" },
+  servicesSubtitle: {
+    en: "Crafted with purpose. Built for impact.",
+    es: "Diseñado con propósito. Construido para el impacto.",
+    de: "Mit Zweck entworfen. Für Wirkung gebaut.",
+    pt: "Projetado com propósito. Construído para impacto.",
+  },
   tailorMade:     { en: "Tailor made",  es: "A medida",      de: "Maßgeschneidert", pt: "Sob medida" },
   oppValidation:  { en: " Opportunity Validation: Problem + viable solution hypothesis",  es: " Validacion de oportunidad: problema + hipotesis de solucion viable", de: " Chancenvalidierung: Problem + tragfähige Lösungshypothese", pt: " Validação de oportunidade: problema + hipótese de solução viável" },
   feasibility:    { en: " Feasibility Study: Financial overview + Operational forecast",  es: " Estudio de factibilidad: overview financiero + pronostico operativo", de: " Machbarkeitsstudie: Finanzübersicht + Betriebsprognose", pt: " Estudo de viabilidade: visão financeira + previsão operacional" },
@@ -392,7 +425,8 @@ viewMachines: {
   fasterScaling:  { en: " Faster and better scaling",    es: " Escalamiento mas rapido y mejor", de: " Schnelleres und besseres Skalieren", pt: " Escalonamento mais rápido e melhor" },
 
   // Team
-  aboutTeam:      { en: "About our Team",        es: "Sobre nuestro equipo",    de: "Über unser Team",             pt: "Sobre nossa equipe" },
+aboutTeam:      { en: "About our Team",        es: "Sobre nuestro equipo",    de: "Über unser Team",             pt: "Sobre a nossa equipe" },
+
   highPerf:       { en: "High",                  es: "Ejecucion de",            de: "Hochleistungs-",              pt: "Execução de" },
   highPerfEm:     { en: "Performance execution", es: "alto rendimiento",        de: "Ausführung",                  pt: "alto desempenho" },
   forged:         { en: "Forged in high",        es: "Forjados en entornos de", de: "Geformt in",                  pt: "Forjados em" },
@@ -563,10 +597,27 @@ const NewsSection = () => {
             <div className="mt-8 inline-flex flex-col items-center"></div>
             <span className="text-blue-600 font-black uppercase tracking-[0.3em] text-xs mt-6 mb-4 block italic">{tx('globalFeed')}</span>
             <h2 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter leading-none">
-              {tx('inTimesOf')} <br />
-              <span className="text-blue-600 italic underline decoration-slate-200">{tx('changeTurbulence')}</span>
-            </h2>
-          </div>
+  {/* 👇 MANEJO DE INTIMESOF ("Let's Start Today" con "Start Today" en azul) */}
+  {locale === 'en' ? (
+    <>Let's <span className="text-blue-600">Start Today</span></>
+  ) : locale === 'es' ? (
+    <>Empecemos <span className="text-blue-600">hoy mismo</span></>
+  ) : (
+    tx('inTimesOf')
+  )}
+  <br />
+  {/* 👇 MANEJO DE CHANGETURBULENCE ("Just the way you dream. Only Better." con "Better." en naranja) */}
+  <span className="text-slate-600 text-lg md:text-xl font-medium block mt-4 normal-case tracking-normal">
+    {locale === 'en' ? (
+      <>Just the way you dream. Only <span className="text-orange-500 font-black">Better.</span></>
+    ) : locale === 'es' ? (
+      <>Exactamente como lo sueñas. Solo <span className="text-orange-500 font-black">Mejor.</span></>
+    ) : (
+      tx('changeTurbulence')
+    )}
+  </span>
+</h2>
+</div>
           <div className="text-center md:text-right md:w-48">
             <p className="text-slate-400 font-mono text-[10px] uppercase tracking-widest">{tx('liveUpdates')}</p>
             <div className="flex gap-2 justify-center md:justify-end mt-2 items-center">
@@ -925,47 +976,79 @@ useEffect(() => {
       <ChatSection />
 
       {/* 4. MITTELSTAND */}
-      <section id="mittelstand" className="py-12 md:py-24 px-6 bg-slate-50 border-y border-slate-200">
-        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-20 items-center">
-          <div className="bg-white p-12 rounded-3xl border border-slate-200 shadow-sm transition-all hover:shadow-md">
-            <h3 className="text-xl font-bold mb-6 uppercase tracking-wider text-slate-900">{tx('problemTitle')}</h3>
-            <p className="text-slate-600 text-lg leading-relaxed mb-10">{tx('problemDesc')}</p>
-            <div className="space-y-4 mb-8">
-              <p className="text-base line-through decoration-red-600 decoration-2 font-bold italic text-slate-400">BCG Digital Ventures</p>
-              <p className="text-base line-through decoration-red-600 decoration-2 font-bold italic text-slate-400">McKinsey &amp; Company</p>
-              <p className="text-base line-through decoration-red-600 decoration-2 font-bold italic text-slate-400">Accenture</p>
-            </div>
-            <div className="pt-6 border-t border-slate-100">
-              <p className="text-sm font-bold italic text-slate-900 tracking-tight">{tx('typicalTickets')} <span className="text-blue-600">€150k - €1M+</span></p>
-            </div>
-          </div>
-          <div>
-            <h2 className="text-4xl md:text-6xl font-black mb-8 text-slate-900 leading-[1.1] tracking-tighter">
-              {tx('ourCustomers')} <br />
-              <span className="text-blue-600">{tx('midSized1')}<br />{tx('midSized2')}</span>
-            </h2>
-            <ul className="space-y-6 text-xl text-slate-600 font-medium mb-10">
-              <li className="flex items-center gap-4"><span className="w-2 h-2 bg-blue-600 rounded-full flex-shrink-0" />{tx('employees')}</li>
-              <li className="flex items-center gap-4"><span className="w-2 h-2 bg-blue-600 rounded-full flex-shrink-0" />{tx('multiOps')}</li>
-              <li className="flex items-center gap-4"><span className="w-2 h-2 bg-blue-600 rounded-full flex-shrink-0" />{tx('longChains')}</li>
-              <li className="flex items-center gap-4"><span className="w-2 h-2 bg-blue-600 rounded-full flex-shrink-0" />{tx('tradModels')}</li>
-            </ul>
-          </div>
-        </div>
-      </section>
+<section id="mittelstand" className="py-12 md:py-24 px-6 bg-slate-50 border-y border-slate-200">
+  <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-20 items-center">
+    
+    
+    {/* COLUMNA IZQUIERDA */}
+<div className="bg-white p-12 rounded-3xl border border-slate-200 shadow-sm transition-all hover:shadow-md">
+  <p className="text-sm font-bold tracking-wider text-slate-400 uppercase mb-3">
+    {tx('problemTitle')}
+  </p>
+  <h3 className="text-3xl font-bold text-blue-600 mb-6 leading-tight">
+    {tx('problemSubtitle')}
+  </h3>
+  <p className="text-slate-600 text-lg leading-relaxed mb-10">
+    {tx('problemDesc')}
+  </p>
+  
+  <div className="space-y-4 mb-8">
+    <p className="text-base line-through decoration-red-600 decoration-2 font-bold italic text-slate-400">BCG Digital Ventures</p>
+    <p className="text-base line-through decoration-red-600 decoration-2 font-bold italic text-slate-400">McKinsey &amp; Company</p>
+    <p className="text-base line-through decoration-red-600 decoration-2 font-bold italic text-slate-400">Accenture</p>
+  </div>
+  
+  <div className="pt-6 border-t border-slate-100">
+    <p className="text-sm font-bold italic text-slate-900 tracking-tight">
+      {tx('typicalTickets')} <span className="text-blue-600">€150k - €1M+</span>
+    </p>
+  </div>
+</div>
+
+    {/* COLUMNA DERECHA  */}
+    <div>
+      {/*  "WHATS NEXT?" */}
+      <span className="text-sm font-black uppercase tracking-[0.2em] text-blue-600 block mb-3">
+        {ui.ourCustomers[locale]}
+      </span>
+      
+      {/* "Grow by Design" */}
+      <h2 className="text-4xl md:text-5xl font-black mb-6 text-slate-900 leading-tight tracking-tighter uppercase">
+        {ui.midSized1[locale]}
+      </h2>
+      
+      {/* 3. La descripción larga sacada del h2 para que no explote el diseño */}
+      <p className="text-lg text-slate-600 font-medium leading-relaxed mb-10 text-balance">
+        {ui.midSized2[locale]}
+      </p>
+
+      {/* Lista de características  */}
+      <ul className="space-y-6 text-xl text-slate-600 font-medium mb-10">
+        <li className="flex items-center gap-4"><span className="w-2 h-2 bg-blue-600 rounded-full flex-shrink-0" />{tx('employees')}</li>
+        <li className="flex items-center gap-4"><span className="w-2 h-2 bg-blue-600 rounded-full flex-shrink-0" />{tx('multiOps')}</li>
+        <li className="flex items-center gap-4"><span className="w-2 h-2 bg-blue-600 rounded-full flex-shrink-0" />{tx('longChains')}</li>
+        <li className="flex items-center gap-4"><span className="w-2 h-2 bg-blue-600 rounded-full flex-shrink-0" />{tx('tradModels')}</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
 
       {/* 5. PRICING */}
-      <section id="pricing" className="py-20 px-6 bg-white">
-        <div className="max-w-7xl mx-auto text-center">
-          <h2 className="text-4xl md:text-5xl font-black mb-12 text-slate-900 uppercase tracking-tighter">
-            {tx('whatWeDeliver')} <span className="text-blue-600"> {tx('weDeliver')} </span>
-          </h2>
+    <section id="pricing" className="py-20 px-6 bg-white">
+  <div className="max-w-7xl mx-auto text-center">
+          <h2 className="text-4xl md:text-5xl font-black mb-4 text-slate-900 uppercase tracking-tighter">
+      {ui.whatWeDeliver[locale]} <span className="text-blue-600"> {ui.weDeliver[locale]} </span>
+    </h2>
+       <p className="text-lg text-gray-500 mb-12 text-balance font-medium">
+      {ui.servicesSubtitle[locale]}
+    </p>
           <div className="grid md:grid-cols-3 gap-12 text-left">
-            <div className="group border-2 border-slate-100 p-12 rounded-3xl hover:border-blue-600 transition-all duration-500 bg-slate-50/50">
-              <div className="flex flex-col gap-4 mb-10">
-                <h3 className="text-2xl font-bold text-slate-900 uppercase">72h Validation Challenge</h3>
-                <span className="self-start bg-blue-600 text-white px-4 py-1 rounded-full text-xs font-black italic">€3k – €10k</span>
-              </div>
+      <div className="group border-2 border-slate-100 p-12 rounded-3xl hover:border-blue-600 transition-all duration-500 bg-slate-50/50">
+        <div className="flex flex-col gap-4 mb-10">
+          <h3 className="text-2xl font-bold text-slate-900 uppercase">72h Validation Challenge</h3>
+          <span className="self-start bg-blue-600 text-white px-4 py-1 rounded-full text-xs font-black italic">€3k – €10k</span>
+        </div>
               <ul className="space-y-4 text-slate-600">
                 <li className="font-bold flex items-start gap-2"><span className="text-blue-600 mt-0.5">→</span>{tx('oppValidation')}</li>
                 <li className="font-bold flex items-start gap-2"><span className="text-blue-600 mt-0.5">→</span>{tx('feasibility')}</li>
