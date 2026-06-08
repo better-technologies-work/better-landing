@@ -263,13 +263,22 @@ const ui = {
   nextArticle:       { en: "Next article",                 es: "Siguiente articulo",              de: "Nächster Artikel",                  pt: "Próximo artigo" },
 
   // Chat section
-  kitchenTitle:   { en: "OUR KITCHEN IS ALWAYS", es: "NUESTRA COCINA SIEMPRE ESTA", de: "UNSERE KÜCHE IST IMMER",      pt: "NOSSA COZINHA ESTÁ SEMPRE" },
-  kitchenOpen:    { en: "OPEN",                   es: "ABIERTA",                     de: "GEÖFFNET",                    pt: "ABERTA" },
-  century20:      { en: "The 20th century said the future would be built elsewhere. Today, we see a better alternative. We think differently.", es: "El siglo XX decia que el futuro se construiria en otro lugar. Hoy vemos una mejor alternativa. Pensamos diferente.", de: "Das 20. Jahrhundert sagte, die Zukunft würde anderswo gebaut. Heute sehen wir eine bessere Alternative. Wir denken anders.", pt: "O século XX dizia que o futuro seria construído em outro lugar. Hoje vemos uma alternativa melhor. Pensamos diferente." },
-  followSocial:   { en: "See for yourself - Follow us on Social Media.", es: "Compruebalo tu mismo - Siguenos en redes sociales.", de: "Überzeuge dich selbst - Folge uns in den sozialen Medien.", pt: "Veja por si mesmo - Siga-nos nas redes sociais." },
-  howCanHelp:     { en: "How can",                es: "Como puede ayudarte hoy",     de: "Wie kann",                    pt: "Como pode" },
-  theTeam:        { en: "the team",               es: "el equipo",                   de: "das Team",                    pt: "a equipe" },
-  helpToday:      { en: " help you today?",        es: "?",                           de: " dir heute helfen?",          pt: " te ajudar hoje?" },
+ kitchenTitle: { 
+    en: "If customers and AI can't understand", 
+    es: "Si los clientes y la IA no pueden entender", 
+    de: "Wenn Kunden und KI es nicht verstehen können", 
+    pt: "Se os clientes e a IA não conseguirem entender" 
+  },
+  kitchenOpen: { en: "", es: "", de: "", pt: "" }, 
+  century20: { 
+    en: "Who you are, what you do, and why they should choose you, you're losing opportunities every day.", 
+    es: "Quién eres, qué haces y por qué deberían elegirte, estás perdiendo oportunidades todos los días.", 
+    de: "Wer Sie sind, was Sie tun und warum man sich für Sie entscheiden sollte – Sie verlieren jeden Tag Chancen.", 
+    pt: "Quem você é, o que faz e por que deveriam escolher você, você está perdendo oportunidades todos os dias." 
+  },
+ howCanHelp:     { en: "If someone searches for your business today,", es: "¿Si alguien busca tu negocio hoy,",                  de: "Wenn heute jemand nach Ihrem Unternehmen sucht,", pt: "Se alguém buscar pelo seu negócio hoje," },
+  theTeam:        { en: " can they actually",                           es: " ¿realmente puede",                          de: " kann er Sie dann tatsächlich",                   pt: " conseguirá realmente" },
+  helpToday:      { en: " find you?",                                   es: " encontrarte?",                              de: " finden?",                                        pt: " te encontrar?" },
   connectTeam:    { en: "Connect with the team",  es: "Conectar con el equipo",      de: "Mit dem Team verbinden",      pt: "Conectar com a equipe" },
   goBack:         { en: "← Go back",              es: "← Volver",                    de: "← Zurück",                    pt: "← Voltar" },
   whatWeSell:     { en: "What we sell:",           es: "Que vendemos:",               de: "Was wir verkaufen:",          pt: "O que vendemos:" },
@@ -630,11 +639,7 @@ const ChatSection = () => {
           {tx('kitchenTitle')} <span className="italic underline decoration-blue-100"> {tx('kitchenOpen')} </span>
         </h2>
         <p className="text-blue-600 uppercase tracking-[0.2em] text-[10px] mb-4 font-bold">{tx('century20')}</p>
-        <p className="text-dark-600 uppercase tracking-[0.2em] text-[10px] mb-4 font-bold">{tx('followSocial')}</p>
-        <div className="flex justify-center gap-6 mb-12">
-          <a href="https://www.linkedin.com/company/bettertechnologies/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-6 py-3 rounded-full border-2 border-slate-200 text-slate-900 font-black text-[11px] uppercase tracking-widest hover:border-blue-600 hover:text-blue-600 transition-all"><LinkedInIcon /> LinkedIn</a>
-          <a href="https://www.instagram.com/better_technologies?igsh=MWUwYmkyYXVhdWRucA==" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-6 py-3 rounded-full border-2 border-slate-200 text-slate-900 font-black text-[11px] uppercase tracking-widest hover:border-[#d6249f] hover:text-[#d6249f] transition-all"><InstagramIcon /> Instagram</a>
-        </div>
+        
         <div className="relative bg-slate-50 border border-slate-100 rounded-3xl p-8 md:p-12 transition-all hover:border-blue-600/30 text-center">
           {step === 1 ? (
             <>
