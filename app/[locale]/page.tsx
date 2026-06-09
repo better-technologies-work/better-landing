@@ -895,16 +895,15 @@ const ChatSection = () => {
         className="bg-white rounded-3xl p-8 max-w-xl w-full"
       >
         <h3 className="text-3xl font-black text-slate-900 mb-4">
-          Let's change that.
+          {tx('noModalTitle')}
         </h3>
 
         <p className="text-slate-600 mb-8">
-          Start with your first digital touchpoint and build the
-          foundation of your digital identity.
+         {tx('noModalDesc')}
         </p>
 
         <h4 className="font-black uppercase tracking-widest text-sm mb-4">
-          Assess My Digital Identity
+         {tx('assessTitle')}
         </h4>
 
         <div className="flex flex-col gap-3 mb-8">
@@ -916,7 +915,7 @@ const ChatSection = () => {
                 : "border-slate-200"
             }`}
           >
-            15 min - Free Call
+            {tx('assessment15min')}
           </button>
 
           <button
@@ -927,7 +926,7 @@ const ChatSection = () => {
                 : "border-slate-200"
             }`}
           >
-            1 Hour - $50
+            {tx('assessment1h')}
           </button>
         </div>
 
@@ -937,14 +936,14 @@ const ChatSection = () => {
           rel="noopener noreferrer"
           className="w-full flex justify-center bg-blue-600 text-white py-4 rounded-full font-black uppercase tracking-widest text-xs"
         >
-          Book Assessment
+          {tx('bookAssessment')}
         </a>
 
         <button
           onClick={() => setShowNoModal(false)}
           className="block mx-auto mt-6 text-slate-400 hover:text-blue-600 text-[10px] uppercase font-black tracking-widest transition-colors"
         >
-          Go Back
+          {tx('goBackModal')}
         </button>
       </motion.div>
     </motion.div>
