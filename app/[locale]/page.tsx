@@ -186,47 +186,47 @@ const teamPt = [
 
 // ─── BELAND SCREENSHOTS ───────────────────────────────────────────────────────
 const belandScreenshots = [
-  { src: "/home1.jpeg",      alt: "Main Home",    title: "Home",                     text: "Main dashboard where you can track your wallet, accounts, and overall impact." },
-  { src: "/registrate.jpeg", alt: "Registration", title: "Join the App",             text: "Sign up, explore, participate, and turn your consumption into meaningful action." },
-  { src: "/home.jpeg",       alt: "Login",        title: "Start Exploring",          text: "Top up your balance, shop for products, get them delivered, and transform habits into impact." },
-  { src: "/mismonedas.jpeg", alt: "Wallet",       title: "Recharge & Shop",          text: "Seamless transactions designed to generate social and environmental value." },
-  { src: "/grupos.jpeg",     alt: "Groups",       title: "Build or Join Communities", text: "Join existing groups or create your own to organize circular economy events." },
-  { src: "/carrito2.jpeg",   alt: "Cart",         title: "Delivery with Purpose",    text: "Every delivery fuels a network built on circular impact and sustainability." },
-  { src: "/impacto.jpeg",    alt: "Impact",       title: "Your Impact",              text: "Track recycled kilograms, liters of water saved, and Becoins earned." },
-  { src: "/ordenes.jpeg",    alt: "Orders",       title: "My Orders",                text: "View and manage your active or completed purchases." },
+  { src: "/home1.jpeg", alt: "Main Home", title: "Home", text: "Main dashboard where you can track your wallet, accounts, and overall impact." },
+  { src: "/registrate.jpeg", alt: "Registration", title: "Join the App", text: "Sign up, explore, participate, and turn your consumption into meaningful action." },
+  { src: "/home.jpeg", alt: "Login", title: "Start Exploring", text: "Top up your balance, shop for products, get them delivered, and transform habits into impact." },
+  { src: "/mismonedas.jpeg", alt: "Wallet", title: "Recharge & Shop", text: "Seamless transactions designed to generate social and environmental value." },
+  { src: "/grupos.jpeg", alt: "Groups", title: "Build or Join Communities", text: "Join existing groups or create your own to organize circular economy events." },
+  { src: "/carrito2.jpeg", alt: "Cart", title: "Delivery with Purpose", text: "Every delivery fuels a network built on circular impact and sustainability." },
+  { src: "/impacto.jpeg", alt: "Impact", title: "Your Impact", text: "Track recycled kilograms, liters of water saved, and Becoins earned." },
+  { src: "/ordenes.jpeg", alt: "Orders", title: "My Orders", text: "View and manage your active or completed purchases." },
 ];
 
 const belandScreenshotsEs = [
-  { src: "/home1.jpeg",      alt: "Inicio",    title: "Inicio",                      text: "Panel principal para seguir tu billetera, cuentas e impacto general." },
-  { src: "/registrate.jpeg", alt: "Registro",  title: "Unete a la App",              text: "Registrate, explora, participa y transforma tu consumo en accion con sentido." },
-  { src: "/home.jpeg",       alt: "Acceso",    title: "Comienza a explorar",         text: "Recarga saldo, compra productos, recibelos y convierte habitos en impacto." },
-  { src: "/mismonedas.jpeg", alt: "Billetera", title: "Recarga y compra",            text: "Transacciones fluidas pensadas para generar valor social y ambiental." },
-  { src: "/grupos.jpeg",     alt: "Grupos",    title: "Crea o unete a comunidades",  text: "Unete a grupos existentes o crea el tuyo para organizar eventos de economia circular." },
-  { src: "/carrito2.jpeg",   alt: "Carrito",   title: "Entregas con proposito",      text: "Cada entrega impulsa una red basada en impacto circular y sostenibilidad." },
-  { src: "/impacto.jpeg",    alt: "Impacto",   title: "Tu impacto",                  text: "Sigue kilos reciclados, litros de agua ahorrados y Becoins ganados." },
-  { src: "/ordenes.jpeg",    alt: "Ordenes",   title: "Mis ordenes",                 text: "Visualiza y gestiona compras activas o completadas." },
+  { src: "/home1.jpeg", alt: "Inicio", title: "Inicio", text: "Panel principal para seguir tu billetera, cuentas e impacto general." },
+  { src: "/registrate.jpeg", alt: "Registro", title: "Unete a la App", text: "Registrate, explora, participa y transforma tu consumo en accion con sentido." },
+  { src: "/home.jpeg", alt: "Acceso", title: "Comienza a explorar", text: "Recarga saldo, compra productos, recibelos y convierte habitos en impacto." },
+  { src: "/mismonedas.jpeg", alt: "Billetera", title: "Recarga y compra", text: "Transacciones fluidas pensadas para generar valor social y ambiental." },
+  { src: "/grupos.jpeg", alt: "Grupos", title: "Crea o unete a comunidades", text: "Unete a grupos existentes o crea el tuyo para organizar eventos de economia circular." },
+  { src: "/carrito2.jpeg", alt: "Carrito", title: "Entregas con proposito", text: "Cada entrega impulsa una red basada en impacto circular y sostenibilidad." },
+  { src: "/impacto.jpeg", alt: "Impacto", title: "Tu impacto", text: "Sigue kilos reciclados, litros de agua ahorrados y Becoins ganados." },
+  { src: "/ordenes.jpeg", alt: "Ordenes", title: "Mis ordenes", text: "Visualiza y gestiona compras activas o completadas." },
 ];
 
 const belandScreenshotsDe = [
-  { src: "/home1.jpeg",      alt: "Startseite",  title: "Startseite",                    text: "Haupt-Dashboard zum Verfolgen deiner Wallet, Konten und Gesamtauswirkung." },
-  { src: "/registrate.jpeg", alt: "Registrierung", title: "App beitreten",               text: "Registriere dich, erkunde, mach mit und verwandle deinen Konsum in sinnvolle Aktionen." },
-  { src: "/home.jpeg",       alt: "Anmeldung",   title: "Erkunden beginnen",             text: "Guthaben aufladen, Produkte kaufen, liefern lassen und Gewohnheiten in Wirkung umwandeln." },
-  { src: "/mismonedas.jpeg", alt: "Wallet",      title: "Aufladen & Einkaufen",          text: "Nahtlose Transaktionen, die sozialen und ökologischen Mehrwert erzeugen." },
-  { src: "/grupos.jpeg",     alt: "Gruppen",     title: "Communities erstellen oder beitreten", text: "Bestehenden Gruppen beitreten oder eigene für Kreislaufwirtschafts-Events erstellen." },
-  { src: "/carrito2.jpeg",   alt: "Warenkorb",   title: "Lieferung mit Zweck",           text: "Jede Lieferung stärkt ein Netzwerk, das auf kreisförmiger Wirkung aufgebaut ist." },
-  { src: "/impacto.jpeg",    alt: "Wirkung",     title: "Deine Wirkung",                 text: "Recycelte Kilogramm, gesparte Liter Wasser und verdiente Becoins verfolgen." },
-  { src: "/ordenes.jpeg",    alt: "Bestellungen", title: "Meine Bestellungen",           text: "Aktive oder abgeschlossene Käufe anzeigen und verwalten." },
+  { src: "/home1.jpeg", alt: "Startseite", title: "Startseite", text: "Haupt-Dashboard zum Verfolgen deiner Wallet, Konten und Gesamtauswirkung." },
+  { src: "/registrate.jpeg", alt: "Registrierung", title: "App beitreten", text: "Registriere dich, erkunde, mach mit und verwandle deinen Konsum in sinnvolle Aktionen." },
+  { src: "/home.jpeg", alt: "Anmeldung", title: "Erkunden beginnen", text: "Guthaben aufladen, Produkte kaufen, liefern lassen und Gewohnheiten in Wirkung umwandeln." },
+  { src: "/mismonedas.jpeg", alt: "Wallet", title: "Aufladen & Einkaufen", text: "Nahtlose Transaktionen, die sozialen und ökologischen Mehrwert erzeugen." },
+  { src: "/grupos.jpeg", alt: "Gruppen", title: "Communities erstellen oder beitreten", text: "Bestehenden Gruppen beitreten oder eigene für Kreislaufwirtschafts-Events erstellen." },
+  { src: "/carrito2.jpeg", alt: "Warenkorb", title: "Lieferung mit Zweck", text: "Jede Lieferung stärkt ein Netzwerk, das auf kreisförmiger Wirkung aufgebaut ist." },
+  { src: "/impacto.jpeg", alt: "Wirkung", title: "Deine Wirkung", text: "Recycelte Kilogramm, gesparte Liter Wasser und verdiente Becoins verfolgen." },
+  { src: "/ordenes.jpeg", alt: "Bestellungen", title: "Meine Bestellungen", text: "Aktive oder abgeschlossene Käufe anzeigen und verwalten." },
 ];
 
 const belandScreenshotsPt = [
-  { src: "/home1.jpeg",      alt: "Início",     title: "Início",                       text: "Painel principal para acompanhar sua carteira, contas e impacto geral." },
-  { src: "/registrate.jpeg", alt: "Registro",   title: "Entrar no App",                text: "Cadastre-se, explore, participe e transforme seu consumo em ação significativa." },
-  { src: "/home.jpeg",       alt: "Login",      title: "Começar a explorar",           text: "Recarregue saldo, compre produtos, receba em casa e transforme hábitos em impacto." },
-  { src: "/mismonedas.jpeg", alt: "Carteira",   title: "Recarregar & Comprar",         text: "Transações fluidas projetadas para gerar valor social e ambiental." },
-  { src: "/grupos.jpeg",     alt: "Grupos",     title: "Criar ou entrar em comunidades", text: "Entre em grupos existentes ou crie o seu para organizar eventos de economia circular." },
-  { src: "/carrito2.jpeg",   alt: "Carrinho",   title: "Entrega com propósito",        text: "Cada entrega alimenta uma rede construída sobre impacto circular e sustentabilidade." },
-  { src: "/impacto.jpeg",    alt: "Impacto",    title: "Seu impacto",                  text: "Acompanhe quilos reciclados, litros de água economizados e Becoins ganhos." },
-  { src: "/ordenes.jpeg",    alt: "Pedidos",    title: "Meus pedidos",                 text: "Visualize e gerencie suas compras ativas ou concluídas." },
+  { src: "/home1.jpeg", alt: "Início", title: "Início", text: "Painel principal para acompanhar sua carteira, contas e impacto geral." },
+  { src: "/registrate.jpeg", alt: "Registro", title: "Entrar no App", text: "Cadastre-se, explore, participe e transforme seu consumo em ação significativa." },
+  { src: "/home.jpeg", alt: "Login", title: "Começar a explorar", text: "Recarregue saldo, compre produtos, receba em casa e transforme hábitos em impacto." },
+  { src: "/mismonedas.jpeg", alt: "Carteira", title: "Recarregar & Comprar", text: "Transações fluidas projetadas para gerar valor social e ambiental." },
+  { src: "/grupos.jpeg", alt: "Grupos", title: "Criar ou entrar em comunidades", text: "Entre em grupos existentes ou crie o seu para organizar eventos de economia circular." },
+  { src: "/carrito2.jpeg", alt: "Carrinho", title: "Entrega com propósito", text: "Cada entrega alimenta uma rede construída sobre impacto circular e sustentabilidade." },
+  { src: "/impacto.jpeg", alt: "Impacto", title: "Seu impacto", text: "Acompanhe quilos reciclados, litros de água economizados e Becoins ganhos." },
+  { src: "/ordenes.jpeg", alt: "Pedidos", title: "Meus pedidos", text: "Visualize e gerencie suas compras ativas ou concluídas." },
 ];
 
 const belandTags = ["React Native", "Payments", "Delivery", "Circular Economy"];
@@ -234,11 +234,13 @@ const belandTags = ["React Native", "Payments", "Delivery", "Circular Economy"];
 // ─── DICCIONARIO MULTI-IDIOMA ─────────────────────────────────────────────────
 const ui = {
   // Hero
-  openLatam:       { en: "We Increase Your Digital Reach and Growth", 
-    es: "Aumentamos tu alcance digital y crecimiento", 
-    de: "Wir steigern Ihre digitale Reichweite und Ihr Wachstum", 
-    pt: "Aumentamos o seu alcance digital e crescimento" },
-   globalCompanies: { en: "", es: "", de: "", pt: "" },
+  openLatam: {
+    en: "We Increase Your Digital Reach and Growth",
+    es: "Aumentamos tu alcance digital y crecimiento",
+    de: "Wir steigern Ihre digitale Reichweite und Ihr Wachstum",
+    pt: "Aumentamos o seu alcance digital e crescimento"
+  },
+  globalCompanies: { en: "", es: "", de: "", pt: "" },
   subtagline: {
     en: "Dream beyond limits. Build better. Be found.",
     es: "Sueña sin límites. Construye mejor. Hazte notar.",
@@ -248,56 +250,56 @@ const ui = {
   getInTouch: { en: "Get in touch", es: "Contactar ahora", de: "Kontakt aufnehmen", pt: "Entre em contato" },
 
   // News section
-  loadingFeed:       { en: "Loading Intelligence Feed...", es: "Cargando feed de inteligencia...", de: "Intelligence Feed wird geladen...", pt: "Carregando feed de inteligência..." },
-  globalFeed:        { en: "Global Intelligence Feed",     es: "Feed global de inteligencia",     de: "Globaler Intelligence Feed",        pt: "Feed global de inteligência" },
- inTimesOf: { 
-    en: "Let's Start Today", 
-    es: "Empecemos hoy mismo", 
-    de: "Lass uns heute anfangen", 
-    pt: "Vamos começar hoje" 
+  loadingFeed: { en: "Loading Intelligence Feed...", es: "Cargando feed de inteligencia...", de: "Intelligence Feed wird geladen...", pt: "Carregando feed de inteligência..." },
+  globalFeed: { en: "Global Intelligence Feed", es: "Feed global de inteligencia", de: "Globaler Intelligence Feed", pt: "Feed global de inteligência" },
+  inTimesOf: {
+    en: "Let's Start Today",
+    es: "Empecemos hoy mismo",
+    de: "Lass uns heute anfangen",
+    pt: "Vamos começar hoje"
   },
-  changeTurbulence: { 
-    en: "Just the way you dream. Only Better.", 
-    es: "Exactamente como lo sueñas. Solo Mejor.", 
-    de: "Genauso wie du es dir erträumst. Nur Besser.", 
-    pt: "Exatamente como você sonha. Apenas Melhor." 
+  changeTurbulence: {
+    en: "Just the way you dream. Only Better.",
+    es: "Exactamente como lo sueñas. Solo Mejor.",
+    de: "Genauso wie du es dir erträumst. Nur Besser.",
+    pt: "Exatamente como você sonha. Apenas Melhor."
   },
-  liveUpdates:       { en: "Live updates // April 2026",   es: "Actualizaciones en vivo // Abril 2026", de: "Live-Updates // April 2026",   pt: "Atualizações ao vivo // Abril 2026" },
-  systemActive:      { en: "System Active",                es: "Sistema activo",                  de: "System aktiv",                      pt: "Sistema ativo" },
-  newsUnavailable:   { en: "News currently unavailable.",  es: "Noticias no disponibles por ahora.", de: "Nachrichten derzeit nicht verfügbar.", pt: "Notícias indisponíveis no momento." },
-  newsError:         { en: "We could not fetch the latest intelligence right now. Please try again soon.", es: "No pudimos cargar la inteligencia mas reciente. Intenta nuevamente pronto.", de: "Wir konnten die neuesten Informationen gerade nicht abrufen. Bitte versuche es bald erneut.", pt: "Não conseguimos carregar as informações mais recentes. Tente novamente em breve." },
-  noPreview:         { en: "No Preview Available",         es: "Sin vista previa",                de: "Keine Vorschau verfügbar",          pt: "Sem pré-visualização" },
-  clickRead:         { en: "Click to read the full coverage of this digital transformation update.", es: "Haz clic para leer la cobertura completa de esta actualizacion de transformacion digital.", de: "Klicke, um die vollständige Berichterstattung zu lesen.", pt: "Clique para ler a cobertura completa desta atualização de transformação digital." },
-  read:              { en: "Read →",                       es: "Leer →",                          de: "Lesen →",                           pt: "Ler →" },
-  prevArticle:       { en: "Previous article",             es: "Articulo anterior",               de: "Vorheriger Artikel",                pt: "Artigo anterior" },
-  nextArticle:       { en: "Next article",                 es: "Siguiente articulo",              de: "Nächster Artikel",                  pt: "Próximo artigo" },
+  liveUpdates: { en: "Live updates // April 2026", es: "Actualizaciones en vivo // Abril 2026", de: "Live-Updates // April 2026", pt: "Atualizações ao vivo // Abril 2026" },
+  systemActive: { en: "System Active", es: "Sistema activo", de: "System aktiv", pt: "Sistema ativo" },
+  newsUnavailable: { en: "News currently unavailable.", es: "Noticias no disponibles por ahora.", de: "Nachrichten derzeit nicht verfügbar.", pt: "Notícias indisponíveis no momento." },
+  newsError: { en: "We could not fetch the latest intelligence right now. Please try again soon.", es: "No pudimos cargar la inteligencia mas reciente. Intenta nuevamente pronto.", de: "Wir konnten die neuesten Informationen gerade nicht abrufen. Bitte versuche es bald erneut.", pt: "Não conseguimos carregar as informações mais recentes. Tente novamente em breve." },
+  noPreview: { en: "No Preview Available", es: "Sin vista previa", de: "Keine Vorschau verfügbar", pt: "Sem pré-visualização" },
+  clickRead: { en: "Click to read the full coverage of this digital transformation update.", es: "Haz clic para leer la cobertura completa de esta actualizacion de transformacion digital.", de: "Klicke, um die vollständige Berichterstattung zu lesen.", pt: "Clique para ler a cobertura completa desta atualização de transformação digital." },
+  read: { en: "Read →", es: "Leer →", de: "Lesen →", pt: "Ler →" },
+  prevArticle: { en: "Previous article", es: "Articulo anterior", de: "Vorheriger Artikel", pt: "Artigo anterior" },
+  nextArticle: { en: "Next article", es: "Siguiente articulo", de: "Nächster Artikel", pt: "Próximo artigo" },
 
   // Chat section
- kitchenTitle: { 
-    en: "If customers and AI can't understand", 
-    es: "Si los clientes y la IA no pueden entender", 
-    de: "Wenn Kunden und KI es nicht verstehen können", 
-    pt: "Se os clientes e a IA não conseguirem entender" 
+  kitchenTitle: {
+    en: "If customers and AI can't understand",
+    es: "Si los clientes y la IA no pueden entender",
+    de: "Wenn Kunden und KI es nicht verstehen können",
+    pt: "Se os clientes e a IA não conseguirem entender"
   },
-  kitchenOpen: { en: "", es: "", de: "", pt: "" }, 
-  century20: { 
-    en: "Who you are, what you do, and why they should choose you, you're losing opportunities every day.", 
-    es: "Quién eres, qué haces y por qué deberían elegirte, estás perdiendo oportunidades todos los días.", 
-    de: "Wer Sie sind, was Sie tun und warum man sich für Sie entscheiden sollte – Sie verlieren jeden Tag Chancen.", 
-    pt: "Quem você é, o que faz e por que deveriam escolher você, você está perdendo oportunidades todos os dias." 
+  kitchenOpen: { en: "", es: "", de: "", pt: "" },
+  century20: {
+    en: "Who you are, what you do, and why they should choose you, you're losing opportunities every day.",
+    es: "Quién eres, qué haces y por qué deberían elegirte, estás perdiendo oportunidades todos los días.",
+    de: "Wer Sie sind, was Sie tun und warum man sich für Sie entscheiden sollte – Sie verlieren jeden Tag Chancen.",
+    pt: "Quem você é, o que faz e por que deveriam escolher você, você está perdendo oportunidades todos os dias."
   },
- howCanHelp:     { en: "If someone searches for your business today,", es: "¿Si alguien busca tu negocio hoy,",                  de: "Wenn heute jemand nach Ihrem Unternehmen sucht,", pt: "Se alguém buscar pelo seu negócio hoje," },
-  theTeam:        { en: " can they actually",                           es: " ¿realmente puede",                          de: " kann er Sie dann tatsächlich",                   pt: " conseguirá realmente" },
-  helpToday:      { en: " find you?",                                   es: " encontrarte?",                              de: " finden?",                                        pt: " te encontrar?" },
-  connectTeam:    { en: "Connect with the team",  es: "Conectar con el equipo",      de: "Mit dem Team verbinden",      pt: "Conectar com a equipe" },
-  goBack:         { en: "← Go back",              es: "← Volver",                    de: "← Zurück",                    pt: "← Voltar" },
-  whatWeSell:     { en: "What we sell:",           es: "Que vendemos:",               de: "Was wir verkaufen:",          pt: "O que vendemos:" },
-  indAccel:       { en: "Industrial Acceleration", es: "Aceleracion industrial",      de: "Industrielle Beschleunigung", pt: "Aceleração industrial" },
-  relocate:       { en: "Relocating global production to LATAM with speed and cost efficiency.", es: "Relocalizamos produccion global en LATAM con velocidad y eficiencia de costos.", de: "Verlagerung globaler Produktion nach LATAM mit Geschwindigkeit und Kosteneffizienz.", pt: "Relocalização da produção global para a LATAM com velocidade e eficiência de custos." },
-  opSetup:        { en: " Operational setup in PY / MX / CO",   es: " Setup operativo en PY / MX / CO",      de: " Operativer Aufbau in PY / MX / CO",   pt: " Configuração operacional em PY / MX / CO" },
-  supplierNet:    { en: " Industrial supplier networks",         es: " Redes industriales de proveedores",    de: " Industrielle Lieferantennetzwerke",    pt: " Redes industriais de fornecedores" },
-  costOpt:        { en: " Cost optimization (30–60%)",          es: " Optimizacion de costos (30–60%)",      de: " Kostenoptimierung (30–60%)",          pt: " Otimização de custos (30–60%)" },
-  localMgmt:      { en: " Local operational management",        es: " Gestion operativa local",              de: " Lokales Betriebsmanagement",          pt: " Gestão operacional local" },
+  howCanHelp: { en: "If someone searches for your business today,", es: "¿Si alguien busca tu negocio hoy,", de: "Wenn heute jemand nach Ihrem Unternehmen sucht,", pt: "Se alguém buscar pelo seu negócio hoje," },
+  theTeam: { en: " can they actually", es: " ¿realmente puede", de: " kann er Sie dann tatsächlich", pt: " conseguirá realmente" },
+  helpToday: { en: " find you?", es: " encontrarte?", de: " finden?", pt: " te encontrar?" },
+  connectTeam: { en: "Connect with the team", es: "Conectar con el equipo", de: "Mit dem Team verbinden", pt: "Conectar com a equipe" },
+  goBack: { en: "← Go back", es: "← Volver", de: "← Zurück", pt: "← Voltar" },
+  whatWeSell: { en: "What we sell:", es: "Que vendemos:", de: "Was wir verkaufen:", pt: "O que vendemos:" },
+  indAccel: { en: "Industrial Acceleration", es: "Aceleracion industrial", de: "Industrielle Beschleunigung", pt: "Aceleração industrial" },
+  relocate: { en: "Relocating global production to LATAM with speed and cost efficiency.", es: "Relocalizamos produccion global en LATAM con velocidad y eficiencia de costos.", de: "Verlagerung globaler Produktion nach LATAM mit Geschwindigkeit und Kosteneffizienz.", pt: "Relocalização da produção global para a LATAM com velocidade e eficiência de custos." },
+  opSetup: { en: " Operational setup in PY / MX / CO", es: " Setup operativo en PY / MX / CO", de: " Operativer Aufbau in PY / MX / CO", pt: " Configuração operacional em PY / MX / CO" },
+  supplierNet: { en: " Industrial supplier networks", es: " Redes industriales de proveedores", de: " Industrielle Lieferantennetzwerke", pt: " Redes industriais de fornecedores" },
+  costOpt: { en: " Cost optimization (30–60%)", es: " Optimizacion de costos (30–60%)", de: " Kostenoptimierung (30–60%)", pt: " Otimização de custos (30–60%)" },
+  localMgmt: { en: " Local operational management", es: " Gestion operativa local", de: " Lokales Betriebsmanagement", pt: " Gestão operacional local" },
   chatOptions: {
     en: ["Industrial Acceleration", "Smart Supply Chain", "Talent Infrastructure", "Market Entry LATAM", "72h Validation"],
     es: ["Aceleracion industrial", "Supply chain inteligente", "Infraestructura de talento", "Entrada a mercado LATAM", "Validacion 72h"],
@@ -312,23 +314,23 @@ const ui = {
   },
 
   // Casos de éxito
-  successStories: { en: "Our Success Stories",        es: "Nuestros casos de exito",        de: "Unsere Erfolgsgeschichten",          pt: "Nossos casos de sucesso" },
-  builtByUs:      { en: "Built by us.",                es: "Construido por nosotros.",        de: "Von uns gebaut.",                    pt: "Construído por nós." },
-  usedByPeople:   { en: "Used by people.",             es: "Usado por personas.",             de: "Von Menschen genutzt.",              pt: "Usado por pessoas." },
-  circularEco:    { en: "A",                           es: "Un",                              de: "Ein",                                pt: "Um" },
-  circularEco2:   { en: "circular ecosystem",          es: "ecosistema circular",             de: "kreisförmiges Ökosystem",            pt: "ecossistema circular" },
-  circularEco3:   { en: "that integrates payments, delivery, and rewards within a single system, driving a network where every", es: "que integra pagos, entregas y recompensas en un solo sistema, impulsando una red donde cada", de: "das Zahlungen, Lieferung und Belohnungen in einem System integriert und ein Netzwerk antreibt, in dem jede", pt: "que integra pagamentos, entregas e recompensas em um único sistema, impulsionando uma rede onde cada" },
-  positiveAction: { en: "positive action",             es: "accion positiva",                 de: "positive Aktion",                    pt: "ação positiva" },
-  strengthens:    { en: "strengthens the entire community.", es: "fortalece a toda la comunidad.", de: "die gesamte Gemeinschaft stärkt.", pt: "fortalece toda a comunidade." },
-  viewApp:        { en: "View the app",                es: "Ver la app",                      de: "App ansehen",                        pt: "Ver o app" },
-  
+  successStories: { en: "Our Success Stories", es: "Nuestros casos de exito", de: "Unsere Erfolgsgeschichten", pt: "Nossos casos de sucesso" },
+  builtByUs: { en: "Built by us.", es: "Construido por nosotros.", de: "Von uns gebaut.", pt: "Construído por nós." },
+  usedByPeople: { en: "Used by people.", es: "Usado por personas.", de: "Von Menschen genutzt.", pt: "Usado por pessoas." },
+  circularEco: { en: "A", es: "Un", de: "Ein", pt: "Um" },
+  circularEco2: { en: "circular ecosystem", es: "ecosistema circular", de: "kreisförmiges Ökosystem", pt: "ecossistema circular" },
+  circularEco3: { en: "that integrates payments, delivery, and rewards within a single system, driving a network where every", es: "que integra pagos, entregas y recompensas en un solo sistema, impulsando una red donde cada", de: "das Zahlungen, Lieferung und Belohnungen in einem System integriert und ein Netzwerk antreibt, in dem jede", pt: "que integra pagamentos, entregas e recompensas em um único sistema, impulsionando uma rede onde cada" },
+  positiveAction: { en: "positive action", es: "accion positiva", de: "positive Aktion", pt: "ação positiva" },
+  strengthens: { en: "strengthens the entire community.", es: "fortalece a toda la comunidad.", de: "die gesamte Gemeinschaft stärkt.", pt: "fortalece toda a comunidade." },
+  viewApp: { en: "View the app", es: "Ver la app", de: "App ansehen", pt: "Ver o app" },
 
-viewMachines: {
-  en: "View Machines",
-  es: "Ver Máquinas",
-  de: "Maschinen ansehen",
-  pt: "Ver Máquinas",
-},
+
+  viewMachines: {
+    en: "View Machines",
+    es: "Ver Máquinas",
+    de: "Maschinen ansehen",
+    pt: "Ver Máquinas",
+  },
   // Beland Modal
   belandTitle: {
     en: "CIRCULAR TECHNOLOGY",
@@ -377,79 +379,79 @@ viewMachines: {
   },
   // Mittelstand
 
-  problemTitle:   { en: "HOW CAN WE HELP?",         es: "¿CÓMO PODEMOS AYUDAR?",       de: "WIE KÖNNEN WIR HELFEN?",      pt: "COMO PODEMOS AJUDAR?" },
+  problemTitle: { en: "HOW CAN WE HELP?", es: "¿CÓMO PODEMOS AYUDAR?", de: "WIE KÖNNEN WIR HELFEN?", pt: "COMO PODEMOS AJUDAR?" },
   problemSubtitle: {
     en: "Building Digital Relevance.",
     es: "Construyendo Relevancia Digital.",
     de: "Digitale Relevanz Aufbauen.",
     pt: "Construindo Relevância Digital.",
   },
-  problemDesc:    { 
-    en: "We design digital experiences, identities, and growth systems that help businesses thrive in the digital economy.", 
-    es: "Diseñamos experiencias digitales, identidades y sistemas de crecimiento que ayudan a las empresas a prosperar en la economía digital.", 
-    de: "Wir entwerfen digitale Erlebnisse, Identitäten und Wachstumssysteme, die Unternehmen helfen, in der digitalen Wirtschaft erfolgreich zu sein.", 
-    pt: "Designer de experiências digitais, identidades e sistemas de crescimento que ajudam as empresas a prosperar na economia digital." 
+  problemDesc: {
+    en: "We design digital experiences, identities, and growth systems that help businesses thrive in the digital economy.",
+    es: "Diseñamos experiencias digitales, identidades y sistemas de crecimiento que ayudan a las empresas a prosperar en la economía digital.",
+    de: "Wir entwerfen digitale Erlebnisse, Identitäten und Wachstumssysteme, die Unternehmen helfen, in der digitalen Wirtschaft erfolgreich zu sein.",
+    pt: "Designer de experiências digitais, identidades e sistemas de crescimento que ajudam as empresas a prosperar na economia digital."
   },
   typicalTickets: { en: "Typical tickets:", es: "Tickets típicos:", de: "Typische Tickets:", pt: "Tickets típicos:" },
- ourCustomers:   { en: "WHATS NEXT?",              es: "¿QUÉ SIGUE?",                 de: "WAS KOMMT ALS NÄCHSTES?",     pt: "O QUE VEM A SEGUIR?" },
-  midSized1:      { en: "Grow by Design",           es: "Crecer por Diseño",           de: "Wachsen durch Design",        pt: "Crescer por Design" },
-  midSized2:      { 
-    en: "Build a business that customers, search engines, and AI can understand, trust and recommend.", 
-    es: "Construye un negocio que los clientes, los motores de búsqueda y la IA puedan entender, confiar y recomendar.", 
-    de: "Bauen Sie ein Unternehmen auf, das Kunden, Suchmaschinen und KI verstehen, dem sie vertrauen und das sie weiterempfehlen können.", 
-    pt: "Construa um negócio que clientes, mecanismos de busca e IA possam entender, confiar e recomendar." 
+  ourCustomers: { en: "WHATS NEXT?", es: "¿QUÉ SIGUE?", de: "WAS KOMMT ALS NÄCHSTES?", pt: "O QUE VEM A SEGUIR?" },
+  midSized1: { en: "Grow by Design", es: "Crecer por Diseño", de: "Wachsen durch Design", pt: "Crescer por Design" },
+  midSized2: {
+    en: "Build a business that customers, search engines, and AI can understand, trust and recommend.",
+    es: "Construye un negocio que los clientes, los motores de búsqueda y la IA puedan entender, confiar y recomendar.",
+    de: "Bauen Sie ein Unternehmen auf, das Kunden, Suchmaschinen und KI verstehen, dem sie vertrauen und das sie weiterempfehlen können.",
+    pt: "Construa um negócio que clientes, mecanismos de busca e IA possam entender, confiar e recomendar."
   },
-  employees:      { en: "50–500 employees",            es: "50–500 empleados",                de: "50–500 Mitarbeiter",                 pt: "50–500 funcionários" },
-  multiOps:       { en: "Operations across multiple countries / regions", es: "Operaciones en multiples paises / regiones", de: "Betrieb in mehreren Ländern / Regionen", pt: "Operações em vários países / regiões" },
-  longChains:     { en: "Dependent on long supply chains", es: "Dependientes de cadenas de suministro largas", de: "Abhängig von langen Lieferketten", pt: "Dependentes de longas cadeias de suprimento" },
-  tradModels:     { en: "Traditional business models", es: "Modelos de negocio tradicionales", de: "Traditionelle Geschäftsmodelle",    pt: "Modelos de negócios tradicionais" },
+  employees: { en: "50–500 employees", es: "50–500 empleados", de: "50–500 Mitarbeiter", pt: "50–500 funcionários" },
+  multiOps: { en: "Operations across multiple countries / regions", es: "Operaciones en multiples paises / regiones", de: "Betrieb in mehreren Ländern / Regionen", pt: "Operações em vários países / regiões" },
+  longChains: { en: "Dependent on long supply chains", es: "Dependientes de cadenas de suministro largas", de: "Abhängig von langen Lieferketten", pt: "Dependentes de longas cadeias de suprimento" },
+  tradModels: { en: "Traditional business models", es: "Modelos de negocio tradicionales", de: "Traditionelle Geschäftsmodelle", pt: "Modelos de negócios tradicionais" },
 
   // Pricing
-whatWeDeliver:  { en: "Our",            es: "Nuestros",          de: "Unsere",         pt: "Nossos" },
-  weDeliver:      { en: "Services",       es: "Servicios",         de: "Dienstleistungen", pt: "Serviços" },
+  whatWeDeliver: { en: "Our", es: "Nuestros", de: "Unsere", pt: "Nossos" },
+  weDeliver: { en: "Services", es: "Servicios", de: "Dienstleistungen", pt: "Serviços" },
   servicesSubtitle: {
     en: "Crafted with purpose. Built for impact.",
     es: "Diseñado con propósito. Construido para el impacto.",
     de: "Mit Zweck entworfen. Für Wirkung gebaut.",
     pt: "Projetado com propósito. Construído para impacto.",
   },
-  tailorMade:     { en: "Tailor made",  es: "A medida",      de: "Maßgeschneidert", pt: "Sob medida" },
-  oppValidation:  { en: " Opportunity Validation: Problem + viable solution hypothesis",  es: " Validacion de oportunidad: problema + hipotesis de solucion viable", de: " Chancenvalidierung: Problem + tragfähige Lösungshypothese", pt: " Validação de oportunidade: problema + hipótese de solução viável" },
-  feasibility:    { en: " Feasibility Study: Financial overview + Operational forecast",  es: " Estudio de factibilidad: overview financiero + pronostico operativo", de: " Machbarkeitsstudie: Finanzübersicht + Betriebsprognose", pt: " Estudo de viabilidade: visão financeira + previsão operacional" },
-  solutionEng:    { en: " Solution engineering",          es: " Ingenieria de solucion",       de: " Lösungsengineering",        pt: " Engenharia de solução" },
-  functionalMvp:  { en: " Functional MVP",                es: " MVP funcional",                de: " Funktionaler MVP",          pt: " MVP funcional" },
-  betaTesting:    { en: " Beta testing (with real users)", es: " Beta testing (con usuarios reales)", de: " Beta-Test (mit echten Nutzern)", pt: " Beta testing (com usuários reais)" },
-  localDigital:   { en: " Local + Digital operations",    es: " Operaciones locales + digitales", de: " Lokale + digitale Operationen", pt: " Operações locais + digitais" },
-  successOri:     { en: " Success oriented business execution", es: " Ejecucion orientada a resultados", de: " Erfolgsorientierte Geschäftsausführung", pt: " Execução orientada ao sucesso" },
-  reducedCosts:   { en: " Reduced operational costs",    es: " Reduccion de costos operativos", de: " Reduzierte Betriebskosten", pt: " Custos operacionais reduzidos" },
-  fasterScaling:  { en: " Faster and better scaling",    es: " Escalamiento mas rapido y mejor", de: " Schnelleres und besseres Skalieren", pt: " Escalonamento mais rápido e melhor" },
+  tailorMade: { en: "Tailor made", es: "A medida", de: "Maßgeschneidert", pt: "Sob medida" },
+  oppValidation: { en: " Opportunity Validation: Problem + viable solution hypothesis", es: " Validacion de oportunidad: problema + hipotesis de solucion viable", de: " Chancenvalidierung: Problem + tragfähige Lösungshypothese", pt: " Validação de oportunidade: problema + hipótese de solução viável" },
+  feasibility: { en: " Feasibility Study: Financial overview + Operational forecast", es: " Estudio de factibilidad: overview financiero + pronostico operativo", de: " Machbarkeitsstudie: Finanzübersicht + Betriebsprognose", pt: " Estudo de viabilidade: visão financeira + previsão operacional" },
+  solutionEng: { en: " Solution engineering", es: " Ingenieria de solucion", de: " Lösungsengineering", pt: " Engenharia de solução" },
+  functionalMvp: { en: " Functional MVP", es: " MVP funcional", de: " Funktionaler MVP", pt: " MVP funcional" },
+  betaTesting: { en: " Beta testing (with real users)", es: " Beta testing (con usuarios reales)", de: " Beta-Test (mit echten Nutzern)", pt: " Beta testing (com usuários reais)" },
+  localDigital: { en: " Local + Digital operations", es: " Operaciones locales + digitales", de: " Lokale + digitale Operationen", pt: " Operações locais + digitais" },
+  successOri: { en: " Success oriented business execution", es: " Ejecucion orientada a resultados", de: " Erfolgsorientierte Geschäftsausführung", pt: " Execução orientada ao sucesso" },
+  reducedCosts: { en: " Reduced operational costs", es: " Reduccion de costos operativos", de: " Reduzierte Betriebskosten", pt: " Custos operacionais reduzidos" },
+  fasterScaling: { en: " Faster and better scaling", es: " Escalamiento mas rapido y mejor", de: " Schnelleres und besseres Skalieren", pt: " Escalonamento mais rápido e melhor" },
 
   // Team
-aboutTeam:      { en: "About our Team",        es: "Sobre nuestro equipo",    de: "Über unser Team",             pt: "Sobre a nossa equipe" },
+  aboutTeam: { en: "About our Team", es: "Sobre nuestro equipo", de: "Über unser Team", pt: "Sobre a nossa equipe" },
 
-  highPerf:       { en: "High",                  es: "Ejecucion de",            de: "Hochleistungs-",              pt: "Execução de" },
-  highPerfEm:     { en: "Performance execution", es: "alto rendimiento",        de: "Ausführung",                  pt: "alto desempenho" },
-  forged:         { en: "Forged in high",        es: "Forjados en entornos de", de: "Geformt in",                  pt: "Forjados em" },
-  pressure:       { en: "pressure environments", es: "alta presion",            de: "Hochdruckumgebungen",         pt: "ambientes de alta pressão" },
+  highPerf: { en: "High", es: "Ejecucion de", de: "Hochleistungs-", pt: "Execução de" },
+  highPerfEm: { en: "Performance execution", es: "alto rendimiento", de: "Ausführung", pt: "alto desempenho" },
+  forged: { en: "Forged in high", es: "Forjados en entornos de", de: "Geformt in", pt: "Forjados em" },
+  pressure: { en: "pressure environments", es: "alta presion", de: "Hochdruckumgebungen", pt: "ambientes de alta pressão" },
 
   // Cierre
-  closingLine:    { en: "Understand the past — build what's next.", es: "Comprende el pasado — construye lo que viene.", de: "Verstehe die Vergangenheit — baue die Zukunft.", pt: "Entenda o passado — construa o futuro." },
-  letsStart:      { en: "LET'S START",           es: "COMENCEMOS",              de: "LASST UNS",                   pt: "VAMOS COMEÇAR" },
-  today:          { en: "TODAY",                 es: "HOY",                     de: "HEUTE BEGINNEN",              pt: "HOJE" },
+  closingLine: { en: "Understand the past — build what's next.", es: "Comprende el pasado — construye lo que viene.", de: "Verstehe die Vergangenheit — baue die Zukunft.", pt: "Entenda o passado — construa o futuro." },
+  letsStart: { en: "LET'S START", es: "COMENCEMOS", de: "LASST UNS", pt: "VAMOS COMEÇAR" },
+  today: { en: "TODAY", es: "HOY", de: "HEUTE BEGINNEN", pt: "HOJE" },
 
   // Latest Insights
-  stayUpdated:    { en: "Stay updated with us",  es: "Mantente actualizado con nosotros", de: "Bleib auf dem Laufenden", pt: "Fique atualizado conosco" },
-  latestInsights: { en: "Latest Insights",        es: "Ultimos insights",        de: "Neueste Einblicke",           pt: "Últimos insights" },
-  blogDesc:       { en: "Explore our blog for industry trends, tech updates, and innovation stories.", es: "Explora nuestro blog para ver tendencias, actualizaciones tecnologicas e historias de innovacion.", de: "Erkunden Sie unseren Blog für Branchentrends, Tech-Updates und Innovationsgeschichten.", pt: "Explore nosso blog para tendências do setor, atualizações de tecnologia e histórias de inovação." },
-  noPostsYet:     { en: "No posts available yet.", es: "Aun no hay posts disponibles.", de: "Noch keine Beiträge verfügbar.", pt: "Ainda não há posts disponíveis." },
-  readMore:       { en: "Read More →",            es: "Leer mas →",              de: "Weiterlesen →",               pt: "Ler mais →" },
-  noImage:        { en: "NO IMAGE",               es: "SIN IMAGEN",              de: "KEIN BILD",                   pt: "SEM IMAGEM" },
-  noDesc:         { en: "No description available", es: "No hay descripcion disponible", de: "Keine Beschreibung verfügbar", pt: "Sem descrição disponível" },
+  stayUpdated: { en: "Stay updated with us", es: "Mantente actualizado con nosotros", de: "Bleib auf dem Laufenden", pt: "Fique atualizado conosco" },
+  latestInsights: { en: "Latest Insights", es: "Ultimos insights", de: "Neueste Einblicke", pt: "Últimos insights" },
+  blogDesc: { en: "Explore our blog for industry trends, tech updates, and innovation stories.", es: "Explora nuestro blog para ver tendencias, actualizaciones tecnologicas e historias de innovacion.", de: "Erkunden Sie unseren Blog für Branchentrends, Tech-Updates und Innovationsgeschichten.", pt: "Explore nosso blog para tendências do setor, atualizações de tecnologia e histórias de inovação." },
+  noPostsYet: { en: "No posts available yet.", es: "Aun no hay posts disponibles.", de: "Noch keine Beiträge verfügbar.", pt: "Ainda não há posts disponíveis." },
+  readMore: { en: "Read More →", es: "Leer mas →", de: "Weiterlesen →", pt: "Ler mais →" },
+  noImage: { en: "NO IMAGE", es: "SIN IMAGEN", de: "KEIN BILD", pt: "SEM IMAGEM" },
+  noDesc: { en: "No description available", es: "No hay descripcion disponible", de: "Keine Beschreibung verfügbar", pt: "Sem descrição disponível" },
 
   // Footer
-  dontMiss:       { en: "Don't miss a move",      es: "No te pierdas ningun movimiento", de: "Verpasse keine Bewegung",  pt: "Não perca nenhum movimento" },
-  followJourney:  { en: "Follow our",             es: "Sigue nuestro",           de: "Folge unserem",               pt: "Siga nossa" },
-  journey:        { en: "journey",                es: "camino",                  de: "Weg",                         pt: "jornada" },
+  dontMiss: { en: "Don't miss a move", es: "No te pierdas ningun movimiento", de: "Verpasse keine Bewegung", pt: "Não perca nenhum movimento" },
+  followJourney: { en: "Follow our", es: "Sigue nuestro", de: "Folge unserem", pt: "Siga nossa" },
+  journey: { en: "journey", es: "camino", de: "Weg", pt: "jornada" },
 } as const;
 
 // ─── ICONS ───────────────────────────────────────────────────────────────────
@@ -597,27 +599,27 @@ const NewsSection = () => {
             <div className="mt-8 inline-flex flex-col items-center"></div>
             <span className="text-blue-600 font-black uppercase tracking-[0.3em] text-xs mt-6 mb-4 block italic">{tx('globalFeed')}</span>
             <h2 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter leading-none">
-  {/* 👇 MANEJO DE INTIMESOF ("Let's Start Today" con "Start Today" en azul) */}
-  {locale === 'en' ? (
-    <>Let's <span className="text-blue-600">Start Today</span></>
-  ) : locale === 'es' ? (
-    <>Empecemos <span className="text-blue-600">hoy mismo</span></>
-  ) : (
-    tx('inTimesOf')
-  )}
-  <br />
-  {/* 👇 MANEJO DE CHANGETURBULENCE ("Just the way you dream. Only Better." con "Better." en naranja) */}
-  <span className="text-slate-600 text-lg md:text-xl font-medium block mt-4 normal-case tracking-normal">
-    {locale === 'en' ? (
-      <>Just the way you dream. Only <span className="text-orange-500 font-black">Better.</span></>
-    ) : locale === 'es' ? (
-      <>Exactamente como lo sueñas. Solo <span className="text-orange-500 font-black">Mejor.</span></>
-    ) : (
-      tx('changeTurbulence')
-    )}
-  </span>
-</h2>
-</div>
+              {/* 👇 MANEJO DE INTIMESOF ("Let's Start Today" con "Start Today" en azul) */}
+              {locale === 'en' ? (
+                <>Let's <span className="text-blue-600">Start Today</span></>
+              ) : locale === 'es' ? (
+                <>Empecemos <span className="text-blue-600">hoy mismo</span></>
+              ) : (
+                tx('inTimesOf')
+              )}
+              <br />
+              {/* 👇 MANEJO DE CHANGETURBULENCE ("Just the way you dream. Only Better." con "Better." en naranja) */}
+              <span className="text-slate-600 text-lg md:text-xl font-medium block mt-4 normal-case tracking-normal">
+                {locale === 'en' ? (
+                  <>Just the way you dream. Only <span className="text-orange-500 font-black">Better.</span></>
+                ) : locale === 'es' ? (
+                  <>Exactamente como lo sueñas. Solo <span className="text-orange-500 font-black">Mejor.</span></>
+                ) : (
+                  tx('changeTurbulence')
+                )}
+              </span>
+            </h2>
+          </div>
           <div className="text-center md:text-right md:w-48">
             <p className="text-slate-400 font-mono text-[10px] uppercase tracking-widest">{tx('liveUpdates')}</p>
             <div className="flex gap-2 justify-center md:justify-end mt-2 items-center">
@@ -671,7 +673,9 @@ const ChatSection = () => {
   const tx = (key: keyof typeof ui) => (ui[key] as any)[locale] ?? (ui[key] as any)['en'];
 
   const [showYesModal, setShowYesModal] = useState(false);
-const [showNoModal, setShowNoModal] = useState(false);
+  const [showNoModal, setShowNoModal] = useState(false);
+
+  const [assessmentType, setAssessmentType] = useState("15 min - Free Call");
   const [step, setStep] = useState<number>(1);
   const [selection, setSelection] = useState<string>("");
   const options = (ui.chatOptions as any)[locale] ?? ui.chatOptions.en;
@@ -692,595 +696,672 @@ const [showNoModal, setShowNoModal] = useState(false);
           {tx('kitchenTitle')} <span className="italic underline decoration-blue-100"> {tx('kitchenOpen')} </span>
         </h2>
         <p className="text-blue-600 uppercase tracking-[0.2em] text-[10px] mb-4 font-bold">{tx('century20')}</p>
-        
+
         <div className="relative bg-slate-50 border border-slate-100 rounded-3xl p-8 md:p-12 transition-all hover:border-blue-600/30 text-center">
+       
           {step === 1 ? (
-           <>
-  <p className="text-xl text-slate-600 mb-6 font-light">
-    {tx('howCanHelp')}{" "}
-    <span className="text-slate-900 font-semibold underline decoration-blue-600 underline-offset-4">
-      {tx('theTeam')}
-    </span>
-    {tx('helpToday')}
-  </p>
+  <>
+    <p className="text-xl text-slate-600 mb-6 font-light">
+      {tx('howCanHelp')}{" "}
+      <span className="text-slate-900 font-semibold underline decoration-blue-600 underline-offset-4">
+        {tx('theTeam')}
+      </span>
+      {tx('helpToday')}
+    </p>
 
-  {/* Botones Yes / No */}
-  <div className="flex justify-center gap-4 mb-8">
-  <button
-    onClick={() => setShowYesModal(true)}
-    className="px-8 py-3 rounded-full border-2 border-slate-200 bg-white text-slate-700 font-black uppercase tracking-widest text-[10px] hover:border-blue-600 hover:text-blue-600 transition-all active:scale-95 shadow-sm"
-  >
-    Yes
-  </button>
+    <div className="flex justify-center gap-4 mb-8">
+      <button
+        onClick={() => setShowYesModal(true)}
+        className="px-8 py-3 rounded-full border-2 border-slate-200 bg-white text-slate-700 font-black uppercase tracking-widest text-[10px]"
+      >
+        Yes
+      </button>
 
-  <button
-    onClick={() => setShowNoModal(true)}
-    className="px-8 py-3 rounded-full border-2 border-slate-200 bg-white text-slate-700 font-black uppercase tracking-widest text-[10px] hover:border-blue-600 hover:text-blue-600 transition-all active:scale-95 shadow-sm"
-  >
-    No
-  </button>
+      <button
+        onClick={() => setShowNoModal(true)}
+        className="px-8 py-3 rounded-full border-2 border-slate-200 bg-white text-slate-700 font-black uppercase tracking-widest text-[10px]"
+      >
+        No
+      </button>
+    </div>
+
+    <div className="flex flex-wrap justify-center gap-3">
+      {options.map((opt: string) => (
+        <button
+          key={opt}
+          onClick={() => {
+            setSelection(opt);
+            setStep(2);
+          }}
+          className="text-[10px] font-black uppercase tracking-widest px-6 py-3 rounded-full border-2 border-slate-200 bg-white hover:border-blue-600 hover:text-blue-600 transition-all active:scale-95 shadow-sm"
+        >
+          {opt}
+        </button>
+      ))}
+    </div>
+  </>
+) : (
+               
+                  <div className="py-4 text-left">
+                    <div className="mb-6">
+                      <h3 className="text-xl font-black text-slate-900 uppercase tracking-tighter">{tx('indAccel')}</h3>
+                      <p className="text-blue-600 text-xs font-bold tracking-widest uppercase mb-3">(Nearshoring + Smart Maquila)</p>
+                      <p className="text-slate-500 text-sm leading-relaxed border-l-2 border-blue-600 pl-4">{tx('relocate')}</p>
+                    </div>
+                    <div className="mb-8 space-y-2">
+                      <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">{tx('whatWeSell')}</p>
+                      <ul className="text-sm text-slate-700 space-y-1">
+                        <li className="flex items-start gap-2"><span>●</span>{tx('opSetup')}</li>
+                        <li className="flex items-start gap-2"><span>●</span>{tx('supplierNet')}</li>
+                        <li className="flex items-start gap-2 text-blue-600 font-bold"><span>●</span>{tx('costOpt')}</li>
+                        <li className="flex items-start gap-2"><span>●</span>{tx('localMgmt')}</li>
+                      </ul>
+                    </div>
+                    <button onClick={() => handleWhatsApp(selection)} className="w-full bg-blue-600 text-white py-4 rounded-full font-black text-sm hover:bg-blue-700 transition-all uppercase tracking-widest shadow-xl shadow-blue-600/20 active:scale-95">{tx('connectTeam')}</button>
+                    <button onClick={() => setStep(1)} className="block mx-auto mt-6 text-slate-400 hover:text-blue-600 text-[10px] uppercase font-black tracking-widest transition-colors">{tx('goBack')}</button>
+
+                  </div>
+)}
+                  </div>
 </div>
 
-  {/* Píldoras quedan debajo */}
-  <div className="flex flex-wrap justify-center gap-3">
-    {options.map((opt: string) => (
-      <button
-        key={opt}
-        onClick={() => {
-          setSelection(opt);
-          setStep(2);
-        }}
-        className="text-[10px] font-black uppercase tracking-widest px-6 py-3 rounded-full border-2 border-slate-200 bg-white hover:border-blue-600 hover:text-blue-600 transition-all active:scale-95 shadow-sm"
-      >
-        {opt}
-      </button>
-    ))}
-  </div>
-</>
-          ) : (
-            <div className="py-4 text-left">
-              <div className="mb-6">
-                <h3 className="text-xl font-black text-slate-900 uppercase tracking-tighter">{tx('indAccel')}</h3>
-                <p className="text-blue-600 text-xs font-bold tracking-widest uppercase mb-3">(Nearshoring + Smart Maquila)</p>
-                <p className="text-slate-500 text-sm leading-relaxed border-l-2 border-blue-600 pl-4">{tx('relocate')}</p>
-              </div>
-              <div className="mb-8 space-y-2">
-                <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">{tx('whatWeSell')}</p>
-                <ul className="text-sm text-slate-700 space-y-1">
-                  <li className="flex items-start gap-2"><span>●</span>{tx('opSetup')}</li>
-                  <li className="flex items-start gap-2"><span>●</span>{tx('supplierNet')}</li>
-                  <li className="flex items-start gap-2 text-blue-600 font-bold"><span>●</span>{tx('costOpt')}</li>
-                  <li className="flex items-start gap-2"><span>●</span>{tx('localMgmt')}</li>
-                </ul>
-              </div>
-              <button onClick={() => handleWhatsApp(selection)} className="w-full bg-blue-600 text-white py-4 rounded-full font-black text-sm hover:bg-blue-700 transition-all uppercase tracking-widest shadow-xl shadow-blue-600/20 active:scale-95">{tx('connectTeam')}</button>
-              <button onClick={() => setStep(1)} className="block mx-auto mt-6 text-slate-400 hover:text-blue-600 text-[10px] uppercase font-black tracking-widest transition-colors">{tx('goBack')}</button>
-            </div>
-          )}
-        </div>
-      </div>
-    </section>
-  );
+
+
+                <AnimatePresence>
+                  {showYesModal && (
+                    <motion.div
+                      className="fixed inset-0 z-[100] bg-black/60 flex items-center justify-center p-6"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      onClick={() => setShowYesModal(false)}
+                    >
+                      <motion.div
+                        onClick={(e) => e.stopPropagation()}
+                        initial={{ scale: 0.95, opacity: 0 }}
+                        animate={{ scale: 1, opacity: 1 }}
+                        exit={{ scale: 0.95, opacity: 0 }}
+                        className="bg-white rounded-3xl p-8 max-w-xl w-full"
+                      >
+                        <h3 className="text-3xl font-black text-slate-900 mb-4">
+                          Perfect, now make your business impossible to ignore.
+                        </h3>
+
+                        <p className="text-slate-600 mb-8">
+                          Let's build a digital identity that makes you visible,
+                          relevant, and recommendable.
+                        </p>
+
+                        <h4 className="font-black uppercase tracking-widest text-sm mb-4">
+                          Assess My Digital Identity
+                        </h4>
+
+                        <div className="flex flex-col gap-3 mb-8">
+                          <button
+                            onClick={() => setAssessmentType("15 min - Free Call")}
+                            className={`rounded-full border-2 px-6 py-3 font-black uppercase text-xs ${assessmentType === "15 min - Free Call"
+                                ? "border-blue-600 text-blue-600"
+                                : "border-slate-200"
+                              }`}
+                          >
+                            15 min - Free Call
+                          </button>
+
+                          <button
+                            onClick={() => setAssessmentType("1 Hour - $50")}
+                            className={`rounded-full border-2 px-6 py-3 font-black uppercase text-xs ${assessmentType === "1 Hour - $50"
+                                ? "border-blue-600 text-blue-600"
+                                : "border-slate-200"
+                              }`}
+                          >
+                            1 Hour - $50
+                          </button>
+                        </div>
+
+                        <a
+                          href="https://calendly.com/diego-placeholder"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="w-full flex justify-center bg-blue-600 text-white py-4 rounded-full font-black uppercase tracking-widest text-xs"
+                        >
+                          Book Assessment
+                        </a>
+                        <button
+  onClick={() => setShowYesModal(false)}
+  className="block mx-auto mt-6 text-slate-400 hover:text-blue-600 text-[10px] uppercase font-black tracking-widest transition-colors"
+>
+  Go Back
+</button>
+                      </motion.div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+
+              </section>
+             
+             );
+            
 };
 
-//  CASOS DE ÉXITO 
-const CasosDeExito = ({ showMachinesModal, setShowMachinesModal }: { showMachinesModal: boolean; setShowMachinesModal: React.Dispatch<React.SetStateAction<boolean>> }) => {
+
+              //  CASOS DE ÉXITO 
+              const CasosDeExito = ({showMachinesModal, setShowMachinesModal}: {showMachinesModal: boolean; setShowMachinesModal: React.Dispatch<React.SetStateAction<boolean>> }) => {
   const locale = useLocale() as Locale;
   const tx = (key: keyof typeof ui) => (ui[key] as any)[locale] ?? (ui[key] as any)['en'];
 
-  const screenshotsMap = { en: belandScreenshots, es: belandScreenshotsEs, de: belandScreenshotsDe, pt: belandScreenshotsPt };
-  const screenshots = screenshotsMap[locale] ?? belandScreenshots;
+                const screenshotsMap = {en: belandScreenshots, es: belandScreenshotsEs, de: belandScreenshotsDe, pt: belandScreenshotsPt };
+                const screenshots = screenshotsMap[locale] ?? belandScreenshots;
 
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const touchStartX = useRef<number | null>(null);
-  const touchCurrentX = useRef<number | null>(null);
+                const [currentSlide, setCurrentSlide] = useState(0);
+                const touchStartX = useRef<number | null>(null);
+                const touchCurrentX = useRef<number | null>(null);
 
   useEffect(() => {
-    const timer = setInterval(() => { setCurrentSlide((prev) => (prev + 1) % screenshots.length); }, 4000);
+    const timer = setInterval(() => {setCurrentSlide((prev) => (prev + 1) % screenshots.length); }, 4000);
     return () => clearInterval(timer);
   }, [screenshots.length]);
 
-  const goToPrevious = (e?: React.MouseEvent) => { e?.stopPropagation(); setCurrentSlide((prev) => (prev - 1 + screenshots.length) % screenshots.length); };
-  const goToNext = (e?: React.MouseEvent) => { e?.stopPropagation(); setCurrentSlide((prev) => (prev + 1) % screenshots.length); };
+  const goToPrevious = (e?: React.MouseEvent) => {e?.stopPropagation(); setCurrentSlide((prev) => (prev - 1 + screenshots.length) % screenshots.length); };
+  const goToNext = (e?: React.MouseEvent) => {e?.stopPropagation(); setCurrentSlide((prev) => (prev + 1) % screenshots.length); };
   const handleTouchStart = (e: React.TouchEvent) => (touchStartX.current = e.touches[0].clientX);
   const handleTouchMove = (e: React.TouchEvent) => (touchCurrentX.current = e.touches[0].clientX);
   const handleTouchEnd = () => {
     if (touchStartX.current == null || touchCurrentX.current == null) return;
-    const delta = touchStartX.current - touchCurrentX.current;
+                const delta = touchStartX.current - touchCurrentX.current;
     if (delta > 50) goToNext(); else if (delta < -50) goToPrevious();
-    touchStartX.current = null; touchCurrentX.current = null;
+                touchStartX.current = null; touchCurrentX.current = null;
   };
 
-  return (
-    <section className="py-16 px-6 bg-white border-t border-slate-100">
-      <div className="max-w-6xl mx-auto">
-        <div className="mb-12 text-center">
-          <p className="text-blue-600 uppercase tracking-[0.25em] text-[10px] font-black mb-2">{tx('successStories')}</p>
-          <h2 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter leading-[0.9] uppercase">
-            {tx('builtByUs')} <em className="italic underline decoration-blue-100">{tx('usedByPeople')}</em>
-          </h2>
-        </div>
-        <div className="grid md:grid-cols-2 gap-16 items-center">
-          <div className="flex justify-center">
-            <div className="relative w-full max-w-[260px] sm:max-w-[300px] cursor-grab active:cursor-grabbing" onTouchStart={handleTouchStart} onTouchMove={handleTouchMove} onTouchEnd={handleTouchEnd}>
-              <div className="relative aspect-[9/19] w-full overflow-hidden rounded-[2.5rem] border-[6px] border-white bg-white shadow-2xl">
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-20 h-5 bg-white rounded-b-xl z-20" />
-                {screenshots.map((screenshot, index) => (
-                  <div key={index} className={`absolute inset-0 transition-opacity duration-700 ${index === currentSlide ? "opacity-100" : "opacity-0 pointer-events-none"}`}>
-                    <Image src={screenshot.src} alt={screenshot.alt} fill className="object-contain" priority={index === 0} sizes="300px" />
+                return (
+                <section className="py-16 px-6 bg-white border-t border-slate-100">
+                  <div className="max-w-6xl mx-auto">
+                    <div className="mb-12 text-center">
+                      <p className="text-blue-600 uppercase tracking-[0.25em] text-[10px] font-black mb-2">{tx('successStories')}</p>
+                      <h2 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter leading-[0.9] uppercase">
+                        {tx('builtByUs')} <em className="italic underline decoration-blue-100">{tx('usedByPeople')}</em>
+                      </h2>
+                    </div>
+                    <div className="grid md:grid-cols-2 gap-16 items-center">
+                      <div className="flex justify-center">
+                        <div className="relative w-full max-w-[260px] sm:max-w-[300px] cursor-grab active:cursor-grabbing" onTouchStart={handleTouchStart} onTouchMove={handleTouchMove} onTouchEnd={handleTouchEnd}>
+                          <div className="relative aspect-[9/19] w-full overflow-hidden rounded-[2.5rem] border-[6px] border-white bg-white shadow-2xl">
+                            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-20 h-5 bg-white rounded-b-xl z-20" />
+                            {screenshots.map((screenshot, index) => (
+                              <div key={index} className={`absolute inset-0 transition-opacity duration-700 ${index === currentSlide ? "opacity-100" : "opacity-0 pointer-events-none"}`}>
+                                <Image src={screenshot.src} alt={screenshot.alt} fill className="object-contain" priority={index === 0} sizes="300px" />
+                              </div>
+                            ))}
+                          </div>
+                          <button onClick={goToPrevious} className="absolute -left-5 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white border border-slate-200 shadow flex items-center justify-center hover:border-blue-600 transition-colors z-30"><ChevronLeft className="w-4 h-4 text-slate-600" /></button>
+                          <button onClick={goToNext} className="absolute -right-5 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white border border-slate-200 shadow flex items-center justify-center hover:border-blue-600 transition-colors z-30"><ChevronRight className="w-4 h-4 text-slate-600" /></button>
+                          <div className="flex justify-center gap-1.5 mt-5">
+                            {screenshots.map((_, i) => (<button key={i} onClick={() => setCurrentSlide(i)} className={`rounded-full transition-all duration-300 ${i === currentSlide ? "w-5 h-1.5 bg-blue-600" : "w-1.5 h-1.5 bg-slate-300"}`} />))}
+                          </div>
+                        </div>
+                      </div>
+                      <div className="flex flex-col gap-6">
+                        <div className="inline-flex flex-col items-start">
+                          <div style={{ width: '200px', height: '50px' }} className="relative -ml-4">
+                            <Image src="/beland.titulo.png" alt="Beland Logo" fill className="object-contain object-left" priority sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
+                          </div>
+                        </div>
+                        <div key={currentSlide} className="border-l-4 border-blue-600 pl-4 transition-all duration-500">
+                          <p className="text-[10px] font-black uppercase tracking-widest text-blue-600 mb-1">{screenshots[currentSlide].title}</p>
+                          <p className="text-slate-500 text-sm leading-relaxed">{screenshots[currentSlide].text}</p>
+                        </div>
+                        <p className="text-slate-700 text-base leading-relaxed font-medium">
+                          {tx('circularEco')} <span className="text-slate-900 font-black">{tx('circularEco2')}</span> {tx('circularEco3')} <span className="text-blue-600 font-bold">{tx('positiveAction')}</span> {tx('strengthens')}
+                        </p>
+                        <div className="flex flex-wrap gap-2">
+                          {belandTags.map((tag) => (<span key={tag} className="text-[10px] font-black uppercase tracking-widest px-4 py-1.5 rounded-full border border-slate-200 text-slate-500 bg-slate-50">{tag}</span>))}
+                        </div>
+                        <div className="flex flex-col gap-3 self-start w-full sm:w-auto mt-4">
+                          <a
+                            href="https://beland.app"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center justify-center gap-2 w-full sm:w-auto bg-blue-600 text-white px-6 py-3 rounded-full font-black text-[10px] sm:text-[11px] uppercase tracking-[0.15em] shadow-lg shadow-blue-600/20 hover:bg-blue-700 transition-colors"
+                          >
+                            {tx('viewApp')}
+                            <ArrowRight className="w-4 h-4" />
+                          </a>
+
+                          <a
+                            href="https://beland.land"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center justify-center gap-2 w-full sm:w-auto border border-slate-300 text-slate-700 px-6 py-3 rounded-full font-black text-[10px] sm:text-[11px] uppercase tracking-[0.15em] hover:border-blue-600 hover:text-blue-600 transition-colors"
+                          >
+                            Landing
+                            <ArrowRight className="w-4 h-4" />
+                          </a>
+
+                          <button
+                            onClick={() => setShowMachinesModal(true)}
+                            className="inline-flex items-center justify-center gap-2 w-full sm:w-auto border border-slate-300 text-slate-700 px-6 py-3 rounded-full font-black text-[10px] sm:text-[11px] uppercase tracking-[0.15em] hover:border-blue-600 hover:text-blue-600 transition-colors"
+                          >
+                            {tx('viewMachines')}
+                            <ArrowRight className="w-4 h-4" />
+                          </button>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                ))}
-              </div>
-              <button onClick={goToPrevious} className="absolute -left-5 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white border border-slate-200 shadow flex items-center justify-center hover:border-blue-600 transition-colors z-30"><ChevronLeft className="w-4 h-4 text-slate-600" /></button>
-              <button onClick={goToNext} className="absolute -right-5 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white border border-slate-200 shadow flex items-center justify-center hover:border-blue-600 transition-colors z-30"><ChevronRight className="w-4 h-4 text-slate-600" /></button>
-              <div className="flex justify-center gap-1.5 mt-5">
-                {screenshots.map((_, i) => (<button key={i} onClick={() => setCurrentSlide(i)} className={`rounded-full transition-all duration-300 ${i === currentSlide ? "w-5 h-1.5 bg-blue-600" : "w-1.5 h-1.5 bg-slate-300"}`} />))}
-              </div>
-            </div>
-          </div>
-          <div className="flex flex-col gap-6">
-            <div className="inline-flex flex-col items-start">
-              <div style={{ width: '200px', height: '50px' }} className="relative -ml-4">
-                <Image src="/beland.titulo.png" alt="Beland Logo" fill className="object-contain object-left" priority sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
-              </div>
-            </div>
-            <div key={currentSlide} className="border-l-4 border-blue-600 pl-4 transition-all duration-500">
-              <p className="text-[10px] font-black uppercase tracking-widest text-blue-600 mb-1">{screenshots[currentSlide].title}</p>
-              <p className="text-slate-500 text-sm leading-relaxed">{screenshots[currentSlide].text}</p>
-            </div>
-            <p className="text-slate-700 text-base leading-relaxed font-medium">
-              {tx('circularEco')} <span className="text-slate-900 font-black">{tx('circularEco2')}</span> {tx('circularEco3')} <span className="text-blue-600 font-bold">{tx('positiveAction')}</span> {tx('strengthens')}
-            </p>
-            <div className="flex flex-wrap gap-2">
-              {belandTags.map((tag) => (<span key={tag} className="text-[10px] font-black uppercase tracking-widest px-4 py-1.5 rounded-full border border-slate-200 text-slate-500 bg-slate-50">{tag}</span>))}
-            </div>
-           <div className="flex flex-col gap-3 self-start w-full sm:w-auto mt-4">
-  <a
-    href="https://beland.app"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="inline-flex items-center justify-center gap-2 w-full sm:w-auto bg-blue-600 text-white px-6 py-3 rounded-full font-black text-[10px] sm:text-[11px] uppercase tracking-[0.15em] shadow-lg shadow-blue-600/20 hover:bg-blue-700 transition-colors"
-  >
-    {tx('viewApp')}
-    <ArrowRight className="w-4 h-4" />
-  </a>
-
-  <a
-    href="https://beland.land"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="inline-flex items-center justify-center gap-2 w-full sm:w-auto border border-slate-300 text-slate-700 px-6 py-3 rounded-full font-black text-[10px] sm:text-[11px] uppercase tracking-[0.15em] hover:border-blue-600 hover:text-blue-600 transition-colors"
-  >
-    Landing
-    <ArrowRight className="w-4 h-4" />
-  </a>
-
-  <button
-    onClick={() => setShowMachinesModal(true)}
-    className="inline-flex items-center justify-center gap-2 w-full sm:w-auto border border-slate-300 text-slate-700 px-6 py-3 rounded-full font-black text-[10px] sm:text-[11px] uppercase tracking-[0.15em] hover:border-blue-600 hover:text-blue-600 transition-colors"
-  >
-    {tx('viewMachines')}
-    <ArrowRight className="w-4 h-4" />
-  </button>
-</div>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
+                </section>
+                );
 };
-//  MAIN HOME
-export default function Home() {
+                //  MAIN HOME
+                export default function Home() {
   const t = useTranslations('Home');
-  const locale = useLocale() as Locale;
+                const locale = useLocale() as Locale;
   const tx = (key: keyof typeof ui) => (ui[key] as any)[locale] ?? (ui[key] as any)['en'];
 
-  const [posts, setPosts] = useState<any[]>([]);
-  const heroVideoRef = useRef<HTMLVideoElement>(null);
-  const [isMobile, setIsMobile] = useState(false);
-  const [selected, setSelected] = useState<number | null>(null);
-  const [showMachinesModal, setShowMachinesModal] = useState(false);
+                const [posts, setPosts] = useState<any[]>([]);
+                const heroVideoRef = useRef<HTMLVideoElement>(null);
+                  const [isMobile, setIsMobile] = useState(false);
+                  const [selected, setSelected] = useState<number | null>(null);
+                  const [showMachinesModal, setShowMachinesModal] = useState(false);
 
-  const teamMap = { en: team, es: teamEs, de: teamDe, pt: teamPt };
-  const teamData = teamMap[locale] ?? team;
-  const localeBase = locale === 'en' ? '' : `/${locale}`;
+                  const teamMap = {en: team, es: teamEs, de: teamDe, pt: teamPt };
+                  const teamData = teamMap[locale] ?? team;
+                  const localeBase = locale === 'en' ? '' : `/${locale}`;
 
   // Fetch posts con traducción multi-idioma
   useEffect(() => {
     const fetchPosts = async () => {
       const supabase = createClient();
-      const { data } = await supabase
-        .from('blog_posts')
-        .select('*')
-        .order('published_at', { ascending: false })
-        .limit(3);
+                  const {data} = await supabase
+                  .from('blog_posts')
+                  .select('*')
+                  .order('published_at', {ascending: false })
+                  .limit(3);
 
-      if (data) {
+                  if (data) {
         if (locale !== 'en' && data.length > 0) {
           try {
             const response = await fetch('/api/translate-posts', {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({ posts: data, targetLocale: locale, full: false }),
+                    method: 'POST',
+                  headers: {'Content-Type': 'application/json' },
+                  body: JSON.stringify({posts: data, targetLocale: locale, full: false }),
             });
-            if (response.ok) {
+                  if (response.ok) {
               const translated = await response.json();
-              setPosts(translated);
-              return;
+                  setPosts(translated);
+                  return;
             }
           } catch {
-            // fallback a originales
-          }
+                    // fallback a originales
+                  }
         }
-        setPosts(data);
+                  setPosts(data);
       }
     };
-    fetchPosts();
+                  fetchPosts();
   }, [locale]);
 
 // ── Hero video ────────────────────────────────────────────────────────────
 useEffect(() => {
   const video = heroVideoRef.current;
-  if (!video) return;
+                  if (!video) return;
 
-  video.muted = true;
-  video.playsInline = true;
-  video.autoplay = true;
-  video.loop = true;
+                  video.muted = true;
+                  video.playsInline = true;
+                  video.autoplay = true;
+                  video.loop = true;
 
   const tryPlay = () => {
-    video.play().catch(() => {
-      // Autoplay bloqueado en iOS
-    });
+                    video.play().catch(() => {
+                      // Autoplay bloqueado en iOS
+                    });
   };
 
-  tryPlay();
-  video.addEventListener("loadedmetadata", tryPlay);
-  video.addEventListener("loadeddata", tryPlay);
-  video.addEventListener("canplay", tryPlay);
-  video.addEventListener("canplaythrough", tryPlay);
+                  tryPlay();
+                  video.addEventListener("loadedmetadata", tryPlay);
+                  video.addEventListener("loadeddata", tryPlay);
+                  video.addEventListener("canplay", tryPlay);
+                  video.addEventListener("canplaythrough", tryPlay);
 
   const handleInteraction = () => {
-    tryPlay();
+                    tryPlay();
   };
 
-  document.addEventListener("touchstart", handleInteraction, { once: true });
-  document.addEventListener("scroll", handleInteraction, { once: true });
-  document.addEventListener("click", handleInteraction, { once: true });
+                  document.addEventListener("touchstart", handleInteraction, {once: true });
+                  document.addEventListener("scroll", handleInteraction, {once: true });
+                  document.addEventListener("click", handleInteraction, {once: true });
 
   return () => {
-    video.removeEventListener("loadedmetadata", tryPlay);
-    video.removeEventListener("loadeddata", tryPlay);
-    video.removeEventListener("canplay", tryPlay);
-    video.removeEventListener("canplaythrough", tryPlay);
-    document.removeEventListener("touchstart", handleInteraction);
-    document.removeEventListener("scroll", handleInteraction);
-    document.removeEventListener("click", handleInteraction);
+                    video.removeEventListener("loadedmetadata", tryPlay);
+                  video.removeEventListener("loadeddata", tryPlay);
+                  video.removeEventListener("canplay", tryPlay);
+                  video.removeEventListener("canplaythrough", tryPlay);
+                  document.removeEventListener("touchstart", handleInteraction);
+                  document.removeEventListener("scroll", handleInteraction);
+                  document.removeEventListener("click", handleInteraction);
   };
 }, []);
   
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth < 768);
-    handleResize();
-    window.addEventListener("resize", handleResize);
+                  handleResize();
+                  window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const dateLang = locale === 'es' ? 'es-ES' : locale === 'de' ? 'de-DE' : locale === 'pt' ? 'pt-BR' : 'en-US';
+                  const dateLang = locale === 'es' ? 'es-ES' : locale === 'de' ? 'de-DE' : locale === 'pt' ? 'pt-BR' : 'en-US';
 
-  return (
-     
-    <main className="relative w-full bg-white">
+                  return (
 
-      {/* SHARED HEADER */}
-      <Header />
+                  <main className="relative w-full bg-white">
 
-      {/* 1. HERO */}
-      <section className="relative w-full h-[100dvh] overflow-hidden" id="top">
-        <video 
-  ref={heroVideoRef} 
-  className="absolute top-1/2 left-1/2 min-w-full min-h-full w-auto h-auto -translate-x-1/2 -translate-y-1/2 object-cover" 
-  autoPlay 
-  loop 
-  muted 
-  playsInline 
-  preload="auto"
->
-  <source src="/hero.mp4" type="video/mp4" />
-</video>
-        <div className="absolute inset-0 bg-white/10 z-[1]" />
-        <div className="absolute inset-0 z-[2] flex flex-col items-center justify-center px-6 text-center">
-          <p className="text-blue-600 uppercase tracking-[0.4em] mb-3 text-[10px] font-black">
-            {t('whatWeDo')}
-          </p>
-          <h1 className="text-3xl md:text-8xl font-black leading-[1] tracking-tighter max-w-4xl text-white uppercase">
-            {tx('openLatam')} <br /> {tx('globalCompanies')}
-          </h1>
-          <p className="mt-3 text-white text-[9px] md:text-[10px] uppercase tracking-widest font-bold">{tx('subtagline')}</p>
-          <a href="https://wa.me/593995269974?text=Hi!%20I%27d%20like%20to%20get%20in%20touch%20with%20the%20team." className="mt-3 inline-block px-8 py-3 bg-[#FF6B00] text-white rounded-full font-bold shadow-lg uppercase tracking-widest text-[10px] transition-transform active:scale-95">
-            {tx('getInTouch')}
-          </a>
-        </div>
-      </section>
+                    {/* SHARED HEADER */}
+                    <Header />
 
-      
+                    {/* 1. HERO */}
+                    <section className="relative w-full h-[100dvh] overflow-hidden" id="top">
+                      <video
+                        ref={heroVideoRef}
+                        className="absolute top-1/2 left-1/2 min-w-full min-h-full w-auto h-auto -translate-x-1/2 -translate-y-1/2 object-cover"
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        preload="auto"
+                      >
+                        <source src="/hero.mp4" type="video/mp4" />
+                      </video>
+                      <div className="absolute inset-0 bg-white/10 z-[1]" />
+                      <div className="absolute inset-0 z-[2] flex flex-col items-center justify-center px-6 text-center">
+                        <p className="text-blue-600 uppercase tracking-[0.4em] mb-3 text-[10px] font-black">
+                          {t('whatWeDo')}
+                        </p>
+                        <h1 className="text-3xl md:text-8xl font-black leading-[1] tracking-tighter max-w-4xl text-white uppercase">
+                          {tx('openLatam')} <br /> {tx('globalCompanies')}
+                        </h1>
+                        <p className="mt-3 text-white text-[9px] md:text-[10px] uppercase tracking-widest font-bold">{tx('subtagline')}</p>
+                        <a href="https://wa.me/593995269974?text=Hi!%20I%27d%20like%20to%20get%20in%20touch%20with%20the%20team." className="mt-3 inline-block px-8 py-3 bg-[#FF6B00] text-white rounded-full font-bold shadow-lg uppercase tracking-widest text-[10px] transition-transform active:scale-95">
+                          {tx('getInTouch')}
+                        </a>
+                      </div>
+                    </section>
 
-      {/* 3. CHAT */}
-      <ChatSection />
 
-      {/* 4. MITTELSTAND */}
-<section id="mittelstand" className="py-12 md:py-24 px-6 bg-slate-50 border-y border-slate-200">
-  <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-20 items-center">
-    
-    
-    {/* COLUMNA IZQUIERDA */}
-<div className="bg-white p-12 rounded-3xl border border-slate-200 shadow-sm transition-all hover:shadow-md">
-  <p className="text-sm font-bold tracking-wider text-slate-400 uppercase mb-3">
-    {tx('problemTitle')}
-  </p>
-  <h3 className="text-3xl font-bold text-blue-600 mb-6 leading-tight">
-    {tx('problemSubtitle')}
-  </h3>
-  <p className="text-slate-600 text-lg leading-relaxed mb-10">
-    {tx('problemDesc')}
-  </p>
-  
-  <div className="space-y-4 mb-8">
-    <p className="text-base line-through decoration-red-600 decoration-2 font-bold italic text-slate-400">BCG Digital Ventures</p>
-    <p className="text-base line-through decoration-red-600 decoration-2 font-bold italic text-slate-400">McKinsey &amp; Company</p>
-    <p className="text-base line-through decoration-red-600 decoration-2 font-bold italic text-slate-400">Accenture</p>
-  </div>
-  
-  <div className="pt-6 border-t border-slate-100">
-    <p className="text-sm font-bold italic text-slate-900 tracking-tight">
-      {tx('typicalTickets')} <span className="text-blue-600">€150k - €1M+</span>
-    </p>
-  </div>
-</div>
 
-    {/* COLUMNA DERECHA  */}
-    <div>
-      {/*  "WHATS NEXT?" */}
-      <span className="text-sm font-black uppercase tracking-[0.2em] text-blue-600 block mb-3">
-        {ui.ourCustomers[locale]}
-      </span>
-      
-      {/* "Grow by Design" */}
-      <h2 className="text-4xl md:text-5xl font-black mb-6 text-slate-900 leading-tight tracking-tighter uppercase">
-        {ui.midSized1[locale]}
-      </h2>
-      
-      {/* 3. La descripción larga sacada del h2 para que no explote el diseño */}
-      <p className="text-lg text-slate-600 font-medium leading-relaxed mb-10 text-balance">
-        {ui.midSized2[locale]}
-      </p>
+                    {/* 3. CHAT */}
+                    <ChatSection />
 
-      {/* Lista de características  */}
-      <ul className="space-y-6 text-xl text-slate-600 font-medium mb-10">
-        <li className="flex items-center gap-4"><span className="w-2 h-2 bg-blue-600 rounded-full flex-shrink-0" />{tx('employees')}</li>
-        <li className="flex items-center gap-4"><span className="w-2 h-2 bg-blue-600 rounded-full flex-shrink-0" />{tx('multiOps')}</li>
-        <li className="flex items-center gap-4"><span className="w-2 h-2 bg-blue-600 rounded-full flex-shrink-0" />{tx('longChains')}</li>
-        <li className="flex items-center gap-4"><span className="w-2 h-2 bg-blue-600 rounded-full flex-shrink-0" />{tx('tradModels')}</li>
-      </ul>
-    </div>
+                    {/* 4. MITTELSTAND */}
+                    <section id="mittelstand" className="py-12 md:py-24 px-6 bg-slate-50 border-y border-slate-200">
+                      <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-20 items-center">
 
-  </div>
-</section>
 
-      {/* 5. PRICING */}
-    <section id="pricing" className="py-20 px-6 bg-white">
-  <div className="max-w-7xl mx-auto text-center">
-          <h2 className="text-4xl md:text-5xl font-black mb-4 text-slate-900 uppercase tracking-tighter">
-      {ui.whatWeDeliver[locale]} <span className="text-blue-600"> {ui.weDeliver[locale]} </span>
-    </h2>
-       <p className="text-lg text-gray-500 mb-12 text-balance font-medium">
-      {ui.servicesSubtitle[locale]}
-    </p>
-          <div className="grid md:grid-cols-3 gap-12 text-left">
-      <div className="group border-2 border-slate-100 p-12 rounded-3xl hover:border-blue-600 transition-all duration-500 bg-slate-50/50">
-        <div className="flex flex-col gap-4 mb-10">
-          <h3 className="text-2xl font-bold text-slate-900 uppercase">72h Validation Challenge</h3>
-          <span className="self-start bg-blue-600 text-white px-4 py-1 rounded-full text-xs font-black italic">€3k – €10k</span>
-        </div>
-              <ul className="space-y-4 text-slate-600">
-                <li className="font-bold flex items-start gap-2"><span className="text-blue-600 mt-0.5">→</span>{tx('oppValidation')}</li>
-                <li className="font-bold flex items-start gap-2"><span className="text-blue-600 mt-0.5">→</span>{tx('feasibility')}</li>
-              </ul>
-            </div>
-            <div className="group border-2 border-slate-100 p-12 rounded-3xl hover:border-blue-600 transition-all duration-500 bg-slate-50/50 shadow-xl shadow-slate-100">
-              <div className="flex flex-col gap-4 mb-10">
-                <h3 className="text-2xl font-bold text-slate-900 uppercase">MVP Stage — 90 days</h3>
-                <span className="self-start bg-blue-600 text-white px-4 py-1 rounded-full text-xs font-black italic">€30k – €120k</span>
-              </div>
-              <ul className="space-y-4 text-slate-600">
-                <li className="font-bold flex items-center gap-2"><span className="text-blue-600">✓</span>{tx('solutionEng')}</li>
-                <li className="font-bold flex items-center gap-2"><span className="text-blue-600">✓</span>{tx('functionalMvp')}</li>
-                <li className="font-bold flex items-center gap-2"><span className="text-blue-600">✓</span>{tx('betaTesting')}</li>
-              </ul>
-            </div>
-            <div className="group border-2 border-slate-100 p-12 rounded-3xl hover:border-blue-600 transition-all duration-500 bg-slate-50/50">
-              <div className="flex flex-col gap-4 mb-10">
-                <h3 className="text-2xl font-bold text-slate-900 uppercase">Growth / Scale</h3>
-                <span className="self-start bg-slate-900 text-white px-4 py-1 rounded-full text-xs font-black italic">{tx('tailorMade')}</span>
-              </div>
-              <ul className="space-y-4 text-slate-600">
-                <li className="font-bold flex items-center gap-2"><span className="text-blue-600">✓</span>{tx('localDigital')}</li>
-                <li className="font-bold flex items-center gap-2"><span className="text-blue-600">✓</span>{tx('successOri')}</li>
-                <li className="font-bold flex items-center gap-2"><span className="text-blue-600">✓</span>{tx('reducedCosts')}</li>
-                <li className="font-bold flex items-center gap-2"><span className="text-blue-600">✓</span>{tx('fasterScaling')}</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
+                        {/* COLUMNA IZQUIERDA */}
+                        <div className="bg-white p-12 rounded-3xl border border-slate-200 shadow-sm transition-all hover:shadow-md">
+                          <p className="text-sm font-bold tracking-wider text-slate-400 uppercase mb-3">
+                            {tx('problemTitle')}
+                          </p>
+                          <h3 className="text-3xl font-bold text-blue-600 mb-6 leading-tight">
+                            {tx('problemSubtitle')}
+                          </h3>
+                          <p className="text-slate-600 text-lg leading-relaxed mb-10">
+                            {tx('problemDesc')}
+                          </p>
 
-      {/* 6. EQUIPO */}
-      <section id="about" className="py-16 px-6 bg-white border-t border-slate-100">
-        <div className="max-w-4xl mx-auto">
-          <p className="text-blue-600 uppercase tracking-[0.25em] text-[10px] font-black mb-2">{tx('aboutTeam')}</p>
-          <h2 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter leading-[0.9] uppercase mb-6">
-            {tx('highPerf')} <em className="italic underline decoration-blue-100">{tx('highPerfEm')}</em>
-          </h2>
-          <div className="border-l-[3px] border-blue-600 pl-5 bg-slate-50 py-4 pr-5 rounded-r-2xl mb-8">
-            <p className="text-slate-900 font-black italic text-sm leading-relaxed tracking-tight">
-              {tx('forged')} <br /><span className="text-blue-600">{tx('pressure')}</span>
-            </p>
-          </div>
-          <AnimatePresence mode="wait">
-            {selected !== null && (
-              <motion.div key={selected} initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }} transition={{ duration: 0.2 }} className="flex items-center gap-5 border border-slate-100 rounded-3xl p-5 mb-6 hover:border-blue-600/30 transition-colors">
-                <Avatar member={teamData[selected]} />
-                <div className="flex-1 min-w-0">
-                  <div className="flex items-start justify-between gap-3">
-                    <div>
-                      <p className="text-slate-900 font-black uppercase tracking-tight text-sm">{teamData[selected].name}</p>
-                      <p className="text-blue-600 font-black uppercase tracking-[0.15em] text-[10px] mt-0.5 mb-2">{teamData[selected].role}</p>
-                    </div>
-                    <a href={teamData[selected].linkedin} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 border border-slate-200 rounded-full px-3 py-1.5 hover:border-blue-600 hover:bg-blue-50 transition-all flex-shrink-0">
-                      <LinkedInIcon /><span className="text-[9px] font-black uppercase tracking-widest text-slate-500">LinkedIn</span>
-                    </a>
-                  </div>
-                  <p className="text-slate-500 text-xs leading-relaxed font-medium">{teamData[selected].desc}</p>
-                </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
-          <div className="flex flex-wrap gap-2">
-            {teamData.map((member, i) => (
-              <button key={i} type="button" onClick={() => setSelected(selected === i ? null : i)} className={`px-4 py-2 rounded-full text-[10px] font-black uppercase tracking-widest border transition-all ${selected === i ? "bg-blue-600 border-blue-600 text-white shadow-lg" : "bg-white border-slate-200 text-slate-400 hover:border-blue-600 hover:text-blue-600"}`}>
-                {member.name}
-              </button>
-            ))}
-          </div>
-        </div>
-      </section>
+                          <div className="space-y-4 mb-8">
+                            <p className="text-base line-through decoration-red-600 decoration-2 font-bold italic text-slate-400">BCG Digital Ventures</p>
+                            <p className="text-base line-through decoration-red-600 decoration-2 font-bold italic text-slate-400">McKinsey &amp; Company</p>
+                            <p className="text-base line-through decoration-red-600 decoration-2 font-bold italic text-slate-400">Accenture</p>
+                          </div>
 
-      {/* CASOS DE ÉXITO — BELAND */}
-      <CasosDeExito showMachinesModal={showMachinesModal} setShowMachinesModal={setShowMachinesModal} />
+                          <div className="pt-6 border-t border-slate-100">
+                            <p className="text-sm font-bold italic text-slate-900 tracking-tight">
+                              {tx('typicalTickets')} <span className="text-blue-600">€150k - €1M+</span>
+                            </p>
+                          </div>
+                        </div>
 
-      {/* CIERRE */}
-      <h2 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter leading-[0.9] uppercase mb-6 text-center py-10 px-6">
-        <span className="block mb-4">{tx('closingLine')}</span>
-        
-      </h2>
-{/*  NEWS FEED */}
-      <NewsSection />
-      {/* LATEST INSIGHTS */}
-      <section className="py-16 bg-slate-50">
-        <div className="container mx-auto px-6 text-center">
-          <p className="text-blue-600 uppercase tracking-[0.25em] text-[10px] font-black mb-4">{tx('stayUpdated')}</p>
-          <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-6 uppercase">{tx('latestInsights')}</h2>
-          <p className="text-slate-500 max-w-lg mx-auto mb-10">{tx('blogDesc')}</p>
-          {posts && posts.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12 text-left">
-              {posts.map((post) => (
-                <div key={post.id} className="bg-white p-6 rounded-3xl border border-slate-100 shadow-sm">
-                  <div className="relative h-40 mb-4 rounded-xl overflow-hidden bg-slate-100">
-                    {post.cover_url
-                      ? (<img src={post.cover_url} alt={post.title} className="w-full h-full object-cover" />)
-                      : (<div className="w-full h-full flex items-center justify-center text-slate-300 text-xs font-bold">{tx('noImage')}</div>)
-                    }
-                  </div>
-                  <h3 className="font-black text-lg mb-3 uppercase text-slate-900 line-clamp-2">{post.title}</h3>
-                  <p className="text-slate-500 text-sm mb-6 line-clamp-3">
-                    {(() => {
-                      const raw = post.description?.replace(/<[^>]*>?/gm, '') || tx('noDesc') as string;
-                      if (typeof window === 'undefined') return raw;
-                      const txt = document.createElement('textarea');
-                      txt.innerHTML = raw;
-                      return txt.value;
-                    })()}
-                  </p>
-                  <a href={`${localeBase}/blog/${post.slug}`} className="text-blue-600 font-black text-[10px] uppercase tracking-widest hover:text-slate-900 transition-colors">{tx('readMore')}</a>
-                </div>
-              ))}
-            </div>
-          ) : (
-            <div className="py-12 text-center"><p className="text-slate-400 text-sm">{tx('noPostsYet')}</p></div>
-          )}
-          <a href={`${localeBase}/blog`} className="inline-block bg-slate-900 text-white px-10 py-4 rounded-full font-black text-xs uppercase tracking-widest hover:bg-blue-600 transition-colors">
-            {t('viewAllPosts')}
-          </a>
-        </div>
-      </section>
-   
-      {/* FOOTER */}
-      <footer className="py-16 text-center bg-white border-t border-slate-100">
-        <p className="text-slate-400 text-[9px] font-black uppercase tracking-[0.3em] mb-4">{tx('dontMiss')}</p>
-        <h3 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter uppercase mb-10">
-          {tx('followJourney')} <em className="italic underline decoration-blue-100">{tx('journey')}</em>
-        </h3>
-        <div className="flex justify-center gap-6 mb-12">
-          <a href="https://www.linkedin.com/company/bettertechnologies/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-6 py-3 rounded-full border-2 border-slate-200 text-slate-900 font-black text-[11px] uppercase tracking-widest hover:border-blue-600 hover:text-blue-600 transition-all"><LinkedInIcon /> LinkedIn</a>
-          <a href="https://www.instagram.com/better_technologies?igsh=MWUwYmkyYXVhdWRucA==" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-6 py-3 rounded-full border-2 border-slate-200 text-slate-900 font-black text-[11px] uppercase tracking-widest hover:border-[#d6249f] hover:text-[#d6249f] transition-all"><InstagramIcon /> Instagram</a>
-        </div>
-        <p className="text-slate-400 text-[9px] font-black uppercase tracking-[0.3em]">&copy; 2026 Better Technologies.</p>
-      </footer>
+                        {/* COLUMNA DERECHA  */}
+                        <div>
+                          {/*  "WHATS NEXT?" */}
+                          <span className="text-sm font-black uppercase tracking-[0.2em] text-blue-600 block mb-3">
+                            {ui.ourCustomers[locale]}
+                          </span>
 
-    
-{showMachinesModal && (
-  <div className="fixed inset-0 bg-black/80 z-50 flex flex-col items-center justify-start pt-20 md:pt-32 p-4 overflow-y-auto">
-    <div className="relative bg-white rounded-3xl shadow-2xl w-full max-w-xs sm:max-w-sm md:max-w-lg h-auto overflow-visible">
+                          {/* "Grow by Design" */}
+                          <h2 className="text-4xl md:text-5xl font-black mb-6 text-slate-900 leading-tight tracking-tighter uppercase">
+                            {ui.midSized1[locale]}
+                          </h2>
 
-      {/* cerrar */}
-      <button
-        onClick={() => setShowMachinesModal(false)}
-        className="absolute top-3 right-3 sm:top-4 sm:right-4 md:top-6 md:right-6 z-30 w-9 h-9 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-700 text-lg md:text-xl font-bold hover:bg-slate-50 transition-colors"
-      >
-        ✕
-      </button>
+                          {/* 3. La descripción larga sacada del h2 para que no explote el diseño */}
+                          <p className="text-lg text-slate-600 font-medium leading-relaxed mb-10 text-balance">
+                            {ui.midSized2[locale]}
+                          </p>
 
-      {/* contenido */}
-      <div className="px-6 pt-12 pb-8 sm:pt-8 md:px-10 md:pt-10">
-        <p className="text-[#7A9B3C] uppercase tracking-[0.25em] text-[10px] md:text-xs font-black mb-3">
-          {tx('belandTitle')}
-        </p>
+                          {/* Lista de características  */}
+                          <ul className="space-y-6 text-xl text-slate-600 font-medium mb-10">
+                            <li className="flex items-center gap-4"><span className="w-2 h-2 bg-blue-600 rounded-full flex-shrink-0" />{tx('employees')}</li>
+                            <li className="flex items-center gap-4"><span className="w-2 h-2 bg-blue-600 rounded-full flex-shrink-0" />{tx('multiOps')}</li>
+                            <li className="flex items-center gap-4"><span className="w-2 h-2 bg-blue-600 rounded-full flex-shrink-0" />{tx('longChains')}</li>
+                            <li className="flex items-center gap-4"><span className="w-2 h-2 bg-blue-600 rounded-full flex-shrink-0" />{tx('tradModels')}</li>
+                          </ul>
+                        </div>
 
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-black leading-none uppercase mb-6 md:mb-8">
-          <span className="text-black">{tx('belandHeading1')}</span>
-          <br />
-          <span className="text-orange-500 italic">{tx('belandHeading2')}</span>
-          <br />
-          <span className="text-lime-600 italic">{tx('belandHeading3')}</span>
-        </h2>
+                      </div>
+                    </section>
 
-        <p className="text-slate-600 text-sm md:text-base leading-7 md:leading-8 mb-8 md:mb-10">
-          {tx('belandDesc')}
-        </p>
+                    {/* 5. PRICING */}
+                    <section id="pricing" className="py-20 px-6 bg-white">
+                      <div className="max-w-7xl mx-auto text-center">
+                        <h2 className="text-4xl md:text-5xl font-black mb-4 text-slate-900 uppercase tracking-tighter">
+                          {ui.whatWeDeliver[locale]} <span className="text-blue-600"> {ui.weDeliver[locale]} </span>
+                        </h2>
+                        <p className="text-lg text-gray-500 mb-12 text-balance font-medium">
+                          {ui.servicesSubtitle[locale]}
+                        </p>
+                        <div className="grid md:grid-cols-3 gap-12 text-left">
+                          <div className="group border-2 border-slate-100 p-12 rounded-3xl hover:border-blue-600 transition-all duration-500 bg-slate-50/50">
+                            <div className="flex flex-col gap-4 mb-10">
+                              <h3 className="text-2xl font-bold text-slate-900 uppercase">72h Validation Challenge</h3>
+                              <span className="self-start bg-blue-600 text-white px-4 py-1 rounded-full text-xs font-black italic">€3k – €10k</span>
+                            </div>
+                            <ul className="space-y-4 text-slate-600">
+                              <li className="font-bold flex items-start gap-2"><span className="text-blue-600 mt-0.5">→</span>{tx('oppValidation')}</li>
+                              <li className="font-bold flex items-start gap-2"><span className="text-blue-600 mt-0.5">→</span>{tx('feasibility')}</li>
+                            </ul>
+                          </div>
+                          <div className="group border-2 border-slate-100 p-12 rounded-3xl hover:border-blue-600 transition-all duration-500 bg-slate-50/50 shadow-xl shadow-slate-100">
+                            <div className="flex flex-col gap-4 mb-10">
+                              <h3 className="text-2xl font-bold text-slate-900 uppercase">MVP Stage — 90 days</h3>
+                              <span className="self-start bg-blue-600 text-white px-4 py-1 rounded-full text-xs font-black italic">€30k – €120k</span>
+                            </div>
+                            <ul className="space-y-4 text-slate-600">
+                              <li className="font-bold flex items-center gap-2"><span className="text-blue-600">✓</span>{tx('solutionEng')}</li>
+                              <li className="font-bold flex items-center gap-2"><span className="text-blue-600">✓</span>{tx('functionalMvp')}</li>
+                              <li className="font-bold flex items-center gap-2"><span className="text-blue-600">✓</span>{tx('betaTesting')}</li>
+                            </ul>
+                          </div>
+                          <div className="group border-2 border-slate-100 p-12 rounded-3xl hover:border-blue-600 transition-all duration-500 bg-slate-50/50">
+                            <div className="flex flex-col gap-4 mb-10">
+                              <h3 className="text-2xl font-bold text-slate-900 uppercase">Growth / Scale</h3>
+                              <span className="self-start bg-slate-900 text-white px-4 py-1 rounded-full text-xs font-black italic">{tx('tailorMade')}</span>
+                            </div>
+                            <ul className="space-y-4 text-slate-600">
+                              <li className="font-bold flex items-center gap-2"><span className="text-blue-600">✓</span>{tx('localDigital')}</li>
+                              <li className="font-bold flex items-center gap-2"><span className="text-blue-600">✓</span>{tx('successOri')}</li>
+                              <li className="font-bold flex items-center gap-2"><span className="text-blue-600">✓</span>{tx('reducedCosts')}</li>
+                              <li className="font-bold flex items-center gap-2"><span className="text-blue-600">✓</span>{tx('fasterScaling')}</li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </section>
 
-        <div className="relative w-full h-[180px] sm:h-[220px] md:h-[280px] mb-8 md:mb-10">
-          <Image
-            src="/maquina-beland.png"
-            alt="Beland machine"
-            fill
-            className="object-contain"
-          />
-        </div>
+                    {/* 6. EQUIPO */}
+                    <section id="about" className="py-16 px-6 bg-white border-t border-slate-100">
+                      <div className="max-w-4xl mx-auto">
+                        <p className="text-blue-600 uppercase tracking-[0.25em] text-[10px] font-black mb-2">{tx('aboutTeam')}</p>
+                        <h2 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter leading-[0.9] uppercase mb-6">
+                          {tx('highPerf')} <em className="italic underline decoration-blue-100">{tx('highPerfEm')}</em>
+                        </h2>
+                        <div className="border-l-[3px] border-blue-600 pl-5 bg-slate-50 py-4 pr-5 rounded-r-2xl mb-8">
+                          <p className="text-slate-900 font-black italic text-sm leading-relaxed tracking-tight">
+                            {tx('forged')} <br /><span className="text-blue-600">{tx('pressure')}</span>
+                          </p>
+                        </div>
+                        <AnimatePresence mode="wait">
+                          {selected !== null && (
+                            <motion.div key={selected} initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }} transition={{ duration: 0.2 }} className="flex items-center gap-5 border border-slate-100 rounded-3xl p-5 mb-6 hover:border-blue-600/30 transition-colors">
+                              <Avatar member={teamData[selected]} />
+                              <div className="flex-1 min-w-0">
+                                <div className="flex items-start justify-between gap-3">
+                                  <div>
+                                    <p className="text-slate-900 font-black uppercase tracking-tight text-sm">{teamData[selected].name}</p>
+                                    <p className="text-blue-600 font-black uppercase tracking-[0.15em] text-[10px] mt-0.5 mb-2">{teamData[selected].role}</p>
+                                  </div>
+                                  <a href={teamData[selected].linkedin} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 border border-slate-200 rounded-full px-3 py-1.5 hover:border-blue-600 hover:bg-blue-50 transition-all flex-shrink-0">
+                                    <LinkedInIcon /><span className="text-[9px] font-black uppercase tracking-widest text-slate-500">LinkedIn</span>
+                                  </a>
+                                </div>
+                                <p className="text-slate-500 text-xs leading-relaxed font-medium">{teamData[selected].desc}</p>
+                              </div>
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                        <div className="flex flex-wrap gap-2">
+                          {teamData.map((member, i) => (
+                            <button key={i} type="button" onClick={() => setSelected(selected === i ? null : i)} className={`px-4 py-2 rounded-full text-[10px] font-black uppercase tracking-widest border transition-all ${selected === i ? "bg-blue-600 border-blue-600 text-white shadow-lg" : "bg-white border-slate-200 text-slate-400 hover:border-blue-600 hover:text-blue-600"}`}>
+                              {member.name}
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+                    </section>
 
-        <div className="space-y-4 md:space-y-5 text-xs sm:text-sm md:text-base font-semibold text-slate-800 mb-8 md:mb-10">
-          <p>♻️ {tx('belandFeature1')}</p>
-          <p>📸 {tx('belandFeature2')}</p>
-          <p>💰 {tx('belandFeature3')}</p>
-          <p>📊 {tx('belandFeature4')}</p>
-        </div>
+                    {/* CASOS DE ÉXITO — BELAND */}
+                    <CasosDeExito showMachinesModal={showMachinesModal} setShowMachinesModal={setShowMachinesModal} />
 
-        <a
-          href="https://wa.me/593995269974?text=Hi!%20I%20would%20like%20to%20quote%20a%20recycling%20machine%20for%20my%20business."
-          target="_blank"
-          rel="noopener noreferrer"
-          className="w-full flex justify-center items-center bg-[#7A9B3C] text-white py-3 sm:py-4 md:py-5 rounded-2xl font-black text-xs sm:text-sm md:text-base uppercase tracking-widest hover:bg-[#6b8a2f] transition-colors"
-        >
-          {tx('belandQuote')}
-        </a>
-      </div>
-    </div>
-  </div>
-)}
-</main>
-  );
+                    {/* CIERRE */}
+                    <h2 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter leading-[0.9] uppercase mb-6 text-center py-10 px-6">
+                      <span className="block mb-4">{tx('closingLine')}</span>
+
+                    </h2>
+                    {/*  NEWS FEED */}
+                    <NewsSection />
+                    {/* LATEST INSIGHTS */}
+                    <section className="py-16 bg-slate-50">
+                      <div className="container mx-auto px-6 text-center">
+                        <p className="text-blue-600 uppercase tracking-[0.25em] text-[10px] font-black mb-4">{tx('stayUpdated')}</p>
+                        <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-6 uppercase">{tx('latestInsights')}</h2>
+                        <p className="text-slate-500 max-w-lg mx-auto mb-10">{tx('blogDesc')}</p>
+                        {posts && posts.length > 0 ? (
+                          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12 text-left">
+                            {posts.map((post) => (
+                              <div key={post.id} className="bg-white p-6 rounded-3xl border border-slate-100 shadow-sm">
+                                <div className="relative h-40 mb-4 rounded-xl overflow-hidden bg-slate-100">
+                                  {post.cover_url
+                                    ? (<img src={post.cover_url} alt={post.title} className="w-full h-full object-cover" />)
+                                    : (<div className="w-full h-full flex items-center justify-center text-slate-300 text-xs font-bold">{tx('noImage')}</div>)
+                                  }
+                                </div>
+                                <h3 className="font-black text-lg mb-3 uppercase text-slate-900 line-clamp-2">{post.title}</h3>
+                                <p className="text-slate-500 text-sm mb-6 line-clamp-3">
+                                  {(() => {
+                                    const raw = post.description?.replace(/<[^>]*>?/gm, '') || tx('noDesc') as string;
+                                    if (typeof window === 'undefined') return raw;
+                                    const txt = document.createElement('textarea');
+                                    txt.innerHTML = raw;
+                                    return txt.value;
+                                  })()}
+                                </p>
+                                <a href={`${localeBase}/blog/${post.slug}`} className="text-blue-600 font-black text-[10px] uppercase tracking-widest hover:text-slate-900 transition-colors">{tx('readMore')}</a>
+                              </div>
+                            ))}
+                          </div>
+                        ) : (
+                          <div className="py-12 text-center"><p className="text-slate-400 text-sm">{tx('noPostsYet')}</p></div>
+                        )}
+                        <a href={`${localeBase}/blog`} className="inline-block bg-slate-900 text-white px-10 py-4 rounded-full font-black text-xs uppercase tracking-widest hover:bg-blue-600 transition-colors">
+                          {t('viewAllPosts')}
+                        </a>
+                      </div>
+                    </section>
+
+                    {/* FOOTER */}
+                    <footer className="py-16 text-center bg-white border-t border-slate-100">
+                      <p className="text-slate-400 text-[9px] font-black uppercase tracking-[0.3em] mb-4">{tx('dontMiss')}</p>
+                      <h3 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter uppercase mb-10">
+                        {tx('followJourney')} <em className="italic underline decoration-blue-100">{tx('journey')}</em>
+                      </h3>
+                      <div className="flex justify-center gap-6 mb-12">
+                        <a href="https://www.linkedin.com/company/bettertechnologies/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-6 py-3 rounded-full border-2 border-slate-200 text-slate-900 font-black text-[11px] uppercase tracking-widest hover:border-blue-600 hover:text-blue-600 transition-all"><LinkedInIcon /> LinkedIn</a>
+                        <a href="https://www.instagram.com/better_technologies?igsh=MWUwYmkyYXVhdWRucA==" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-6 py-3 rounded-full border-2 border-slate-200 text-slate-900 font-black text-[11px] uppercase tracking-widest hover:border-[#d6249f] hover:text-[#d6249f] transition-all"><InstagramIcon /> Instagram</a>
+                      </div>
+                      <p className="text-slate-400 text-[9px] font-black uppercase tracking-[0.3em]">&copy; 2026 Better Technologies.</p>
+                    </footer>
+
+
+                    {showMachinesModal && (
+                      <div className="fixed inset-0 bg-black/80 z-50 flex flex-col items-center justify-start pt-20 md:pt-32 p-4 overflow-y-auto">
+                        <div className="relative bg-white rounded-3xl shadow-2xl w-full max-w-xs sm:max-w-sm md:max-w-lg h-auto overflow-visible">
+
+                          {/* cerrar */}
+                          <button
+                            onClick={() => setShowMachinesModal(false)}
+                            className="absolute top-3 right-3 sm:top-4 sm:right-4 md:top-6 md:right-6 z-30 w-9 h-9 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-700 text-lg md:text-xl font-bold hover:bg-slate-50 transition-colors"
+                          >
+                            ✕
+                          </button>
+
+                          {/* contenido */}
+                          <div className="px-6 pt-12 pb-8 sm:pt-8 md:px-10 md:pt-10">
+                            <p className="text-[#7A9B3C] uppercase tracking-[0.25em] text-[10px] md:text-xs font-black mb-3">
+                              {tx('belandTitle')}
+                            </p>
+
+                            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black leading-none uppercase mb-6 md:mb-8">
+                              <span className="text-black">{tx('belandHeading1')}</span>
+                              <br />
+                              <span className="text-orange-500 italic">{tx('belandHeading2')}</span>
+                              <br />
+                              <span className="text-lime-600 italic">{tx('belandHeading3')}</span>
+                            </h2>
+
+                            <p className="text-slate-600 text-sm md:text-base leading-7 md:leading-8 mb-8 md:mb-10">
+                              {tx('belandDesc')}
+                            </p>
+
+                            <div className="relative w-full h-[180px] sm:h-[220px] md:h-[280px] mb-8 md:mb-10">
+                              <Image
+                                src="/maquina-beland.png"
+                                alt="Beland machine"
+                                fill
+                                className="object-contain"
+                              />
+                            </div>
+
+                            <div className="space-y-4 md:space-y-5 text-xs sm:text-sm md:text-base font-semibold text-slate-800 mb-8 md:mb-10">
+                              <p>♻️ {tx('belandFeature1')}</p>
+                              <p>📸 {tx('belandFeature2')}</p>
+                              <p>💰 {tx('belandFeature3')}</p>
+                              <p>📊 {tx('belandFeature4')}</p>
+                            </div>
+
+                            <a
+                              href="https://wa.me/593995269974?text=Hi!%20I%20would%20like%20to%20quote%20a%20recycling%20machine%20for%20my%20business."
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="w-full flex justify-center items-center bg-[#7A9B3C] text-white py-3 sm:py-4 md:py-5 rounded-2xl font-black text-xs sm:text-sm md:text-base uppercase tracking-widest hover:bg-[#6b8a2f] transition-colors"
+                            >
+                              {tx('belandQuote')}
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                  </main>
+                  );
 };
 
 
-      
-  
+
+
 
