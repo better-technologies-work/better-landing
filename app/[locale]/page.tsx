@@ -836,7 +836,78 @@ const ChatSection = () => {
                     </motion.div>
                   )}
                 </AnimatePresence>
+<AnimatePresence>
+  {showNoModal && (
+    <motion.div
+      className="fixed inset-0 z-[100] bg-black/60 flex items-center justify-center p-6"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      onClick={() => setShowNoModal(false)}
+    >
+      <motion.div
+        onClick={(e) => e.stopPropagation()}
+        initial={{ scale: 0.95, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        exit={{ scale: 0.95, opacity: 0 }}
+        className="bg-white rounded-3xl p-8 max-w-xl w-full"
+      >
+        <h3 className="text-3xl font-black text-slate-900 mb-4">
+          Let's change that.
+        </h3>
 
+        <p className="text-slate-600 mb-8">
+          Start with your first digital touchpoint and build the
+          foundation of your digital identity.
+        </p>
+
+        <h4 className="font-black uppercase tracking-widest text-sm mb-4">
+          Assess My Digital Identity
+        </h4>
+
+        <div className="flex flex-col gap-3 mb-8">
+          <button
+            onClick={() => setAssessmentType("15 min - Free Call")}
+            className={`rounded-full border-2 px-6 py-3 font-black uppercase text-xs ${
+              assessmentType === "15 min - Free Call"
+                ? "border-blue-600 text-blue-600"
+                : "border-slate-200"
+            }`}
+          >
+            15 min - Free Call
+          </button>
+
+          <button
+            onClick={() => setAssessmentType("1 Hour - $50")}
+            className={`rounded-full border-2 px-6 py-3 font-black uppercase text-xs ${
+              assessmentType === "1 Hour - $50"
+                ? "border-blue-600 text-blue-600"
+                : "border-slate-200"
+            }`}
+          >
+            1 Hour - $50
+          </button>
+        </div>
+
+        <a
+          href="https://calendly.com/diego-placeholder"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="w-full flex justify-center bg-blue-600 text-white py-4 rounded-full font-black uppercase tracking-widest text-xs"
+        >
+          Book Assessment
+        </a>
+
+        <button
+          onClick={() => setShowNoModal(false)}
+          className="block mx-auto mt-6 text-slate-400 hover:text-blue-600 text-[10px] uppercase font-black tracking-widest transition-colors"
+        >
+          Go Back
+        </button>
+      </motion.div>
+    </motion.div>
+  )}
+</AnimatePresence>
               </section>
              
              );
