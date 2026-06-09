@@ -452,6 +452,50 @@ const ui = {
   dontMiss: { en: "Don't miss a move", es: "No te pierdas ningun movimiento", de: "Verpasse keine Bewegung", pt: "Não perca nenhum movimento" },
   followJourney: { en: "Follow our", es: "Sigue nuestro", de: "Folge unserem", pt: "Siga nossa" },
   journey: { en: "journey", es: "camino", de: "Weg", pt: "jornada" },
+  // Botones Yes / No
+yesBtn: { en: "Yes", es: "Sí", de: "Ja", pt: "Sim" },
+noBtn: { en: "No", es: "No", de: "Nein", pt: "Não" },
+
+// Modal Yes
+yesModalTitle: {
+  en: "Perfect, now make your business impossible to ignore.",
+  es: "Perfecto, ahora volvé tu negocio imposible de ignorar.",
+  de: "Perfekt, mach dein Unternehmen unmöglich zu ignorieren.",
+  pt: "Perfeito, agora torne o seu negócio impossível de ignorar.",
+},
+yesModalDesc: {
+  en: "Let's build a digital identity that makes you visible, relevant, and recommendable.",
+  es: "Construyamos una identidad digital que te haga visible, relevante y recomendable.",
+  de: "Lass uns eine digitale Identität aufbauen, die dich sichtbar, relevant und empfehlenswert macht.",
+  pt: "Vamos construir uma identidade digital que te torne visível, relevante e recomendável.",
+},
+
+// Modal No
+noModalTitle: {
+  en: "Let's change that.",
+  es: "Cambiemos eso.",
+  de: "Lass uns das ändern.",
+  pt: "Vamos mudar isso.",
+},
+noModalDesc: {
+  en: "Start with your first digital touchpoint and build the foundation of your digital identity.",
+  es: "Empieza con tu primer punto de contacto digital y construye la base de tu identidad digital.",
+  de: "Beginne mit deinem ersten digitalen Touchpoint und lege das Fundament deiner digitalen Identität.",
+  pt: "Comece com o seu primeiro ponto de contato digital e construa a base da sua identidade digital.",
+},
+
+// Compartido entre ambos modales
+assessTitle: {
+  en: "Assess My Digital Identity",
+  es: "Evaluar Mi Identidad Digital",
+  de: "Meine digitale Identität bewerten",
+  pt: "Avaliar Minha Identidade Digital",
+},
+assessment15min: { en: "15 min - Free Call", es: "15 min - Llamada gratuita", de: "15 Min - Kostenloser Anruf", pt: "15 min - Chamada gratuita" },
+assessment1h: { en: "1 Hour - $50", es: "1 Hora - $50", de: "1 Stunde - $50", pt: "1 Hora - $50" },
+bookAssessment: { en: "Book Assessment", es: "Reservar evaluación", de: "Bewertung buchen", pt: "Agendar avaliação" },
+goBackModal: { en: "Go Back", es: "Volver", de: "Zurück", pt: "Voltar" },
+
 } as const;
 
 // ─── ICONS ───────────────────────────────────────────────────────────────────
@@ -599,7 +643,7 @@ const NewsSection = () => {
             <div className="mt-8 inline-flex flex-col items-center"></div>
             <span className="text-blue-600 font-black uppercase tracking-[0.3em] text-xs mt-6 mb-4 block italic">{tx('globalFeed')}</span>
             <h2 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter leading-none">
-              {/* 👇 MANEJO DE INTIMESOF ("Let's Start Today" con "Start Today" en azul) */}
+              
               {locale === 'en' ? (
                 <>Let's <span className="text-blue-600">Start Today</span></>
               ) : locale === 'es' ? (
@@ -608,7 +652,6 @@ const NewsSection = () => {
                 tx('inTimesOf')
               )}
               <br />
-              {/* 👇 MANEJO DE CHANGETURBULENCE ("Just the way you dream. Only Better." con "Better." en naranja) */}
               <span className="text-slate-600 text-lg md:text-xl font-medium block mt-4 normal-case tracking-normal">
                 {locale === 'en' ? (
                   <>Just the way you dream. Only <span className="text-orange-500 font-black">Better.</span></>
@@ -714,14 +757,14 @@ const ChatSection = () => {
         onClick={() => setShowYesModal(true)}
         className="px-8 py-3 rounded-full border-2 border-slate-200 bg-white text-slate-700 font-black uppercase tracking-widest text-[10px]"
       >
-        Yes
+        {tx('yesBtn')}
       </button>
 
       <button
         onClick={() => setShowNoModal(true)}
         className="px-8 py-3 rounded-full border-2 border-slate-200 bg-white text-slate-700 font-black uppercase tracking-widest text-[10px]"
       >
-        No
+        {tx('noBtn')}
       </button>
     </div>
 
@@ -784,16 +827,15 @@ const ChatSection = () => {
                         className="bg-white rounded-3xl p-8 max-w-xl w-full"
                       >
                         <h3 className="text-3xl font-black text-slate-900 mb-4">
-                          Perfect, now make your business impossible to ignore.
+                          {tx('yesModalTitle')}
                         </h3>
 
                         <p className="text-slate-600 mb-8">
-                          Let's build a digital identity that makes you visible,
-                          relevant, and recommendable.
+                          {tx('yesModalDesc')}
                         </p>
 
                         <h4 className="font-black uppercase tracking-widest text-sm mb-4">
-                          Assess My Digital Identity
+                          {tx('assessTitle')}
                         </h4>
 
                         <div className="flex flex-col gap-3 mb-8">
@@ -804,7 +846,7 @@ const ChatSection = () => {
                                 : "border-slate-200"
                               }`}
                           >
-                            15 min - Free Call
+                           {tx('assessment15min')}
                           </button>
 
                           <button
@@ -814,7 +856,7 @@ const ChatSection = () => {
                                 : "border-slate-200"
                               }`}
                           >
-                            1 Hour - $50
+                           {tx('assessment1h')}
                           </button>
                         </div>
 
@@ -824,13 +866,13 @@ const ChatSection = () => {
                           rel="noopener noreferrer"
                           className="w-full flex justify-center bg-blue-600 text-white py-4 rounded-full font-black uppercase tracking-widest text-xs"
                         >
-                          Book Assessment
+                          {tx('bookAssessment')}
                         </a>
                         <button
   onClick={() => setShowYesModal(false)}
   className="block mx-auto mt-6 text-slate-400 hover:text-blue-600 text-[10px] uppercase font-black tracking-widest transition-colors"
 >
-  Go Back
+  {tx('goBackModal')}
 </button>
                       </motion.div>
                     </motion.div>
