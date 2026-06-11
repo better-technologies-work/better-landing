@@ -724,7 +724,7 @@ const ChatSection = () => {
   const options = (ui.chatOptions as any)[locale] ?? ui.chatOptions.en;
 
   const handleWhatsApp = (option: string) => {
-    const phoneNumber = "593995269974";
+    const phoneNumber = "593991358652";
     const msgFn = (ui.whatsappMsg as any)[locale] ?? ui.whatsappMsg.en;
     const message = encodeURIComponent(msgFn(option));
     window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
@@ -1190,7 +1190,7 @@ useEffect(() => {
                           {tx('openLatam')} <br /> {tx('globalCompanies')}
                         </h1>
                         <p className="mt-3 text-white text-[9px] md:text-[10px] uppercase tracking-widest font-bold">{tx('subtagline')}</p>
-                        <a href="https://wa.me/593995269974?text=Hi!%20I%27d%20like%20to%20get%20in%20touch%20with%20the%20team." className="mt-3 inline-block px-8 py-3 bg-[#FF6B00] text-white rounded-full font-bold shadow-lg uppercase tracking-widest text-[10px] transition-transform active:scale-95">
+                        <a href="https://wa.me/593991358652?text=Hi!%20I%27d%20like%20to%20get%20in%20touch%20with%20the%20team." className="mt-3 inline-block px-8 py-3 bg-[#FF6B00] text-white rounded-full font-bold shadow-lg uppercase tracking-widest text-[10px] transition-transform active:scale-95">
                           {tx('getInTouch')}
                         </a>
                       </div>
@@ -1458,7 +1458,7 @@ useEffect(() => {
                             </div>
 
                             <a
-                              href="https://wa.me/593995269974?text=Hi!%20I%20would%20like%20to%20quote%20a%20recycling%20machine%20for%20my%20business."
+                              href="https://wa.me/593991358652?text=Hi!%20I%20would%20like%20to%20quote%20a%20recycling%20machine%20for%20my%20business."
                               target="_blank"
                               rel="noopener noreferrer"
                               className="w-full flex justify-center items-center bg-[#7A9B3C] text-white py-3 sm:py-4 md:py-5 rounded-2xl font-black text-xs sm:text-sm md:text-base uppercase tracking-widest hover:bg-[#6b8a2f] transition-colors"
