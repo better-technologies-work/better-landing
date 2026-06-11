@@ -276,23 +276,23 @@ const ui = {
 
   // Chat section
   kitchenTitle: {
-  en: "If",
-  es: "Si",
-  de: "Wenn",
-  pt: "Se"
-},
-kitchenTitle2: {
-  en: "customers",
-  es: "clientes",
-  de: "Kunden",
-  pt: "clientes"
-},
-kitchenTitle3: {
-  en: "and AI can't understand",
-  es: "y la IA no pueden entender",
-  de: "und KI es nicht verstehen können",
-  pt: "e a IA não conseguirem entender"
-},
+    en: "If",
+    es: "Si",
+    de: "Wenn",
+    pt: "Se"
+  },
+  kitchenTitle2: {
+    en: "customers",
+    es: "clientes",
+    de: "Kunden",
+    pt: "clientes"
+  },
+  kitchenTitle3: {
+    en: "and AI can't understand",
+    es: "y la IA no pueden entender",
+    de: "und KI es nicht verstehen können",
+    pt: "e a IA não conseguirem entender"
+  },
   kitchenOpen: { en: "", es: "", de: "", pt: "" },
   century20: {
     en: "Who you are, what you do, and why they should choose you, you're losing opportunities every day.",
@@ -465,48 +465,71 @@ kitchenTitle3: {
   followJourney: { en: "Follow our", es: "Sigue nuestro", de: "Folge unserem", pt: "Siga nossa" },
   journey: { en: "journey", es: "camino", de: "Weg", pt: "jornada" },
   // Botones Yes / No
-yesBtn: { en: "Yes", es: "Sí", de: "Ja", pt: "Sim" },
-noBtn: { en: "No", es: "No", de: "Nein", pt: "Não" },
+  yesBtn: { en: "Yes", es: "Sí", de: "Ja", pt: "Sim" },
+  noBtn: { en: "No", es: "No", de: "Nein", pt: "Não" },
 
-// Modal Yes
-yesModalTitle: {
-  en: "Perfect, now make your business impossible to ignore.",
-  es: "Perfecto, ahora volvé tu negocio imposible de ignorar.",
-  de: "Perfekt, mach dein Unternehmen unmöglich zu ignorieren.",
-  pt: "Perfeito, agora torne o seu negócio impossível de ignorar.",
-},
-yesModalDesc: {
-  en: "Let's build a digital identity that makes you visible, relevant, and recommendable.",
-  es: "Construyamos una identidad digital que te haga visible, relevante y recomendable.",
-  de: "Lass uns eine digitale Identität aufbauen, die dich sichtbar, relevant und empfehlenswert macht.",
-  pt: "Vamos construir uma identidade digital que te torne visível, relevante e recomendável.",
-},
+ // Agrega estas claves a tu objeto 'ui'
+perfect: { en: "Perfect", es: "Perfecto", de: "Perfekt", pt: "Perfeito" },
+change: { en: "Change", es: "Cambiar", de: "Ändern", pt: "Mudar" },
 
-// Modal No
-noModalTitle: {
-  en: "Let's change that.",
-  es: "Cambiemos eso.",
-  de: "Lass uns das ändern.",
-  pt: "Vamos mudar isso.",
+// Modifica las frases para que sean el "resto" de la oración
+yesModalTitlePart1: {
+  en: ", now make your business impossible to ",
+  es: ", ahora volvé tu negocio imposible de ",
+  de: ", mach dein Unternehmen unmöglich zu ",
+  pt: ", agora torne o seu negócio impossível de ",
 },
-noModalDesc: {
-  en: "Start with your first digital touchpoint and build the foundation of your digital identity.",
-  es: "Empieza con tu primer punto de contacto digital y construye la base de tu identidad digital.",
-  de: "Beginne mit deinem ersten digitalen Touchpoint und lege das Fundament deiner digitalen Identität.",
-  pt: "Comece com o seu primeiro ponto de contato digital e construa a base da sua identidade digital.",
+yesModalTitlePart2: {
+  en: " ignore.",
+  es: " ignorar.",
+  de: " ignorieren.",
+  pt: " ignorar.",
 },
 
-// Compartido entre ambos modales
-assessTitle: {
-  en: "Assess My Digital Identity",
-  es: "Evaluar Mi Identidad Digital",
-  de: "Meine digitale Identität bewerten",
-  pt: "Avaliar Minha Identidade Digital",
+noModalTitlePart1: {
+  en: "Let's ",
+  es: "Empecemos a ",
+  de: "Lass uns das ",
+  pt: "Vamos ",
 },
-assessment15min: { en: "15 min - Free Call", es: "15 min - Llamada gratuita", de: "15 Min - Kostenloser Anruf", pt: "15 min - Chamada gratuita" },
-assessment1h: { en: "1 Hour - $50", es: "1 Hora - $50", de: "1 Stunde - $50", pt: "1 Hora - $50" },
-bookAssessment: { en: "Book Assessment", es: "Reservar evaluación", de: "Bewertung buchen", pt: "Agendar avaliação" },
-goBackModal: { en: "Go Back", es: "Volver", de: "Zurück", pt: "Voltar" },
+noModalTitlePart2: {
+  en: " that.",
+  es: " cambiar.",
+  de: " ändern.",
+  pt: " mudar.",
+},
+  yesModalDesc: {
+    en: "Let's build a digital identity that makes you visible, relevant, and recommendable.",
+    es: "Construyamos una identidad digital que te haga visible, relevante y recomendable.",
+    de: "Lass uns eine digitale Identität aufbauen, die dich sichtbar, relevant und empfehlenswert macht.",
+    pt: "Vamos construir uma identidade digital que te torne visível, relevante e recomendável.",
+  },
+
+  
+  noModalDesc: {
+    en: "Start with your first digital touchpoint and build the foundation of your digital identity.",
+    es: "Empieza con tu primer punto de contacto digital y construye la base de tu identidad digital.",
+    de: "Beginne mit deinem ersten digitalen Touchpoint und lege das Fundament deiner digitalen Identität.",
+    pt: "Comece com o seu primeiro ponto de contato digital e construa a base da sua identidade digital.",
+  },
+
+  // Compartido entre ambos modales
+  assessTitle: {
+    en: "Assess My Digital Identity",
+    es: "Evaluar Mi Identidad Digital",
+    de: "Meine digitale Identität bewerten",
+    pt: "Avaliar Minha Identidade Digital",
+  },
+  assessment15min: { en: "15 min - Free Call", es: "15 min - Llamada gratuita", de: "15 Min - Kostenloser Anruf", pt: "15 min - Chamada gratuita" },
+  assessment1h: { en: "1 Hour - $50", es: "1 Hora - $50", de: "1 Stunde - $50", pt: "1 Hora - $50" },
+  bookAssessment: { en: "Book Assessment", es: "Reservar evaluación", de: "Bewertung buchen", pt: "Agendar avaliação" },
+  goBackModal: { en: "Go Back", es: "Volver", de: "Zurück", pt: "Voltar" },
+  // En tu objeto de traducciones
+lets: { en: "Let's ", es: "Empecemos ", de: "Lass uns ", pt: "Vamos " },
+startToday: { en: "Start Today", es: "hoy mismo", de: "heute beginnen", pt: "começar hoje" },
+
+dream: { en: "Just the way you dream. Only ", es: "Tal como lo soñaste. Solo que ", de: "Genau wie du es dir erträumst. Nur ", pt: "Exatamente como você sonhou. Só que " },
+better: { en: "Better.", es: "mejor.", de: "besser.", pt: "melhor." },
 
 } as const;
 
@@ -654,26 +677,7 @@ const NewsSection = () => {
           <div className="flex-1 flex flex-col items-center text-center">
             <div className="mt-8 inline-flex flex-col items-center"></div>
             <span className="text-blue-600 font-black uppercase tracking-[0.3em] text-xs mt-6 mb-4 block italic">{tx('globalFeed')}</span>
-            <h2 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter leading-none">
-              
-              {locale === 'en' ? (
-                <>Let's <span className="text-blue-600">Start Today</span></>
-              ) : locale === 'es' ? (
-                <>Empecemos <span className="text-blue-600">hoy mismo</span></>
-              ) : (
-                tx('inTimesOf')
-              )}
-              <br />
-              <span className="text-slate-600 text-lg md:text-xl font-medium block mt-4 normal-case tracking-normal">
-                {locale === 'en' ? (
-                  <>Just the way you dream. Only <span className="text-orange-500 font-black">Better.</span></>
-                ) : locale === 'es' ? (
-                  <>Exactamente como lo sueñas. Solo <span className="text-orange-500 font-black">Mejor.</span></>
-                ) : (
-                  tx('changeTurbulence')
-                )}
-              </span>
-            </h2>
+
           </div>
           <div className="text-center md:text-right md:w-48">
             <p className="text-slate-400 font-mono text-[10px] uppercase tracking-widest">{tx('liveUpdates')}</p>
@@ -745,722 +749,738 @@ const ChatSection = () => {
   return (
     <section className="py-16 bg-white border-t border-slate-100">
       <div className="max-w-4xl mx-auto px-6 text-center">
-        
+
         <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-12 uppercase tracking-tighter">
-  {tx('kitchenTitle')} <span className="text-blue-600">{tx('kitchenTitle2')}</span> {tx('kitchenTitle3')}
-</h2>
+          {tx('kitchenTitle')} <span className="text-blue-600">{tx('kitchenTitle2')}</span> {tx('kitchenTitle3')}
+        </h2>
         <p className="text-blue-600 uppercase tracking-[0.2em] text-[10px] mb-4 font-bold">{tx('century20')}</p>
 
         <div className="relative bg-slate-50 border border-slate-100 rounded-3xl p-8 md:p-12 transition-all hover:border-blue-600/30 text-center">
-       
+
           {step === 1 ? (
-  <>
-    <p className="text-xl text-slate-600 mb-6 font-light">
-      {tx('howCanHelp')}{" "}
-      <span className="text-slate-900 font-semibold underline decoration-blue-600 underline-offset-4">
-        {tx('theTeam')}
-      </span>
-      {tx('helpToday')}
-    </p>
+            <>
+              <p className="text-xl text-slate-600 mb-6 font-light">
+                {tx('howCanHelp')}{" "}
+                <span className="text-slate-900 font-semibold underline decoration-blue-600 underline-offset-4">
+                  {tx('theTeam')}
+                </span>
+                {tx('helpToday')}
+              </p>
 
-    <div className="flex justify-center gap-4 mb-8">
-      <button
-        onClick={() => setShowYesModal(true)}
-        className="px-8 py-3 rounded-full border-2 border-slate-200 bg-white text-slate-700 font-black uppercase tracking-widest text-[10px]"
-      >
-        {tx('yesBtn')}
-      </button>
+              <div className="flex justify-center gap-4 mb-8">
+                <button
+                  onClick={() => setShowYesModal(true)}
+                  className="px-8 py-3 rounded-full border-2 border-slate-200 bg-white text-slate-700 font-black uppercase tracking-widest text-[10px]"
+                >
+                  {tx('yesBtn')}
+                </button>
 
-      <button
-        onClick={() => setShowNoModal(true)}
-        className="px-8 py-3 rounded-full border-2 border-slate-200 bg-white text-slate-700 font-black uppercase tracking-widest text-[10px]"
-      >
-        {tx('noBtn')}
-      </button>
-    </div>
-
-    
-  </>
-) : (
-               
-                  <div className="py-4 text-left">
-                    <div className="mb-6">
-                      <h3 className="text-xl font-black text-slate-900 uppercase tracking-tighter">{tx('indAccel')}</h3>
-                      <p className="text-blue-600 text-xs font-bold tracking-widest uppercase mb-3">(Nearshoring + Smart Maquila)</p>
-                      <p className="text-slate-500 text-sm leading-relaxed border-l-2 border-blue-600 pl-4">{tx('relocate')}</p>
-                    </div>
-                    <div className="mb-8 space-y-2">
-                      <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">{tx('whatWeSell')}</p>
-                      <ul className="text-sm text-slate-700 space-y-1">
-                        <li className="flex items-start gap-2"><span>●</span>{tx('opSetup')}</li>
-                        <li className="flex items-start gap-2"><span>●</span>{tx('supplierNet')}</li>
-                        <li className="flex items-start gap-2 text-blue-600 font-bold"><span>●</span>{tx('costOpt')}</li>
-                        <li className="flex items-start gap-2"><span>●</span>{tx('localMgmt')}</li>
-                      </ul>
-                    </div>
-                    <button onClick={() => handleWhatsApp(selection)} className="w-full bg-blue-600 text-white py-4 rounded-full font-black text-sm hover:bg-blue-700 transition-all uppercase tracking-widest shadow-xl shadow-blue-600/20 active:scale-95">{tx('connectTeam')}</button>
-                    <button onClick={() => setStep(1)} className="block mx-auto mt-6 text-slate-400 hover:text-blue-600 text-[10px] uppercase font-black tracking-widest transition-colors">{tx('goBack')}</button>
-
-                  </div>
-)}
-                  </div>
-</div>
+                <button
+                  onClick={() => setShowNoModal(true)}
+                  className="px-8 py-3 rounded-full border-2 border-slate-200 bg-white text-slate-700 font-black uppercase tracking-widest text-[10px]"
+                >
+                  {tx('noBtn')}
+                </button>
+              </div>
 
 
+            </>
+          ) : (
 
-                <AnimatePresence>
-                  {showYesModal && (
-                    <motion.div
-                      className="fixed inset-0 z-[100] bg-black/60 flex items-center justify-center p-6"
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                      onClick={() => setShowYesModal(false)}
-                    >
-                      <motion.div
-                        onClick={(e) => e.stopPropagation()}
-                        initial={{ scale: 0.95, opacity: 0 }}
-                        animate={{ scale: 1, opacity: 1 }}
-                        exit={{ scale: 0.95, opacity: 0 }}
-                        className="bg-white rounded-3xl p-8 max-w-xl w-full"
-                      >
-                        <h3 className="text-3xl font-black text-slate-900 mb-4">
-                          {tx('yesModalTitle')}
-                        </h3>
+            <div className="py-4 text-left">
+              <div className="mb-6">
+                <h3 className="text-xl font-black text-slate-900 uppercase tracking-tighter">{tx('indAccel')}</h3>
+                <p className="text-blue-600 text-xs font-bold tracking-widest uppercase mb-3">(Nearshoring + Smart Maquila)</p>
+                <p className="text-slate-500 text-sm leading-relaxed border-l-2 border-blue-600 pl-4">{tx('relocate')}</p>
+              </div>
+              <div className="mb-8 space-y-2">
+                <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">{tx('whatWeSell')}</p>
+                <ul className="text-sm text-slate-700 space-y-1">
+                  <li className="flex items-start gap-2"><span>●</span>{tx('opSetup')}</li>
+                  <li className="flex items-start gap-2"><span>●</span>{tx('supplierNet')}</li>
+                  <li className="flex items-start gap-2 text-blue-600 font-bold"><span>●</span>{tx('costOpt')}</li>
+                  <li className="flex items-start gap-2"><span>●</span>{tx('localMgmt')}</li>
+                </ul>
+              </div>
+              <button onClick={() => handleWhatsApp(selection)} className="w-full bg-blue-600 text-white py-4 rounded-full font-black text-sm hover:bg-blue-700 transition-all uppercase tracking-widest shadow-xl shadow-blue-600/20 active:scale-95">{tx('connectTeam')}</button>
+              <button onClick={() => setStep(1)} className="block mx-auto mt-6 text-slate-400 hover:text-blue-600 text-[10px] uppercase font-black tracking-widest transition-colors">{tx('goBack')}</button>
 
-                        <p className="text-slate-600 mb-8">
-                          {tx('yesModalDesc')}
-                        </p>
-
-                        <h4 className="font-black uppercase tracking-widest text-sm mb-4">
-                          {tx('assessTitle')}
-                        </h4>
-
-                        <div className="flex flex-col gap-3 mb-8">
-                          <button
-                            onClick={() => setAssessmentType("15 min - Free Call")}
-                            className={`rounded-full border-2 px-6 py-3 font-black uppercase text-xs ${assessmentType === "15 min - Free Call"
-                                ? "border-blue-600 text-blue-600"
-                                : "border-slate-200"
-                              }`}
-                          >
-                           {tx('assessment15min')}
-                          </button>
-
-                          <button
-                            onClick={() => setAssessmentType("1 Hour - $50")}
-                            className={`rounded-full border-2 px-6 py-3 font-black uppercase text-xs ${assessmentType === "1 Hour - $50"
-                                ? "border-blue-600 text-blue-600"
-                                : "border-slate-200"
-                              }`}
-                          >
-                           {tx('assessment1h')}
-                          </button>
-                        </div>
-
-                        <a
-                          href="https://calendly.com/diego-placeholder"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="w-full flex justify-center bg-blue-600 text-white py-4 rounded-full font-black uppercase tracking-widest text-xs"
-                        >
-                          {tx('bookAssessment')}
-                        </a>
-                        <button
-  onClick={() => setShowYesModal(false)}
-  className="block mx-auto mt-6 text-slate-400 hover:text-blue-600 text-[10px] uppercase font-black tracking-widest transition-colors"
->
-  {tx('goBackModal')}
-</button>
-                      </motion.div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-<AnimatePresence>
-  {showNoModal && (
-    <motion.div
-      className="fixed inset-0 z-[100] bg-black/60 flex items-center justify-center p-6"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      onClick={() => setShowNoModal(false)}
-    >
-      <motion.div
-        onClick={(e) => e.stopPropagation()}
-        initial={{ scale: 0.95, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        exit={{ scale: 0.95, opacity: 0 }}
-        className="bg-white rounded-3xl p-8 max-w-xl w-full"
-      >
-        <h3 className="text-3xl font-black text-slate-900 mb-4">
-          {tx('noModalTitle')}
-        </h3>
-
-        <p className="text-slate-600 mb-8">
-         {tx('noModalDesc')}
-        </p>
-
-        <h4 className="font-black uppercase tracking-widest text-sm mb-4">
-         {tx('assessTitle')}
-        </h4>
-
-        <div className="flex flex-col gap-3 mb-8">
-          <button
-            onClick={() => setAssessmentType("15 min - Free Call")}
-            className={`rounded-full border-2 px-6 py-3 font-black uppercase text-xs ${
-              assessmentType === "15 min - Free Call"
-                ? "border-blue-600 text-blue-600"
-                : "border-slate-200"
-            }`}
-          >
-            {tx('assessment15min')}
-          </button>
-
-          <button
-            onClick={() => setAssessmentType("1 Hour - $50")}
-            className={`rounded-full border-2 px-6 py-3 font-black uppercase text-xs ${
-              assessmentType === "1 Hour - $50"
-                ? "border-blue-600 text-blue-600"
-                : "border-slate-200"
-            }`}
-          >
-            {tx('assessment1h')}
-          </button>
+            </div>
+          )}
         </div>
+      </div>
 
-        <a
-          href="https://calendly.com/diego-placeholder"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="w-full flex justify-center bg-blue-600 text-white py-4 rounded-full font-black uppercase tracking-widest text-xs"
-        >
-          {tx('bookAssessment')}
-        </a>
 
-        <button
-          onClick={() => setShowNoModal(false)}
-          className="block mx-auto mt-6 text-slate-400 hover:text-blue-600 text-[10px] uppercase font-black tracking-widest transition-colors"
-        >
-          {tx('goBackModal')}
-        </button>
-      </motion.div>
-    </motion.div>
-  )}
-</AnimatePresence>
-              </section>
-             
-             );
-            
+
+      <AnimatePresence>
+        {showYesModal && (
+          <motion.div
+            className="fixed inset-0 z-[100] bg-black/60 flex items-center justify-center p-6"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setShowYesModal(false)}
+          >
+            <motion.div
+              onClick={(e) => e.stopPropagation()}
+              initial={{ scale: 0.95, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.95, opacity: 0 }}
+              className="bg-white rounded-3xl p-8 max-w-xl w-full"
+            >
+       <h3 className="text-3xl font-black text-slate-900 mb-4">
+  <span className="text-orange-500 font-black">{tx('perfect')}</span>
+  {tx('yesModalTitlePart1')}
+  {tx('yesModalTitlePart2')}
+</h3>
+
+              <p className="text-slate-600 mb-8">
+                {tx('yesModalDesc')}
+              </p>
+
+              <h4 className="font-black uppercase tracking-widest text-sm mb-4">
+                {tx('assessTitle')}
+              </h4>
+
+              <div className="flex flex-col gap-3 mb-8">
+                <button
+                  onClick={() => setAssessmentType("15 min - Free Call")}
+                  className={`rounded-full border-2 px-6 py-3 font-black uppercase text-xs ${assessmentType === "15 min - Free Call"
+                    ? "border-blue-600 text-blue-600"
+                    : "border-slate-200"
+                    }`}
+                >
+                  {tx('assessment15min')}
+                </button>
+
+                <button
+                  onClick={() => setAssessmentType("1 Hour - $50")}
+                  className={`rounded-full border-2 px-6 py-3 font-black uppercase text-xs ${assessmentType === "1 Hour - $50"
+                    ? "border-blue-600 text-blue-600"
+                    : "border-slate-200"
+                    }`}
+                >
+                  {tx('assessment1h')}
+                </button>
+              </div>
+
+              <a
+                href="https://calendly.com/diego-placeholder"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full flex justify-center bg-blue-600 text-white py-4 rounded-full font-black uppercase tracking-widest text-xs"
+              >
+                {tx('bookAssessment')}
+              </a>
+              <button
+                onClick={() => setShowYesModal(false)}
+                className="block mx-auto mt-6 text-slate-400 hover:text-blue-600 text-[10px] uppercase font-black tracking-widest transition-colors"
+              >
+                {tx('goBackModal')}
+              </button>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+      <AnimatePresence>
+        {showNoModal && (
+          <motion.div
+            className="fixed inset-0 z-[100] bg-black/60 flex items-center justify-center p-6"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setShowNoModal(false)}
+          >
+            <motion.div
+              onClick={(e) => e.stopPropagation()}
+              initial={{ scale: 0.95, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.95, opacity: 0 }}
+              className="bg-white rounded-3xl p-8 max-w-xl w-full"
+            >
+ <h3 className="text-3xl font-black text-slate-900 mb-4">
+  {tx('noModalTitlePart1')}
+  <span className="text-orange-500 font-black">{tx('change')}</span>
+  {tx('noModalTitlePart2')}
+</h3>
+
+              <p className="text-slate-600 mb-8">
+                {tx('noModalDesc')}
+              </p>
+
+              <h4 className="font-black uppercase tracking-widest text-sm mb-4">
+                {tx('assessTitle')}
+              </h4>
+
+              <div className="flex flex-col gap-3 mb-8">
+                <button
+                  onClick={() => setAssessmentType("15 min - Free Call")}
+                  className={`rounded-full border-2 px-6 py-3 font-black uppercase text-xs ${assessmentType === "15 min - Free Call"
+                      ? "border-blue-600 text-blue-600"
+                      : "border-slate-200"
+                    }`}
+                >
+                  {tx('assessment15min')}
+                </button>
+
+                <button
+                  onClick={() => setAssessmentType("1 Hour - $50")}
+                  className={`rounded-full border-2 px-6 py-3 font-black uppercase text-xs ${assessmentType === "1 Hour - $50"
+                      ? "border-blue-600 text-blue-600"
+                      : "border-slate-200"
+                    }`}
+                >
+                  {tx('assessment1h')}
+                </button>
+              </div>
+
+              <a
+                href="https://calendly.com/diego-placeholder"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full flex justify-center bg-blue-600 text-white py-4 rounded-full font-black uppercase tracking-widest text-xs"
+              >
+                {tx('bookAssessment')}
+              </a>
+
+              <button
+                onClick={() => setShowNoModal(false)}
+                className="block mx-auto mt-6 text-slate-400 hover:text-blue-600 text-[10px] uppercase font-black tracking-widest transition-colors"
+              >
+                {tx('goBackModal')}
+              </button>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </section>
+
+  );
+
 };
 
 
-              //  CASOS DE ÉXITO 
-              const CasosDeExito = ({showMachinesModal, setShowMachinesModal}: {showMachinesModal: boolean; setShowMachinesModal: React.Dispatch<React.SetStateAction<boolean>> }) => {
+//  CASOS DE ÉXITO 
+const CasosDeExito = ({ showMachinesModal, setShowMachinesModal }: { showMachinesModal: boolean; setShowMachinesModal: React.Dispatch<React.SetStateAction<boolean>> }) => {
   const locale = useLocale() as Locale;
   const tx = (key: keyof typeof ui) => (ui[key] as any)[locale] ?? (ui[key] as any)['en'];
 
-                const screenshotsMap = {en: belandScreenshots, es: belandScreenshotsEs, de: belandScreenshotsDe, pt: belandScreenshotsPt };
-                const screenshots = screenshotsMap[locale] ?? belandScreenshots;
+  const screenshotsMap = { en: belandScreenshots, es: belandScreenshotsEs, de: belandScreenshotsDe, pt: belandScreenshotsPt };
+  const screenshots = screenshotsMap[locale] ?? belandScreenshots;
 
-                const [currentSlide, setCurrentSlide] = useState(0);
-                const touchStartX = useRef<number | null>(null);
-                const touchCurrentX = useRef<number | null>(null);
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const touchStartX = useRef<number | null>(null);
+  const touchCurrentX = useRef<number | null>(null);
 
   useEffect(() => {
-    const timer = setInterval(() => {setCurrentSlide((prev) => (prev + 1) % screenshots.length); }, 4000);
+    const timer = setInterval(() => { setCurrentSlide((prev) => (prev + 1) % screenshots.length); }, 4000);
     return () => clearInterval(timer);
   }, [screenshots.length]);
 
-  const goToPrevious = (e?: React.MouseEvent) => {e?.stopPropagation(); setCurrentSlide((prev) => (prev - 1 + screenshots.length) % screenshots.length); };
-  const goToNext = (e?: React.MouseEvent) => {e?.stopPropagation(); setCurrentSlide((prev) => (prev + 1) % screenshots.length); };
+  const goToPrevious = (e?: React.MouseEvent) => { e?.stopPropagation(); setCurrentSlide((prev) => (prev - 1 + screenshots.length) % screenshots.length); };
+  const goToNext = (e?: React.MouseEvent) => { e?.stopPropagation(); setCurrentSlide((prev) => (prev + 1) % screenshots.length); };
   const handleTouchStart = (e: React.TouchEvent) => (touchStartX.current = e.touches[0].clientX);
   const handleTouchMove = (e: React.TouchEvent) => (touchCurrentX.current = e.touches[0].clientX);
   const handleTouchEnd = () => {
     if (touchStartX.current == null || touchCurrentX.current == null) return;
-                const delta = touchStartX.current - touchCurrentX.current;
+    const delta = touchStartX.current - touchCurrentX.current;
     if (delta > 50) goToNext(); else if (delta < -50) goToPrevious();
-                touchStartX.current = null; touchCurrentX.current = null;
+    touchStartX.current = null; touchCurrentX.current = null;
   };
 
-                return (
-                <section className="py-16 px-6 bg-white border-t border-slate-100">
-                  <div className="max-w-6xl mx-auto">
-                    <div className="mb-12 text-center">
-                      <p className="text-blue-600 uppercase tracking-[0.25em] text-[10px] font-black mb-2">{tx('successStories')}</p>
-                      <h2 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter leading-[0.9] uppercase">
-                        {tx('builtByUs')} <em className="italic underline decoration-blue-100">{tx('usedByPeople')}</em>
-                      </h2>
-                    </div>
-                    <div className="grid md:grid-cols-2 gap-16 items-center">
-                      <div className="flex justify-center">
-                        <div className="relative w-full max-w-[260px] sm:max-w-[300px] cursor-grab active:cursor-grabbing" onTouchStart={handleTouchStart} onTouchMove={handleTouchMove} onTouchEnd={handleTouchEnd}>
-                          <div className="relative aspect-[9/19] w-full overflow-hidden rounded-[2.5rem] border-[6px] border-white bg-white shadow-2xl">
-                            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-20 h-5 bg-white rounded-b-xl z-20" />
-                            {screenshots.map((screenshot, index) => (
-                              <div key={index} className={`absolute inset-0 transition-opacity duration-700 ${index === currentSlide ? "opacity-100" : "opacity-0 pointer-events-none"}`}>
-                                <Image src={screenshot.src} alt={screenshot.alt} fill className="object-contain" priority={index === 0} sizes="300px" />
-                              </div>
-                            ))}
-                          </div>
-                          <button onClick={goToPrevious} className="absolute -left-5 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white border border-slate-200 shadow flex items-center justify-center hover:border-blue-600 transition-colors z-30"><ChevronLeft className="w-4 h-4 text-slate-600" /></button>
-                          <button onClick={goToNext} className="absolute -right-5 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white border border-slate-200 shadow flex items-center justify-center hover:border-blue-600 transition-colors z-30"><ChevronRight className="w-4 h-4 text-slate-600" /></button>
-                          <div className="flex justify-center gap-1.5 mt-5">
-                            {screenshots.map((_, i) => (<button key={i} onClick={() => setCurrentSlide(i)} className={`rounded-full transition-all duration-300 ${i === currentSlide ? "w-5 h-1.5 bg-blue-600" : "w-1.5 h-1.5 bg-slate-300"}`} />))}
-                          </div>
-                        </div>
-                      </div>
-                      <div className="flex flex-col gap-6">
-                        <div className="inline-flex flex-col items-start">
-                          <div style={{ width: '200px', height: '50px' }} className="relative -ml-4">
-                            <Image src="/beland.titulo.png" alt="Beland Logo" fill className="object-contain object-left" priority sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
-                          </div>
-                        </div>
-                        <div key={currentSlide} className="border-l-4 border-blue-600 pl-4 transition-all duration-500">
-                          <p className="text-[10px] font-black uppercase tracking-widest text-blue-600 mb-1">{screenshots[currentSlide].title}</p>
-                          <p className="text-slate-500 text-sm leading-relaxed">{screenshots[currentSlide].text}</p>
-                        </div>
-                        <p className="text-slate-700 text-base leading-relaxed font-medium">
-                          {tx('circularEco')} <span className="text-slate-900 font-black">{tx('circularEco2')}</span> {tx('circularEco3')} <span className="text-blue-600 font-bold">{tx('positiveAction')}</span> {tx('strengthens')}
-                        </p>
-                        <div className="flex flex-wrap gap-2">
-                          {belandTags.map((tag) => (<span key={tag} className="text-[10px] font-black uppercase tracking-widest px-4 py-1.5 rounded-full border border-slate-200 text-slate-500 bg-slate-50">{tag}</span>))}
-                        </div>
-                        <div className="flex flex-col gap-3 self-start w-full sm:w-auto mt-4">
-                          <a
-                            href="https://beland.app"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center justify-center gap-2 w-full sm:w-auto bg-blue-600 text-white px-6 py-3 rounded-full font-black text-[10px] sm:text-[11px] uppercase tracking-[0.15em] shadow-lg shadow-blue-600/20 hover:bg-blue-700 transition-colors"
-                          >
-                            {tx('viewApp')}
-                            <ArrowRight className="w-4 h-4" />
-                          </a>
-
-                          <a
-                            href="https://beland.land"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center justify-center gap-2 w-full sm:w-auto border border-slate-300 text-slate-700 px-6 py-3 rounded-full font-black text-[10px] sm:text-[11px] uppercase tracking-[0.15em] hover:border-blue-600 hover:text-blue-600 transition-colors"
-                          >
-                            Landing
-                            <ArrowRight className="w-4 h-4" />
-                          </a>
-
-                          <button
-                            onClick={() => setShowMachinesModal(true)}
-                            className="inline-flex items-center justify-center gap-2 w-full sm:w-auto border border-slate-300 text-slate-700 px-6 py-3 rounded-full font-black text-[10px] sm:text-[11px] uppercase tracking-[0.15em] hover:border-blue-600 hover:text-blue-600 transition-colors"
-                          >
-                            {tx('viewMachines')}
-                            <ArrowRight className="w-4 h-4" />
-                          </button>
-                        </div>
-                      </div>
-                    </div>
+  return (
+    <section className="py-16 px-6 bg-white border-t border-slate-100">
+      <div className="max-w-6xl mx-auto">
+        <div className="mb-12 text-center">
+          <p className="text-blue-600 uppercase tracking-[0.25em] text-[10px] font-black mb-2">{tx('successStories')}</p>
+          <h2 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter leading-[0.9] uppercase">
+            {tx('builtByUs')} <em className="italic underline decoration-blue-100">{tx('usedByPeople')}</em>
+          </h2>
+        </div>
+        <div className="grid md:grid-cols-2 gap-16 items-center">
+          <div className="flex justify-center">
+            <div className="relative w-full max-w-[260px] sm:max-w-[300px] cursor-grab active:cursor-grabbing" onTouchStart={handleTouchStart} onTouchMove={handleTouchMove} onTouchEnd={handleTouchEnd}>
+              <div className="relative aspect-[9/19] w-full overflow-hidden rounded-[2.5rem] border-[6px] border-white bg-white shadow-2xl">
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-20 h-5 bg-white rounded-b-xl z-20" />
+                {screenshots.map((screenshot, index) => (
+                  <div key={index} className={`absolute inset-0 transition-opacity duration-700 ${index === currentSlide ? "opacity-100" : "opacity-0 pointer-events-none"}`}>
+                    <Image src={screenshot.src} alt={screenshot.alt} fill className="object-contain" priority={index === 0} sizes="300px" />
                   </div>
-                </section>
-                );
+                ))}
+              </div>
+              <button onClick={goToPrevious} className="absolute -left-5 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white border border-slate-200 shadow flex items-center justify-center hover:border-blue-600 transition-colors z-30"><ChevronLeft className="w-4 h-4 text-slate-600" /></button>
+              <button onClick={goToNext} className="absolute -right-5 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white border border-slate-200 shadow flex items-center justify-center hover:border-blue-600 transition-colors z-30"><ChevronRight className="w-4 h-4 text-slate-600" /></button>
+              <div className="flex justify-center gap-1.5 mt-5">
+                {screenshots.map((_, i) => (<button key={i} onClick={() => setCurrentSlide(i)} className={`rounded-full transition-all duration-300 ${i === currentSlide ? "w-5 h-1.5 bg-blue-600" : "w-1.5 h-1.5 bg-slate-300"}`} />))}
+              </div>
+            </div>
+          </div>
+          <div className="flex flex-col gap-6">
+            <div className="inline-flex flex-col items-start">
+              <div style={{ width: '200px', height: '50px' }} className="relative -ml-4">
+                <Image src="/beland.titulo.png" alt="Beland Logo" fill className="object-contain object-left" priority sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
+              </div>
+            </div>
+            <div key={currentSlide} className="border-l-4 border-blue-600 pl-4 transition-all duration-500">
+              <p className="text-[10px] font-black uppercase tracking-widest text-blue-600 mb-1">{screenshots[currentSlide].title}</p>
+              <p className="text-slate-500 text-sm leading-relaxed">{screenshots[currentSlide].text}</p>
+            </div>
+            <p className="text-slate-700 text-base leading-relaxed font-medium">
+              {tx('circularEco')} <span className="text-slate-900 font-black">{tx('circularEco2')}</span> {tx('circularEco3')} <span className="text-blue-600 font-bold">{tx('positiveAction')}</span> {tx('strengthens')}
+            </p>
+            <div className="flex flex-wrap gap-2">
+              {belandTags.map((tag) => (<span key={tag} className="text-[10px] font-black uppercase tracking-widest px-4 py-1.5 rounded-full border border-slate-200 text-slate-500 bg-slate-50">{tag}</span>))}
+            </div>
+            <div className="flex flex-col gap-3 self-start w-full sm:w-auto mt-4">
+              <a
+                href="https://beland.app"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 w-full sm:w-auto bg-blue-600 text-white px-6 py-3 rounded-full font-black text-[10px] sm:text-[11px] uppercase tracking-[0.15em] shadow-lg shadow-blue-600/20 hover:bg-blue-700 transition-colors"
+              >
+                {tx('viewApp')}
+                <ArrowRight className="w-4 h-4" />
+              </a>
+
+              <a
+                href="https://beland.land"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 w-full sm:w-auto border border-slate-300 text-slate-700 px-6 py-3 rounded-full font-black text-[10px] sm:text-[11px] uppercase tracking-[0.15em] hover:border-blue-600 hover:text-blue-600 transition-colors"
+              >
+                Landing
+                <ArrowRight className="w-4 h-4" />
+              </a>
+
+              <button
+                onClick={() => setShowMachinesModal(true)}
+                className="inline-flex items-center justify-center gap-2 w-full sm:w-auto border border-slate-300 text-slate-700 px-6 py-3 rounded-full font-black text-[10px] sm:text-[11px] uppercase tracking-[0.15em] hover:border-blue-600 hover:text-blue-600 transition-colors"
+              >
+                {tx('viewMachines')}
+                <ArrowRight className="w-4 h-4" />
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
 };
-                //  MAIN HOME
-                export default function Home() {
+//  MAIN HOME
+export default function Home() {
   const t = useTranslations('Home');
-                const locale = useLocale() as Locale;
+  const locale = useLocale() as Locale;
   const tx = (key: keyof typeof ui) => (ui[key] as any)[locale] ?? (ui[key] as any)['en'];
 
-                const [posts, setPosts] = useState<any[]>([]);
-                const heroVideoRef = useRef<HTMLVideoElement>(null);
-                  const [isMobile, setIsMobile] = useState(false);
-                  const [selected, setSelected] = useState<number | null>(null);
-                  const [showMachinesModal, setShowMachinesModal] = useState(false);
+  const [posts, setPosts] = useState<any[]>([]);
+  const heroVideoRef = useRef<HTMLVideoElement>(null);
+  const [isMobile, setIsMobile] = useState(false);
+  const [selected, setSelected] = useState<number | null>(null);
+  const [showMachinesModal, setShowMachinesModal] = useState(false);
 
-                  const teamMap = {en: team, es: teamEs, de: teamDe, pt: teamPt };
-                  const teamData = teamMap[locale] ?? team;
-                  const localeBase = locale === 'en' ? '' : `/${locale}`;
+  const teamMap = { en: team, es: teamEs, de: teamDe, pt: teamPt };
+  const teamData = teamMap[locale] ?? team;
+  const localeBase = locale === 'en' ? '' : `/${locale}`;
 
   // Fetch posts con traducción multi-idioma
   useEffect(() => {
     const fetchPosts = async () => {
       const supabase = createClient();
-                  const {data} = await supabase
-                  .from('blog_posts')
-                  .select('*')
-                  .order('published_at', {ascending: false })
-                  .limit(3);
+      const { data } = await supabase
+        .from('blog_posts')
+        .select('*')
+        .order('published_at', { ascending: false })
+        .limit(3);
 
-                  if (data) {
+      if (data) {
         if (locale !== 'en' && data.length > 0) {
           try {
             const response = await fetch('/api/translate-posts', {
-                    method: 'POST',
-                  headers: {'Content-Type': 'application/json' },
-                  body: JSON.stringify({posts: data, targetLocale: locale, full: false }),
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ posts: data, targetLocale: locale, full: false }),
             });
-                  if (response.ok) {
+            if (response.ok) {
               const translated = await response.json();
-                  setPosts(translated);
-                  return;
+              setPosts(translated);
+              return;
             }
           } catch {
-                    
-                  }
+
+          }
         }
-                  setPosts(data);
+        setPosts(data);
       }
     };
-                  fetchPosts();
+    fetchPosts();
   }, [locale]);
 
-// ── Hero video ────────────────────────────────────────────────────────────
-useEffect(() => {
-  const video = heroVideoRef.current;
-                  if (!video) return;
+  // ── Hero video ────────────────────────────────────────────────────────────
+  useEffect(() => {
+    const video = heroVideoRef.current;
+    if (!video) return;
 
-                  video.muted = true;
-                  video.playsInline = true;
-                  video.autoplay = true;
-                  video.loop = true;
+    video.muted = true;
+    video.playsInline = true;
+    video.autoplay = true;
+    video.loop = true;
 
-  const tryPlay = () => {
-                    video.play().catch(() => {
-                      // Autoplay bloqueado en iOS
-                    });
-  };
+    const tryPlay = () => {
+      video.play().catch(() => {
+        // Autoplay bloqueado en iOS
+      });
+    };
 
-                  tryPlay();
-                  video.addEventListener("loadedmetadata", tryPlay);
-                  video.addEventListener("loadeddata", tryPlay);
-                  video.addEventListener("canplay", tryPlay);
-                  video.addEventListener("canplaythrough", tryPlay);
+    tryPlay();
+    video.addEventListener("loadedmetadata", tryPlay);
+    video.addEventListener("loadeddata", tryPlay);
+    video.addEventListener("canplay", tryPlay);
+    video.addEventListener("canplaythrough", tryPlay);
 
-  const handleInteraction = () => {
-                    tryPlay();
-  };
+    const handleInteraction = () => {
+      tryPlay();
+    };
 
-                  document.addEventListener("touchstart", handleInteraction, {once: true });
-                  document.addEventListener("scroll", handleInteraction, {once: true });
-                  document.addEventListener("click", handleInteraction, {once: true });
+    document.addEventListener("touchstart", handleInteraction, { once: true });
+    document.addEventListener("scroll", handleInteraction, { once: true });
+    document.addEventListener("click", handleInteraction, { once: true });
 
-  return () => {
-                    video.removeEventListener("loadedmetadata", tryPlay);
-                  video.removeEventListener("loadeddata", tryPlay);
-                  video.removeEventListener("canplay", tryPlay);
-                  video.removeEventListener("canplaythrough", tryPlay);
-                  document.removeEventListener("touchstart", handleInteraction);
-                  document.removeEventListener("scroll", handleInteraction);
-                  document.removeEventListener("click", handleInteraction);
-  };
-}, []);
-  
+    return () => {
+      video.removeEventListener("loadedmetadata", tryPlay);
+      video.removeEventListener("loadeddata", tryPlay);
+      video.removeEventListener("canplay", tryPlay);
+      video.removeEventListener("canplaythrough", tryPlay);
+      document.removeEventListener("touchstart", handleInteraction);
+      document.removeEventListener("scroll", handleInteraction);
+      document.removeEventListener("click", handleInteraction);
+    };
+  }, []);
+
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth < 768);
-                  handleResize();
-                  window.addEventListener("resize", handleResize);
+    handleResize();
+    window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-                  const dateLang = locale === 'es' ? 'es-ES' : locale === 'de' ? 'de-DE' : locale === 'pt' ? 'pt-BR' : 'en-US';
+  const dateLang = locale === 'es' ? 'es-ES' : locale === 'de' ? 'de-DE' : locale === 'pt' ? 'pt-BR' : 'en-US';
 
-                  return (
+  return (
 
-                  <main className="relative w-full bg-white">
+    <main className="relative w-full bg-white">
 
-                    {/* SHARED HEADER */}
-                    <Header />
+      {/* SHARED HEADER */}
+      <Header />
 
-                    {/* 1. HERO */}
-                    <section className="relative w-full h-[100dvh] overflow-hidden" id="top">
-                      <video
-                        ref={heroVideoRef}
-                        className="absolute top-1/2 left-1/2 min-w-full min-h-full w-auto h-auto -translate-x-1/2 -translate-y-1/2 object-cover"
-                        autoPlay
-                        loop
-                        muted
-                        playsInline
-                        preload="auto"
-                      >
-                        <source src="/hero.mp4" type="video/mp4" />
-                      </video>
-                      <div className="absolute inset-0 bg-white/10 z-[1]" />
-                      <div className="absolute inset-0 z-[2] flex flex-col items-center justify-center px-6 text-center">
-                        <p className="text-blue-600 uppercase tracking-[0.4em] mb-3 text-[10px] font-black">
-                          {t('whatWeDo')}
-                        </p>
-                        <h1 className="text-3xl md:text-8xl font-black leading-[1] tracking-tighter max-w-4xl text-white uppercase">
-                          {tx('openLatam')} <br /> {tx('globalCompanies')}
-                        </h1>
-                        <p className="mt-3 text-white text-[9px] md:text-[10px] uppercase tracking-widest font-bold">{tx('subtagline')}</p>
-                        <a href="https://wa.me/593991358652?text=Hi!%20I%27d%20like%20to%20get%20in%20touch%20with%20the%20team." className="mt-3 inline-block px-8 py-3 bg-[#FF6B00] text-white rounded-full font-bold shadow-lg uppercase tracking-widest text-[10px] transition-transform active:scale-95">
-                          {tx('getInTouch')}
-                        </a>
-                      </div>
-                    </section>
-
-
-
-                    {/* 3. CHAT */}
-                    <ChatSection />
-
-                    {/* 4. MITTELSTAND */}
-                    <section id="mittelstand" className="py-12 md:py-24 px-6 bg-slate-50 border-y border-slate-200">
-                      <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-20 items-center">
+      {/* 1. HERO */}
+      <section className="relative w-full h-[100dvh] overflow-hidden" id="top">
+        <video
+          ref={heroVideoRef}
+          className="absolute top-1/2 left-1/2 min-w-full min-h-full w-auto h-auto -translate-x-1/2 -translate-y-1/2 object-cover"
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="auto"
+        >
+          <source src="/hero.mp4" type="video/mp4" />
+        </video>
+        <div className="absolute inset-0 bg-white/10 z-[1]" />
+        <div className="absolute inset-0 z-[2] flex flex-col items-center justify-center px-6 text-center">
+          <p className="text-blue-600 uppercase tracking-[0.4em] mb-3 text-[10px] font-black">
+            {t('whatWeDo')}
+          </p>
+          <h1 className="text-3xl md:text-8xl font-black leading-[1] tracking-tighter max-w-4xl text-white uppercase">
+            {tx('openLatam')} <br /> {tx('globalCompanies')}
+          </h1>
+          <p className="mt-3 text-white text-[9px] md:text-[10px] uppercase tracking-widest font-bold">{tx('subtagline')}</p>
+          <a href="https://wa.me/593991358652?text=Hi!%20I%27d%20like%20to%20get%20in%20touch%20with%20the%20team." className="mt-3 inline-block px-8 py-3 bg-[#FF6B00] text-white rounded-full font-bold shadow-lg uppercase tracking-widest text-[10px] transition-transform active:scale-95">
+            {tx('getInTouch')}
+          </a>
+        </div>
+      </section>
 
 
-                        {/* COLUMNA IZQUIERDA */}
-                        <div className="bg-white p-12 rounded-3xl border border-slate-200 shadow-sm transition-all hover:shadow-md">
-                          <p className="text-sm font-bold tracking-wider text-slate-400 uppercase mb-3">
-                            {tx('problemTitle')}
-                          </p>
-                          <h3 className="text-3xl font-bold text-blue-600 mb-6 leading-tight">
-                            {tx('problemSubtitle')}
-                          </h3>
-                          <p className="text-slate-600 text-lg leading-relaxed mb-10">
-                            {tx('problemDesc')}
-                          </p>
 
-                          
-                        </div>
+      {/* 3. CHAT */}
+      <ChatSection />
 
-                        {/* COLUMNA DERECHA  */}
-                        <div>
-                          {/*  "WHATS NEXT?" */}
-                          <span className="text-sm font-black uppercase tracking-[0.2em] text-blue-600 block mb-3">
-                            {ui.ourCustomers[locale]}
-                          </span>
+      {/* 4. MITTELSTAND */}
+      <section id="mittelstand" className="py-12 md:py-24 px-6 bg-slate-50 border-y border-slate-200">
+        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-20 items-center">
 
-                          {/* "Grow by Design" */}
-                          <h2 className="text-4xl md:text-5xl font-black mb-6 text-slate-900 leading-tight tracking-tighter uppercase">
-                            {ui.midSized1[locale]}
-                          </h2>
 
-                          {/* 3. descripción  */}
-                          <p className="text-lg text-slate-600 font-medium leading-relaxed mb-10 text-balance">
-                            {ui.midSized2[locale]}
-                          </p>
+          {/* COLUMNA IZQUIERDA */}
+          <div className="bg-white p-12 rounded-3xl border border-slate-200 shadow-sm transition-all hover:shadow-md">
+            <p className="text-sm font-bold tracking-wider text-slate-400 uppercase mb-3">
+              {tx('problemTitle')}
+            </p>
+            <h3 className="text-3xl font-bold text-blue-600 mb-6 leading-tight">
+              {tx('problemSubtitle')}
+            </h3>
+            <p className="text-slate-600 text-lg leading-relaxed mb-10">
+              {tx('problemDesc')}
+            </p>
 
-                         
-                        </div>
 
-                      </div>
-                    </section>
-<div className="py-10 border-t border-slate-100 text-center">
-  <h3 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter uppercase mb-10">
-    {tx('followJourney')} <em className="italic underline decoration-blue-100">{tx('journey')}</em>
-  </h3>
-  <div className="flex justify-center gap-6">
-    <a href="https://www.linkedin.com/company/bettertechnologies/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-6 py-3 rounded-full border-2 border-slate-200 text-slate-900 font-black text-[11px] uppercase tracking-widest hover:border-blue-600 hover:text-blue-600 transition-all"><LinkedInIcon /> LinkedIn</a>
-    <a href="https://www.instagram.com/better_technologies?igsh=MWUwYmkyYXVhdWRucA==" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-6 py-3 rounded-full border-2 border-slate-200 text-slate-900 font-black text-[11px] uppercase tracking-widest hover:border-[#d6249f] hover:text-[#d6249f] transition-all"><InstagramIcon /> Instagram</a>
+          </div>
+
+          {/* COLUMNA DERECHA  */}
+          <div>
+            {/*  "WHATS NEXT?" */}
+            <span className="text-sm font-black uppercase tracking-[0.2em] text-blue-600 block mb-3">
+              {ui.ourCustomers[locale]}
+            </span>
+
+            {/* "Grow by Design" */}
+            <h2 className="text-4xl md:text-5xl font-black mb-6 text-slate-900 leading-tight tracking-tighter uppercase">
+              {ui.midSized1[locale]}
+            </h2>
+
+            {/* 3. descripción  */}
+            <p className="text-lg text-slate-600 font-medium leading-relaxed mb-10 text-balance">
+              {ui.midSized2[locale]}
+            </p>
+
+
+          </div>
+
+        </div>
+      </section>
+      <div className="py-10 border-t border-slate-100 text-center">
+        <h3 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter uppercase mb-10">
+          {tx('followJourney')} <em className="italic underline decoration-blue-100">{tx('journey')}</em>
+        </h3>
+        <div className="flex justify-center gap-6">
+          <a href="https://www.linkedin.com/company/bettertechnologies/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-6 py-3 rounded-full border-2 border-slate-200 text-slate-900 font-black text-[11px] uppercase tracking-widest hover:border-blue-600 hover:text-blue-600 transition-all"><LinkedInIcon /> LinkedIn</a>
+          <a href="https://www.instagram.com/better_technologies?igsh=MWUwYmkyYXVhdWRucA==" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-6 py-3 rounded-full border-2 border-slate-200 text-slate-900 font-black text-[11px] uppercase tracking-widest hover:border-[#d6249f] hover:text-[#d6249f] transition-all"><InstagramIcon /> Instagram</a>
+        </div>
+      </div>
+      {/* 5. PRICING */}
+      <section id="pricing" className="py-20 px-6 bg-white">
+        <div className="max-w-7xl mx-auto text-center">
+          <h2 className="text-4xl md:text-5xl font-black mb-4 text-slate-900 uppercase tracking-tighter">
+            {ui.whatWeDeliver[locale]} <span className="text-blue-600"> {ui.weDeliver[locale]} </span>
+          </h2>
+          <p className="text-lg text-gray-500 mb-12 text-balance font-medium">
+            {ui.servicesSubtitle[locale]}
+          </p>
+          <div className="grid md:grid-cols-3 gap-12 text-left">
+            <div className="group border-2 border-slate-100 p-12 rounded-3xl hover:border-blue-600 transition-all duration-500 bg-slate-50/50">
+              <div className="flex flex-col gap-4 mb-10">
+                <h3 className="text-2xl font-bold text-slate-900 uppercase">72h Validation Challenge</h3>
+                <span className="self-start bg-blue-600 text-white px-4 py-1 rounded-full text-xs font-black italic">€3k – €10k</span>
+              </div>
+              <ul className="space-y-4 text-slate-600">
+                <li className="font-bold flex items-start gap-2"><span className="text-blue-600 mt-0.5">→</span>{tx('oppValidation')}</li>
+                <li className="font-bold flex items-start gap-2"><span className="text-blue-600 mt-0.5">→</span>{tx('feasibility')}</li>
+              </ul>
+            </div>
+            <div className="group border-2 border-slate-100 p-12 rounded-3xl hover:border-blue-600 transition-all duration-500 bg-slate-50/50 shadow-xl shadow-slate-100">
+              <div className="flex flex-col gap-4 mb-10">
+                <h3 className="text-2xl font-bold text-slate-900 uppercase">MVP Stage — 90 days</h3>
+                <span className="self-start bg-blue-600 text-white px-4 py-1 rounded-full text-xs font-black italic">€30k – €120k</span>
+              </div>
+              <ul className="space-y-4 text-slate-600">
+                <li className="font-bold flex items-center gap-2"><span className="text-blue-600">✓</span>{tx('solutionEng')}</li>
+                <li className="font-bold flex items-center gap-2"><span className="text-blue-600">✓</span>{tx('functionalMvp')}</li>
+                <li className="font-bold flex items-center gap-2"><span className="text-blue-600">✓</span>{tx('betaTesting')}</li>
+              </ul>
+            </div>
+            <div className="group border-2 border-slate-100 p-12 rounded-3xl hover:border-blue-600 transition-all duration-500 bg-slate-50/50">
+              <div className="flex flex-col gap-4 mb-10">
+                <h3 className="text-2xl font-bold text-slate-900 uppercase">Growth / Scale</h3>
+                <span className="self-start bg-slate-900 text-white px-4 py-1 rounded-full text-xs font-black italic">{tx('tailorMade')}</span>
+              </div>
+              <ul className="space-y-4 text-slate-600">
+                <li className="font-bold flex items-center gap-2"><span className="text-blue-600">✓</span>{tx('localDigital')}</li>
+                <li className="font-bold flex items-center gap-2"><span className="text-blue-600">✓</span>{tx('successOri')}</li>
+                <li className="font-bold flex items-center gap-2"><span className="text-blue-600">✓</span>{tx('reducedCosts')}</li>
+                <li className="font-bold flex items-center gap-2"><span className="text-blue-600">✓</span>{tx('fasterScaling')}</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div className="py-16 px-6 bg-white text-center">
+  <div className="max-w-4xl mx-auto">
+    <h2 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter uppercase mb-2">
+      {tx('lets')}
+      <span className="text-blue-600">{tx('startToday')}</span>
+    </h2>
+    <p className="text-slate-500 font-medium italic text-lg md:text-xl tracking-tight">
+      {tx('dream')}
+      <span className="text-orange-500 font-black">{tx('better')}</span>
+    </p>
   </div>
 </div>
-                    {/* 5. PRICING */}
-                    <section id="pricing" className="py-20 px-6 bg-white">
-                      <div className="max-w-7xl mx-auto text-center">
-                        <h2 className="text-4xl md:text-5xl font-black mb-4 text-slate-900 uppercase tracking-tighter">
-                          {ui.whatWeDeliver[locale]} <span className="text-blue-600"> {ui.weDeliver[locale]} </span>
-                        </h2>
-                        <p className="text-lg text-gray-500 mb-12 text-balance font-medium">
-                          {ui.servicesSubtitle[locale]}
-                        </p>
-                        <div className="grid md:grid-cols-3 gap-12 text-left">
-                          <div className="group border-2 border-slate-100 p-12 rounded-3xl hover:border-blue-600 transition-all duration-500 bg-slate-50/50">
-                            <div className="flex flex-col gap-4 mb-10">
-                              <h3 className="text-2xl font-bold text-slate-900 uppercase">72h Validation Challenge</h3>
-                              <span className="self-start bg-blue-600 text-white px-4 py-1 rounded-full text-xs font-black italic">€3k – €10k</span>
-                            </div>
-                            <ul className="space-y-4 text-slate-600">
-                              <li className="font-bold flex items-start gap-2"><span className="text-blue-600 mt-0.5">→</span>{tx('oppValidation')}</li>
-                              <li className="font-bold flex items-start gap-2"><span className="text-blue-600 mt-0.5">→</span>{tx('feasibility')}</li>
-                            </ul>
-                          </div>
-                          <div className="group border-2 border-slate-100 p-12 rounded-3xl hover:border-blue-600 transition-all duration-500 bg-slate-50/50 shadow-xl shadow-slate-100">
-                            <div className="flex flex-col gap-4 mb-10">
-                              <h3 className="text-2xl font-bold text-slate-900 uppercase">MVP Stage — 90 days</h3>
-                              <span className="self-start bg-blue-600 text-white px-4 py-1 rounded-full text-xs font-black italic">€30k – €120k</span>
-                            </div>
-                            <ul className="space-y-4 text-slate-600">
-                              <li className="font-bold flex items-center gap-2"><span className="text-blue-600">✓</span>{tx('solutionEng')}</li>
-                              <li className="font-bold flex items-center gap-2"><span className="text-blue-600">✓</span>{tx('functionalMvp')}</li>
-                              <li className="font-bold flex items-center gap-2"><span className="text-blue-600">✓</span>{tx('betaTesting')}</li>
-                            </ul>
-                          </div>
-                          <div className="group border-2 border-slate-100 p-12 rounded-3xl hover:border-blue-600 transition-all duration-500 bg-slate-50/50">
-                            <div className="flex flex-col gap-4 mb-10">
-                              <h3 className="text-2xl font-bold text-slate-900 uppercase">Growth / Scale</h3>
-                              <span className="self-start bg-slate-900 text-white px-4 py-1 rounded-full text-xs font-black italic">{tx('tailorMade')}</span>
-                            </div>
-                            <ul className="space-y-4 text-slate-600">
-                              <li className="font-bold flex items-center gap-2"><span className="text-blue-600">✓</span>{tx('localDigital')}</li>
-                              <li className="font-bold flex items-center gap-2"><span className="text-blue-600">✓</span>{tx('successOri')}</li>
-                              <li className="font-bold flex items-center gap-2"><span className="text-blue-600">✓</span>{tx('reducedCosts')}</li>
-                              <li className="font-bold flex items-center gap-2"><span className="text-blue-600">✓</span>{tx('fasterScaling')}</li>
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
-                    </section>
-
-                    {/* 6. EQUIPO */}
-                    <section id="about" className="py-16 px-6 bg-white border-t border-slate-100">
-                      <div className="max-w-4xl mx-auto">
-                        <p className="text-blue-600 uppercase tracking-[0.25em] text-[10px] font-black mb-2">{tx('aboutTeam')}</p>
-                        <h2 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter leading-[0.9] uppercase mb-6">
-                          {tx('highPerf')} <em className="italic underline decoration-blue-100">{tx('highPerfEm')}</em>
-                        </h2>
-                        <div className="border-l-[3px] border-blue-600 pl-5 bg-slate-50 py-4 pr-5 rounded-r-2xl mb-8">
-                          <p className="text-slate-900 font-black italic text-sm leading-relaxed tracking-tight">
-                            {tx('forged')} <br /><span className="text-blue-600">{tx('pressure')}</span>
-                          </p>
-                        </div>
-                        <AnimatePresence mode="wait">
-                          {selected !== null && (
-                            <motion.div key={selected} initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }} transition={{ duration: 0.2 }} className="flex items-center gap-5 border border-slate-100 rounded-3xl p-5 mb-6 hover:border-blue-600/30 transition-colors">
-                              <Avatar member={teamData[selected]} />
-                              <div className="flex-1 min-w-0">
-                                <div className="flex items-start justify-between gap-3">
-                                  <div>
-                                    <p className="text-slate-900 font-black uppercase tracking-tight text-sm">{teamData[selected].name}</p>
-                                    <p className="text-blue-600 font-black uppercase tracking-[0.15em] text-[10px] mt-0.5 mb-2">{teamData[selected].role}</p>
-                                  </div>
-                                  <a href={teamData[selected].linkedin} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 border border-slate-200 rounded-full px-3 py-1.5 hover:border-blue-600 hover:bg-blue-50 transition-all flex-shrink-0">
-                                    <LinkedInIcon /><span className="text-[9px] font-black uppercase tracking-widest text-slate-500">LinkedIn</span>
-                                  </a>
-                                </div>
-                                <p className="text-slate-500 text-xs leading-relaxed font-medium">{teamData[selected].desc}</p>
-                              </div>
-                            </motion.div>
-                          )}
-                        </AnimatePresence>
-                        <div className="flex flex-wrap gap-2">
-                          {teamData.map((member, i) => (
-                            <button key={i} type="button" onClick={() => setSelected(selected === i ? null : i)} className={`px-4 py-2 rounded-full text-[10px] font-black uppercase tracking-widest border transition-all ${selected === i ? "bg-blue-600 border-blue-600 text-white shadow-lg" : "bg-white border-slate-200 text-slate-400 hover:border-blue-600 hover:text-blue-600"}`}>
-                              {member.name}
-                            </button>
-                          ))}
-                        </div>
-                      </div>
-                    </section>
-
-                    {/* CASOS DE ÉXITO — BELAND */}
-                    <CasosDeExito showMachinesModal={showMachinesModal} setShowMachinesModal={setShowMachinesModal} />
-
-                    {/* CIERRE */}
-                    <h2 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter leading-[0.9] uppercase mb-6 text-center py-10 px-6">
-                      <span className="block mb-4">{tx('closingLine')}</span>
-
-                    </h2>
-                    {/*  NEWS FEED */}
-                    <NewsSection />
-                    {/* LATEST INSIGHTS */}
-                    <section className="py-16 bg-slate-50">
-                      <div className="container mx-auto px-6 text-center">
-                        <p className="text-blue-600 uppercase tracking-[0.25em] text-[10px] font-black mb-4">{tx('stayUpdated')}</p>
-                        <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-6 uppercase">{tx('latestInsights')}</h2>
-                        <p className="text-slate-500 max-w-lg mx-auto mb-10">{tx('blogDesc')}</p>
-                        {posts && posts.length > 0 ? (
-                          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12 text-left">
-                            {posts.map((post) => (
-                              <div key={post.id} className="bg-white p-6 rounded-3xl border border-slate-100 shadow-sm">
-                                <div className="relative h-40 mb-4 rounded-xl overflow-hidden bg-slate-100">
-                                  {post.cover_url
-                                    ? (<img src={post.cover_url} alt={post.title} className="w-full h-full object-cover" />)
-                                    : (<div className="w-full h-full flex items-center justify-center text-slate-300 text-xs font-bold">{tx('noImage')}</div>)
-                                  }
-                                </div>
-                                <h3 className="font-black text-lg mb-3 uppercase text-slate-900 line-clamp-2">{post.title}</h3>
-                                <p className="text-slate-500 text-sm mb-6 line-clamp-3">
-                                  {(() => {
-                                    const raw = post.description?.replace(/<[^>]*>?/gm, '') || tx('noDesc') as string;
-                                    if (typeof window === 'undefined') return raw;
-                                    const txt = document.createElement('textarea');
-                                    txt.innerHTML = raw;
-                                    return txt.value;
-                                  })()}
-                                </p>
-                                <a href={`${localeBase}/blog/${post.slug}`} className="text-blue-600 font-black text-[10px] uppercase tracking-widest hover:text-slate-900 transition-colors">{tx('readMore')}</a>
-                              </div>
-                            ))}
-                          </div>
-                        ) : (
-                          <div className="py-12 text-center"><p className="text-slate-400 text-sm">{tx('noPostsYet')}</p></div>
-                        )}
-                        <a href={`${localeBase}/blog`} className="inline-block bg-slate-900 text-white px-10 py-4 rounded-full font-black text-xs uppercase tracking-widest hover:bg-blue-600 transition-colors">
-                          {t('viewAllPosts')}
-                        </a>
-                      </div>
-                    </section>
-
-                    {/* FOOTER */}
-                    <footer className="py-16 text-center bg-white border-t border-slate-100">
-                      <p className="text-slate-400 text-[9px] font-black uppercase tracking-[0.3em] mb-4">{tx('dontMiss')}</p>
-                      <h3 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter uppercase mb-10">
-                        {tx('followJourney')} <em className="italic underline decoration-blue-100">{tx('journey')}</em>
-                      </h3>
-                      <div className="flex justify-center gap-6 mb-12">
-                        <a href="https://www.linkedin.com/company/bettertechnologies/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-6 py-3 rounded-full border-2 border-slate-200 text-slate-900 font-black text-[11px] uppercase tracking-widest hover:border-blue-600 hover:text-blue-600 transition-all"><LinkedInIcon /> LinkedIn</a>
-                        <a href="https://www.instagram.com/better_technologies?igsh=MWUwYmkyYXVhdWRucA==" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-6 py-3 rounded-full border-2 border-slate-200 text-slate-900 font-black text-[11px] uppercase tracking-widest hover:border-[#d6249f] hover:text-[#d6249f] transition-all"><InstagramIcon /> Instagram</a>
-                      </div>
-                      <p className="text-slate-400 text-[9px] font-black uppercase tracking-[0.3em]">&copy; 2026 Better Technologies.</p>
-                    </footer>
+      {/* 6. EQUIPO */}
+      <section id="about" className="py-16 px-6 bg-white border-t border-slate-100">
+        <div className="max-w-4xl mx-auto">
 
 
-                    {showMachinesModal && (
-                      <div className="fixed inset-0 bg-black/80 z-50 flex flex-col items-center justify-start pt-20 md:pt-32 p-4 overflow-y-auto">
-                        <div className="relative bg-white rounded-3xl shadow-2xl w-full max-w-xs sm:max-w-sm md:max-w-lg h-auto overflow-visible">
+          <p className="text-blue-600 uppercase tracking-[0.25em] text-[10px] font-black mb-2">{tx('aboutTeam')}</p>
+          <h2 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter leading-[0.9] uppercase mb-6">
+            {tx('highPerf')} <em className="italic underline decoration-blue-100">{tx('highPerfEm')}</em>
+          </h2>
+          <div className="border-l-[3px] border-blue-600 pl-5 bg-slate-50 py-4 pr-5 rounded-r-2xl mb-8">
+            <p className="text-slate-900 font-black italic text-sm leading-relaxed tracking-tight">
+              {tx('forged')} <br /><span className="text-blue-600">{tx('pressure')}</span>
+            </p>
+          </div>
+          <AnimatePresence mode="wait">
+            {selected !== null && (
+              <motion.div key={selected} initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }} transition={{ duration: 0.2 }} className="flex items-center gap-5 border border-slate-100 rounded-3xl p-5 mb-6 hover:border-blue-600/30 transition-colors">
+                <Avatar member={teamData[selected]} />
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-start justify-between gap-3">
+                    <div>
+                      <p className="text-slate-900 font-black uppercase tracking-tight text-sm">{teamData[selected].name}</p>
+                      <p className="text-blue-600 font-black uppercase tracking-[0.15em] text-[10px] mt-0.5 mb-2">{teamData[selected].role}</p>
+                    </div>
+                    <a href={teamData[selected].linkedin} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 border border-slate-200 rounded-full px-3 py-1.5 hover:border-blue-600 hover:bg-blue-50 transition-all flex-shrink-0">
+                      <LinkedInIcon /><span className="text-[9px] font-black uppercase tracking-widest text-slate-500">LinkedIn</span>
+                    </a>
+                  </div>
+                  <p className="text-slate-500 text-xs leading-relaxed font-medium">{teamData[selected].desc}</p>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+          <div className="flex flex-wrap gap-2">
+            {teamData.map((member, i) => (
+              <button key={i} type="button" onClick={() => setSelected(selected === i ? null : i)} className={`px-4 py-2 rounded-full text-[10px] font-black uppercase tracking-widest border transition-all ${selected === i ? "bg-blue-600 border-blue-600 text-white shadow-lg" : "bg-white border-slate-200 text-slate-400 hover:border-blue-600 hover:text-blue-600"}`}>
+                {member.name}
+              </button>
+            ))}
+          </div>
+        </div>
+      </section>
 
-                          {/* cerrar */}
-                          <button
-                            onClick={() => setShowMachinesModal(false)}
-                            className="absolute top-3 right-3 sm:top-4 sm:right-4 md:top-6 md:right-6 z-30 w-9 h-9 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-700 text-lg md:text-xl font-bold hover:bg-slate-50 transition-colors"
-                          >
-                            ✕
-                          </button>
+      {/* CASOS DE ÉXITO — BELAND */}
+      <CasosDeExito showMachinesModal={showMachinesModal} setShowMachinesModal={setShowMachinesModal} />
 
-                          {/* contenido */}
-                          <div className="px-6 pt-12 pb-8 sm:pt-8 md:px-10 md:pt-10">
-                            <p className="text-[#7A9B3C] uppercase tracking-[0.25em] text-[10px] md:text-xs font-black mb-3">
-                              {tx('belandTitle')}
-                            </p>
+      {/* CIERRE */}
+      <h2 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter leading-[0.9] uppercase mb-6 text-center py-10 px-6">
+        <span className="block mb-4">{tx('closingLine')}</span>
 
-                            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black leading-none uppercase mb-6 md:mb-8">
-                              <span className="text-black">{tx('belandHeading1')}</span>
-                              <br />
-                              <span className="text-orange-500 italic">{tx('belandHeading2')}</span>
-                              <br />
-                              <span className="text-lime-600 italic">{tx('belandHeading3')}</span>
-                            </h2>
+      </h2>
+      {/*  NEWS FEED */}
+      <NewsSection />
+      {/* LATEST INSIGHTS */}
+      <section className="py-16 bg-slate-50">
+        <div className="container mx-auto px-6 text-center">
+          <p className="text-blue-600 uppercase tracking-[0.25em] text-[10px] font-black mb-4">{tx('stayUpdated')}</p>
+          <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-6 uppercase">{tx('latestInsights')}</h2>
+          <p className="text-slate-500 max-w-lg mx-auto mb-10">{tx('blogDesc')}</p>
+          {posts && posts.length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12 text-left">
+              {posts.map((post) => (
+                <div key={post.id} className="bg-white p-6 rounded-3xl border border-slate-100 shadow-sm">
+                  <div className="relative h-40 mb-4 rounded-xl overflow-hidden bg-slate-100">
+                    {post.cover_url
+                      ? (<img src={post.cover_url} alt={post.title} className="w-full h-full object-cover" />)
+                      : (<div className="w-full h-full flex items-center justify-center text-slate-300 text-xs font-bold">{tx('noImage')}</div>)
+                    }
+                  </div>
+                  <h3 className="font-black text-lg mb-3 uppercase text-slate-900 line-clamp-2">{post.title}</h3>
+                  <p className="text-slate-500 text-sm mb-6 line-clamp-3">
+                    {(() => {
+                      const raw = post.description?.replace(/<[^>]*>?/gm, '') || tx('noDesc') as string;
+                      if (typeof window === 'undefined') return raw;
+                      const txt = document.createElement('textarea');
+                      txt.innerHTML = raw;
+                      return txt.value;
+                    })()}
+                  </p>
+                  <a href={`${localeBase}/blog/${post.slug}`} className="text-blue-600 font-black text-[10px] uppercase tracking-widest hover:text-slate-900 transition-colors">{tx('readMore')}</a>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className="py-12 text-center"><p className="text-slate-400 text-sm">{tx('noPostsYet')}</p></div>
+          )}
+          <a href={`${localeBase}/blog`} className="inline-block bg-slate-900 text-white px-10 py-4 rounded-full font-black text-xs uppercase tracking-widest hover:bg-blue-600 transition-colors">
+            {t('viewAllPosts')}
+          </a>
+        </div>
+      </section>
 
-                            <p className="text-slate-600 text-sm md:text-base leading-7 md:leading-8 mb-8 md:mb-10">
-                              {tx('belandDesc')}
-                            </p>
+      {/* FOOTER */}
+      <footer className="py-16 text-center bg-white border-t border-slate-100">
+        <p className="text-slate-400 text-[9px] font-black uppercase tracking-[0.3em] mb-4">{tx('dontMiss')}</p>
+        <h3 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter uppercase mb-10">
+          {tx('followJourney')} <em className="italic underline decoration-blue-100">{tx('journey')}</em>
+        </h3>
+        <div className="flex justify-center gap-6 mb-12">
+          <a href="https://www.linkedin.com/company/bettertechnologies/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-6 py-3 rounded-full border-2 border-slate-200 text-slate-900 font-black text-[11px] uppercase tracking-widest hover:border-blue-600 hover:text-blue-600 transition-all"><LinkedInIcon /> LinkedIn</a>
+          <a href="https://www.instagram.com/better_technologies?igsh=MWUwYmkyYXVhdWRucA==" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-6 py-3 rounded-full border-2 border-slate-200 text-slate-900 font-black text-[11px] uppercase tracking-widest hover:border-[#d6249f] hover:text-[#d6249f] transition-all"><InstagramIcon /> Instagram</a>
+        </div>
+        <p className="text-slate-400 text-[9px] font-black uppercase tracking-[0.3em]">&copy; 2026 Better Technologies.</p>
+      </footer>
 
-                            <div className="relative w-full h-[180px] sm:h-[220px] md:h-[280px] mb-8 md:mb-10">
-                              <Image
-                                src="/maquina-beland.png"
-                                alt="Beland machine"
-                                fill
-                                className="object-contain"
-                              />
-                            </div>
 
-                            <div className="space-y-4 md:space-y-5 text-xs sm:text-sm md:text-base font-semibold text-slate-800 mb-8 md:mb-10">
-                              <p>♻️ {tx('belandFeature1')}</p>
-                              <p>📸 {tx('belandFeature2')}</p>
-                              <p>💰 {tx('belandFeature3')}</p>
-                              <p>📊 {tx('belandFeature4')}</p>
-                            </div>
+      {showMachinesModal && (
+        <div className="fixed inset-0 bg-black/80 z-50 flex flex-col items-center justify-start pt-20 md:pt-32 p-4 overflow-y-auto">
+          <div className="relative bg-white rounded-3xl shadow-2xl w-full max-w-xs sm:max-w-sm md:max-w-lg h-auto overflow-visible">
 
-                            <a
-                              href="https://wa.me/593991358652?text=Hi!%20I%20would%20like%20to%20quote%20a%20recycling%20machine%20for%20my%20business."
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="w-full flex justify-center items-center bg-[#7A9B3C] text-white py-3 sm:py-4 md:py-5 rounded-2xl font-black text-xs sm:text-sm md:text-base uppercase tracking-widest hover:bg-[#6b8a2f] transition-colors"
-                            >
-                              {tx('belandQuote')}
-                            </a>
-                          </div>
-                        </div>
-                      </div>
-                    )}
-                  </main>
-                  );
+            {/* cerrar */}
+            <button
+              onClick={() => setShowMachinesModal(false)}
+              className="absolute top-3 right-3 sm:top-4 sm:right-4 md:top-6 md:right-6 z-30 w-9 h-9 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-700 text-lg md:text-xl font-bold hover:bg-slate-50 transition-colors"
+            >
+              ✕
+            </button>
+
+            {/* contenido */}
+            <div className="px-6 pt-12 pb-8 sm:pt-8 md:px-10 md:pt-10">
+              <p className="text-[#7A9B3C] uppercase tracking-[0.25em] text-[10px] md:text-xs font-black mb-3">
+                {tx('belandTitle')}
+              </p>
+
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-black leading-none uppercase mb-6 md:mb-8">
+                <span className="text-black">{tx('belandHeading1')}</span>
+                <br />
+                <span className="text-orange-500 italic">{tx('belandHeading2')}</span>
+                <br />
+                <span className="text-lime-600 italic">{tx('belandHeading3')}</span>
+              </h2>
+
+              <p className="text-slate-600 text-sm md:text-base leading-7 md:leading-8 mb-8 md:mb-10">
+                {tx('belandDesc')}
+              </p>
+
+              <div className="relative w-full h-[180px] sm:h-[220px] md:h-[280px] mb-8 md:mb-10">
+                <Image
+                  src="/maquina-beland.png"
+                  alt="Beland machine"
+                  fill
+                  className="object-contain"
+                />
+              </div>
+
+              <div className="space-y-4 md:space-y-5 text-xs sm:text-sm md:text-base font-semibold text-slate-800 mb-8 md:mb-10">
+                <p>♻️ {tx('belandFeature1')}</p>
+                <p>📸 {tx('belandFeature2')}</p>
+                <p>💰 {tx('belandFeature3')}</p>
+                <p>📊 {tx('belandFeature4')}</p>
+              </div>
+
+              <a
+                href="https://wa.me/593991358652?text=Hi!%20I%20would%20like%20to%20quote%20a%20recycling%20machine%20for%20my%20business."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full flex justify-center items-center bg-[#7A9B3C] text-white py-3 sm:py-4 md:py-5 rounded-2xl font-black text-xs sm:text-sm md:text-base uppercase tracking-widest hover:bg-[#6b8a2f] transition-colors"
+              >
+                {tx('belandQuote')}
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
+    </main>
+  );
 };
 
 

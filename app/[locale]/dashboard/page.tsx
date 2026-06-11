@@ -547,7 +547,7 @@ export default function DashboardPage() {
                 />
               </div>
 
-              {/* Editor de Texto (Copia y pega aquí tus cuadros/textos) */}
+              {/* Editor de Texto  */}
               <div className="space-y-2">
                 <label className="text-[10px] font-black uppercase text-slate-400 tracking-widest">{ui.content}</label>
                 <div className="border-2 border-slate-100 rounded-2xl overflow-hidden bg-white">
