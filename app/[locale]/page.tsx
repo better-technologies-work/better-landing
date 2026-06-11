@@ -489,14 +489,14 @@ yesModalTitlePart2: {
 noModalTitlePart1: {
   en: "Let's ",
   es: "Empecemos a ",
-  de: "Lass uns das ",
+  de: "Lass uns  ",
   pt: "Vamos ",
 },
 noModalTitlePart2: {
-  en: " that.",
-  es: " cambiar.",
-  de: " ändern.",
-  pt: " mudar.",
+  en: " that.", 
+  es: " eso.",  
+  de: " das.",  
+  pt: " isso.", 
 },
   yesModalDesc: {
     en: "Let's build a digital identity that makes you visible, relevant, and recommendable.",
