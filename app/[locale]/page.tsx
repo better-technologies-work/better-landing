@@ -276,11 +276,23 @@ const ui = {
 
   // Chat section
   kitchenTitle: {
-    en: "If customers and AI can't understand",
-    es: "Si los clientes y la IA no pueden entender",
-    de: "Wenn Kunden und KI es nicht verstehen können",
-    pt: "Se os clientes e a IA não conseguirem entender"
-  },
+  en: "If",
+  es: "Si",
+  de: "Wenn",
+  pt: "Se"
+},
+kitchenTitle2: {
+  en: "customers",
+  es: "clientes",
+  de: "Kunden",
+  pt: "clientes"
+},
+kitchenTitle3: {
+  en: "and AI can't understand",
+  es: "y la IA no pueden entender",
+  de: "und KI es nicht verstehen können",
+  pt: "e a IA não conseguirem entender"
+},
   kitchenOpen: { en: "", es: "", de: "", pt: "" },
   century20: {
     en: "Who you are, what you do, and why they should choose you, you're losing opportunities every day.",
@@ -733,11 +745,10 @@ const ChatSection = () => {
   return (
     <section className="py-16 bg-white border-t border-slate-100">
       <div className="max-w-4xl mx-auto px-6 text-center">
-        <p className="text-blue-600 uppercase tracking-[0.2em] text-[10px] mb-4 font-bold">WE DELIVER</p>
-        <p className="text-dark-600 uppercase tracking-[0.2em] text-[10px] mb-4 font-bold">REAL TIME CERTAINTY (RTC)</p>
+        
         <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-12 uppercase tracking-tighter">
-          {tx('kitchenTitle')} <span className="italic underline decoration-blue-100"> {tx('kitchenOpen')} </span>
-        </h2>
+  {tx('kitchenTitle')} <span className="text-blue-600">{tx('kitchenTitle2')}</span> {tx('kitchenTitle3')}
+</h2>
         <p className="text-blue-600 uppercase tracking-[0.2em] text-[10px] mb-4 font-bold">{tx('century20')}</p>
 
         <div className="relative bg-slate-50 border border-slate-100 rounded-3xl p-8 md:p-12 transition-all hover:border-blue-600/30 text-center">
@@ -768,20 +779,7 @@ const ChatSection = () => {
       </button>
     </div>
 
-    <div className="flex flex-wrap justify-center gap-3">
-      {options.map((opt: string) => (
-        <button
-          key={opt}
-          onClick={() => {
-            setSelection(opt);
-            setStep(2);
-          }}
-          className="text-[10px] font-black uppercase tracking-widest px-6 py-3 rounded-full border-2 border-slate-200 bg-white hover:border-blue-600 hover:text-blue-600 transition-all active:scale-95 shadow-sm"
-        >
-          {opt}
-        </button>
-      ))}
-    </div>
+    
   </>
 ) : (
                
@@ -1102,7 +1100,7 @@ const ChatSection = () => {
                   return;
             }
           } catch {
-                    // fallback a originales
+                    
                   }
         }
                   setPosts(data);
@@ -1218,17 +1216,7 @@ useEffect(() => {
                             {tx('problemDesc')}
                           </p>
 
-                          <div className="space-y-4 mb-8">
-                            <p className="text-base line-through decoration-red-600 decoration-2 font-bold italic text-slate-400">BCG Digital Ventures</p>
-                            <p className="text-base line-through decoration-red-600 decoration-2 font-bold italic text-slate-400">McKinsey &amp; Company</p>
-                            <p className="text-base line-through decoration-red-600 decoration-2 font-bold italic text-slate-400">Accenture</p>
-                          </div>
-
-                          <div className="pt-6 border-t border-slate-100">
-                            <p className="text-sm font-bold italic text-slate-900 tracking-tight">
-                              {tx('typicalTickets')} <span className="text-blue-600">€150k - €1M+</span>
-                            </p>
-                          </div>
+                          
                         </div>
 
                         {/* COLUMNA DERECHA  */}
@@ -1243,23 +1231,25 @@ useEffect(() => {
                             {ui.midSized1[locale]}
                           </h2>
 
-                          {/* 3. La descripción larga sacada del h2 para que no explote el diseño */}
+                          {/* 3. descripción  */}
                           <p className="text-lg text-slate-600 font-medium leading-relaxed mb-10 text-balance">
                             {ui.midSized2[locale]}
                           </p>
 
-                          {/* Lista de características  */}
-                          <ul className="space-y-6 text-xl text-slate-600 font-medium mb-10">
-                            <li className="flex items-center gap-4"><span className="w-2 h-2 bg-blue-600 rounded-full flex-shrink-0" />{tx('employees')}</li>
-                            <li className="flex items-center gap-4"><span className="w-2 h-2 bg-blue-600 rounded-full flex-shrink-0" />{tx('multiOps')}</li>
-                            <li className="flex items-center gap-4"><span className="w-2 h-2 bg-blue-600 rounded-full flex-shrink-0" />{tx('longChains')}</li>
-                            <li className="flex items-center gap-4"><span className="w-2 h-2 bg-blue-600 rounded-full flex-shrink-0" />{tx('tradModels')}</li>
-                          </ul>
+                         
                         </div>
 
                       </div>
                     </section>
-
+<div className="py-10 border-t border-slate-100 text-center">
+  <h3 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter uppercase mb-10">
+    {tx('followJourney')} <em className="italic underline decoration-blue-100">{tx('journey')}</em>
+  </h3>
+  <div className="flex justify-center gap-6">
+    <a href="https://www.linkedin.com/company/bettertechnologies/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-6 py-3 rounded-full border-2 border-slate-200 text-slate-900 font-black text-[11px] uppercase tracking-widest hover:border-blue-600 hover:text-blue-600 transition-all"><LinkedInIcon /> LinkedIn</a>
+    <a href="https://www.instagram.com/better_technologies?igsh=MWUwYmkyYXVhdWRucA==" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-6 py-3 rounded-full border-2 border-slate-200 text-slate-900 font-black text-[11px] uppercase tracking-widest hover:border-[#d6249f] hover:text-[#d6249f] transition-all"><InstagramIcon /> Instagram</a>
+  </div>
+</div>
                     {/* 5. PRICING */}
                     <section id="pricing" className="py-20 px-6 bg-white">
                       <div className="max-w-7xl mx-auto text-center">
