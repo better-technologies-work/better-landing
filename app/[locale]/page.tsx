@@ -460,10 +460,26 @@ const ui = {
   noImage: { en: "NO IMAGE", es: "SIN IMAGEN", de: "KEIN BILD", pt: "SEM IMAGEM" },
   noDesc: { en: "No description available", es: "No hay descripcion disponible", de: "Keine Beschreibung verfügbar", pt: "Sem descrição disponível" },
 
-  // Footer
-  dontMiss: { en: "Don't miss a move", es: "No te pierdas ningun movimiento", de: "Verpasse keine Bewegung", pt: "Não perca nenhum movimento" },
-  followJourney: { en: "Follow our", es: "Sigue nuestro", de: "Folge unserem", pt: "Siga nossa" },
-  journey: { en: "journey", es: "camino", de: "Weg", pt: "jornada" },
+  
+
+dontMiss: { 
+  en: "Don't miss a move", 
+  es: "No te pierdas ningun movimiento", 
+  de: "Verpasse keine Bewegung", 
+  pt: "Não perca nenhum movimento" 
+},
+followJourney: { 
+  en: "OUR KITCHEN IS ALWAYS OPEN", 
+  es: "NUESTRA COCINA SIEMPRE ESTÁ ABIERTA", 
+  de: "UNSERE KÜCHE HAT IMMER OFFEN", 
+  pt: "NOSSA COZINHA ESTÁ SEMPRE ABERTA" 
+},
+journey: { 
+  en: "", 
+  es: "", 
+  de: "", 
+  pt: "" 
+},
   // Botones Yes / No
   yesBtn: { en: "Yes", es: "Sí", de: "Ja", pt: "Sim" },
   noBtn: { en: "No", es: "No", de: "Nein", pt: "Não" },
@@ -1249,8 +1265,9 @@ export default function Home() {
       </section>
       <div className="py-10 border-t border-slate-100 text-center">
         <h3 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter uppercase mb-10">
-          {tx('followJourney')} <em className="italic underline decoration-blue-100">{tx('journey')}</em>
-        </h3>
+  {tx('followJourney')}
+ 
+</h3>
         <div className="flex justify-center gap-6">
           <a href="https://www.linkedin.com/company/bettertechnologies/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-6 py-3 rounded-full border-2 border-slate-200 text-slate-900 font-black text-[11px] uppercase tracking-widest hover:border-blue-600 hover:text-blue-600 transition-all"><LinkedInIcon /> LinkedIn</a>
           <a href="https://www.instagram.com/better_technologies?igsh=MWUwYmkyYXVhdWRucA==" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-6 py-3 rounded-full border-2 border-slate-200 text-slate-900 font-black text-[11px] uppercase tracking-widest hover:border-[#d6249f] hover:text-[#d6249f] transition-all"><InstagramIcon /> Instagram</a>
@@ -1411,8 +1428,9 @@ export default function Home() {
       <footer className="py-16 text-center bg-white border-t border-slate-100">
         <p className="text-slate-400 text-[9px] font-black uppercase tracking-[0.3em] mb-4">{tx('dontMiss')}</p>
         <h3 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter uppercase mb-10">
-          {tx('followJourney')} <em className="italic underline decoration-blue-100">{tx('journey')}</em>
-        </h3>
+  {tx('followJourney')}
+  
+</h3>
         <div className="flex justify-center gap-6 mb-12">
           <a href="https://www.linkedin.com/company/bettertechnologies/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-6 py-3 rounded-full border-2 border-slate-200 text-slate-900 font-black text-[11px] uppercase tracking-widest hover:border-blue-600 hover:text-blue-600 transition-all"><LinkedInIcon /> LinkedIn</a>
           <a href="https://www.instagram.com/better_technologies?igsh=MWUwYmkyYXVhdWRucA==" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-6 py-3 rounded-full border-2 border-slate-200 text-slate-900 font-black text-[11px] uppercase tracking-widest hover:border-[#d6249f] hover:text-[#d6249f] transition-all"><InstagramIcon /> Instagram</a>
