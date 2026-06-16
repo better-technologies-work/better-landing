@@ -112,7 +112,7 @@ export default function Header({ showBackButton = false }: HeaderProps) {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
   const router = useRouter();
-  const locale = useLocale(); // Obtiene el idioma actual de forma segura
+  const locale = useLocale();  
   const t = useTranslations("Header");
 
   const menuItems = [
