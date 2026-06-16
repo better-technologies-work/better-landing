@@ -66,7 +66,7 @@ const cleanDescription = post.excerpt?.trim() ||
     .substring(0, 155) + '...' || ''
     
     return {
-      title: `${post.title} | Better Technologies`,
+      title: post.title,
       description: cleanDescription,
       alternates: {
         canonical: postUrl,
