@@ -468,11 +468,11 @@ const ui = {
   yesBtn: { en: "Yes", es: "Sí", de: "Ja", pt: "Sim" },
   noBtn: { en: "No", es: "No", de: "Nein", pt: "Não" },
 
- // Agrega estas claves a tu objeto 'ui'
+ 
 perfect: { en: "Perfect", es: "Perfecto", de: "Perfekt", pt: "Perfeito" },
 change: { en: "Change", es: "Cambiar", de: "Ändern", pt: "Mudar" },
 
-// Modifica las frases para que sean el "resto" de la oración
+
 yesModalTitlePart1: {
   en: ", now make your business impossible to ",
   es: ", ahora volvé tu negocio imposible de ",

@@ -10,32 +10,32 @@ export async function generateMetadata({
 }) {
   const { locale } = await params;
 
-  const titles: Record<string, string> = {
-    en: "Better Technologies - Global Operations",
-    es: "Better Technologies - Operaciones Globales",
-  };
+  const defaultTitle = locale === "es" 
+    ? "Better Technologies - Operaciones Globales" 
+    : "Better Technologies - Global Operations";
 
-  const descriptions: Record<string, string> = {
-    en: "We operate LATAM for Global companies",
-    es: "Operamos en LATAM para empresas globales",
-  };
+  const description = locale === "es"
+    ? "Operamos en LATAM para empresas globales"
+    : "We operate LATAM for Global companies";
 
   return {
-    title: titles[locale] || titles.en,
-    description: descriptions[locale] || descriptions.en,
-    
+    title: {
+      default: defaultTitle,
+      template: "%s | Better Technologies",
+    },
+    description,
     icons: {
-      icon: "/favicon.jpeg", 
+      icon: "/favicon.jpeg",
       apple: "/favicon.jpeg",
     },
     openGraph: {
-      title: titles[locale] || titles.en,
-      description: descriptions[locale] || descriptions.en,
+      title: defaultTitle,
+      description,
       url: "https://better-technologies.com",
       siteName: "Better Technologies",
       images: [
         {
-          url: "https://better-technologies.com/logo.png", 
+          url: "https://better-technologies.com/logo.png",
           width: 1200,
           height: 630,
           alt: "Better Technologies Logo",
@@ -46,8 +46,8 @@ export async function generateMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      title: titles[locale] || titles.en,
-      description: descriptions[locale] || descriptions.en,
+      title: defaultTitle,
+      description,
       images: ["https://better-technologies.com/logo.png"],
     },
   };
@@ -72,7 +72,6 @@ export default async function RootLayout({
     <html lang={locale} className="scroll-smooth" data-scroll-behavior="smooth">
       <head>
         <meta name="google-site-verification" content="J7VCxn6EbL_NSAY-uf38AMFBYwIUmpiGW_SGCjZ34Xg" />
-
         <Script id="organization-schema" type="application/ld+json">
           {`{
             "@context": "https://schema.org",
@@ -87,7 +86,6 @@ export default async function RootLayout({
             ]
           }`}
         </Script>
-
         {gaId && (
           <>
             <Script
