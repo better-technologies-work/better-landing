@@ -31,11 +31,11 @@ export async function generateMetadata({
     openGraph: {
       title: defaultTitle,
       description,
-      url: "https://better-technologies.com",
+      url: "https://www.better-technologies.com",
       siteName: "Better Technologies",
       images: [
         {
-          url: "https://better-technologies.com/logo.png",
+          url: "https://www.better-technologies.com/logo.png",
           width: 1200,
           height: 630,
           alt: "Better Technologies Logo",
@@ -48,7 +48,7 @@ export async function generateMetadata({
       card: "summary_large_image",
       title: defaultTitle,
       description,
-      images: ["https://better-technologies.com/logo.png"],
+      images: ["https://www.better-technologies.com/logo.png"],
     },
   };
 }
@@ -77,8 +77,8 @@ export default async function RootLayout({
             "@context": "https://schema.org",
             "@type": "Organization",
             "name": "Better Technologies",
-            "url": "https://better-technologies.com",
-            "logo": "https://better-technologies.com/logo.png",
+            "url": "https://www.better-technologies.com",
+            "logo": "https://www.better-technologies.com/logo.png",
             "description": "We operate LATAM for Global companies",
             "sameAs": [
               "https://www.linkedin.com/company/bettertechnologies/",

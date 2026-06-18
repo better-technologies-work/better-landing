@@ -55,7 +55,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       }
     }
 
-    const baseUrl = 'https://better-technologies.com'
+    const baseUrl = 'https://www.better-technologies.com'
     const postUrl = `${baseUrl}${locale === 'en' ? '' : `/${locale}`}/blog/${slug}`
 const cleanDescription = post.excerpt?.trim() ||
   post.description
