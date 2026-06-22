@@ -5,7 +5,7 @@ import Image from 'next/image'
 import ReactMarkdown from 'react-markdown'
 import { translatePosts } from '@/lib/translate'
 import { Metadata } from 'next'
-
+import BackButton from '@/components/BackButton' 
 type Link = {
   id: string;
   title: string;
@@ -176,10 +176,13 @@ export default async function BlogPostPage({ params }: Props) {
         <div className="relative w-[100px] md:w-[140px] h-[30px] md:h-[40px]">
           <Image src="/logo.png" alt="Better Technologies" fill sizes="140px" className="object-contain" priority />
         </div>
-        <a href={`${localeBase}/#blog`} className="text-white text-[8px] md:text-[10px] font-black uppercase tracking-widest hover:text-blue-600 transition-colors">
-          {isEs ? '← Volver' : '← Back'}
-        </a>
-      </header>
+        <BackButton 
+    locale={locale}
+    esText="Volver" 
+    enText="Back" 
+    className="text-white text-[8px] md:text-[10px] font-black uppercase tracking-widest hover:text-blue-600 transition-colors"
+  />
+</header>
 
       {/* ── HERO IMAGE ── */}
       <div className="w-full h-[50vh] relative overflow-hidden mt-[72px]">
@@ -279,13 +282,19 @@ export default async function BlogPostPage({ params }: Props) {
         )}
 
         <div className="mt-16 pt-8 border-t border-slate-100 flex justify-between items-center">
-          <a href={`/${locale}/#blog`} className="text-[10px] font-black uppercase tracking-widest text-slate-400 hover:text-blue-600 transition-colors">
-            {isEs ? '← Todos los posts' : '← All posts'}
-          </a>
-          <a href={`/${locale}/#about`} className="text-[10px] font-black uppercase tracking-widest text-blue-600 hover:underline">
-            {isEs ? 'Conoce al equipo →' : 'Meet the team →'}
-          </a>
-        </div>
+  {/* Reemplazamos el <a> por el componente BackButton */}
+  <BackButton 
+    locale={locale}
+    esText="Todos los posts" 
+    enText="All posts" 
+    className="text-[10px] font-black uppercase tracking-widest text-slate-400 hover:text-blue-600 transition-colors"
+  />
+  
+  {/* Mantenemos el enlace al equipo tal cual estaba */}
+  <a href={`/${locale}/#about`} className="text-[10px] font-black uppercase tracking-widest text-blue-600 hover:underline">
+    {isEs ? 'Conoce al equipo →' : 'Meet the team →'}
+  </a>
+</div>
       </article>
     </main>
   )
