@@ -6,6 +6,7 @@ import { decodeHTML } from "@/lib/utils";
 import dynamicImport from 'next/dynamic';
 import { useLocale } from "next-intl";
 import Header from "@/components/Header";
+import DashboardAuth from "@/components/DashboardAuth";
 
 // Estilos del editor
 import 'react-quill-new/dist/quill.snow.css';
@@ -485,6 +486,7 @@ export default function DashboardPage() {
   };
 
   return (
+     <DashboardAuth>
     <main className="min-h-screen bg-slate-50">
       <Header />
       <div className="max-w-5xl mx-auto p-4 md:p-12 pt-24 md:pt-28">
@@ -934,5 +936,6 @@ export default function DashboardPage() {
         )}
       </div>
     </main>
+    </DashboardAuth>
   );
 }
