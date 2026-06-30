@@ -761,7 +761,11 @@ const ChatSection = () => {
     const message = encodeURIComponent(msgFn(option));
     window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
   };
-
+ const getCalendlyUrl = () => {
+  return assessmentType === "15 min - Free Call"
+    ? "https://calendar.app.google/Ntnv2PvHmPNgCnKZ6"
+    : "https://calendar.app.google/74Sc4peRwuJ3eJ8W7";
+};
   return (
     <section className="py-16 bg-white border-t border-slate-100">
       <div className="max-w-4xl mx-auto px-6 text-center">
@@ -881,7 +885,7 @@ const ChatSection = () => {
               </div>
 
               <a
-                href="https://calendly.com/diego-placeholder"
+                href={getCalendlyUrl()}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full flex justify-center bg-blue-600 text-white py-4 rounded-full font-black uppercase tracking-widest text-xs"
@@ -951,7 +955,7 @@ const ChatSection = () => {
               </div>
 
               <a
-                href="https://calendly.com/diego-placeholder"
+                href={getCalendlyUrl()}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full flex justify-center bg-blue-600 text-white py-4 rounded-full font-black uppercase tracking-widest text-xs"
