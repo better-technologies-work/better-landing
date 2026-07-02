@@ -47,7 +47,7 @@ export default function BlogPage() {
     try {
       const client = createClient()
       
-      // TRAEMOS TODO (Sin filtro de idioma para que la API traduzca lo que encuentre)
+      
       const { data, error: supabaseError } = await client
         .from('blog_posts')
         .select('*')

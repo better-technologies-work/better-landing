@@ -235,18 +235,18 @@ const belandTags = ["React Native", "Payments", "Delivery", "Circular Economy"];
 const ui = {
   // Hero
   openLatam: {
-    en: "We Increase Your Digital Reach and Growth",
-    es: "Aumentamos tu alcance digital y crecimiento",
-    de: "Wir steigern Ihre digitale Reichweite und Ihr Wachstum",
-    pt: "Aumentamos o seu alcance digital e crescimento"
-  },
+  en: "The market doesn't reward followers. It belongs to leaders.",
+  es: "El mercado no premia a los que siguen. Le pertenece a los que lideran.",
+  de: "Der Markt belohnt keine Mitläufer. Er gehört den Führenden.",
+  pt: "O mercado não recompensa quem segue. Ele pertence a quem lidera."
+},
   globalCompanies: { en: "", es: "", de: "", pt: "" },
   subtagline: {
-    en: "Dream beyond limits. Build better. Be found.",
-    es: "Sueña sin límites. Construye mejor. Hazte notar.",
-    de: "Träumen Sie grenzenlos. Bauen Sie besser. Werden Sie gefunden.",
-    pt: "Sonhe além dos limites. Construa melhor. Seja encontrado.",
-  },
+  en: " We don't just write code. We are business architects, experience designers, and ecosystem builders. We engineer integrated Growth Systems for ambitious organizations determined to dominate their industries. We are not a fit for followers or companies looking for quick marketing patches. We build ecosystems for leaders.",
+  es: "No solo escribimos código. Somos arquitectos de negocios, diseñadores de experiencias y constructores de ecosistemas. Diseñamos Sistemas de Crecimiento integrados para organizaciones ambiciosas decididas a dominar su industria. No somos para seguidores ni para empresas que buscan parches rápidos de marketing. Construimos ecosistemas para líderes.",
+  de: "Wir schreiben nicht nur Code. Wir sind Geschäftsarchitekten, Experience Designer und Ökosystem-Builder. Wir entwickeln integrierte Wachstumssysteme für ambitionierte Unternehmen, die entschlossen sind, ihre Branche zu dominieren. Wir sind nicht die richtige Wahl für Mitläufer oder Unternehmen, die schnelle Marketing-Flicken suchen. Wir bauen Ökosysteme für Führende.",
+  pt: "Não escrevemos apenas código. Somos arquitetos de negócios, designers de experiência e construtores de ecossistemas. Projetamos Sistemas de Crescimento integrados para organizações ambiciosas determinadas a dominar seus setores. Não somos indicados para seguidores ou empresas em busca de soluções rápidas de marketing. Construímos ecossistemas para líderes.",
+},
   getInTouch: { en: "Get in touch", es: "Contactar ahora", de: "Kontakt aufnehmen", pt: "Entre em contato" },
 
   // News section
@@ -276,30 +276,25 @@ const ui = {
 
   // Chat section
   kitchenTitle: {
-    en: "If",
-    es: "Si",
-    de: "Wenn",
-    pt: "Se"
-  },
-  kitchenTitle2: {
-    en: "customers",
-    es: "clientes",
-    de: "Kunden",
-    pt: "clientes"
-  },
-  kitchenTitle3: {
-    en: "and AI can't understand",
-    es: "y la IA no pueden entender",
-    de: "und KI es nicht verstehen können",
-    pt: "e a IA não conseguirem entender"
-  },
+  en: " THE AWAKENING & ",
+  es: " EL DESPERTAR & ",
+  de: " DAS ERWACHEN & ",
+  pt: " O DESPERTAR & "
+},
+kitchenTitle2: {
+  en: "THE PACK ",
+  es: "LA MANADA ",
+  de: "DAS RUDEL ",
+  pt: "A ALCATEIA "
+},
+  
   kitchenOpen: { en: "", es: "", de: "", pt: "" },
-  century20: {
-    en: "Who you are, what you do, and why they should choose you, you're losing opportunities every day.",
-    es: "Quién eres, qué haces y por qué deberían elegirte, estás perdiendo oportunidades todos los días.",
-    de: "Wer Sie sind, was Sie tun und warum man sich für Sie entscheiden sollte – Sie verlieren jeden Tag Chancen.",
-    pt: "Quem você é, o que faz e por que deveriam escolher você, você está perdendo oportunidades todos os dias."
-  },
+ century20: {
+  en: "The Problem & The Unfair Advantage.",
+  es: "El Problema y La Ventaja Injusta.",
+  de: "Das Problem & Der unfaire Vorteil.",
+  pt: "O Problema & A Vantagem Injusta."
+},
   howCanHelp: { en: "If someone searches for your business today,", es: "¿Si alguien busca tu negocio hoy,", de: "Wenn heute jemand nach Ihrem Unternehmen sucht,", pt: "Se alguém buscar pelo seu negócio hoje," },
   theTeam: { en: " can they actually", es: " ¿realmente puede", de: " kann er Sie dann tatsächlich", pt: " conseguirá realmente" },
   helpToday: { en: " find you?", es: " encontrarte?", de: " finden?", pt: " te encontrar?" },
@@ -406,18 +401,51 @@ const ui = {
   },
   typicalTickets: { en: "Typical tickets:", es: "Tickets típicos:", de: "Typische Tickets:", pt: "Tickets típicos:" },
   ourCustomers: { en: "WHATS NEXT?", es: "¿QUÉ SIGUE?", de: "WAS KOMMT ALS NÄCHSTES?", pt: "O QUE VEM A SEGUIR?" },
-  midSized1: { en: "Grow by Design", es: "Crecer por Diseño", de: "Wachsen durch Design", pt: "Crescer por Design" },
-  midSized2: {
-    en: "Build a business that customers, search engines, and AI can understand, trust and recommend.",
-    es: "Construye un negocio que los clientes, los motores de búsqueda y la IA puedan entender, confiar y recomendar.",
-    de: "Bauen Sie ein Unternehmen auf, das Kunden, Suchmaschinen und KI verstehen, dem sie vertrauen und das sie weiterempfehlen können.",
-    pt: "Construa um negócio que clientes, mecanismos de busca e IA possam entender, confiar e recomendar."
-  },
+midSized1: {
+  en: " Your customers aren't searching for you anymore; they are asking AI",
+  es: "Tus clientes ya no te buscan; le preguntan a la IA",
+  de: "Ihre Kunden suchen nicht mehr nach Ihnen; sie fragen die KI",
+  pt: "Seus clientes já não te procuram; eles perguntam à IA"
+},  midSized2: {
+  en: "Market leaders have thrived chasing likes, so far. But the rules of the hunt have changed.",
+  es: "Los líderes del mercado prosperaron persiguiendo likes, hasta ahora. Pero las reglas de la caza cambiaron.",
+  de: "Marktführer sind bisher erfolgreich gewesen, indem sie Likes gejagt haben. Doch die Regeln der Jagd haben sich geändert.",
+  pt: "Os líderes de mercado prosperaram perseguindo likes, até agora. Mas as regras da caçada mudaram."
+},
   employees: { en: "50–500 employees", es: "50–500 empleados", de: "50–500 Mitarbeiter", pt: "50–500 funcionários" },
   multiOps: { en: "Operations across multiple countries / regions", es: "Operaciones en multiples paises / regiones", de: "Betrieb in mehreren Ländern / Regionen", pt: "Operações em vários países / regiões" },
   longChains: { en: "Dependent on long supply chains", es: "Dependientes de cadenas de suministro largas", de: "Abhängig von langen Lieferketten", pt: "Dependentes de longas cadeias de suprimento" },
   tradModels: { en: "Traditional business models", es: "Modelos de negocio tradicionales", de: "Traditionelle Geschäftsmodelle", pt: "Modelos de negócios tradicionais" },
-
+packButtonLabel: {
+  en: " Why Us?",
+  es: " ¿Por qué nosotros?",
+  de: " Warum wir?",
+  pt: " Por que nós?"
+},
+packModalTitle: {
+  en: "The Pack",
+  es: "La Manada",
+  de: "Das Rudel",
+  pt: "A Alcateia"
+},
+packModalQuote: {
+  en: "The strength of the wolf is the pack, and the strength of the pack is the wolf.",
+  es: "La fuerza del lobo es la manada, y la fuerza de la manada es el lobo.",
+  de: "Die Stärke des Wolfs ist das Rudel, und die Stärke des Rudels ist der Wolf.",
+  pt: "A força do lobo é a alcateia, e a força da alcateia é o lobo."
+},
+packModalBody: {
+  en: "Dominating this new landscape means acquiring world-class capabilities overnight. True leaders know that attempting to build an elite tech team from scratch takes years and bleeds capital; so they don't hunt alone. They plug into a superior ecosystem. We are your pack. By partnering with us, you integrate strategy, engineering, and growth systems instantly, at a fraction of the cost of an internal team. There is no other firm in the market deploying this level of integrated firepower. We hunt together. We thrive together.",
+  es: "Dominar este nuevo panorama significa adquirir capacidades de clase mundial de la noche a la mañana. Los verdaderos líderes saben que intentar construir un equipo tecnológico de élite desde cero toma años y consume capital; por eso no cazan solos. Se conectan a un ecosistema superior. Nosotros somos tu manada. Al asociarte con nosotros, integrás estrategia, ingeniería y sistemas de crecimiento al instante, a una fracción del costo de un equipo interno. No hay otra firma en el mercado que despliegue este nivel de poder de fuego integrado. Cazamos juntos. Prosperamos juntos.",
+  de: "Diese neue Landschaft zu dominieren bedeutet, über Nacht Weltklasse-Fähigkeiten zu erwerben. Wahre Führungskräfte wissen, dass der Aufbau eines Elite-Tech-Teams von Grund auf Jahre dauert und Kapital verschlingt; deshalb jagen sie nicht allein. Sie schließen sich einem überlegenen Ökosystem an. Wir sind Ihr Rudel. Durch die Partnerschaft mit uns integrieren Sie Strategie, Engineering und Wachstumssysteme sofort, zu einem Bruchteil der Kosten eines internen Teams. Keine andere Firma am Markt setzt dieses Maß an integrierter Schlagkraft ein. Wir jagen gemeinsam. Wir wachsen gemeinsam.",
+  pt: "Dominar esse novo cenário significa adquirir capacidades de classe mundial da noite para o dia. Verdadeiros líderes sabem que tentar construir uma equipe tecnológica de elite do zero leva anos e consome capital; por isso não caçam sozinhos. Eles se conectam a um ecossistema superior. Nós somos a sua alcateia. Ao se associar conosco, você integra estratégia, engenharia e sistemas de crescimento instantaneamente, por uma fração do custo de uma equipe interna. Não há outra empresa no mercado implantando esse nível de poder de fogo integrado. Caçamos juntos. Prosperamos juntos."
+},
+closeButton: {
+  en: "Close",
+  es: "Cerrar",
+  de: "Schließen",
+  pt: "Fechar"
+},
   // Pricing
   whatWeDeliver: { en: "Our", es: "Nuestros", de: "Unsere", pt: "Nossos" },
   weDeliver: { en: "Services", es: "Servicios", de: "Dienstleistungen", pt: "Serviços" },
@@ -460,60 +488,60 @@ const ui = {
   noImage: { en: "NO IMAGE", es: "SIN IMAGEN", de: "KEIN BILD", pt: "SEM IMAGEM" },
   noDesc: { en: "No description available", es: "No hay descripcion disponible", de: "Keine Beschreibung verfügbar", pt: "Sem descrição disponível" },
 
-  
 
-dontMiss: { 
-  en: "Don't miss a move", 
-  es: "No te pierdas ningun movimiento", 
-  de: "Verpasse keine Bewegung", 
-  pt: "Não perca nenhum movimento" 
-},
-followJourney: { 
-  en: "OUR KITCHEN IS ALWAYS OPEN", 
-  es: "NUESTRA COCINA SIEMPRE ESTÁ ABIERTA", 
-  de: "UNSERE KÜCHE HAT IMMER OFFEN", 
-  pt: "NOSSA COZINHA ESTÁ SEMPRE ABERTA" 
-},
-journey: { 
-  en: "", 
-  es: "", 
-  de: "", 
-  pt: "" 
-},
+
+  dontMiss: {
+    en: "Don't miss a move",
+    es: "No te pierdas ningun movimiento",
+    de: "Verpasse keine Bewegung",
+    pt: "Não perca nenhum movimento"
+  },
+  followJourney: {
+    en: "OUR KITCHEN IS ALWAYS OPEN",
+    es: "NUESTRA COCINA SIEMPRE ESTÁ ABIERTA",
+    de: "UNSERE KÜCHE HAT IMMER OFFEN",
+    pt: "NOSSA COZINHA ESTÁ SEMPRE ABERTA"
+  },
+  journey: {
+    en: "",
+    es: "",
+    de: "",
+    pt: ""
+  },
   // Botones Yes / No
   yesBtn: { en: "Yes", es: "Sí", de: "Ja", pt: "Sim" },
   noBtn: { en: "No", es: "No", de: "Nein", pt: "Não" },
 
- 
-perfect: { en: "Perfect", es: "Perfecto", de: "Perfekt", pt: "Perfeito" },
-change: { en: "Change", es: "Cambiar", de: "Ändern", pt: "Mudar" },
+
+  perfect: { en: "Perfect", es: "Perfecto", de: "Perfekt", pt: "Perfeito" },
+  change: { en: "Change", es: "Cambiar", de: "Ändern", pt: "Mudar" },
 
 
-yesModalTitlePart1: {
-  en: ", now make your business impossible to ",
-  es: ", ahora volvé tu negocio imposible de ",
-  de: ", mach dein Unternehmen unmöglich zu ",
-  pt: ", agora torne o seu negócio impossível de ",
-},
-yesModalTitlePart2: {
-  en: " ignore.",
-  es: " ignorar.",
-  de: " ignorieren.",
-  pt: " ignorar.",
-},
+  yesModalTitlePart1: {
+    en: ", now make your business impossible to ",
+    es: ", ahora volvé tu negocio imposible de ",
+    de: ", mach dein Unternehmen unmöglich zu ",
+    pt: ", agora torne o seu negócio impossível de ",
+  },
+  yesModalTitlePart2: {
+    en: " ignore.",
+    es: " ignorar.",
+    de: " ignorieren.",
+    pt: " ignorar.",
+  },
 
-noModalTitlePart1: {
-  en: "Let's ",
-  es: "Empecemos a ",
-  de: "Lass uns  ",
-  pt: "Vamos ",
-},
-noModalTitlePart2: {
-  en: " that.", 
-  es: " eso.",  
-  de: " das.",  
-  pt: " isso.", 
-},
+  noModalTitlePart1: {
+    en: "Let's ",
+    es: "Empecemos a ",
+    de: "Lass uns  ",
+    pt: "Vamos ",
+  },
+  noModalTitlePart2: {
+    en: " that.",
+    es: " eso.",
+    de: " das.",
+    pt: " isso.",
+  },
   yesModalDesc: {
     en: "Let's build a digital identity that makes you visible, relevant, and recommendable.",
     es: "Construyamos una identidad digital que te haga visible, relevante y recomendable.",
@@ -521,7 +549,7 @@ noModalTitlePart2: {
     pt: "Vamos construir uma identidade digital que te torne visível, relevante e recomendável.",
   },
 
-  
+
   noModalDesc: {
     en: "Start with your first digital touchpoint and build the foundation of your digital identity.",
     es: "Empieza con tu primer punto de contacto digital y construye la base de tu identidad digital.",
@@ -541,11 +569,11 @@ noModalTitlePart2: {
   bookAssessment: { en: "Book Assessment", es: "Reservar evaluación", de: "Bewertung buchen", pt: "Agendar avaliação" },
   goBackModal: { en: "Go Back", es: "Volver", de: "Zurück", pt: "Voltar" },
   // En tu objeto de traducciones
-lets: { en: "Let's ", es: "Empecemos ", de: "Lass uns ", pt: "Vamos " },
-startToday: { en: "Start Today", es: "hoy mismo", de: "heute beginnen", pt: "começar hoje" },
+  lets: { en: "Let's ", es: "Empecemos ", de: "Lass uns ", pt: "Vamos " },
+  startToday: { en: "Start Today", es: "hoy mismo", de: "heute beginnen", pt: "começar hoje" },
 
-dream: { en: "Just the way you dream. Only ", es: "Tal como lo soñaste. Solo que ", de: "Genau wie du es dir erträumst. Nur ", pt: "Exatamente como você sonhou. Só que " },
-better: { en: "Better.", es: "mejor.", de: "besser.", pt: "melhor." },
+  dream: { en: "Just the way you dream. Only ", es: "Tal como lo soñaste. Solo que ", de: "Genau wie du es dir erträumst. Nur ", pt: "Exatamente como você sonhou. Só que " },
+  better: { en: "Better.", es: "mejor.", de: "besser.", pt: "melhor." },
 
 } as const;
 
@@ -761,17 +789,17 @@ const ChatSection = () => {
     const message = encodeURIComponent(msgFn(option));
     window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
   };
- const getCalendlyUrl = () => {
-  return assessmentType === "15 min - Free Call"
-    ? "https://calendar.app.google/Ntnv2PvHmPNgCnKZ6"
-    : "https://calendar.app.google/74Sc4peRwuJ3eJ8W7";
-};
+  const getCalendlyUrl = () => {
+    return assessmentType === "15 min - Free Call"
+      ? "https://calendar.app.google/Ntnv2PvHmPNgCnKZ6"
+      : "https://calendar.app.google/74Sc4peRwuJ3eJ8W7";
+  };
   return (
     <section className="py-16 bg-white border-t border-slate-100">
       <div className="max-w-4xl mx-auto px-6 text-center">
 
         <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-12 uppercase tracking-tighter">
-          {tx('kitchenTitle')} <span className="text-blue-600">{tx('kitchenTitle2')}</span> {tx('kitchenTitle3')}
+          {tx('kitchenTitle')} <span className="text-blue-600">{tx('kitchenTitle2')}</span> 
         </h2>
         <p className="text-blue-600 uppercase tracking-[0.2em] text-[10px] mb-4 font-bold">{tx('century20')}</p>
 
@@ -848,11 +876,11 @@ const ChatSection = () => {
               exit={{ scale: 0.95, opacity: 0 }}
               className="bg-white rounded-3xl p-8 max-w-xl w-full"
             >
-       <h3 className="text-3xl font-black text-slate-900 mb-4">
-  <span className="text-orange-500 font-black">{tx('perfect')}</span>
-  {tx('yesModalTitlePart1')}
-  {tx('yesModalTitlePart2')}
-</h3>
+              <h3 className="text-3xl font-black text-slate-900 mb-4">
+                <span className="text-orange-500 font-black">{tx('perfect')}</span>
+                {tx('yesModalTitlePart1')}
+                {tx('yesModalTitlePart2')}
+              </h3>
 
               <p className="text-slate-600 mb-8">
                 {tx('yesModalDesc')}
@@ -918,11 +946,11 @@ const ChatSection = () => {
               exit={{ scale: 0.95, opacity: 0 }}
               className="bg-white rounded-3xl p-8 max-w-xl w-full"
             >
- <h3 className="text-3xl font-black text-slate-900 mb-4">
-  {tx('noModalTitlePart1')}
-  <span className="text-orange-500 font-black">{tx('change')}</span>
-  {tx('noModalTitlePart2')}
-</h3>
+              <h3 className="text-3xl font-black text-slate-900 mb-4">
+                {tx('noModalTitlePart1')}
+                <span className="text-orange-500 font-black">{tx('change')}</span>
+                {tx('noModalTitlePart2')}
+              </h3>
 
               <p className="text-slate-600 mb-8">
                 {tx('noModalDesc')}
@@ -936,8 +964,8 @@ const ChatSection = () => {
                 <button
                   onClick={() => setAssessmentType("15 min - Free Call")}
                   className={`rounded-full border-2 px-6 py-3 font-black uppercase text-xs ${assessmentType === "15 min - Free Call"
-                      ? "border-blue-600 text-blue-600"
-                      : "border-slate-200"
+                    ? "border-blue-600 text-blue-600"
+                    : "border-slate-200"
                     }`}
                 >
                   {tx('assessment15min')}
@@ -946,8 +974,8 @@ const ChatSection = () => {
                 <button
                   onClick={() => setAssessmentType("1 Hour - $50")}
                   className={`rounded-full border-2 px-6 py-3 font-black uppercase text-xs ${assessmentType === "1 Hour - $50"
-                      ? "border-blue-600 text-blue-600"
-                      : "border-slate-200"
+                    ? "border-blue-600 text-blue-600"
+                    : "border-slate-200"
                     }`}
                 >
                   {tx('assessment1h')}
@@ -1097,11 +1125,11 @@ export default function Home() {
   const [isMobile, setIsMobile] = useState(false);
   const [selected, setSelected] = useState<number | null>(null);
   const [showMachinesModal, setShowMachinesModal] = useState(false);
-
+  const [isPackModalOpen, setIsPackModalOpen] = useState(false);
   const teamMap = { en: team, es: teamEs, de: teamDe, pt: teamPt };
   const teamData = teamMap[locale] ?? team;
   const localeBase = locale === 'en' ? '' : `/${locale}`;
-
+  
   // Fetch posts con traducción multi-idioma
   useEffect(() => {
     const fetchPosts = async () => {
@@ -1225,27 +1253,13 @@ export default function Home() {
       {/* 3. CHAT */}
       <ChatSection />
 
-      {/* 4. MITTELSTAND */}
+      
+
+         {/* 4. MITTELSTAND */}
       <section id="mittelstand" className="py-12 md:py-24 px-6 bg-slate-50 border-y border-slate-200">
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-20 items-center">
 
-
-          {/* COLUMNA IZQUIERDA */}
-          <div className="bg-white p-12 rounded-3xl border border-slate-200 shadow-sm transition-all hover:shadow-md">
-            <p className="text-sm font-bold tracking-wider text-slate-400 uppercase mb-3">
-              {tx('problemTitle')}
-            </p>
-            <h3 className="text-3xl font-bold text-blue-600 mb-6 leading-tight">
-              {tx('problemSubtitle')}
-            </h3>
-            <p className="text-slate-600 text-lg leading-relaxed mb-10">
-              {tx('problemDesc')}
-            </p>
-
-
-          </div>
-
-          {/* COLUMNA DERECHA  */}
+          {/* COLUMNA IZQUIERDA (antes derecha) */}
           <div>
             {/*  "WHATS NEXT?" */}
             <span className="text-sm font-black uppercase tracking-[0.2em] text-blue-600 block mb-3">
@@ -1262,16 +1276,76 @@ export default function Home() {
               {ui.midSized2[locale]}
             </p>
 
+            {/* BOTÓN THE PACK */}
+            <button
+              onClick={() => setIsPackModalOpen(true)}
+              className="inline-flex items-center gap-2 bg-blue-600 text-white font-bold px-8 py-4 rounded-full hover:bg-blue-700 transition-colors"
+            >
+              {ui.packButtonLabel[locale]}
+            </button>
+          </div>
 
+          {/* COLUMNA DERECHA (antes izquierda) */}
+          <div className="bg-white p-12 rounded-3xl border border-slate-200 shadow-sm transition-all hover:shadow-md">
+            <p className="text-sm font-bold tracking-wider text-slate-400 uppercase mb-3">
+              {tx('problemTitle')}
+            </p>
+            <h3 className="text-3xl font-bold text-blue-600 mb-6 leading-tight">
+              {tx('problemSubtitle')}
+            </h3>
+            <p className="text-slate-600 text-lg leading-relaxed mb-10">
+              {tx('problemDesc')}
+            </p>
           </div>
 
         </div>
+
+        {/* MODAL THE PACK */}
+        {isPackModalOpen && (
+          <div
+            className="fixed inset-0 bg-black/60 flex items-center justify-center z-50 px-4"
+            onClick={() => setIsPackModalOpen(false)}
+          >
+            <div
+              className="bg-white rounded-3xl max-w-2xl w-full p-10 md:p-12 relative max-h-[85vh] overflow-y-auto"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button
+                onClick={() => setIsPackModalOpen(false)}
+                className="absolute top-6 right-6 text-slate-400 hover:text-slate-900 transition-colors text-2xl leading-none"
+                aria-label={ui.closeButton[locale]}
+              >
+                ×
+              </button>
+
+              <h3 className="text-3xl font-black text-slate-900 mb-4 uppercase tracking-tight">
+                {ui.packModalTitle[locale]}
+              </h3>
+
+              <p className="text-blue-600 font-bold text-lg italic mb-6">
+                "{ui.packModalQuote[locale]}"
+              </p>
+
+              <p className="text-slate-600 text-lg leading-relaxed mb-8">
+                {ui.packModalBody[locale]}
+              </p>
+
+              <button
+                onClick={() => setIsPackModalOpen(false)}
+                className="bg-slate-900 text-white font-bold px-8 py-3 rounded-full hover:bg-slate-800 transition-colors"
+              >
+                {ui.closeButton[locale]}
+              </button>
+            </div>
+          </div>
+        )}
       </section>
+
       <div className="py-10 border-t border-slate-100 text-center">
         <h3 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter uppercase mb-10">
-  {tx('followJourney')}
- 
-</h3>
+          {tx('followJourney')}
+
+        </h3>
         <div className="flex justify-center gap-6">
           <a href="https://www.linkedin.com/company/bettertechnologies/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-6 py-3 rounded-full border-2 border-slate-200 text-slate-900 font-black text-[11px] uppercase tracking-widest hover:border-blue-600 hover:text-blue-600 transition-all"><LinkedInIcon /> LinkedIn</a>
           <a href="https://www.instagram.com/better_technologies?igsh=MWUwYmkyYXVhdWRucA==" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-6 py-3 rounded-full border-2 border-slate-200 text-slate-900 font-black text-[11px] uppercase tracking-widest hover:border-[#d6249f] hover:text-[#d6249f] transition-all"><InstagramIcon /> Instagram</a>
@@ -1325,17 +1399,17 @@ export default function Home() {
       </section>
 
       <div className="py-16 px-6 bg-white text-center">
-  <div className="max-w-4xl mx-auto">
-    <h2 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter uppercase mb-2">
-      {tx('lets')}
-      <span className="text-blue-600">{tx('startToday')}</span>
-    </h2>
-    <p className="text-slate-500 font-medium italic text-lg md:text-xl tracking-tight">
-      {tx('dream')}
-      <span className="text-orange-500 font-black">{tx('better')}</span>
-    </p>
-  </div>
-</div>
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter uppercase mb-2">
+            {tx('lets')}
+            <span className="text-blue-600">{tx('startToday')}</span>
+          </h2>
+          <p className="text-slate-500 font-medium italic text-lg md:text-xl tracking-tight">
+            {tx('dream')}
+            <span className="text-orange-500 font-black">{tx('better')}</span>
+          </p>
+        </div>
+      </div>
       {/* 6. EQUIPO */}
       <section id="about" className="py-16 px-6 bg-white border-t border-slate-100">
         <div className="max-w-4xl mx-auto">
@@ -1432,9 +1506,9 @@ export default function Home() {
       <footer className="py-16 text-center bg-white border-t border-slate-100">
         <p className="text-slate-400 text-[9px] font-black uppercase tracking-[0.3em] mb-4">{tx('dontMiss')}</p>
         <h3 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter uppercase mb-10">
-  {tx('followJourney')}
-  
-</h3>
+          {tx('followJourney')}
+
+        </h3>
         <div className="flex justify-center gap-6 mb-12">
           <a href="https://www.linkedin.com/company/bettertechnologies/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-6 py-3 rounded-full border-2 border-slate-200 text-slate-900 font-black text-[11px] uppercase tracking-widest hover:border-blue-600 hover:text-blue-600 transition-all"><LinkedInIcon /> LinkedIn</a>
           <a href="https://www.instagram.com/better_technologies?igsh=MWUwYmkyYXVhdWRucA==" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-6 py-3 rounded-full border-2 border-slate-200 text-slate-900 font-black text-[11px] uppercase tracking-widest hover:border-[#d6249f] hover:text-[#d6249f] transition-all"><InstagramIcon /> Instagram</a>
