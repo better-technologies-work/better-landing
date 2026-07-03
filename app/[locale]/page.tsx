@@ -8,6 +8,8 @@ import Header from "@/components/Header";
 import BetterEcosystemSection from "@/components/BetterEcosystemSection";
 import { useLocale, useTranslations } from 'next-intl';
 import FinalChallenge from '@/components/FinalChallenge'
+import GlobalAccessMechanism from "@/components/GlobalAccessMechanism";
+import GrowthCapabilities from "@/components/GrowthCapabilities";
 
 // ─── TYPES ───────────────────────────────────────────────────────────────────
 type Locale = 'en' | 'es' | 'de' | 'pt';
@@ -595,6 +597,47 @@ finalChallenge: {
   de: "Die Letzte Herausforderung",
   pt: "O Desafio Final"
 },
+scholarshipHeadline: {
+  en: "The Better Underdog & Endangered Territories Scholarship.",
+  es: "La beca Better Underdog & Territorios en Riesgo.",
+  de: "Das Better Underdog & Gefährdete Regionen Stipendium.",
+  pt: "A Bolsa Better Underdog & Territórios em Risco."
+},
+
+scholarshipIntro: {
+  en: "Greatness isn't always funded, and geography shouldn't dictate your market share. This scholarship applies across all our Growth Systems, offering up to 50% co-investment in our operating fees through two qualification paths:",
+  es: "La grandeza no siempre está financiada, y la geografía no debería definir tu participación en el mercado. Esta beca aplica a todos nuestros sistemas de crecimiento, ofreciendo hasta un 50% de co-inversión en nuestros honorarios operativos mediante dos vías de calificación:",
+  de: "Größe wird nicht immer finanziert, und Geografie sollte nicht über Marktanteile entscheiden. Dieses Stipendium gilt für alle unsere Wachstumssysteme und bietet bis zu 50 % Co-Investition in unsere Betriebskosten über zwei Qualifikationswege:",
+  pt: "A grandeza nem sempre é financiada, e a geografia não deve determinar sua participação de mercado. Esta bolsa se aplica a todos os nossos sistemas de crescimento, oferecendo até 50% de coinvestimento em nossas taxas operacionais através de dois caminhos de qualificação:"
+},
+
+scholarshipPath1: {
+  en: "You are bootstrapping. Whether in a garage in Austin or a dorm in London, if you lack capital but have a disruptive vision, relentless ambition, and a story worth telling, we invest in your potential.",
+  es: "Estás en etapa bootstrap. Ya sea en un garage en Austin o en una residencia en Londres, si te falta capital pero tienes una visión disruptiva, ambición incansable y una historia que contar, invertimos en tu potencial.",
+  de: "Du bist im Bootstrapping. Ob in einer Garage in Austin oder einem Studentenwohnheim in London – wenn dir Kapital fehlt, aber du eine disruptive Vision und unermüdlichen Ehrgeiz hast, investieren wir in dein Potenzial.",
+  pt: "Você está em bootstrap. Seja em uma garagem em Austin ou em um dormitório em Londres, se você não tem capital mas tem uma visão disruptiva e ambição incansável, investimos no seu potencial."
+},
+
+scholarshipPath2: {
+  en: "You operate in a region where raw talent outpaces macroeconomic stability. If your venture faces systemic friction, hyperinflation, or currency devaluation (e.g., LATAM and emerging markets), you automatically qualify.",
+  es: "Operas en una región donde el talento supera la estabilidad macroeconómica. Si tu proyecto enfrenta fricción sistémica, hiperinflación o devaluación monetaria (ej. LATAM y mercados emergentes), calificas automáticamente.",
+  de: "Du operierst in einer Region, in der Talent die makroökonomische Stabilität übertrifft. Wenn dein Projekt systemische Reibung, Hyperinflation oder Währungsabwertung erlebt, qualifizierst du dich automatisch.",
+  pt: "Você opera em uma região onde o talento supera a estabilidade macroeconômica. Se seu projeto enfrenta atrito sistêmico, hiperinflação ou desvalorização monetária, você se qualifica automaticamente."
+},
+
+scholarshipPromise: {
+  en: "We sponsor the growth systems of tomorrow's Alphas, no matter where they are born or how much capital they have today.",
+  es: "Financiamos los sistemas de crecimiento de los Alphas del mañana, sin importar dónde nacieron o cuánto capital tengan hoy.",
+  de: "Wir fördern die Wachstumssysteme der Alphas von morgen, unabhängig davon, wo sie geboren wurden oder wie viel Kapital sie heute haben.",
+  pt: "Patrocinamos os sistemas de crescimento dos Alphas de amanhã, não importa onde nasceram ou quanto capital têm hoje."
+},
+
+scholarshipCTA: {
+  en: "Apply for Co-Investment →",
+  es: "Aplicar a Co-Inversión →",
+  de: "Für Co-Investition bewerben →",
+  pt: "Aplicar para Coinvestimento →"
+},
 
 challengeHeadline: {
   en: "The world is changing faster than organizations.",
@@ -664,7 +707,180 @@ challengeCTA: {
     de: "Beginne mit deinem ersten digitalen Touchpoint und lege das Fundament deiner digitalen Identität.",
     pt: "Comece com o seu primeiro ponto de contato digital e construa a base da sua identidade digital.",
   },
+growthCapabilities: {
+  en: "Our Growth Capabilities",
+  es: "Nuestras Capacidades de Crecimiento",
+  de: "Unsere Wachstumskapazitäten",
+  pt: "Nossas Capacidades de Crescimento",
+},
 
+customArsenal: {
+  en: "The Custom Arsenal",
+  es: "El Arsenal Personalizado",
+  de: "Das Individuelle Arsenal",
+  pt: "O Arsenal Personalizado",
+},
+
+growthIntro: {
+  en: "We don't sell rigid packages. We deploy custom capabilities: Strategy, product engineering, human experiences, and business development—deployed exactly as your business needs it to scale.",
+  es: "No vendemos paquetes rígidos. Implementamos capacidades a medida: estrategia, ingeniería de producto, experiencias humanas y desarrollo de negocio, desplegados exactamente según lo que tu empresa necesita para escalar.",
+  de: "Wir verkaufen keine starren Pakete. Wir setzen maßgeschneiderte Fähigkeiten ein: Strategie, Produktentwicklung, menschliche Erfahrungen und Geschäftsentwicklung – exakt so, wie Ihr Unternehmen skalieren muss.",
+  pt: "Não vendemos pacotes rígidos. Implantamos capacidades personalizadas: estratégia, engenharia de produto, experiências humanas e desenvolvimento de negócios — exatamente como sua empresa precisa para escalar.",
+},
+
+foundationTitle: {
+  en: "Better Foundation",
+  es: "Base Mejorada",
+  de: "Bessere Grundlage",
+  pt: "Fundação Melhorada",
+},
+
+foundationSubtitle: {
+  en: "Digital Identity & AI Discoverability",
+  es: "Identidad Digital y Descubrimiento por IA",
+  de: "Digitale Identität & KI-Auffindbarkeit",
+  pt: "Identidade Digital e Descoberta por IA",
+},
+
+foundationPain: {
+  en: "We have a great product/service, but our digital footprint is weak. We are practically invisible to AI and new markets.",
+  es: "Tenemos un gran producto/servicio, pero nuestra presencia digital es débil. Somos prácticamente invisibles para la IA y nuevos mercados.",
+  de: "Wir haben ein großartiges Produkt/eine Dienstleistung, aber unser digitaler Fußabdruck ist schwach. Für KI und neue Märkte sind wir praktisch unsichtbar.",
+  pt: "Temos um ótimo produto/serviço, mas nossa presença digital é fraca. Somos praticamente invisíveis para IA e novos mercados.",
+},
+
+foundationIncluded: {
+  en: "Better Business Blueprint™, Website optimized for AI and GEO, basic CRM setup, and lead capture ecosystem.",
+  es: "Better Business Blueprint™, sitio web optimizado para IA y GEO, configuración básica de CRM y ecosistema de captación de leads.",
+  de: "Better Business Blueprint™, für KI und GEO optimierte Website, grundlegende CRM-Einrichtung und Lead-Erfassungssystem.",
+  pt: "Better Business Blueprint™, site otimizado para IA e GEO, configuração básica de CRM e ecossistema de captura de leads.",
+},
+
+foundationInvestment: {
+  en: "Starting at $1,500 / month",
+  es: "Desde $1,500 / mes",
+  de: "Ab $1.500 / Monat",
+  pt: "A partir de $1.500 / mês",
+},
+
+foundationScholarship: {
+  en: "Up to 50% co-investment (bringing it down to ~$750–$1,250/month).",
+  es: "Hasta 50% de co-inversión (reduciéndolo a ~$750–$1,250/mes).",
+  de: "Bis zu 50% Co-Investition (reduziert auf ca. ~$750–$1.250/Monat).",
+  pt: "Até 50% de co-investimento (reduzindo para ~$750–$1.250/mês).",
+},
+
+relevanceTitle: {
+  en: "Digital Relevance",
+  es: "Relevancia Digital",
+  de: "Digitale Relevanz",
+  pt: "Relevância Digital",
+},
+
+relevanceSubtitle: {
+  en: "The Growth & Human Engine",
+  es: "El Motor de Crecimiento y lo Humano",
+  de: "Die Wachstums- und Human-Engine",
+  pt: "O Motor de Crescimento e Humano",
+},
+
+relevancePain: {
+  en: "We have traction and revenue, but we are stuck competing for clicks. We need to dominate the narrative and generate absolute authority.",
+  es: "Tenemos tracción e ingresos, pero estamos atrapados compitiendo por clics. Necesitamos dominar la narrativa y generar autoridad absoluta.",
+  de: "Wir haben Traktion und Umsatz, aber wir konkurrieren nur um Klicks. Wir müssen die Narrative dominieren und absolute Autorität aufbauen.",
+  pt: "Temos tração e receita, mas estamos presos competindo por cliques. Precisamos dominar a narrativa e gerar autoridade absoluta.",
+},
+
+relevanceIncluded: {
+  en: "Ecosystem maintenance, marketing automations, real-world experience design for UGC (Proof of Humanity), and continuous Business Development (B2B positioning and Project Management).",
+  es: "Mantenimiento del ecosistema, automatizaciones de marketing, diseño de experiencias reales para UGC (Proof of Humanity) y desarrollo de negocio continuo (posicionamiento B2B y gestión de proyectos).",
+  de: "Ökosystem-Wartung, Marketing-Automatisierung, reale Erfahrungsgestaltung für UGC (Proof of Humanity) und kontinuierliche Geschäftsentwicklung (B2B-Positionierung und Projektmanagement).",
+  pt: "Manutenção do ecossistema, automações de marketing, design de experiências reais para UGC (Proof of Humanity) e desenvolvimento contínuo de negócios (posicionamento B2B e gestão de projetos).",
+},
+
+relevanceInvestment: {
+  en: "Starting at $3,500 / month",
+  es: "Desde $3,500 / mes",
+  de: "Ab $3.500 / Monat",
+  pt: "A partir de $3.500 / mês",
+},
+
+relevanceScholarship: {
+  en: "Up to 50% co-investment (bringing it down to ~$1,750–$2,750/month).",
+  es: "Hasta 50% de co-inversión (reduciéndolo a ~$1,750–$2,750/mes).",
+  de: "Bis zu 50% Co-Investition (reduziert auf ca. ~$1.750–$2.750/Monat).",
+  pt: "Até 50% de co-investimento (reduzindo para ~$1.750–$2.750/mês).",
+},
+
+dominanceTitle: {
+  en: "Digital Dominance",
+  es: "Dominio Digital",
+  de: "Digitale Dominanz",
+  pt: "Domínio Digital",
+},
+
+dominanceSubtitle: {
+  en: "Scale & Custom AI Architecture",
+  es: "Escala y Arquitectura de IA Personalizada",
+  de: "Skalierung & maßgeschneiderte KI-Architektur",
+  pt: "Escala e Arquitetura de IA Personalizada",
+},
+
+dominancePain: {
+  en: "We have the size and the market, but our internal operations are breaking. We need custom tech and AI infrastructure to scale without friction.",
+  es: "Tenemos tamaño y mercado, pero nuestras operaciones internas están fallando. Necesitamos infraestructura de IA y tecnología personalizada para escalar sin fricción.",
+  de: "Wir haben Größe und Markt, aber unsere internen Abläufe brechen zusammen. Wir brauchen maßgeschneiderte KI- und Technologie-Infrastruktur für reibungsloses Skalieren.",
+  pt: "Temos escala e mercado, mas nossas operações internas estão quebrando. Precisamos de infraestrutura de IA e tecnologia personalizada para escalar sem atrito.",
+},
+
+dominanceIncluded: {
+  en: "Custom Software, MVP Systems, internal Autonomous AI Agents, infrastructure for real-time global operations, and corporate Business Development (Matchmaking, Investor Readiness).",
+  es: "Software personalizado, sistemas MVP, agentes autónomos de IA internos, infraestructura para operaciones globales en tiempo real y desarrollo de negocio corporativo (conexión con inversores y preparación para inversión).",
+  de: "Individuelle Software, MVP-Systeme, interne autonome KI-Agenten, Infrastruktur für globale Echtzeit-Operationen und Unternehmensentwicklung (Investor-Readiness und Matchmaking).",
+  pt: "Software personalizado, sistemas MVP, agentes autônomos de IA internos, infraestrutura para operações globais em tempo real e desenvolvimento de negócios corporativo (matchmaking e prontidão para investidores).",
+},
+
+dominanceInvestment: {
+  en: "Starting at $10,000+ / month",
+  es: "Desde $10,000+ / mes",
+  de: "Ab $10.000+ / Monat",
+  pt: "A partir de $10.000+ / mês",
+},
+
+dominanceScholarship: {
+  en: "Tailor-made (Custom-structured, strictly for Enterprise-level operations or Whales).",
+  es: "A medida (estructurado a medida, exclusivamente para operaciones enterprise o grandes clientes).",
+  de: "Maßgeschneidert (nur für Enterprise-Level-Operationen oder Großkunden).",
+  pt: "Sob medida (estruturado exclusivamente para operações enterprise ou grandes clientes).",
+},
+
+painPoint: {
+  en: "Pain Point",
+  es: "Problema",
+  de: "Problem",
+  pt: "Problema",
+},
+
+included: {
+  en: "What's Included",
+  es: "Qué incluye",
+  de: "Enthalten",
+  pt: "O que está incluído",
+},
+
+investment: {
+  en: "Global Investment",
+  es: "Inversión Global",
+  de: "Globale Investition",
+  pt: "Investimento Global",
+},
+
+scholarship: {
+  en: "Underdog Scholarship",
+  es: "Beca Underdog",
+  de: "Underdog-Stipendium",
+  pt: "Bolsa Underdog",
+},
   // Compartido entre ambos modales
   assessTitle: {
     en: "Assess My Digital Identity",
@@ -1661,6 +1877,9 @@ export default function Home() {
 </section>
       {/*  NEWS FEED */}
       <NewsSection />
+      <GlobalAccessMechanism tx={tx} />
+      <GrowthCapabilities tx={tx} />
+      
       {/* LATEST INSIGHTS */}
       <section className="py-16 bg-slate-50">
         <div className="container mx-auto px-6 text-center">

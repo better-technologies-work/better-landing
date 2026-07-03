@@ -23,41 +23,41 @@ export default function FinalChallenge({ tx }: Props) {
                         {/* Diego */}
                         <div className="flex flex-col items-center text-center">
 
-  {/* FOTO */}
-  <div className="relative">
-    <Image
-      src="/diego.jpeg"
-      alt="Diego Vargas"
-      width={120}
-      height={120}
-      className="rounded-full object-cover border-4 border-white shadow-lg"
-    />
+                            {/* FOTO */}
+                            <div className="relative">
+                                <Image
+                                    src="/diego.jpeg"
+                                    alt="Diego Vargas"
+                                    width={120}
+                                    height={120}
+                                    className="rounded-full object-cover border-4 border-white shadow-lg"
+                                />
 
-    {/* glow sutil opcional */}
-    <div className="absolute -inset-2 rounded-full bg-blue-400/10 blur-xl -z-10" />
-  </div>
+                                {/* glow sutil opcional */}
+                                <div className="absolute -inset-2 rounded-full bg-blue-400/10 blur-xl -z-10" />
+                            </div>
 
-  {/* NOMBRE */}
-  <h3 className="mt-6 text-xl font-black uppercase text-slate-900 tracking-tight">
-    Diego Vargas
-  </h3>
+                            {/* NOMBRE */}
+                            <h3 className="mt-6 text-xl font-black uppercase text-slate-900 tracking-tight">
+                                Diego Vargas
+                            </h3>
 
-  {/* CARGO */}
-  <p className="mt-3 text-[11px] font-black uppercase tracking-[0.28em] text-blue-600 max-w-[240px] leading-relaxed">
-    Chief Business Engineering Operator
-  </p>
+                            {/* CARGO */}
+                            <p className="mt-3 text-[11px] font-black uppercase tracking-[0.28em] text-blue-600 max-w-[240px] leading-relaxed">
+                                Chief Business Engineering Operator
+                            </p>
 
-  {/* LINKEDIN CTA */}
-  <a
-    href="https://www.linkedin.com/in/diegoe-vargas/"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="mt-6 inline-flex items-center justify-center rounded-full bg-slate-900 text-white px-6 py-3 text-[10px] font-black uppercase tracking-[0.25em] hover:bg-blue-600 transition-all hover:scale-[1.03]"
-  >
-    LinkedIn
-  </a>
+                            {/* LINKEDIN CTA */}
+                            <a
+                                href="https://www.linkedin.com/in/diegoe-vargas/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="mt-6 inline-flex items-center justify-center rounded-full bg-slate-900 text-white px-6 py-3 text-[10px] font-black uppercase tracking-[0.25em] hover:bg-blue-600 transition-all hover:scale-[1.03]"
+                            >
+                                LinkedIn
+                            </a>
 
-</div>
+                        </div>
 
 
 
