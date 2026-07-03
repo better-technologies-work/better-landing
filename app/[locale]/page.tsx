@@ -7,7 +7,7 @@ import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import Header from "@/components/Header";
 import BetterEcosystemSection from "@/components/BetterEcosystemSection";
 import { useLocale, useTranslations } from 'next-intl';
-
+import FinalChallenge from '@/components/FinalChallenge'
 
 // ─── TYPES ───────────────────────────────────────────────────────────────────
 type Locale = 'en' | 'es' | 'de' | 'pt';
@@ -323,7 +323,7 @@ const ui = {
 
   // Casos de éxito
   successStories: { en: "Our Success Stories", es: "Nuestros casos de exito", de: "Unsere Erfolgsgeschichten", pt: "Nossos casos de sucesso" },
-  builtByUs: { en: "Built by us.", es: "Construido por nosotros.", de: "Von uns gebaut.", pt: "Construído por nós." },
+  builtByUs: { en: "Built by us,", es: "Construido por nosotros,", de: "Von uns gebaut,", pt: "Construído por nós," },
   usedByPeople: { en: "Used by people.", es: "Usado por personas.", de: "Von Menschen genutzt.", pt: "Usado por pessoas." },
   circularEco: { en: "A", es: "Un", de: "Ein", pt: "Um" },
   circularEco2: { en: "circular ecosystem", es: "ecosistema circular", de: "kreisförmiges Ökosystem", pt: "ecossistema circular" },
@@ -499,14 +499,63 @@ const ui = {
 
   // Team
   aboutTeam: { en: "About our Team", es: "Sobre nuestro equipo", de: "Über unser Team", pt: "Sobre a nossa equipe" },
+  highPerf: {
+    en: "An Elite",
+    es: "Un equipo de producto",
+    de: "Ein erstklassiges",
+    pt: "Uma equipe de produto"
+  },
 
-  highPerf: { en: "High", es: "Ejecucion de", de: "Hochleistungs-", pt: "Execução de" },
-  highPerfEm: { en: "Performance execution", es: "alto rendimiento", de: "Ausführung", pt: "alto desempenho" },
-  forged: { en: "Forged in high", es: "Forjados en entornos de", de: "Geformt in", pt: "Forjados em" },
-  pressure: { en: "pressure environments", es: "alta presion", de: "Hochdruckumgebungen", pt: "ambientes de alta pressão" },
+  highPerfEm: {
+    en: "Trilingual Product Team.",
+    es: "trilingüe de élite.",
+    de: "dreisprachiges Produktteam.",
+    pt: "trilíngue de elite."
+  },
+
+  forged: {
+    en: "High Performance",
+    es: "Alto rendimiento",
+    de: "Hochleistung",
+    pt: "Alto desempenho"
+  },
+
+  pressure: {
+    en: "Execution.",
+    es: "Ejecución.",
+    de: "Ausführung.",
+    pt: "Execução."
+  },
+  aboutTeamCopy: {
+    en: "Forged in high-pressure environments. We are trilingual (EN, SPA, GER) business strategists, product managers, and world-class engineers ensuring business agility for those who are ready to scale.",
+    es: "...",
+    de: "...",
+    pt: "..."
+  },
 
   // Cierre
-  closingLine: { en: "Understand the past — build what's next.", es: "Comprende el pasado — construye lo que viene.", de: "Verstehe die Vergangenheit — baue die Zukunft.", pt: "Entenda o passado — construa o futuro." },
+closingLine: {
+  en: "Understand the past —",
+  es: "Comprende el pasado —",
+  de: "Verstehe die Vergangenheit —",
+  pt: "Entenda o passado —"
+},
+
+closingLineEm: {
+  en: "Build What's Next.",
+  es: "Construye lo que viene.",
+  de: "Baue die Zukunft.",
+  pt: "Construa o futuro."
+},
+closingCopy: {
+  en: "In an era defined by Global Operations Under Uncertainty, we engineer the infrastructure for the future. From Execution in LATAM to securing Real-Time operations & certainty, we build Trust Systems and Authentication systems that serve as Proof of Humanity in an AI-driven world. Whether deploying Circular Economic Systems, ensuring seamless Circular Systems Deployment, or running complex Validation protocols for the Future of Global Operations, we design for resilience and dominance.",
+
+  es: "En una era definida por las operaciones globales bajo incertidumbre, diseñamos la infraestructura del futuro. Desde la ejecución en LATAM hasta la protección de operaciones en tiempo real y la generación de certeza, desarrollamos sistemas de confianza y autenticación que actúan como prueba de humanidad en un mundo impulsado por la IA. Ya sea implementando sistemas de economía circular, garantizando un despliegue fluido de sistemas circulares o ejecutando complejos protocolos de validación para el futuro de las operaciones globales, diseñamos soluciones orientadas a la resiliencia y al liderazgo.",
+
+  de: "In einer Ära, die von globalen Operationen unter Unsicherheit geprägt ist, entwickeln wir die Infrastruktur der Zukunft. Von der Umsetzung in LATAM bis zur Absicherung von Echtzeitprozessen und Planungssicherheit entwickeln wir Vertrauens- und Authentifizierungssysteme, die als Nachweis der menschlichen Identität in einer KI-gesteuerten Welt dienen. Ob bei der Einführung zirkulärer Wirtschaftssysteme, der nahtlosen Bereitstellung zirkulärer Systeme oder der Durchführung komplexer Validierungsprotokolle für die Zukunft globaler Abläufe – wir entwickeln Lösungen für Resilienz und nachhaltige Stärke.",
+
+  pt: "Em uma era definida por operações globais sob incerteza, desenvolvemos a infraestrutura do futuro. Da execução na LATAM à garantia de operações em tempo real e maior previsibilidade, construímos sistemas de confiança e autenticação que servem como prova de humanidade em um mundo impulsionado por IA. Seja implantando sistemas de economia circular, garantindo uma implementação fluida de sistemas circulares ou executando protocolos complexos de validação para o futuro das operações globais, projetamos soluções voltadas para resiliência e liderança."
+},
   letsStart: { en: "LET'S START", es: "COMENCEMOS", de: "LASST UNS", pt: "VAMOS COMEÇAR" },
   today: { en: "TODAY", es: "HOY", de: "HEUTE BEGINNEN", pt: "HOJE" },
 
@@ -528,17 +577,45 @@ const ui = {
     pt: "Não perca nenhum movimento"
   },
   followJourney: {
-    en: "OUR KITCHEN IS ALWAYS OPEN",
-    es: "NUESTRA COCINA SIEMPRE ESTÁ ABIERTA",
-    de: "UNSERE KÜCHE HAT IMMER OFFEN",
-    pt: "NOSSA COZINHA ESTÁ SEMPRE ABERTA"
-  },
-  journey: {
-    en: "",
-    es: "",
-    de: "",
-    pt: ""
-  },
+  en: "Follow",
+  es: "Sigue",
+  de: "Folgen Sie",
+  pt: "Siga"
+},
+
+journey: {
+  en: "Our Journey",
+  es: "Nuestro Recorrido",
+  de: "Unserem Weg",
+  pt: "Nossa Jornada"
+},
+finalChallenge: {
+  en: "The Final Challenge",
+  es: "El Desafío Final",
+  de: "Die Letzte Herausforderung",
+  pt: "O Desafio Final"
+},
+
+challengeHeadline: {
+  en: "The world is changing faster than organizations.",
+  es: "El mundo está cambiando más rápido que las organizaciones.",
+  de: "Die Welt verändert sich schneller als Unternehmen.",
+  pt: "O mundo está mudando mais rápido do que as organizações."
+},
+
+challengeCopy: {
+  en: "Stop buying isolated services. Build a system. What's your next move?",
+  es: "Deja de comprar servicios aislados. Construye un sistema. ¿Cuál es tu próximo movimiento?",
+  de: "Hören Sie auf, isolierte Dienstleistungen zu kaufen. Bauen Sie ein System. Was ist Ihr nächster Schritt?",
+  pt: "Pare de comprar serviços isolados. Construa um sistema. Qual é o seu próximo passo?"
+},
+
+challengeCTA: {
+  en: "Choose Your Path",
+  es: "Elige tu camino",
+  de: "Wählen Sie Ihren Weg",
+  pt: "Escolha seu caminho"
+},
   // Botones Yes / No
   yesBtn: { en: "Yes", es: "Sí", de: "Ja", pt: "Sim" },
   noBtn: { en: "No", es: "No", de: "Nein", pt: "Não" },
@@ -634,7 +711,7 @@ const InstagramIcon = () => (
 );
 
 // ─── AVATAR ──────────────────────────────────────────────────────────────────
-const Avatar = ({ member }: { member: (typeof team)[0] }) => {
+const Avatar = ({ member }: { member: { name: string; role: string; linkedin: string; photo: string; initials: string; desc?: string } }) => {
   const [imgError, setImgError] = useState(false);
   return (
     <div className="relative w-16 h-16 rounded-full overflow-hidden border-2 border-slate-100 flex-shrink-0 bg-blue-50 flex items-center justify-center">
@@ -1149,12 +1226,12 @@ const CasosDeExito = ({ showMachinesModal, setShowMachinesModal }: { showMachine
 export default function Home() {
   const t = useTranslations('Home');
   const locale = useLocale() as Locale;
-  const tx = (key: keyof typeof ui) => (ui[key] as any)[locale] ?? (ui[key] as any)['en'];
+  const tx = (key: string) => (ui[key as keyof typeof ui] as any)?.[locale] ?? (ui[key as keyof typeof ui] as any)?.['en'] ?? '';
 
   const [posts, setPosts] = useState<any[]>([]);
   const heroVideoRef = useRef<HTMLVideoElement>(null);
   const [isMobile, setIsMobile] = useState(false);
-  const [selected, setSelected] = useState<number | null>(null);
+  const [selected, setSelected] = useState<number | null>(1);
   const [showMachinesModal, setShowMachinesModal] = useState(false);
   const [isPackModalOpen, setIsPackModalOpen] = useState(false);
   const [isTermsModalOpen, setIsTermsModalOpen] = useState(false);
@@ -1426,9 +1503,11 @@ export default function Home() {
 
       <div className="py-10 border-t border-slate-100 text-center">
         <h3 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter uppercase mb-10">
-          {tx('followJourney')}
-
-        </h3>
+  {tx('followJourney')}{" "}
+  <span className="text-blue-600">
+    {tx('journey')}
+  </span>
+</h3>
         <div className="flex justify-center gap-6">
           <a href="https://www.linkedin.com/company/bettertechnologies/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-6 py-3 rounded-full border-2 border-slate-200 text-slate-900 font-black text-[11px] uppercase tracking-widest hover:border-blue-600 hover:text-blue-600 transition-all"><LinkedInIcon /> LinkedIn</a>
           <a href="https://www.instagram.com/better_technologies?igsh=MWUwYmkyYXVhdWRucA==" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-6 py-3 rounded-full border-2 border-slate-200 text-slate-900 font-black text-[11px] uppercase tracking-widest hover:border-[#d6249f] hover:text-[#d6249f] transition-all"><InstagramIcon /> Instagram</a>
@@ -1500,11 +1579,16 @@ export default function Home() {
 
           <p className="text-blue-600 uppercase tracking-[0.25em] text-[10px] font-black mb-2">{tx('aboutTeam')}</p>
           <h2 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter leading-[0.9] uppercase mb-6">
-            {tx('highPerf')} <em className="italic underline decoration-blue-100">{tx('highPerfEm')}</em>
+            {tx('highPerf')}{" "}
+            <em className="italic underline decoration-blue-100">
+              {tx('highPerfEm')}
+            </em>{" "}
+            <span className="text-blue-600">{tx('forged')}</span>{" "}
+            {tx('pressure')}
           </h2>
           <div className="border-l-[3px] border-blue-600 pl-5 bg-slate-50 py-4 pr-5 rounded-r-2xl mb-8">
             <p className="text-slate-900 font-black italic text-sm leading-relaxed tracking-tight">
-              {tx('forged')} <br /><span className="text-blue-600">{tx('pressure')}</span>
+              {tx('aboutTeamCopy')}
             </p>
           </div>
           <AnimatePresence mode="wait">
@@ -1540,10 +1624,41 @@ export default function Home() {
       <CasosDeExito showMachinesModal={showMachinesModal} setShowMachinesModal={setShowMachinesModal} />
 
       {/* CIERRE */}
-      <h2 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter leading-[0.9] uppercase mb-6 text-center py-10 px-6">
-        <span className="block mb-4">{tx('closingLine')}</span>
+<section className="py-20 px-6 bg-white">
+  <div className="max-w-6xl mx-auto text-center">
 
-      </h2>
+    <h2 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter leading-[0.9] uppercase mb-6">
+      <span className="block">
+        {tx('closingLine')}{" "}
+        <span className="text-blue-600">
+          {tx('closingLineEm')}
+        </span>
+      </span>
+    </h2>
+
+    <div className="w-24 h-1 rounded-full bg-gradient-to-r from-blue-600 to-orange-400 mx-auto mb-10"></div>
+
+    <div className="max-w-5xl mx-auto">
+      <div className="relative overflow-hidden rounded-[32px] border border-slate-200 bg-gradient-to-br from-white via-slate-50 to-orange-50 p-8 md:p-14 shadow-xl">
+
+        {/* Ambient light */}
+        <div className="absolute -top-28 -right-28 w-72 h-72 rounded-full bg-orange-300/20 blur-3xl" />
+        <div className="absolute -bottom-28 -left-28 w-72 h-72 rounded-full bg-blue-300/20 blur-3xl" />
+
+        <div className="relative">
+
+
+          <p className="text-slate-600 text-base md:text-lg leading-8 max-w-4xl mx-auto">
+            {tx('closingCopy')}
+          </p>
+
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
       {/*  NEWS FEED */}
       <NewsSection />
       {/* LATEST INSIGHTS */}
@@ -1585,13 +1700,17 @@ export default function Home() {
         </div>
       </section>
 
+<FinalChallenge tx={tx} />
+
       {/* FOOTER */}
       <footer className="py-16 text-center bg-white border-t border-slate-100">
         <p className="text-slate-400 text-[9px] font-black uppercase tracking-[0.3em] mb-4">{tx('dontMiss')}</p>
         <h3 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter uppercase mb-10">
-          {tx('followJourney')}
-
-        </h3>
+  {tx('followJourney')}{" "}
+  <span className="text-blue-600">
+    {tx('journey')}
+  </span>
+</h3>
         <div className="flex justify-center gap-6 mb-12">
           <a href="https://www.linkedin.com/company/bettertechnologies/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-6 py-3 rounded-full border-2 border-slate-200 text-slate-900 font-black text-[11px] uppercase tracking-widest hover:border-blue-600 hover:text-blue-600 transition-all"><LinkedInIcon /> LinkedIn</a>
           <a href="https://www.instagram.com/better_technologies?igsh=MWUwYmkyYXVhdWRucA==" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-6 py-3 rounded-full border-2 border-slate-200 text-slate-900 font-black text-[11px] uppercase tracking-widest hover:border-[#d6249f] hover:text-[#d6249f] transition-all"><InstagramIcon /> Instagram</a>
