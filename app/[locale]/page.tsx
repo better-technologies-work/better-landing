@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { createClient } from '@/lib/supabase/client'
 import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import Header from "@/components/Header";
+import BetterEcosystemSection from "@/components/BetterEcosystemSection";
 import { useLocale, useTranslations } from 'next-intl';
 
 
@@ -471,11 +472,11 @@ const ui = {
     pt: "Reivindicar Despertar de IA (Avaliação de 15 min)"
   },
   engineeringPrice: {
-  en: "Engineering Price: $0 you only cover the domain provisioning, no fine prints.",
-  es: "Precio de Ingeniería: $0, solo cubrís el aprovisionamiento del dominio, sin letra chica.",
-  de: "Engineering-Preis: $0, Sie übernehmen nur die Domain-Bereitstellung, kein Kleingedrucktes.",
-  pt: "Preço de Engenharia: $0, você só cobre o provisionamento do domínio, sem letras miúdas."
-},
+    en: "Engineering Price: $0 you only cover the domain provisioning, no fine prints.",
+    es: "Precio de Ingeniería: $0, solo cubrís el aprovisionamiento del dominio, sin letra chica.",
+    de: "Engineering-Preis: $0, Sie übernehmen nur die Domain-Bereitstellung, kein Kleingedrucktes.",
+    pt: "Preço de Engenharia: $0, você só cobre o provisionamento do domínio, sem letras miúdas."
+  },
   // Pricing
   whatWeDeliver: { en: "Our", es: "Nuestros", de: "Unsere", pt: "Nossos" },
   weDeliver: { en: "Services", es: "Servicios", de: "Dienstleistungen", pt: "Serviços" },
@@ -1316,7 +1317,7 @@ export default function Home() {
             </button>
           </div>
 
-           {/* COLUMNA DERECHA (antes izquierda) */}
+          {/* COLUMNA DERECHA (antes izquierda) */}
           <div className="bg-white p-12 rounded-3xl border border-slate-200 shadow-sm transition-all hover:shadow-md">
             <p className="text-sm font-bold tracking-wider text-slate-400 uppercase mb-3">
               {tx('problemTitle')}
@@ -1328,7 +1329,7 @@ export default function Home() {
               {tx('problemDesc')}
             </p>
             {/* PRECIO */}
-           <p className="text-sm font-bold text-blue-600 mb-4">
+            <p className="text-sm font-bold text-blue-600 mb-4">
               {tx('engineeringPrice')}
             </p>
             {/* BOTÓN THE TERMS */}
@@ -1420,6 +1421,8 @@ export default function Home() {
           </div>
         )}
       </section>
+
+      <BetterEcosystemSection locale={locale} />
 
       <div className="py-10 border-t border-slate-100 text-center">
         <h3 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter uppercase mb-10">
