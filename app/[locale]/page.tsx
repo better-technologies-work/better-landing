@@ -235,18 +235,18 @@ const belandTags = ["React Native", "Payments", "Delivery", "Circular Economy"];
 const ui = {
   // Hero
   openLatam: {
-  en: "The market doesn't reward followers. It belongs to leaders.",
-  es: "El mercado no premia a los que siguen. Le pertenece a los que lideran.",
-  de: "Der Markt belohnt keine Mitläufer. Er gehört den Führenden.",
-  pt: "O mercado não recompensa quem segue. Ele pertence a quem lidera."
-},
+    en: "The market doesn't reward followers. It belongs to leaders.",
+    es: "El mercado no premia a los que siguen. Le pertenece a los que lideran.",
+    de: "Der Markt belohnt keine Mitläufer. Er gehört den Führenden.",
+    pt: "O mercado não recompensa quem segue. Ele pertence a quem lidera."
+  },
   globalCompanies: { en: "", es: "", de: "", pt: "" },
   subtagline: {
-  en: " We don't just write code. We are business architects, experience designers, and ecosystem builders. We engineer integrated Growth Systems for ambitious organizations determined to dominate their industries. We are not a fit for followers or companies looking for quick marketing patches. We build ecosystems for leaders.",
-  es: "No solo escribimos código. Somos arquitectos de negocios, diseñadores de experiencias y constructores de ecosistemas. Diseñamos Sistemas de Crecimiento integrados para organizaciones ambiciosas decididas a dominar su industria. No somos para seguidores ni para empresas que buscan parches rápidos de marketing. Construimos ecosistemas para líderes.",
-  de: "Wir schreiben nicht nur Code. Wir sind Geschäftsarchitekten, Experience Designer und Ökosystem-Builder. Wir entwickeln integrierte Wachstumssysteme für ambitionierte Unternehmen, die entschlossen sind, ihre Branche zu dominieren. Wir sind nicht die richtige Wahl für Mitläufer oder Unternehmen, die schnelle Marketing-Flicken suchen. Wir bauen Ökosysteme für Führende.",
-  pt: "Não escrevemos apenas código. Somos arquitetos de negócios, designers de experiência e construtores de ecossistemas. Projetamos Sistemas de Crescimento integrados para organizações ambiciosas determinadas a dominar seus setores. Não somos indicados para seguidores ou empresas em busca de soluções rápidas de marketing. Construímos ecossistemas para líderes.",
-},
+    en: " We don't just write code. We are business architects, experience designers, and ecosystem builders. We engineer integrated Growth Systems for ambitious organizations determined to dominate their industries. We are not a fit for followers or companies looking for quick marketing patches. We build ecosystems for leaders.",
+    es: "No solo escribimos código. Somos arquitectos de negocios, diseñadores de experiencias y constructores de ecosistemas. Diseñamos Sistemas de Crecimiento integrados para organizaciones ambiciosas decididas a dominar su industria. No somos para seguidores ni para empresas que buscan parches rápidos de marketing. Construimos ecosistemas para líderes.",
+    de: "Wir schreiben nicht nur Code. Wir sind Geschäftsarchitekten, Experience Designer und Ökosystem-Builder. Wir entwickeln integrierte Wachstumssysteme für ambitionierte Unternehmen, die entschlossen sind, ihre Branche zu dominieren. Wir sind nicht die richtige Wahl für Mitläufer oder Unternehmen, die schnelle Marketing-Flicken suchen. Wir bauen Ökosysteme für Führende.",
+    pt: "Não escrevemos apenas código. Somos arquitetos de negócios, designers de experiência e construtores de ecossistemas. Projetamos Sistemas de Crescimento integrados para organizações ambiciosas determinadas a dominar seus setores. Não somos indicados para seguidores ou empresas em busca de soluções rápidas de marketing. Construímos ecossistemas para líderes.",
+  },
   getInTouch: { en: "Get in touch", es: "Contactar ahora", de: "Kontakt aufnehmen", pt: "Entre em contato" },
 
   // News section
@@ -276,25 +276,25 @@ const ui = {
 
   // Chat section
   kitchenTitle: {
-  en: " THE AWAKENING & ",
-  es: " EL DESPERTAR & ",
-  de: " DAS ERWACHEN & ",
-  pt: " O DESPERTAR & "
-},
-kitchenTitle2: {
-  en: "THE PACK ",
-  es: "LA MANADA ",
-  de: "DAS RUDEL ",
-  pt: "A ALCATEIA "
-},
-  
+    en: " THE AWAKENING & ",
+    es: " EL DESPERTAR & ",
+    de: " DAS ERWACHEN & ",
+    pt: " O DESPERTAR & "
+  },
+  kitchenTitle2: {
+    en: "THE PACK ",
+    es: "LA MANADA ",
+    de: "DAS RUDEL ",
+    pt: "A ALCATEIA "
+  },
+
   kitchenOpen: { en: "", es: "", de: "", pt: "" },
- century20: {
-  en: "The Problem & The Unfair Advantage.",
-  es: "El Problema y La Ventaja Injusta.",
-  de: "Das Problem & Der unfaire Vorteil.",
-  pt: "O Problema & A Vantagem Injusta."
-},
+  century20: {
+    en: "The Problem & The Unfair Advantage.",
+    es: "El Problema y La Ventaja Injusta.",
+    de: "Das Problem & Der unfaire Vorteil.",
+    pt: "O Problema & A Vantagem Injusta."
+  },
   howCanHelp: { en: "If someone searches for your business today,", es: "¿Si alguien busca tu negocio hoy,", de: "Wenn heute jemand nach Ihrem Unternehmen sucht,", pt: "Se alguém buscar pelo seu negócio hoje," },
   theTeam: { en: " can they actually", es: " ¿realmente puede", de: " kann er Sie dann tatsächlich", pt: " conseguirá realmente" },
   helpToday: { en: " find you?", es: " encontrarte?", de: " finden?", pt: " te encontrar?" },
@@ -388,63 +388,93 @@ kitchenTitle2: {
 
   problemTitle: { en: "HOW CAN WE HELP?", es: "¿CÓMO PODEMOS AYUDAR?", de: "WIE KÖNNEN WIR HELFEN?", pt: "COMO PODEMOS AJUDAR?" },
   problemSubtitle: {
-    en: "Building Digital Relevance.",
-    es: "Construyendo Relevancia Digital.",
-    de: "Digitale Relevanz Aufbauen.",
-    pt: "Construindo Relevância Digital.",
+    en: "THE AI AWAKENING ",
+    es: "EL DESPERTAR DE LA IA ",
+    de: "DAS KI-ERWACHEN ",
+    pt: "O DESPERTAR DA IA "
   },
   problemDesc: {
-    en: "We design digital experiences, identities, and growth systems that help businesses thrive in the digital economy.",
-    es: "Diseñamos experiencias digitales, identidades y sistemas de crecimiento que ayudan a las empresas a prosperar en la economía digital.",
-    de: "Wir entwerfen digitale Erlebnisse, Identitäten und Wachstumssysteme, die Unternehmen helfen, in der digitalen Wirtschaft erfolgreich zu sein.",
-    pt: "Designer de experiências digitais, identidades e sistemas de crescimento que ajudam as empresas a prosperar na economia digital."
+    en: "Engineering and deployment of your first Website as an Operating System (Optimized for AI & Human Trust).",
+    es: "Ingeniería y despliegue de tu primer Sitio Web como Sistema Operativo (Optimizado para Confianza de IA y Humanos).",
+    de: "Entwicklung und Bereitstellung Ihrer ersten Website als Betriebssystem (Optimiert für KI- und menschliches Vertrauen).",
+    pt: "Engenharia e implantação do seu primeiro Site como Sistema Operacional (Otimizado para Confiança de IA e Humanos)."
   },
   typicalTickets: { en: "Typical tickets:", es: "Tickets típicos:", de: "Typische Tickets:", pt: "Tickets típicos:" },
   ourCustomers: { en: "WHATS NEXT?", es: "¿QUÉ SIGUE?", de: "WAS KOMMT ALS NÄCHSTES?", pt: "O QUE VEM A SEGUIR?" },
-midSized1: {
-  en: " Your customers aren't searching for you anymore; they are asking AI",
-  es: "Tus clientes ya no te buscan; le preguntan a la IA",
-  de: "Ihre Kunden suchen nicht mehr nach Ihnen; sie fragen die KI",
-  pt: "Seus clientes já não te procuram; eles perguntam à IA"
-},  midSized2: {
-  en: "Market leaders have thrived chasing likes, so far. But the rules of the hunt have changed.",
-  es: "Los líderes del mercado prosperaron persiguiendo likes, hasta ahora. Pero las reglas de la caza cambiaron.",
-  de: "Marktführer sind bisher erfolgreich gewesen, indem sie Likes gejagt haben. Doch die Regeln der Jagd haben sich geändert.",
-  pt: "Os líderes de mercado prosperaram perseguindo likes, até agora. Mas as regras da caçada mudaram."
-},
+  midSized1: {
+    en: " Your customers aren't searching for you anymore; they are asking AI",
+    es: "Tus clientes ya no te buscan; le preguntan a la IA",
+    de: "Ihre Kunden suchen nicht mehr nach Ihnen; sie fragen die KI",
+    pt: "Seus clientes já não te procuram; eles perguntam à IA"
+  }, midSized2: {
+    en: "Market leaders have thrived chasing likes, so far. But the rules of the hunt have changed.",
+    es: "Los líderes del mercado prosperaron persiguiendo likes, hasta ahora. Pero las reglas de la caza cambiaron.",
+    de: "Marktführer sind bisher erfolgreich gewesen, indem sie Likes gejagt haben. Doch die Regeln der Jagd haben sich geändert.",
+    pt: "Os líderes de mercado prosperaram perseguindo likes, até agora. Mas as regras da caçada mudaram."
+  },
   employees: { en: "50–500 employees", es: "50–500 empleados", de: "50–500 Mitarbeiter", pt: "50–500 funcionários" },
   multiOps: { en: "Operations across multiple countries / regions", es: "Operaciones en multiples paises / regiones", de: "Betrieb in mehreren Ländern / Regionen", pt: "Operações em vários países / regiões" },
   longChains: { en: "Dependent on long supply chains", es: "Dependientes de cadenas de suministro largas", de: "Abhängig von langen Lieferketten", pt: "Dependentes de longas cadeias de suprimento" },
   tradModels: { en: "Traditional business models", es: "Modelos de negocio tradicionales", de: "Traditionelle Geschäftsmodelle", pt: "Modelos de negócios tradicionais" },
-packButtonLabel: {
-  en: " Why Us?",
-  es: " ¿Por qué nosotros?",
-  de: " Warum wir?",
-  pt: " Por que nós?"
-},
-packModalTitle: {
-  en: "The Pack",
-  es: "La Manada",
-  de: "Das Rudel",
-  pt: "A Alcateia"
-},
-packModalQuote: {
-  en: "The strength of the wolf is the pack, and the strength of the pack is the wolf.",
-  es: "La fuerza del lobo es la manada, y la fuerza de la manada es el lobo.",
-  de: "Die Stärke des Wolfs ist das Rudel, und die Stärke des Rudels ist der Wolf.",
-  pt: "A força do lobo é a alcateia, e a força da alcateia é o lobo."
-},
-packModalBody: {
-  en: "Dominating this new landscape means acquiring world-class capabilities overnight. True leaders know that attempting to build an elite tech team from scratch takes years and bleeds capital; so they don't hunt alone. They plug into a superior ecosystem. We are your pack. By partnering with us, you integrate strategy, engineering, and growth systems instantly, at a fraction of the cost of an internal team. There is no other firm in the market deploying this level of integrated firepower. We hunt together. We thrive together.",
-  es: "Dominar este nuevo panorama significa adquirir capacidades de clase mundial de la noche a la mañana. Los verdaderos líderes saben que intentar construir un equipo tecnológico de élite desde cero toma años y consume capital; por eso no cazan solos. Se conectan a un ecosistema superior. Nosotros somos tu manada. Al asociarte con nosotros, integrás estrategia, ingeniería y sistemas de crecimiento al instante, a una fracción del costo de un equipo interno. No hay otra firma en el mercado que despliegue este nivel de poder de fuego integrado. Cazamos juntos. Prosperamos juntos.",
-  de: "Diese neue Landschaft zu dominieren bedeutet, über Nacht Weltklasse-Fähigkeiten zu erwerben. Wahre Führungskräfte wissen, dass der Aufbau eines Elite-Tech-Teams von Grund auf Jahre dauert und Kapital verschlingt; deshalb jagen sie nicht allein. Sie schließen sich einem überlegenen Ökosystem an. Wir sind Ihr Rudel. Durch die Partnerschaft mit uns integrieren Sie Strategie, Engineering und Wachstumssysteme sofort, zu einem Bruchteil der Kosten eines internen Teams. Keine andere Firma am Markt setzt dieses Maß an integrierter Schlagkraft ein. Wir jagen gemeinsam. Wir wachsen gemeinsam.",
-  pt: "Dominar esse novo cenário significa adquirir capacidades de classe mundial da noite para o dia. Verdadeiros líderes sabem que tentar construir uma equipe tecnológica de elite do zero leva anos e consome capital; por isso não caçam sozinhos. Eles se conectam a um ecossistema superior. Nós somos a sua alcateia. Ao se associar conosco, você integra estratégia, engenharia e sistemas de crescimento instantaneamente, por uma fração do custo de uma equipe interna. Não há outra empresa no mercado implantando esse nível de poder de fogo integrado. Caçamos juntos. Prosperamos juntos."
-},
-closeButton: {
-  en: "Close",
-  es: "Cerrar",
-  de: "Schließen",
-  pt: "Fechar"
+  packButtonLabel: {
+    en: " Why Us?",
+    es: " ¿Por qué nosotros?",
+    de: " Warum wir?",
+    pt: " Por que nós?"
+  },
+  packModalTitle: {
+    en: "The Pack",
+    es: "La Manada",
+    de: "Das Rudel",
+    pt: "A Alcateia"
+  },
+  packModalQuote: {
+    en: "The strength of the wolf is the pack, and the strength of the pack is the wolf.",
+    es: "La fuerza del lobo es la manada, y la fuerza de la manada es el lobo.",
+    de: "Die Stärke des Wolfs ist das Rudel, und die Stärke des Rudels ist der Wolf.",
+    pt: "A força do lobo é a alcateia, e a força da alcateia é o lobo."
+  },
+  packModalBody: {
+    en: "Dominating this new landscape means acquiring world-class capabilities overnight. True leaders know that attempting to build an elite tech team from scratch takes years and bleeds capital; so they don't hunt alone. They plug into a superior ecosystem. We are your pack. By partnering with us, you integrate strategy, engineering, and growth systems instantly, at a fraction of the cost of an internal team. There is no other firm in the market deploying this level of integrated firepower. We hunt together. We thrive together.",
+    es: "Dominar este nuevo panorama significa adquirir capacidades de clase mundial de la noche a la mañana. Los verdaderos líderes saben que intentar construir un equipo tecnológico de élite desde cero toma años y consume capital; por eso no cazan solos. Se conectan a un ecosistema superior. Nosotros somos tu manada. Al asociarte con nosotros, integrás estrategia, ingeniería y sistemas de crecimiento al instante, a una fracción del costo de un equipo interno. No hay otra firma en el mercado que despliegue este nivel de poder de fuego integrado. Cazamos juntos. Prosperamos juntos.",
+    de: "Diese neue Landschaft zu dominieren bedeutet, über Nacht Weltklasse-Fähigkeiten zu erwerben. Wahre Führungskräfte wissen, dass der Aufbau eines Elite-Tech-Teams von Grund auf Jahre dauert und Kapital verschlingt; deshalb jagen sie nicht allein. Sie schließen sich einem überlegenen Ökosystem an. Wir sind Ihr Rudel. Durch die Partnerschaft mit uns integrieren Sie Strategie, Engineering und Wachstumssysteme sofort, zu einem Bruchteil der Kosten eines internen Teams. Keine andere Firma am Markt setzt dieses Maß an integrierter Schlagkraft ein. Wir jagen gemeinsam. Wir wachsen gemeinsam.",
+    pt: "Dominar esse novo cenário significa adquirir capacidades de classe mundial da noite para o dia. Verdadeiros líderes sabem que tentar construir uma equipe tecnológica de elite do zero leva anos e consome capital; por isso não caçam sozinhos. Eles se conectam a um ecossistema superior. Nós somos a sua alcateia. Ao se associar conosco, você integra estratégia, engenharia e sistemas de crescimento instantaneamente, por uma fração do custo de uma equipe interna. Não há outra empresa no mercado implantando esse nível de poder de fogo integrado. Caçamos juntos. Prosperamos juntos."
+  },
+  closeButton: {
+    en: "Close",
+    es: "Cerrar",
+    de: "Schließen",
+    pt: "Fechar"
+  },
+  termsButtonLabel: {
+    en: "The Terms",
+    es: "Los Términos",
+    de: "Die Bedingungen",
+    pt: "Os Termos"
+  },
+  termsModalTitle: {
+    en: "Terms",
+    es: "Términos",
+    de: "Bedingungen",
+    pt: "Termos"
+  },
+  termsModalBody: {
+    en: "Most agencies charge thousands for a dead digital brochure. We build your AI-ready infrastructure for free. Why? Because we play long-term games. Talk is cheap; leaders leave evidence. We will design, code, and deploy your new high-converting digital hub entirely on us. If you have the hunger, we got the system.",
+    es: "La mayoría de las agencias cobran miles por un folleto digital sin vida. Nosotros construimos tu infraestructura lista para IA de forma gratuita. ¿Por qué? Porque jugamos a largo plazo. Hablar es barato; los líderes dejan evidencia. Diseñaremos, programaremos y desplegaremos tu nuevo centro digital de alta conversión completamente por nuestra cuenta. Si tenés el hambre, nosotros tenemos el sistema.",
+    de: "Die meisten Agenturen verlangen Tausende für eine tote digitale Broschüre. Wir bauen Ihre KI-fähige Infrastruktur kostenlos. Warum? Weil wir langfristig denken. Reden ist billig; Führende hinterlassen Beweise. Wir werden Ihren neuen konversionsstarken digitalen Hub komplett auf unsere Kosten gestalten, programmieren und bereitstellen. Wenn Sie den Hunger haben, haben wir das System.",
+    pt: "A maioria das agências cobra milhares por um folheto digital sem vida. Nós construímos a sua infraestrutura pronta para IA gratuitamente. Por quê? Porque jogamos a longo prazo. Falar é barato; líderes deixam evidências. Vamos projetar, programar e implantar o seu novo hub digital de alta conversão totalmente por nossa conta. Se você tem a fome, nós temos o sistema."
+  },
+  termsModalCta: {
+    en: "Claim AI Awakening (15-Min Assessment)",
+    es: "Reclamar Despertar de IA (Evaluación de 15 min)",
+    de: "KI-Erwachen sichern (15-Min-Bewertung)",
+    pt: "Reivindicar Despertar de IA (Avaliação de 15 min)"
+  },
+  engineeringPrice: {
+  en: "Engineering Price: $0 you only cover the domain provisioning, no fine prints.",
+  es: "Precio de Ingeniería: $0, solo cubrís el aprovisionamiento del dominio, sin letra chica.",
+  de: "Engineering-Preis: $0, Sie übernehmen nur die Domain-Bereitstellung, kein Kleingedrucktes.",
+  pt: "Preço de Engenharia: $0, você só cobre o provisionamento do domínio, sem letras miúdas."
 },
   // Pricing
   whatWeDeliver: { en: "Our", es: "Nuestros", de: "Unsere", pt: "Nossos" },
@@ -799,7 +829,7 @@ const ChatSection = () => {
       <div className="max-w-4xl mx-auto px-6 text-center">
 
         <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-12 uppercase tracking-tighter">
-          {tx('kitchenTitle')} <span className="text-blue-600">{tx('kitchenTitle2')}</span> 
+          {tx('kitchenTitle')} <span className="text-blue-600">{tx('kitchenTitle2')}</span>
         </h2>
         <p className="text-blue-600 uppercase tracking-[0.2em] text-[10px] mb-4 font-bold">{tx('century20')}</p>
 
@@ -1126,10 +1156,11 @@ export default function Home() {
   const [selected, setSelected] = useState<number | null>(null);
   const [showMachinesModal, setShowMachinesModal] = useState(false);
   const [isPackModalOpen, setIsPackModalOpen] = useState(false);
+  const [isTermsModalOpen, setIsTermsModalOpen] = useState(false);
   const teamMap = { en: team, es: teamEs, de: teamDe, pt: teamPt };
   const teamData = teamMap[locale] ?? team;
   const localeBase = locale === 'en' ? '' : `/${locale}`;
-  
+
   // Fetch posts con traducción multi-idioma
   useEffect(() => {
     const fetchPosts = async () => {
@@ -1253,9 +1284,9 @@ export default function Home() {
       {/* 3. CHAT */}
       <ChatSection />
 
-      
 
-         {/* 4. MITTELSTAND */}
+
+      {/* 4. MITTELSTAND */}
       <section id="mittelstand" className="py-12 md:py-24 px-6 bg-slate-50 border-y border-slate-200">
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-20 items-center">
 
@@ -1285,7 +1316,7 @@ export default function Home() {
             </button>
           </div>
 
-          {/* COLUMNA DERECHA (antes izquierda) */}
+           {/* COLUMNA DERECHA (antes izquierda) */}
           <div className="bg-white p-12 rounded-3xl border border-slate-200 shadow-sm transition-all hover:shadow-md">
             <p className="text-sm font-bold tracking-wider text-slate-400 uppercase mb-3">
               {tx('problemTitle')}
@@ -1296,6 +1327,17 @@ export default function Home() {
             <p className="text-slate-600 text-lg leading-relaxed mb-10">
               {tx('problemDesc')}
             </p>
+            {/* PRECIO */}
+           <p className="text-sm font-bold text-blue-600 mb-4">
+              {tx('engineeringPrice')}
+            </p>
+            {/* BOTÓN THE TERMS */}
+            <button
+              onClick={() => setIsTermsModalOpen(true)}
+              className="inline-flex items-center gap-2 bg-blue-600 text-white font-bold px-8 py-4 rounded-full hover:bg-blue-700 transition-colors"
+            >
+              {ui.termsButtonLabel[locale]}
+            </button>
           </div>
 
         </div>
@@ -1336,6 +1378,44 @@ export default function Home() {
               >
                 {ui.closeButton[locale]}
               </button>
+            </div>
+          </div>
+        )}
+
+        {/* MODAL THE TERMS */}
+        {isTermsModalOpen && (
+          <div
+            className="fixed inset-0 bg-black/60 flex items-center justify-center z-50 px-4"
+            onClick={() => setIsTermsModalOpen(false)}
+          >
+            <div
+              className="bg-white rounded-3xl max-w-2xl w-full p-10 md:p-12 relative max-h-[85vh] overflow-y-auto"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button
+                onClick={() => setIsTermsModalOpen(false)}
+                className="absolute top-6 right-6 text-slate-400 hover:text-slate-900 transition-colors text-2xl leading-none"
+                aria-label={ui.closeButton[locale]}
+              >
+                ×
+              </button>
+
+              <h3 className="text-3xl font-black text-slate-900 mb-6 uppercase tracking-tight">
+                {ui.termsModalTitle[locale]}
+              </h3>
+
+              <p className="text-slate-600 text-lg leading-relaxed mb-8">
+                {ui.termsModalBody[locale]}
+              </p>
+
+
+              <a href="https://calendar.app.google/Ntnv2PvHmPNgCnKZ6"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex justify-center bg-slate-900 text-white font-bold px-8 py-4 rounded-full hover:bg-slate-800 transition-colors text-center"
+              >
+                {ui.termsModalCta[locale]}
+              </a>
             </div>
           </div>
         )}
