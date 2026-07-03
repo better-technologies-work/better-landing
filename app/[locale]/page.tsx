@@ -10,6 +10,7 @@ import { useLocale, useTranslations } from 'next-intl';
 import FinalChallenge from '@/components/FinalChallenge'
 import GlobalAccessMechanism from "@/components/GlobalAccessMechanism";
 import GrowthCapabilities from "@/components/GrowthCapabilities";
+import LeadershipLeagues from "@/components/LeadershipLeagues"
 
 // ─── TYPES ───────────────────────────────────────────────────────────────────
 type Locale = 'en' | 'es' | 'de' | 'pt';
@@ -322,6 +323,52 @@ const ui = {
     de: (opt: string) => `Hallo! Ich interessiere mich für ${opt}. Ich würde gerne mit dem Team über ein neues Projekt sprechen.`,
     pt: (opt: string) => `Olá! Estou interessado em ${opt}. Gostaria de falar com a equipe sobre um novo projeto.`,
   },
+  leadership: {
+  en: "Leadership",
+  es: "Liderazgo",
+  de: "Führung",
+  pt: "Liderança",
+},
+
+noSizeLimit: {
+  en: "has no size limit.",
+  es: "no tiene límites de escala.",
+  de: "kennt keine Größenbeschränkung.",
+  pt: "não tem limites de escala.",
+},
+
+leadershipSubtitle: {
+  en: "We engineer systems for those who lead, regardless of their current headcount.",
+  es: "Diseñamos sistemas para quienes lideran, sin importar su tamaño actual.",
+  de: "Wir entwickeln Systeme für Führungskräfte, unabhängig von ihrer aktuellen Größe.",
+  pt: "Projetamos sistemas para quem lidera, independentemente do seu tamanho atual.",
+},
+
+chooseLeague: {
+  en: "Choose your league",
+  es: "Elige tu liga",
+  de: "Wähle deine Liga",
+  pt: "Escolha sua liga",
+},
+leadershipMain: {
+  en: "Leadership",
+  es: "El liderazgo",
+  de: "Führung",
+  pt: "Liderança",
+},
+
+leadershipHighlight: {
+  en: "scales",
+  es: "escala",
+  de: "skaliert",
+  pt: "escala",
+},
+leadershipRest: {
+  en: "has no size limit.",
+  es: "no tiene límites de escala.",
+  de: "kennt keine Größenbeschränkung.",
+  pt: "não tem limites de escala.",
+},
 
   // Casos de éxito
   successStories: { en: "Our Success Stories", es: "Nuestros casos de exito", de: "Unsere Erfolgsgeschichten", pt: "Nossos casos de sucesso" },
@@ -1729,52 +1776,8 @@ export default function Home() {
           <a href="https://www.instagram.com/better_technologies?igsh=MWUwYmkyYXVhdWRucA==" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-6 py-3 rounded-full border-2 border-slate-200 text-slate-900 font-black text-[11px] uppercase tracking-widest hover:border-[#d6249f] hover:text-[#d6249f] transition-all"><InstagramIcon /> Instagram</a>
         </div>
       </div>
-      {/* 5. PRICING */}
-      <section id="pricing" className="py-20 px-6 bg-white">
-        <div className="max-w-7xl mx-auto text-center">
-          <h2 className="text-4xl md:text-5xl font-black mb-4 text-slate-900 uppercase tracking-tighter">
-            {ui.whatWeDeliver[locale]} <span className="text-blue-600"> {ui.weDeliver[locale]} </span>
-          </h2>
-          <p className="text-lg text-gray-500 mb-12 text-balance font-medium">
-            {ui.servicesSubtitle[locale]}
-          </p>
-          <div className="grid md:grid-cols-3 gap-12 text-left">
-            <div className="group border-2 border-slate-100 p-12 rounded-3xl hover:border-blue-600 transition-all duration-500 bg-slate-50/50">
-              <div className="flex flex-col gap-4 mb-10">
-                <h3 className="text-2xl font-bold text-slate-900 uppercase">72h Validation Challenge</h3>
-                <span className="self-start bg-blue-600 text-white px-4 py-1 rounded-full text-xs font-black italic">€3k – €10k</span>
-              </div>
-              <ul className="space-y-4 text-slate-600">
-                <li className="font-bold flex items-start gap-2"><span className="text-blue-600 mt-0.5">→</span>{tx('oppValidation')}</li>
-                <li className="font-bold flex items-start gap-2"><span className="text-blue-600 mt-0.5">→</span>{tx('feasibility')}</li>
-              </ul>
-            </div>
-            <div className="group border-2 border-slate-100 p-12 rounded-3xl hover:border-blue-600 transition-all duration-500 bg-slate-50/50 shadow-xl shadow-slate-100">
-              <div className="flex flex-col gap-4 mb-10">
-                <h3 className="text-2xl font-bold text-slate-900 uppercase">MVP Stage — 90 days</h3>
-                <span className="self-start bg-blue-600 text-white px-4 py-1 rounded-full text-xs font-black italic">€30k – €120k</span>
-              </div>
-              <ul className="space-y-4 text-slate-600">
-                <li className="font-bold flex items-center gap-2"><span className="text-blue-600">✓</span>{tx('solutionEng')}</li>
-                <li className="font-bold flex items-center gap-2"><span className="text-blue-600">✓</span>{tx('functionalMvp')}</li>
-                <li className="font-bold flex items-center gap-2"><span className="text-blue-600">✓</span>{tx('betaTesting')}</li>
-              </ul>
-            </div>
-            <div className="group border-2 border-slate-100 p-12 rounded-3xl hover:border-blue-600 transition-all duration-500 bg-slate-50/50">
-              <div className="flex flex-col gap-4 mb-10">
-                <h3 className="text-2xl font-bold text-slate-900 uppercase">Growth / Scale</h3>
-                <span className="self-start bg-slate-900 text-white px-4 py-1 rounded-full text-xs font-black italic">{tx('tailorMade')}</span>
-              </div>
-              <ul className="space-y-4 text-slate-600">
-                <li className="font-bold flex items-center gap-2"><span className="text-blue-600">✓</span>{tx('localDigital')}</li>
-                <li className="font-bold flex items-center gap-2"><span className="text-blue-600">✓</span>{tx('successOri')}</li>
-                <li className="font-bold flex items-center gap-2"><span className="text-blue-600">✓</span>{tx('reducedCosts')}</li>
-                <li className="font-bold flex items-center gap-2"><span className="text-blue-600">✓</span>{tx('fasterScaling')}</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
+
+      <LeadershipLeagues tx={tx} />
 
       <div className="py-16 px-6 bg-white text-center">
         <div className="max-w-4xl mx-auto">
