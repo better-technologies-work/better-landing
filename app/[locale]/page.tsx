@@ -550,23 +550,23 @@ export const ui = {
     pt: "Reivindicar Despertar de IA (Avaliação de 15 min)"
   },
   engineeringPrice: {
-  en: [
-    { text: "Engineering Price: $0", bold: true },
-    { text: " you only cover the domain provisioning, no fine prints.", bold: false },
-  ],
-  es: [
-    { text: "Precio de Ingeniería: $0", bold: true },
-    { text: ", solo cubrís el aprovisionamiento del dominio, sin letra chica.", bold: false },
-  ],
-  de: [
-    { text: "Engineering-Preis: $0", bold: true },
-    { text: ", Sie übernehmen nur die Domain-Bereitstellung, kein Kleingedrucktes.", bold: false },
-  ],
-  pt: [
-    { text: "Preço de Engenharia: $0", bold: true },
-    { text: ", você só cobre o provisionamento do domínio, sem letras miúdas.", bold: false },
-  ],
-},
+    en: [
+      { text: "Engineering Price: $0", bold: true },
+      { text: " you only cover the domain provisioning, no fine prints.", bold: false },
+    ],
+    es: [
+      { text: "Precio de Ingeniería: $0", bold: true },
+      { text: ", solo cubrís el aprovisionamiento del dominio, sin letra chica.", bold: false },
+    ],
+    de: [
+      { text: "Engineering-Preis: $0", bold: true },
+      { text: ", Sie übernehmen nur die Domain-Bereitstellung, kein Kleingedrucktes.", bold: false },
+    ],
+    pt: [
+      { text: "Preço de Engenharia: $0", bold: true },
+      { text: ", você só cobre o provisionamento do domínio, sem letras miúdas.", bold: false },
+    ],
+  },
   // Pricing
   whatWeDeliver: { en: "Our", es: "Nuestros", de: "Unsere", pt: "Nossos" },
   weDeliver: { en: "Services", es: "Servicios", de: "Dienstleistungen", pt: "Serviços" },
@@ -1816,9 +1816,8 @@ export default function Home() {
 
       <BetterEcosystemSection locale={locale} />
 
-      <LeadershipLeagues tx={tx} />
-       <GrowthCapabilities tx={tx} />
-       
+
+
       <div className="py-16 px-6 bg-white text-center">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter uppercase mb-2">
@@ -1934,7 +1933,10 @@ export default function Home() {
       {/*  NEWS FEED */}
       <NewsSection />
       <GlobalAccessMechanism tx={tx} />
-     
+      <div id="leadership-leagues">
+  <LeadershipLeagues tx={tx} />
+</div>
+      <GrowthCapabilities tx={tx} />
 
       {/* LATEST INSIGHTS */}
       <section className="py-16 bg-slate-50">
@@ -1975,8 +1977,9 @@ export default function Home() {
         </div>
       </section>
 
-      <FinalChallenge tx={tx} />
 
+
+      <FinalChallenge tx={tx} />
       {/* FOOTER */}
       <footer className="py-16 text-center bg-white border-t border-slate-100">
         <p className="text-slate-400 text-[9px] font-black uppercase tracking-[0.3em] mb-4">{tx('dontMiss')}</p>

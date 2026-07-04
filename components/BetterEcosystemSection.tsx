@@ -155,7 +155,7 @@ export default function BetterEcosystemSection({ locale }: BetterEcosystemSectio
 
   return (
     <section id="ecosystem" className="py-16 px-6 bg-white border-t border-slate-100">
-      <div className="max-w-4xl mx-auto">
+  <div className="max-w-4xl mx-auto">
 
         <p className="text-orange-600 uppercase tracking-[0.25em] text-[10px] font-black mb-2">
           {tx('ecosystemEyebrow')}

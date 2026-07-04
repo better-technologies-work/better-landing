@@ -149,7 +149,15 @@ export default function BlogPage() {
 
           {/* Grilla de Posts */}
           {posts.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10">
+            <div
+  className={`grid grid-cols-1 gap-6 md:gap-10 mx-auto ${
+    posts.length === 1
+      ? "md:grid-cols-1 max-w-md"
+      : posts.length === 2
+      ? "md:grid-cols-2 max-w-4xl"
+      : "md:grid-cols-2 lg:grid-cols-3"
+  }`}
+>
               {posts.map((post: BlogPost) => (
                 <a
                   key={post.id}

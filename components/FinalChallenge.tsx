@@ -79,7 +79,7 @@ export default function FinalChallenge({ tx }: Props) {
                             <div className="mt-12">
 
                                 <Link
-                                    href="#scale"
+                                    href="#leadership-leagues"
                                     className="inline-flex items-center rounded-full bg-blue-600 px-8 py-4 text-xs font-black uppercase tracking-[0.22em] text-white transition-all hover:bg-orange-500 hover:scale-[1.03]"
                                 >
                                     {tx('challengeCTA')}
