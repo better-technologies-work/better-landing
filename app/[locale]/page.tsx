@@ -11,9 +11,10 @@ import FinalChallenge from '@/components/FinalChallenge'
 import GlobalAccessMechanism from "@/components/GlobalAccessMechanism";
 import GrowthCapabilities from "@/components/GrowthCapabilities";
 import LeadershipLeagues from "@/components/LeadershipLeagues"
+import AlphaFastTrackSection from "@/components/AlphaFastTrackSection";
 
 // ─── TYPES ───────────────────────────────────────────────────────────────────
-type Locale = 'en' | 'es' | 'de' | 'pt';
+export type Locale = 'en' | 'es' | 'de' | 'pt';
 
 // ─── TEAM DATA ───────────────────────────────────────────────────────────────
 const team = [
@@ -236,7 +237,7 @@ const belandScreenshotsPt = [
 const belandTags = ["React Native", "Payments", "Delivery", "Circular Economy"];
 
 // ─── DICCIONARIO MULTI-IDIOMA ─────────────────────────────────────────────────
-const ui = {
+export const ui = {
   // Hero
   openLatam: {
     en: "The market doesn't reward followers. It belongs to leaders.",
@@ -941,6 +942,85 @@ const ui = {
     de: "Meine digitale Identität bewerten",
     pt: "Avaliar Minha Identidade Digital",
   },
+  // ── ALPHA FAST-TRACK ──────────────────────────────────────
+alphaBadge: {
+  en: "For proactive leaders ready to execute today.",
+  es: "Para líderes proactivos listos para ejecutar hoy.",
+  de: "Für proaktive Führungskräfte, die heute loslegen wollen.",
+  pt: "Para líderes proativos prontos para executar hoje."
+},
+alphaTitle: {
+  en: "The Alpha Fast-Track",
+  es: "El Alpha Fast-Track",
+  de: "Der Alpha Fast-Track",
+  pt: "O Alpha Fast-Track"
+},
+alphaSubheadline: {
+  en: "Skip the assessment. Go straight to execution.",
+  es: "Saltate la evaluación. Andá directo a la ejecución.",
+  de: "Überspringen Sie die Bewertung. Direkt zur Umsetzung.",
+  pt: "Pule a avaliação. Vá direto para a execução."
+},
+alphaIntro: {
+  en: "You are already winning, and you are hungry for more. We reward proactivity and ambition. No introductory meetings. Lock in a 60-minute deep-dive architecture session with our elite team and let's start building today.",
+  es: "Ya estás ganando, y tenés hambre de más. Premiamos la proactividad y la ambición. Sin reuniones introductorias. Reservá una sesión de arquitectura de 60 minutos con nuestro equipo de élite y empecemos a construir hoy.",
+  de: "Sie gewinnen bereits und wollen mehr. Wir belohnen Proaktivität und Ambition. Keine Einführungsgespräche. Sichern Sie sich eine 60-minütige Deep-Dive-Architektursitzung mit unserem Elite-Team und lassen Sie uns heute mit dem Aufbau beginnen.",
+  pt: "Você já está vencendo, e está com fome de mais. Recompensamos a proatividade e a ambição. Sem reuniões introdutórias. Garanta uma sessão de arquitetura de 60 minutos com nossa equipe de elite e vamos começar a construir hoje."
+},
+alphaDisclaimer: {
+  en: "This Fast Track has a $100 commitment deposit that separates leaders from the rest of the pack. This deposit is 100% credited toward your total project invoice.",
+  es: "Este Fast Track tiene un depósito de compromiso de $100 que separa a los líderes del resto de la manada. Este depósito se acredita 100% a la factura total de tu proyecto.",
+  de: "Dieser Fast Track erfordert eine Verpflichtungseinlage von $100, die Führungskräfte vom Rest des Rudels unterscheidet. Diese Einlage wird zu 100% auf Ihre Gesamtprojektrechnung angerechnet.",
+  pt: "Este Fast Track tem um depósito de compromisso de $100 que separa os líderes do resto da alcateia. Este depósito é 100% creditado na fatura total do seu projeto."
+},
+alphaCtaMain: {
+  en: "Take the Alpha Fast-Track ($100)",
+  es: "Tomar el Alpha Fast-Track ($100)",
+  de: "Den Alpha Fast-Track wählen ($100)",
+  pt: "Fazer o Alpha Fast-Track ($100)"
+},
+alphaScreen1Title: {
+  en: "Welcome to the Elite Team.",
+  es: "Bienvenido al equipo de élite.",
+  de: "Willkommen im Elite-Team.",
+  pt: "Bem-vindo à equipe de elite."
+},
+alphaCtaCalendar: {
+  en: "Book Kickoff - Calendar",
+  es: "Reservar Kickoff - Calendario",
+  de: "Kickoff buchen - Kalender",
+  pt: "Agendar Kickoff - Calendário"
+},
+alphaScreen2Title: {
+  en: "Great! We have scheduled your Kickoff with our founder himself. Are you ready to take action and make your commitment deposit?",
+  es: "¡Genial! Agendamos tu Kickoff con nuestro fundador en persona. ¿Estás listo para actuar y hacer tu depósito de compromiso?",
+  de: "Großartig! Wir haben Ihren Kickoff mit unserem Gründer persönlich vereinbart. Sind Sie bereit, zu handeln und Ihre Verpflichtungseinlage zu leisten?",
+  pt: "Ótimo! Agendamos seu Kickoff com o nosso fundador pessoalmente. Você está pronto para agir e fazer seu depósito de compromisso?"
+},
+alphaCtaStripe: {
+  en: "Deposit Now - Stripe",
+  es: "Depositar Ahora - Stripe",
+  de: "Jetzt einzahlen - Stripe",
+  pt: "Depositar Agora - Stripe"
+},
+alphaScreen3Body: {
+  en: "You have proven with actions, not just words, that you came to lead. In Better Technologies, we reward ambition. Your exclusive strategy and engineering hour is officially locked in our agenda. Your $100 deposit has already been credited to your project account. The link to complete your ecosystem's technical details has been sent to your WhatsApp. Growth is our ultimate metric. We don't try; we do. Prepare to execute.",
+  es: "Demostraste con acciones, no solo palabras, que viniste a liderar. En Better Technologies, premiamos la ambición. Tu hora exclusiva de estrategia e ingeniería quedó oficialmente reservada en nuestra agenda. Tu depósito de $100 ya fue acreditado a tu cuenta de proyecto. El link para completar los detalles técnicos de tu ecosistema fue enviado a tu WhatsApp. El crecimiento es nuestra métrica final. No intentamos; hacemos. Preparate para ejecutar.",
+  de: "Sie haben mit Taten, nicht nur mit Worten bewiesen, dass Sie führen wollen. Bei Better Technologies belohnen wir Ambition. Ihre exklusive Strategie- und Engineering-Stunde ist offiziell in unserer Agenda gesichert. Ihre $100-Einlage wurde bereits Ihrem Projektkonto gutgeschrieben. Der Link zur Vervollständigung der technischen Details Ihres Ökosystems wurde an Ihr WhatsApp gesendet. Wachstum ist unsere ultimative Kennzahl. Wir versuchen nicht; wir tun. Bereiten Sie sich auf die Umsetzung vor.",
+  pt: "Você provou com ações, não apenas palavras, que veio para liderar. Na Better Technologies, recompensamos a ambição. Sua hora exclusiva de estratégia e engenharia está oficialmente marcada em nossa agenda. Seu depósito de $100 já foi creditado na sua conta de projeto. O link para completar os detalhes técnicos do seu ecossistema foi enviado ao seu WhatsApp. Crescimento é a nossa métrica definitiva. Não tentamos; fazemos. Prepare-se para executar."
+},
+alphaScreen3Signature: {
+  en: "— Better Technologies Elite Team",
+  es: "— Equipo de Élite de Better Technologies",
+  de: "— Better Technologies Elite-Team",
+  pt: "— Equipe de Elite da Better Technologies"
+},
+alphaCtaAssess: {
+  en: "Assess my digital presence (5-Min) →",
+  es: "Evaluar mi presencia digital (5 min) →",
+  de: "Meine digitale Präsenz bewerten (5 Min) →",
+  pt: "Avaliar minha presença digital (5 min) →"
+},
   assessment15min: { en: "15 min - Free Call", es: "15 min - Llamada gratuita", de: "15 Min - Kostenloser Anruf", pt: "15 min - Chamada gratuita" },
   assessment1h: { en: "1 Hour - $50", es: "1 Hora - $50", de: "1 Stunde - $50", pt: "1 Hora - $50" },
   bookAssessment: { en: "Book Assessment", es: "Reservar evaluación", de: "Bewertung buchen", pt: "Agendar avaliação" },
@@ -1849,7 +1929,7 @@ export default function Home() {
           <a href="https://www.instagram.com/better_technologies?igsh=MWUwYmkyYXVhdWRucA==" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-6 py-3 rounded-full border-2 border-slate-200 text-slate-900 font-black text-[11px] uppercase tracking-widest hover:border-[#d6249f] hover:text-[#d6249f] transition-all"><InstagramIcon /> Instagram</a>
         </div>
       </div>
-      
+
       {/* CIERRE */}
       <section className="py-20 px-6 bg-white">
         <div className="max-w-6xl mx-auto text-center">
@@ -1929,7 +2009,7 @@ export default function Home() {
           </a>
         </div>
       </section>
-
+      <AlphaFastTrackSection />
       <FinalChallenge tx={tx} />
 
       {/* FOOTER */}
