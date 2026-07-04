@@ -11,7 +11,7 @@ import FinalChallenge from '@/components/FinalChallenge'
 import GlobalAccessMechanism from "@/components/GlobalAccessMechanism";
 import GrowthCapabilities from "@/components/GrowthCapabilities";
 import LeadershipLeagues from "@/components/LeadershipLeagues"
-import AlphaFastTrackSection from "@/components/AlphaFastTrackSection";
+
 
 // ─── TYPES ───────────────────────────────────────────────────────────────────
 export type Locale = 'en' | 'es' | 'de' | 'pt';
@@ -1021,6 +1021,55 @@ alphaCtaAssess: {
   de: "Meine digitale Präsenz bewerten (5 Min) →",
   pt: "Avaliar minha presença digital (5 min) →"
 },
+// ── LEADERSHIP LEAGUES ──────────────────────────────────────
+leagueEmergingTitle: {
+  en: "The Emerging Pack (Startups & Local Heroes)",
+  es: "La Manada Emergente (Startups y Héroes Locales)",
+  de: "Das aufstrebende Rudel (Startups & lokale Helden)",
+  pt: "A Alcateia Emergente (Startups e Heróis Locais)"
+},
+leagueEmergingCopy: {
+  en: "You have a disruptive vision, a story worth telling, and the hunger to change your industry. You need the technological foundation and AI discoverability to look and act like a global leader from day one.",
+  es: "Tenés una visión disruptiva, una historia que vale la pena contar y el hambre para cambiar tu industria. Necesitás la base tecnológica y la visibilidad en IA para verte y actuar como un líder global desde el día uno.",
+  de: "Sie haben eine disruptive Vision, eine erzählenswerte Geschichte und den Hunger, Ihre Branche zu verändern. Sie brauchen die technologische Grundlage und KI-Auffindbarkeit, um von Tag eins an wie ein globaler Marktführer zu wirken.",
+  pt: "Você tem uma visão disruptiva, uma história que vale a pena contar e a fome para mudar seu setor. Você precisa da base tecnológica e da descoberta por IA para parecer e agir como um líder global desde o primeiro dia."
+},
+leagueEmergingCta: {
+  en: "Claim Your AI Awakening (15-Min Assessment)",
+  es: "Reclamá tu Despertar de IA (Evaluación de 15 min)",
+  de: "Sichern Sie sich Ihr KI-Erwachen (15-Min-Bewertung)",
+  pt: "Reivindique seu Despertar de IA (Avaliação de 15 min)"
+},
+leagueLoneWolfTitle: {
+  en: "The Lone Wolf (Established SMEs)",
+  es: "El Lobo Solitario (PyMEs Establecidas)",
+  de: "Der einsame Wolf (Etablierte KMUs)",
+  pt: "O Lobo Solitário (PMEs Estabelecidas)"
+},
+leagueLoneWolfCopy: {
+  en: "You have traction, revenue, and a solid team, but you want to dominate the entire category. This is where we plug in our Growth Systems to turn your momentum into absolute leadership, business visibility, growth, and results. We will expose where you are losing clients and map the Growth System needed to lead. (And if your current digital footprint is outdated, your new Digital identity is on us).",
+  es: "Tenés tracción, ingresos y un equipo sólido, pero querés dominar toda la categoría. Acá conectamos nuestros Sistemas de Crecimiento para convertir tu impulso en liderazgo absoluto, visibilidad de negocio, crecimiento y resultados. Vamos a exponer dónde estás perdiendo clientes y mapear el Sistema de Crecimiento que necesitás para liderar. (Y si tu presencia digital actual está desactualizada, tu nueva identidad digital corre por nuestra cuenta).",
+  de: "Sie haben Traktion, Umsatz und ein solides Team, wollen aber die gesamte Kategorie dominieren. Hier setzen wir unsere Wachstumssysteme ein, um Ihre Dynamik in absolute Führung, Geschäftssichtbarkeit, Wachstum und Ergebnisse zu verwandeln. Wir zeigen auf, wo Sie Kunden verlieren, und entwerfen das Wachstumssystem, das Sie zur Führung brauchen. (Und falls Ihre aktuelle digitale Präsenz veraltet ist, geht Ihre neue digitale Identität auf unsere Kosten).",
+  pt: "Você tem tração, receita e uma equipe sólida, mas quer dominar toda a categoria. É aqui que conectamos nossos Sistemas de Crescimento para transformar seu impulso em liderança absoluta, visibilidade de negócio, crescimento e resultados. Vamos expor onde você está perdendo clientes e mapear o Sistema de Crescimento necessário para liderar. (E se sua presença digital atual está desatualizada, sua nova identidade digital é por nossa conta)."
+},
+leagueWhalesTitle: {
+  en: "The Whales (Enterprise)",
+  es: "Las Ballenas (Enterprise)",
+  de: "Die Wale (Enterprise)",
+  pt: "As Baleias (Enterprise)"
+},
+leagueWhalesCopy: {
+  en: "You have the size; we bring the speed. We help massive organizations break operational bottlenecks, integrate AI, and execute with the agility of a startup. No credit cards required here. Send your project lead and let's map your custom architecture.",
+  es: "Vos tenés el tamaño; nosotros ponemos la velocidad. Ayudamos a organizaciones masivas a romper cuellos de botella operativos, integrar IA y ejecutar con la agilidad de una startup. Acá no se pide tarjeta de crédito. Enviá a tu líder de proyecto y mapeemos tu arquitectura a medida.",
+  de: "Sie haben die Größe; wir bringen die Geschwindigkeit. Wir helfen großen Organisationen, operative Engpässe zu beseitigen, KI zu integrieren und mit der Agilität eines Startups auszuführen. Keine Kreditkarte erforderlich. Schicken Sie Ihren Projektleiter, und lassen Sie uns Ihre individuelle Architektur entwerfen.",
+  pt: "Você tem o tamanho; nós trazemos a velocidade. Ajudamos organizações enormes a romper gargalos operacionais, integrar IA e executar com a agilidade de uma startup. Nenhum cartão de crédito necessário aqui. Envie o líder do seu projeto e vamos mapear sua arquitetura personalizada."
+},
+leagueWhalesCta: {
+  en: "Assess my Digital Relevance and contact Enterprise Team (5-Min) →",
+  es: "Evaluá mi Relevancia Digital y contactá al equipo Enterprise (5 min) →",
+  de: "Meine digitale Relevanz bewerten und das Enterprise-Team kontaktieren (5 Min) →",
+  pt: "Avalie minha Relevância Digital e contate a equipe Enterprise (5 min) →"
+},
   assessment15min: { en: "15 min - Free Call", es: "15 min - Llamada gratuita", de: "15 Min - Kostenloser Anruf", pt: "15 min - Chamada gratuita" },
   assessment1h: { en: "1 Hour - $50", es: "1 Hora - $50", de: "1 Stunde - $50", pt: "1 Hora - $50" },
   bookAssessment: { en: "Book Assessment", es: "Reservar evaluación", de: "Bewertung buchen", pt: "Agendar avaliação" },
@@ -2009,7 +2058,7 @@ export default function Home() {
           </a>
         </div>
       </section>
-      <AlphaFastTrackSection />
+      
       <FinalChallenge tx={tx} />
 
       {/* FOOTER */}

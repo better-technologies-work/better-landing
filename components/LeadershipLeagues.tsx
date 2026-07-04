@@ -12,25 +12,35 @@ export default function LeadershipLeagues({ tx }: Props) {
 
     const [selected, setSelected] = useState(1) // Nivel 2 abierto por default
 
+    // ── Alpha Fast-Track modal state ──────────────────────────
+    const [isAlphaOpen, setIsAlphaOpen] = useState(false)
+    const [alphaScreen, setAlphaScreen] = useState<1 | 2 | 3>(1)
+
+    const CALENDAR_URL = "https://calendar.app.google/74Sc4peRwuJ3eJ8W7"
+    // TODO: reemplazar cuando tengan el Payment Link de Stripe
+    const STRIPE_URL = "STRIPE_PAYMENT_LINK"
+
+    const closeAlphaModal = () => {
+        setIsAlphaOpen(false)
+        setTimeout(() => setAlphaScreen(1), 300)
+    }
+
     const leagues = [
         {
-            title: "The Emerging Pack (Startups & Local Heroes)",
-            color: "blue",
-            copy: "You have a disruptive vision, a story worth telling, and the hunger to change your industry. You need the technological foundation and AI discoverability to look and act like a global leader from day one.",
-            cta: "Claim Your AI Awakening (15-Min Assessment)",
+            title: tx("leagueEmergingTitle"),
+            copy: tx("leagueEmergingCopy"),
+            cta: tx("leagueEmergingCta"),
         },
         {
-            title: "The Lone Wolf (Established SMEs)",
-            color: "blue",
-            copy: "You have traction, revenue, and a solid team, but you want to dominate the entire category. This is where we plug in our Growth Systems to turn your momentum into absolute leadership, business visibility, growth, and results. We will expose where you are losing clients and map the Growth System needed to lead. (And if your current digital footprint is outdated, your new Digital identity is on us).",
-            ctaPrimary: "Take the Alpha Fast-Track ($100)",
-            ctaSecondary: "Or assess your Digital Relevance (5-Min) →",
+            title: tx("leagueLoneWolfTitle"),
+            copy: tx("leagueLoneWolfCopy"),
+            ctaPrimary: tx("alphaCtaMain"),
+            ctaSecondary: tx("alphaCtaAssess"),
         },
         {
-            title: "The Whales (Enterprise)",
-            color: "blue",
-            copy: "You have the size; we bring the speed. We help massive organizations break operational bottlenecks, integrate AI, and execute with the agility of a startup. No credit cards required here. Send your project lead and let's map your custom architecture.",
-            cta: "Assess my Digital Relevance and contact Enterprise Team (5-Min) →",
+            title: tx("leagueWhalesTitle"),
+            copy: tx("leagueWhalesCopy"),
+            cta: tx("leagueWhalesCta"),
         }
     ]
 
@@ -44,14 +54,14 @@ export default function LeadershipLeagues({ tx }: Props) {
                 {/* HEADER */}
                 <div className="text-center mb-14">
 
-                  <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter mb-6">
-  <span className="text-blue-600">
-    {tx("leadershipMain")}
-  </span>{" "}
-  <span className="text-slate-900">
-    {tx("leadershipRest")}
-  </span>
-</h2>
+                    <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter mb-6">
+                        <span className="text-blue-600">
+                            {tx("leadershipMain")}
+                        </span>{" "}
+                        <span className="text-slate-900">
+                            {tx("leadershipRest")}
+                        </span>
+                    </h2>
 
                     <p className="text-lg text-slate-500 font-medium max-w-3xl mx-auto">
                         {tx("leadershipSubtitle")}
@@ -108,27 +118,40 @@ export default function LeadershipLeagues({ tx }: Props) {
 
                                 {selected === 1 ? (
                                     <>
-                                        <Link
-                                            href="#"
+                                        <button
+                                            onClick={() => setIsAlphaOpen(true)}
                                             className="inline-flex justify-center rounded-full bg-blue-600 px-6 py-3 text-xs font-black uppercase tracking-widest text-white hover:bg-blue-700 transition"
                                         >
                                             {current.ctaPrimary}
-                                        </Link>
+                                        </button>
 
-                                        <Link
-                                            href="#"
+
+                                        <a href="https://btrelevancereport.lovable.app/"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
                                             className="text-center text-blue-600 text-xs font-black uppercase tracking-widest hover:underline"
                                         >
                                             {current.ctaSecondary}
-                                        </Link>
+                                        </a>
                                     </>
-                                ) : (
-                                    <Link
-                                        href="#"
+                                ) : selected === 0 ? (
+
+                                    <a href="https://calendar.app.google/Ntnv2PvHmPNgCnKZ6"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
                                         className="inline-flex justify-center rounded-full bg-blue-600 px-6 py-3 text-xs font-black uppercase tracking-widest text-white hover:bg-blue-700 transition"
                                     >
                                         {current.cta}
-                                    </Link>
+                                    </a>
+                                ) : (
+
+                                    <a href="https://btrelevancereport.lovable.app/"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="inline-flex justify-center rounded-full bg-blue-600 px-6 py-3 text-xs font-black uppercase tracking-widest text-white hover:bg-blue-700 transition"
+                                    >
+                                        {current.cta}
+                                    </a>
                                 )}
 
                             </div>
@@ -140,6 +163,112 @@ export default function LeadershipLeagues({ tx }: Props) {
                 </div>
 
             </div>
+
+            {/* ── ALPHA FAST-TRACK MODAL ────────────────────────── */}
+            <AnimatePresence>
+                {isAlphaOpen && (
+                    <motion.div
+                        className="fixed inset-0 z-[100] bg-black/60 flex items-center justify-center p-6"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        onClick={closeAlphaModal}
+                    >
+                        <motion.div
+                            onClick={(e) => e.stopPropagation()}
+                            initial={{ scale: 0.95, opacity: 0 }}
+                            animate={{ scale: 1, opacity: 1 }}
+                            exit={{ scale: 0.95, opacity: 0 }}
+                            className="bg-white rounded-3xl p-8 md:p-10 max-w-xl w-full max-h-[85vh] overflow-y-auto relative"
+                        >
+                            <button
+                                onClick={closeAlphaModal}
+                                className="absolute top-5 right-5 text-slate-400 hover:text-slate-900 transition-colors text-2xl leading-none z-10"
+                                aria-label={tx('closeButton')}
+                            >
+                                ×
+                            </button>
+
+                            {alphaScreen === 1 && (
+                                <>
+                                    <p className="text-blue-600 uppercase tracking-[0.2em] text-[10px] font-black mb-2">
+                                        {tx('alphaBadge')}
+                                    </p>
+                                    <h3 className="text-3xl font-black text-slate-900 mb-2 uppercase tracking-tight">
+                                        {tx('alphaTitle')}
+                                    </h3>
+                                    <p className="text-orange-500 font-bold italic mb-6">
+                                        {tx('alphaSubheadline')}
+                                    </p>
+                                    <p className="text-slate-600 leading-relaxed mb-6">
+                                        {tx('alphaIntro')}
+                                    </p>
+                                    <div className="border-l-4 border-orange-400 bg-orange-50 rounded-r-xl p-4 mb-8">
+                                        <p className="text-slate-700 text-sm font-medium">
+                                            ⚠️ {tx('alphaDisclaimer')}
+                                        </p>
+                                    </div>
+
+                                    <h4 className="text-xl font-black text-slate-900 mb-4">
+                                        {tx('alphaScreen1Title')}
+                                    </h4>
+
+
+                                    <a href={CALENDAR_URL}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        onClick={() => setAlphaScreen(2)}
+                                        className="w-full flex justify-center bg-blue-600 text-white py-4 rounded-full font-black uppercase tracking-widest text-xs hover:bg-blue-700 transition-colors"
+                                    >
+                                        {tx('alphaCtaCalendar')}
+                                    </a>
+                                </>
+                            )}
+
+                            {alphaScreen === 2 && (
+                                <>
+                                    <h3 className="text-2xl font-black text-slate-900 mb-6 leading-snug">
+                                        {tx('alphaScreen2Title')}
+                                    </h3>
+
+
+                                    <a href={STRIPE_URL}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        onClick={() => setAlphaScreen(3)}
+                                        className="w-full flex justify-center bg-orange-500 text-white py-4 rounded-full font-black uppercase tracking-widest text-xs hover:bg-orange-600 transition-colors"
+                                    >
+                                        {tx('alphaCtaStripe')}
+                                    </a>
+                                    <button
+                                        onClick={() => setAlphaScreen(1)}
+                                        className="block mx-auto mt-6 text-slate-400 hover:text-blue-600 text-[10px] uppercase font-black tracking-widest transition-colors"
+                                    >
+                                        {tx('goBackModal')}
+                                    </button>
+                                </>
+                            )}
+
+                            {alphaScreen === 3 && (
+                                <>
+                                    <p className="text-slate-700 leading-relaxed mb-6 whitespace-pre-line">
+                                        {tx('alphaScreen3Body')}
+                                    </p>
+                                    <p className="text-slate-900 font-black text-sm mb-8">
+                                        {tx('alphaScreen3Signature')}
+                                    </p>
+                                    <button
+                                        onClick={closeAlphaModal}
+                                        className="w-full bg-slate-900 text-white py-4 rounded-full font-black uppercase tracking-widest text-xs hover:bg-slate-800 transition-colors"
+                                    >
+                                        {tx('closeButton')}
+                                    </button>
+                                </>
+                            )}
+                        </motion.div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
 
         </section>
     )
