@@ -240,12 +240,17 @@ const belandTags = ["React Native", "Payments", "Delivery", "Circular Economy"];
 export const ui = {
   // Hero
   openLatam: {
-    en: "The market doesn't reward followers. It belongs to leaders.",
-    es: "El mercado no premia a los que siguen. Le pertenece a los que lideran.",
-    de: "Der Markt belohnt keine Mitläufer. Er gehört den Führenden.",
-    pt: "O mercado não recompensa quem segue. Ele pertence a quem lidera."
+    en: "The market doesn't reward followers.",
+    es: "El mercado no premia a los que siguen.",
+    de: "Der Markt belohnt keine Mitläufer.",
+    pt: "O mercado não recompensa quem segue."
   },
-  globalCompanies: { en: "", es: "", de: "", pt: "" },
+  globalCompanies: {
+    en: "It belongs to leaders.",
+    es: "Le pertenece a los que lideran.",
+    de: "Er gehört den Führenden.",
+    pt: "Ele pertence a quem lidera."
+  },
   subtagline: {
     en: " We don't just write code. We are business architects, experience designers, and ecosystem builders. We engineer integrated Growth Systems for ambitious organizations determined to dominate their industries. We are not a fit for followers or companies looking for quick marketing patches. We build ecosystems for leaders.",
     es: "No solo escribimos código. Somos arquitectos de negocios, diseñadores de experiencias y constructores de ecosistemas. Diseñamos Sistemas de Crecimiento integrados para organizaciones ambiciosas decididas a dominar su industria. No somos para seguidores ni para empresas que buscan parches rápidos de marketing. Construimos ecosistemas para líderes.",
@@ -943,133 +948,133 @@ export const ui = {
     pt: "Avaliar Minha Identidade Digital",
   },
   // ── ALPHA FAST-TRACK ──────────────────────────────────────
-alphaBadge: {
-  en: "For proactive leaders ready to execute today.",
-  es: "Para líderes proactivos listos para ejecutar hoy.",
-  de: "Für proaktive Führungskräfte, die heute loslegen wollen.",
-  pt: "Para líderes proativos prontos para executar hoje."
-},
-alphaTitle: {
-  en: "The Alpha Fast-Track",
-  es: "El Alpha Fast-Track",
-  de: "Der Alpha Fast-Track",
-  pt: "O Alpha Fast-Track"
-},
-alphaSubheadline: {
-  en: "Skip the assessment. Go straight to execution.",
-  es: "Saltate la evaluación. Andá directo a la ejecución.",
-  de: "Überspringen Sie die Bewertung. Direkt zur Umsetzung.",
-  pt: "Pule a avaliação. Vá direto para a execução."
-},
-alphaIntro: {
-  en: "You are already winning, and you are hungry for more. We reward proactivity and ambition. No introductory meetings. Lock in a 60-minute deep-dive architecture session with our elite team and let's start building today.",
-  es: "Ya estás ganando, y tenés hambre de más. Premiamos la proactividad y la ambición. Sin reuniones introductorias. Reservá una sesión de arquitectura de 60 minutos con nuestro equipo de élite y empecemos a construir hoy.",
-  de: "Sie gewinnen bereits und wollen mehr. Wir belohnen Proaktivität und Ambition. Keine Einführungsgespräche. Sichern Sie sich eine 60-minütige Deep-Dive-Architektursitzung mit unserem Elite-Team und lassen Sie uns heute mit dem Aufbau beginnen.",
-  pt: "Você já está vencendo, e está com fome de mais. Recompensamos a proatividade e a ambição. Sem reuniões introdutórias. Garanta uma sessão de arquitetura de 60 minutos com nossa equipe de elite e vamos começar a construir hoje."
-},
-alphaDisclaimer: {
-  en: "This Fast Track has a $100 commitment deposit that separates leaders from the rest of the pack. This deposit is 100% credited toward your total project invoice.",
-  es: "Este Fast Track tiene un depósito de compromiso de $100 que separa a los líderes del resto de la manada. Este depósito se acredita 100% a la factura total de tu proyecto.",
-  de: "Dieser Fast Track erfordert eine Verpflichtungseinlage von $100, die Führungskräfte vom Rest des Rudels unterscheidet. Diese Einlage wird zu 100% auf Ihre Gesamtprojektrechnung angerechnet.",
-  pt: "Este Fast Track tem um depósito de compromisso de $100 que separa os líderes do resto da alcateia. Este depósito é 100% creditado na fatura total do seu projeto."
-},
-alphaCtaMain: {
-  en: "Take the Alpha Fast-Track ($100)",
-  es: "Tomar el Alpha Fast-Track ($100)",
-  de: "Den Alpha Fast-Track wählen ($100)",
-  pt: "Fazer o Alpha Fast-Track ($100)"
-},
-alphaScreen1Title: {
-  en: "Welcome to the Elite Team.",
-  es: "Bienvenido al equipo de élite.",
-  de: "Willkommen im Elite-Team.",
-  pt: "Bem-vindo à equipe de elite."
-},
-alphaCtaCalendar: {
-  en: "Book Kickoff - Calendar",
-  es: "Reservar Kickoff - Calendario",
-  de: "Kickoff buchen - Kalender",
-  pt: "Agendar Kickoff - Calendário"
-},
-alphaScreen2Title: {
-  en: "Great! We have scheduled your Kickoff with our founder himself. Are you ready to take action and make your commitment deposit?",
-  es: "¡Genial! Agendamos tu Kickoff con nuestro fundador en persona. ¿Estás listo para actuar y hacer tu depósito de compromiso?",
-  de: "Großartig! Wir haben Ihren Kickoff mit unserem Gründer persönlich vereinbart. Sind Sie bereit, zu handeln und Ihre Verpflichtungseinlage zu leisten?",
-  pt: "Ótimo! Agendamos seu Kickoff com o nosso fundador pessoalmente. Você está pronto para agir e fazer seu depósito de compromisso?"
-},
-alphaCtaStripe: {
-  en: "Deposit Now - Stripe",
-  es: "Depositar Ahora - Stripe",
-  de: "Jetzt einzahlen - Stripe",
-  pt: "Depositar Agora - Stripe"
-},
-alphaScreen3Body: {
-  en: "You have proven with actions, not just words, that you came to lead. In Better Technologies, we reward ambition. Your exclusive strategy and engineering hour is officially locked in our agenda. Your $100 deposit has already been credited to your project account. The link to complete your ecosystem's technical details has been sent to your WhatsApp. Growth is our ultimate metric. We don't try; we do. Prepare to execute.",
-  es: "Demostraste con acciones, no solo palabras, que viniste a liderar. En Better Technologies, premiamos la ambición. Tu hora exclusiva de estrategia e ingeniería quedó oficialmente reservada en nuestra agenda. Tu depósito de $100 ya fue acreditado a tu cuenta de proyecto. El link para completar los detalles técnicos de tu ecosistema fue enviado a tu WhatsApp. El crecimiento es nuestra métrica final. No intentamos; hacemos. Preparate para ejecutar.",
-  de: "Sie haben mit Taten, nicht nur mit Worten bewiesen, dass Sie führen wollen. Bei Better Technologies belohnen wir Ambition. Ihre exklusive Strategie- und Engineering-Stunde ist offiziell in unserer Agenda gesichert. Ihre $100-Einlage wurde bereits Ihrem Projektkonto gutgeschrieben. Der Link zur Vervollständigung der technischen Details Ihres Ökosystems wurde an Ihr WhatsApp gesendet. Wachstum ist unsere ultimative Kennzahl. Wir versuchen nicht; wir tun. Bereiten Sie sich auf die Umsetzung vor.",
-  pt: "Você provou com ações, não apenas palavras, que veio para liderar. Na Better Technologies, recompensamos a ambição. Sua hora exclusiva de estratégia e engenharia está oficialmente marcada em nossa agenda. Seu depósito de $100 já foi creditado na sua conta de projeto. O link para completar os detalhes técnicos do seu ecossistema foi enviado ao seu WhatsApp. Crescimento é a nossa métrica definitiva. Não tentamos; fazemos. Prepare-se para executar."
-},
-alphaScreen3Signature: {
-  en: "— Better Technologies Elite Team",
-  es: "— Equipo de Élite de Better Technologies",
-  de: "— Better Technologies Elite-Team",
-  pt: "— Equipe de Elite da Better Technologies"
-},
-alphaCtaAssess: {
-  en: "Assess my digital presence (5-Min) →",
-  es: "Evaluar mi presencia digital (5 min) →",
-  de: "Meine digitale Präsenz bewerten (5 Min) →",
-  pt: "Avaliar minha presença digital (5 min) →"
-},
-// ── LEADERSHIP LEAGUES ──────────────────────────────────────
-leagueEmergingTitle: {
-  en: "The Emerging Pack (Startups & Local Heroes)",
-  es: "La Manada Emergente (Startups y Héroes Locales)",
-  de: "Das aufstrebende Rudel (Startups & lokale Helden)",
-  pt: "A Alcateia Emergente (Startups e Heróis Locais)"
-},
-leagueEmergingCopy: {
-  en: "You have a disruptive vision, a story worth telling, and the hunger to change your industry. You need the technological foundation and AI discoverability to look and act like a global leader from day one.",
-  es: "Tenés una visión disruptiva, una historia que vale la pena contar y el hambre para cambiar tu industria. Necesitás la base tecnológica y la visibilidad en IA para verte y actuar como un líder global desde el día uno.",
-  de: "Sie haben eine disruptive Vision, eine erzählenswerte Geschichte und den Hunger, Ihre Branche zu verändern. Sie brauchen die technologische Grundlage und KI-Auffindbarkeit, um von Tag eins an wie ein globaler Marktführer zu wirken.",
-  pt: "Você tem uma visão disruptiva, uma história que vale a pena contar e a fome para mudar seu setor. Você precisa da base tecnológica e da descoberta por IA para parecer e agir como um líder global desde o primeiro dia."
-},
-leagueEmergingCta: {
-  en: "Claim Your AI Awakening (15-Min Assessment)",
-  es: "Reclamá tu Despertar de IA (Evaluación de 15 min)",
-  de: "Sichern Sie sich Ihr KI-Erwachen (15-Min-Bewertung)",
-  pt: "Reivindique seu Despertar de IA (Avaliação de 15 min)"
-},
-leagueLoneWolfTitle: {
-  en: "The Lone Wolf (Established SMEs)",
-  es: "El Lobo Solitario (PyMEs Establecidas)",
-  de: "Der einsame Wolf (Etablierte KMUs)",
-  pt: "O Lobo Solitário (PMEs Estabelecidas)"
-},
-leagueLoneWolfCopy: {
-  en: "You have traction, revenue, and a solid team, but you want to dominate the entire category. This is where we plug in our Growth Systems to turn your momentum into absolute leadership, business visibility, growth, and results. We will expose where you are losing clients and map the Growth System needed to lead. (And if your current digital footprint is outdated, your new Digital identity is on us).",
-  es: "Tenés tracción, ingresos y un equipo sólido, pero querés dominar toda la categoría. Acá conectamos nuestros Sistemas de Crecimiento para convertir tu impulso en liderazgo absoluto, visibilidad de negocio, crecimiento y resultados. Vamos a exponer dónde estás perdiendo clientes y mapear el Sistema de Crecimiento que necesitás para liderar. (Y si tu presencia digital actual está desactualizada, tu nueva identidad digital corre por nuestra cuenta).",
-  de: "Sie haben Traktion, Umsatz und ein solides Team, wollen aber die gesamte Kategorie dominieren. Hier setzen wir unsere Wachstumssysteme ein, um Ihre Dynamik in absolute Führung, Geschäftssichtbarkeit, Wachstum und Ergebnisse zu verwandeln. Wir zeigen auf, wo Sie Kunden verlieren, und entwerfen das Wachstumssystem, das Sie zur Führung brauchen. (Und falls Ihre aktuelle digitale Präsenz veraltet ist, geht Ihre neue digitale Identität auf unsere Kosten).",
-  pt: "Você tem tração, receita e uma equipe sólida, mas quer dominar toda a categoria. É aqui que conectamos nossos Sistemas de Crescimento para transformar seu impulso em liderança absoluta, visibilidade de negócio, crescimento e resultados. Vamos expor onde você está perdendo clientes e mapear o Sistema de Crescimento necessário para liderar. (E se sua presença digital atual está desatualizada, sua nova identidade digital é por nossa conta)."
-},
-leagueWhalesTitle: {
-  en: "The Whales (Enterprise)",
-  es: "Las Ballenas (Enterprise)",
-  de: "Die Wale (Enterprise)",
-  pt: "As Baleias (Enterprise)"
-},
-leagueWhalesCopy: {
-  en: "You have the size; we bring the speed. We help massive organizations break operational bottlenecks, integrate AI, and execute with the agility of a startup. No credit cards required here. Send your project lead and let's map your custom architecture.",
-  es: "Vos tenés el tamaño; nosotros ponemos la velocidad. Ayudamos a organizaciones masivas a romper cuellos de botella operativos, integrar IA y ejecutar con la agilidad de una startup. Acá no se pide tarjeta de crédito. Enviá a tu líder de proyecto y mapeemos tu arquitectura a medida.",
-  de: "Sie haben die Größe; wir bringen die Geschwindigkeit. Wir helfen großen Organisationen, operative Engpässe zu beseitigen, KI zu integrieren und mit der Agilität eines Startups auszuführen. Keine Kreditkarte erforderlich. Schicken Sie Ihren Projektleiter, und lassen Sie uns Ihre individuelle Architektur entwerfen.",
-  pt: "Você tem o tamanho; nós trazemos a velocidade. Ajudamos organizações enormes a romper gargalos operacionais, integrar IA e executar com a agilidade de uma startup. Nenhum cartão de crédito necessário aqui. Envie o líder do seu projeto e vamos mapear sua arquitetura personalizada."
-},
-leagueWhalesCta: {
-  en: "Assess my Digital Relevance and contact Enterprise Team (5-Min) →",
-  es: "Evaluá mi Relevancia Digital y contactá al equipo Enterprise (5 min) →",
-  de: "Meine digitale Relevanz bewerten und das Enterprise-Team kontaktieren (5 Min) →",
-  pt: "Avalie minha Relevância Digital e contate a equipe Enterprise (5 min) →"
-},
+  alphaBadge: {
+    en: "For proactive leaders ready to execute today.",
+    es: "Para líderes proactivos listos para ejecutar hoy.",
+    de: "Für proaktive Führungskräfte, die heute loslegen wollen.",
+    pt: "Para líderes proativos prontos para executar hoje."
+  },
+  alphaTitle: {
+    en: "The Alpha Fast-Track",
+    es: "El Alpha Fast-Track",
+    de: "Der Alpha Fast-Track",
+    pt: "O Alpha Fast-Track"
+  },
+  alphaSubheadline: {
+    en: "Skip the assessment. Go straight to execution.",
+    es: "Saltate la evaluación. Andá directo a la ejecución.",
+    de: "Überspringen Sie die Bewertung. Direkt zur Umsetzung.",
+    pt: "Pule a avaliação. Vá direto para a execução."
+  },
+  alphaIntro: {
+    en: "You are already winning, and you are hungry for more. We reward proactivity and ambition. No introductory meetings. Lock in a 60-minute deep-dive architecture session with our elite team and let's start building today.",
+    es: "Ya estás ganando, y tenés hambre de más. Premiamos la proactividad y la ambición. Sin reuniones introductorias. Reservá una sesión de arquitectura de 60 minutos con nuestro equipo de élite y empecemos a construir hoy.",
+    de: "Sie gewinnen bereits und wollen mehr. Wir belohnen Proaktivität und Ambition. Keine Einführungsgespräche. Sichern Sie sich eine 60-minütige Deep-Dive-Architektursitzung mit unserem Elite-Team und lassen Sie uns heute mit dem Aufbau beginnen.",
+    pt: "Você já está vencendo, e está com fome de mais. Recompensamos a proatividade e a ambição. Sem reuniões introdutórias. Garanta uma sessão de arquitetura de 60 minutos com nossa equipe de elite e vamos começar a construir hoje."
+  },
+  alphaDisclaimer: {
+    en: "This Fast Track has a $100 commitment deposit that separates leaders from the rest of the pack. This deposit is 100% credited toward your total project invoice.",
+    es: "Este Fast Track tiene un depósito de compromiso de $100 que separa a los líderes del resto de la manada. Este depósito se acredita 100% a la factura total de tu proyecto.",
+    de: "Dieser Fast Track erfordert eine Verpflichtungseinlage von $100, die Führungskräfte vom Rest des Rudels unterscheidet. Diese Einlage wird zu 100% auf Ihre Gesamtprojektrechnung angerechnet.",
+    pt: "Este Fast Track tem um depósito de compromisso de $100 que separa os líderes do resto da alcateia. Este depósito é 100% creditado na fatura total do seu projeto."
+  },
+  alphaCtaMain: {
+    en: "Take the Alpha Fast-Track ($100)",
+    es: "Tomar el Alpha Fast-Track ($100)",
+    de: "Den Alpha Fast-Track wählen ($100)",
+    pt: "Fazer o Alpha Fast-Track ($100)"
+  },
+  alphaScreen1Title: {
+    en: "Welcome to the Elite Team.",
+    es: "Bienvenido al equipo de élite.",
+    de: "Willkommen im Elite-Team.",
+    pt: "Bem-vindo à equipe de elite."
+  },
+  alphaCtaCalendar: {
+    en: "Book Kickoff - Calendar",
+    es: "Reservar Kickoff - Calendario",
+    de: "Kickoff buchen - Kalender",
+    pt: "Agendar Kickoff - Calendário"
+  },
+  alphaScreen2Title: {
+    en: "Great! We have scheduled your Kickoff with our founder himself. Are you ready to take action and make your commitment deposit?",
+    es: "¡Genial! Agendamos tu Kickoff con nuestro fundador en persona. ¿Estás listo para actuar y hacer tu depósito de compromiso?",
+    de: "Großartig! Wir haben Ihren Kickoff mit unserem Gründer persönlich vereinbart. Sind Sie bereit, zu handeln und Ihre Verpflichtungseinlage zu leisten?",
+    pt: "Ótimo! Agendamos seu Kickoff com o nosso fundador pessoalmente. Você está pronto para agir e fazer seu depósito de compromisso?"
+  },
+  alphaCtaStripe: {
+    en: "Deposit Now - Stripe",
+    es: "Depositar Ahora - Stripe",
+    de: "Jetzt einzahlen - Stripe",
+    pt: "Depositar Agora - Stripe"
+  },
+  alphaScreen3Body: {
+    en: "You have proven with actions, not just words, that you came to lead. In Better Technologies, we reward ambition. Your exclusive strategy and engineering hour is officially locked in our agenda. Your $100 deposit has already been credited to your project account. The link to complete your ecosystem's technical details has been sent to your WhatsApp. Growth is our ultimate metric. We don't try; we do. Prepare to execute.",
+    es: "Demostraste con acciones, no solo palabras, que viniste a liderar. En Better Technologies, premiamos la ambición. Tu hora exclusiva de estrategia e ingeniería quedó oficialmente reservada en nuestra agenda. Tu depósito de $100 ya fue acreditado a tu cuenta de proyecto. El link para completar los detalles técnicos de tu ecosistema fue enviado a tu WhatsApp. El crecimiento es nuestra métrica final. No intentamos; hacemos. Preparate para ejecutar.",
+    de: "Sie haben mit Taten, nicht nur mit Worten bewiesen, dass Sie führen wollen. Bei Better Technologies belohnen wir Ambition. Ihre exklusive Strategie- und Engineering-Stunde ist offiziell in unserer Agenda gesichert. Ihre $100-Einlage wurde bereits Ihrem Projektkonto gutgeschrieben. Der Link zur Vervollständigung der technischen Details Ihres Ökosystems wurde an Ihr WhatsApp gesendet. Wachstum ist unsere ultimative Kennzahl. Wir versuchen nicht; wir tun. Bereiten Sie sich auf die Umsetzung vor.",
+    pt: "Você provou com ações, não apenas palavras, que veio para liderar. Na Better Technologies, recompensamos a ambição. Sua hora exclusiva de estratégia e engenharia está oficialmente marcada em nossa agenda. Seu depósito de $100 já foi creditado na sua conta de projeto. O link para completar os detalhes técnicos do seu ecossistema foi enviado ao seu WhatsApp. Crescimento é a nossa métrica definitiva. Não tentamos; fazemos. Prepare-se para executar."
+  },
+  alphaScreen3Signature: {
+    en: "— Better Technologies Elite Team",
+    es: "— Equipo de Élite de Better Technologies",
+    de: "— Better Technologies Elite-Team",
+    pt: "— Equipe de Elite da Better Technologies"
+  },
+  alphaCtaAssess: {
+    en: "Assess my digital presence (5-Min) →",
+    es: "Evaluar mi presencia digital (5 min) →",
+    de: "Meine digitale Präsenz bewerten (5 Min) →",
+    pt: "Avaliar minha presença digital (5 min) →"
+  },
+  // ── LEADERSHIP LEAGUES ──────────────────────────────────────
+  leagueEmergingTitle: {
+    en: "The Emerging Pack (Startups & Local Heroes)",
+    es: "La Manada Emergente (Startups y Héroes Locales)",
+    de: "Das aufstrebende Rudel (Startups & lokale Helden)",
+    pt: "A Alcateia Emergente (Startups e Heróis Locais)"
+  },
+  leagueEmergingCopy: {
+    en: "You have a disruptive vision, a story worth telling, and the hunger to change your industry. You need the technological foundation and AI discoverability to look and act like a global leader from day one.",
+    es: "Tenés una visión disruptiva, una historia que vale la pena contar y el hambre para cambiar tu industria. Necesitás la base tecnológica y la visibilidad en IA para verte y actuar como un líder global desde el día uno.",
+    de: "Sie haben eine disruptive Vision, eine erzählenswerte Geschichte und den Hunger, Ihre Branche zu verändern. Sie brauchen die technologische Grundlage und KI-Auffindbarkeit, um von Tag eins an wie ein globaler Marktführer zu wirken.",
+    pt: "Você tem uma visão disruptiva, uma história que vale a pena contar e a fome para mudar seu setor. Você precisa da base tecnológica e da descoberta por IA para parecer e agir como um líder global desde o primeiro dia."
+  },
+  leagueEmergingCta: {
+    en: "Claim Your AI Awakening (15-Min Assessment)",
+    es: "Reclamá tu Despertar de IA (Evaluación de 15 min)",
+    de: "Sichern Sie sich Ihr KI-Erwachen (15-Min-Bewertung)",
+    pt: "Reivindique seu Despertar de IA (Avaliação de 15 min)"
+  },
+  leagueLoneWolfTitle: {
+    en: "The Lone Wolf (Established SMEs)",
+    es: "El Lobo Solitario (PyMEs Establecidas)",
+    de: "Der einsame Wolf (Etablierte KMUs)",
+    pt: "O Lobo Solitário (PMEs Estabelecidas)"
+  },
+  leagueLoneWolfCopy: {
+    en: "You have traction, revenue, and a solid team, but you want to dominate the entire category. This is where we plug in our Growth Systems to turn your momentum into absolute leadership, business visibility, growth, and results. We will expose where you are losing clients and map the Growth System needed to lead. (And if your current digital footprint is outdated, your new Digital identity is on us).",
+    es: "Tenés tracción, ingresos y un equipo sólido, pero querés dominar toda la categoría. Acá conectamos nuestros Sistemas de Crecimiento para convertir tu impulso en liderazgo absoluto, visibilidad de negocio, crecimiento y resultados. Vamos a exponer dónde estás perdiendo clientes y mapear el Sistema de Crecimiento que necesitás para liderar. (Y si tu presencia digital actual está desactualizada, tu nueva identidad digital corre por nuestra cuenta).",
+    de: "Sie haben Traktion, Umsatz und ein solides Team, wollen aber die gesamte Kategorie dominieren. Hier setzen wir unsere Wachstumssysteme ein, um Ihre Dynamik in absolute Führung, Geschäftssichtbarkeit, Wachstum und Ergebnisse zu verwandeln. Wir zeigen auf, wo Sie Kunden verlieren, und entwerfen das Wachstumssystem, das Sie zur Führung brauchen. (Und falls Ihre aktuelle digitale Präsenz veraltet ist, geht Ihre neue digitale Identität auf unsere Kosten).",
+    pt: "Você tem tração, receita e uma equipe sólida, mas quer dominar toda a categoria. É aqui que conectamos nossos Sistemas de Crescimento para transformar seu impulso em liderança absoluta, visibilidade de negócio, crescimento e resultados. Vamos expor onde você está perdendo clientes e mapear o Sistema de Crescimento necessário para liderar. (E se sua presença digital atual está desatualizada, sua nova identidade digital é por nossa conta)."
+  },
+  leagueWhalesTitle: {
+    en: "The Whales (Enterprise)",
+    es: "Las Ballenas (Enterprise)",
+    de: "Die Wale (Enterprise)",
+    pt: "As Baleias (Enterprise)"
+  },
+  leagueWhalesCopy: {
+    en: "You have the size; we bring the speed. We help massive organizations break operational bottlenecks, integrate AI, and execute with the agility of a startup. No credit cards required here. Send your project lead and let's map your custom architecture.",
+    es: "Vos tenés el tamaño; nosotros ponemos la velocidad. Ayudamos a organizaciones masivas a romper cuellos de botella operativos, integrar IA y ejecutar con la agilidad de una startup. Acá no se pide tarjeta de crédito. Enviá a tu líder de proyecto y mapeemos tu arquitectura a medida.",
+    de: "Sie haben die Größe; wir bringen die Geschwindigkeit. Wir helfen großen Organisationen, operative Engpässe zu beseitigen, KI zu integrieren und mit der Agilität eines Startups auszuführen. Keine Kreditkarte erforderlich. Schicken Sie Ihren Projektleiter, und lassen Sie uns Ihre individuelle Architektur entwerfen.",
+    pt: "Você tem o tamanho; nós trazemos a velocidade. Ajudamos organizações enormes a romper gargalos operacionais, integrar IA e executar com a agilidade de uma startup. Nenhum cartão de crédito necessário aqui. Envie o líder do seu projeto e vamos mapear sua arquitetura personalizada."
+  },
+  leagueWhalesCta: {
+    en: "Assess my Digital Relevance and contact Enterprise Team (5-Min) →",
+    es: "Evaluá mi Relevancia Digital y contactá al equipo Enterprise (5 min) →",
+    de: "Meine digitale Relevanz bewerten und das Enterprise-Team kontaktieren (5 Min) →",
+    pt: "Avalie minha Relevância Digital e contate a equipe Enterprise (5 min) →"
+  },
   assessment15min: { en: "15 min - Free Call", es: "15 min - Llamada gratuita", de: "15 Min - Kostenloser Anruf", pt: "15 min - Chamada gratuita" },
   assessment1h: { en: "1 Hour - $50", es: "1 Hora - $50", de: "1 Stunde - $50", pt: "1 Hora - $50" },
   bookAssessment: { en: "Book Assessment", es: "Reservar evaluación", de: "Bewertung buchen", pt: "Agendar avaliação" },
@@ -1745,8 +1750,8 @@ export default function Home() {
           <p className="text-blue-600 uppercase tracking-[0.4em] mb-3 text-[10px] font-black">
             {t('whatWeDo')}
           </p>
-          <h1 className="text-3xl md:text-8xl font-black leading-[1] tracking-tighter max-w-4xl text-white uppercase">
-            {tx('openLatam')} <br /> {tx('globalCompanies')}
+          <h1 className="text-3xl md:text-5xl lg:text-6xl font-black leading-[1.05] tracking-tighter max-w-4xl text-white uppercase">
+            {tx('openLatam')} <br /> <span className="text-blue-600">{tx('globalCompanies')}</span>
           </h1>
           <p className="mt-3 text-white text-[9px] md:text-[10px] uppercase tracking-widest font-bold">{tx('subtagline')}</p>
           <a href="https://wa.me/593991358652?text=Hi!%20I%27d%20like%20to%20get%20in%20touch%20with%20the%20team." className="mt-3 inline-block px-8 py-3 bg-[#FF6B00] text-white rounded-full font-bold shadow-lg uppercase tracking-widest text-[10px] transition-transform active:scale-95">
@@ -1965,8 +1970,8 @@ export default function Home() {
 
       {/* CASOS DE ÉXITO — BELAND */}
       <CasosDeExito showMachinesModal={showMachinesModal} setShowMachinesModal={setShowMachinesModal} />
-      
-       <div className="py-10 border-t border-slate-100 text-center">
+
+      <div className="py-10 border-t border-slate-100 text-center">
         <h3 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter uppercase mb-10">
           {tx('followJourney')}{" "}
           <span className="text-blue-600">
@@ -2058,7 +2063,7 @@ export default function Home() {
           </a>
         </div>
       </section>
-      
+
       <FinalChallenge tx={tx} />
 
       {/* FOOTER */}
