@@ -324,51 +324,51 @@ const ui = {
     pt: (opt: string) => `Olá! Estou interessado em ${opt}. Gostaria de falar com a equipe sobre um novo projeto.`,
   },
   leadership: {
-  en: "Leadership",
-  es: "Liderazgo",
-  de: "Führung",
-  pt: "Liderança",
-},
+    en: "Leadership",
+    es: "Liderazgo",
+    de: "Führung",
+    pt: "Liderança",
+  },
 
-noSizeLimit: {
-  en: "has no size limit.",
-  es: "no tiene límites de escala.",
-  de: "kennt keine Größenbeschränkung.",
-  pt: "não tem limites de escala.",
-},
+  noSizeLimit: {
+    en: "has no size limit.",
+    es: "no tiene límites de escala.",
+    de: "kennt keine Größenbeschränkung.",
+    pt: "não tem limites de escala.",
+  },
 
-leadershipSubtitle: {
-  en: "We engineer systems for those who lead, regardless of their current headcount.",
-  es: "Diseñamos sistemas para quienes lideran, sin importar su tamaño actual.",
-  de: "Wir entwickeln Systeme für Führungskräfte, unabhängig von ihrer aktuellen Größe.",
-  pt: "Projetamos sistemas para quem lidera, independentemente do seu tamanho atual.",
-},
+  leadershipSubtitle: {
+    en: "We engineer systems for those who lead, regardless of their current headcount.",
+    es: "Diseñamos sistemas para quienes lideran, sin importar su tamaño actual.",
+    de: "Wir entwickeln Systeme für Führungskräfte, unabhängig von ihrer aktuellen Größe.",
+    pt: "Projetamos sistemas para quem lidera, independentemente do seu tamanho atual.",
+  },
 
-chooseLeague: {
-  en: "Choose your league",
-  es: "Elige tu liga",
-  de: "Wähle deine Liga",
-  pt: "Escolha sua liga",
-},
-leadershipMain: {
-  en: "Leadership",
-  es: "El liderazgo",
-  de: "Führung",
-  pt: "Liderança",
-},
+  chooseLeague: {
+    en: "Choose your league",
+    es: "Elige tu liga",
+    de: "Wähle deine Liga",
+    pt: "Escolha sua liga",
+  },
+  leadershipMain: {
+    en: "Leadership",
+    es: "El liderazgo",
+    de: "Führung",
+    pt: "Liderança",
+  },
 
-leadershipHighlight: {
-  en: "scales",
-  es: "escala",
-  de: "skaliert",
-  pt: "escala",
-},
-leadershipRest: {
-  en: "has no size limit.",
-  es: "no tiene límites de escala.",
-  de: "kennt keine Größenbeschränkung.",
-  pt: "não tem limites de escala.",
-},
+  leadershipHighlight: {
+    en: "scales",
+    es: "escala",
+    de: "skaliert",
+    pt: "escala",
+  },
+  leadershipRest: {
+    en: "has no size limit.",
+    es: "no tiene límites de escala.",
+    de: "kennt keine Größenbeschränkung.",
+    pt: "não tem limites de escala.",
+  },
 
   // Casos de éxito
   successStories: { en: "Our Success Stories", es: "Nuestros casos de exito", de: "Unsere Erfolgsgeschichten", pt: "Nossos casos de sucesso" },
@@ -438,10 +438,10 @@ leadershipRest: {
 
   problemTitle: { en: "HOW CAN WE HELP?", es: "¿CÓMO PODEMOS AYUDAR?", de: "WIE KÖNNEN WIR HELFEN?", pt: "COMO PODEMOS AJUDAR?" },
   problemSubtitle: {
-    en: "THE AI AWAKENING ",
-    es: "EL DESPERTAR DE LA IA ",
-    de: "DAS KI-ERWACHEN ",
-    pt: "O DESPERTAR DA IA "
+    en: "THE AI AWAKENING (The Wedge)",
+    es: "EL DESPERTAR DE LA IA (La Cuña)",
+    de: "DAS KI-ERWACHEN (Der Keil)",
+    pt: "O DESPERTAR DA IA (A Cunha)"
   },
   problemDesc: {
     en: "Engineering and deployment of your first Website as an Operating System (Optimized for AI & Human Trust).",
@@ -477,6 +477,12 @@ leadershipRest: {
     es: "La Manada",
     de: "Das Rudel",
     pt: "A Alcateia"
+  },
+  packModalIntro: {
+    en: "Over 50% of online shoppers now consult Generative AI before making a purchase decision. Your customers aren't searching for you anymore; they are asking AI. Market leaders have thrived chasing likes, so far. But the rules of the hunt have changed.",
+    es: "Más del 50% de los compradores online ya consultan IA Generativa antes de decidir una compra. Tus clientes ya no te buscan; le preguntan a la IA. Los líderes del mercado prosperaron persiguiendo likes, hasta ahora. Pero las reglas de la caza cambiaron.",
+    de: "Über 50% der Online-Käufer konsultieren heute generative KI, bevor sie eine Kaufentscheidung treffen. Ihre Kunden suchen nicht mehr nach Ihnen; sie fragen die KI. Marktführer sind bisher erfolgreich gewesen, indem sie Likes gejagt haben. Doch die Regeln der Jagd haben sich geändert.",
+    pt: "Mais de 50% dos compradores online já consultam IA Generativa antes de decidir uma compra. Seus clientes já não te procuram; eles perguntam à IA. Os líderes de mercado prosperaram perseguindo likes, até agora. Mas as regras da caçada mudaram."
   },
   packModalQuote: {
     en: "The strength of the wolf is the pack, and the strength of the pack is the wolf.",
@@ -583,28 +589,28 @@ leadershipRest: {
   },
 
   // Cierre
-closingLine: {
-  en: "Understand the past —",
-  es: "Comprende el pasado —",
-  de: "Verstehe die Vergangenheit —",
-  pt: "Entenda o passado —"
-},
+  closingLine: {
+    en: "Understand the past —",
+    es: "Comprende el pasado —",
+    de: "Verstehe die Vergangenheit —",
+    pt: "Entenda o passado —"
+  },
 
-closingLineEm: {
-  en: "Build What's Next.",
-  es: "Construye lo que viene.",
-  de: "Baue die Zukunft.",
-  pt: "Construa o futuro."
-},
-closingCopy: {
-  en: "In an era defined by Global Operations Under Uncertainty, we engineer the infrastructure for the future. From Execution in LATAM to securing Real-Time operations & certainty, we build Trust Systems and Authentication systems that serve as Proof of Humanity in an AI-driven world. Whether deploying Circular Economic Systems, ensuring seamless Circular Systems Deployment, or running complex Validation protocols for the Future of Global Operations, we design for resilience and dominance.",
+  closingLineEm: {
+    en: "Build What's Next.",
+    es: "Construye lo que viene.",
+    de: "Baue die Zukunft.",
+    pt: "Construa o futuro."
+  },
+  closingCopy: {
+    en: "In an era defined by Global Operations Under Uncertainty, we engineer the infrastructure for the future. From Execution in LATAM to securing Real-Time operations & certainty, we build Trust Systems and Authentication systems that serve as Proof of Humanity in an AI-driven world. Whether deploying Circular Economic Systems, ensuring seamless Circular Systems Deployment, or running complex Validation protocols for the Future of Global Operations, we design for resilience and dominance.",
 
-  es: "En una era definida por las operaciones globales bajo incertidumbre, diseñamos la infraestructura del futuro. Desde la ejecución en LATAM hasta la protección de operaciones en tiempo real y la generación de certeza, desarrollamos sistemas de confianza y autenticación que actúan como prueba de humanidad en un mundo impulsado por la IA. Ya sea implementando sistemas de economía circular, garantizando un despliegue fluido de sistemas circulares o ejecutando complejos protocolos de validación para el futuro de las operaciones globales, diseñamos soluciones orientadas a la resiliencia y al liderazgo.",
+    es: "En una era definida por las operaciones globales bajo incertidumbre, diseñamos la infraestructura del futuro. Desde la ejecución en LATAM hasta la protección de operaciones en tiempo real y la generación de certeza, desarrollamos sistemas de confianza y autenticación que actúan como prueba de humanidad en un mundo impulsado por la IA. Ya sea implementando sistemas de economía circular, garantizando un despliegue fluido de sistemas circulares o ejecutando complejos protocolos de validación para el futuro de las operaciones globales, diseñamos soluciones orientadas a la resiliencia y al liderazgo.",
 
-  de: "In einer Ära, die von globalen Operationen unter Unsicherheit geprägt ist, entwickeln wir die Infrastruktur der Zukunft. Von der Umsetzung in LATAM bis zur Absicherung von Echtzeitprozessen und Planungssicherheit entwickeln wir Vertrauens- und Authentifizierungssysteme, die als Nachweis der menschlichen Identität in einer KI-gesteuerten Welt dienen. Ob bei der Einführung zirkulärer Wirtschaftssysteme, der nahtlosen Bereitstellung zirkulärer Systeme oder der Durchführung komplexer Validierungsprotokolle für die Zukunft globaler Abläufe – wir entwickeln Lösungen für Resilienz und nachhaltige Stärke.",
+    de: "In einer Ära, die von globalen Operationen unter Unsicherheit geprägt ist, entwickeln wir die Infrastruktur der Zukunft. Von der Umsetzung in LATAM bis zur Absicherung von Echtzeitprozessen und Planungssicherheit entwickeln wir Vertrauens- und Authentifizierungssysteme, die als Nachweis der menschlichen Identität in einer KI-gesteuerten Welt dienen. Ob bei der Einführung zirkulärer Wirtschaftssysteme, der nahtlosen Bereitstellung zirkulärer Systeme oder der Durchführung komplexer Validierungsprotokolle für die Zukunft globaler Abläufe – wir entwickeln Lösungen für Resilienz und nachhaltige Stärke.",
 
-  pt: "Em uma era definida por operações globais sob incerteza, desenvolvemos a infraestrutura do futuro. Da execução na LATAM à garantia de operações em tempo real e maior previsibilidade, construímos sistemas de confiança e autenticação que servem como prova de humanidade em um mundo impulsionado por IA. Seja implantando sistemas de economia circular, garantindo uma implementação fluida de sistemas circulares ou executando protocolos complexos de validação para o futuro das operações globais, projetamos soluções voltadas para resiliência e liderança."
-},
+    pt: "Em uma era definida por operações globais sob incerteza, desenvolvemos a infraestrutura do futuro. Da execução na LATAM à garantia de operações em tempo real e maior previsibilidade, construímos sistemas de confiança e autenticação que servem como prova de humanidade em um mundo impulsionado por IA. Seja implantando sistemas de economia circular, garantindo uma implementação fluida de sistemas circulares ou executando protocolos complexos de validação para o futuro das operações globais, projetamos soluções voltadas para resiliência e liderança."
+  },
   letsStart: { en: "LET'S START", es: "COMENCEMOS", de: "LASST UNS", pt: "VAMOS COMEÇAR" },
   today: { en: "TODAY", es: "HOY", de: "HEUTE BEGINNEN", pt: "HOJE" },
 
@@ -626,86 +632,86 @@ closingCopy: {
     pt: "Não perca nenhum movimento"
   },
   followJourney: {
-  en: "Follow",
-  es: "Sigue",
-  de: "Folgen Sie",
-  pt: "Siga"
-},
+    en: "Follow",
+    es: "Sigue",
+    de: "Folgen Sie",
+    pt: "Siga"
+  },
 
-journey: {
-  en: "Our Journey",
-  es: "Nuestro Recorrido",
-  de: "Unserem Weg",
-  pt: "Nossa Jornada"
-},
-finalChallenge: {
-  en: "The Final Challenge",
-  es: "El Desafío Final",
-  de: "Die Letzte Herausforderung",
-  pt: "O Desafio Final"
-},
-scholarshipHeadline: {
-  en: "The Better Underdog & Endangered Territories Scholarship.",
-  es: "La beca Better Underdog & Territorios en Riesgo.",
-  de: "Das Better Underdog & Gefährdete Regionen Stipendium.",
-  pt: "A Bolsa Better Underdog & Territórios em Risco."
-},
+  journey: {
+    en: "Our Journey",
+    es: "Nuestro Recorrido",
+    de: "Unserem Weg",
+    pt: "Nossa Jornada"
+  },
+  finalChallenge: {
+    en: "The Final Challenge",
+    es: "El Desafío Final",
+    de: "Die Letzte Herausforderung",
+    pt: "O Desafio Final"
+  },
+  scholarshipHeadline: {
+    en: "The Better Underdog & Endangered Territories Scholarship.",
+    es: "La beca Better Underdog & Territorios en Riesgo.",
+    de: "Das Better Underdog & Gefährdete Regionen Stipendium.",
+    pt: "A Bolsa Better Underdog & Territórios em Risco."
+  },
 
-scholarshipIntro: {
-  en: "Greatness isn't always funded, and geography shouldn't dictate your market share. This scholarship applies across all our Growth Systems, offering up to 50% co-investment in our operating fees through two qualification paths:",
-  es: "La grandeza no siempre está financiada, y la geografía no debería definir tu participación en el mercado. Esta beca aplica a todos nuestros sistemas de crecimiento, ofreciendo hasta un 50% de co-inversión en nuestros honorarios operativos mediante dos vías de calificación:",
-  de: "Größe wird nicht immer finanziert, und Geografie sollte nicht über Marktanteile entscheiden. Dieses Stipendium gilt für alle unsere Wachstumssysteme und bietet bis zu 50 % Co-Investition in unsere Betriebskosten über zwei Qualifikationswege:",
-  pt: "A grandeza nem sempre é financiada, e a geografia não deve determinar sua participação de mercado. Esta bolsa se aplica a todos os nossos sistemas de crescimento, oferecendo até 50% de coinvestimento em nossas taxas operacionais através de dois caminhos de qualificação:"
-},
+  scholarshipIntro: {
+    en: "Greatness isn't always funded, and geography shouldn't dictate your market share. This scholarship applies across all our Growth Systems, offering up to 50% co-investment in our operating fees through two qualification paths:",
+    es: "La grandeza no siempre está financiada, y la geografía no debería definir tu participación en el mercado. Esta beca aplica a todos nuestros sistemas de crecimiento, ofreciendo hasta un 50% de co-inversión en nuestros honorarios operativos mediante dos vías de calificación:",
+    de: "Größe wird nicht immer finanziert, und Geografie sollte nicht über Marktanteile entscheiden. Dieses Stipendium gilt für alle unsere Wachstumssysteme und bietet bis zu 50 % Co-Investition in unsere Betriebskosten über zwei Qualifikationswege:",
+    pt: "A grandeza nem sempre é financiada, e a geografia não deve determinar sua participação de mercado. Esta bolsa se aplica a todos os nossos sistemas de crescimento, oferecendo até 50% de coinvestimento em nossas taxas operacionais através de dois caminhos de qualificação:"
+  },
 
-scholarshipPath1: {
-  en: "You are bootstrapping. Whether in a garage in Austin or a dorm in London, if you lack capital but have a disruptive vision, relentless ambition, and a story worth telling, we invest in your potential.",
-  es: "Estás en etapa bootstrap. Ya sea en un garage en Austin o en una residencia en Londres, si te falta capital pero tienes una visión disruptiva, ambición incansable y una historia que contar, invertimos en tu potencial.",
-  de: "Du bist im Bootstrapping. Ob in einer Garage in Austin oder einem Studentenwohnheim in London – wenn dir Kapital fehlt, aber du eine disruptive Vision und unermüdlichen Ehrgeiz hast, investieren wir in dein Potenzial.",
-  pt: "Você está em bootstrap. Seja em uma garagem em Austin ou em um dormitório em Londres, se você não tem capital mas tem uma visão disruptiva e ambição incansável, investimos no seu potencial."
-},
+  scholarshipPath1: {
+    en: "You are bootstrapping. Whether in a garage in Austin or a dorm in London, if you lack capital but have a disruptive vision, relentless ambition, and a story worth telling, we invest in your potential.",
+    es: "Estás en etapa bootstrap. Ya sea en un garage en Austin o en una residencia en Londres, si te falta capital pero tienes una visión disruptiva, ambición incansable y una historia que contar, invertimos en tu potencial.",
+    de: "Du bist im Bootstrapping. Ob in einer Garage in Austin oder einem Studentenwohnheim in London – wenn dir Kapital fehlt, aber du eine disruptive Vision und unermüdlichen Ehrgeiz hast, investieren wir in dein Potenzial.",
+    pt: "Você está em bootstrap. Seja em uma garagem em Austin ou em um dormitório em Londres, se você não tem capital mas tem uma visão disruptiva e ambição incansável, investimos no seu potencial."
+  },
 
-scholarshipPath2: {
-  en: "You operate in a region where raw talent outpaces macroeconomic stability. If your venture faces systemic friction, hyperinflation, or currency devaluation (e.g., LATAM and emerging markets), you automatically qualify.",
-  es: "Operas en una región donde el talento supera la estabilidad macroeconómica. Si tu proyecto enfrenta fricción sistémica, hiperinflación o devaluación monetaria (ej. LATAM y mercados emergentes), calificas automáticamente.",
-  de: "Du operierst in einer Region, in der Talent die makroökonomische Stabilität übertrifft. Wenn dein Projekt systemische Reibung, Hyperinflation oder Währungsabwertung erlebt, qualifizierst du dich automatisch.",
-  pt: "Você opera em uma região onde o talento supera a estabilidade macroeconômica. Se seu projeto enfrenta atrito sistêmico, hiperinflação ou desvalorização monetária, você se qualifica automaticamente."
-},
+  scholarshipPath2: {
+    en: "You operate in a region where raw talent outpaces macroeconomic stability. If your venture faces systemic friction, hyperinflation, or currency devaluation (e.g., LATAM and emerging markets), you automatically qualify.",
+    es: "Operas en una región donde el talento supera la estabilidad macroeconómica. Si tu proyecto enfrenta fricción sistémica, hiperinflación o devaluación monetaria (ej. LATAM y mercados emergentes), calificas automáticamente.",
+    de: "Du operierst in einer Region, in der Talent die makroökonomische Stabilität übertrifft. Wenn dein Projekt systemische Reibung, Hyperinflation oder Währungsabwertung erlebt, qualifizierst du dich automatisch.",
+    pt: "Você opera em uma região onde o talento supera a estabilidade macroeconômica. Se seu projeto enfrenta atrito sistêmico, hiperinflação ou desvalorização monetária, você se qualifica automaticamente."
+  },
 
-scholarshipPromise: {
-  en: "We sponsor the growth systems of tomorrow's Alphas, no matter where they are born or how much capital they have today.",
-  es: "Financiamos los sistemas de crecimiento de los Alphas del mañana, sin importar dónde nacieron o cuánto capital tengan hoy.",
-  de: "Wir fördern die Wachstumssysteme der Alphas von morgen, unabhängig davon, wo sie geboren wurden oder wie viel Kapital sie heute haben.",
-  pt: "Patrocinamos os sistemas de crescimento dos Alphas de amanhã, não importa onde nasceram ou quanto capital têm hoje."
-},
+  scholarshipPromise: {
+    en: "We sponsor the growth systems of tomorrow's Alphas, no matter where they are born or how much capital they have today.",
+    es: "Financiamos los sistemas de crecimiento de los Alphas del mañana, sin importar dónde nacieron o cuánto capital tengan hoy.",
+    de: "Wir fördern die Wachstumssysteme der Alphas von morgen, unabhängig davon, wo sie geboren wurden oder wie viel Kapital sie heute haben.",
+    pt: "Patrocinamos os sistemas de crescimento dos Alphas de amanhã, não importa onde nasceram ou quanto capital têm hoje."
+  },
 
-scholarshipCTA: {
-  en: "Apply for Co-Investment →",
-  es: "Aplicar a Co-Inversión →",
-  de: "Für Co-Investition bewerben →",
-  pt: "Aplicar para Coinvestimento →"
-},
+  scholarshipCTA: {
+    en: "Apply for Co-Investment →",
+    es: "Aplicar a Co-Inversión →",
+    de: "Für Co-Investition bewerben →",
+    pt: "Aplicar para Coinvestimento →"
+  },
 
-challengeHeadline: {
-  en: "The world is changing faster than organizations.",
-  es: "El mundo está cambiando más rápido que las organizaciones.",
-  de: "Die Welt verändert sich schneller als Unternehmen.",
-  pt: "O mundo está mudando mais rápido do que as organizações."
-},
+  challengeHeadline: {
+    en: "The world is changing faster than organizations.",
+    es: "El mundo está cambiando más rápido que las organizaciones.",
+    de: "Die Welt verändert sich schneller als Unternehmen.",
+    pt: "O mundo está mudando mais rápido do que as organizações."
+  },
 
-challengeCopy: {
-  en: "Stop buying isolated services. Build a system. What's your next move?",
-  es: "Deja de comprar servicios aislados. Construye un sistema. ¿Cuál es tu próximo movimiento?",
-  de: "Hören Sie auf, isolierte Dienstleistungen zu kaufen. Bauen Sie ein System. Was ist Ihr nächster Schritt?",
-  pt: "Pare de comprar serviços isolados. Construa um sistema. Qual é o seu próximo passo?"
-},
+  challengeCopy: {
+    en: "Stop buying isolated services. Build a system. What's your next move?",
+    es: "Deja de comprar servicios aislados. Construye un sistema. ¿Cuál es tu próximo movimiento?",
+    de: "Hören Sie auf, isolierte Dienstleistungen zu kaufen. Bauen Sie ein System. Was ist Ihr nächster Schritt?",
+    pt: "Pare de comprar serviços isolados. Construa um sistema. Qual é o seu próximo passo?"
+  },
 
-challengeCTA: {
-  en: "Choose Your Path",
-  es: "Elige tu camino",
-  de: "Wählen Sie Ihren Weg",
-  pt: "Escolha seu caminho"
-},
+  challengeCTA: {
+    en: "Choose Your Path",
+    es: "Elige tu camino",
+    de: "Wählen Sie Ihren Weg",
+    pt: "Escolha seu caminho"
+  },
   // Botones Yes / No
   yesBtn: { en: "Yes", es: "Sí", de: "Ja", pt: "Sim" },
   noBtn: { en: "No", es: "No", de: "Nein", pt: "Não" },
@@ -754,180 +760,180 @@ challengeCTA: {
     de: "Beginne mit deinem ersten digitalen Touchpoint und lege das Fundament deiner digitalen Identität.",
     pt: "Comece com o seu primeiro ponto de contato digital e construa a base da sua identidade digital.",
   },
-growthCapabilities: {
-  en: "Our Growth Capabilities",
-  es: "Nuestras Capacidades de Crecimiento",
-  de: "Unsere Wachstumskapazitäten",
-  pt: "Nossas Capacidades de Crescimento",
-},
+  growthCapabilities: {
+    en: "Our Growth Capabilities",
+    es: "Nuestras Capacidades de Crecimiento",
+    de: "Unsere Wachstumskapazitäten",
+    pt: "Nossas Capacidades de Crescimento",
+  },
 
-customArsenal: {
-  en: "The Custom Arsenal",
-  es: "El Arsenal Personalizado",
-  de: "Das Individuelle Arsenal",
-  pt: "O Arsenal Personalizado",
-},
+  customArsenal: {
+    en: "The Custom Arsenal",
+    es: "El Arsenal Personalizado",
+    de: "Das Individuelle Arsenal",
+    pt: "O Arsenal Personalizado",
+  },
 
-growthIntro: {
-  en: "We don't sell rigid packages. We deploy custom capabilities: Strategy, product engineering, human experiences, and business development—deployed exactly as your business needs it to scale.",
-  es: "No vendemos paquetes rígidos. Implementamos capacidades a medida: estrategia, ingeniería de producto, experiencias humanas y desarrollo de negocio, desplegados exactamente según lo que tu empresa necesita para escalar.",
-  de: "Wir verkaufen keine starren Pakete. Wir setzen maßgeschneiderte Fähigkeiten ein: Strategie, Produktentwicklung, menschliche Erfahrungen und Geschäftsentwicklung – exakt so, wie Ihr Unternehmen skalieren muss.",
-  pt: "Não vendemos pacotes rígidos. Implantamos capacidades personalizadas: estratégia, engenharia de produto, experiências humanas e desenvolvimento de negócios — exatamente como sua empresa precisa para escalar.",
-},
+  growthIntro: {
+    en: "We don't sell rigid packages. We deploy custom capabilities: Strategy, product engineering, human experiences, and business development—deployed exactly as your business needs it to scale.",
+    es: "No vendemos paquetes rígidos. Implementamos capacidades a medida: estrategia, ingeniería de producto, experiencias humanas y desarrollo de negocio, desplegados exactamente según lo que tu empresa necesita para escalar.",
+    de: "Wir verkaufen keine starren Pakete. Wir setzen maßgeschneiderte Fähigkeiten ein: Strategie, Produktentwicklung, menschliche Erfahrungen und Geschäftsentwicklung – exakt so, wie Ihr Unternehmen skalieren muss.",
+    pt: "Não vendemos pacotes rígidos. Implantamos capacidades personalizadas: estratégia, engenharia de produto, experiências humanas e desenvolvimento de negócios — exatamente como sua empresa precisa para escalar.",
+  },
 
-foundationTitle: {
-  en: "Better Foundation",
-  es: "Base Mejorada",
-  de: "Bessere Grundlage",
-  pt: "Fundação Melhorada",
-},
+  foundationTitle: {
+    en: "Better Foundation",
+    es: "Base Mejorada",
+    de: "Bessere Grundlage",
+    pt: "Fundação Melhorada",
+  },
 
-foundationSubtitle: {
-  en: "Digital Identity & AI Discoverability",
-  es: "Identidad Digital y Descubrimiento por IA",
-  de: "Digitale Identität & KI-Auffindbarkeit",
-  pt: "Identidade Digital e Descoberta por IA",
-},
+  foundationSubtitle: {
+    en: "Digital Identity & AI Discoverability",
+    es: "Identidad Digital y Descubrimiento por IA",
+    de: "Digitale Identität & KI-Auffindbarkeit",
+    pt: "Identidade Digital e Descoberta por IA",
+  },
 
-foundationPain: {
-  en: "We have a great product/service, but our digital footprint is weak. We are practically invisible to AI and new markets.",
-  es: "Tenemos un gran producto/servicio, pero nuestra presencia digital es débil. Somos prácticamente invisibles para la IA y nuevos mercados.",
-  de: "Wir haben ein großartiges Produkt/eine Dienstleistung, aber unser digitaler Fußabdruck ist schwach. Für KI und neue Märkte sind wir praktisch unsichtbar.",
-  pt: "Temos um ótimo produto/serviço, mas nossa presença digital é fraca. Somos praticamente invisíveis para IA e novos mercados.",
-},
+  foundationPain: {
+    en: "We have a great product/service, but our digital footprint is weak. We are practically invisible to AI and new markets.",
+    es: "Tenemos un gran producto/servicio, pero nuestra presencia digital es débil. Somos prácticamente invisibles para la IA y nuevos mercados.",
+    de: "Wir haben ein großartiges Produkt/eine Dienstleistung, aber unser digitaler Fußabdruck ist schwach. Für KI und neue Märkte sind wir praktisch unsichtbar.",
+    pt: "Temos um ótimo produto/serviço, mas nossa presença digital é fraca. Somos praticamente invisíveis para IA e novos mercados.",
+  },
 
-foundationIncluded: {
-  en: "Better Business Blueprint™, Website optimized for AI and GEO, basic CRM setup, and lead capture ecosystem.",
-  es: "Better Business Blueprint™, sitio web optimizado para IA y GEO, configuración básica de CRM y ecosistema de captación de leads.",
-  de: "Better Business Blueprint™, für KI und GEO optimierte Website, grundlegende CRM-Einrichtung und Lead-Erfassungssystem.",
-  pt: "Better Business Blueprint™, site otimizado para IA e GEO, configuração básica de CRM e ecossistema de captura de leads.",
-},
+  foundationIncluded: {
+    en: "Better Business Blueprint™, Website optimized for AI and GEO, basic CRM setup, and lead capture ecosystem.",
+    es: "Better Business Blueprint™, sitio web optimizado para IA y GEO, configuración básica de CRM y ecosistema de captación de leads.",
+    de: "Better Business Blueprint™, für KI und GEO optimierte Website, grundlegende CRM-Einrichtung und Lead-Erfassungssystem.",
+    pt: "Better Business Blueprint™, site otimizado para IA e GEO, configuração básica de CRM e ecossistema de captura de leads.",
+  },
 
-foundationInvestment: {
-  en: "Starting at $1,500 / month",
-  es: "Desde $1,500 / mes",
-  de: "Ab $1.500 / Monat",
-  pt: "A partir de $1.500 / mês",
-},
+  foundationInvestment: {
+    en: "Starting at $1,500 / month",
+    es: "Desde $1,500 / mes",
+    de: "Ab $1.500 / Monat",
+    pt: "A partir de $1.500 / mês",
+  },
 
-foundationScholarship: {
-  en: "Up to 50% co-investment (bringing it down to ~$750–$1,250/month).",
-  es: "Hasta 50% de co-inversión (reduciéndolo a ~$750–$1,250/mes).",
-  de: "Bis zu 50% Co-Investition (reduziert auf ca. ~$750–$1.250/Monat).",
-  pt: "Até 50% de co-investimento (reduzindo para ~$750–$1.250/mês).",
-},
+  foundationScholarship: {
+    en: "Up to 50% co-investment (bringing it down to ~$750–$1,250/month).",
+    es: "Hasta 50% de co-inversión (reduciéndolo a ~$750–$1,250/mes).",
+    de: "Bis zu 50% Co-Investition (reduziert auf ca. ~$750–$1.250/Monat).",
+    pt: "Até 50% de co-investimento (reduzindo para ~$750–$1.250/mês).",
+  },
 
-relevanceTitle: {
-  en: "Digital Relevance",
-  es: "Relevancia Digital",
-  de: "Digitale Relevanz",
-  pt: "Relevância Digital",
-},
+  relevanceTitle: {
+    en: "Digital Relevance",
+    es: "Relevancia Digital",
+    de: "Digitale Relevanz",
+    pt: "Relevância Digital",
+  },
 
-relevanceSubtitle: {
-  en: "The Growth & Human Engine",
-  es: "El Motor de Crecimiento y lo Humano",
-  de: "Die Wachstums- und Human-Engine",
-  pt: "O Motor de Crescimento e Humano",
-},
+  relevanceSubtitle: {
+    en: "The Growth & Human Engine",
+    es: "El Motor de Crecimiento y lo Humano",
+    de: "Die Wachstums- und Human-Engine",
+    pt: "O Motor de Crescimento e Humano",
+  },
 
-relevancePain: {
-  en: "We have traction and revenue, but we are stuck competing for clicks. We need to dominate the narrative and generate absolute authority.",
-  es: "Tenemos tracción e ingresos, pero estamos atrapados compitiendo por clics. Necesitamos dominar la narrativa y generar autoridad absoluta.",
-  de: "Wir haben Traktion und Umsatz, aber wir konkurrieren nur um Klicks. Wir müssen die Narrative dominieren und absolute Autorität aufbauen.",
-  pt: "Temos tração e receita, mas estamos presos competindo por cliques. Precisamos dominar a narrativa e gerar autoridade absoluta.",
-},
+  relevancePain: {
+    en: "We have traction and revenue, but we are stuck competing for clicks. We need to dominate the narrative and generate absolute authority.",
+    es: "Tenemos tracción e ingresos, pero estamos atrapados compitiendo por clics. Necesitamos dominar la narrativa y generar autoridad absoluta.",
+    de: "Wir haben Traktion und Umsatz, aber wir konkurrieren nur um Klicks. Wir müssen die Narrative dominieren und absolute Autorität aufbauen.",
+    pt: "Temos tração e receita, mas estamos presos competindo por cliques. Precisamos dominar a narrativa e gerar autoridade absoluta.",
+  },
 
-relevanceIncluded: {
-  en: "Ecosystem maintenance, marketing automations, real-world experience design for UGC (Proof of Humanity), and continuous Business Development (B2B positioning and Project Management).",
-  es: "Mantenimiento del ecosistema, automatizaciones de marketing, diseño de experiencias reales para UGC (Proof of Humanity) y desarrollo de negocio continuo (posicionamiento B2B y gestión de proyectos).",
-  de: "Ökosystem-Wartung, Marketing-Automatisierung, reale Erfahrungsgestaltung für UGC (Proof of Humanity) und kontinuierliche Geschäftsentwicklung (B2B-Positionierung und Projektmanagement).",
-  pt: "Manutenção do ecossistema, automações de marketing, design de experiências reais para UGC (Proof of Humanity) e desenvolvimento contínuo de negócios (posicionamento B2B e gestão de projetos).",
-},
+  relevanceIncluded: {
+    en: "Ecosystem maintenance, marketing automations, real-world experience design for UGC (Proof of Humanity), and continuous Business Development (B2B positioning and Project Management).",
+    es: "Mantenimiento del ecosistema, automatizaciones de marketing, diseño de experiencias reales para UGC (Proof of Humanity) y desarrollo de negocio continuo (posicionamiento B2B y gestión de proyectos).",
+    de: "Ökosystem-Wartung, Marketing-Automatisierung, reale Erfahrungsgestaltung für UGC (Proof of Humanity) und kontinuierliche Geschäftsentwicklung (B2B-Positionierung und Projektmanagement).",
+    pt: "Manutenção do ecossistema, automações de marketing, design de experiências reais para UGC (Proof of Humanity) e desenvolvimento contínuo de negócios (posicionamento B2B e gestão de projetos).",
+  },
 
-relevanceInvestment: {
-  en: "Starting at $3,500 / month",
-  es: "Desde $3,500 / mes",
-  de: "Ab $3.500 / Monat",
-  pt: "A partir de $3.500 / mês",
-},
+  relevanceInvestment: {
+    en: "Starting at $3,500 / month",
+    es: "Desde $3,500 / mes",
+    de: "Ab $3.500 / Monat",
+    pt: "A partir de $3.500 / mês",
+  },
 
-relevanceScholarship: {
-  en: "Up to 50% co-investment (bringing it down to ~$1,750–$2,750/month).",
-  es: "Hasta 50% de co-inversión (reduciéndolo a ~$1,750–$2,750/mes).",
-  de: "Bis zu 50% Co-Investition (reduziert auf ca. ~$1.750–$2.750/Monat).",
-  pt: "Até 50% de co-investimento (reduzindo para ~$1.750–$2.750/mês).",
-},
+  relevanceScholarship: {
+    en: "Up to 50% co-investment (bringing it down to ~$1,750–$2,750/month).",
+    es: "Hasta 50% de co-inversión (reduciéndolo a ~$1,750–$2,750/mes).",
+    de: "Bis zu 50% Co-Investition (reduziert auf ca. ~$1.750–$2.750/Monat).",
+    pt: "Até 50% de co-investimento (reduzindo para ~$1.750–$2.750/mês).",
+  },
 
-dominanceTitle: {
-  en: "Digital Dominance",
-  es: "Dominio Digital",
-  de: "Digitale Dominanz",
-  pt: "Domínio Digital",
-},
+  dominanceTitle: {
+    en: "Digital Dominance",
+    es: "Dominio Digital",
+    de: "Digitale Dominanz",
+    pt: "Domínio Digital",
+  },
 
-dominanceSubtitle: {
-  en: "Scale & Custom AI Architecture",
-  es: "Escala y Arquitectura de IA Personalizada",
-  de: "Skalierung & maßgeschneiderte KI-Architektur",
-  pt: "Escala e Arquitetura de IA Personalizada",
-},
+  dominanceSubtitle: {
+    en: "Scale & Custom AI Architecture",
+    es: "Escala y Arquitectura de IA Personalizada",
+    de: "Skalierung & maßgeschneiderte KI-Architektur",
+    pt: "Escala e Arquitetura de IA Personalizada",
+  },
 
-dominancePain: {
-  en: "We have the size and the market, but our internal operations are breaking. We need custom tech and AI infrastructure to scale without friction.",
-  es: "Tenemos tamaño y mercado, pero nuestras operaciones internas están fallando. Necesitamos infraestructura de IA y tecnología personalizada para escalar sin fricción.",
-  de: "Wir haben Größe und Markt, aber unsere internen Abläufe brechen zusammen. Wir brauchen maßgeschneiderte KI- und Technologie-Infrastruktur für reibungsloses Skalieren.",
-  pt: "Temos escala e mercado, mas nossas operações internas estão quebrando. Precisamos de infraestrutura de IA e tecnologia personalizada para escalar sem atrito.",
-},
+  dominancePain: {
+    en: "We have the size and the market, but our internal operations are breaking. We need custom tech and AI infrastructure to scale without friction.",
+    es: "Tenemos tamaño y mercado, pero nuestras operaciones internas están fallando. Necesitamos infraestructura de IA y tecnología personalizada para escalar sin fricción.",
+    de: "Wir haben Größe und Markt, aber unsere internen Abläufe brechen zusammen. Wir brauchen maßgeschneiderte KI- und Technologie-Infrastruktur für reibungsloses Skalieren.",
+    pt: "Temos escala e mercado, mas nossas operações internas estão quebrando. Precisamos de infraestrutura de IA e tecnologia personalizada para escalar sem atrito.",
+  },
 
-dominanceIncluded: {
-  en: "Custom Software, MVP Systems, internal Autonomous AI Agents, infrastructure for real-time global operations, and corporate Business Development (Matchmaking, Investor Readiness).",
-  es: "Software personalizado, sistemas MVP, agentes autónomos de IA internos, infraestructura para operaciones globales en tiempo real y desarrollo de negocio corporativo (conexión con inversores y preparación para inversión).",
-  de: "Individuelle Software, MVP-Systeme, interne autonome KI-Agenten, Infrastruktur für globale Echtzeit-Operationen und Unternehmensentwicklung (Investor-Readiness und Matchmaking).",
-  pt: "Software personalizado, sistemas MVP, agentes autônomos de IA internos, infraestrutura para operações globais em tempo real e desenvolvimento de negócios corporativo (matchmaking e prontidão para investidores).",
-},
+  dominanceIncluded: {
+    en: "Custom Software, MVP Systems, internal Autonomous AI Agents, infrastructure for real-time global operations, and corporate Business Development (Matchmaking, Investor Readiness).",
+    es: "Software personalizado, sistemas MVP, agentes autónomos de IA internos, infraestructura para operaciones globales en tiempo real y desarrollo de negocio corporativo (conexión con inversores y preparación para inversión).",
+    de: "Individuelle Software, MVP-Systeme, interne autonome KI-Agenten, Infrastruktur für globale Echtzeit-Operationen und Unternehmensentwicklung (Investor-Readiness und Matchmaking).",
+    pt: "Software personalizado, sistemas MVP, agentes autônomos de IA internos, infraestrutura para operações globais em tempo real e desenvolvimento de negócios corporativo (matchmaking e prontidão para investidores).",
+  },
 
-dominanceInvestment: {
-  en: "Starting at $10,000+ / month",
-  es: "Desde $10,000+ / mes",
-  de: "Ab $10.000+ / Monat",
-  pt: "A partir de $10.000+ / mês",
-},
+  dominanceInvestment: {
+    en: "Starting at $10,000+ / month",
+    es: "Desde $10,000+ / mes",
+    de: "Ab $10.000+ / Monat",
+    pt: "A partir de $10.000+ / mês",
+  },
 
-dominanceScholarship: {
-  en: "Tailor-made (Custom-structured, strictly for Enterprise-level operations or Whales).",
-  es: "A medida (estructurado a medida, exclusivamente para operaciones enterprise o grandes clientes).",
-  de: "Maßgeschneidert (nur für Enterprise-Level-Operationen oder Großkunden).",
-  pt: "Sob medida (estruturado exclusivamente para operações enterprise ou grandes clientes).",
-},
+  dominanceScholarship: {
+    en: "Tailor-made (Custom-structured, strictly for Enterprise-level operations or Whales).",
+    es: "A medida (estructurado a medida, exclusivamente para operaciones enterprise o grandes clientes).",
+    de: "Maßgeschneidert (nur für Enterprise-Level-Operationen oder Großkunden).",
+    pt: "Sob medida (estruturado exclusivamente para operações enterprise ou grandes clientes).",
+  },
 
-painPoint: {
-  en: "Pain Point",
-  es: "Problema",
-  de: "Problem",
-  pt: "Problema",
-},
+  painPoint: {
+    en: "Pain Point",
+    es: "Problema",
+    de: "Problem",
+    pt: "Problema",
+  },
 
-included: {
-  en: "What's Included",
-  es: "Qué incluye",
-  de: "Enthalten",
-  pt: "O que está incluído",
-},
+  included: {
+    en: "What's Included",
+    es: "Qué incluye",
+    de: "Enthalten",
+    pt: "O que está incluído",
+  },
 
-investment: {
-  en: "Global Investment",
-  es: "Inversión Global",
-  de: "Globale Investition",
-  pt: "Investimento Global",
-},
+  investment: {
+    en: "Global Investment",
+    es: "Inversión Global",
+    de: "Globale Investition",
+    pt: "Investimento Global",
+  },
 
-scholarship: {
-  en: "Underdog Scholarship",
-  es: "Beca Underdog",
-  de: "Underdog-Stipendium",
-  pt: "Bolsa Underdog",
-},
+  scholarship: {
+    en: "Underdog Scholarship",
+    es: "Beca Underdog",
+    de: "Underdog-Stipendium",
+    pt: "Bolsa Underdog",
+  },
   // Compartido entre ambos modales
   assessTitle: {
     en: "Assess My Digital Identity",
@@ -1704,7 +1710,9 @@ export default function Home() {
               <h3 className="text-3xl font-black text-slate-900 mb-4 uppercase tracking-tight">
                 {ui.packModalTitle[locale]}
               </h3>
-
+              <p className="text-slate-600 text-base leading-relaxed mb-6">
+                {ui.packModalIntro[locale]}
+              </p>
               <p className="text-blue-600 font-bold text-lg italic mb-6">
                 "{ui.packModalQuote[locale]}"
               </p>
@@ -1763,19 +1771,6 @@ export default function Home() {
       </section>
 
       <BetterEcosystemSection locale={locale} />
-
-      <div className="py-10 border-t border-slate-100 text-center">
-        <h3 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter uppercase mb-10">
-  {tx('followJourney')}{" "}
-  <span className="text-blue-600">
-    {tx('journey')}
-  </span>
-</h3>
-        <div className="flex justify-center gap-6">
-          <a href="https://www.linkedin.com/company/bettertechnologies/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-6 py-3 rounded-full border-2 border-slate-200 text-slate-900 font-black text-[11px] uppercase tracking-widest hover:border-blue-600 hover:text-blue-600 transition-all"><LinkedInIcon /> LinkedIn</a>
-          <a href="https://www.instagram.com/better_technologies?igsh=MWUwYmkyYXVhdWRucA==" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-6 py-3 rounded-full border-2 border-slate-200 text-slate-900 font-black text-[11px] uppercase tracking-widest hover:border-[#d6249f] hover:text-[#d6249f] transition-all"><InstagramIcon /> Instagram</a>
-        </div>
-      </div>
 
       <LeadershipLeagues tx={tx} />
 
@@ -1841,48 +1836,61 @@ export default function Home() {
 
       {/* CASOS DE ÉXITO — BELAND */}
       <CasosDeExito showMachinesModal={showMachinesModal} setShowMachinesModal={setShowMachinesModal} />
-
+      
+       <div className="py-10 border-t border-slate-100 text-center">
+        <h3 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter uppercase mb-10">
+          {tx('followJourney')}{" "}
+          <span className="text-blue-600">
+            {tx('journey')}
+          </span>
+        </h3>
+        <div className="flex justify-center gap-6">
+          <a href="https://www.linkedin.com/company/bettertechnologies/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-6 py-3 rounded-full border-2 border-slate-200 text-slate-900 font-black text-[11px] uppercase tracking-widest hover:border-blue-600 hover:text-blue-600 transition-all"><LinkedInIcon /> LinkedIn</a>
+          <a href="https://www.instagram.com/better_technologies?igsh=MWUwYmkyYXVhdWRucA==" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-6 py-3 rounded-full border-2 border-slate-200 text-slate-900 font-black text-[11px] uppercase tracking-widest hover:border-[#d6249f] hover:text-[#d6249f] transition-all"><InstagramIcon /> Instagram</a>
+        </div>
+      </div>
+      
       {/* CIERRE */}
-<section className="py-20 px-6 bg-white">
-  <div className="max-w-6xl mx-auto text-center">
+      <section className="py-20 px-6 bg-white">
+        <div className="max-w-6xl mx-auto text-center">
 
-    <h2 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter leading-[0.9] uppercase mb-6">
-      <span className="block">
-        {tx('closingLine')}{" "}
-        <span className="text-blue-600">
-          {tx('closingLineEm')}
-        </span>
-      </span>
-    </h2>
+          <h2 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter leading-[0.9] uppercase mb-6">
+            <span className="block">
+              {tx('closingLine')}{" "}
+              <span className="text-blue-600">
+                {tx('closingLineEm')}
+              </span>
+            </span>
+          </h2>
 
-    <div className="w-24 h-1 rounded-full bg-gradient-to-r from-blue-600 to-orange-400 mx-auto mb-10"></div>
+          <div className="w-24 h-1 rounded-full bg-gradient-to-r from-blue-600 to-orange-400 mx-auto mb-10"></div>
 
-    <div className="max-w-5xl mx-auto">
-      <div className="relative overflow-hidden rounded-[32px] border border-slate-200 bg-gradient-to-br from-white via-slate-50 to-orange-50 p-8 md:p-14 shadow-xl">
+          <div className="max-w-5xl mx-auto">
+            <div className="relative overflow-hidden rounded-[32px] border border-slate-200 bg-gradient-to-br from-white via-slate-50 to-orange-50 p-8 md:p-14 shadow-xl">
 
-        {/* Ambient light */}
-        <div className="absolute -top-28 -right-28 w-72 h-72 rounded-full bg-orange-300/20 blur-3xl" />
-        <div className="absolute -bottom-28 -left-28 w-72 h-72 rounded-full bg-blue-300/20 blur-3xl" />
+              {/* Ambient light */}
+              <div className="absolute -top-28 -right-28 w-72 h-72 rounded-full bg-orange-300/20 blur-3xl" />
+              <div className="absolute -bottom-28 -left-28 w-72 h-72 rounded-full bg-blue-300/20 blur-3xl" />
 
-        <div className="relative">
+              <div className="relative">
 
 
-          <p className="text-slate-600 text-base md:text-lg leading-8 max-w-4xl mx-auto">
-            {tx('closingCopy')}
-          </p>
+                <p className="text-slate-600 text-base md:text-lg leading-8 max-w-4xl mx-auto">
+                  {tx('closingCopy')}
+                </p>
+
+              </div>
+
+            </div>
+          </div>
 
         </div>
-
-      </div>
-    </div>
-
-  </div>
-</section>
+      </section>
       {/*  NEWS FEED */}
       <NewsSection />
       <GlobalAccessMechanism tx={tx} />
       <GrowthCapabilities tx={tx} />
-      
+
       {/* LATEST INSIGHTS */}
       <section className="py-16 bg-slate-50">
         <div className="container mx-auto px-6 text-center">
@@ -1922,17 +1930,17 @@ export default function Home() {
         </div>
       </section>
 
-<FinalChallenge tx={tx} />
+      <FinalChallenge tx={tx} />
 
       {/* FOOTER */}
       <footer className="py-16 text-center bg-white border-t border-slate-100">
         <p className="text-slate-400 text-[9px] font-black uppercase tracking-[0.3em] mb-4">{tx('dontMiss')}</p>
         <h3 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter uppercase mb-10">
-  {tx('followJourney')}{" "}
-  <span className="text-blue-600">
-    {tx('journey')}
-  </span>
-</h3>
+          {tx('followJourney')}{" "}
+          <span className="text-blue-600">
+            {tx('journey')}
+          </span>
+        </h3>
         <div className="flex justify-center gap-6 mb-12">
           <a href="https://www.linkedin.com/company/bettertechnologies/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-6 py-3 rounded-full border-2 border-slate-200 text-slate-900 font-black text-[11px] uppercase tracking-widest hover:border-blue-600 hover:text-blue-600 transition-all"><LinkedInIcon /> LinkedIn</a>
           <a href="https://www.instagram.com/better_technologies?igsh=MWUwYmkyYXVhdWRucA==" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-6 py-3 rounded-full border-2 border-slate-200 text-slate-900 font-black text-[11px] uppercase tracking-widest hover:border-[#d6249f] hover:text-[#d6249f] transition-all"><InstagramIcon /> Instagram</a>
