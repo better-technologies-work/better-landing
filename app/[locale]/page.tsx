@@ -1815,8 +1815,11 @@ export default function Home() {
       </section>
 
       <BetterEcosystemSection locale={locale} />
-
-
+      <div id="leadership-leagues">
+        <LeadershipLeagues tx={tx} />
+      </div>
+      <GrowthCapabilities tx={tx} />
+        <GlobalAccessMechanism tx={tx} />
 
       <div className="py-16 px-6 bg-white text-center">
         <div className="max-w-4xl mx-auto">
@@ -1877,9 +1880,8 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      {/* CASOS DE ÉXITO — BELAND */}
-      <CasosDeExito showMachinesModal={showMachinesModal} setShowMachinesModal={setShowMachinesModal} />
+//
+     
 
       <div className="py-10 border-t border-slate-100 text-center">
         <h3 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter uppercase mb-10">
@@ -1894,6 +1896,9 @@ export default function Home() {
         </div>
       </div>
 
+      {/* CASOS DE ÉXITO — BELAND */}
+      <CasosDeExito showMachinesModal={showMachinesModal} setShowMachinesModal={setShowMachinesModal} />
+      
       {/* CIERRE */}
       <section className="py-20 px-6 bg-white">
         <div className="max-w-6xl mx-auto text-center">
@@ -1932,11 +1937,8 @@ export default function Home() {
       </section>
       {/*  NEWS FEED */}
       <NewsSection />
-      <GlobalAccessMechanism tx={tx} />
-      <div id="leadership-leagues">
-  <LeadershipLeagues tx={tx} />
-</div>
-      <GrowthCapabilities tx={tx} />
+      
+
 
       {/* LATEST INSIGHTS */}
       <section className="py-16 bg-slate-50">
