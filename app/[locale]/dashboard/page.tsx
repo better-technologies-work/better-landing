@@ -3,10 +3,12 @@
 import { useState, useEffect } from "react";
 import { createClient } from "@/lib/supabase/client";
 import { decodeHTML } from "@/lib/utils";
+import { detectVideoSource, getYouTubeVideoId, getVimeoVideoId, type VideoSource } from "@/lib/video-utils";
 import dynamicImport from 'next/dynamic';
 import { useLocale } from "next-intl";
 import Header from "@/components/Header";
 import DashboardAuth from "@/components/DashboardAuth";
+import VideoPlayer from "@/components/VideoPlayer";
 
 // Estilos del editor
 import 'react-quill-new/dist/quill.snow.css';
@@ -42,6 +44,7 @@ type BlogPost = {
   post_url: string;
   cover_url?: string;
   video_url?: string;
+  video_source?: VideoSource | null;
   category: string;
   slug: string;
   published_at: string;
@@ -111,6 +114,8 @@ export default function DashboardPage() {
   const [videoFile, setVideoFile] = useState<File | null>(null);
   const [videoPreview, setVideoPreview] = useState<string | null>(null);
   const [videoRemoved, setVideoRemoved] = useState(false);
+  const [videoSource, setVideoSource] = useState<VideoSource | null>(null);
+  const [videoUrlInput, setVideoUrlInput] = useState("");
 
   // Estados para links y documentos
   const [links, setLinks] = useState<{ title: string; url: string }[]>([]);
@@ -134,6 +139,8 @@ export default function DashboardPage() {
   const [newsVideoFile, setNewsVideoFile] = useState<File | null>(null);
   const [newsVideoPreview, setNewsVideoPreview] = useState<string | null>(null);
   const [newsVideoRemoved, setNewsVideoRemoved] = useState(false);
+  const [newsVideoSource, setNewsVideoSource] = useState<VideoSource | null>(null);
+  const [newsVideoUrlInput, setNewsVideoUrlInput] = useState("");
 
   const [form, setForm] = useState({
     title: "",
@@ -156,7 +163,7 @@ export default function DashboardPage() {
       console.log('Supabase client created:', !!client);
       const { data, error } = await client
         .from('blog_posts')
-        .select('id,title,description,post_url,cover_url,video_url,category,slug,published_at,updated_at,author,links,documents')
+        .select('id,title,description,post_url,cover_url,video_url,video_source,category,slug,published_at,updated_at,author,links,documents')
         .order('published_at', { ascending: false });
       
       if (error) {
@@ -177,7 +184,7 @@ export default function DashboardPage() {
       const client = createClient();
       const { data } = await client
         .from('blog_posts')
-        .select('id,title,description,post_url,cover_url,video_url,category,slug,published_at,updated_at,author')
+        .select('id,title,description,post_url,cover_url,video_url,video_source,category,slug,published_at,updated_at,author')
         .eq('category', 'Actualidad')
         .order('published_at', { ascending: false });
       
@@ -198,6 +205,8 @@ export default function DashboardPage() {
     if (videoPreview?.startsWith('blob:')) URL.revokeObjectURL(videoPreview);
     setVideoPreview(null);
     setVideoRemoved(false);
+    setVideoSource(null);
+    setVideoUrlInput("");
     setLinks([]);
     setDocuments([]);
     setEditingPost(null);
@@ -212,6 +221,8 @@ export default function DashboardPage() {
     if (newsVideoPreview?.startsWith('blob:')) URL.revokeObjectURL(newsVideoPreview);
     setNewsVideoPreview(null);
     setNewsVideoRemoved(false);
+    setNewsVideoSource(null);
+    setNewsVideoUrlInput("");
     setEditingNews(null);
   };
 
@@ -270,15 +281,45 @@ export default function DashboardPage() {
         
         let finalCoverUrl = editingPost?.cover_url || "";
         let finalVideoUrl = videoRemoved ? "" : (editingPost?.video_url || "");
+        let finalVideoSource: VideoSource | null = videoRemoved ? null : (editingPost?.video_source || null);
 
-        // Eliminar video viejo de Storage si se reemplaza o se elimina
-        if (editingPost?.video_url && (videoFile || videoRemoved)) {
-          try {
-            const oldVideoPath = editingPost.video_url.replace(/.*\/covers\//, '');
-            await client.storage.from("covers").remove([oldVideoPath]);
-          } catch (e) {
-            console.warn('No se pudo eliminar video viejo de Storage:', e);
+        // Si se pegó un link, usarlo como video
+        if (videoUrlInput.trim()) {
+          finalVideoUrl = videoUrlInput.trim();
+          finalVideoSource = detectVideoSource(videoUrlInput.trim());
+          // Si había un archivo subido antes, limpiarlo
+          if (editingPost?.video_url && editingPost?.video_source === 'upload') {
+            try {
+              const oldVideoPath = editingPost.video_url.replace(/.*\/covers\//, '');
+              await client.storage.from("covers").remove([oldVideoPath]);
+            } catch (e) {
+              console.warn('No se pudo eliminar video viejo de Storage:', e);
+            }
           }
+        } else if (videoFile) {
+          // Subir archivo
+          finalVideoSource = 'upload';
+          // Eliminar video viejo de Storage si se reemplaza
+          if (editingPost?.video_url && editingPost?.video_source === 'upload') {
+            try {
+              const oldVideoPath = editingPost.video_url.replace(/.*\/covers\//, '');
+              await client.storage.from("covers").remove([oldVideoPath]);
+            } catch (e) {
+              console.warn('No se pudo eliminar video viejo de Storage:', e);
+            }
+          }
+        } else if (videoRemoved) {
+          // Si se eliminó el video, limpiar solo Storage si era upload
+          if (editingPost?.video_url && editingPost?.video_source === 'upload') {
+            try {
+              const oldVideoPath = editingPost.video_url.replace(/.*\/covers\//, '');
+              await client.storage.from("covers").remove([oldVideoPath]);
+            } catch (e) {
+              console.warn('No se pudo eliminar video viejo de Storage:', e);
+            }
+          }
+          finalVideoUrl = "";
+          finalVideoSource = null;
         }
 
         // Eliminar imagen vieja de Storage si se reemplaza
@@ -306,8 +347,8 @@ export default function DashboardPage() {
           finalCoverUrl = data.publicUrl;
         }
 
-        // 1b. Subir video si existe
-        if (videoFile) {
+        // 1b. Subir video si existe (modo archivo)
+        if (videoFile && finalVideoSource === 'upload') {
           console.log('Uploading video...');
           const videoName = `videos/${Date.now()}-${videoFile.name.replace(/\s+/g, '-')}`;
           const { error: videoUploadError } = await client.storage
@@ -356,6 +397,7 @@ export default function DashboardPage() {
   category: form.category,
   cover_url: finalCoverUrl,
   video_url: finalVideoUrl,
+  video_source: finalVideoSource,
   slug: form.slug || form.title.toLowerCase()
   .replace(/[^a-z0-9\s]+/g, "")
   .trim()
@@ -437,6 +479,8 @@ export default function DashboardPage() {
     });
     setPreview(post.cover_url || null);
     setVideoPreview(post.video_url || null);
+    setVideoSource(post.video_source || null);
+    setVideoUrlInput(post.video_source === 'upload' || !post.video_url ? '' : (post.video_url || ''));
     setLinks(post.links || []);
     setDocuments((post.documents || []).map((d: Document) => ({ name: d.name, file: null, url: d.url, type: d.type })));
     setActiveTab('create');
@@ -466,15 +510,41 @@ export default function DashboardPage() {
       const client = createClient();
       let finalCoverUrl = editingNews?.cover_url || "";
       let finalVideoUrl = newsVideoRemoved ? "" : (editingNews?.video_url || "");
+      let finalVideoSource: VideoSource | null = newsVideoRemoved ? null : (editingNews?.video_source || null);
 
-      // Eliminar video viejo de Storage si se reemplaza o se elimina
-      if (editingNews?.video_url && (newsVideoFile || newsVideoRemoved)) {
-        try {
-          const oldVideoPath = editingNews.video_url.replace(/.*\/covers\//, '');
-          await client.storage.from("covers").remove([oldVideoPath]);
-        } catch (e) {
-          console.warn('No se pudo eliminar video viejo de Storage:', e);
+      // Si se pegó un link, usarlo como video
+      if (newsVideoUrlInput.trim()) {
+        finalVideoUrl = newsVideoUrlInput.trim();
+        finalVideoSource = detectVideoSource(newsVideoUrlInput.trim());
+        if (editingNews?.video_url && editingNews?.video_source === 'upload') {
+          try {
+            const oldVideoPath = editingNews.video_url.replace(/.*\/covers\//, '');
+            await client.storage.from("covers").remove([oldVideoPath]);
+          } catch (e) {
+            console.warn('No se pudo eliminar video viejo de Storage:', e);
+          }
         }
+      } else if (newsVideoFile) {
+        finalVideoSource = 'upload';
+        if (editingNews?.video_url && editingNews?.video_source === 'upload') {
+          try {
+            const oldVideoPath = editingNews.video_url.replace(/.*\/covers\//, '');
+            await client.storage.from("covers").remove([oldVideoPath]);
+          } catch (e) {
+            console.warn('No se pudo eliminar video viejo de Storage:', e);
+          }
+        }
+      } else if (newsVideoRemoved) {
+        if (editingNews?.video_url && editingNews?.video_source === 'upload') {
+          try {
+            const oldVideoPath = editingNews.video_url.replace(/.*\/covers\//, '');
+            await client.storage.from("covers").remove([oldVideoPath]);
+          } catch (e) {
+            console.warn('No se pudo eliminar video viejo de Storage:', e);
+          }
+        }
+        finalVideoUrl = "";
+        finalVideoSource = null;
       }
 
       // Eliminar imagen vieja de Storage si se reemplaza
@@ -500,8 +570,8 @@ export default function DashboardPage() {
         finalCoverUrl = data.publicUrl;
       }
 
-      // 1b. Subir video si existe
-      if (newsVideoFile) {
+      // 1b. Subir video si existe (modo archivo)
+      if (newsVideoFile && finalVideoSource === 'upload') {
         const videoName = `videos/${Date.now()}-${newsVideoFile.name.replace(/\s+/g, '-')}`;
         const { error: videoUploadError } = await client.storage
           .from("covers")
@@ -521,6 +591,7 @@ export default function DashboardPage() {
         category: "Actualidad",
         cover_url: finalCoverUrl,
         video_url: finalVideoUrl,
+        video_source: finalVideoSource,
         slug: editingNews?.slug || `${newsForm.title.toLowerCase().replace(/[^a-z0-9]+/g, "-")}-${Date.now()}`,
         published_at: editingNews?.published_at || new Date().toISOString(),
         post_url: newsForm.post_url || "",
@@ -565,6 +636,8 @@ export default function DashboardPage() {
     });
     setNewsPreview(post.cover_url || null);
     setNewsVideoPreview(post.video_url || null);
+    setNewsVideoSource(post.video_source || null);
+    setNewsVideoUrlInput(post.video_source === 'upload' || !post.video_url ? '' : (post.video_url || ''));
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -710,23 +783,55 @@ export default function DashboardPage() {
                 </div>
               </div>
 
-              {/* Subida de Video */}
+              {/* Video (link o archivo) */}
               <div className="space-y-2">
-                <label className="text-[10px] font-black uppercase text-slate-400 tracking-widest">{ui.featuredVideo}</label>
-                <div className={`relative border-2 border-dashed rounded-2xl p-8 transition-all flex flex-col items-center ${videoPreview ? 'border-blue-200 bg-blue-50' : 'border-slate-200 hover:border-blue-400'}`}>
-                  {videoPreview ? (
+                <label className="text-[10px] font-black uppercase text-slate-400 tracking-widest">
+                  {isEs ? "Video (pegá un link de YouTube/Vimeo o subí un archivo)" : "Video (paste a YouTube/Vimeo link or upload a file)"}
+                </label>
+
+                {/* Input de URL */}
+                <input
+                  type="url"
+                  className="w-full px-5 py-4 rounded-2xl border-2 border-slate-100 font-bold focus:border-blue-600 outline-none transition-all"
+                  placeholder="https://youtube.com/watch?v=... o https://vimeo.com/..."
+                  value={videoUrlInput}
+                  onChange={(e) => {
+                    const val = e.target.value;
+                    setVideoUrlInput(val);
+                    if (val.trim()) {
+                      setVideoFile(null);
+                      setVideoPreview(null);
+                      setVideoRemoved(false);
+                      const src = detectVideoSource(val);
+                      setVideoSource(src);
+                    } else {
+                      setVideoSource(null);
+                    }
+                  }}
+                />
+
+                {/* Divider */}
+                <div className="flex items-center gap-3">
+                  <div className="flex-1 h-px bg-slate-200"></div>
+                  <span className="text-[10px] font-black uppercase text-slate-300">{isEs ? "o" : "or"}</span>
+                  <div className="flex-1 h-px bg-slate-200"></div>
+                </div>
+
+                {/* Zona de archivo */}
+                <div className={`relative border-2 border-dashed rounded-2xl p-6 transition-all flex flex-col items-center ${videoPreview && videoSource === 'upload' ? 'border-blue-200 bg-blue-50' : 'border-slate-200 hover:border-blue-400'}`}>
+                  {videoPreview && videoSource === 'upload' ? (
                     <div className="relative w-full mb-4">
                       <video src={videoPreview} controls className="w-full h-48 object-contain rounded-lg" />
-                      <button type="button" onClick={() => {setVideoPreview(null); setVideoFile(null); setVideoRemoved(true);}} className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center font-bold">×</button>
+                      <button type="button" onClick={() => { setVideoPreview(null); setVideoFile(null); setVideoRemoved(true); setVideoSource(null); }} className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center font-bold">×</button>
                     </div>
                   ) : (
-                    <div className="text-center">
-                      <span className="text-4xl mb-2 block">🎬</span>
+                    <div className="text-center py-2">
+                      <span className="text-3xl mb-1 block">🎬</span>
                       <p className="text-slate-400 text-[10px] font-bold uppercase">{ui.dragVideo}</p>
                     </div>
                   )}
-                  <input 
-                    type="file" 
+                  <input
+                    type="file"
                     accept="video/*"
                     onChange={(e) => {
                       const file = e.target.files?.[0];
@@ -739,11 +844,23 @@ export default function DashboardPage() {
                         setVideoFile(file);
                         setVideoPreview(URL.createObjectURL(file));
                         setVideoRemoved(false);
+                        setVideoUrlInput('');
+                        setVideoSource('upload');
                       }
                     }}
                     className="absolute inset-0 opacity-0 cursor-pointer"
                   />
                 </div>
+
+                {/* Preview de video embebido (YouTube/Vimeo) */}
+                {videoUrlInput.trim() && videoSource && videoSource !== 'upload' && (
+                  <div className="mt-2">
+                    <p className="text-[10px] font-bold uppercase text-slate-400 mb-2">
+                      {isEs ? "Vista previa:" : "Preview:"}
+                    </p>
+                    <VideoPlayer videoUrl={videoUrlInput.trim()} videoSource={videoSource} />
+                  </div>
+                )}
               </div>
 
               {/* Links Opcionales */}
@@ -942,23 +1059,52 @@ export default function DashboardPage() {
                 </div>
               </div>
 
-              {/* Subida de Video */}
+              {/* Video (link o archivo) - News */}
               <div className="space-y-2">
-                <label className="text-[10px] font-black uppercase text-slate-400 tracking-widest">{ui.featuredVideo}</label>
-                <div className={`relative border-2 border-dashed rounded-2xl p-8 transition-all flex flex-col items-center ${newsVideoPreview ? 'border-blue-200 bg-blue-50' : 'border-slate-200 hover:border-blue-400'}`}>
-                  {newsVideoPreview ? (
+                <label className="text-[10px] font-black uppercase text-slate-400 tracking-widest">
+                  {isEs ? "Video (pegá un link de YouTube/Vimeo o subí un archivo)" : "Video (paste a YouTube/Vimeo link or upload a file)"}
+                </label>
+
+                <input
+                  type="url"
+                  className="w-full px-5 py-4 rounded-2xl border-2 border-slate-100 font-bold focus:border-blue-600 outline-none transition-all"
+                  placeholder="https://youtube.com/watch?v=... o https://vimeo.com/..."
+                  value={newsVideoUrlInput}
+                  onChange={(e) => {
+                    const val = e.target.value;
+                    setNewsVideoUrlInput(val);
+                    if (val.trim()) {
+                      setNewsVideoFile(null);
+                      setNewsVideoPreview(null);
+                      setNewsVideoRemoved(false);
+                      const src = detectVideoSource(val);
+                      setNewsVideoSource(src);
+                    } else {
+                      setNewsVideoSource(null);
+                    }
+                  }}
+                />
+
+                <div className="flex items-center gap-3">
+                  <div className="flex-1 h-px bg-slate-200"></div>
+                  <span className="text-[10px] font-black uppercase text-slate-300">{isEs ? "o" : "or"}</span>
+                  <div className="flex-1 h-px bg-slate-200"></div>
+                </div>
+
+                <div className={`relative border-2 border-dashed rounded-2xl p-6 transition-all flex flex-col items-center ${newsVideoPreview && newsVideoSource === 'upload' ? 'border-blue-200 bg-blue-50' : 'border-slate-200 hover:border-blue-400'}`}>
+                  {newsVideoPreview && newsVideoSource === 'upload' ? (
                     <div className="relative w-full mb-4">
                       <video src={newsVideoPreview} controls className="w-full h-48 object-contain rounded-lg" />
-                      <button type="button" onClick={() => {setNewsVideoPreview(null); setNewsVideoFile(null); setNewsVideoRemoved(true);}} className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center font-bold">×</button>
+                      <button type="button" onClick={() => { setNewsVideoPreview(null); setNewsVideoFile(null); setNewsVideoRemoved(true); setNewsVideoSource(null); }} className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center font-bold">×</button>
                     </div>
                   ) : (
-                    <div className="text-center">
-                      <span className="text-4xl mb-2 block">🎬</span>
+                    <div className="text-center py-2">
+                      <span className="text-3xl mb-1 block">🎬</span>
                       <p className="text-slate-400 text-[10px] font-bold uppercase">{ui.dragVideo}</p>
                     </div>
                   )}
-                  <input 
-                    type="file" 
+                  <input
+                    type="file"
                     accept="video/*"
                     onChange={(e) => {
                       const file = e.target.files?.[0];
@@ -971,11 +1117,22 @@ export default function DashboardPage() {
                         setNewsVideoFile(file);
                         setNewsVideoPreview(URL.createObjectURL(file));
                         setNewsVideoRemoved(false);
+                        setNewsVideoUrlInput('');
+                        setNewsVideoSource('upload');
                       }
                     }}
                     className="absolute inset-0 opacity-0 cursor-pointer"
                   />
                 </div>
+
+                {newsVideoUrlInput.trim() && newsVideoSource && newsVideoSource !== 'upload' && (
+                  <div className="mt-2">
+                    <p className="text-[10px] font-bold uppercase text-slate-400 mb-2">
+                      {isEs ? "Vista previa:" : "Preview:"}
+                    </p>
+                    <VideoPlayer videoUrl={newsVideoUrlInput.trim()} videoSource={newsVideoSource} />
+                  </div>
+                )}
               </div>
 
               {/* Autor */}

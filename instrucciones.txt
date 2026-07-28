@@ -1,18 +1,20 @@
-Revisar los cambios de formato de fechas.
+El listado de blog (/blog) se ve roto: muestra el contenido/descripción del post crudo, con sintaxis markdown sin parsear, texto superpuesto y sin truncar. Necesito que use el mismo diseño de card que ya existe en la home (sección de noticias/artículos), no una implementación distinta.
 
-Asegurarse de que no hayan quedado fechas duplicadas por los reemplazos.
+CAMBIOS A IMPLEMENTAR:
 
-Debe existir solamente una fecha de publicación y una fecha de actualización:
+1. Extraer el card de artículo que se usa en la home (el que tiene: imagen de cover, badge de categoría arriba a la izquierda tipo "DATA"/"ENGINEERING"/"STRATEGY", título, descripción corta, botón "READ MORE", fecha de publicado/actualizado) a un componente reutilizable, por ejemplo components/ArticleCard.tsx.
 
-Published {fecha}
-Updated {fecha}
+2. Ese componente debe recibir: title, description, cover_url, category, slug (o post_url), published_at, updated_at, video_url, video_source.
 
-Usar únicamente:
+3. La descripción en el card SIEMPRE debe:
+   - Usar el campo description (texto plano/resumen), NUNCA el content completo del post
+   - Truncarse visualmente con line-clamp-2 o line-clamp-3 (Tailwind), no mostrar el texto completo
+   - Si por algún motivo se usa contenido con markdown, quitar la sintaxis markdown antes de mostrarlo en el card (no renderizar negritas/cursivas ahí, es solo texto plano de preview)
 
-toLocaleDateString(undefined, {
-  day: 'numeric',
-  month: 'long',
-  year: 'numeric'
-})
+4. Agregar un badge de video: si el post tiene video_url (viene con contenido, no importa el video_source), mostrar un badge "▶ VIDEO" en la esquina superior derecha de la imagen de cover, igual al estilo del badge de categoría pero en el otro extremo. Ejemplo visual: badge de categoría arriba-izquierda, badge de video arriba-derecha, ambos sobre la imagen de cover.
 
-Eliminar cualquier versión anterior que use locale hardcodeado (es-ES, de-DE, pt-BR).
+5. Reemplazar el render actual de /blog (listado) para que use este ArticleCard component en vez de su implementación propia actual.
+
+6. Verificar que la home también use el mismo componente (evitar tener dos versiones del card mantenidas por separado).
+
+Mantené el estilo visual ya usado en home: bordes redondeados, sombra sutil en el card, tipografía y espaciados consistentes con el resto del sitio.

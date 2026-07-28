@@ -3,6 +3,9 @@ import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from 'framer-motion';
 import { createClient } from '@/lib/supabase/client'
+import { type VideoSource } from '@/lib/video-utils'
+import VideoPlayer from '@/components/VideoPlayer'
+import ArticleCard from '@/components/ArticleCard'
 import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import Header from "@/components/Header";
 import BetterEcosystemSection from "@/components/BetterEcosystemSection";
@@ -1301,7 +1304,7 @@ const NewsSection = () => {
               <div>
                 {currentArticle.video_url ? (
                   <div className="mb-4 rounded-xl overflow-hidden border border-slate-200">
-                    <video src={currentArticle.video_url} controls className="w-full aspect-video object-contain" preload="metadata" />
+                    <VideoPlayer videoUrl={currentArticle.video_url} videoSource={currentArticle.video_source} />
                   </div>
                 ) : null}
                 <h3 className="text-lg font-bold text-slate-900 mb-3 group-hover:text-blue-600 transition-colors leading-tight line-clamp-2">{currentArticle.title}</h3>
@@ -1965,31 +1968,24 @@ export default function Home() {
           {posts && posts.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12 text-left">
               {posts.map((post) => (
-                <div key={post.id} className="bg-white p-6 rounded-3xl border border-slate-100 shadow-sm">
-                  <div className="relative h-40 mb-4 rounded-xl overflow-hidden bg-slate-100">
-                    {post.cover_url
-                      ? (<img src={post.cover_url} alt={post.title} className="w-full h-full object-cover" />)
-                      : (<div className="w-full h-full flex items-center justify-center text-slate-300 text-xs font-bold">{tx('noImage')}</div>)
-                    }
-                  </div>
-                  <h3 className="font-black text-lg mb-3 uppercase text-slate-900 line-clamp-2">{post.title}</h3>
-                  <p className="text-slate-500 text-sm mb-6 line-clamp-3">
-                    {(() => {
-                      const raw = post.description?.replace(/<[^>]*>?/gm, '') || tx('noDesc') as string;
-                      if (typeof window === 'undefined') return raw;
-                      const txt = document.createElement('textarea');
-                      txt.innerHTML = raw;
-                      return txt.value;
-                    })()}
-                  </p>
-                  <a href={`${localeBase}/blog/${post.slug}`} className="text-blue-600 font-black text-[10px] uppercase tracking-widest hover:text-slate-900 transition-colors">{tx('readMore')}</a>
-                  <div className="mt-4 pt-4 border-t border-slate-100 text-[10px] text-slate-400 flex items-center gap-1">
-                    <span>{tx('published')} {new Date(post.published_at).toLocaleDateString(undefined, { day: 'numeric', month: 'long', year: 'numeric' })}</span>
-                    {post.updated_at && post.updated_at !== post.published_at && (
-                      <span className="text-blue-500">· {tx('updated')} {new Date(post.updated_at).toLocaleDateString(undefined, { day: 'numeric', month: 'long', year: 'numeric' })}</span>
-                    )}
-                  </div>
-                </div>
+                <ArticleCard
+                  key={post.id}
+                  title={post.title}
+                  description={post.description}
+                  cover_url={post.cover_url}
+                  category={post.category}
+                  slug={post.slug}
+                  post_url={post.post_url}
+                  published_at={post.published_at}
+                  updated_at={post.updated_at}
+                  video_url={post.video_url}
+                  locale={locale}
+                  readMoreText={tx('readMore')}
+                  publishedText={tx('published')}
+                  updatedText={tx('updated')}
+                  noImageText={tx('noImage')}
+                  noDescText={tx('noDesc') as string}
+                />
               ))}
             </div>
           ) : (

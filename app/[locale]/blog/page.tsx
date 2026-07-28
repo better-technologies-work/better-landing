@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import { createClient } from '@/lib/supabase/client'
 import Header from '../../../components/Header'
 import { usePathname } from 'next/navigation'
+import ArticleCard from '../../../components/ArticleCard'
 
 type BlogPost = {
   id: string
@@ -11,6 +12,7 @@ type BlogPost = {
   post_url: string
   cover_url?: string
   video_url?: string
+  video_source?: string | null
   category: string
   slug: string
   published_at: string
@@ -35,6 +37,7 @@ export default function BlogPage() {
     retry: { en: 'Retry', es: 'Reintentar', de: 'Wiederholen', pt: 'Tentar novamente' },
     readMore: { en: 'Read more →', es: 'Leer más →', de: 'Weiterlesen →', pt: 'Ler mais →' },
     noPosts: { en: 'No posts available yet.', es: 'No hay posts todavía.', de: 'Noch keine Beiträge verfügbar.', pt: 'Ainda não há posts disponibles.' },
+    noImg: { en: 'NO IMG', es: 'SIN IMG', de: 'KEIN BILD', pt: 'SEM IMAGEM' },
     insight: { en: 'Better Technologies Insight', es: 'Insights de Better Technologies', de: 'Better Technologies Einblicke', pt: 'Insights da Better Technologies' },
     published: { en: 'Published', es: 'Publicado', de: 'Veröffentlicht', pt: 'Publicado' },
     updated: { en: 'Updated', es: 'Actualizado', de: 'Aktualisiert', pt: 'Atualizado' }
@@ -163,53 +166,23 @@ export default function BlogPage() {
   }`}
 >
               {posts.map((post: BlogPost) => (
-                <a
+                <ArticleCard
                   key={post.id}
-                  href={post.post_url?.startsWith('http') ? post.post_url : `${localeBase}/blog/${post.slug}`}
-                  target={post.post_url?.startsWith('http') ? '_blank' : '_self'}
-                  rel="noopener noreferrer"
-                  className="group border border-slate-200 rounded-2xl md:rounded-3xl overflow-hidden bg-white hover:shadow-2xl transition-all duration-300 flex flex-col"
-                >
-                  {/* Imagen de portada */}
-                  <div className="relative h-40 md:h-56 overflow-hidden bg-slate-100">
-                    <img
-                      src={post.cover_url || 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800'}
-                      alt={post.title}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                    />
-                    <div className="absolute top-4 left-4 bg-blue-600 text-white text-[10px] font-black px-2 py-1 rounded-md uppercase">
-                      {post.category || 'Global'}
-                    </div>
-                    {post.video_url && (
-                      <div className="absolute top-4 right-4 bg-black/70 text-white text-[10px] font-black px-2 py-1 rounded-md uppercase flex items-center gap-1">
-                        <span>▶</span> Video
-                      </div>
-                    )}
-                  </div>
-
-                  {/* Contenido de la tarjeta */}
-                  <div className="p-5 md:p-7 flex-1 flex flex-col">
-                    <h2 className="text-lg md:text-xl font-bold leading-tight mb-2 md:mb-3 group-hover:text-blue-600 transition-colors">
-                      {post.title}
-                    </h2>
-                    <p
-                      className="text-slate-500 text-sm line-clamp-2 md:line-clamp-3 mb-4 md:mb-6 flex-1"
-                      dangerouslySetInnerHTML={{ __html: post.description }}
-                    />
-                    
-                    <div className="pt-3 md:pt-4 border-t border-slate-200 flex justify-between items-center">
-                      <span className="text-xs font-bold text-slate-500 uppercase">
-                        {(ui.readMore as any)[locale] || ui.readMore.en}
-                      </span>
-                      <div className="text-[10px] text-slate-400 flex items-center gap-1">
-                        <span>{(ui.published as any)[locale] || ui.published.en} {new Date(post.published_at).toLocaleDateString(undefined, { day: 'numeric', month: 'long', year: 'numeric' })}</span>
-                        {post.updated_at && post.updated_at !== post.published_at && (
-                          <span className="text-blue-500">· {(ui.updated as any)[locale] || ui.updated.en} {new Date(post.updated_at).toLocaleDateString(undefined, { day: 'numeric', month: 'long', year: 'numeric' })}</span>
-                        )}
-                      </div>
-                    </div>
-                  </div>
-                </a>
+                  title={post.title}
+                  description={post.description}
+                  cover_url={post.cover_url}
+                  category={post.category}
+                  slug={post.slug}
+                  post_url={post.post_url}
+                  published_at={post.published_at}
+                  updated_at={post.updated_at}
+                  video_url={post.video_url}
+                  locale={locale}
+                  readMoreText={(ui.readMore as any)[locale] || ui.readMore.en}
+                  publishedText={(ui.published as any)[locale] || ui.published.en}
+                  updatedText={(ui.updated as any)[locale] || ui.updated.en}
+                  noImageText={(ui.noImg as any)[locale] || ui.noImg.en}
+                />
               ))}
             </div>
           ) : (

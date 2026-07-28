@@ -1,12 +1,14 @@
 
 import { createClient as createServerClient } from '@/lib/supabase/server'
 import { decodeHTML } from '@/lib/utils'
+import { type VideoSource } from '@/lib/video-utils'
 import Image from 'next/image'
 import ReactMarkdown from 'react-markdown'
 import { translatePosts } from '@/lib/translate'
 import { getTranslations } from 'next-intl/server'
 import { Metadata } from 'next'
-import BackButton from '@/components/BackButton' 
+import BackButton from '@/components/BackButton'
+import VideoPlayer from '@/components/VideoPlayer'
 type Link = {
   id: string;
   title: string;
@@ -28,6 +30,7 @@ type BlogPost = {
   post_url: string
   cover_url?: string
   video_url?: string
+  video_source?: VideoSource | null
   category: string
   slug: string
   published_at: string
@@ -209,14 +212,7 @@ export default async function BlogPostPage({ params }: Props) {
       {/* ── VIDEO ── */}
       {post.video_url && (
         <div className="max-w-4xl mx-auto px-4 md:px-6 -mt-8 md:-mt-12 relative z-20">
-          <div className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 bg-black">
-            <video 
-              src={post.video_url} 
-              controls 
-              className="w-full aspect-video object-contain"
-              preload="metadata"
-            />
-          </div>
+          <VideoPlayer videoUrl={post.video_url} videoSource={post.video_source} />
         </div>
       )}
 
