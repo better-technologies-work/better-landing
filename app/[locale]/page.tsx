@@ -1280,17 +1280,29 @@ const NewsSection = () => {
             <div className="relative h-64 md:h-80 md:w-1/2 overflow-hidden bg-slate-100">
               {currentArticle.urlToImage ? (
                 <img src={currentArticle.urlToImage} alt={currentArticle.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+              ) : currentArticle.cover_url ? (
+                <img src={currentArticle.cover_url} alt={currentArticle.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
               ) : (
                 <div className="w-full h-full flex items-center justify-center bg-slate-200">
                   <span className="text-slate-400 text-[10px] font-bold uppercase tracking-widest">{tx('noPreview')}</span>
                 </div>
               )}
               <div className="absolute top-4 left-4">
-                <span className="text-[9px] font-black text-white bg-blue-600 px-3 py-1 rounded-full uppercase tracking-widest shadow-lg">{currentArticle.source.name}</span>
+                <span className="text-[9px] font-black text-white bg-blue-600 px-3 py-1 rounded-full uppercase tracking-widest shadow-lg">{currentArticle.source?.name || currentArticle.category || 'News'}</span>
               </div>
+              {currentArticle.video_url && (
+                <div className="absolute top-4 right-4 bg-black/70 text-white text-[10px] font-black px-2 py-1 rounded-md uppercase flex items-center gap-1">
+                  <span>▶</span> Video
+                </div>
+              )}
             </div>
             <div className="p-8 md:w-1/2 flex flex-col justify-between">
               <div>
+                {currentArticle.video_url ? (
+                  <div className="mb-4 rounded-xl overflow-hidden border border-slate-200">
+                    <video src={currentArticle.video_url} controls className="w-full aspect-video object-contain" preload="metadata" />
+                  </div>
+                ) : null}
                 <h3 className="text-lg font-bold text-slate-900 mb-3 group-hover:text-blue-600 transition-colors leading-tight line-clamp-2">{currentArticle.title}</h3>
                 <p className="text-slate-500 text-xs leading-relaxed mb-6 line-clamp-2 font-medium">{currentArticle.description || tx('clickRead')}</p>
               </div>

@@ -17,7 +17,7 @@ export async function GET() {
     const supabase = createClient();
     const { data, error } = await supabase
       .from('blog_posts')
-      .select('id,title,description,post_url,cover_url,author,category,published_at')
+      .select('id,title,description,post_url,cover_url,video_url,author,category,published_at')
       .ilike('category', 'actualidad')
       .order('published_at', { ascending: false })
       .limit(10);

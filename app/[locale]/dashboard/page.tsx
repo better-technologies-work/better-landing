@@ -41,6 +41,7 @@ type BlogPost = {
   description: string;
   post_url: string;
   cover_url?: string;
+  video_url?: string;
   category: string;
   slug: string;
   published_at: string;
@@ -90,6 +91,8 @@ export default function DashboardPage() {
     existingPosts: isEs ? "Posts existentes" : "Existing Posts",
     noPostsYet: isEs ? "No hay posts publicados aun." : "No posts published yet.",
     noImg: isEs ? "SIN IMG" : "NO IMG",
+    featuredVideo: isEs ? "Video destacado" : "Featured Video",
+    dragVideo: isEs ? "Arrastra o selecciona tu video" : "Drag or select your video",
   };
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
@@ -102,6 +105,11 @@ export default function DashboardPage() {
   // Estados para la imagen
   const [imageFile, setImageFile] = useState<File | null>(null);
   const [preview, setPreview] = useState<string | null>(null);
+
+  // Estados para el video
+  const [videoFile, setVideoFile] = useState<File | null>(null);
+  const [videoPreview, setVideoPreview] = useState<string | null>(null);
+  const [videoRemoved, setVideoRemoved] = useState(false);
 
   // Estados para links y documentos
   const [links, setLinks] = useState<{ title: string; url: string }[]>([]);
@@ -120,6 +128,11 @@ export default function DashboardPage() {
   });
   const [newsImageFile, setNewsImageFile] = useState<File | null>(null);
   const [newsPreview, setNewsPreview] = useState<string | null>(null);
+
+  // Estados para el video de noticias
+  const [newsVideoFile, setNewsVideoFile] = useState<File | null>(null);
+  const [newsVideoPreview, setNewsVideoPreview] = useState<string | null>(null);
+  const [newsVideoRemoved, setNewsVideoRemoved] = useState(false);
 
   const [form, setForm] = useState({
     title: "",
@@ -142,7 +155,7 @@ export default function DashboardPage() {
       console.log('Supabase client created:', !!client);
       const { data, error } = await client
         .from('blog_posts')
-        .select('id,title,description,post_url,cover_url,category,slug,published_at,author,links,documents')
+        .select('id,title,description,post_url,cover_url,video_url,category,slug,published_at,author,links,documents')
         .order('published_at', { ascending: false });
       
       if (error) {
@@ -163,7 +176,7 @@ export default function DashboardPage() {
       const client = createClient();
       const { data } = await client
         .from('blog_posts')
-        .select('id,title,description,post_url,cover_url,category,slug,published_at,author')
+        .select('id,title,description,post_url,cover_url,video_url,category,slug,published_at,author')
         .eq('category', 'Actualidad')
         .order('published_at', { ascending: false });
       
@@ -178,7 +191,12 @@ export default function DashboardPage() {
   const resetForm = () => {
     setForm({ title: "", description: "", author: "Yanina Soto", category: "Data", post_url: "",slug: "", });
     setImageFile(null);
+    if (preview?.startsWith('blob:')) URL.revokeObjectURL(preview);
     setPreview(null);
+    setVideoFile(null);
+    if (videoPreview?.startsWith('blob:')) URL.revokeObjectURL(videoPreview);
+    setVideoPreview(null);
+    setVideoRemoved(false);
     setLinks([]);
     setDocuments([]);
     setEditingPost(null);
@@ -187,7 +205,12 @@ export default function DashboardPage() {
   const resetNewsForm = () => {
     setNewsForm({ title: "", description: "", author: "Yanina Soto", category: "Actualidad", post_url: "" });
     setNewsImageFile(null);
+    if (newsPreview?.startsWith('blob:')) URL.revokeObjectURL(newsPreview);
     setNewsPreview(null);
+    setNewsVideoFile(null);
+    if (newsVideoPreview?.startsWith('blob:')) URL.revokeObjectURL(newsVideoPreview);
+    setNewsVideoPreview(null);
+    setNewsVideoRemoved(false);
     setEditingNews(null);
   };
 
@@ -245,6 +268,27 @@ export default function DashboardPage() {
         }
         
         let finalCoverUrl = editingPost?.cover_url || "";
+        let finalVideoUrl = videoRemoved ? "" : (editingPost?.video_url || "");
+
+        // Eliminar video viejo de Storage si se reemplaza o se elimina
+        if (editingPost?.video_url && (videoFile || videoRemoved)) {
+          try {
+            const oldVideoPath = editingPost.video_url.replace(/.*\/covers\//, '');
+            await client.storage.from("covers").remove([oldVideoPath]);
+          } catch (e) {
+            console.warn('No se pudo eliminar video viejo de Storage:', e);
+          }
+        }
+
+        // Eliminar imagen vieja de Storage si se reemplaza
+        if (editingPost?.cover_url && imageFile) {
+          try {
+            const oldImagePath = editingPost.cover_url.replace(/.*\/covers\//, '');
+            await client.storage.from("covers").remove([oldImagePath]);
+          } catch (e) {
+            console.warn('No se pudo eliminar imagen vieja de Storage:', e);
+          }
+        }
 
         // 1. Subir imagen si existe
         if (imageFile) {
@@ -259,6 +303,20 @@ export default function DashboardPage() {
           
           const { data } = client.storage.from("covers").getPublicUrl(fileName);
           finalCoverUrl = data.publicUrl;
+        }
+
+        // 1b. Subir video si existe
+        if (videoFile) {
+          console.log('Uploading video...');
+          const videoName = `videos/${Date.now()}-${videoFile.name.replace(/\s+/g, '-')}`;
+          const { error: videoUploadError } = await client.storage
+            .from("covers")
+            .upload(videoName, videoFile);
+          
+          if (videoUploadError) throw new Error("Error subiendo video: " + videoUploadError.message);
+          
+          const { data: videoData } = client.storage.from("covers").getPublicUrl(videoName);
+          finalVideoUrl = videoData.publicUrl;
         }
 
         // 2. Subir documentos
@@ -296,6 +354,7 @@ export default function DashboardPage() {
   author: form.author,
   category: form.category,
   cover_url: finalCoverUrl,
+  video_url: finalVideoUrl,
   slug: form.slug || form.title.toLowerCase()
   .replace(/[^a-z0-9\s]+/g, "")
   .trim()
@@ -376,6 +435,7 @@ export default function DashboardPage() {
       slug: post.slug || "",
     });
     setPreview(post.cover_url || null);
+    setVideoPreview(post.video_url || null);
     setLinks(post.links || []);
     setDocuments((post.documents || []).map((d: Document) => ({ name: d.name, file: null, url: d.url, type: d.type })));
     setActiveTab('create');
@@ -404,6 +464,27 @@ export default function DashboardPage() {
     try {
       const client = createClient();
       let finalCoverUrl = editingNews?.cover_url || "";
+      let finalVideoUrl = newsVideoRemoved ? "" : (editingNews?.video_url || "");
+
+      // Eliminar video viejo de Storage si se reemplaza o se elimina
+      if (editingNews?.video_url && (newsVideoFile || newsVideoRemoved)) {
+        try {
+          const oldVideoPath = editingNews.video_url.replace(/.*\/covers\//, '');
+          await client.storage.from("covers").remove([oldVideoPath]);
+        } catch (e) {
+          console.warn('No se pudo eliminar video viejo de Storage:', e);
+        }
+      }
+
+      // Eliminar imagen vieja de Storage si se reemplaza
+      if (editingNews?.cover_url && newsImageFile) {
+        try {
+          const oldImagePath = editingNews.cover_url.replace(/.*\/covers\//, '');
+          await client.storage.from("covers").remove([oldImagePath]);
+        } catch (e) {
+          console.warn('No se pudo eliminar imagen vieja de Storage:', e);
+        }
+      }
 
       // 1. Subir imagen si existe
       if (newsImageFile) {
@@ -418,6 +499,19 @@ export default function DashboardPage() {
         finalCoverUrl = data.publicUrl;
       }
 
+      // 1b. Subir video si existe
+      if (newsVideoFile) {
+        const videoName = `videos/${Date.now()}-${newsVideoFile.name.replace(/\s+/g, '-')}`;
+        const { error: videoUploadError } = await client.storage
+          .from("covers")
+          .upload(videoName, newsVideoFile);
+        
+        if (videoUploadError) throw new Error("Error subiendo video: " + videoUploadError.message);
+        
+        const { data: videoData } = client.storage.from("covers").getPublicUrl(videoName);
+        finalVideoUrl = videoData.publicUrl;
+      }
+
       // 2. Preparar datos del post (News siempre tiene categoría "Actualidad")
       const postData = {
         title: newsForm.title,
@@ -425,6 +519,7 @@ export default function DashboardPage() {
         author: newsForm.author,
         category: "Actualidad",
         cover_url: finalCoverUrl,
+        video_url: finalVideoUrl,
         slug: editingNews?.slug || `${newsForm.title.toLowerCase().replace(/[^a-z0-9]+/g, "-")}-${Date.now()}`,
         published_at: editingNews?.published_at || new Date().toISOString(),
         post_url: newsForm.post_url || "",
@@ -468,6 +563,7 @@ export default function DashboardPage() {
       post_url: post.post_url || "",
     });
     setNewsPreview(post.cover_url || null);
+    setNewsVideoPreview(post.video_url || null);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -603,8 +699,45 @@ export default function DashboardPage() {
                     onChange={(e) => {
                       const file = e.target.files?.[0];
                       if (file) {
+                        if (preview?.startsWith('blob:')) URL.revokeObjectURL(preview);
                         setImageFile(file);
                         setPreview(URL.createObjectURL(file));
+                      }
+                    }}
+                    className="absolute inset-0 opacity-0 cursor-pointer"
+                  />
+                </div>
+              </div>
+
+              {/* Subida de Video */}
+              <div className="space-y-2">
+                <label className="text-[10px] font-black uppercase text-slate-400 tracking-widest">{ui.featuredVideo}</label>
+                <div className={`relative border-2 border-dashed rounded-2xl p-8 transition-all flex flex-col items-center ${videoPreview ? 'border-blue-200 bg-blue-50' : 'border-slate-200 hover:border-blue-400'}`}>
+                  {videoPreview ? (
+                    <div className="relative w-full mb-4">
+                      <video src={videoPreview} controls className="w-full h-48 object-contain rounded-lg" />
+                      <button type="button" onClick={() => {setVideoPreview(null); setVideoFile(null); setVideoRemoved(true);}} className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center font-bold">×</button>
+                    </div>
+                  ) : (
+                    <div className="text-center">
+                      <span className="text-4xl mb-2 block">🎬</span>
+                      <p className="text-slate-400 text-[10px] font-bold uppercase">{ui.dragVideo}</p>
+                    </div>
+                  )}
+                  <input 
+                    type="file" 
+                    accept="video/*"
+                    onChange={(e) => {
+                      const file = e.target.files?.[0];
+                      if (file) {
+                        if (file.size > 50 * 1024 * 1024) {
+                          setErrorMsg(isEs ? 'El video supera el límite de 50MB.' : 'Video exceeds the 50MB limit.');
+                          return;
+                        }
+                        if (videoPreview?.startsWith('blob:')) URL.revokeObjectURL(videoPreview);
+                        setVideoFile(file);
+                        setVideoPreview(URL.createObjectURL(file));
+                        setVideoRemoved(false);
                       }
                     }}
                     className="absolute inset-0 opacity-0 cursor-pointer"
@@ -798,8 +931,45 @@ export default function DashboardPage() {
                     onChange={(e) => {
                       const file = e.target.files?.[0];
                       if (file) {
+                        if (newsPreview?.startsWith('blob:')) URL.revokeObjectURL(newsPreview);
                         setNewsImageFile(file);
                         setNewsPreview(URL.createObjectURL(file));
+                      }
+                    }}
+                    className="absolute inset-0 opacity-0 cursor-pointer"
+                  />
+                </div>
+              </div>
+
+              {/* Subida de Video */}
+              <div className="space-y-2">
+                <label className="text-[10px] font-black uppercase text-slate-400 tracking-widest">{ui.featuredVideo}</label>
+                <div className={`relative border-2 border-dashed rounded-2xl p-8 transition-all flex flex-col items-center ${newsVideoPreview ? 'border-blue-200 bg-blue-50' : 'border-slate-200 hover:border-blue-400'}`}>
+                  {newsVideoPreview ? (
+                    <div className="relative w-full mb-4">
+                      <video src={newsVideoPreview} controls className="w-full h-48 object-contain rounded-lg" />
+                      <button type="button" onClick={() => {setNewsVideoPreview(null); setNewsVideoFile(null); setNewsVideoRemoved(true);}} className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center font-bold">×</button>
+                    </div>
+                  ) : (
+                    <div className="text-center">
+                      <span className="text-4xl mb-2 block">🎬</span>
+                      <p className="text-slate-400 text-[10px] font-bold uppercase">{ui.dragVideo}</p>
+                    </div>
+                  )}
+                  <input 
+                    type="file" 
+                    accept="video/*"
+                    onChange={(e) => {
+                      const file = e.target.files?.[0];
+                      if (file) {
+                        if (file.size > 50 * 1024 * 1024) {
+                          setErrorMsg(isEs ? 'El video supera el límite de 50MB.' : 'Video exceeds the 50MB limit.');
+                          return;
+                        }
+                        if (newsVideoPreview?.startsWith('blob:')) URL.revokeObjectURL(newsVideoPreview);
+                        setNewsVideoFile(file);
+                        setNewsVideoPreview(URL.createObjectURL(file));
+                        setNewsVideoRemoved(false);
                       }
                     }}
                     className="absolute inset-0 opacity-0 cursor-pointer"
@@ -867,7 +1037,7 @@ export default function DashboardPage() {
                       </div>
                       <div className="flex-1 min-w-0 w-full">
                         <h3 className="font-black text-sm text-slate-900 truncate">{post.title}</h3>
-                        <p className="text-[10px] text-slate-400 uppercase">{post.category} · {new Date(post.published_at).toLocaleDateString()}</p>
+                        <p className="text-[10px] text-slate-400 uppercase">{post.category} · {new Date(post.published_at).toLocaleDateString()} {post.video_url && '· ▶ Video'}</p>
                       </div>
                       <div className="flex gap-2 w-full sm:w-auto">
                         <button 
@@ -912,7 +1082,7 @@ export default function DashboardPage() {
                     </div>
                     <div className="flex-1 min-w-0 w-full">
                       <h3 className="font-black text-sm text-slate-900 truncate">{post.title}</h3>
-                      <p className="text-[10px] text-slate-400 uppercase">{post.category} · {new Date(post.published_at).toLocaleDateString()}</p>
+                      <p className="text-[10px] text-slate-400 uppercase">{post.category} · {new Date(post.published_at).toLocaleDateString()} {post.video_url && '· ▶ Video'}</p>
                     </div>
                     <div className="flex gap-2 w-full sm:w-auto">
                       <button 

@@ -26,6 +26,7 @@ type BlogPost = {
   content?: string
   post_url: string
   cover_url?: string
+  video_url?: string
   category: string
   slug: string
   published_at: string
@@ -200,6 +201,20 @@ export default async function BlogPostPage({ params }: Props) {
           </span>
         </div>
       </div>
+
+      {/* ── VIDEO ── */}
+      {post.video_url && (
+        <div className="max-w-4xl mx-auto px-4 md:px-6 -mt-8 md:-mt-12 relative z-20">
+          <div className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 bg-black">
+            <video 
+              src={post.video_url} 
+              controls 
+              className="w-full aspect-video object-contain"
+              preload="metadata"
+            />
+          </div>
+        </div>
+      )}
 
       {/* ── CONTENT ── */}
       <article className="max-w-3xl mx-auto px-4 md:px-6 pb-24 -mt-6 md:-mt-8 relative z-10">

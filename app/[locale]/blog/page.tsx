@@ -10,6 +10,7 @@ type BlogPost = {
   description: string
   post_url: string
   cover_url?: string
+  video_url?: string
   category: string
   slug: string
   published_at: string
@@ -176,6 +177,11 @@ export default function BlogPage() {
                     <div className="absolute top-4 left-4 bg-blue-600 text-white text-[10px] font-black px-2 py-1 rounded-md uppercase">
                       {post.category || 'Global'}
                     </div>
+                    {post.video_url && (
+                      <div className="absolute top-4 right-4 bg-black/70 text-white text-[10px] font-black px-2 py-1 rounded-md uppercase flex items-center gap-1">
+                        <span>▶</span> Video
+                      </div>
+                    )}
                   </div>
 
                   {/* Contenido de la tarjeta */}
