@@ -13,6 +13,10 @@
     "whatWeDo": "What we do?",
     "viewAllPosts": "View All Posts"
   },
+  "Blog": {
+    "published": "Published",
+    "updated": "Updated"
+  },
   
   "Dashboard": {
     "hiTeam": "Hi Team",

@@ -4,6 +4,7 @@ import { decodeHTML } from '@/lib/utils'
 import Image from 'next/image'
 import ReactMarkdown from 'react-markdown'
 import { translatePosts } from '@/lib/translate'
+import { getTranslations } from 'next-intl/server'
 import { Metadata } from 'next'
 import BackButton from '@/components/BackButton' 
 type Link = {
@@ -30,6 +31,7 @@ type BlogPost = {
   category: string
   slug: string
   published_at: string
+  updated_at?: string
   author: string
   links?: Link[]
   documents?: Document[]
@@ -46,7 +48,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const supabase = await createServerClient()
     const { data: post } = await supabase
   .from('blog_posts')
-  .select('title, description, excerpt, cover_url, published_at, author')
+  .select('title, description, excerpt, cover_url, published_at, updated_at, author')
   .eq('slug', slug)
   .single()
 
@@ -78,6 +80,7 @@ const cleanDescription = post.excerpt?.trim() ||
         url: postUrl,
         type: 'article',
         publishedTime: post.published_at,
+        modifiedTime: post.updated_at || undefined,
         authors: [post.author || 'Better Technologies'],
         images: post.cover_url ? [
           {
@@ -107,6 +110,7 @@ export default async function BlogPostPage({ params }: Props) {
   const { slug, locale } = await params
   const localeBase = locale === 'en' ? '' : `/${locale}`
   const isEs = locale === 'es'
+  const t = await getTranslations('Blog')
   let post: BlogPost | null = null
 
   try {
@@ -218,12 +222,20 @@ export default async function BlogPostPage({ params }: Props) {
 
       {/* ── CONTENT ── */}
       <article className="max-w-3xl mx-auto px-4 md:px-6 pb-24 -mt-6 md:-mt-8 relative z-10">
-        <div className="flex items-center gap-3 mb-6">
+        <div className="flex items-center gap-3 mb-6 flex-wrap">
           <span className="text-[10px] font-black uppercase tracking-widest text-slate-400">{post.author}</span>
           <span className="text-slate-200 font-black">·</span>
           <span className="text-[10px] font-black uppercase tracking-widest text-slate-400">
-            {new Date(post.published_at).toLocaleDateString(isEs ? 'es-ES' : 'en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
+            {t('published')} {new Date(post.published_at).toLocaleDateString(undefined, { day: 'numeric', month: 'long', year: 'numeric' })}
           </span>
+          {post.updated_at && post.updated_at !== post.published_at && (
+            <>
+              <span className="text-slate-200 font-black">·</span>
+              <span className="text-[10px] font-black uppercase tracking-widest text-blue-500">
+                {t('updated')} {new Date(post.updated_at).toLocaleDateString(undefined, { day: 'numeric', month: 'long', year: 'numeric' })}
+              </span>
+            </>
+          )}
         </div>
 
         <h1 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter leading-none uppercase mb-10">

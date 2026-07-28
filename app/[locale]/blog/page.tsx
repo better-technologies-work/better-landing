@@ -14,6 +14,7 @@ type BlogPost = {
   category: string
   slug: string
   published_at: string
+  updated_at?: string
 }
 
 export default function BlogPage() {
@@ -34,7 +35,9 @@ export default function BlogPage() {
     retry: { en: 'Retry', es: 'Reintentar', de: 'Wiederholen', pt: 'Tentar novamente' },
     readMore: { en: 'Read more →', es: 'Leer más →', de: 'Weiterlesen →', pt: 'Ler mais →' },
     noPosts: { en: 'No posts available yet.', es: 'No hay posts todavía.', de: 'Noch keine Beiträge verfügbar.', pt: 'Ainda não há posts disponibles.' },
-    insight: { en: 'Better Technologies Insight', es: 'Insights de Better Technologies', de: 'Better Technologies Einblicke', pt: 'Insights da Better Technologies' }
+    insight: { en: 'Better Technologies Insight', es: 'Insights de Better Technologies', de: 'Better Technologies Einblicke', pt: 'Insights da Better Technologies' },
+    published: { en: 'Published', es: 'Publicado', de: 'Veröffentlicht', pt: 'Publicado' },
+    updated: { en: 'Updated', es: 'Actualizado', de: 'Aktualisiert', pt: 'Atualizado' }
   }
 
   useEffect(() => {
@@ -198,14 +201,12 @@ export default function BlogPage() {
                       <span className="text-xs font-bold text-slate-500 uppercase">
                         {(ui.readMore as any)[locale] || ui.readMore.en}
                       </span>
-                      <span className="text-[10px] text-slate-400">
-                        {new Date(post.published_at).toLocaleDateString(
-                          locale === 'es' ? 'es-ES' : 
-                          locale === 'de' ? 'de-DE' : 
-                          locale === 'pt' ? 'pt-BR' : 'en-US', 
-                          { month: 'short', day: 'numeric', year: 'numeric' }
+                      <div className="text-[10px] text-slate-400 flex items-center gap-1">
+                        <span>{(ui.published as any)[locale] || ui.published.en} {new Date(post.published_at).toLocaleDateString(undefined, { day: 'numeric', month: 'long', year: 'numeric' })}</span>
+                        {post.updated_at && post.updated_at !== post.published_at && (
+                          <span className="text-blue-500">· {(ui.updated as any)[locale] || ui.updated.en} {new Date(post.updated_at).toLocaleDateString(undefined, { day: 'numeric', month: 'long', year: 'numeric' })}</span>
                         )}
-                      </span>
+                      </div>
                     </div>
                   </div>
                 </a>

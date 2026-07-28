@@ -1,18 +1,18 @@
-Antes de dar por terminada la funcionalidad de video en app/[locale]/dashboard/page.tsx y app/[locale]/page.tsx, hacé lo siguiente:
+Revisar los cambios de formato de fechas.
 
-1. Verificación de integridad del código (no debería haber cambios si todo está bien, pero confirmá):
-   - Corré: grep -n "finalVideoUrl =" app/[locale]/dashboard/page.tsx
-     Debe aparecer exactamente UNA vez dentro de handleSubmit y UNA vez dentro de handleNewsSubmit (2 en total). Si aparece duplicado en algún bloque, dejá solo la versión que usa videoRemoved/newsVideoRemoved y borrá la línea vieja.
-   - Corré: grep -n "setVideoFile(null);}}" app/[locale]/dashboard/page.tsx
-     Confirmá que el botón "×" del preview de video (blog y news) no quedó duplicado — debe haber un solo <button> por cada bloque de preview, con la versión que incluye setVideoRemoved(true) / setNewsVideoRemoved(true).
-   - Corré npx tsc --noEmit y confirmá que sigue sin errores.
+Asegurarse de que no hayan quedado fechas duplicadas por los reemplazos.
 
-2. Buscá si existe alguna página o componente de listado/detalle de News separado del carrusel del home (por ejemplo una ruta /news, /noticias, o un componente tipo NewsListPage o NewsCard fuera de app/[locale]/page.tsx). Si existe, replicá ahí el mismo patrón de badge "▶ Video" y reproductor <video> que se agregó en el home. Si no existe ninguna otra página, no hace falta tocar nada más.
+Debe existir solamente una fecha de publicación y una fecha de actualización:
 
-3. Revocar los object URLs de preview para evitar memory leaks:
-   - En los 4 lugares donde se usa URL.createObjectURL (imagen blog, video blog, imagen news, video news), antes de setear un nuevo preview con URL.createObjectURL, si ya había un preview anterior (que empiece con "blob:"), llamar a URL.revokeObjectURL() sobre el valor viejo.
-   - También revocarlo en resetForm() y resetNewsForm() si el preview actual es un blob URL.
+Published {fecha}
+Updated {fecha}
 
-4. Aplicar el mismo borrado de Storage que se hizo para videos (Bug 3 de la ronda anterior) también a las imágenes: al reemplazar cover_url en edición (imageFile nuevo o imagen removida), borrar el archivo viejo de Supabase Storage antes de subir el nuevo, siguiendo el mismo patrón que ya existe para video_url.
+Usar únicamente:
 
-Después de cada punto, corré npx tsc --noEmit y confirmá que compila sin errores antes de seguir con el siguiente. No cambies nada del diseño ni de la lógica que no esté relacionada a estos 4 puntos.
+toLocaleDateString(undefined, {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric'
+})
+
+Eliminar cualquier versión anterior que use locale hardcodeado (es-ES, de-DE, pt-BR).

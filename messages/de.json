@@ -12,6 +12,10 @@
     "whatWeDo": "Was wir tun?",
     "viewAllPosts": "Alle Beiträge ansehen"
   },
+  "Blog": {
+    "published": "Veröffentlicht",
+    "updated": "Aktualisiert"
+  },
   "Hero": {
     "title": "Verstehe die Vergangenheit — baue die Zukunft.",
     "ctaPart1": "LASST UNS",

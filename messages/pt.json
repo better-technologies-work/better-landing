@@ -12,6 +12,10 @@
     "whatWeDo": "O que fazemos?",
     "viewAllPosts": "Ver todos os posts"
   },
+  "Blog": {
+    "published": "Publicado",
+    "updated": "Atualizado"
+  },
   "Footer": {
     "createdBy": "Criado por"
   },

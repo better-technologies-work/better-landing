@@ -279,6 +279,8 @@ export const ui = {
   newsUnavailable: { en: "News currently unavailable.", es: "Noticias no disponibles por ahora.", de: "Nachrichten derzeit nicht verfügbar.", pt: "Notícias indisponíveis no momento." },
   newsError: { en: "We could not fetch the latest intelligence right now. Please try again soon.", es: "No pudimos cargar la inteligencia mas reciente. Intenta nuevamente pronto.", de: "Wir konnten die neuesten Informationen gerade nicht abrufen. Bitte versuche es bald erneut.", pt: "Não conseguimos carregar as informações mais recentes. Tente novamente em breve." },
   noPreview: { en: "No Preview Available", es: "Sin vista previa", de: "Keine Vorschau verfügbar", pt: "Sem pré-visualização" },
+  published: { en: "Published", es: "Publicado", de: "Veröffentlicht", pt: "Publicado" },
+  updated: { en: "Updated", es: "Actualizado", de: "Aktualisiert", pt: "Atualizado" },
   clickRead: { en: "Click to read the full coverage of this digital transformation update.", es: "Haz clic para leer la cobertura completa de esta actualizacion de transformacion digital.", de: "Klicke, um die vollständige Berichterstattung zu lesen.", pt: "Clique para ler a cobertura completa desta atualização de transformação digital." },
   read: { en: "Read →", es: "Leer →", de: "Lesen →", pt: "Ler →" },
   prevArticle: { en: "Previous article", es: "Articulo anterior", de: "Vorheriger Artikel", pt: "Artigo anterior" },
@@ -1255,7 +1257,6 @@ const NewsSection = () => {
   }
 
   const currentArticle = articles[currentIndex];
-  const dateLang = locale === 'es' ? 'es-ES' : locale === 'de' ? 'de-DE' : locale === 'pt' ? 'pt-BR' : 'en-US';
 
   return (
     <section className="py-16 bg-white border-t border-slate-100">
@@ -1307,7 +1308,12 @@ const NewsSection = () => {
                 <p className="text-slate-500 text-xs leading-relaxed mb-6 line-clamp-2 font-medium">{currentArticle.description || tx('clickRead')}</p>
               </div>
               <div className="flex justify-between items-center pt-4 border-t border-slate-50">
-                <span className="text-[10px] font-bold uppercase text-slate-400">{new Date(currentArticle.publishedAt).toLocaleDateString(dateLang, { month: 'short', day: 'numeric' })}</span>
+                <div className="flex items-center gap-1 text-[10px] font-bold uppercase text-slate-400">
+                  <span>{tx('published')} {new Date(currentArticle.publishedAt || currentArticle.published_at).toLocaleDateString(undefined, { day: 'numeric', month: 'long', year: 'numeric' })}</span>
+                  {currentArticle.updated_at && currentArticle.updated_at !== (currentArticle.publishedAt || currentArticle.published_at) && (
+                    <span className="text-blue-500">· {tx('updated')} {new Date(currentArticle.updated_at).toLocaleDateString(undefined, { day: 'numeric', month: 'long', year: 'numeric' })}</span>
+                  )}
+                </div>
                 <span className="text-blue-600 font-black text-[10px] uppercase tracking-widest group-hover:translate-x-1 transition-transform">{tx('read')}</span>
               </div>
             </div>
@@ -1628,8 +1634,6 @@ export default function Home() {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
-
-  const dateLang = locale === 'es' ? 'es-ES' : locale === 'de' ? 'de-DE' : locale === 'pt' ? 'pt-BR' : 'en-US';
 
   return (
 
@@ -1979,6 +1983,12 @@ export default function Home() {
                     })()}
                   </p>
                   <a href={`${localeBase}/blog/${post.slug}`} className="text-blue-600 font-black text-[10px] uppercase tracking-widest hover:text-slate-900 transition-colors">{tx('readMore')}</a>
+                  <div className="mt-4 pt-4 border-t border-slate-100 text-[10px] text-slate-400 flex items-center gap-1">
+                    <span>{tx('published')} {new Date(post.published_at).toLocaleDateString(undefined, { day: 'numeric', month: 'long', year: 'numeric' })}</span>
+                    {post.updated_at && post.updated_at !== post.published_at && (
+                      <span className="text-blue-500">· {tx('updated')} {new Date(post.updated_at).toLocaleDateString(undefined, { day: 'numeric', month: 'long', year: 'numeric' })}</span>
+                    )}
+                  </div>
                 </div>
               ))}
             </div>

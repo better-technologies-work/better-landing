@@ -45,6 +45,7 @@ type BlogPost = {
   category: string;
   slug: string;
   published_at: string;
+  updated_at?: string;
   author: string;
   links?: Link[];
   documents?: Document[];
@@ -155,7 +156,7 @@ export default function DashboardPage() {
       console.log('Supabase client created:', !!client);
       const { data, error } = await client
         .from('blog_posts')
-        .select('id,title,description,post_url,cover_url,video_url,category,slug,published_at,author,links,documents')
+        .select('id,title,description,post_url,cover_url,video_url,category,slug,published_at,updated_at,author,links,documents')
         .order('published_at', { ascending: false });
       
       if (error) {
@@ -176,7 +177,7 @@ export default function DashboardPage() {
       const client = createClient();
       const { data } = await client
         .from('blog_posts')
-        .select('id,title,description,post_url,cover_url,video_url,category,slug,published_at,author')
+        .select('id,title,description,post_url,cover_url,video_url,category,slug,published_at,updated_at,author')
         .eq('category', 'Actualidad')
         .order('published_at', { ascending: false });
       
