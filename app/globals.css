@@ -33,3 +33,21 @@ body {
 .prose-content a:hover {
   color: #1d4ed8;
 }
+
+/* Quill editor image styles */
+.ql-editor img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
+}
+
+/* Custom toolbar select for image width */
+.ql-toolbar .ql-imageWidth {
+  width: auto;
+}
+
+/* Ensure resized images maintain aspect ratio in all views */
+.prose img[width],
+img[style*="width"] {
+  height: auto;
+}

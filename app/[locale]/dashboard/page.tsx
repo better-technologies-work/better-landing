@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, type MouseEvent as ReactMouseEvent } from "react";
 import { createClient } from "@/lib/supabase/client";
 import { decodeHTML } from "@/lib/utils";
 import { detectVideoSource, getYouTubeVideoId, getVimeoVideoId, type VideoSource } from "@/lib/video-utils";
@@ -9,6 +9,7 @@ import { useLocale } from "next-intl";
 import Header from "@/components/Header";
 import DashboardAuth from "@/components/DashboardAuth";
 import VideoPlayer from "@/components/VideoPlayer";
+import { applyImageWidthAtIndex, deleteImageAtIndex, registerImageWidthFormat, findImageIndex } from "@/lib/quill-image-resize";
 
 // Estilos del editor
 import 'react-quill-new/dist/quill.snow.css';
@@ -98,6 +99,16 @@ export default function DashboardPage() {
     featuredVideo: isEs ? "Video destacado" : "Featured Video",
     dragVideo: isEs ? "Arrastra o selecciona tu video" : "Drag or select your video",
   };
+  type QuillEditorHandle = {
+    getEditor: () => {
+      root: HTMLElement;
+      getSelection: () => { index: number; length: number } | null;
+      deleteText: (index: number, length: number) => void;
+      getLeaf: (index: number) => Array<{ domNode?: HTMLElement | null }>;
+      getContents: () => { ops?: Array<{ insert?: string | { image?: string } }> };
+    } | null;
+  };
+
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
@@ -105,10 +116,36 @@ export default function DashboardPage() {
   const [loadingPosts, setLoadingPosts] = useState(true);
   const [editingPost, setEditingPost] = useState<BlogPost | null>(null);
   const [activeTab, setActiveTab] = useState<'create' | 'manage' | 'news'>('create');
+  const reactQuillRef = useRef<QuillEditorHandle | null>(null);
+  const savedSelectionRef = useRef<{ index: number; length: number } | null>(null);
+  const selectedImageRef = useRef<HTMLImageElement | null>(null);
+
+  const captureImageSelection = () => {
+    const editor = reactQuillRef.current?.getEditor();
+    const sel = editor?.getSelection();
+    if (sel) savedSelectionRef.current = sel;
+  };
+
+  const handleEditorImageClick = (event: ReactMouseEvent<HTMLDivElement>) => {
+    const target = event.target as HTMLElement | null;
+    const clickedImage = target?.closest("img") as HTMLImageElement | null;
+    if (clickedImage) {
+      selectedImageRef.current = clickedImage;
+    }
+  };
+
+  const syncEditorContent = () => {
+    const editor = reactQuillRef.current?.getEditor();
+    const editorEl = editor?.root;
+    if (editor && editorEl) {
+      setForm(prev => ({ ...prev, description: editorEl.innerHTML }));
+    }
+  };
 
   // Estados para la imagen
   const [imageFile, setImageFile] = useState<File | null>(null);
   const [preview, setPreview] = useState<string | null>(null);
+  const [imageRemoved, setImageRemoved] = useState(false);
 
   // Estados para el video
   const [videoFile, setVideoFile] = useState<File | null>(null);
@@ -134,6 +171,7 @@ export default function DashboardPage() {
   });
   const [newsImageFile, setNewsImageFile] = useState<File | null>(null);
   const [newsPreview, setNewsPreview] = useState<string | null>(null);
+  const [newsImageRemoved, setNewsImageRemoved] = useState(false);
 
   // Estados para el video de noticias
   const [newsVideoFile, setNewsVideoFile] = useState<File | null>(null);
@@ -152,9 +190,28 @@ export default function DashboardPage() {
   });
 
   useEffect(() => {
+    registerImageWidthFormat().catch((err) => console.error('[QUILL] Failed to register width format:', err));
     loadPosts();
     loadNews();
   }, []);
+
+  useEffect(() => {
+    const editor = reactQuillRef.current?.getEditor();
+    const root = editor?.root;
+
+    if (!root) return;
+
+    const handleImageSelection = (event: MouseEvent) => {
+      const target = event.target as HTMLElement | null;
+      const clickedImage = target?.closest("img") as HTMLImageElement | null;
+      if (clickedImage) {
+        selectedImageRef.current = clickedImage;
+      }
+    };
+
+    root.addEventListener("click", handleImageSelection);
+    return () => root.removeEventListener("click", handleImageSelection);
+  }, [activeTab]);
 
   const loadPosts = async () => {
     setLoadingPosts(true);
@@ -201,6 +258,7 @@ export default function DashboardPage() {
     setImageFile(null);
     if (preview?.startsWith('blob:')) URL.revokeObjectURL(preview);
     setPreview(null);
+    setImageRemoved(false);
     setVideoFile(null);
     if (videoPreview?.startsWith('blob:')) URL.revokeObjectURL(videoPreview);
     setVideoPreview(null);
@@ -217,6 +275,7 @@ export default function DashboardPage() {
     setNewsImageFile(null);
     if (newsPreview?.startsWith('blob:')) URL.revokeObjectURL(newsPreview);
     setNewsPreview(null);
+    setNewsImageRemoved(false);
     setNewsVideoFile(null);
     if (newsVideoPreview?.startsWith('blob:')) URL.revokeObjectURL(newsVideoPreview);
     setNewsVideoPreview(null);
@@ -283,53 +342,105 @@ export default function DashboardPage() {
         let finalVideoUrl = videoRemoved ? "" : (editingPost?.video_url || "");
         let finalVideoSource: VideoSource | null = videoRemoved ? null : (editingPost?.video_source || null);
 
+        console.log('[VIDEO FLOW] Initial state:', {
+          videoRemoved,
+          editingPostVideoUrl: editingPost?.video_url,
+          editingPostVideoSource: editingPost?.video_source,
+          videoUrlInput,
+          videoFile: videoFile?.name,
+          finalVideoUrl,
+          finalVideoSource,
+        });
+
         // Si se pegó un link, usarlo como video
         if (videoUrlInput.trim()) {
+          console.log('[VIDEO FLOW] URL input provided:', videoUrlInput.trim());
           finalVideoUrl = videoUrlInput.trim();
           finalVideoSource = detectVideoSource(videoUrlInput.trim());
+          console.log('[VIDEO FLOW] Detected source:', finalVideoSource);
           // Si había un archivo subido antes, limpiarlo
           if (editingPost?.video_url && editingPost?.video_source === 'upload') {
             try {
               const oldVideoPath = editingPost.video_url.replace(/.*\/covers\//, '');
-              await client.storage.from("covers").remove([oldVideoPath]);
+              console.log('[VIDEO FLOW] Removing old uploaded video from Storage:', oldVideoPath);
+              const { error: removeErr } = await client.storage.from("covers").remove([oldVideoPath]);
+              if (removeErr) console.error('[VIDEO FLOW] Error removing old video:', removeErr);
+              else console.log('[VIDEO FLOW] Old uploaded video removed successfully');
             } catch (e) {
-              console.warn('No se pudo eliminar video viejo de Storage:', e);
+              console.error('[VIDEO FLOW] Exception removing old video:', e);
             }
+          } else {
+            console.log('[VIDEO FLOW] No old uploaded video to clean up');
           }
         } else if (videoFile) {
           // Subir archivo
+          console.log('[VIDEO FLOW] New video file provided:', videoFile.name);
           finalVideoSource = 'upload';
           // Eliminar video viejo de Storage si se reemplaza
           if (editingPost?.video_url && editingPost?.video_source === 'upload') {
             try {
               const oldVideoPath = editingPost.video_url.replace(/.*\/covers\//, '');
-              await client.storage.from("covers").remove([oldVideoPath]);
+              console.log('[VIDEO FLOW] Removing old uploaded video from Storage:', oldVideoPath);
+              const { error: removeErr } = await client.storage.from("covers").remove([oldVideoPath]);
+              if (removeErr) console.error('[VIDEO FLOW] Error removing old video:', removeErr);
+              else console.log('[VIDEO FLOW] Old uploaded video removed successfully');
             } catch (e) {
-              console.warn('No se pudo eliminar video viejo de Storage:', e);
+              console.error('[VIDEO FLOW] Exception removing old video:', e);
             }
+          } else {
+            console.log('[VIDEO FLOW] No old uploaded video to clean up');
           }
         } else if (videoRemoved) {
+          console.log('[VIDEO FLOW] Video marked for removal');
           // Si se eliminó el video, limpiar solo Storage si era upload
           if (editingPost?.video_url && editingPost?.video_source === 'upload') {
             try {
               const oldVideoPath = editingPost.video_url.replace(/.*\/covers\//, '');
-              await client.storage.from("covers").remove([oldVideoPath]);
+              console.log('[VIDEO FLOW] Removing uploaded video from Storage:', oldVideoPath);
+              const { error: removeErr } = await client.storage.from("covers").remove([oldVideoPath]);
+              if (removeErr) console.error('[VIDEO FLOW] Error removing video:', removeErr);
+              else console.log('[VIDEO FLOW] Uploaded video removed successfully');
             } catch (e) {
-              console.warn('No se pudo eliminar video viejo de Storage:', e);
+              console.error('[VIDEO FLOW] Exception removing video:', e);
             }
+          } else if (editingPost?.video_url) {
+            console.log('[VIDEO FLOW] Video is URL-based (source:', editingPost.video_source, ') - no Storage cleanup needed');
+          } else {
+            console.log('[VIDEO FLOW] No existing video to clean up');
           }
           finalVideoUrl = "";
           finalVideoSource = null;
+        } else {
+          console.log('[VIDEO FLOW] No video changes - keeping existing state');
         }
+
+        console.log('[VIDEO FLOW] Final state:', { finalVideoUrl, finalVideoSource });
 
         // Eliminar imagen vieja de Storage si se reemplaza
         if (editingPost?.cover_url && imageFile) {
           try {
             const oldImagePath = editingPost.cover_url.replace(/.*\/covers\//, '');
-            await client.storage.from("covers").remove([oldImagePath]);
+            console.log('[IMAGE FLOW] Removing old cover image from Storage:', oldImagePath);
+            const { error: imgErr } = await client.storage.from("covers").remove([oldImagePath]);
+            if (imgErr) console.error('[IMAGE FLOW] Error removing old image:', imgErr);
+            else console.log('[IMAGE FLOW] Old cover image removed successfully');
           } catch (e) {
-            console.warn('No se pudo eliminar imagen vieja de Storage:', e);
+            console.error('[IMAGE FLOW] Exception removing old image:', e);
           }
+        }
+
+        // Eliminar imagen destacada si el usuario la quitó con el botón ×
+        if (imageRemoved && editingPost?.cover_url && !imageFile) {
+          try {
+            const oldImagePath = editingPost.cover_url.replace(/.*\/covers\//, '');
+            console.log('[COVER SUBMIT] Removing cover image from Storage:', oldImagePath);
+            const { error: imgErr } = await client.storage.from("covers").remove([oldImagePath]);
+            if (imgErr) console.error('[COVER SUBMIT] Error removing cover:', imgErr);
+            else console.log('[COVER SUBMIT] Cover removed successfully');
+          } catch (e) {
+            console.error('[COVER SUBMIT] Exception removing cover:', e);
+          }
+          finalCoverUrl = "";
         }
 
         // 1. Subir imagen si existe
@@ -390,6 +501,7 @@ export default function DashboardPage() {
         }
 
         // 3.  datos del post
+        console.log('[COVER SUBMIT] Final cover_url to save:', finalCoverUrl, '| imageRemoved:', imageRemoved, '| imageFile:', imageFile?.name);
         const postData = {
   title: form.title,
   description: form.description,
@@ -492,11 +604,79 @@ export default function DashboardPage() {
     
     try {
       const client = createClient();
+      console.log('[DELETE POST] Starting deletion for post:', postId);
+
+      // Fetch the post first to get Storage file paths
+      const { data: postData, error: fetchError } = await client
+        .from('blog_posts')
+        .select('cover_url, video_url, video_source, documents')
+        .eq('id', postId)
+        .single();
+
+      if (fetchError) {
+        console.error('[DELETE POST] Error fetching post for cleanup:', fetchError);
+      }
+
+      // Clean up Storage files
+      if (postData) {
+        // Delete cover image
+        if (postData.cover_url) {
+          try {
+            const imagePath = postData.cover_url.replace(/.*\/covers\//, '');
+            console.log('[DELETE POST] Removing cover image from Storage:', imagePath);
+            const { error: imgErr } = await client.storage.from("covers").remove([imagePath]);
+            if (imgErr) console.error('[DELETE POST] Error removing cover image:', imgErr);
+            else console.log('[DELETE POST] Cover image removed successfully');
+          } catch (e) {
+            console.error('[DELETE POST] Exception removing cover image:', e);
+          }
+        }
+
+        // Delete video file (only for uploaded videos)
+        if (postData.video_url && postData.video_source === 'upload') {
+          try {
+            const videoPath = postData.video_url.replace(/.*\/covers\//, '');
+            console.log('[DELETE POST] Removing uploaded video from Storage:', videoPath);
+            const { error: vidErr } = await client.storage.from("covers").remove([videoPath]);
+            if (vidErr) console.error('[DELETE POST] Error removing video:', vidErr);
+            else console.log('[DELETE POST] Video removed successfully');
+          } catch (e) {
+            console.error('[DELETE POST] Exception removing video:', e);
+          }
+        } else if (postData.video_url) {
+          console.log('[DELETE POST] Video is URL-based (source:', postData.video_source, ') - skipping Storage cleanup');
+        }
+
+        // Delete documents
+        if (postData.documents && Array.isArray(postData.documents)) {
+          for (const doc of postData.documents) {
+            if (doc.url && doc.type !== 'link') {
+              try {
+                const docPath = doc.url.replace(/.*\/covers\//, '');
+                console.log('[DELETE POST] Removing document from Storage:', docPath);
+                const { error: docErr } = await client.storage.from("covers").remove([docPath]);
+                if (docErr) console.error('[DELETE POST] Error removing document:', docErr);
+                else console.log('[DELETE POST] Document removed successfully');
+              } catch (e) {
+                console.error('[DELETE POST] Exception removing document:', e);
+              }
+            }
+          }
+        }
+      }
+
+      // Delete the DB row
+      console.log('[DELETE POST] Deleting DB row for post:', postId);
       const { error } = await client.from("blog_posts").delete().eq("id", postId);
-      if (error) throw error;
+      if (error) {
+        console.error('[DELETE POST] DB deletion error:', error);
+        throw error;
+      }
+      console.log('[DELETE POST] Post deleted successfully:', postId);
       loadPosts();
     } catch (err: unknown) {
       const errorMessage = err instanceof Error ? err.message : String(err);
+      console.error('[DELETE POST] Final error:', errorMessage);
       setErrorMsg(errorMessage);
     }
   };
@@ -512,49 +692,101 @@ export default function DashboardPage() {
       let finalVideoUrl = newsVideoRemoved ? "" : (editingNews?.video_url || "");
       let finalVideoSource: VideoSource | null = newsVideoRemoved ? null : (editingNews?.video_source || null);
 
+      console.log('[VIDEO NEWS FLOW] Initial state:', {
+        newsVideoRemoved,
+        editingNewsVideoUrl: editingNews?.video_url,
+        editingNewsVideoSource: editingNews?.video_source,
+        newsVideoUrlInput,
+        newsVideoFile: newsVideoFile?.name,
+        finalVideoUrl,
+        finalVideoSource,
+      });
+
       // Si se pegó un link, usarlo como video
       if (newsVideoUrlInput.trim()) {
+        console.log('[VIDEO NEWS FLOW] URL input provided:', newsVideoUrlInput.trim());
         finalVideoUrl = newsVideoUrlInput.trim();
         finalVideoSource = detectVideoSource(newsVideoUrlInput.trim());
+        console.log('[VIDEO NEWS FLOW] Detected source:', finalVideoSource);
         if (editingNews?.video_url && editingNews?.video_source === 'upload') {
           try {
             const oldVideoPath = editingNews.video_url.replace(/.*\/covers\//, '');
-            await client.storage.from("covers").remove([oldVideoPath]);
+            console.log('[VIDEO NEWS FLOW] Removing old uploaded video from Storage:', oldVideoPath);
+            const { error: removeErr } = await client.storage.from("covers").remove([oldVideoPath]);
+            if (removeErr) console.error('[VIDEO NEWS FLOW] Error removing old video:', removeErr);
+            else console.log('[VIDEO NEWS FLOW] Old uploaded video removed successfully');
           } catch (e) {
-            console.warn('No se pudo eliminar video viejo de Storage:', e);
+            console.error('[VIDEO NEWS FLOW] Exception removing old video:', e);
           }
+        } else {
+          console.log('[VIDEO NEWS FLOW] No old uploaded video to clean up');
         }
       } else if (newsVideoFile) {
+        console.log('[VIDEO NEWS FLOW] New video file provided:', newsVideoFile.name);
         finalVideoSource = 'upload';
         if (editingNews?.video_url && editingNews?.video_source === 'upload') {
           try {
             const oldVideoPath = editingNews.video_url.replace(/.*\/covers\//, '');
-            await client.storage.from("covers").remove([oldVideoPath]);
+            console.log('[VIDEO NEWS FLOW] Removing old uploaded video from Storage:', oldVideoPath);
+            const { error: removeErr } = await client.storage.from("covers").remove([oldVideoPath]);
+            if (removeErr) console.error('[VIDEO NEWS FLOW] Error removing old video:', removeErr);
+            else console.log('[VIDEO NEWS FLOW] Old uploaded video removed successfully');
           } catch (e) {
-            console.warn('No se pudo eliminar video viejo de Storage:', e);
+            console.error('[VIDEO NEWS FLOW] Exception removing old video:', e);
           }
+        } else {
+          console.log('[VIDEO NEWS FLOW] No old uploaded video to clean up');
         }
       } else if (newsVideoRemoved) {
+        console.log('[VIDEO NEWS FLOW] Video marked for removal');
         if (editingNews?.video_url && editingNews?.video_source === 'upload') {
           try {
             const oldVideoPath = editingNews.video_url.replace(/.*\/covers\//, '');
-            await client.storage.from("covers").remove([oldVideoPath]);
+            console.log('[VIDEO NEWS FLOW] Removing uploaded video from Storage:', oldVideoPath);
+            const { error: removeErr } = await client.storage.from("covers").remove([oldVideoPath]);
+            if (removeErr) console.error('[VIDEO NEWS FLOW] Error removing video:', removeErr);
+            else console.log('[VIDEO NEWS FLOW] Uploaded video removed successfully');
           } catch (e) {
-            console.warn('No se pudo eliminar video viejo de Storage:', e);
+            console.error('[VIDEO NEWS FLOW] Exception removing video:', e);
           }
+        } else if (editingNews?.video_url) {
+          console.log('[VIDEO NEWS FLOW] Video is URL-based (source:', editingNews.video_source, ') - no Storage cleanup needed');
+        } else {
+          console.log('[VIDEO NEWS FLOW] No existing video to clean up');
         }
         finalVideoUrl = "";
         finalVideoSource = null;
+      } else {
+        console.log('[VIDEO NEWS FLOW] No video changes - keeping existing state');
       }
+
+      console.log('[VIDEO NEWS FLOW] Final state:', { finalVideoUrl, finalVideoSource });
 
       // Eliminar imagen vieja de Storage si se reemplaza
       if (editingNews?.cover_url && newsImageFile) {
         try {
           const oldImagePath = editingNews.cover_url.replace(/.*\/covers\//, '');
-          await client.storage.from("covers").remove([oldImagePath]);
+          console.log('[IMAGE NEWS FLOW] Removing old cover image from Storage:', oldImagePath);
+          const { error: imgErr } = await client.storage.from("covers").remove([oldImagePath]);
+          if (imgErr) console.error('[IMAGE NEWS FLOW] Error removing old image:', imgErr);
+          else console.log('[IMAGE NEWS FLOW] Old cover image removed successfully');
         } catch (e) {
-          console.warn('No se pudo eliminar imagen vieja de Storage:', e);
+          console.error('[IMAGE NEWS FLOW] Exception removing old image:', e);
         }
+      }
+
+      // Eliminar imagen destacada si el usuario la quitó con el botón ×
+      if (newsImageRemoved && editingNews?.cover_url && !newsImageFile) {
+        try {
+          const oldImagePath = editingNews.cover_url.replace(/.*\/covers\//, '');
+          console.log('[COVER SUBMIT NEWS] Removing cover image from Storage:', oldImagePath);
+          const { error: imgErr } = await client.storage.from("covers").remove([oldImagePath]);
+          if (imgErr) console.error('[COVER SUBMIT NEWS] Error removing cover:', imgErr);
+          else console.log('[COVER SUBMIT NEWS] Cover removed successfully');
+        } catch (e) {
+          console.error('[COVER SUBMIT NEWS] Exception removing cover:', e);
+        }
+        finalCoverUrl = "";
       }
 
       // 1. Subir imagen si existe
@@ -584,6 +816,7 @@ export default function DashboardPage() {
       }
 
       // 2. Preparar datos del post (News siempre tiene categoría "Actualidad")
+      console.log('[COVER SUBMIT NEWS] Final cover_url to save:', finalCoverUrl, '| newsImageRemoved:', newsImageRemoved, '| newsImageFile:', newsImageFile?.name);
       const postData = {
         title: newsForm.title,
         description: newsForm.description,
@@ -646,11 +879,59 @@ export default function DashboardPage() {
     
     try {
       const client = createClient();
+      console.log('[DELETE NEWS] Starting deletion for news:', postId);
+
+      // Fetch the news first to get Storage file paths
+      const { data: newsData, error: fetchError } = await client
+        .from('blog_posts')
+        .select('cover_url, video_url, video_source')
+        .eq('id', postId)
+        .single();
+
+      if (fetchError) {
+        console.error('[DELETE NEWS] Error fetching news for cleanup:', fetchError);
+      }
+
+      // Clean up Storage files
+      if (newsData) {
+        if (newsData.cover_url) {
+          try {
+            const imagePath = newsData.cover_url.replace(/.*\/covers\//, '');
+            console.log('[DELETE NEWS] Removing cover image from Storage:', imagePath);
+            const { error: imgErr } = await client.storage.from("covers").remove([imagePath]);
+            if (imgErr) console.error('[DELETE NEWS] Error removing cover image:', imgErr);
+            else console.log('[DELETE NEWS] Cover image removed successfully');
+          } catch (e) {
+            console.error('[DELETE NEWS] Exception removing cover image:', e);
+          }
+        }
+
+        if (newsData.video_url && newsData.video_source === 'upload') {
+          try {
+            const videoPath = newsData.video_url.replace(/.*\/covers\//, '');
+            console.log('[DELETE NEWS] Removing uploaded video from Storage:', videoPath);
+            const { error: vidErr } = await client.storage.from("covers").remove([videoPath]);
+            if (vidErr) console.error('[DELETE NEWS] Error removing video:', vidErr);
+            else console.log('[DELETE NEWS] Video removed successfully');
+          } catch (e) {
+            console.error('[DELETE NEWS] Exception removing video:', e);
+          }
+        } else if (newsData.video_url) {
+          console.log('[DELETE NEWS] Video is URL-based (source:', newsData.video_source, ') - skipping Storage cleanup');
+        }
+      }
+
+      console.log('[DELETE NEWS] Deleting DB row for news:', postId);
       const { error } = await client.from("blog_posts").delete().eq("id", postId);
-      if (error) throw error;
+      if (error) {
+        console.error('[DELETE NEWS] DB deletion error:', error);
+        throw error;
+      }
+      console.log('[DELETE NEWS] News deleted successfully:', postId);
       loadNews();
     } catch (err: unknown) {
       const errorMessage = err instanceof Error ? err.message : String(err);
+      console.error('[DELETE NEWS] Final error:', errorMessage);
       setErrorMsg(errorMessage);
     }
   };
@@ -722,8 +1003,9 @@ export default function DashboardPage() {
               {/* Editor de Texto  */}
               <div className="space-y-2">
                 <label className="text-[10px] font-black uppercase text-slate-400 tracking-widest">{ui.content}</label>
-                <div className="border-2 border-slate-100 rounded-2xl overflow-hidden bg-white">
+                <div className="border-2 border-slate-100 rounded-2xl overflow-hidden bg-white" onClick={handleEditorImageClick}>
                   <ReactQuill 
+                    ref={reactQuillRef}
                     theme="snow" 
                     value={form.description} 
                     onChange={(content) => setForm({...form, description: content})} 
@@ -738,6 +1020,62 @@ export default function DashboardPage() {
                       ]
                     }}
                   />
+                </div>
+                {/* Image width selector */}
+                <div className="flex flex-wrap items-center gap-2 mt-1">
+                  <label className="text-[10px] font-black uppercase text-slate-400 tracking-widest">
+                    {isEs ? "Ajustar ancho:" : "Adjust width:"}
+                  </label>
+                  <input
+                    type="range"
+                    min="25"
+                    max="100"
+                    step="25"
+                    defaultValue="100"
+                    onChange={(e) => {
+                      const editor = reactQuillRef.current?.getEditor();
+                      if (editor && selectedImageRef.current) {
+                        const imageIndex = findImageIndex(editor, selectedImageRef.current);
+                        if (imageIndex != null) {
+                          applyImageWidthAtIndex(editor, imageIndex, `${e.target.value}%`);
+                        }
+                      }
+                    }}
+                    className="accent-blue-600"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => {
+                      const editor = reactQuillRef.current?.getEditor();
+                      if (editor && selectedImageRef.current) {
+                        const imageIndex = findImageIndex(editor, selectedImageRef.current);
+                        if (imageIndex != null) {
+                          applyImageWidthAtIndex(editor, imageIndex, "100%");
+                        }
+                      }
+                    }}
+                    className="px-3 py-1.5 text-[11px] font-bold uppercase rounded-lg border border-slate-200 bg-white hover:border-blue-500 hover:text-blue-600 transition-all"
+                  >
+                    {isEs ? "Reset" : "Reset"}
+                  </button>
+                  <button
+                    type="button"
+                    onMouseDown={captureImageSelection}
+                    onClick={() => {
+                      const editor = reactQuillRef.current?.getEditor();
+                      if (editor) {
+                        const deleted = deleteImageAtIndex(editor, null, selectedImageRef.current);
+                        if (deleted) {
+                          selectedImageRef.current = null;
+                          syncEditorContent();
+                        }
+                      }
+                    }}
+                    className="px-3 py-1.5 text-[11px] font-bold uppercase rounded-lg border border-red-200 bg-red-50 text-red-600 hover:bg-red-100 transition-all"
+                    title={isEs ? "Eliminar imagen seleccionada" : "Delete selected image"}
+                  >
+                    {isEs ? "Eliminar imagen" : "Delete image"}
+                  </button>
                 </div>
               </div>
 
@@ -759,7 +1097,15 @@ export default function DashboardPage() {
                   {preview ? (
                     <div className="relative w-full h-48 mb-4">
                       <img src={preview} className="w-full h-full object-contain rounded-lg" alt="Preview" />
-                      <button type="button" onClick={() => {setPreview(null); setImageFile(null);}} className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center font-bold">×</button>
+                      <button type="button" onClick={() => {
+                        console.log('[COVER REMOVE] click, current state:', {imageFile, preview, editingPostCover: editingPost?.cover_url});
+                        if (editingPost?.cover_url) {
+                          setImageRemoved(true);
+                        }
+                        setPreview(null);
+                        setImageFile(null);
+                        console.log('[COVER REMOVE] state cleared, imageRemoved:', editingPost?.cover_url ? true : false);
+                      }} className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center font-bold">×</button>
                     </div>
                   ) : (
                     <div className="text-center">
@@ -778,8 +1124,21 @@ export default function DashboardPage() {
                         setPreview(URL.createObjectURL(file));
                       }
                     }}
-                    className="absolute inset-0 opacity-0 cursor-pointer"
+                    className={`absolute inset-0 opacity-0 cursor-pointer ${preview ? 'pointer-events-none' : ''}`}
                   />
+                  {preview && (
+                    <label className="mt-2 text-[10px] font-black uppercase text-blue-600 hover:text-blue-800 cursor-pointer hover:underline">
+                      {isEs ? "Cambiar imagen" : "Change image"}
+                      <input type="file" accept="image/*" className="hidden" onChange={(e) => {
+                        const file = e.target.files?.[0];
+                        if (file) {
+                          if (preview?.startsWith('blob:')) URL.revokeObjectURL(preview);
+                          setImageFile(file);
+                          setPreview(URL.createObjectURL(file));
+                        }
+                      }} />
+                    </label>
+                  )}
                 </div>
               </div>
 
@@ -789,26 +1148,49 @@ export default function DashboardPage() {
                   {isEs ? "Video (pegá un link de YouTube/Vimeo o subí un archivo)" : "Video (paste a YouTube/Vimeo link or upload a file)"}
                 </label>
 
-                {/* Input de URL */}
-                <input
-                  type="url"
-                  className="w-full px-5 py-4 rounded-2xl border-2 border-slate-100 font-bold focus:border-blue-600 outline-none transition-all"
-                  placeholder="https://youtube.com/watch?v=... o https://vimeo.com/..."
-                  value={videoUrlInput}
-                  onChange={(e) => {
-                    const val = e.target.value;
-                    setVideoUrlInput(val);
-                    if (val.trim()) {
-                      setVideoFile(null);
-                      setVideoPreview(null);
-                      setVideoRemoved(false);
-                      const src = detectVideoSource(val);
-                      setVideoSource(src);
-                    } else {
-                      setVideoSource(null);
-                    }
-                  }}
-                />
+                {/* Input de URL con botón de eliminar */}
+                <div className="relative">
+                  <input
+                    type="url"
+                    className="w-full px-5 py-4 pr-12 rounded-2xl border-2 border-slate-100 font-bold focus:border-blue-600 outline-none transition-all"
+                    placeholder="https://youtube.com/watch?v=... o https://vimeo.com/..."
+                    value={videoUrlInput}
+                    onChange={(e) => {
+                      const val = e.target.value;
+                      setVideoUrlInput(val);
+                      if (val.trim()) {
+                        setVideoFile(null);
+                        setVideoPreview(null);
+                        setVideoRemoved(false);
+                        const src = detectVideoSource(val);
+                        setVideoSource(src);
+                      } else {
+                        setVideoSource(null);
+                        if (editingPost?.video_url) {
+                          setVideoRemoved(true);
+                          console.log('[VIDEO] URL input cleared - marking video for removal');
+                        }
+                      }
+                    }}
+                  />
+                  {videoUrlInput.trim() && videoSource && videoSource !== 'upload' && (
+                    <button
+                      type="button"
+                      onClick={() => {
+                        console.log('[VIDEO] Removing URL video:', videoUrlInput);
+                        setVideoUrlInput('');
+                        setVideoSource(null);
+                        if (editingPost?.video_url) {
+                          setVideoRemoved(true);
+                        }
+                      }}
+                      className="absolute right-3 top-1/2 -translate-y-1/2 bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center font-bold hover:bg-red-600 transition-all"
+                      title={isEs ? "Eliminar video" : "Remove video"}
+                    >
+                      ×
+                    </button>
+                  )}
+                </div>
 
                 {/* Divider */}
                 <div className="flex items-center gap-3">
@@ -848,8 +1230,28 @@ export default function DashboardPage() {
                         setVideoSource('upload');
                       }
                     }}
-                    className="absolute inset-0 opacity-0 cursor-pointer"
+                    className={`absolute inset-0 opacity-0 cursor-pointer ${videoPreview && videoSource === 'upload' ? 'pointer-events-none' : ''}`}
                   />
+                  {videoPreview && videoSource === 'upload' && (
+                    <label className="mt-2 text-[10px] font-black uppercase text-blue-600 hover:text-blue-800 cursor-pointer hover:underline">
+                      {isEs ? "Cambiar video" : "Change video"}
+                      <input type="file" accept="video/*" className="hidden" onChange={(e) => {
+                        const file = e.target.files?.[0];
+                        if (file) {
+                          if (file.size > 50 * 1024 * 1024) {
+                            setErrorMsg(isEs ? 'El video supera el límite de 50MB.' : 'Video exceeds the 50MB limit.');
+                            return;
+                          }
+                          if (videoPreview?.startsWith('blob:')) URL.revokeObjectURL(videoPreview);
+                          setVideoFile(file);
+                          setVideoPreview(URL.createObjectURL(file));
+                          setVideoRemoved(false);
+                          setVideoUrlInput('');
+                          setVideoSource('upload');
+                        }
+                      }} />
+                    </label>
+                  )}
                 </div>
 
                 {/* Preview de video embebido (YouTube/Vimeo) */}
@@ -962,7 +1364,7 @@ export default function DashboardPage() {
                   <div className="border-2 border-slate-100 rounded-2xl p-6 bg-slate-50">
                     <div 
                       className="prose prose-slate max-w-none text-slate-700 text-sm
-                        [&>p]:mb-4 [&>img]:my-4 [&>img]:rounded-xl [&>img]:max-w-full
+                        [&>p]:mb-4 [&>img]:my-4 [&>img]:rounded-xl [&>img]:max-w-full [&>img]:h-auto
                         [&>strong]:text-slate-900 [&>strong]:font-bold
                         [&>h1]:text-2xl [&>h1]:font-black [&>h1]:mt-6 [&>h1]:mb-3
                         [&>h2]:text-xl [&>h2]:font-bold [&>h2]:mt-5 [&>h2]:mb-2
@@ -1035,7 +1437,15 @@ export default function DashboardPage() {
                   {newsPreview ? (
                     <div className="relative w-full h-48 mb-4">
                       <img src={newsPreview} className="w-full h-full object-contain rounded-lg" alt="Preview" />
-                      <button type="button" onClick={() => {setNewsPreview(null); setNewsImageFile(null);}} className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center font-bold">×</button>
+                      <button type="button" onClick={() => {
+                        console.log('[COVER REMOVE NEWS] click, current state:', {newsImageFile, newsPreview, editingNewsCover: editingNews?.cover_url});
+                        if (editingNews?.cover_url) {
+                          setNewsImageRemoved(true);
+                        }
+                        setNewsPreview(null);
+                        setNewsImageFile(null);
+                        console.log('[COVER REMOVE NEWS] state cleared, newsImageRemoved:', editingNews?.cover_url ? true : false);
+                      }} className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center font-bold">×</button>
                     </div>
                   ) : (
                     <div className="text-center">
@@ -1054,8 +1464,21 @@ export default function DashboardPage() {
                         setNewsPreview(URL.createObjectURL(file));
                       }
                     }}
-                    className="absolute inset-0 opacity-0 cursor-pointer"
+                    className={`absolute inset-0 opacity-0 cursor-pointer ${newsPreview ? 'pointer-events-none' : ''}`}
                   />
+                  {newsPreview && (
+                    <label className="mt-2 text-[10px] font-black uppercase text-blue-600 hover:text-blue-800 cursor-pointer hover:underline">
+                      {isEs ? "Cambiar imagen" : "Change image"}
+                      <input type="file" accept="image/*" className="hidden" onChange={(e) => {
+                        const file = e.target.files?.[0];
+                        if (file) {
+                          if (newsPreview?.startsWith('blob:')) URL.revokeObjectURL(newsPreview);
+                          setNewsImageFile(file);
+                          setNewsPreview(URL.createObjectURL(file));
+                        }
+                      }} />
+                    </label>
+                  )}
                 </div>
               </div>
 
@@ -1065,9 +1488,10 @@ export default function DashboardPage() {
                   {isEs ? "Video (pegá un link de YouTube/Vimeo o subí un archivo)" : "Video (paste a YouTube/Vimeo link or upload a file)"}
                 </label>
 
+                <div className="relative">
                 <input
                   type="url"
-                  className="w-full px-5 py-4 rounded-2xl border-2 border-slate-100 font-bold focus:border-blue-600 outline-none transition-all"
+                  className="w-full px-5 py-4 pr-12 rounded-2xl border-2 border-slate-100 font-bold focus:border-blue-600 outline-none transition-all"
                   placeholder="https://youtube.com/watch?v=... o https://vimeo.com/..."
                   value={newsVideoUrlInput}
                   onChange={(e) => {
@@ -1081,9 +1505,31 @@ export default function DashboardPage() {
                       setNewsVideoSource(src);
                     } else {
                       setNewsVideoSource(null);
+                      if (editingNews?.video_url) {
+                        setNewsVideoRemoved(true);
+                        console.log('[VIDEO NEWS] URL input cleared - marking video for removal');
+                      }
                     }
                   }}
                 />
+                {newsVideoUrlInput.trim() && newsVideoSource && newsVideoSource !== 'upload' && (
+                  <button
+                    type="button"
+                    onClick={() => {
+                      console.log('[VIDEO NEWS] Removing URL video:', newsVideoUrlInput);
+                      setNewsVideoUrlInput('');
+                      setNewsVideoSource(null);
+                      if (editingNews?.video_url) {
+                        setNewsVideoRemoved(true);
+                      }
+                    }}
+                    className="absolute right-3 top-1/2 -translate-y-1/2 bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center font-bold hover:bg-red-600 transition-all"
+                    title={isEs ? "Eliminar video" : "Remove video"}
+                  >
+                    ×
+                  </button>
+                )}
+                </div>
 
                 <div className="flex items-center gap-3">
                   <div className="flex-1 h-px bg-slate-200"></div>
@@ -1121,8 +1567,28 @@ export default function DashboardPage() {
                         setNewsVideoSource('upload');
                       }
                     }}
-                    className="absolute inset-0 opacity-0 cursor-pointer"
+                    className={`absolute inset-0 opacity-0 cursor-pointer ${newsVideoPreview && newsVideoSource === 'upload' ? 'pointer-events-none' : ''}`}
                   />
+                  {newsVideoPreview && newsVideoSource === 'upload' && (
+                    <label className="mt-2 text-[10px] font-black uppercase text-blue-600 hover:text-blue-800 cursor-pointer hover:underline">
+                      {isEs ? "Cambiar video" : "Change video"}
+                      <input type="file" accept="video/*" className="hidden" onChange={(e) => {
+                        const file = e.target.files?.[0];
+                        if (file) {
+                          if (file.size > 50 * 1024 * 1024) {
+                            setErrorMsg(isEs ? 'El video supera el límite de 50MB.' : 'Video exceeds the 50MB limit.');
+                            return;
+                          }
+                          if (newsVideoPreview?.startsWith('blob:')) URL.revokeObjectURL(newsVideoPreview);
+                          setNewsVideoFile(file);
+                          setNewsVideoPreview(URL.createObjectURL(file));
+                          setNewsVideoRemoved(false);
+                          setNewsVideoUrlInput('');
+                          setNewsVideoSource('upload');
+                        }
+                      }} />
+                    </label>
+                  )}
                 </div>
 
                 {newsVideoUrlInput.trim() && newsVideoSource && newsVideoSource !== 'upload' && (
