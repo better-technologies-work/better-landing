@@ -22,7 +22,7 @@ const ReactQuill = dynamicImport(() => import('react-quill-new'), {
 });
 
 const AUTHORS = ["Diego Vargas", "Charlotte Götz", "Ezequiel Alonso", "Victor Menendez", "Yanina Soto"];
-const CATEGORIES = ["Framework", "Strategy", "Data", "Engineering", "Marketing", "Case Study"];
+const CATEGORIES = ["Framework", "Strategy", "Data", "Engineering", "Marketing", "Case Study", "Alpha Code", "Ecosystem", "Product Validation", "Global Operations", "Use Case"];
 
 // Tipos
 type Link = {
