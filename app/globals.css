@@ -51,3 +51,42 @@ body {
 img[style*="width"] {
   height: auto;
 }
+
+/* Quill table styles */
+.ql-editor table,
+.ql-snow .ql-editor table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1em 0;
+}
+
+.ql-editor table td,
+.ql-editor table th,
+.ql-snow .ql-editor table td,
+.ql-snow .ql-editor table th {
+  border: 1px solid #e2e8f0;
+  padding: 8px 12px;
+  vertical-align: top;
+  min-width: 60px;
+}
+
+.ql-editor table th,
+.ql-snow .ql-editor table th {
+  background: #f8fafc;
+  font-weight: 700;
+  text-align: left;
+}
+
+.ql-editor table td:focus,
+.ql-editor table th:focus {
+  outline: 2px solid #3b82f6;
+  outline-offset: -2px;
+}
+
+/* Quill highlight / background color */
+.ql-editor mark,
+.ql-snow .ql-editor mark {
+  background-color: #fef08a;
+  padding: 0.1em 0.2em;
+  border-radius: 0.2em;
+}

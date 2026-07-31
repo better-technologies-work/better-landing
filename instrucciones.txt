@@ -1,51 +1,8 @@
-Hay un error de runtime: "Parchment.Attributor.Style is not a constructor"
-en lib/quill-image-resize.ts:20, dentro de registerImageWidthFormat.
 
-Esto pasa porque la versión de Quill instalada en el proyecto usa una API
-distinta de Parchment (probablemente Quill 2.x, que renombró
-Parchment.Attributor.Style a Parchment.StyleAttributor directamente, sin
-el objeto intermedio "Attributor").
 
-Arreglalo así:
-1. Primero confirmá la versión real de Quill instalada:
-   revisá package.json o corré `npm ls quill` (o el nombre exacto del
-   paquete, puede ser "quill" o el que use react-quill-new internamente)
-   para saber si es v1 o v2.
-2. Ajustá registerImageWidthFormat en lib/quill-image-resize.ts para usar
-   el nombre correcto según la versión real. Para Quill 2.x sería:
+Hay un error en tiempo de ejecución al usar el botón de agregar fila en la tabla:
 
-     const { default: Quill } = await import("quill");
-     const Parchment = Quill.import("parchment");
-     const ImageWidthStyle = new Parchment.StyleAttributor("width", "width", {
-       scope: Parchment.Scope.INLINE,
-     });
-     Quill.register(ImageWidthStyle, true);
+TypeError: leaf.domNode.closest is not a function
+    at addTableRow (lib/quill-extensions.ts:104:44)
 
-   Si Parchment.StyleAttributor tampoco existe, agregá un
-   console.log(Object.keys(Parchment)) temporalmente para ver qué
-   propiedades tiene realmente el objeto Parchment en esta versión, y
-   usá el nombre correcto que aparezca ahí (puede estar como
-   Parchment.Attributor.Style, Parchment.StyleAttributor, o incluso
-   requerir importar desde "quill/blots/scroll" u otro submódulo,
-   dependiendo de la versión exacta).
-3. Una vez que registerImageWidthFormat corra SIN tirar el error, agregá
-   temporalmente un console.log('[QUILL] Width format registered
-   successfully') al final de la función para confirmar en consola que
-   se registró bien.
-4. IMPORTANTE: envolvé la llamada a registerImageWidthFormat() en el
-   useEffect con un .catch() que loguee el error, para que si vuelve a
-   fallar en el futuro no quede como una excepción silenciosa sin avisar:
-     registerImageWidthFormat().catch((err) => console.error('[QUILL] Failed to register width format:', err));
-
-Después de esto:
-1. npx tsc --noEmit
-2. Probá en el navegador: confirmá en consola que aparece
-   '[QUILL] Width format registered successfully' SIN el error de
-   "is not a constructor".
-3. Repetí la prueba de persistencia en el post "test": insertá 2 imágenes,
-   cambiá el ancho de una con el slider, escribí texto en el editor
-   después, y confirmá que el ancho de la imagen NO vuelve a su tamaño
-   original (esto es lo que antes fallaba silenciosamente).
-4. Guardá y reabrí el post para confirmar que el ancho persiste también
-   ahí. NO TOQUES NADA MAS PORQUE FUNCIONA TODO BIEN
 

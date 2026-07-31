@@ -10,6 +10,7 @@ import Header from "@/components/Header";
 import DashboardAuth from "@/components/DashboardAuth";
 import VideoPlayer from "@/components/VideoPlayer";
 import { applyImageWidthAtIndex, deleteImageAtIndex, registerImageWidthFormat, findImageIndex } from "@/lib/quill-image-resize";
+import { registerQuillExtensions, insertTable, addTableRow, addTableColumn, removeTableRow, removeTableColumn } from "@/lib/quill-extensions";
 
 // Estilos del editor
 import 'react-quill-new/dist/quill.snow.css';
@@ -191,6 +192,11 @@ export default function DashboardPage() {
 
   useEffect(() => {
     registerImageWidthFormat().catch((err) => console.error('[QUILL] Failed to register width format:', err));
+    // Register custom Quill extensions after editor is mounted
+    const editor = reactQuillRef.current?.getEditor();
+    if (editor) {
+      registerQuillExtensions(editor);
+    }
     loadPosts();
     loadNews();
   }, []);
@@ -1014,12 +1020,48 @@ export default function DashboardPage() {
                       toolbar: [
                         [{ 'header': [1, 2, 3, false] }],
                         ['bold', 'italic', 'underline', 'strike'],
+                        [{ 'background': [] }],
                         [{ 'list': 'ordered'}, { 'list': 'bullet' }],
                         ['link', 'image'],
                         ['clean']
                       ]
                     }}
                   />
+                  {/* Inline toolbar extensions: Table + Callout */}
+                  <div className="flex items-center gap-1 px-2 pb-1 border border-t-0 border-slate-200 bg-slate-50 rounded-b-xl">
+                    <button
+                      type="button"
+                      onClick={() => {
+                        const editor = reactQuillRef.current?.getEditor();
+                        if (editor) {
+                          registerQuillExtensions(editor);
+                          insertTable(editor, 3, 3);
+                          syncEditorContent();
+                        }
+                      }}
+                      className="inline-flex items-center gap-1 px-2 py-1 text-[11px] font-bold uppercase rounded bg-white border border-slate-200 hover:border-blue-400 hover:text-blue-600 transition-all cursor-pointer"
+                      title={isEs ? "Insertar tabla" : "Insert table"}
+                    >
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/><line x1="9" y1="3" x2="9" y2="21"/><line x1="15" y1="3" x2="15" y2="21"/></svg>
+                      {isEs ? "Tabla" : "Table"}
+                    </button>
+                    <button type="button" onClick={() => { const e = reactQuillRef.current?.getEditor(); if (e) { addTableRow(e); syncEditorContent(); } }}
+                      className="inline-flex items-center px-1.5 py-1 text-[11px] font-bold rounded bg-white border border-slate-200 hover:border-blue-400 hover:text-blue-600 transition-all cursor-pointer" title={isEs ? "Agregar fila" : "Add row"}>
+                      +{isEs ? "Fila" : "Row"}
+                    </button>
+                    <button type="button" onClick={() => { const e = reactQuillRef.current?.getEditor(); if (e) { removeTableRow(e); syncEditorContent(); } }}
+                      className="inline-flex items-center px-1.5 py-1 text-[11px] font-bold rounded bg-white border border-slate-200 hover:border-red-400 hover:text-red-600 transition-all cursor-pointer" title={isEs ? "Eliminar fila" : "Remove row"}>
+                      &minus;{isEs ? "Fila" : "Row"}
+                    </button>
+                    <button type="button" onClick={() => { const e = reactQuillRef.current?.getEditor(); if (e) { addTableColumn(e); syncEditorContent(); } }}
+                      className="inline-flex items-center px-1.5 py-1 text-[11px] font-bold rounded bg-white border border-slate-200 hover:border-blue-400 hover:text-blue-600 transition-all cursor-pointer" title={isEs ? "Agregar columna" : "Add column"}>
+                      +{isEs ? "Col" : "Col"}
+                    </button>
+                    <button type="button" onClick={() => { const e = reactQuillRef.current?.getEditor(); if (e) { removeTableColumn(e); syncEditorContent(); } }}
+                      className="inline-flex items-center px-1.5 py-1 text-[11px] font-bold rounded bg-white border border-slate-200 hover:border-red-400 hover:text-red-600 transition-all cursor-pointer" title={isEs ? "Eliminar columna" : "Remove column"}>
+                      &minus;{isEs ? "Col" : "Col"}
+                    </button>
+                  </div>
                 </div>
                 {/* Image width selector */}
                 <div className="flex flex-wrap items-center gap-2 mt-1">
