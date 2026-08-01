@@ -52,9 +52,12 @@ img[style*="width"] {
   height: auto;
 }
 
-/* Quill table styles */
+/* Table styles for editor and published content */
 .ql-editor table,
-.ql-snow .ql-editor table {
+.ql-snow .ql-editor table,
+.prose table,
+.text-slate-700 table,
+article table {
   width: 100%;
   border-collapse: collapse;
   margin: 1em 0;
@@ -63,7 +66,13 @@ img[style*="width"] {
 .ql-editor table td,
 .ql-editor table th,
 .ql-snow .ql-editor table td,
-.ql-snow .ql-editor table th {
+.ql-snow .ql-editor table th,
+.prose table td,
+.prose table th,
+.text-slate-700 table td,
+.text-slate-700 table th,
+article table td,
+article table th {
   border: 1px solid #e2e8f0;
   padding: 8px 12px;
   vertical-align: top;
@@ -71,7 +80,10 @@ img[style*="width"] {
 }
 
 .ql-editor table th,
-.ql-snow .ql-editor table th {
+.ql-snow .ql-editor table th,
+.prose table th,
+.text-slate-700 table th,
+article table th {
   background: #f8fafc;
   font-weight: 700;
   text-align: left;
