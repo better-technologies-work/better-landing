@@ -1017,6 +1017,7 @@ export default function DashboardPage() {
                     onChange={(content) => setForm({...form, description: content})} 
                     placeholder={ui.contentPlaceholder}
                     modules={{
+                      table: true, 
                       toolbar: [
                         [{ 'header': [1, 2, 3, false] }],
                         ['bold', 'italic', 'underline', 'strike'],
