@@ -90,3 +90,38 @@ img[style*="width"] {
   padding: 0.1em 0.2em;
   border-radius: 0.2em;
 }
+.ql-callout {
+  padding: 24px 32px;
+  border-radius: 24px;
+  margin: 20px 0;
+}
+
+.ql-callout-gradient {
+  background: linear-gradient(135deg, #dbeafe 0%, #fef3c7 100%);
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+}
+
+.ql-callout-blue {
+  background: #eff6ff;
+  border-left: 4px solid #3b82f6;
+  border-radius: 8px;
+}
+
+.ql-callout-yellow {
+  background: #fffbeb;
+  border-left: 4px solid #f59e0b;
+  border-radius: 8px;
+}
+
+.ql-callout-green {
+  background: #f0fdf4;
+  border-left: 4px solid #22c55e;
+  border-radius: 8px;
+}
+
+.ql-callout-dark {
+  background: #0f172a;
+  color: #f1f5f9;
+  text-align: center;
+}

@@ -11,7 +11,7 @@ import DashboardAuth from "@/components/DashboardAuth";
 import VideoPlayer from "@/components/VideoPlayer";
 import { applyImageWidthAtIndex, deleteImageAtIndex, registerImageWidthFormat, findImageIndex } from "@/lib/quill-image-resize";
 import { registerQuillExtensions, insertTable, addTableRow, addTableColumn, removeTableRow, removeTableColumn } from "@/lib/quill-extensions";
-
+import { registerCalloutFormat, applyCallout, removeCallout, CALLOUT_STYLES } from "@/lib/quill-callout";
 // Estilos del editor
 import 'react-quill-new/dist/quill.snow.css';
 
@@ -191,15 +191,15 @@ export default function DashboardPage() {
   });
 
   useEffect(() => {
-    registerImageWidthFormat().catch((err) => console.error('[QUILL] Failed to register width format:', err));
-    // Register custom Quill extensions after editor is mounted
-    const editor = reactQuillRef.current?.getEditor();
-    if (editor) {
-      registerQuillExtensions(editor);
-    }
-    loadPosts();
-    loadNews();
-  }, []);
+  registerImageWidthFormat().catch((err) => console.error('[QUILL] Failed to register width format:', err));
+  registerCalloutFormat().catch((err) => console.error('[QUILL] Failed to register callout format:', err)); // <-- AGREGAR
+  const editor = reactQuillRef.current?.getEditor();
+  if (editor) {
+    registerQuillExtensions(editor);
+  }
+  loadPosts();
+  loadNews();
+}, []);
 
   useEffect(() => {
     const editor = reactQuillRef.current?.getEditor();
@@ -1064,6 +1064,47 @@ export default function DashboardPage() {
                     </button>
                   </div>
                 </div>
+                  {/* ---- ACÁ VA EL BLOQUE NUEVO DE CALLOUT ---- */}
+      <div className="flex items-center gap-1 px-1 border-l border-slate-200 ml-1 pl-2">
+        <span className="text-[10px] font-bold uppercase text-slate-400 mr-1">
+          {isEs ? "Recuadro" : "Box"}
+        </span>
+        {CALLOUT_STYLES.map((s) => (
+          <button
+            key={s.value}
+            type="button"
+            title={s.label}
+            onClick={() => {
+              const editor = reactQuillRef.current?.getEditor();
+              if (editor) {
+                applyCallout(editor, s.value);
+                syncEditorContent();
+              }
+            }}
+            className={`w-5 h-5 rounded-full border border-slate-300 hover:scale-110 transition-transform cursor-pointer ${
+              s.value === "gradient" ? "bg-gradient-to-br from-blue-200 to-amber-200" :
+              s.value === "blue" ? "bg-blue-100 border-blue-400" :
+              s.value === "yellow" ? "bg-amber-100 border-amber-400" :
+              s.value === "green" ? "bg-green-100 border-green-400" :
+              "bg-slate-900"
+            }`}
+          />
+        ))}
+        <button
+          type="button"
+          onClick={() => {
+            const editor = reactQuillRef.current?.getEditor();
+            if (editor) {
+              removeCallout(editor);
+              syncEditorContent();
+            }
+          }}
+          className="ml-1 px-2 py-1 text-[11px] font-bold uppercase rounded bg-white border border-slate-200 hover:border-red-400 hover:text-red-600 transition-all cursor-pointer"
+          title={isEs ? "Quitar recuadro" : "Remove box"}
+        >
+          ×
+        </button>
+      </div>
                 {/* Image width selector */}
                 <div className="flex flex-wrap items-center gap-2 mt-1">
                   <label className="text-[10px] font-black uppercase text-slate-400 tracking-widest">
