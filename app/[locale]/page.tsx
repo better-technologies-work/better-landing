@@ -241,28 +241,45 @@ const belandTags = ["React Native", "Payments", "Delivery", "Circular Economy"];
 
 // ─── DICCIONARIO MULTI-IDIOMA ─────────────────────────────────────────────────
 export const ui = {
-  // Hero
+  // Heroke 
   openLatam: {
-    en: "The market doesn't reward followers.",
-    es: "El mercado no premia a los que siguen.",
-    de: "Der Markt belohnt keine Mitläufer.",
-    pt: "O mercado não recompensa quem segue."
+    en: "Make your business visible. Stop renting the tools that run it. Own the capabilities to grow it.",
+    es: "Haz visible tu negocio. Deja de alquilar las herramientas que lo hacen funcionar. Adquiere las capacidades para hacerlo crecer.",
+    de: "Mach dein Unternehmen sichtbar. Hör auf, die Tools zu mieten, die es am Laufen halten. Baue die Fähigkeiten auf, die du für weiteres Wachstum brauchst.",
+    pt: "Dê visibilidade ao seu negócio. Pare de alugar as ferramentas que o fazem funcionar. Desenvolva as capacidades necessárias para fazê-lo crescer.",
   },
   globalCompanies: {
-    en: "It belongs to leaders.",
-    es: "Le pertenece a los que lideran.",
-    de: "Er gehört den Führenden.",
-    pt: "Ele pertence a quem lidera."
+    en: "Better Technologies engineers modular software capabilities you can own, combine and scale.",
+    es: "Better Technologies desarrolla capacidades de software modulares que puedes adquirir, combinar y escalar.",
+    de: "Better Technologies entwickelt modulare Softwarelösungen, die Sie besitzen, kombinieren und skalieren können.",
+    pt: "A Better Technologies desenvolve capacidades de software modulares que você pode adquirir, combinar e escalar.",
   },
   subtagline: {
-    en: " We don't just write code. We are business architects, experience designers, and ecosystem builders. We engineer integrated Growth Systems for ambitious organizations determined to dominate their industries. We are not a fit for followers or companies looking for quick marketing patches. We build ecosystems for leaders.",
-    es: "No solo escribimos código. Somos arquitectos de negocios, diseñadores de experiencias y constructores de ecosistemas. Diseñamos Sistemas de Crecimiento integrados para organizaciones ambiciosas decididas a dominar su industria. No somos para seguidores ni para empresas que buscan parches rápidos de marketing. Construimos ecosistemas para líderes.",
-    de: "Wir schreiben nicht nur Code. Wir sind Geschäftsarchitekten, Experience Designer und Ökosystem-Builder. Wir entwickeln integrierte Wachstumssysteme für ambitionierte Unternehmen, die entschlossen sind, ihre Branche zu dominieren. Wir sind nicht die richtige Wahl für Mitläufer oder Unternehmen, die schnelle Marketing-Flicken suchen. Wir bauen Ökosysteme für Führende.",
-    pt: "Não escrevemos apenas código. Somos arquitetos de negócios, designers de experiência e construtores de ecossistemas. Projetamos Sistemas de Crescimento integrados para organizações ambiciosas determinadas a dominar seus setores. Não somos indicados para seguidores ou empresas em busca de soluções rápidas de marketing. Construímos ecossistemas para líderes.",
+    en: "The market does not belong to those with the most tools. It belongs to those who own the system.",
+    es: "El mercado no pertenece a quienes tienen más herramientas. Pertenece a quienes son dueños del sistema.",
+    de: "Der Markt gehört nicht denen mit den meisten Tools. Er gehört denen, die das System besitzen.",
+    pt: "O mercado não pertence a quem tem mais ferramentas. Ele pertence a quem possui o sistema.",
   },
   getInTouch: { en: "Get in touch", es: "Contactar ahora", de: "Kontakt aufnehmen", pt: "Entre em contato" },
-
+  heroCtaPrimary: {
+    en: "Build Your First Capability",
+    es: "Construí tu primera capacidad",
+    de: "Bauen Sie Ihre erste Fähigkeit auf",
+    pt: "Construa sua primeira capacidade",
+  },
+  heroCtaSecondary: {
+    en: "See How it Works",
+    es: "Descubrí cómo funciona",
+    de: "Sehen Sie, wie es funktioniert",
+    pt: "Veja como funciona",
+  },
   // News section
+  titulonews: {
+    en: "The Better Knowledge, Check the Changes",
+    es: "El mejor conocimiento, comprueba los cambios",
+    de: "Das bessere Wissen, überprüfe die Veränderungen",
+    pt: "O melhor conhecimento, confira as mudanças",
+  },
   loadingFeed: { en: "Loading Intelligence Feed...", es: "Cargando feed de inteligencia...", de: "Intelligence Feed wird geladen...", pt: "Carregando feed de inteligência..." },
   globalFeed: { en: "Global Intelligence Feed", es: "Feed global de inteligencia", de: "Globaler Intelligence Feed", pt: "Feed global de inteligência" },
   inTimesOf: {
@@ -291,24 +308,23 @@ export const ui = {
 
   // Chat section
   kitchenTitle: {
-    en: " THE AWAKENING & ",
-    es: " EL DESPERTAR & ",
-    de: " DAS ERWACHEN & ",
-    pt: " O DESPERTAR & "
+    en: "Choose your needs, build a system,",
+    es: "Elige tus necesidades, construye un sistema,",
+    de: "Wähle deine Bedürfnisse, baue ein System,",
+    pt: "Escolha suas necessidades, construa um sistema,"
   },
   kitchenTitle2: {
-    en: "THE PACK ",
-    es: "LA MANADA ",
-    de: "DAS RUDEL ",
-    pt: "A ALCATEIA "
+    en: "and keep the value you create.",
+    es: "y conserva el valor que creas.",
+    de: "und behalte den Wert, den du schaffst.",
+    pt: "e mantenha o valor que você cria."
   },
-
   kitchenOpen: { en: "", es: "", de: "", pt: "" },
   century20: {
-    en: "The Problem & The Unfair Advantage.",
-    es: "El Problema y La Ventaja Injusta.",
-    de: "Das Problem & Der unfaire Vorteil.",
-    pt: "O Problema & A Vantagem Injusta."
+    en: "Build Your First Capability, See How It Works",
+    es: "Construye tu primera capacidad, descubre cómo funciona",
+    de: "Baue deine erste Fähigkeit auf und erfahre, wie sie funktioniert",
+    pt: "Construa sua primeira capacidade e veja como ela funciona"
   },
 
   leadership: {
@@ -438,6 +454,90 @@ export const ui = {
   },
   typicalTickets: { en: "Typical tickets:", es: "Tickets típicos:", de: "Typische Tickets:", pt: "Tickets típicos:" },
   ourCustomers: { en: "THE PROBLEM", es: "EL PROBLEMA", de: "DAS PROBLEM", pt: "O PROBLEMA" },
+  problemHeadline: {
+    en: "Your business is invisible?",
+    es: "¿Tu negocio es invisible?",
+    de: "Ist Ihr Unternehmen unsichtbar?",
+    pt: "O seu negócio é invisível?",
+  },
+  problemIntro: {
+    en: "The best tools and practices 2 years ago no longer work in today's markets. Why?",
+    es: "Las mejores herramientas y prácticas de hace 2 años ya no funcionan en los mercados actuales. ¿Por qué?",
+    de: "Die besten Tools und Praktiken von vor 2 Jahren funktionieren in den heutigen Märkten nicht mehr. Warum?",
+    pt: "As melhores ferramentas e práticas de 2 anos atrás não funcionam mais nos mercados de hoje. Por quê?",
+  },
+  problemPoint1: {
+    en: "If you rent your digital infrastructure you are captive to the standard.",
+    es: "Si alquilás tu infraestructura digital, quedás cautivo del estándar.",
+    de: "Wenn Sie Ihre digitale Infrastruktur mieten, sind Sie an den Standard gebunden.",
+    pt: "Se você aluga sua infraestrutura digital, fica cativo do padrão.",
+  },
+  problemPoint2: {
+    en: "If you want to lead your market you are stuck with the same tech everyone has, with the corporate times to update the littlest thing because it has to work for everyone, not just for you.",
+    es: "Si querés liderar tu mercado, quedás atado a la misma tecnología que tiene todo el mundo, con los tiempos corporativos para actualizar hasta el detalle más pequeño, porque tiene que funcionar para todos, no solo para vos.",
+    de: "Wenn Sie Ihren Markt anführen wollen, stecken Sie mit derselben Technologie fest, die jeder hat, mit den unternehmenstypischen Zeiten, um selbst die kleinste Kleinigkeit zu aktualisieren, weil es für alle funktionieren muss, nicht nur für Sie.",
+    pt: "Se você quer liderar o seu mercado, fica preso à mesma tecnologia que todo mundo tem, com os prazos corporativos para atualizar até o menor detalhe, porque precisa funcionar para todos, não só para você.",
+  },
+  problemHighlight: {
+    en: "Your clients are no longer searching for you. They are asking AI.",
+    es: "Tus clientes ya no te buscan. Le preguntan a la IA.",
+    de: "Ihre Kunden suchen nicht mehr nach Ihnen. Sie fragen die KI.",
+    pt: "Seus clientes já não te procuram. Eles perguntam à IA.",
+  },
+  problemBody: {
+    en: "You can have the best marketing strategy, pay tons of ads every month, but if your digital infrastructure is not optimized for AI, you're handing over your share of the market to your competitors.",
+    es: "Podés tener la mejor estrategia de marketing y pagar toneladas de publicidad cada mes, pero si tu infraestructura digital no está optimizada para IA, le estás entregando tu porción de mercado a tus competidores.",
+    de: "Sie können die beste Marketingstrategie haben und jeden Monat unzählige Anzeigen schalten – aber wenn Ihre digitale Infrastruktur nicht auf KI optimiert ist, überlassen Sie Ihren Marktanteil Ihren Wettbewerbern.",
+    pt: "Você pode ter a melhor estratégia de marketing e pagar toneladas de anúncios todo mês, mas se sua infraestrutura digital não está otimizada para IA, você está entregando sua fatia de mercado aos concorrentes.",
+  },
+  problemSubscriptions: {
+    en: "You scale your business. For that, you pay for tools. Every subscription solves a task.",
+    es: "Escalás tu negocio. Para eso, pagás herramientas. Cada suscripción resuelve una tarea.",
+    de: "Sie skalieren Ihr Unternehmen. Dafür bezahlen Sie für Tools. Jedes Abonnement löst eine Aufgabe.",
+    pt: "Você escala o seu negócio. Para isso, paga por ferramentas. Cada assinatura resolve uma tarefa.",
+  },
+  problemTogether: {
+    en: "Together, they often create more cost, more gaps and more dependency. Sounds familiar?",
+    es: "Juntas, suelen generar más costo, más vacíos y más dependencia. ¿Te suena?",
+    de: "Zusammen erzeugen sie oft mehr Kosten, mehr Lücken und mehr Abhängigkeit. Kommt Ihnen bekannt vor?",
+    pt: "Juntas, costumam gerar mais custo, mais lacunas e mais dependência. Soa familiar?",
+  },
+  problemRentNet: {
+    en: "You rent the net to catch your food.",
+    es: "Alquilás la red para pescar tu comida.",
+    de: "Sie mieten das Netz, um Ihre Nahrung zu fangen.",
+    pt: "Você aluga a rede para pescar sua comida.",
+  },
+  problemInfra: {
+    en: "Your business creates the process, the data and the value. The infrastructure still belongs to someone else.",
+    es: "Tu negocio crea el proceso, los datos y el valor. La infraestructura sigue siendo de otro.",
+    de: "Ihr Unternehmen schafft den Prozess, die Daten und den Wert. Die Infrastruktur gehört weiterhin jemand anderem.",
+    pt: "Seu negócio cria o processo, os dados e o valor. A infraestrutura ainda pertence a outra pessoa.",
+  },
+  problemOwnership: {
+    en: "More tools do not build a stronger business. Ownership does.",
+    es: "Más herramientas no construyen un negocio más fuerte. Ser dueño, sí.",
+    de: "Mehr Tools machen ein Unternehmen nicht stärker. Eigentum schon.",
+    pt: "Mais ferramentas não constroem um negócio mais forte. A propriedade sim.",
+  },
+  problemConnects: {
+    en: "Better Technologies connects what works and builds what is missing — until isolated tools become a system you control.",
+    es: "Better Technologies conecta lo que funciona y construye lo que falta — hasta que las herramientas aisladas se convierten en un sistema que controlás.",
+    de: "Better Technologies verbindet, was funktioniert, und baut, was fehlt — bis isolierte Tools zu einem System werden, das Sie kontrollieren.",
+    pt: "A Better Technologies conecta o que funciona e constrói o que falta — até que ferramentas isoladas se tornem um sistema que você controla.",
+  },
+  chooseNextMove: {
+    en: "Choose Your Next Move",
+    es: "Elegí tu próximo movimiento",
+    de: "Wählen Sie Ihren nächsten Schritt",
+    pt: "Escolha seu próximo movimento",
+  },
+  problemQuote: {
+    en: "In 2026, so far, over 50% of online purchases were previously consulted with AI. If LLMs are not recommending you, you are an endangered species.",
+    es: "En lo que va de 2026, más del 50% de las compras online fueron consultadas previamente con IA. Si los LLMs no te recomiendan, sos una especie en peligro de extinción.",
+    de: "Im bisherigen Verlauf des Jahres 2026 wurden über 50% der Online-Käufe zuvor mit KI abgestimmt. Wenn LLMs Sie nicht empfehlen, sind Sie eine gefährdete Art.",
+    pt: "Em 2026, até agora, mais de 50% das compras online foram previamente consultadas com IA. Se os LLMs não te recomendam, você é uma espécie em extinção.",
+  },
   midSized1: {
     en: " Your customers aren't searching for you anymore; they are asking AI",
     es: "Tus clientes ya no te buscan; le preguntan a la IA",
@@ -655,6 +755,7 @@ export const ui = {
   today: { en: "TODAY", es: "HOY", de: "HEUTE BEGINNEN", pt: "HOJE" },
 
   // Latest Insights
+
   stayUpdated: { en: "Stay updated with us", es: "Mantente actualizado con nosotros", de: "Bleib auf dem Laufenden", pt: "Fique atualizado conosco" },
   latestInsights: { en: "Latest Insights", es: "Ultimos insights", de: "Neueste Einblicke", pt: "Últimos insights" },
   blogDesc: { en: "Explore our blog for industry trends, tech updates, and innovation stories.", es: "Explora nuestro blog para ver tendencias, actualizaciones tecnologicas e historias de innovacion.", de: "Erkunden Sie unseren Blog für Branchentrends, Tech-Updates und Innovationsgeschichten.", pt: "Explore nosso blog para tendências do setor, atualizações de tecnologia e histórias de inovação." },
@@ -826,129 +927,276 @@ export const ui = {
   },
 
   foundationTitle: {
-    en: "Better Foundation",
-    es: "Base Mejorada",
-    de: "Bessere Grundlage",
-    pt: "Fundação Melhorada",
+    en: "BETTER FOUNDATION",
+    es: "BETTER FOUNDATION",
+    de: "BETTER FOUNDATION",
+    pt: "BETTER FOUNDATION",
   },
 
   foundationSubtitle: {
-    en: "Digital Identity & AI Discoverability",
-    es: "Identidad Digital y Descubrimiento por IA",
-    de: "Digitale Identität & KI-Auffindbarkeit",
-    pt: "Identidade Digital e Descoberta por IA",
+    en: "WE ARE NOT BEING FOUND",
+    es: "NO NOS ESTÁN ENCONTRANDO",
+    de: "WIR WERDEN NICHT GEFUNDEN",
+    pt: "NÃO ESTAMOS SENDO ENCONTRADOS",
   },
 
   foundationPain: {
-    en: "We have a great product/service, but our digital footprint is weak. We are practically invisible to AI and new markets.",
-    es: "Tenemos un gran producto/servicio, pero nuestra presencia digital es débil. Somos prácticamente invisibles para la IA y nuevos mercados.",
-    de: "Wir haben ein großartiges Produkt/eine Dienstleistung, aber unser digitaler Fußabdruck ist schwach. Für KI und neue Märkte sind wir praktisch unsichtbar.",
-    pt: "Temos um ótimo produto/serviço, mas nossa presença digital é fraca. Somos praticamente invisíveis para IA e novos mercados.",
+    en: "You have a strong product or service. But your digital presence is weak, and too few people or AI systems find your business. The result: a clear digital identity, easier to find, capturing new demand.",
+    es: "Tenés un producto o servicio sólido. Pero tu presencia digital es débil, y muy poca gente o sistemas de IA encuentran tu negocio. El resultado: una identidad digital clara, más fácil de encontrar, capturando nueva demanda.",
+    de: "Sie haben ein starkes Produkt oder eine starke Dienstleistung. Aber Ihre digitale Präsenz ist schwach, und zu wenige Menschen oder KI-Systeme finden Ihr Unternehmen. Das Ergebnis: eine klare digitale Identität, leichter zu finden, neue Nachfrage erschließen.",
+    pt: "Você tem um produto ou serviço forte. Mas sua presença digital é fraca, e poucas pessoas ou sistemas de IA encontram o seu negócio. O resultado: uma identidade digital clara, mais fácil de encontrar, capturando nova demanda.",
+  },
+
+  foundationIncludedTitle: {
+    en: "What's included",
+    es: "Qué incluye",
+    de: "Was ist enthalten",
+    pt: "O que está incluído",
   },
 
   foundationIncluded: {
-    en: "Better Business Blueprint™, Website optimized for AI and GEO, basic CRM setup, and lead capture ecosystem.",
-    es: "Better Business Blueprint™, sitio web optimizado para IA y GEO, configuración básica de CRM y ecosistema de captación de leads.",
-    de: "Better Business Blueprint™, für KI und GEO optimierte Website, grundlegende CRM-Einrichtung und Lead-Erfassungssystem.",
-    pt: "Better Business Blueprint™, site otimizado para IA e GEO, configuração básica de CRM e ecossistema de captura de leads.",
+    en: "• Better Business Blueprint™\n• Website optimised for AI and GEO\n• Basic CRM setup\n• Lead capture ecosystem",
+    es: "• Better Business Blueprint™\n• Sitio web optimizado para IA y GEO\n• Configuración básica de CRM\n• Ecosistema de captación de leads",
+    de: "Better Business Blueprint™, für KI und GEO optimierte Website, grundlegendes CRM-Setup, Lead-Erfassungs-Ökosystem.",
+    pt: "• Better Business Blueprint™\n• Site otimizado para IA e GEO\n• Configuração básica de CRM\n• Ecossistema de captação de leads",
+  },
+
+  foundationSystemTitle: {
+    en: "How the Better System works",
+    es: "Cómo funciona el Better System",
+    de: "Wie das Better System funktioniert",
+    pt: "Como o Better System funciona",
+  },
+
+  foundationQuantos: {
+    en: "Your website, CRM and lead-capture components become digital capabilities you can control and connect.",
+    es: "Tu sitio web, CRM y componentes de captación de leads se convierten en capacidades digitales que podés controlar y conectar.",
+    de: "Ihre Website, CRM- und Lead-Erfassungskomponenten werden zu digitalen Fähigkeiten, die Sie steuern und verbinden können.",
+    pt: "Seu site, CRM e componentes de captação de leads tornam-se capacidades digitais que você pode controlar e conectar.",
+  },
+
+  foundationHack: {
+    en: "The website, CRM and lead capture work together as one system — from being found to receiving a new enquiry.",
+    es: "El sitio web, CRM y captación de leads funcionan juntos como un sistema — desde ser encontrado hasta recibir una nueva consulta.",
+    de: "Die Website, CRM und Lead-Erfassung arbeiten zusammen als ein System — vom gefunden werden bis zum Eingang einer neuen Anfrage.",
+    pt: "O site, CRM e captação de leads funcionam juntos como um sistema — de ser encontrado a receber uma nova consulta.",
+  },
+
+  foundationPowerUnits: {
+    en: "The Better Pack creates the Business Blueprint, builds the website, configures the CRM and deploys the complete lead-capture flow.",
+    es: "El Better Pack crea el Business Blueprint, construye el sitio web, configura el CRM y despliega el flujo completo de captación de leads.",
+    de: "Das Better Pack erstellt den Business Blueprint, baut die Website, konfiguriert das CRM und implementiert den vollständigen Lead-Erfassungs-Workflow.",
+    pt: "O Better Pack cria o Business Blueprint, constrói o site, configura o CRM e implanta o fluxo completo de captação de leads.",
+  },
+
+  foundationSovereignNode: {
+    en: "Better Foundation creates the first connected part of your own digital infrastructure.",
+    es: "Better Foundation crea la primera parte conectada de tu propia infraestructura digital.",
+    de: "Better Foundation schafft den ersten verbundenen Teil Ihrer eigenen digitalen Infrastruktur.",
+    pt: "Better Foundation cria a primeira parte conectada da sua própria infraestrutura digital.",
   },
 
   foundationInvestment: {
-    en: "Starting at $1,500 / month",
-    es: "Desde $1,500 / mes",
-    de: "Ab $1.500 / Monat",
-    pt: "A partir de $1.500 / mês",
+    en: "1.500 USD",
+    es: "1.500 USD",
+    de: "1.500 USD",
+    pt: "1.500 USD",
   },
 
   foundationScholarship: {
-    en: "Up to 50% co-investment (bringing it down to ~$750–$1,250/month).",
-    es: "Hasta 50% de co-inversión (reduciéndolo a ~$750–$1,250/mes).",
-    de: "Bis zu 50% Co-Investition (reduziert auf ca. ~$750–$1.250/Monat).",
-    pt: "Até 50% de co-investimento (reduzindo para ~$750–$1.250/mês).",
+    en: "Underdog Scholarship: Up to 50% co-investment (bringing it down to ~$750–$1,250).",
+    es: "Beca Underdog: hasta 50% de coinversión (quedando en ~$750–$1.250).",
+    de: "Underdog-Stipendium: bis zu 50% Co-Investition (reduziert auf ~$750–$1.250).",
+    pt: "Bolsa Underdog: até 50% de coinvestimento (reduzindo para ~$750–$1.250).",
+  },
+
+  foundationCta: {
+    en: "Build Your Foundation",
+    es: "Construí tu Foundation",
+    de: "Bauen Sie Ihre Foundation auf",
+    pt: "Construa seu Foundation",
   },
 
   relevanceTitle: {
-    en: "Digital Relevance",
-    es: "Relevancia Digital",
-    de: "Digitale Relevanz",
-    pt: "Relevância Digital",
+    en: "DIGITAL RELEVANCE",
+    es: "DIGITAL RELEVANCE",
+    de: "DIGITAL RELEVANCE",
+    pt: "DIGITAL RELEVANCE",
   },
 
   relevanceSubtitle: {
-    en: "The Growth & Human Engine",
-    es: "El Motor de Crecimiento y lo Humano",
-    de: "Die Wachstums- und Human-Engine",
-    pt: "O Motor de Crescimento e Humano",
+    en: "WE ARE BEING FOUND. BUT GROWTH IS STILL HARD.",
+    es: "NOS ENCUENTRAN. PERO CRECER SIGUE SIENDO DIFÍCIL.",
+    de: "WIR WERDEN GEFUNDEN. ABER WACHSTUM IST SCHWER.",
+    pt: "SOMOS ENCONTRADOS. MAS CRESCER AINDA É DIFÍCIL.",
   },
 
   relevancePain: {
-    en: "We have traction and revenue, but we are stuck competing for clicks. We need to dominate the narrative and generate absolute authority.",
-    es: "Tenemos tracción e ingresos, pero estamos atrapados compitiendo por clics. Necesitamos dominar la narrativa y generar autoridad absoluta.",
-    de: "Wir haben Traktion und Umsatz, aber wir konkurrieren nur um Klicks. Wir müssen die Narrative dominieren und absolute Autorität aufbauen.",
-    pt: "Temos tração e receita, mas estamos presos competindo por cliques. Precisamos dominar a narrativa e gerar autoridade absoluta.",
+    en: "You have customers and revenue. But marketing remains manual, growth depends on clicks and your activities do not work together. The result: Turn existing visibility into stronger authority, trust and growth.",
+    es: "Tenés clientes e ingresos. Pero el marketing sigue siendo manual, el crecimiento depende de clicks y tus actividades no trabajan en conjunto. El resultado: convertir la visibilidad existente en más autoridad, confianza y crecimiento.",
+    de: "Sie haben Kunden und Umsatz. Aber Marketing bleibt manuell, Wachstum hängt von Klicks ab, und Ihre Aktivitäten arbeiten nicht zusammen. Das Ergebnis: bestehende Sichtbarkeit in stärkere Autorität, Vertrauen und Wachstum verwandeln.",
+    pt: "Você tem clientes e receita. Mas o marketing continua manual, o crescimento depende de cliques e suas atividades não trabalham juntas. O resultado: transformar a visibilidade existente em mais autoridade, confiança e crescimento.",
+  },
+
+  relevanceIncludedTitle: {
+    en: "What's included",
+    es: "Qué incluye",
+    de: "Was ist enthalten",
+    pt: "O que está incluído",
   },
 
   relevanceIncluded: {
-    en: "Ecosystem maintenance, marketing automations, real-world experience design for UGC (Proof of Humanity), and continuous Business Development (B2B positioning and Project Management).",
-    es: "Mantenimiento del ecosistema, automatizaciones de marketing, diseño de experiencias reales para UGC (Proof of Humanity) y desarrollo de negocio continuo (posicionamiento B2B y gestión de proyectos).",
-    de: "Ökosystem-Wartung, Marketing-Automatisierung, reale Erfahrungsgestaltung für UGC (Proof of Humanity) und kontinuierliche Geschäftsentwicklung (B2B-Positionierung und Projektmanagement).",
-    pt: "Manutenção do ecossistema, automações de marketing, design de experiências reais para UGC (Proof of Humanity) e desenvolvimento contínuo de negócios (posicionamento B2B e gestão de projetos).",
+    en: "• Ongoing ecosystem maintenance\n• Marketing automations\n• Real-world experience design for user-generated content and Proof of Humanity\n• Ongoing business development\n• Business-to-business positioning\n• Project management",
+    es: "• Mantenimiento continuo del ecosistema\n• Automatizaciones de marketing\n• Diseño de experiencias reales para contenido generado por usuarios y Proof of Humanity\n• Desarrollo de negocio continuo\n• Posicionamiento business-to-business\n• Gestión de proyectos",
+    de: "• Laufende Pflege des Ökosystems\n• Marketing-Automatisierungen\n• Gestaltung realer Erlebnisse für nutzergenerierte Inhalte und Proof of Humanity\n• Laufende Geschäftsentwicklung\n• Business-to-Business-Positionierung\n• Projektmanagement",
+    pt: "• Manutenção contínua do ecossistema\n• Automações de marketing\n• Design de experiências reais para conteúdo gerado por usuários e Proof of Humanity\n• Desenvolvimento de negócios contínuo\n• Posicionamento business-to-business\n• Gestão de projetos",
+  },
+
+  relevanceSystemTitle: {
+    en: "How the Better System works",
+    es: "Cómo funciona el Better System",
+    de: "Wie das Better System funktioniert",
+    pt: "Como o Better System funciona",
+  },
+
+  relevanceQuantos: {
+    en: "Marketing automations and the digital capabilities required to run and maintain the ecosystem become reusable parts of your system.",
+    es: "Las automatizaciones de marketing y las capacidades digitales necesarias para ejecutar y mantener el ecosistema se convierten en partes reutilizables de tu sistema.",
+    de: "Marketing-Automatisierungen und die digitalen Fähigkeiten, die zur Ausführung und Pflege des Ökosystems benötigt werden, werden zu wiederverwendbaren Teilen Ihres Systems.",
+    pt: "Automações de marketing e as capacidades digitais necessárias para executar e manter o ecossistema tornam-se partes reutilizáveis do seu sistema.",
+  },
+
+  relevanceHack: {
+    en: "The Quantos are connected into growth workflows that distribute content, capture demand and move opportunities forward.",
+    es: "Los Quantos se conectan en flujos de trabajo de crecimiento que distribuyen contenido, capturan demanda y mueven oportunidades hacia adelante.",
+    de: "Die Quantos werden mit Wachstums-Workflows verbunden, die Inhalte verteilen, Nachfrage erfassen und Chancen vorantreiben.",
+    pt: "Os Quantos são conectados em fluxos de trabalho de crescimento que distribuem conteúdo, capturam demanda e movem oportunidades adiante.",
+  },
+
+  relevancePowerUnits: {
+    en: "The Better Pack maintains the ecosystem, designs real-world experiences, strengthens your positioning and manages the ongoing business-development work.",
+    es: "El Better Pack mantiene el ecosistema, diseña experiencias reales, fortalece tu posicionamiento y gestiona el trabajo continuo de desarrollo de negocio.",
+    de: "Das Better Pack pflegt das Ökosystem, gestaltet reale Erlebnisse, stärkt Ihre Positionierung und verwaltet die laufende Geschäftsentwicklung.",
+    pt: "O Better Pack mantém o ecossistema, projeta experiências reais, fortalece seu posicionamento e gerencia o trabalho contínuo de desenvolvimento de negócios.",
+  },
+
+  relevanceSovereignNode: {
+    en: "Your existing foundation grows into a connected system for marketing, customer communication and business development.",
+    es: "Tu base existente crece hacia un sistema conectado para marketing, comunicación con clientes y desarrollo de negocio.",
+    de: "Ihr bestehendes Fundament wächst zu einem vernetzten System für Marketing, Kundenkommunikation und Geschäftsentwicklung.",
+    pt: "Sua base existente cresce para um sistema conectado de marketing, comunicação com clientes e desenvolvimento de negócios.",
   },
 
   relevanceInvestment: {
-    en: "Starting at $3,500 / month",
-    es: "Desde $3,500 / mes",
-    de: "Ab $3.500 / Monat",
-    pt: "A partir de $3.500 / mês",
+    en: "3.500 USD",
+    es: "3.500 USD",
+    de: "3.500 USD",
+    pt: "3.500 USD",
   },
 
   relevanceScholarship: {
-    en: "Up to 50% co-investment (bringing it down to ~$1,750–$2,750/month).",
-    es: "Hasta 50% de co-inversión (reduciéndolo a ~$1,750–$2,750/mes).",
-    de: "Bis zu 50% Co-Investition (reduziert auf ca. ~$1.750–$2.750/Monat).",
-    pt: "Até 50% de co-investimento (reduzindo para ~$1.750–$2.750/mês).",
+    en: "Underdog Scholarship: Up to 50% co-investment (bringing it down to ~$1,750–$2,750).",
+    es: "Beca Underdog: hasta 50% de coinversión (quedando en ~$1.750–$2.750).",
+    de: "Underdog-Stipendium: bis zu 50% Co-Investition (reduziert auf ~$1.750–$2.750).",
+    pt: "Bolsa Underdog: até 50% de coinvestimento (reduzindo para ~$1.750–$2.750).",
+  },
+
+  relevanceCta: {
+    en: "Build Your Relevance System",
+    es: "Construí tu Relevance System",
+    de: "Bauen Sie Ihr Relevance System auf",
+    pt: "Construa seu Relevance System",
   },
 
   dominanceTitle: {
-    en: "Digital Dominance",
-    es: "Dominio Digital",
-    de: "Digitale Dominanz",
-    pt: "Domínio Digital",
+    en: "DIGITAL DOMINANCE",
+    es: "DIGITAL DOMINANCE",
+    de: "DIGITAL DOMINANCE",
+    pt: "DIGITAL DOMINANCE",
   },
 
   dominanceSubtitle: {
-    en: "Scale & Custom AI Architecture",
-    es: "Escala y Arquitectura de IA Personalizada",
-    de: "Skalierung & maßgeschneiderte KI-Architektur",
-    pt: "Escala e Arquitetura de IA Personalizada",
+    en: "WE ARE GROWING. BUT OUR SYSTEMS CANNOT KEEP UP.",
+    es: "ESTAMOS CRECIENDO. PERO NUESTROS SISTEMAS NO DAN ABASTO.",
+    de: "WIR WACHSEN. ABER UNSERE SYSTEME KOMMEN NICHT MIT.",
+    pt: "ESTAMOS CRESCENDO. MAS NOSSOS SISTEMAS NÃO DÃO CONTA.",
   },
 
   dominancePain: {
-    en: "We have the size and the market, but our internal operations are breaking. We need custom tech and AI infrastructure to scale without friction.",
-    es: "Tenemos tamaño y mercado, pero nuestras operaciones internas están fallando. Necesitamos infraestructura de IA y tecnología personalizada para escalar sin fricción.",
-    de: "Wir haben Größe und Markt, aber unsere internen Abläufe brechen zusammen. Wir brauchen maßgeschneiderte KI- und Technologie-Infrastruktur für reibungsloses Skalieren.",
-    pt: "Temos escala e mercado, mas nossas operações internas estão quebrando. Precisamos de infraestrutura de IA e tecnologia personalizada para escalar sem atrito.",
+    en: "You have the size, the demand and the market. But internal operations and disconnected systems are slowing the business down. The result: Build custom technology and AI infrastructure for complex growth.",
+    es: "Tenés el tamaño, la demanda y el mercado. Pero las operaciones internas y los sistemas desconectados están frenando el negocio. El resultado: construir tecnología a medida e infraestructura de IA para crecimiento complejo.",
+    de: "Sie haben die Größe, die Nachfrage und den Markt. Aber interne Abläufe und getrennte Systeme bremsen das Unternehmen aus. Das Ergebnis: maßgeschneiderte Technologie und KI-Infrastruktur für komplexes Wachstum.",
+    pt: "Você tem o tamanho, a demanda e o mercado. Mas as operações internas e sistemas desconectados estão travando o negócio. O resultado: construir tecnologia sob medida e infraestrutura de IA para crescimento complexo.",
+  },
+
+  dominanceIncludedTitle: {
+    en: "What's included",
+    es: "Qué incluye",
+    de: "Was ist enthalten",
+    pt: "O que está incluído",
   },
 
   dominanceIncluded: {
-    en: "Custom Software, MVP Systems, internal Autonomous AI Agents, infrastructure for real-time global operations, and corporate Business Development (Matchmaking, Investor Readiness).",
-    es: "Software personalizado, sistemas MVP, agentes autónomos de IA internos, infraestructura para operaciones globales en tiempo real y desarrollo de negocio corporativo (conexión con inversores y preparación para inversión).",
-    de: "Individuelle Software, MVP-Systeme, interne autonome KI-Agenten, Infrastruktur für globale Echtzeit-Operationen und Unternehmensentwicklung (Investor-Readiness und Matchmaking).",
-    pt: "Software personalizado, sistemas MVP, agentes autônomos de IA internos, infraestrutura para operações globais em tempo real e desenvolvimento de negócios corporativo (matchmaking e prontidão para investidores).",
+    en: "• Custom business software\n• MVP systems\n• Internal AI agents with defined permissions and human oversight\n• Infrastructure for real-time global operations\n• Corporate business development\n• Strategic matchmaking\n• Investor readiness",
+    es: "• Software de negocio a medida\n• Sistemas MVP\n• Agentes de IA internos con permisos definidos y supervisión humana\n• Infraestructura para operaciones globales en tiempo real\n• Desarrollo de negocio corporativo\n• Matchmaking estratégico\n• Preparación para inversores",
+    de: "• Individuelle Business-Software\n• MVP-Systeme\n• Interne KI-Agenten mit definierten Berechtigungen und menschlicher Aufsicht\n• Infrastruktur für globale Echtzeit-Operationen\n• Unternehmerische Geschäftsentwicklung\n• Strategisches Matchmaking\n• Investment-Readiness",
+    pt: "• Software de negócio sob medida\n• Sistemas MVP\n• Agentes de IA internos com permissões definidas e supervisão humana\n• Infraestrutura para operações globais em tempo real\n• Desenvolvimento de negócios corporativo\n• Matchmaking estratégico\n• Preparação para investidores",
+  },
+
+  dominanceSystemTitle: {
+    en: "How the Better System works",
+    es: "Cómo funciona el Better System",
+    de: "Wie das Better System funktioniert",
+    pt: "Como o Better System funciona",
+  },
+
+  dominanceQuantos: {
+    en: "Custom software, MVP components, AI agents and operational tools become modular capabilities with clearly defined tasks.",
+    es: "El software a medida, los componentes MVP, los agentes de IA y las herramientas operativas se convierten en capacidades modulares con tareas claramente definidas.",
+    de: "Individuelle Software, MVP-Komponenten, KI-Agenten und operative Werkzeuge werden zu modularen Fähigkeiten mit klar definierten Aufgaben.",
+    pt: "Software sob medida, componentes MVP, agentes de IA e ferramentas operacionais tornam-se capacidades modulares com tarefas claramente definidas.",
+  },
+
+  dominanceHack: {
+    en: "The Quantos are combined into complete systems for sales, onboarding, customer service, reporting or global operations.",
+    es: "Los Quantos se combinan en sistemas completos para ventas, onboarding, servicio al cliente, reporting u operaciones globales.",
+    de: "Die Quantos werden zu vollständigen Systemen für Vertrieb, Onboarding, Kundenservice, Reporting oder globale Operationen kombiniert.",
+    pt: "Os Quantos são combinados em sistemas completos para vendas, onboarding, atendimento ao cliente, reportagem ou operações globais.",
+  },
+
+  dominancePowerUnits: {
+    en: "Master and Alpha Power Units bring together the specialists required to design, build, connect and audit the infrastructure. Corporate business development, matchmaking and investor readiness are delivered through the relevant human-led Power Units.",
+    es: "Las Power Units Master y Alpha reúnen a los especialistas necesarios para diseñar, construir, conectar y auditar la infraestructura. El desarrollo de negocio corporativo, el matchmaking y la preparación para inversores se entregan a través de las Power Units lideradas por humanos.",
+    de: "Master- und Alpha-Power-Units bringen die Spezialisten zusammen, die benötigt werden, um die Infrastruktur zu entwerfen, aufzubauen, zu verbinden und zu prüfen. Unternehmerische Geschäftsentwicklung, Matchmaking und Investment-Readiness werden durch die relevanten humangeführten Power Units bereitgestellt.",
+    pt: "As Power Units Master e Alpha reúnem os especialistas necessários para projetar, construir, conectar e auditar a infraestrutura. Desenvolvimento de negócios corporativo, matchmaking e prontidão para investidores são entregues através das Power Units lideradas por humanos.",
+  },
+
+  dominanceSovereignNode: {
+    en: "Your custom software, AI systems and operational workflows become connected infrastructure with clearly defined ownership, access and operating rules.",
+    es: "Tu software a medida, sistemas de IA y flujos de trabajo operativos se convierten en infraestructura conectada con propiedad, acceso y reglas de operación claramente definidos.",
+    de: "Ihre individuelle Software, KI-Systeme und operativen Workflows werden zu vernetzter Infrastruktur mit klar definiertem Eigentum, Zugang und Betriebsregeln.",
+    pt: "Seu software sob medida, sistemas de IA e fluxos de trabalho operacionais tornam-se infraestrutura conectada com propriedade, acesso e regras de operação claramente definidos.",
   },
 
   dominanceInvestment: {
-    en: "Starting at $10,000+ / month",
-    es: "Desde $10,000+ / mes",
-    de: "Ab $10.000+ / Monat",
-    pt: "A partir de $10.000+ / mês",
+    en: "10.000 USD",
+    es: "10.000 USD",
+    de: "10.000 USD",
+    pt: "10.000 USD",
   },
 
   dominanceScholarship: {
-    en: "Tailor-made (Custom-structured, strictly for Enterprise-level operations or Whales).",
-    es: "A medida (estructurado a medida, exclusivamente para operaciones enterprise o grandes clientes).",
-    de: "Maßgeschneidert (nur für Enterprise-Level-Operationen oder Großkunden).",
-    pt: "Sob medida (estruturado exclusivamente para operações enterprise ou grandes clientes).",
+    en: "Underdog Scholarship: Tailor-made (Custom-structured, strictly for Enterprise-level operations or Whales).",
+    es: "Beca Underdog: a medida (estructurada de forma personalizada, estrictamente para operaciones nivel Enterprise o Whales).",
+    de: "Underdog-Stipendium: maßgeschneidert (individuell strukturiert, ausschließlich für Enterprise-Betriebe oder Whales).",
+    pt: "Bolsa Underdog: sob medida (estruturada individualmente, estritamente para operações nível Enterprise ou Whales).",
+  },
+
+  dominanceCta: {
+    en: "Build Your Sovereign Infrastructure",
+    es: "Construí tu Sovereign Infrastructure",
+    de: "Bauen Sie Ihre Sovereign Infrastructure auf",
+    pt: "Construa sua Sovereign Infrastructure",
   },
 
   painPoint: {
@@ -1065,6 +1313,48 @@ export const ui = {
     pt: "Avaliar minha presença digital (5 min) →"
   },
   // ── LEADERSHIP LEAGUES ──────────────────────────────────────
+  solutionsLabel: {
+  en: "The Solutions",
+  es: "Las Soluciones",
+  de: "Die Lösungen",
+  pt: "As Soluções",
+},
+solutionsIntro: {
+  en: "Start where your business is. From a lone wolf to a giant whale.",
+  es: "Empezá donde está tu negocio. Desde un lobo solitario hasta una ballena gigante.",
+  de: "Beginnen Sie dort, wo Ihr Unternehmen steht. Vom einsamen Wolf bis zum riesigen Wal.",
+  pt: "Comece de onde seu negócio está. De um lobo solitário a uma baleia gigante.",
+},
+solutionsModelIntro: {
+  en: "Choose the problem that sounds like your business. The Better Pack builds the right solution around it. Every offer follows the same model:",
+  es: "Elegí el problema que suena como tu negocio. El Better Pack construye la solución adecuada alrededor. Cada oferta sigue el mismo modelo:",
+  de: "Wählen Sie das Problem, das zu Ihrem Unternehmen passt. Der Better Pack baut die richtige Lösung darum herum. Jedes Angebot folgt demselben Modell:",
+  pt: "Escolha o problema que soa como o seu negócio. O Better Pack constrói a solução certa em torno dele. Toda oferta segue o mesmo modelo:",
+},
+solutionsFormulaQuantos: {
+  en: "You own the Quantos.",
+  es: "Sos dueño de los Quantos.",
+  de: "Sie besitzen die Quantos.",
+  pt: "Você é dono dos Quantos.",
+},
+solutionsFormulaHacks: {
+  en: "We combine them into Hacks.",
+  es: "Los combinamos en Hacks.",
+  de: "Wir kombinieren sie zu Hacks.",
+  pt: "Nós os combinamos em Hacks.",
+},
+solutionsFormulaPowerUnits: {
+  en: "Power Units get the work done.",
+  es: "Los Power Units hacen el trabajo.",
+  de: "Power Units erledigen die Arbeit.",
+  pt: "As Power Units realizam o trabalho.",
+},
+solutionsFormulaSovereignNode: {
+  en: "Every new capability can become part of your Sovereign Node.",
+  es: "Cada nueva capacidad puede pasar a formar parte de tu Sovereign Node.",
+  de: "Jede neue Fähigkeit kann Teil Ihres Sovereign Node werden.",
+  pt: "Cada nova capacidade pode se tornar parte do seu Sovereign Node.",
+},
   leagueEmergingTitle: {
     en: "The Emerging Pack (Startups & Local Heroes)",
     es: "La Manada Emergente (Startups y Héroes Locales)",
@@ -1121,10 +1411,26 @@ export const ui = {
   lets: { en: "Let's ", es: "Empecemos ", de: "Lass uns ", pt: "Vamos " },
   startToday: { en: "Start Today", es: "hoy mismo", de: "heute beginnen", pt: "começar hoje" },
 
-  dream: { en: "Just the way you dream. Only ", es: "Tal como lo soñaste. Solo que ", de: "Genau wie du es dir erträumst. Nur ", pt: "Exatamente como você sonhou. Só que " },
-  better: { en: "Better.", es: "mejor.", de: "besser.", pt: "melhor." },
+  dream: {
+    en: "Just the way you dream. Only ",
+    es: "Tal como lo soñaste. Solo que ",
+    de: "Genau wie du es dir erträumst. Nur ",
+    pt: "Exatamente como você sonhou. Só que "
+  },
 
-} as const;
+  better: {
+    en: "Better.",
+    es: "mejor.",
+    de: "besser.",
+    pt: "melhor."
+  },
+  charlotteQuoteTitle: {
+    en: "Co-Founder & Chief Digital Relevance Officer",
+    es: "Co-Fundadora y Chief Digital Relevance Officer",
+    de: "Mitgründerin & Chief Digital Relevance Officer",
+    pt: "Co-Fundadora e Chief Digital Relevance Officer",
+  },
+};
 
 // ─── ICONS ───────────────────────────────────────────────────────────────────
 const LinkedInIcon = () => (
@@ -1168,7 +1474,7 @@ const Avatar = ({ member }: { member: { name: string; role: string; linkedin: st
 // ─── NEWS SECTION ────────────────────────────────────────────────────────────
 const NewsSection = () => {
   const locale = useLocale() as Locale;
-  const tx = (key: keyof typeof ui) => (ui[key] as any)[locale] ?? (ui[key] as any)['en'];
+  const tx = (key: string) => ((ui as any)[key]?.[locale] ?? (ui as any)[key]?.['en'] ?? '');
 
   const [loading, setLoading] = useState(true);
   const [articles, setArticles] = useState<any[]>([]);
@@ -1251,6 +1557,7 @@ const NewsSection = () => {
     return (
       <section className="py-16 bg-white border-t border-slate-100">
         <div className="max-w-7xl mx-auto px-6 text-center">
+          <p className="text-blue-600 uppercase tracking-[0.25em] text-[10px] font-black mb-4">{tx('titulonews')}</p>
           <p className="text-slate-500 uppercase tracking-[0.25em] text-[10px] font-black mb-2">{tx('globalFeed')}</p>
           <h3 className="text-2xl md:text-3xl font-bold text-slate-900 mb-3">{tx('newsUnavailable')}</h3>
           <p className="text-slate-500 text-sm max-w-2xl mx-auto">{newsError || tx('newsError')}</p>
@@ -1267,9 +1574,10 @@ const NewsSection = () => {
         <div className="flex flex-col md:flex-row justify-between items-center md:items-end mb-12 gap-8">
           <div className="hidden md:block w-48"></div>
           <div className="flex-1 flex flex-col items-center text-center">
-            <div className="mt-8 inline-flex flex-col items-center"></div>
+            <h2 className="text-xl md:text-3xl font-black text-slate-900 uppercase tracking-tight leading-tight max-w-2xl mx-auto break-words">
+              {tx('titulonews')}
+            </h2>
             <span className="text-blue-600 font-black uppercase tracking-[0.3em] text-xs mt-6 mb-4 block italic">{tx('globalFeed')}</span>
-
           </div>
           <div className="text-center md:text-right md:w-48">
             <p className="text-slate-400 font-mono text-[10px] uppercase tracking-widest">{tx('liveUpdates')}</p>
@@ -1339,7 +1647,7 @@ const NewsSection = () => {
 // CHAT SECTION 
 const ChatSection = () => {
   const locale = useLocale() as Locale;
-  const tx = (key: keyof typeof ui) => (ui[key] as any)[locale] ?? (ui[key] as any)['en'];
+  const tx = (key: string) => ((ui as any)[key]?.[locale] ?? (ui as any)[key]?.['en'] ?? '');
 
   return (
     <section className="py-16 bg-white border-t border-slate-100">
@@ -1437,7 +1745,7 @@ const ChatSection = () => {
 //  CASOS DE ÉXITO 
 const CasosDeExito = ({ showMachinesModal, setShowMachinesModal }: { showMachinesModal: boolean; setShowMachinesModal: React.Dispatch<React.SetStateAction<boolean>> }) => {
   const locale = useLocale() as Locale;
-  const tx = (key: keyof typeof ui) => (ui[key] as any)[locale] ?? (ui[key] as any)['en'];
+  const tx = (key: string) => ((ui as any)[key]?.[locale] ?? (ui as any)[key]?.['en'] ?? '');
 
   const screenshotsMap = { en: belandScreenshots, es: belandScreenshotsEs, de: belandScreenshotsDe, pt: belandScreenshotsPt };
   const screenshots = screenshotsMap[locale] ?? belandScreenshots;
@@ -1666,10 +1974,15 @@ export default function Home() {
           <h1 className="text-3xl md:text-5xl lg:text-6xl font-black leading-[1.05] tracking-tighter max-w-4xl text-white uppercase">
             {tx('openLatam')} <br /> <span className="text-blue-600">{tx('globalCompanies')}</span>
           </h1>
-          <p className="mt-3 text-white text-[9px] md:text-[10px] uppercase tracking-widest font-bold">{tx('subtagline')}</p>
-          <a href="https://wa.me/593991358652?text=Hi!%20I%27d%20like%20to%20get%20in%20touch%20with%20the%20team." className="mt-3 inline-block px-8 py-3 bg-[#FF6B00] text-white rounded-full font-bold shadow-lg uppercase tracking-widest text-[10px] transition-transform active:scale-95">
-            {tx('getInTouch')}
-          </a>
+          <p className="mt-3 text-white text-[10px] md:text-[12px] uppercase tracking-widest font-bold">{tx('subtagline')}</p>
+          <div className="mt-5 flex flex-col sm:flex-row items-center gap-3">
+            <a href="https://wa.me/593991358652?text=Hi!%20I%27d%20like%20to%20get%20in%20touch%20with%20the%20team." className="inline-block px-8 py-3 bg-[#FF6B00] text-white rounded-full font-bold shadow-lg uppercase tracking-widest text-[10px] transition-transform active:scale-95">
+              {tx('heroCtaPrimary')}
+            </a>
+            <a href="#mittelstand" className="inline-block px-8 py-3 border-2 border-white text-white rounded-full font-bold uppercase tracking-widest text-[10px] transition-colors hover:bg-white hover:text-slate-900">
+              {tx('heroCtaSecondary')}
+            </a>
+          </div>
         </div>
       </section>
 
@@ -1685,29 +1998,32 @@ export default function Home() {
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-20 items-center">
 
           {/* COLUMNA IZQUIERDA (antes derecha) */}
+
           <div>
-            {/*  "WHATS NEXT?" */}
             <span className="text-sm font-black uppercase tracking-[0.2em] text-blue-600 block mb-3">
               {ui.ourCustomers[locale]}
             </span>
 
-            {/* "Grow by Design" */}
             <h2 className="text-4xl md:text-5xl font-black mb-6 text-slate-900 leading-tight tracking-tighter uppercase">
-              {ui.midSized1[locale]}
+              {tx('problemHeadline')}
             </h2>
 
-            {/* 3. descripción  */}
-            <p className="text-lg text-slate-600 font-medium leading-relaxed mb-10 text-balance">
-              {ui.midSized2[locale]}
+            <p className="text-lg text-slate-600 font-medium leading-relaxed mb-4 text-balance">
+              {tx('problemIntro')}
+            </p>
+            <ol className="list-decimal list-inside space-y-3 text-slate-600 text-base leading-relaxed mb-8">
+              <li>{tx('problemPoint1')}</li>
+              <li>{tx('problemPoint2')}</li>
+            </ol>
+
+            <h3 className="text-2xl md:text-3xl font-bold text-blue-600 mb-4 leading-tight">
+              {tx('problemHighlight')}
+            </h3>
+            <p className="text-lg text-slate-600 font-medium leading-relaxed mb-8 text-balance">
+              {tx('problemBody')}
             </p>
 
-            {/* BOTÓN THE PACK */}
-            <button
-              onClick={() => setIsPackModalOpen(true)}
-              className="inline-flex items-center gap-2 bg-blue-600 text-white font-bold px-8 py-4 rounded-full hover:bg-blue-700 transition-colors"
-            >
-              {ui.packButtonLabel[locale]}
-            </button>
+
           </div>
 
           {/* COLUMNA DERECHA (antes izquierda) */}
@@ -1741,7 +2057,69 @@ export default function Home() {
           </div>
 
         </div>
+       {/* QUOTE CARD — CHARLOTTE */}
+<div className="max-w-3xl mx-auto px-6 mt-10 md:mt-6 mb-16">
+  <div className="relative bg-white border border-slate-100 rounded-3xl shadow-xl p-8 md:p-10">
+          <div className="flex items-center gap-4 mb-6">
+            <div className="relative w-14 h-14 rounded-full overflow-hidden border-2 border-slate-100 flex-shrink-0 bg-blue-50">
+              <Image src="/charlotte.jpeg" alt="Charlotte Götz" fill className="object-cover" sizes="56px" />
+            </div>
+            <div className="flex-1 min-w-0">
+              <p className="text-slate-900 font-black text-sm">Charlotte Götz</p>
+              <p className="text-blue-600 font-black uppercase tracking-[0.1em] text-[10px] mt-0.5">
+                {tx('charlotteQuoteTitle')}
+              </p>
+            </div>
 
+            <a href="https://www.linkedin.com/in/charlotte-goetz-public/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1.5 border border-slate-200 rounded-full px-3 py-1.5 hover:border-blue-600 hover:bg-blue-50 transition-all flex-shrink-0">
+              <LinkedInIcon />
+              <span className="text-[9px] font-black uppercase tracking-widest text-slate-500">LinkedIn</span>
+            </a>
+          </div>
+          <p className="text-slate-800 text-lg md:text-xl leading-relaxed font-medium">
+            "<mark className="bg-orange-200/70 px-1 rounded">{tx('problemQuote')}</mark>"
+          </p>
+        </div>
+      </div>
+        {/* CIERRE THE PROBLEM — full width */}
+<div className="max-w-4xl mx-auto mt-16">
+  <div className="bg-white rounded-3xl border border-slate-200 shadow-sm p-8 md:p-14 text-center">
+    <h2 className="text-2xl md:text-3xl font-black text-orange-500 mb-1 tracking-tight">
+  {tx('problemSubscriptions')}
+</h2>
+    <p className="text-slate-400 text-sm md:text-base leading-relaxed mb-8">
+      {tx('problemTogether')}
+    </p>
+
+    <div className="w-12 h-px bg-slate-200 mx-auto mb-8" />
+
+    <h3 className="text-2xl md:text-4xl font-black text-slate-900 mb-6 tracking-tight uppercase">
+      {tx('problemRentNet')}
+    </h3>
+    <p className="text-slate-600 text-lg leading-relaxed max-w-2xl mx-auto mb-2">
+      {tx('problemInfra')}
+    </p>
+    <p className="text-blue-600 font-bold text-base md:text-lg mb-8">
+      {tx('problemOwnership')}
+    </p>
+    <p className="text-slate-600 text-lg leading-relaxed max-w-2xl mx-auto mb-10">
+      {tx('problemConnects')}
+    </p>
+
+        
+     <a href="https://calendar.app.google/Ntnv2PvHmPNgCnKZ6"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="inline-flex items-center gap-2 bg-blue-600 text-white font-bold px-10 py-4 rounded-full hover:bg-blue-700 transition-colors shadow-lg shadow-blue-600/20"
+    >
+      {tx('chooseNextMove')}
+      <ArrowRight className="w-4 h-4" />
+    </a>
+  </div>
+</div>
         {/* MODAL THE PACK */}
         {isPackModalOpen && (
           <div
@@ -1833,12 +2211,14 @@ export default function Home() {
         )}
       </section>
 
-      <BetterEcosystemSection locale={locale} />
-      <div id="leadership-leagues">
+     <div id="leadership-leagues">
         <LeadershipLeagues tx={tx} />
       </div>
+    
+      <BetterEcosystemSection locale={locale} />
+      
       <GrowthCapabilities tx={tx} />
-        <GlobalAccessMechanism tx={tx} />
+      <GlobalAccessMechanism tx={tx} />
 
       <div className="py-16 px-6 bg-white text-center">
         <div className="max-w-4xl mx-auto">
@@ -1900,7 +2280,7 @@ export default function Home() {
         </div>
       </section>
 
-     
+
 
       <div className="py-10 border-t border-slate-100 text-center">
         <h3 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter uppercase mb-10">
@@ -1915,53 +2295,18 @@ export default function Home() {
         </div>
       </div>
 
-      {/* CASOS DE ÉXITO — BELAND */}
-      <CasosDeExito showMachinesModal={showMachinesModal} setShowMachinesModal={setShowMachinesModal} />
       
-      {/* CIERRE */}
-      <section className="py-20 px-6 bg-white">
-        <div className="max-w-6xl mx-auto text-center">
-
-          <h2 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter leading-[0.9] uppercase mb-6">
-            <span className="block">
-              {tx('closingLine')}{" "}
-              <span className="text-blue-600">
-                {tx('closingLineEm')}
-              </span>
-            </span>
-          </h2>
-
-          <div className="w-24 h-1 rounded-full bg-gradient-to-r from-blue-600 to-orange-400 mx-auto mb-10"></div>
-
-          <div className="max-w-5xl mx-auto">
-            <div className="relative overflow-hidden rounded-[32px] border border-slate-200 bg-gradient-to-br from-white via-slate-50 to-orange-50 p-8 md:p-14 shadow-xl">
-
-              {/* Ambient light */}
-              <div className="absolute -top-28 -right-28 w-72 h-72 rounded-full bg-orange-300/20 blur-3xl" />
-              <div className="absolute -bottom-28 -left-28 w-72 h-72 rounded-full bg-blue-300/20 blur-3xl" />
-
-              <div className="relative">
 
 
-                <p className="text-slate-600 text-base md:text-lg leading-8 max-w-4xl mx-auto">
-                  {tx('closingCopy')}
-                </p>
-
-              </div>
-
-            </div>
-          </div>
-
-        </div>
-      </section>
       {/*  NEWS FEED */}
       <NewsSection />
-      
+
 
 
       {/* LATEST INSIGHTS */}
       <section className="py-16 bg-slate-50">
         <div className="container mx-auto px-6 text-center">
+
           <p className="text-blue-600 uppercase tracking-[0.25em] text-[10px] font-black mb-4">{tx('stayUpdated')}</p>
           <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-6 uppercase">{tx('latestInsights')}</h2>
           <p className="text-slate-500 max-w-lg mx-auto mb-10">{tx('blogDesc')}</p>
@@ -2017,65 +2362,10 @@ export default function Home() {
       </footer>
 
 
-      {showMachinesModal && (
-        <div className="fixed inset-0 bg-black/80 z-50 flex flex-col items-center justify-start pt-20 md:pt-32 p-4 overflow-y-auto">
-          <div className="relative bg-white rounded-3xl shadow-2xl w-full max-w-xs sm:max-w-sm md:max-w-lg h-auto overflow-visible">
-
-            {/* cerrar */}
-            <button
-              onClick={() => setShowMachinesModal(false)}
-              className="absolute top-3 right-3 sm:top-4 sm:right-4 md:top-6 md:right-6 z-30 w-9 h-9 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-700 text-lg md:text-xl font-bold hover:bg-slate-50 transition-colors"
-            >
-              ✕
-            </button>
-
-            {/* contenido */}
-            <div className="px-6 pt-12 pb-8 sm:pt-8 md:px-10 md:pt-10">
-              <p className="text-[#7A9B3C] uppercase tracking-[0.25em] text-[10px] md:text-xs font-black mb-3">
-                {tx('belandTitle')}
-              </p>
-
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-black leading-none uppercase mb-6 md:mb-8">
-                <span className="text-black">{tx('belandHeading1')}</span>
-                <br />
-                <span className="text-orange-500 italic">{tx('belandHeading2')}</span>
-                <br />
-                <span className="text-lime-600 italic">{tx('belandHeading3')}</span>
-              </h2>
-
-              <p className="text-slate-600 text-sm md:text-base leading-7 md:leading-8 mb-8 md:mb-10">
-                {tx('belandDesc')}
-              </p>
-
-              <div className="relative w-full h-[180px] sm:h-[220px] md:h-[280px] mb-8 md:mb-10">
-                <Image
-                  src="/maquina-beland.png"
-                  alt="Beland machine"
-                  fill
-                  className="object-contain"
-                />
-              </div>
-
-              <div className="space-y-4 md:space-y-5 text-xs sm:text-sm md:text-base font-semibold text-slate-800 mb-8 md:mb-10">
-                <p>♻️ {tx('belandFeature1')}</p>
-                <p>📸 {tx('belandFeature2')}</p>
-                <p>💰 {tx('belandFeature3')}</p>
-                <p>📊 {tx('belandFeature4')}</p>
-              </div>
-
-              <a
-                href="https://wa.me/593991358652?text=Hi!%20I%20would%20like%20to%20quote%20a%20recycling%20machine%20for%20my%20business."
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full flex justify-center items-center bg-[#7A9B3C] text-white py-3 sm:py-4 md:py-5 rounded-2xl font-black text-xs sm:text-sm md:text-base uppercase tracking-widest hover:bg-[#6b8a2f] transition-colors"
-              >
-                {tx('belandQuote')}
-              </a>
-            </div>
-          </div>
-        </div>
-      )}
-    </main>
+     
+        
+      
+    </main >
   );
 };
 

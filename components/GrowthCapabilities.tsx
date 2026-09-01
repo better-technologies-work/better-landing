@@ -16,27 +16,48 @@ export default function GrowthCapabilities({ tx }: Props) {
             title: tx("foundationTitle"),
             subtitle: tx("foundationSubtitle"),
             pain: tx("foundationPain"),
+            includedTitle: tx("foundationIncludedTitle"),
             included: tx("foundationIncluded"),
+            systemTitle: tx("foundationSystemTitle"),
+            quantos: tx("foundationQuantos"),
+            hack: tx("foundationHack"),
+            powerUnits: tx("foundationPowerUnits"),
+            sovereignNode: tx("foundationSovereignNode"),
             investment: tx("foundationInvestment"),
             scholarship: tx("foundationScholarship"),
+            cta: tx("foundationCta"),
         },
         {
             color: "orange",
             title: tx("relevanceTitle"),
             subtitle: tx("relevanceSubtitle"),
             pain: tx("relevancePain"),
+            includedTitle: tx("relevanceIncludedTitle"),
             included: tx("relevanceIncluded"),
+            systemTitle: tx("relevanceSystemTitle"),
+            quantos: tx("relevanceQuantos"),
+            hack: tx("relevanceHack"),
+            powerUnits: tx("relevancePowerUnits"),
+            sovereignNode: tx("relevanceSovereignNode"),
             investment: tx("relevanceInvestment"),
             scholarship: tx("relevanceScholarship"),
+            cta: tx("relevanceCta"),
         },
         {
             color: "orange",
             title: tx("dominanceTitle"),
             subtitle: tx("dominanceSubtitle"),
             pain: tx("dominancePain"),
+            includedTitle: tx("dominanceIncludedTitle"),
             included: tx("dominanceIncluded"),
+            systemTitle: tx("dominanceSystemTitle"),
+            quantos: tx("dominanceQuantos"),
+            hack: tx("dominanceHack"),
+            powerUnits: tx("dominancePowerUnits"),
+            sovereignNode: tx("dominanceSovereignNode"),
             investment: tx("dominanceInvestment"),
             scholarship: tx("dominanceScholarship"),
+            cta: tx("dominanceCta"),
         },
     ];
 
@@ -118,33 +139,90 @@ export default function GrowthCapabilities({ tx }: Props) {
                             </p>
 
                             <p className="text-sm text-slate-600 mt-6 leading-7">
-                                <span className="font-black text-slate-900">
-                                    {tx("painPoint")}:
-                                </span>{" "}
                                 {current.pain}
                             </p>
 
-                            <div className="mt-8 space-y-4 text-sm text-slate-600 leading-7">
+                            <div className="mt-8 space-y-6 text-sm text-slate-600 leading-7">
 
-                                <p>
-                                    <span className="font-black text-slate-900">
-                                        {tx("included")}:
-                                    </span>{" "}
-                                    {current.included}
-                                </p>
+                                <div>
+                                    <p className="font-black text-slate-900 mb-3">
+                                        {current.includedTitle}
+                                    </p>
+                                    <div className="whitespace-pre-line text-slate-600">
+                                        {current.included}
+                                    </div>
+                                </div>
 
-                                <p className="font-black text-slate-900">
-                                    {tx("investment")}: {current.investment}
-                                </p>
+                                <div>
+                                    <p className="font-black text-slate-900 mb-4">
+                                        {current.systemTitle}
+                                    </p>
 
-                                <p
-                                    className={`font-black ${current.color === "blue"
-                                        ? "text-blue-600"
-                                        : "text-orange-500"
+                                    <div className="space-y-4">
+                                        <div>
+                                            <p className="font-black text-slate-900">
+                                                Your Quantos
+                                            </p>
+                                            <p className="text-slate-600">
+                                                {current.quantos}
+                                            </p>
+                                        </div>
+
+                                        <div>
+                                            <p className="font-black text-slate-900">
+                                                Your Hack
+                                            </p>
+                                            <p className="text-slate-600">
+                                                {current.hack}
+                                            </p>
+                                        </div>
+
+                                        <div>
+                                            <p className="font-black text-slate-900">
+                                                Your Power Units
+                                            </p>
+                                            <p className="text-slate-600">
+                                                {current.powerUnits}
+                                            </p>
+                                        </div>
+
+                                        <div>
+                                            <p className="font-black text-slate-900">
+                                                Your Sovereign Node
+                                            </p>
+                                            <p className="text-slate-600">
+                                                {current.sovereignNode}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="pt-4 border-t border-slate-200">
+                                    <p className="font-black text-slate-900">
+                                        {tx("investment")}: {current.investment}
+                                    </p>
+
+                                    <p
+                                        className={`font-black mt-2 ${current.color === "blue"
+                                            ? "text-blue-600"
+                                            : "text-orange-500"
+                                            }`}
+                                    >
+                                        {tx("scholarship")}: {current.scholarship}
+                                    </p>
+                                </div>
+
+                                <div className="pt-4">
+                                    <button
+                                        className={`px-6 py-3 rounded-full text-white text-sm font-black uppercase tracking-wider transition-all hover:scale-105 ${
+                                            current.color === "blue"
+                                                ? "bg-blue-600 hover:bg-blue-700"
+                                                : "bg-orange-500 hover:bg-orange-600"
                                         }`}
-                                >
-                                    {tx("scholarship")}: {current.scholarship}
-                                </p>
+                                    >
+                                        {current.cta}
+                                    </button>
+                                </div>
 
                             </div>
 

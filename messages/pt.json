@@ -1,24 +1,28 @@
 {
-"Header": {
-  "home": "Início",
-  "whatWeAre": "Quem somos",
-  "mittelstand": "O que fazemos",
-  "pricing": "Preços",
-  "about": "Equipa",
-  "blog": "Blog",
-  "backToHome": "Voltar ao início"
-},
+  "Header": {
+    "home": "Início",
+    "whatWeAre": "Quem somos",
+    "mittelstand": "O que fazemos",
+    "pricing": "Preços",
+    "about": "Equipa",
+    "blog": "Blog",
+    "backToHome": "Voltar ao início"
+  },
+
   "Home": {
     "whatWeDo": "O que fazemos?",
     "viewAllPosts": "Ver todos os posts"
   },
+
   "Blog": {
     "published": "Publicado",
     "updated": "Atualizado"
   },
+
   "Footer": {
     "createdBy": "Criado por"
   },
+
   "Dashboard": {
     "hiTeam": "Olá equipe",
     "newPost": "+ Novo Post",
@@ -58,16 +62,71 @@
     "noPostsYet": "Ainda não há posts publicados.",
     "noImg": "SEM IMG"
   },
+
   "News": {
     "news": "Notícias",
     "viewAllNews": "Ver todas as notícias"
   },
+
   "viewMachines": {
     "title": "Ver Máquinas",
     "description": "Explore nossa coleção de máquinas e seus detalhes."
   },
+
   "quoteNow": {
     "title": "Solicitar Cotação",
     "description": "Contate-nos para uma cotação personalizada e descubra como podemos ajudar seu negócio a prosperar."
+  },
+
+  "GrowthCapabilities": {
+    "growthCapabilities": "CAPACIDADES DE CRESCIMENTO",
+    "customArsenal": "SEU ARSENAL SOB MEDIDA",
+    "growthIntro": "Escolha o nível que combina com o seu negócio. Cada nível funciona com o mesmo sistema: você é dono das capacidades, nós entregamos os resultados.",
+    "painPoint": "Ponto de dor",
+    "included": "Incluso",
+    "investment": "Investimento",
+    "scholarship": "Bolsa",
+
+    "foundationTitle": "BETTER FOUNDATION",
+    "foundationSubtitle": "NÃO ESTAMOS SENDO ENCONTRADOS",
+    "foundationPain": "Você tem um produto ou serviço forte. Mas sua presença digital é fraca, e poucas pessoas ou sistemas de IA encontram o seu negócio. O resultado: uma identidade digital clara, mais fácil de encontrar, capturando nova demanda.",
+    "foundationIncludedTitle": "O que está incluído",
+    "foundationIncluded": "• Better Business Blueprint™\n• Site otimizado para IA e GEO\n• Configuração básica de CRM\n• Ecossistema de captação de leads",
+    "foundationSystemTitle": "Como o Better System funciona",
+    "foundationQuantos": "Seu site, CRM e componentes de captação de leads tornam-se capacidades digitais que você pode controlar e conectar.",
+    "foundationHack": "O site, CRM e captação de leads funcionam juntos como um sistema — de ser encontrado a receber uma nova consulta.",
+    "foundationPowerUnits": "O Better Pack cria o Business Blueprint, constrói o site, configura o CRM e implanta o fluxo completo de captação de leads.",
+    "foundationSovereignNode": "Better Foundation cria a primeira parte conectada da sua própria infraestrutura digital.",
+    "foundationInvestment": "1.500 USD",
+    "foundationScholarship": "Bolsa Underdog: até 50% de coinvestimento (reduzindo para ~$750–$1.250).",
+    "foundationCta": "Construa seu Foundation",
+
+    "relevanceTitle": "DIGITAL RELEVANCE",
+    "relevanceSubtitle": "SOMOS ENCONTRADOS. MAS CRESCER AINDA É DIFÍCIL.",
+    "relevancePain": "Você tem clientes e receita. Mas o marketing continua manual, o crescimento depende de cliques e suas atividades não trabalham juntas. O resultado: transformar a visibilidade existente em mais autoridade, confiança e crescimento.",
+    "relevanceIncludedTitle": "O que está incluído",
+    "relevanceIncluded": "• Manutenção contínua do ecossistema\n• Automações de marketing\n• Design de experiências reais para conteúdo gerado por usuários e Proof of Humanity\n• Desenvolvimento de negócios contínuo\n• Posicionamento business-to-business\n• Gestão de projetos",
+    "relevanceSystemTitle": "Como o Better System funciona",
+    "relevanceQuantos": "Automações de marketing e as capacidades digitais necessárias para executar e manter o ecossistema tornam-se partes reutilizáveis do seu sistema.",
+    "relevanceHack": "Os Quantos são conectados em fluxos de trabalho de crescimento que distribuem conteúdo, capturam demanda e movem oportunidades adiante.",
+    "relevancePowerUnits": "O Better Pack mantém o ecossistema, projeta experiências reais, fortalece seu posicionamento e gerencia o trabalho contínuo de desenvolvimento de negócios.",
+    "relevanceSovereignNode": "Sua base existente cresce para um sistema conectado de marketing, comunicação com clientes e desenvolvimento de negócios.",
+    "relevanceInvestment": "3.500 USD",
+    "relevanceScholarship": "Bolsa Underdog: até 50% de coinvestimento (reduzindo para ~$1.750–$2.750).",
+    "relevanceCta": "Construa seu Relevance System",
+
+    "dominanceTitle": "DIGITAL DOMINANCE",
+    "dominanceSubtitle": "ESTAMOS CRESCENDO. MAS NOSSOS SISTEMAS NÃO DÃO CONTA.",
+    "dominancePain": "Você tem o tamanho, a demanda e o mercado. Mas as operações internas e sistemas desconectados estão travando o negócio. O resultado: construir tecnologia sob medida e infraestrutura de IA para crescimento complexo.",
+    "dominanceIncludedTitle": "O que está incluído",
+    "dominanceIncluded": "• Software de negócio sob medida\n• Sistemas MVP\n• Agentes de IA internos com permissões definidas e supervisão humana\n• Infraestrutura para operações globais em tempo real\n• Desenvolvimento de negócios corporativo\n• Matchmaking estratégico\n• Preparação para investidores",
+    "dominanceSystemTitle": "Como o Better System funciona",
+    "dominanceQuantos": "Software sob medida, componentes MVP, agentes de IA e ferramentas operacionais tornam-se capacidades modulares com tarefas claramente definidas.",
+    "dominanceHack": "Os Quantos são combinados em sistemas completos para vendas, onboarding, atendimento ao cliente, reportagem ou operações globais.",
+    "dominancePowerUnits": "As Power Units Master e Alpha reúnem os especialistas necessários para projetar, construir, conectar e auditar a infraestrutura. Desenvolvimento de negócios corporativo, matchmaking e prontidão para investidores são entregues através das Power Units lideradas por humanos.",
+    "dominanceSovereignNode": "Seu software sob medida, sistemas de IA e fluxos de trabalho operacionais tornam-se infraestrutura conectada com propriedade, acesso e regras de operação claramente definidos.",
+    "dominanceInvestment": "10.000 USD",
+    "dominanceScholarship": "Bolsa Underdog: sob medida (estruturada individualmente, estritamente para operações nível Enterprise ou Whales).",
+    "dominanceCta": "Construa sua Sovereign Infrastructure"
   }
 }

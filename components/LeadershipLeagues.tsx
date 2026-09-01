@@ -54,6 +54,13 @@ export default function LeadershipLeagues({ tx }: Props) {
                 {/* HEADER */}
                 <div className="text-center mb-14">
 
+                    <p className="text-blue-600 uppercase tracking-[0.25em] text-[10px] font-black mb-2">
+                        {tx("solutionsLabel")}
+                    </p>
+                    <p className="text-slate-500 text-sm md:text-base font-medium mb-8">
+                        {tx("solutionsIntro")}
+                    </p>
+
                     <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter mb-6">
                         <span className="text-blue-600">
                             {tx("leadershipMain")}
@@ -66,6 +73,16 @@ export default function LeadershipLeagues({ tx }: Props) {
                     <p className="text-lg text-slate-500 font-medium max-w-3xl mx-auto">
                         {tx("leadershipSubtitle")}
                     </p>
+
+                    <p className="text-slate-600 text-sm md:text-base max-w-2xl mx-auto mt-8 mb-4 leading-relaxed">
+                        {tx("solutionsModelIntro")}
+                    </p>
+                    <ul className="flex flex-col items-center gap-1.5 mb-8">
+                        <li className="text-slate-900 font-black text-sm">{tx("solutionsFormulaQuantos")}</li>
+                        <li className="text-slate-900 font-black text-sm">{tx("solutionsFormulaHacks")}</li>
+                        <li className="text-slate-900 font-black text-sm">{tx("solutionsFormulaPowerUnits")}</li>
+                        <li className="text-slate-900 font-black text-sm">{tx("solutionsFormulaSovereignNode")}</li>
+                    </ul>
 
                     <p className="text-blue-600 font-black uppercase tracking-widest text-xs mt-6">
                         {tx("chooseLeague")}

@@ -1,29 +1,34 @@
 {
-"Header": {
-  "home": "Startseite",
-  "whatWeAre": "Wer wir sind",
-  "mittelstand": "Was wir tun",
-  "pricing": "Preise",
-  "about": "Team",
-  "blog": "Blog",
-  "backToHome": "Zurück zur Startseite"
-},
+  "Header": {
+    "home": "Startseite",
+    "whatWeAre": "Wer wir sind",
+    "mittelstand": "Was wir tun",
+    "pricing": "Preise",
+    "about": "Team",
+    "blog": "Blog",
+    "backToHome": "Zurück zur Startseite"
+  },
+
   "Home": {
     "whatWeDo": "Was wir tun?",
     "viewAllPosts": "Alle Beiträge ansehen"
   },
+
   "Blog": {
     "published": "Veröffentlicht",
     "updated": "Aktualisiert"
   },
+
   "Hero": {
     "title": "Verstehe die Vergangenheit — baue die Zukunft.",
     "ctaPart1": "LASST UNS",
     "ctaPart2": "HEUTE BEGINNEN"
   },
+
   "Footer": {
     "createdBy": "Erstellt von"
   },
+
   "Dashboard": {
     "hiTeam": "Hallo Team",
     "newPost": "+ Neuer Beitrag",
@@ -63,16 +68,71 @@
     "noPostsYet": "Noch keine Beiträge veröffentlicht.",
     "noImg": "KEIN BILD"
   },
+
   "News": {
     "news": "Nachrichten",
     "viewAllNews": "Alle Nachrichten anzeigen"
   },
+
   "viewMachines": {
     "title": "Maschinen anzeigen",
     "description": "Entdecken Sie unsere Sammlung von Maschinen und deren Details."
   },
+
   "quoteNow": {
     "title": "Angebot anfordern",
     "description": "Kontaktieren Sie uns für ein persönliches Angebot und erfahren Sie, wie wir Ihrem Unternehmen zum Erfolg verhelfen können."
+  },
+
+  "GrowthCapabilities": {
+    "growthCapabilities": "WACHSTUMSKAPAZITÄTEN",
+    "customArsenal": "IHR MASSGESCHNEIDERTES ARSENAL",
+    "growthIntro": "Wählen Sie die Stufe, die zu Ihrem Unternehmen passt. Jede Stufe basiert auf demselben System: Sie besitzen die Fähigkeiten, wir liefern die Ergebnisse.",
+    "painPoint": "Schmerzpunkt",
+    "included": "Enthalten",
+    "investment": "Investition",
+    "scholarship": "Stipendium",
+
+    "foundationTitle": "BETTER FOUNDATION",
+    "foundationSubtitle": "WIR WERDEN NICHT GEFUNDEN",
+    "foundationPain": "Sie haben ein starkes Produkt oder eine starke Dienstleistung. Aber Ihre digitale Präsenz ist schwach, und zu wenige Menschen oder KI-Systeme finden Ihr Unternehmen. Das Ergebnis: eine klare digitale Identität, leichter zu finden, neue Nachfrage erschließen.",
+    "foundationIncludedTitle": "Was ist enthalten",
+    "foundationIncluded": "• Better Business Blueprint™\n• Für KI und GEO optimierte Website\n• Grundlegendes CRM-Setup\n• Lead-Erfassungs-Ökosystem",
+    "foundationSystemTitle": "Wie das Better System funktioniert",
+    "foundationQuantos": "Ihre Website, CRM- und Lead-Erfassungskomponenten werden zu digitalen Fähigkeiten, die Sie steuern und verbinden können.",
+    "foundationHack": "Die Website, CRM und Lead-Erfassung arbeiten zusammen als ein System — vom gefunden werden bis zum Eingang einer neuen Anfrage.",
+    "foundationPowerUnits": "Das Better Pack erstellt den Business Blueprint, baut die Website, konfiguriert das CRM und implementiert den vollständigen Lead-Erfassungs-Workflow.",
+    "foundationSovereignNode": "Better Foundation schafft den ersten verbundenen Teil Ihrer eigenen digitalen Infrastruktur.",
+    "foundationInvestment": "1.500 USD",
+    "foundationScholarship": "Underdog-Stipendium: bis zu 50% Co-Investition (reduziert auf ~$750–$1.250).",
+    "foundationCta": "Bauen Sie Ihre Foundation auf",
+
+    "relevanceTitle": "DIGITAL RELEVANCE",
+    "relevanceSubtitle": "WIR WERDEN GEFUNDEN. ABER WACHSTUM IST SCHWER.",
+    "relevancePain": "Sie haben Kunden und Umsatz. Aber Marketing bleibt manuell, Wachstum hängt von Klicks ab, und Ihre Aktivitäten arbeiten nicht zusammen. Das Ergebnis: bestehende Sichtbarkeit in stärkere Autorität, Vertrauen und Wachstum verwandeln.",
+    "relevanceIncludedTitle": "Was ist enthalten",
+    "relevanceIncluded": "• Laufende Pflege des Ökosystems\n• Marketing-Automatisierungen\n• Gestaltung realer Erlebnisse für nutzergenerierte Inhalte und Proof of Humanity\n• Laufende Geschäftsentwicklung\n• Business-to-Business-Positionierung\n• Projektmanagement",
+    "relevanceSystemTitle": "Wie das Better System funktioniert",
+    "relevanceQuantos": "Marketing-Automatisierungen und die digitalen Fähigkeiten, die zur Ausführung und Pflege des Ökosystems benötigt werden, werden zu wiederverwendbaren Teilen Ihres Systems.",
+    "relevanceHack": "Die Quantos werden mit Wachstums-Workflows verbunden, die Inhalte verteilen, Nachfrage erfassen und Chancen vorantreiben.",
+    "relevancePowerUnits": "Das Better Pack pflegt das Ökosystem, gestaltet reale Erlebnisse, stärkt Ihre Positionierung und verwaltet die laufende Geschäftsentwicklung.",
+    "relevanceSovereignNode": "Ihr bestehendes Fundament wächst zu einem vernetzten System für Marketing, Kundenkommunikation und Geschäftsentwicklung.",
+    "relevanceInvestment": "3.500 USD",
+    "relevanceScholarship": "Underdog-Stipendium: bis zu 50% Co-Investition (reduziert auf ~$1.750–$2.750).",
+    "relevanceCta": "Bauen Sie Ihr Relevance System auf",
+
+    "dominanceTitle": "DIGITAL DOMINANCE",
+    "dominanceSubtitle": "WIR WACHSEN. ABER UNSERE SYSTEME KOMMEN NICHT MIT.",
+    "dominancePain": "Sie haben die Größe, die Nachfrage und den Markt. Aber interne Abläufe und getrennte Systeme bremsen das Unternehmen aus. Das Ergebnis: maßgeschneiderte Technologie und KI-Infrastruktur für komplexes Wachstum.",
+    "dominanceIncludedTitle": "Was ist enthalten",
+    "dominanceIncluded": "• Individuelle Business-Software\n• MVP-Systeme\n• Interne KI-Agenten mit definierten Berechtigungen und menschlicher Aufsicht\n• Infrastruktur für globale Echtzeit-Operationen\n• Unternehmerische Geschäftsentwicklung\n• Strategisches Matchmaking\n• Investment-Readiness",
+    "dominanceSystemTitle": "Wie das Better System funktioniert",
+    "dominanceQuantos": "Individuelle Software, MVP-Komponenten, KI-Agenten und operative Werkzeuge werden zu modularen Fähigkeiten mit klar definierten Aufgaben.",
+    "dominanceHack": "Die Quantos werden zu vollständigen Systemen für Vertrieb, Onboarding, Kundenservice, Reporting oder globale Operationen kombiniert.",
+    "dominancePowerUnits": "Master- und Alpha-Power-Units bringen die Spezialisten zusammen, die benötigt werden, um die Infrastruktur zu entwerfen, aufzubauen, zu verbinden und zu prüfen. Unternehmerische Geschäftsentwicklung, Matchmaking und Investment-Readiness werden durch die relevanten humangeführten Power Units bereitgestellt.",
+    "dominanceSovereignNode": "Ihre individuelle Software, KI-Systeme und operativen Workflows werden zu vernetzter Infrastruktur mit klar definiertem Eigentum, Zugang und Betriebsregeln.",
+    "dominanceInvestment": "10.000 USD",
+    "dominanceScholarship": "Underdog-Stipendium: maßgeschneidert (individuell strukturiert, ausschließlich für Enterprise-Betriebe oder Whales).",
+    "dominanceCta": "Bauen Sie Ihre Sovereign Infrastructure auf"
   }
 }
