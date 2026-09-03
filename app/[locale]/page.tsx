@@ -13,6 +13,7 @@ import { useLocale, useTranslations } from 'next-intl';
 import FinalChallenge from '@/components/FinalChallenge'
 import GlobalAccessMechanism from "@/components/GlobalAccessMechanism";
 import GrowthCapabilities from "@/components/GrowthCapabilities";
+import ScholarshipsPartnerships from "@/components/Scholarshipspartnerships";
 import LeadershipLeagues from "@/components/LeadershipLeagues"
 
 
@@ -925,7 +926,234 @@ export const ui = {
     de: "Wir verkaufen keine starren Pakete. Wir setzen maßgeschneiderte Fähigkeiten ein: Strategie, Produktentwicklung, menschliche Erfahrungen und Geschäftsentwicklung – exakt so, wie Ihr Unternehmen skalieren muss.",
     pt: "Não vendemos pacotes rígidos. Implantamos capacidades personalizadas: estratégia, engenharia de produto, experiências humanas e desenvolvimento de negócios — exatamente como sua empresa precisa para escalar.",
   },
-
+  scholarshipsPartnershipsEyebrow: {
+    en: "STRONG SYSTEMS ARE BUILT THROUGH STRONG ALLIANCES.",
+    es: "LOS SISTEMAS SÓLIDOS SE CONSTRUYEN CON ALIANZAS SÓLIDAS.",
+    de: "STARKE SYSTEME ENTSTEHEN DURCH STARKE ALLIANZEN.",
+    pt: "SISTEMAS FORTES SÃO CONSTRUÍDOS COM ALIANÇAS FORTES.",
+  },
+  scholarshipsPartnershipsTitle: {
+    en: "Scholarships & Partnerships",
+    es: "Becas y Alianzas",
+    de: "Stipendien & Partnerschaften",
+    pt: "Bolsas e Parcerias",
+  },
+  scholarshipsPartnershipsSubtitle: {
+    en: "Want to grow with the Better Pack?",
+    es: "¿Querés crecer con el Better Pack?",
+    de: "Willst du mit dem Better Pack wachsen?",
+    pt: "Quer crescer com o Better Pack?",
+  },
+  scholarshipsPartnershipsIntro: {
+    en: "Build your system with our backing — or join the Better Pack and take Better Technologies into new markets. We invest in people ready to build, lead and move things forward.",
+    es: "Construí tu sistema con nuestro respaldo, o sumate al Better Pack y llevá a Better Technologies a nuevos mercados. Invertimos en personas listas para construir, liderar y mover las cosas hacia adelante.",
+    de: "Bau dein System mit unserer Unterstützung auf — oder tritt dem Better Pack bei und bring Better Technologies in neue Märkte. Wir investieren in Menschen, die bereit sind zu bauen, zu führen und Dinge voranzutreiben.",
+    pt: "Construa seu sistema com nosso apoio — ou junte-se ao Better Pack e leve a Better Technologies a novos mercados. Investimos em pessoas prontas para construir, liderar e fazer as coisas avançarem.",
+  },
+    scholarshipsPillLabel: {
+    en: "The Better Scholarships",
+    es: "Las Becas Better",
+    de: "Die Better-Stipendien",
+    pt: "As Bolsas Better",
+  },
+  scholarshipsTitle: {
+    en: "The Better Scholarships",
+    es: "Las Becas Better",
+    de: "Die Better-Stipendien",
+    pt: "As Bolsas Better",
+  },
+  scholarshipsIntro: {
+    en: "If you are an underdog, or you happen to live in an endangered territory, we've got your back. If you believe in what you're building, we believe in giving you a fair shot.",
+    es: "Si sos un underdog, o vivís en un territorio en riesgo, te cubrimos las espaldas. Si vos creés en lo que estás construyendo, nosotros creemos en darte una oportunidad justa.",
+    de: "Wenn du ein Underdog bist oder in einem gefährdeten Gebiet lebst, halten wir dir den Rücken frei. Wenn du an das glaubst, was du aufbaust, glauben wir daran, dir eine faire Chance zu geben.",
+    pt: "Se você é um underdog, ou vive em um território em risco, nós te apoiamos. Se você acredita no que está construindo, nós acreditamos em te dar uma chance justa.",
+  },
+  scholarshipsCta: {
+    en: "Apply For Scholarship",
+    es: "Postular a la Beca",
+    de: "Für Stipendium bewerben",
+    pt: "Candidatar-se à Bolsa",
+  },
+  scholarshipsWhatsappMessage: {
+    en: "Hi! I'm interested in applying for the Better Scholarship.",
+    es: "¡Hola! Estoy interesado/a en postular a la Beca Better.",
+    de: "Hallo! Ich interessiere mich für das Better-Stipendium.",
+    pt: "Olá! Tenho interesse em me candidatar à Bolsa Better.",
+  },
+  scholarshipQ1: {
+    en: "What is the Better Scholarship?",
+    es: "¿Qué es la Beca Better?",
+    de: "Was ist das Better-Stipendium?",
+    pt: "O que é a Bolsa Better?",
+  },
+  scholarshipA1: {
+    en: "A co-investment programme for founders and businesses with the ambition to grow, but not always the capital or conditions to move at full speed. We back potential with technology, expertise and infrastructure.",
+    es: "Un programa de coinversión para fundadores y negocios con la ambición de crecer, pero que no siempre tienen el capital o las condiciones para moverse a toda velocidad. Respaldamos el potencial con tecnología, expertise e infraestructura.",
+    de: "Ein Co-Investitionsprogramm für Gründer und Unternehmen mit dem Ehrgeiz zu wachsen, aber nicht immer mit dem Kapital oder den Bedingungen, um mit voller Geschwindigkeit voranzukommen. Wir unterstützen Potenzial mit Technologie, Expertise und Infrastruktur.",
+    pt: "Um programa de coinvestimento para fundadores e negócios com ambição de crescer, mas que nem sempre têm o capital ou as condições para avançar a toda velocidade. Apoiamos o potencial com tecnologia, expertise e infraestrutura.",
+  },
+  scholarshipQ2: {
+    en: "Who is considered an Underdog?",
+    es: "¿A quién se considera un Underdog?",
+    de: "Wer gilt als Underdog?",
+    pt: "Quem é considerado um Underdog?",
+  },
+  scholarshipA2: {
+    en: "Someone building with less — less capital, fewer connections or fewer opportunities — but with the vision and drive to make something happen.",
+    es: "Alguien que construye con menos — menos capital, menos contactos o menos oportunidades — pero con la visión y la determinación para hacer que las cosas pasen.",
+    de: "Jemand, der mit weniger baut — weniger Kapital, weniger Kontakte oder weniger Chancen — aber mit der Vision und dem Antrieb, etwas zu bewegen.",
+    pt: "Alguém que constrói com menos — menos capital, menos contatos ou menos oportunidades — mas com a visão e a determinação para fazer algo acontecer.",
+  },
+  scholarshipQ3: {
+    en: "What are Endangered Territories?",
+    es: "¿Qué son los Territorios en Riesgo?",
+    de: "Was sind gefährdete Gebiete?",
+    pt: "O que são Territórios em Risco?",
+  },
+  scholarshipA3: {
+    en: "Markets where great ideas and capable people face conditions that make building harder than it should be — from economic instability and currency devaluation to limited access to technology and capital.",
+    es: "Mercados donde grandes ideas y personas capaces enfrentan condiciones que hacen que construir sea más difícil de lo que debería — desde inestabilidad económica y devaluación de la moneda hasta acceso limitado a tecnología y capital.",
+    de: "Märkte, in denen großartige Ideen und fähige Menschen auf Bedingungen stoßen, die den Aufbau schwerer machen als nötig — von wirtschaftlicher Instabilität und Währungsabwertung bis hin zu eingeschränktem Zugang zu Technologie und Kapital.",
+    pt: "Mercados onde grandes ideias e pessoas capazes enfrentam condições que tornam a construção mais difícil do que deveria ser — de instabilidade econômica e desvalorização da moeda ao acesso limitado a tecnologia e capital.",
+  },
+  scholarshipQ4: {
+    en: "What does the Scholarship support?",
+    es: "¿Qué cubre la Beca?",
+    de: "Was unterstützt das Stipendium?",
+    pt: "O que a Bolsa apoia?",
+  },
+  scholarshipA4: {
+    en: "It's not a cash grant. We co-invest in the capabilities your business needs — from its digital foundation to market relevance and scalable infrastructure.",
+    es: "No es un subsidio en efectivo. Coinvertimos en las capacidades que tu negocio necesita — desde su base digital hasta la relevancia de mercado y la infraestructura escalable.",
+    de: "Es ist kein Bargeldzuschuss. Wir investieren gemeinsam in die Fähigkeiten, die dein Unternehmen braucht — von der digitalen Grundlage bis zur Marktrelevanz und skalierbaren Infrastruktur.",
+    pt: "Não é uma doação em dinheiro. Coinvestimos nas capacidades que o seu negócio precisa — desde sua base digital até relevância de mercado e infraestrutura escalável.",
+  },
+  scholarshipQ5: {
+    en: "How do I apply?",
+    es: "¿Cómo postulo?",
+    de: "Wie bewerbe ich mich?",
+    pt: "Como me candidato?",
+  },
+  scholarshipA5: {
+    en: "Tell us what you're building, what's holding you back and where you want to go. We review every application individually.",
+    es: "Contanos qué estás construyendo, qué te está frenando y hacia dónde querés ir. Revisamos cada postulación de forma individual.",
+    de: "Erzähl uns, was du aufbaust, was dich zurückhält und wohin du willst. Wir prüfen jede Bewerbung individuell.",
+    pt: "Conte-nos o que você está construindo, o que está te segurando e para onde você quer ir. Analisamos cada candidatura individualmente.",
+  },
+    partnershipsPillLabel: {
+    en: "The Better Partnerships",
+    es: "Las Alianzas Better",
+    de: "Die Better-Partnerschaften",
+    pt: "As Parcerias Better",
+  },
+  partnershipsTitle: {
+    en: "The Better Partnerships",
+    es: "Las Alianzas Better",
+    de: "Die Better-Partnerschaften",
+    pt: "As Parcerias Better",
+  },
+  partnershipsIntro: {
+    en: "Already have the network, market knowledge or ambition to bring Better Technologies somewhere new? Join the Better Pack as a partner and build with us. You bring the territory, we bring the system. Together, we build the market.",
+    es: "¿Ya tenés la red de contactos, el conocimiento del mercado o la ambición para llevar a Better Technologies a un lugar nuevo? Sumate al Better Pack como partner y construí con nosotros. Vos ponés el territorio, nosotros ponemos el sistema. Juntos construimos el mercado.",
+    de: "Hast du bereits das Netzwerk, die Marktkenntnis oder den Ehrgeiz, Better Technologies an einen neuen Ort zu bringen? Tritt dem Better Pack als Partner bei und bau mit uns. Du bringst das Gebiet, wir bringen das System. Gemeinsam bauen wir den Markt auf.",
+    pt: "Já tem a rede de contatos, o conhecimento de mercado ou a ambição para levar a Better Technologies a um novo lugar? Junte-se ao Better Pack como parceiro e construa conosco. Você traz o território, nós trazemos o sistema. Juntos construímos o mercado.",
+  },
+  partnershipsCta: {
+    en: "Apply For Partnership",
+    es: "Postular a la Alianza",
+    de: "Für Partnerschaft bewerben",
+    pt: "Candidatar-se à Parceria",
+  },
+  partnershipsWhatsappMessage: {
+    en: "Hi! I'd like to explore becoming a Better Technologies partner.",
+    es: "¡Hola! Me gustaría explorar ser partner de Better Technologies.",
+    de: "Hallo! Ich möchte gerne Partner von Better Technologies werden.",
+    pt: "Olá! Gostaria de explorar me tornar um parceiro da Better Technologies.",
+  },
+  partnershipQ1: {
+    en: "How can I partner with Better Technologies?",
+    es: "¿Cómo puedo ser partner de Better Technologies?",
+    de: "Wie kann ich Partner von Better Technologies werden?",
+    pt: "Como posso ser parceiro da Better Technologies?",
+  },
+  partnershipA1: {
+    en: "Join as a Sales Partner or train with us to become a Certified Integrator.",
+    es: "Sumate como Sales Partner o entrená con nosotros para convertirte en Integrador Certificado.",
+    de: "Werde Sales Partner oder trainiere mit uns, um Certified Integrator zu werden.",
+    pt: "Junte-se como Sales Partner ou treine conosco para se tornar um Integrador Certificado.",
+  },
+  partnershipQ2: {
+    en: "What does a Sales Partner do?",
+    es: "¿Qué hace un Sales Partner?",
+    de: "Was macht ein Sales Partner?",
+    pt: "O que faz um Sales Partner?",
+  },
+  partnershipA2: {
+    en: "You bring us the right client. We handle strategy, engineering and delivery. You share in the value you help create.",
+    es: "Vos nos traés al cliente correcto. Nosotros nos ocupamos de la estrategia, la ingeniería y la entrega. Vos participás del valor que ayudás a crear.",
+    de: "Du bringst uns den richtigen Kunden. Wir kümmern uns um Strategie, Engineering und Umsetzung. Du bist am Wert beteiligt, den du mit schaffst.",
+    pt: "Você nos traz o cliente certo. Nós cuidamos da estratégia, engenharia e entrega. Você participa do valor que ajuda a criar.",
+  },
+  partnershipQ3: {
+    en: "What does a Certified Integrator do?",
+    es: "¿Qué hace un Integrador Certificado?",
+    de: "Was macht ein Certified Integrator?",
+    pt: "O que faz um Integrador Certificado?",
+  },
+  partnershipA3: {
+    en: "You train with Better Technologies and learn to build and deploy our systems for clients in your market.",
+    es: "Te entrenás con Better Technologies y aprendés a construir y desplegar nuestros sistemas para clientes en tu mercado.",
+    de: "Du trainierst mit Better Technologies und lernst, unsere Systeme für Kunden in deinem Markt zu bauen und einzusetzen.",
+    pt: "Você treina com a Better Technologies e aprende a construir e implantar nossos sistemas para clientes no seu mercado.",
+  },
+  partnershipQ4: {
+    en: "Do I need technical experience?",
+    es: "¿Necesito experiencia técnica?",
+    de: "Brauche ich technische Erfahrung?",
+    pt: "Preciso de experiência técnica?",
+  },
+  partnershipA4: {
+    en: "Not as a Sales Partner. Certified Integrators complete our training and meet the delivery standards of the Better Ecosystem.",
+    es: "No como Sales Partner. Los Integradores Certificados completan nuestro entrenamiento y cumplen con los estándares de entrega del Ecosistema Better.",
+    de: "Nicht als Sales Partner. Certified Integrators absolvieren unser Training und erfüllen die Lieferstandards des Better-Ökosystems.",
+    pt: "Não como Sales Partner. Os Integradores Certificados completam nosso treinamento e atendem aos padrões de entrega do Ecossistema Better.",
+  },
+  partnershipQ5: {
+    en: "How does the partnership model work?",
+    es: "¿Cómo funciona el modelo de alianza?",
+    de: "Wie funktioniert das Partnerschaftsmodell?",
+    pt: "Como funciona o modelo de parceria?",
+  },
+  partnershipA5: {
+    en: "The model depends on your role, market and level of involvement. Terms are discussed directly.",
+    es: "El modelo depende de tu rol, tu mercado y tu nivel de involucramiento. Las condiciones se conversan directamente.",
+    de: "Das Modell hängt von deiner Rolle, deinem Markt und deinem Engagement-Level ab. Die Konditionen werden direkt besprochen.",
+    pt: "O modelo depende do seu papel, mercado e nível de envolvimento. Os termos são discutidos diretamente.",
+  },
+    scholarshipsPartnershipsTitlePart1: {
+    en: "Scholarships",
+    es: "Becas",
+    de: "Stipendien",
+    pt: "Bolsas",
+  },
+  scholarshipsPartnershipsTitlePart2: {
+    en: "Partnerships",
+    es: "Alianzas",
+    de: "Partnerschaften",
+    pt: "Parcerias",
+  },
+    partnershipQ6: {
+    en: "How do I apply?",
+    es: "¿Cómo postulo?",
+    de: "Wie bewerbe ich mich?",
+    pt: "Como me candidato?",
+  },
+  partnershipA6: {
+    en: "Tell us about your experience, your market and how you want to contribute. We will explore the right role together.",
+    es: "Contanos sobre tu experiencia, tu mercado y cómo querés contribuir. Vamos a explorar juntos cuál es el rol ideal.",
+    de: "Erzähl uns von deiner Erfahrung, deinem Markt und wie du beitragen möchtest. Gemeinsam finden wir die passende Rolle.",
+    pt: "Conte-nos sobre sua experiência, seu mercado e como você quer contribuir. Vamos explorar juntos o papel ideal.",
+  },
   foundationTitle: {
     en: "BETTER FOUNDATION",
     es: "BETTER FOUNDATION",
@@ -1972,8 +2200,11 @@ export default function Home() {
             {t('whatWeDo')}
           </p>
           <h1 className="text-3xl md:text-5xl lg:text-6xl font-black leading-[1.05] tracking-tighter max-w-4xl text-white uppercase">
-            {tx('openLatam')} <br /> <span className="text-blue-600">{tx('globalCompanies')}</span>
-          </h1>
+  {tx('openLatam')}
+</h1>
+<h2 className="text-2xl md:text-4xl lg:text-5xl font-black leading-[1.05] tracking-tighter max-w-4xl text-blue-600 uppercase">
+  {tx('globalCompanies')}
+</h2>
           <p className="mt-3 text-white text-[10px] md:text-[12px] uppercase tracking-widest font-bold">{tx('subtagline')}</p>
           <div className="mt-5 flex flex-col sm:flex-row items-center gap-3">
             <a href="https://wa.me/593991358652?text=Hi!%20I%27d%20like%20to%20get%20in%20touch%20with%20the%20team." className="inline-block px-8 py-3 bg-[#FF6B00] text-white rounded-full font-bold shadow-lg uppercase tracking-widest text-[10px] transition-transform active:scale-95">
@@ -2218,7 +2449,8 @@ export default function Home() {
       <BetterEcosystemSection locale={locale} />
       
       <GrowthCapabilities tx={tx} />
-      <GlobalAccessMechanism tx={tx} />
+      <ScholarshipsPartnerships tx={tx} />
+      
 
       <div className="py-16 px-6 bg-white text-center">
         <div className="max-w-4xl mx-auto">

@@ -143,7 +143,7 @@ export default function LeadershipLeagues({ tx }: Props) {
                                         </button>
 
 
-                                        <a href="https://btrelevancereport.lovable.app/"
+                                        <a href="https://alpha.better-technologies.com/"
                                             target="_blank"
                                             rel="noopener noreferrer"
                                             className="text-center text-blue-600 text-xs font-black uppercase tracking-widest hover:underline"
@@ -162,7 +162,7 @@ export default function LeadershipLeagues({ tx }: Props) {
                                     </a>
                                 ) : (
 
-                                    <a href="https://btrelevancereport.lovable.app/"
+                                    <a href="https://alpha.better-technologies.com/"
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className="inline-flex justify-center rounded-full bg-blue-600 px-6 py-3 text-xs font-black uppercase tracking-widest text-white hover:bg-blue-700 transition"

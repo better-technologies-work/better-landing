@@ -29,7 +29,7 @@ const AlphaFastTrackSection = () => {
                 <div className="flex flex-col sm:flex-row justify-center gap-4">
                     {/* Camino gratuito */}
 
-                    <a href="https://btrelevancereport.lovable.app/"
+                    <a href="https://alpha.better-technologies.com/"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="px-8 py-4 rounded-full border-2 border-slate-200 text-slate-700 font-black uppercase tracking-widest text-[11px] hover:border-blue-600 hover:text-blue-600 transition-colors"

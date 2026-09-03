@@ -1,8 +1,0 @@
-
-
-Hay un error en tiempo de ejecución al usar el botón de agregar fila en la tabla:
-
-TypeError: leaf.domNode.closest is not a function
-    at addTableRow (lib/quill-extensions.ts:104:44)
-
-
