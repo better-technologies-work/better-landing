@@ -2236,9 +2236,13 @@ export default function Home() {
       <section id="mittelstand" className="py-12 md:py-24 px-6 bg-slate-50 border-y border-slate-200">
         <div className="w-full max-w-7xl mx-auto grid md:grid-cols-2 gap-20 items-center">
 
-          {/* COLUMNA IZQUIERDA (antes derecha) */}
-
-          <div>
+          {/* COLUMNA IZQUIERDA */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.6 }}
+          >
             <span className="text-sm font-black uppercase tracking-[0.2em] text-blue-600 block mb-3">
               {ui.ourCustomers[locale]}
             </span>
@@ -2261,12 +2265,16 @@ export default function Home() {
             <p className="text-lg text-slate-600 font-medium leading-relaxed mb-8 text-balance">
               {tx('problemBody')}
             </p>
+          </motion.div>
 
-
-          </div>
-
-          {/* COLUMNA DERECHA (antes izquierda) */}
-          <div className="bg-white p-12 rounded-3xl border border-slate-200 shadow-sm transition-all hover:shadow-md">
+          {/* COLUMNA DERECHA */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="bg-white p-12 rounded-3xl border border-slate-200 shadow-sm transition-all hover:shadow-md"
+          >
             <p className="text-sm font-bold tracking-wider text-slate-400 uppercase mb-3">
               {tx('problemTitle')}
             </p>
@@ -2293,11 +2301,18 @@ export default function Home() {
             >
               {ui.termsButtonLabel[locale]}
             </button>
-          </div>
+          </motion.div>
 
         </div>
+
         {/* QUOTE CARD — CHARLOTTE */}
-        <div className="w-full max-w-7xl mx-auto px-6 mt-10 md:mt-6 mb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="w-full max-w-7xl mx-auto px-6 mt-10 md:mt-6 mb-16"
+        >
           <div className="relative bg-white border border-slate-100 rounded-3xl shadow-xl p-8 md:p-10">
             <div className="flex items-center gap-4 mb-6">
               <div className="relative w-14 h-14 rounded-full overflow-hidden border-2 border-slate-100 flex-shrink-0 bg-blue-50">
@@ -2322,8 +2337,9 @@ export default function Home() {
               "<mark className="bg-orange-200/70 px-1 rounded">{tx('problemQuote')}</mark>"
             </p>
           </div>
-        </div>
-        {/* CIERRE THE PROBLEM — full width con animaciones e impacto */}
+        </motion.div>
+
+        {/* CIERRE THE PROBLEM — full width */}
         <div className="w-full max-w-7xl mx-auto mt-16 px-4">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -2333,12 +2349,10 @@ export default function Home() {
             whileHover={{ y: -4 }}
             className="relative bg-gradient-to-b from-white via-slate-50/50 to-white rounded-3xl border border-slate-200 shadow-xl p-8 md:p-14 text-center overflow-hidden transition-all duration-300 hover:shadow-2xl hover:border-blue-500/30 group"
           >
-            {/* Glows decorativos de fondo con colores de la marca */}
             <div className="absolute -top-24 -left-24 w-72 h-72 rounded-full bg-orange-500/10 blur-3xl pointer-events-none group-hover:bg-orange-500/20 transition-all duration-500" />
             <div className="absolute -bottom-24 -right-24 w-72 h-72 rounded-full bg-blue-600/10 blur-3xl pointer-events-none group-hover:bg-blue-600/20 transition-all duration-500" />
 
             <div className="relative z-10 max-w-4xl mx-auto">
-              {/* Subtítulo Naranja con entrada escalonada */}
               <motion.h2
                 initial={{ opacity: 0, y: 15 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -2359,7 +2373,6 @@ export default function Home() {
                 {tx('problemTogether')}
               </motion.p>
 
-              {/* Línea divisora animada */}
               <motion.div
                 initial={{ width: 0 }}
                 whileInView={{ width: "80px" }}
@@ -2368,7 +2381,6 @@ export default function Home() {
                 className="h-1 bg-gradient-to-r from-orange-500 to-blue-600 mx-auto mb-8 rounded-full"
               />
 
-              {/* Título Principal */}
               <motion.h3
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
@@ -2389,7 +2401,6 @@ export default function Home() {
                 {tx('problemInfra')}
               </motion.p>
 
-              {/* Frase Destacada Naranja / Azul */}
               <motion.p
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
@@ -2410,7 +2421,6 @@ export default function Home() {
                 {tx('problemConnects')}
               </motion.p>
 
-              {/* Botón CTA con efecto interactivo */}
               <motion.div
                 initial={{ opacity: 0, y: 15 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -2480,45 +2490,53 @@ export default function Home() {
           </div>
         )}
 
-        {/* MODAL THE TERMS */}
+       {/* MODAL THE TERMS (DISEÑO MEJORADO) */}
         {isTermsModalOpen && (
           <div
-            className="fixed inset-0 bg-black/60 flex items-center justify-center z-50 px-4"
+            className="fixed inset-0 bg-slate-950/70 backdrop-blur-md flex items-center justify-center z-50 px-4"
             onClick={() => setIsTermsModalOpen(false)}
           >
             <div
-              className="bg-white rounded-3xl max-w-2xl w-full p-10 md:p-12 relative max-h-[85vh] overflow-y-auto"
+              className="bg-white rounded-3xl max-w-2xl w-full p-8 md:p-12 relative max-h-[85vh] overflow-y-auto shadow-2xl border border-slate-100"
               onClick={(e) => e.stopPropagation()}
             >
               <button
                 onClick={() => setIsTermsModalOpen(false)}
-                className="absolute top-6 right-6 text-slate-400 hover:text-slate-900 transition-colors text-2xl leading-none"
+                className="absolute top-6 right-6 w-9 h-9 rounded-full bg-slate-100 text-slate-500 hover:text-slate-900 hover:bg-slate-200 transition-all flex items-center justify-center font-bold text-base"
                 aria-label={ui.closeButton[locale]}
               >
-                ×
+                ✕
               </button>
 
-              <h3 className="text-3xl font-black text-slate-900 mb-6 uppercase tracking-tight">
+              <span className="text-[10px] font-black uppercase tracking-[0.25em] text-blue-600 block mb-2">
+                {tx('problemTitle')}
+              </span>
+
+              <h3 className="text-2xl md:text-3xl font-black text-slate-900 mb-6 uppercase tracking-tight">
                 {ui.termsModalTitle[locale]}
               </h3>
 
-              <p className="text-slate-600 text-lg leading-relaxed mb-8">
-                {ui.termsModalBody[locale].map((part, i) =>
-                  part.bold ? (
-                    <strong key={i} className="font-black text-slate-900">{part.text}</strong>
-                  ) : (
-                    <span key={i}>{part.text}</span>
-                  )
-                )}
-              </p>
-
+              <div className="bg-slate-50 border border-slate-100 rounded-2xl p-6 mb-8 text-slate-700 text-base md:text-lg leading-relaxed font-medium">
+                <p>
+                  {ui.termsModalBody[locale].map((part, i) =>
+                    part.bold ? (
+                      <strong key={i} className="font-black text-blue-600 bg-blue-50 px-1 py-0.5 rounded">
+                        {part.text}
+                      </strong>
+                    ) : (
+                      <span key={i}>{part.text}</span>
+                    )
+                  )}
+                </p>
+              </div>
 
               <a href="https://calendar.app.google/Ntnv2PvHmPNgCnKZ6"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex justify-center bg-slate-900 text-white font-bold px-8 py-4 rounded-full hover:bg-slate-800 transition-colors text-center"
+                className="inline-flex justify-center items-center gap-2 bg-blue-600 text-white font-black text-xs md:text-sm uppercase tracking-widest px-8 py-4 rounded-full hover:bg-blue-700 transition-all shadow-lg shadow-blue-600/20 active:scale-95 text-center w-full sm:w-auto"
               >
                 {ui.termsModalCta[locale]}
+                <ArrowRight className="w-4 h-4" />
               </a>
             </div>
           </div>
@@ -2545,7 +2563,7 @@ export default function Home() {
           </p>
         </div>
       </div>
-      {/* 6. EQUIPO */}
+      {/* 6. EQUIPO */ }
       <section id="about" className="py-16 px-6 bg-white border-t border-slate-100">
         <div className="w-full max-w-7xl mx-auto">
 
@@ -2611,68 +2629,68 @@ export default function Home() {
 
 
 
-      {/*  NEWS FEED */}
-      <NewsSection />
+  {/*  NEWS FEED */ }
+  <NewsSection />
 
 
 
-      {/* LATEST INSIGHTS */}
-      <section className="py-16 bg-slate-50">
-        <div className="container mx-auto px-6 text-center">
+  {/* LATEST INSIGHTS */ }
+  <section className="py-16 bg-slate-50">
+    <div className="container mx-auto px-6 text-center">
 
-          <p className="text-blue-600 uppercase tracking-[0.25em] text-[10px] font-black mb-4">{tx('stayUpdated')}</p>
-          <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-6 uppercase">{tx('latestInsights')}</h2>
-          <p className="text-slate-500 max-w-lg mx-auto mb-10">{tx('blogDesc')}</p>
-          {posts && posts.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12 text-left">
-              {posts.map((post) => (
-                <ArticleCard
-                  key={post.id}
-                  title={post.title}
-                  description={post.description}
-                  cover_url={post.cover_url}
-                  category={post.category}
-                  slug={post.slug}
-                  post_url={post.post_url}
-                  published_at={post.published_at}
-                  updated_at={post.updated_at}
-                  video_url={post.video_url}
-                  locale={locale}
-                  readMoreText={tx('readMore')}
-                  publishedText={tx('published')}
-                  updatedText={tx('updated')}
-                  noImageText={tx('noImage')}
-                  noDescText={tx('noDesc') as string}
-                />
-              ))}
-            </div>
-          ) : (
-            <div className="py-12 text-center"><p className="text-slate-400 text-sm">{tx('noPostsYet')}</p></div>
-          )}
-          <a href={`${localeBase}/blog`} className="inline-block bg-slate-900 text-white px-10 py-4 rounded-full font-black text-xs uppercase tracking-widest hover:bg-blue-600 transition-colors">
-            {t('viewAllPosts')}
-          </a>
+      <p className="text-blue-600 uppercase tracking-[0.25em] text-[10px] font-black mb-4">{tx('stayUpdated')}</p>
+      <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-6 uppercase">{tx('latestInsights')}</h2>
+      <p className="text-slate-500 max-w-lg mx-auto mb-10">{tx('blogDesc')}</p>
+      {posts && posts.length > 0 ? (
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12 text-left">
+          {posts.map((post) => (
+            <ArticleCard
+              key={post.id}
+              title={post.title}
+              description={post.description}
+              cover_url={post.cover_url}
+              category={post.category}
+              slug={post.slug}
+              post_url={post.post_url}
+              published_at={post.published_at}
+              updated_at={post.updated_at}
+              video_url={post.video_url}
+              locale={locale}
+              readMoreText={tx('readMore')}
+              publishedText={tx('published')}
+              updatedText={tx('updated')}
+              noImageText={tx('noImage')}
+              noDescText={tx('noDesc') as string}
+            />
+          ))}
         </div>
-      </section>
+      ) : (
+        <div className="py-12 text-center"><p className="text-slate-400 text-sm">{tx('noPostsYet')}</p></div>
+      )}
+      <a href={`${localeBase}/blog`} className="inline-block bg-slate-900 text-white px-10 py-4 rounded-full font-black text-xs uppercase tracking-widest hover:bg-blue-600 transition-colors">
+        {t('viewAllPosts')}
+      </a>
+    </div>
+  </section>
 
 
 
 
-      {/* FOOTER */}
-      <footer className="py-16 text-center bg-white border-t border-slate-100">
-        <p className="text-slate-400 text-[9px] font-black uppercase tracking-[0.3em] mb-4">{tx('dontMiss')}</p>
-        <h3 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter uppercase mb-10">
-          {tx('followJourney')}{" "}
-          <span className="text-blue-600">
-            {tx('journey')}
-          </span>
-        </h3>
-        <div className="flex justify-center gap-6 mb-12">
-          <a href="https://www.linkedin.com/company/bettertechnologies/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-6 py-3 rounded-full border-2 border-slate-200 text-slate-900 font-black text-[11px] uppercase tracking-widest hover:border-blue-600 hover:text-blue-600 transition-all"><LinkedInIcon /> LinkedIn</a>
-          <a href="https://www.instagram.com/better_technologies?igsh=MWUwYmkyYXVhdWRucA==" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-6 py-3 rounded-full border-2 border-slate-200 text-slate-900 font-black text-[11px] uppercase tracking-widest hover:border-[#d6249f] hover:text-[#d6249f] transition-all"><InstagramIcon /> Instagram</a>
-        </div>
-        <p className="text-slate-400 text-[9px] font-black uppercase tracking-[0.3em]">&copy; 2026 Better Technologies.</p>
-      </footer>
+  {/* FOOTER */ }
+  <footer className="py-16 text-center bg-white border-t border-slate-100">
+    <p className="text-slate-400 text-[9px] font-black uppercase tracking-[0.3em] mb-4">{tx('dontMiss')}</p>
+    <h3 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter uppercase mb-10">
+      {tx('followJourney')}{" "}
+      <span className="text-blue-600">
+        {tx('journey')}
+      </span>
+    </h3>
+    <div className="flex justify-center gap-6 mb-12">
+      <a href="https://www.linkedin.com/company/bettertechnologies/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-6 py-3 rounded-full border-2 border-slate-200 text-slate-900 font-black text-[11px] uppercase tracking-widest hover:border-blue-600 hover:text-blue-600 transition-all"><LinkedInIcon /> LinkedIn</a>
+      <a href="https://www.instagram.com/better_technologies?igsh=MWUwYmkyYXVhdWRucA==" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-6 py-3 rounded-full border-2 border-slate-200 text-slate-900 font-black text-[11px] uppercase tracking-widest hover:border-[#d6249f] hover:text-[#d6249f] transition-all"><InstagramIcon /> Instagram</a>
+    </div>
+    <p className="text-slate-400 text-[9px] font-black uppercase tracking-[0.3em]">&copy; 2026 Better Technologies.</p>
+  </footer>
 
 
 
