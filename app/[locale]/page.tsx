@@ -24,16 +24,16 @@ export type Locale = 'en' | 'es' | 'de' | 'pt';
 const team = [
   {
     name: "Diego Vargas",
-    role: "Chief Business Engineering Operator",
-    desc: "The mind behind the 72h framework. Diego built Better Technologies from a conviction: that real innovation doesn't need a million-dollar budget — it needs relentless execution. He leads the vision, the team, and every sprint from day one.",
+    role: "Founder & Chief Product Engineer ",
+    desc: "Diego founded Better Technologies on a simple conviction: real innovation does not need a massive budget — it needs relentless execution. He leads business and product development, turning problems into solutions: Quantos, Hacks and systems you can own.",
     initials: "DV",
     photo: "/diego.jpeg",
     linkedin: "https://www.linkedin.com/in/diegoe-vargas/",
   },
   {
     name: "Charlotte Götz",
-    role: "Organic Growth Chief Developer",
-    desc: "Charlotte turns bold ideas into market movements. With a sharp eye for positioning and a data-driven approach to growth, she ensures every product we build doesn't just work — it gets noticed, adopted, and remembered.",
+    role: "Co-Founder & Chief Digital Relevance Officer ",
+    desc: "Charlotte co-founded Better Technologies to turn bold ideas into market movements. She leads positioning and organic growth — making businesses visible to your target group, trusted by AI and remembered by the market. People forget ads: They remember experiences.",
     initials: "CG",
     photo: "/charlotte.jpeg",
     linkedin: "https://www.linkedin.com/in/charlotte-goetz-public/",
@@ -67,16 +67,16 @@ const team = [
 const teamEs = [
   {
     name: "Diego Vargas",
-    role: "Chief Business Engineering Operator",
-    desc: "La mente detras del framework de 72h. Diego construyo Better Technologies desde una conviccion: la innovacion real no necesita presupuestos millonarios, necesita ejecucion implacable. Lidera la vision, el equipo y cada sprint desde el dia uno.",
+    role: "Founder & Chief Product Engineer ",
+    desc: "Diego founded Better Technologies on a simple conviction: real innovation does not need a massive budget — it needs relentless execution. He leads business and product development, turning problems into solutions: Quantos, Hacks and systems you can own.",
     initials: "DV",
     photo: "/diego.jpeg",
     linkedin: "https://www.linkedin.com/in/diegoe-vargas/",
   },
   {
     name: "Charlotte Gotz",
-    role: "Organic Growth Chief Developer",
-    desc: "Charlotte convierte ideas audaces en movimientos de mercado. Con una mirada precisa para el posicionamiento y un enfoque guiado por datos, garantiza que cada producto no solo funcione: se note, se adopte y se recuerde.",
+    role: "Co-Founder & Chief Digital Relevance Officer ",
+    desc: "Charlotte co-fundó Better Technologies para convertir ideas audaces en movimientos de mercado. Lidera el posicionamiento y el crecimiento orgánico — haciendo que los negocios sean visibles para su público objetivo, confiables para la IA y recordados por el mercado. La gente olvida los anuncios: recuerda las experiencias.",
     initials: "CG",
     photo: "/charlotte.jpeg",
     linkedin: "https://www.linkedin.com/in/charlotte-goetz-public/",
@@ -110,16 +110,16 @@ const teamEs = [
 const teamDe = [
   {
     name: "Diego Vargas",
-    role: "Chief Business Engineering Operator",
-    desc: "Der Kopf hinter dem 72h-Framework. Diego hat Better Technologies aus einer Überzeugung heraus aufgebaut: Echte Innovation braucht kein Millionenbudget — sie braucht unermüdliche Umsetzung. Er leitet die Vision, das Team und jeden Sprint von Anfang an.",
+    role: "Founder & Chief Product Engineer ",
+    desc: "Diego founded Better Technologies on a simple conviction: real innovation does not need a massive budget — it needs relentless execution. He leads business and product development, turning problems into solutions: Quantos, Hacks and systems you can own.",
     initials: "DV",
     photo: "/diego.jpeg",
     linkedin: "https://www.linkedin.com/in/diegoe-vargas/",
   },
   {
     name: "Charlotte Götz",
-    role: "Organic Growth Chief Developer",
-    desc: "Charlotte verwandelt mutige Ideen in Marktbewegungen. Mit einem scharfen Blick für Positionierung und einem datengesteuerten Wachstumsansatz stellt sie sicher, dass jedes Produkt nicht nur funktioniert — es wird wahrgenommen, angenommen und erinnert.",
+    role: "Co-Founder & Chief Digital Relevance Officer ",
+    desc: "Charlotte ist Mitgründerin von Better Technologies und verwandelt mutige Ideen in Marktbewegungen. Sie leitet die Positionierung und das organische Wachstum — und macht Unternehmen sichtbar für ihre Zielgruppe, vertrauenswürdig für KI und unvergesslich für den Markt. Menschen vergessen Werbung: Sie erinnern sich an Erlebnisse.",
     initials: "CG",
     photo: "/charlotte.jpeg",
     linkedin: "https://www.linkedin.com/in/charlotte-goetz-public/",
@@ -153,16 +153,16 @@ const teamDe = [
 const teamPt = [
   {
     name: "Diego Vargas",
-    role: "Chief Business Engineering Operator",
-    desc: "A mente por trás do framework de 72h. Diego construiu a Better Technologies a partir de uma convicção: a inovação real não precisa de orçamentos milionários — precisa de execução implacável. Ele lidera a visão, a equipe e cada sprint desde o primeiro dia.",
+    role: "Founder & Chief Product Engineer ",
+    desc: "Diego founded Better Technologies on a simple conviction: real innovation does not need a massive budget — it needs relentless execution. He leads business and product development, turning problems into solutions: Quantos, Hacks and systems you can own.",
     initials: "DV",
     photo: "/diego.jpeg",
     linkedin: "https://www.linkedin.com/in/diegoe-vargas/",
   },
   {
     name: "Charlotte Götz",
-    role: "Organic Growth Chief Developer",
-    desc: "Charlotte transforma ideias ousadas em movimentos de mercado. Com um olhar aguçado para posicionamento e uma abordagem orientada por dados, ela garante que cada produto não apenas funcione — seja notado, adotado e lembrado.",
+    role: "Co-Founder & Chief Digital Relevance Officer ",
+    desc: "Charlotte é cofundadora da Better Technologies e transforma ideias ousadas em movimentos de mercado. Ela lidera o posicionamento e o crescimento orgânico — tornando os negócios visíveis para o público-alvo, confiáveis para a IA e memoráveis para o mercado. As pessoas esquecem os anúncios: elas se lembram das experiências",
     initials: "CG",
     photo: "/charlotte.jpeg",
     linkedin: "https://www.linkedin.com/in/charlotte-goetz-public/",
@@ -694,39 +694,34 @@ export const ui = {
   fasterScaling: { en: " Faster and better scaling", es: " Escalamiento mas rapido y mejor", de: " Schnelleres und besseres Skalieren", pt: " Escalonamento mais rápido e melhor" },
 
   // Team
-  aboutTeam: { en: "About our Team", es: "Sobre nuestro equipo", de: "Über unser Team", pt: "Sobre a nossa equipe" },
+ aboutTeam: { en: "The Team", es: "El equipo", de: "Das Team", pt: "A equipe" },
   highPerf: {
-    en: "An Elite",
-    es: "Un equipo de producto",
-    de: "Ein erstklassiges",
-    pt: "Uma equipe de produto"
+    en: "The Better Team",
+    es: "El Mejor Equipo",
+    de: "Das Bessere Team",
+    pt: "A Melhor Equipe"
   },
 
-  highPerfEm: {
-    en: "Trilingual Product Team.",
-    es: "trilingüe de élite.",
-    de: "dreisprachiges Produktteam.",
-    pt: "trilíngue de elite."
-  },
+  
 
   forged: {
-    en: "High Performance",
-    es: "Alto rendimiento",
-    de: "Hochleistung",
-    pt: "Alto desempenho"
+    en: "One Pack",
+    es: "Una manada",
+    de: "Ein Rudel",
+    pt: "Uma alcateia"
   },
 
-  pressure: {
-    en: "Execution.",
-    es: "Ejecución.",
-    de: "Ausführung.",
-    pt: "Execução."
+ pressure: {
+    en: "From Strategy to Execution.",
+    es: "De la estrategia a la ejecución.",
+    de: "Von der Strategie zur Umsetzung.",
+    pt: "Da estratégia à execução."
   },
   aboutTeamCopy: {
-    en: "Forged in high-pressure environments. We are trilingual (EN, SPA, GER) business strategists, product managers, and world-class engineers ensuring business agility for those who are ready to scale.",
-    es: "Forjados en entornos de alta presión. Somos estrategas de negocio, product managers e ingenieros de clase mundial trilingües (EN, ESP, ALE), garantizando la agilidad empresarial para quienes están listos para escalar.",
-    de: "Geschmiedet in Hochdruckumgebungen. Wir sind dreisprachige (EN, SPA, DE) Business-Strategen, Product Manager und Weltklasse-Ingenieure, die geschäftliche Agilität für diejenigen sicherstellen, die bereit sind zu skalieren.",
-    pt: "Forjados em ambientes de alta pressão. Somos estrategistas de negócios, product managers e engenheiros de classe mundial trilíngues (EN, ESP, ALE), garantindo agilidade empresarial para quem está pronto para escalar."
+    en: "Together, we bring more than 55 years of international experience across industries. We work in 3 languages — English, Spanish and German. Every Power Unit has a responsible specialist behind it. We build the system. You lead the business.",
+    es: "Juntos, sumamos más de 55 años de experiencia internacional en distintas industrias. Trabajamos en 3 idiomas — inglés, español y alemán. Cada Power Unit tiene un especialista responsable detrás. Nosotros construimos el sistema. Vos lideras el negocio.",
+    de: "Gemeinsam bringen wir mehr als 55 Jahre internationale Erfahrung über verschiedene Branchen hinweg mit. Wir arbeiten in 3 Sprachen — Englisch, Spanisch und Deutsch. Hinter jeder Power Unit steht ein verantwortlicher Spezialist. Wir bauen das System. Sie führen das Geschäft.",
+    pt: "Juntos, trazemos mais de 55 anos de experiência internacional em diversos setores. Trabalhamos em 3 idiomas — inglês, espanhol e alemão. Cada Power Unit tem um especialista responsável por trás. Nós construímos o sistema. Você lidera o negócio."
   },
 
   // Cierre
@@ -758,7 +753,7 @@ export const ui = {
   // Latest Insights
 
   stayUpdated: { en: "Stay updated with us", es: "Mantente actualizado con nosotros", de: "Bleib auf dem Laufenden", pt: "Fique atualizado conosco" },
-  latestInsights: { en: "Latest Insights", es: "Ultimos insights", de: "Neueste Einblicke", pt: "Últimos insights" },
+  latestInsights: { en: "What Leaders Need to Know", es: "Lo que los líderes necesitan saber", de: "Was Führungskräfte wissen müssen", pt: "O que os líderes precisam saber" },
   blogDesc: { en: "Explore our blog for industry trends, tech updates, and innovation stories.", es: "Explora nuestro blog para ver tendencias, actualizaciones tecnologicas e historias de innovacion.", de: "Erkunden Sie unseren Blog für Branchentrends, Tech-Updates und Innovationsgeschichten.", pt: "Explore nosso blog para tendências do setor, atualizações de tecnologia e histórias de inovação." },
   noPostsYet: { en: "No posts available yet.", es: "Aun no hay posts disponibles.", de: "Noch keine Beiträge verfügbar.", pt: "Ainda não há posts disponíveis." },
   readMore: { en: "Read More →", es: "Leer mas →", de: "Weiterlesen →", pt: "Ler mais →" },
@@ -2576,7 +2571,7 @@ export default function Home() {
 
 
 
-      <FinalChallenge tx={tx} />
+      
       {/* FOOTER */}
       <footer className="py-16 text-center bg-white border-t border-slate-100">
         <p className="text-slate-400 text-[9px] font-black uppercase tracking-[0.3em] mb-4">{tx('dontMiss')}</p>
