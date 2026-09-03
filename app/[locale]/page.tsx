@@ -441,18 +441,6 @@ export const ui = {
   },
   // Mittelstand
 
-  problemTitle: { en: "THE UNFAIR ADVANTAGE", es: "LA VENTAJA INJUSTA", de: "DER UNFAIRE VORTEIL", pt: "A VANTAGEM INJUSTA" }, problemSubtitle: {
-    en: "THE AI AWAKENING (The Wedge)",
-    es: "EL DESPERTAR DE LA IA (La Cuña)",
-    de: "DAS KI-ERWACHEN (Der Keil)",
-    pt: "O DESPERTAR DA IA (A Cunha)"
-  },
-  problemDesc: {
-    en: "Engineering and deployment of your first Website as an Operating System (Optimized for AI & Human Trust).",
-    es: "Ingeniería y despliegue de tu primer Sitio Web como Sistema Operativo (Optimizado para Confianza de IA y Humanos).",
-    de: "Entwicklung und Bereitstellung Ihrer ersten Website als Betriebssystem (Optimiert für KI- und menschliches Vertrauen).",
-    pt: "Engenharia e implantação do seu primeiro Site como Sistema Operacional (Otimizado para Confiança de IA e Humanos)."
-  },
   typicalTickets: { en: "Typical tickets:", es: "Tickets típicos:", de: "Typische Tickets:", pt: "Tickets típicos:" },
   ourCustomers: { en: "THE PROBLEM", es: "EL PROBLEMA", de: "DAS PROBLEM", pt: "O PROBLEMA" },
   problemHeadline: {
@@ -614,64 +602,6 @@ export const ui = {
     es: "Cerrar",
     de: "Schließen",
     pt: "Fechar"
-  },
-  termsButtonLabel: {
-    en: "The Terms",
-    es: "Los Términos",
-    de: "Die Bedingungen",
-    pt: "Os Termos"
-  },
-  termsModalTitle: {
-    en: "Terms",
-    es: "Términos",
-    de: "Bedingungen",
-    pt: "Termos"
-  },
-  termsModalBody: {
-    en: [
-      { text: "Most agencies charge thousands for a dead digital brochure. ", bold: false },
-      { text: "We build your AI-ready infrastructure", bold: true },
-      { text: " for free. Why? Because we play long-term games. Talk is cheap; leaders leave evidence. We will design, code, and deploy your new high-converting digital hub entirely on us. If you have the hunger, we got the system.", bold: false },
-    ],
-    es: [
-      { text: "La mayoría de las agencias cobran miles por un folleto digital sin vida. ", bold: false },
-      { text: "Construimos tu infraestructura lista para IA", bold: true },
-      { text: " de forma gratuita. ¿Por qué? Porque jugamos a largo plazo. Hablar es barato; los líderes dejan evidencia. Diseñaremos, programaremos y desplegaremos tu nuevo centro digital de alta conversión completamente por nuestra cuenta. Si tenés el hambre, nosotros tenemos el sistema.", bold: false },
-    ],
-    de: [
-      { text: "Die meisten Agenturen verlangen Tausende für eine tote digitale Broschüre. ", bold: false },
-      { text: "Wir bauen Ihre KI-fähige Infrastruktur", bold: true },
-      { text: " kostenlos. Warum? Weil wir langfristig denken. Reden ist billig; Führende hinterlassen Beweise. Wir werden Ihren neuen konversionsstarken digitalen Hub komplett auf unsere Kosten gestalten, programmieren und bereitstellen. Wenn Sie den Hunger haben, haben wir das System.", bold: false },
-    ],
-    pt: [
-      { text: "A maioria das agências cobra milhares por um folheto digital sem vida. ", bold: false },
-      { text: "Nós construímos a sua infraestrutura pronta para IA", bold: true },
-      { text: " gratuitamente. Por quê? Porque jogamos a longo prazo. Falar é barato; líderes deixam evidências. Vamos projetar, programar e implantar o seu novo hub digital de alta conversão totalmente por nossa conta. Se você tem a fome, nós temos o sistema.", bold: false },
-    ],
-  },
-  termsModalCta: {
-    en: "Claim AI Awakening (15-Min Assessment)",
-    es: "Reclamar Despertar de IA (Evaluación de 15 min)",
-    de: "KI-Erwachen sichern (15-Min-Bewertung)",
-    pt: "Reivindicar Despertar de IA (Avaliação de 15 min)"
-  },
-  engineeringPrice: {
-    en: [
-      { text: "Engineering Price: $0", bold: true },
-      { text: " you only cover the domain provisioning, no fine prints.", bold: false },
-    ],
-    es: [
-      { text: "Precio de Ingeniería: $0", bold: true },
-      { text: ", solo cubrís el aprovisionamiento del dominio, sin letra chica.", bold: false },
-    ],
-    de: [
-      { text: "Engineering-Preis: $0", bold: true },
-      { text: ", Sie übernehmen nur die Domain-Bereitstellung, kein Kleingedrucktes.", bold: false },
-    ],
-    pt: [
-      { text: "Preço de Engenharia: $0", bold: true },
-      { text: ", você só cobre o provisionamento do domínio, sem letras miúdas.", bold: false },
-    ],
   },
   // Pricing
   whatWeDeliver: { en: "Our", es: "Nuestros", de: "Unsere", pt: "Nossos" },
@@ -2078,12 +2008,10 @@ export default function Home() {
   const tx = (key: string) => (ui[key as keyof typeof ui] as any)?.[locale] ?? (ui[key as keyof typeof ui] as any)?.['en'] ?? '';
 
   const [posts, setPosts] = useState<any[]>([]);
-  const heroVideoRef = useRef<HTMLVideoElement>(null);
-  const [isMobile, setIsMobile] = useState(false);
   const [selected, setSelected] = useState<number | null>(1);
   const [showMachinesModal, setShowMachinesModal] = useState(false);
   const [isPackModalOpen, setIsPackModalOpen] = useState(false);
-  const [isTermsModalOpen, setIsTermsModalOpen] = useState(false);
+  const [mousePos, setMousePos] = useState({ x: 0.5, y: 0.5 });
   const teamMap = { en: team, es: teamEs, de: teamDe, pt: teamPt };
   const teamData = teamMap[locale] ?? team;
   const localeBase = locale === 'en' ? '' : `/${locale}`;
@@ -2121,52 +2049,14 @@ export default function Home() {
     fetchPosts();
   }, [locale]);
 
-  // ── Hero video ────────────────────────────────────────────────────────────
   useEffect(() => {
-    const video = heroVideoRef.current;
-    if (!video) return;
-
-    video.muted = true;
-    video.playsInline = true;
-    video.autoplay = true;
-    video.loop = true;
-
-    const tryPlay = () => {
-      video.play().catch(() => {
-        // Autoplay bloqueado en iOS
-      });
+    const handleMouseMove = (e: MouseEvent) => {
+      const x = e.clientX / window.innerWidth;
+      const y = e.clientY / window.innerHeight;
+      setMousePos({ x, y });
     };
-
-    tryPlay();
-    video.addEventListener("loadedmetadata", tryPlay);
-    video.addEventListener("loadeddata", tryPlay);
-    video.addEventListener("canplay", tryPlay);
-    video.addEventListener("canplaythrough", tryPlay);
-
-    const handleInteraction = () => {
-      tryPlay();
-    };
-
-    document.addEventListener("touchstart", handleInteraction, { once: true });
-    document.addEventListener("scroll", handleInteraction, { once: true });
-    document.addEventListener("click", handleInteraction, { once: true });
-
-    return () => {
-      video.removeEventListener("loadedmetadata", tryPlay);
-      video.removeEventListener("loadeddata", tryPlay);
-      video.removeEventListener("canplay", tryPlay);
-      video.removeEventListener("canplaythrough", tryPlay);
-      document.removeEventListener("touchstart", handleInteraction);
-      document.removeEventListener("scroll", handleInteraction);
-      document.removeEventListener("click", handleInteraction);
-    };
-  }, []);
-
-  useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth < 768);
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
 
   return (
@@ -2177,40 +2067,66 @@ export default function Home() {
       <Header />
 
       {/* 1. HERO */}
-      <section className="relative w-full h-[100dvh] overflow-hidden bg-slate-950" id="top">
-        <video
-          ref={heroVideoRef}
-          className="absolute top-1/2 left-1/2 min-w-full min-h-full w-auto h-auto -translate-x-1/2 -translate-y-1/2 object-cover"
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="auto"
+      <section
+        className="relative w-full h-[100dvh] overflow-hidden bg-white"
+        id="top"
+        onMouseMove={(e) => {
+          const rect = e.currentTarget.getBoundingClientRect();
+          setMousePos({
+            x: (e.clientX - rect.left) / rect.width,
+            y: (e.clientY - rect.top) / rect.height,
+          });
+        }}
+      >
+        {/* Blue glow */}
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0">
+          <div className="w-[500px] h-[300px] bg-blue-500/15 blur-[120px] rounded-full" />
+        </div>
+        {/* Blue wave SVG */}
+        <svg
+          className="absolute w-full h-full left-0 top-0 opacity-80 z-0 pointer-events-none"
+          viewBox="0 0 1400 600"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
         >
-          <source src="/hero.mp4" type="video/mp4" />
-        </video>
-        <div className="absolute inset-0 bg-slate-950/60 z-[1]" />
+          <g className="animate-pulse" style={{ animationDuration: '6s' }}>
+            <path d="M-100 300 C 300 100, 700 500, 1500 200" stroke="#3b82f6" strokeWidth="2" strokeOpacity="0.4" />
+            <path d="M-100 280 C 350 120, 680 480, 1500 220" stroke="#2563eb" strokeWidth="2" strokeOpacity="0.3" />
+            <path d="M-100 320 C 280 80, 720 520, 1500 180" stroke="#60a5fa" strokeWidth="2" strokeOpacity="0.3" />
+            <path d="M-100 260 C 380 140, 650 460, 1500 240" stroke="#1d4ed8" strokeWidth="2" strokeOpacity="0.25" />
+          </g>
+        </svg>
+        {/* Mouse spotlight */}
+        <div
+          className="absolute inset-0 z-[1] pointer-events-none transition-opacity duration-300"
+          style={{
+            background: `radial-gradient(600px circle at ${mousePos.x * 100}% ${mousePos.y * 100}%, rgba(255,107,0,0.06), transparent 60%)`,
+          }}
+        />
         <div className="absolute inset-0 z-[2] flex flex-col items-center justify-center px-6 text-center">
-          <p className="text-blue-600 uppercase tracking-[0.4em] mb-3 text-[10px] font-black">
+
+          <p className="text-orange-500 uppercase tracking-[0.4em] mb-3 text-[10px] font-black animate-hero-fadein relative z-[3]">
             {t('whatWeDo')}
           </p>
-          <h1 className="text-3xl md:text-5xl lg:text-6xl font-black leading-[1.05] tracking-tighter max-w-4xl text-white uppercase">
-            {tx('openLatam')}
-          </h1>
+          <div className="relative z-[3] animate-hero-fadein-delay">
+            <h1 className="relative text-3xl md:text-5xl lg:text-6xl font-black leading-[1.05] tracking-tighter max-w-4xl uppercase bg-gradient-to-r from-slate-900 via-orange-500 to-blue-600 bg-clip-text text-transparent animate-shimmer z-10">
+              {tx('openLatam')}
+            </h1>
+          </div>
           
-          <p className="mt-3 text-white text-[10px] md:text-[12px] uppercase tracking-widest font-bold">{tx('subtagline')}</p>
-          <div className="mt-5 flex flex-col sm:flex-row items-center gap-3">
+          <p className="mt-3 text-slate-500 text-[10px] md:text-[12px] uppercase tracking-widest font-bold animate-hero-fadein-delay-2 relative z-[3]">{tx('subtagline')}</p>
+          <div className="mt-5 flex flex-col sm:flex-row items-center gap-3 animate-hero-fadein-delay-2 relative z-[3]">
             <a href="https://wa.me/593991358652?text=Hi!%20I%27d%20like%20to%20get%20in%20touch%20with%20the%20team." className="inline-block px-8 py-3 bg-[#FF6B00] text-white rounded-full font-bold shadow-lg uppercase tracking-widest text-[10px] transition-transform active:scale-95">
               {tx('heroCtaPrimary')}
             </a>
-            <a href="#mittelstand" className="inline-block px-8 py-3 border-2 border-white text-white rounded-full font-bold uppercase tracking-widest text-[10px] transition-colors hover:bg-white hover:text-slate-900">
+            <a href="#mittelstand" className="inline-block px-8 py-3 border-2 border-slate-300 text-slate-700 rounded-full font-bold uppercase tracking-widest text-[10px] transition-colors hover:bg-slate-900 hover:text-white hover:border-slate-900">
               {tx('heroCtaSecondary')}
             </a>
           </div>
         </div>
         {/*  CINTA DE TEXTO EN MOVIMIENTO  */}
-        <div className="absolute bottom-0 left-0 right-0 z-[3] py-3 bg-black/40 backdrop-blur-md border-t border-white/10 overflow-hidden pointer-events-none">
-          <div className="animate-marquee whitespace-nowrap flex items-center gap-8 text-[11px] font-black uppercase tracking-[0.25em] text-blue-500">
+        <div className="absolute bottom-0 left-0 right-0 z-[3] py-3 bg-white/80 backdrop-blur-md border-t border-slate-200 overflow-hidden pointer-events-none">
+          <div className="animate-marquee whitespace-nowrap flex items-center gap-8 text-[11px] font-black uppercase tracking-[0.25em] text-blue-600">
             <span>{tx('globalCompanies')}</span>
             <span className="text-orange-500">•</span>
             <span>{tx('globalCompanies')}</span>
@@ -2234,7 +2150,7 @@ export default function Home() {
 
       {/* 4. MITTELSTAND */}
       <section id="mittelstand" className="py-12 md:py-24 px-6 bg-slate-50 border-y border-slate-200">
-        <div className="w-full max-w-7xl mx-auto grid md:grid-cols-2 gap-20 items-center">
+        <div className="w-full max-w-7xl mx-auto grid md:grid-cols-1 gap-20 items-center">
 
           {/* COLUMNA IZQUIERDA */}
           <motion.div
@@ -2254,10 +2170,14 @@ export default function Home() {
             <p className="text-lg text-slate-600 font-medium leading-relaxed mb-4 text-balance">
               {tx('problemIntro')}
             </p>
-            <ol className="list-decimal list-inside space-y-3 text-slate-600 text-base leading-relaxed mb-8">
-              <li>{tx('problemPoint1')}</li>
-              <li>{tx('problemPoint2')}</li>
-            </ol>
+            <ul className="mt-4 space-y-3 list-disc list-inside marker:text-orange-500">
+              <li className="text-slate-600 text-base leading-relaxed">
+                {tx('problemPoint1')}
+              </li>
+              <li className="text-slate-600 text-base leading-relaxed">
+                {tx('problemPoint2')}
+              </li>
+            </ul>
 
             <h3 className="text-2xl md:text-3xl font-bold text-blue-600 mb-4 leading-tight">
               {tx('problemHighlight')}
@@ -2265,43 +2185,7 @@ export default function Home() {
             <p className="text-lg text-slate-600 font-medium leading-relaxed mb-8 text-balance">
               {tx('problemBody')}
             </p>
-          </motion.div>
-
-          {/* COLUMNA DERECHA */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="bg-white p-12 rounded-3xl border border-slate-200 shadow-sm transition-all hover:shadow-md"
-          >
-            <p className="text-sm font-bold tracking-wider text-slate-400 uppercase mb-3">
-              {tx('problemTitle')}
-            </p>
-            <h3 className="text-3xl font-bold text-blue-600 mb-6 leading-tight">
-              {tx('problemSubtitle')}
-            </h3>
-            <p className="text-slate-600 text-lg leading-relaxed mb-10">
-              {tx('problemDesc')}
-            </p>
-            {/* PRECIO */}
-            <p className="text-sm font-bold text-blue-600 mb-4">
-              {ui.engineeringPrice[locale].map((part, i) =>
-                part.bold ? (
-                  <strong key={i} className="font-black text-slate-900">{part.text}</strong>
-                ) : (
-                  <span key={i}>{part.text}</span>
-                )
-              )}
-            </p>
-            {/* BOTÓN THE TERMS */}
-            <button
-              onClick={() => setIsTermsModalOpen(true)}
-              className="inline-flex items-center gap-2 bg-blue-600 text-white font-bold px-8 py-4 rounded-full hover:bg-blue-700 transition-colors"
-            >
-              {ui.termsButtonLabel[locale]}
-            </button>
-          </motion.div>
+           </motion.div>
 
         </div>
 
@@ -2490,60 +2374,8 @@ export default function Home() {
           </div>
         )}
 
-       {/* MODAL THE TERMS (DISEÑO MEJORADO) */}
-        {isTermsModalOpen && (
-          <div
-            className="fixed inset-0 bg-slate-950/70 backdrop-blur-md flex items-center justify-center z-50 px-4"
-            onClick={() => setIsTermsModalOpen(false)}
-          >
-            <div
-              className="bg-white rounded-3xl max-w-2xl w-full p-8 md:p-12 relative max-h-[85vh] overflow-y-auto shadow-2xl border border-slate-100"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <button
-                onClick={() => setIsTermsModalOpen(false)}
-                className="absolute top-6 right-6 w-9 h-9 rounded-full bg-slate-100 text-slate-500 hover:text-slate-900 hover:bg-slate-200 transition-all flex items-center justify-center font-bold text-base"
-                aria-label={ui.closeButton[locale]}
-              >
-                ✕
-              </button>
 
-              <span className="text-[10px] font-black uppercase tracking-[0.25em] text-blue-600 block mb-2">
-                {tx('problemTitle')}
-              </span>
-
-              <h3 className="text-2xl md:text-3xl font-black text-slate-900 mb-6 uppercase tracking-tight">
-                {ui.termsModalTitle[locale]}
-              </h3>
-
-              <div className="bg-slate-50 border border-slate-100 rounded-2xl p-6 mb-8 text-slate-700 text-base md:text-lg leading-relaxed font-medium">
-                <p>
-                  {ui.termsModalBody[locale].map((part, i) =>
-                    part.bold ? (
-                      <strong key={i} className="font-black text-blue-600 bg-blue-50 px-1 py-0.5 rounded">
-                        {part.text}
-                      </strong>
-                    ) : (
-                      <span key={i}>{part.text}</span>
-                    )
-                  )}
-                </p>
-              </div>
-
-              <a href="https://calendar.app.google/Ntnv2PvHmPNgCnKZ6"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex justify-center items-center gap-2 bg-blue-600 text-white font-black text-xs md:text-sm uppercase tracking-widest px-8 py-4 rounded-full hover:bg-blue-700 transition-all shadow-lg shadow-blue-600/20 active:scale-95 text-center w-full sm:w-auto"
-              >
-                {ui.termsModalCta[locale]}
-                <ArrowRight className="w-4 h-4" />
-              </a>
-            </div>
-          </div>
-        )}
       </section>
-
-
 
       <BetterEcosystemSection locale={locale} />
 

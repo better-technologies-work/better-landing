@@ -151,3 +151,35 @@ article table th {
   width: max-content;
   animation: marquee 25s linear infinite;
 }
+
+/* Shimmer gradient text for hero */
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+.animate-shimmer {
+  background-size: 200% auto;
+  animation: shimmer 4s linear infinite;
+}
+
+/* Hero fade-in slide-up */
+@keyframes heroFadeIn {
+  0% { opacity: 0; transform: translateY(24px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.animate-hero-fadein {
+  animation: heroFadeIn 1s ease-out forwards;
+  opacity: 0;
+}
+
+.animate-hero-fadein-delay {
+  animation: heroFadeIn 1s ease-out 0.3s forwards;
+  opacity: 0;
+}
+
+.animate-hero-fadein-delay-2 {
+  animation: heroFadeIn 1s ease-out 0.6s forwards;
+  opacity: 0;
+}
