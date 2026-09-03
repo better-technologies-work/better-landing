@@ -694,7 +694,7 @@ export const ui = {
   fasterScaling: { en: " Faster and better scaling", es: " Escalamiento mas rapido y mejor", de: " Schnelleres und besseres Skalieren", pt: " Escalonamento mais rápido e melhor" },
 
   // Team
- aboutTeam: { en: "The Team", es: "El equipo", de: "Das Team", pt: "A equipe" },
+  aboutTeam: { en: "The Team", es: "El equipo", de: "Das Team", pt: "A equipe" },
   highPerf: {
     en: "The Better Team",
     es: "El Mejor Equipo",
@@ -702,7 +702,7 @@ export const ui = {
     pt: "A Melhor Equipe"
   },
 
-  
+
 
   forged: {
     en: "One Pack",
@@ -711,7 +711,7 @@ export const ui = {
     pt: "Uma alcateia"
   },
 
- pressure: {
+  pressure: {
     en: "From Strategy to Execution.",
     es: "De la estrategia a la ejecución.",
     de: "Von der Strategie zur Umsetzung.",
@@ -945,7 +945,7 @@ export const ui = {
     de: "Bau dein System mit unserer Unterstützung auf — oder tritt dem Better Pack bei und bring Better Technologies in neue Märkte. Wir investieren in Menschen, die bereit sind zu bauen, zu führen und Dinge voranzutreiben.",
     pt: "Construa seu sistema com nosso apoio — ou junte-se ao Better Pack e leve a Better Technologies a novos mercados. Investimos em pessoas prontas para construir, liderar e fazer as coisas avançarem.",
   },
-    scholarshipsPillLabel: {
+  scholarshipsPillLabel: {
     en: "The Better Scholarships",
     es: "Las Becas Better",
     de: "Die Better-Stipendien",
@@ -1035,7 +1035,7 @@ export const ui = {
     de: "Erzähl uns, was du aufbaust, was dich zurückhält und wohin du willst. Wir prüfen jede Bewerbung individuell.",
     pt: "Conte-nos o que você está construindo, o que está te segurando e para onde você quer ir. Analisamos cada candidatura individualmente.",
   },
-    partnershipsPillLabel: {
+  partnershipsPillLabel: {
     en: "The Better Partnerships",
     es: "Las Alianzas Better",
     de: "Die Better-Partnerschaften",
@@ -1125,7 +1125,7 @@ export const ui = {
     de: "Das Modell hängt von deiner Rolle, deinem Markt und deinem Engagement-Level ab. Die Konditionen werden direkt besprochen.",
     pt: "O modelo depende do seu papel, mercado e nível de envolvimento. Os termos são discutidos diretamente.",
   },
-    scholarshipsPartnershipsTitlePart1: {
+  scholarshipsPartnershipsTitlePart1: {
     en: "Scholarships",
     es: "Becas",
     de: "Stipendien",
@@ -1137,7 +1137,7 @@ export const ui = {
     de: "Partnerschaften",
     pt: "Parcerias",
   },
-    partnershipQ6: {
+  partnershipQ6: {
     en: "How do I apply?",
     es: "¿Cómo postulo?",
     de: "Wie bewerbe ich mich?",
@@ -1537,47 +1537,47 @@ export const ui = {
   },
   // ── LEADERSHIP LEAGUES ──────────────────────────────────────
   solutionsLabel: {
-  en: "The Solutions",
-  es: "Las Soluciones",
-  de: "Die Lösungen",
-  pt: "As Soluções",
-},
-solutionsIntro: {
-  en: "Start where your business is. From a lone wolf to a giant whale.",
-  es: "Empezá donde está tu negocio. Desde un lobo solitario hasta una ballena gigante.",
-  de: "Beginnen Sie dort, wo Ihr Unternehmen steht. Vom einsamen Wolf bis zum riesigen Wal.",
-  pt: "Comece de onde seu negócio está. De um lobo solitário a uma baleia gigante.",
-},
-solutionsModelIntro: {
-  en: "Choose the problem that sounds like your business. The Better Pack builds the right solution around it. Every offer follows the same model:",
-  es: "Elegí el problema que suena como tu negocio. El Better Pack construye la solución adecuada alrededor. Cada oferta sigue el mismo modelo:",
-  de: "Wählen Sie das Problem, das zu Ihrem Unternehmen passt. Der Better Pack baut die richtige Lösung darum herum. Jedes Angebot folgt demselben Modell:",
-  pt: "Escolha o problema que soa como o seu negócio. O Better Pack constrói a solução certa em torno dele. Toda oferta segue o mesmo modelo:",
-},
-solutionsFormulaQuantos: {
-  en: "You own the Quantos.",
-  es: "Sos dueño de los Quantos.",
-  de: "Sie besitzen die Quantos.",
-  pt: "Você é dono dos Quantos.",
-},
-solutionsFormulaHacks: {
-  en: "We combine them into Hacks.",
-  es: "Los combinamos en Hacks.",
-  de: "Wir kombinieren sie zu Hacks.",
-  pt: "Nós os combinamos em Hacks.",
-},
-solutionsFormulaPowerUnits: {
-  en: "Power Units get the work done.",
-  es: "Los Power Units hacen el trabajo.",
-  de: "Power Units erledigen die Arbeit.",
-  pt: "As Power Units realizam o trabalho.",
-},
-solutionsFormulaSovereignNode: {
-  en: "Every new capability can become part of your Sovereign Node.",
-  es: "Cada nueva capacidad puede pasar a formar parte de tu Sovereign Node.",
-  de: "Jede neue Fähigkeit kann Teil Ihres Sovereign Node werden.",
-  pt: "Cada nova capacidade pode se tornar parte do seu Sovereign Node.",
-},
+    en: "The Solutions",
+    es: "Las Soluciones",
+    de: "Die Lösungen",
+    pt: "As Soluções",
+  },
+  solutionsIntro: {
+    en: "Start where your business is. From a lone wolf to a giant whale.",
+    es: "Empezá donde está tu negocio. Desde un lobo solitario hasta una ballena gigante.",
+    de: "Beginnen Sie dort, wo Ihr Unternehmen steht. Vom einsamen Wolf bis zum riesigen Wal.",
+    pt: "Comece de onde seu negócio está. De um lobo solitário a uma baleia gigante.",
+  },
+  solutionsModelIntro: {
+    en: "Choose the problem that sounds like your business. The Better Pack builds the right solution around it. Every offer follows the same model:",
+    es: "Elegí el problema que suena como tu negocio. El Better Pack construye la solución adecuada alrededor. Cada oferta sigue el mismo modelo:",
+    de: "Wählen Sie das Problem, das zu Ihrem Unternehmen passt. Der Better Pack baut die richtige Lösung darum herum. Jedes Angebot folgt demselben Modell:",
+    pt: "Escolha o problema que soa como o seu negócio. O Better Pack constrói a solução certa em torno dele. Toda oferta segue o mesmo modelo:",
+  },
+  solutionsFormulaQuantos: {
+    en: "You own the Quantos.",
+    es: "Sos dueño de los Quantos.",
+    de: "Sie besitzen die Quantos.",
+    pt: "Você é dono dos Quantos.",
+  },
+  solutionsFormulaHacks: {
+    en: "We combine them into Hacks.",
+    es: "Los combinamos en Hacks.",
+    de: "Wir kombinieren sie zu Hacks.",
+    pt: "Nós os combinamos em Hacks.",
+  },
+  solutionsFormulaPowerUnits: {
+    en: "Power Units get the work done.",
+    es: "Los Power Units hacen el trabajo.",
+    de: "Power Units erledigen die Arbeit.",
+    pt: "As Power Units realizam o trabalho.",
+  },
+  solutionsFormulaSovereignNode: {
+    en: "Every new capability can become part of your Sovereign Node.",
+    es: "Cada nueva capacidad puede pasar a formar parte de tu Sovereign Node.",
+    de: "Jede neue Fähigkeit kann Teil Ihres Sovereign Node werden.",
+    pt: "Cada nova capacidade pode se tornar parte do seu Sovereign Node.",
+  },
   leagueEmergingTitle: {
     en: "The Emerging Pack (Startups & Local Heroes)",
     es: "La Manada Emergente (Startups y Héroes Locales)",
@@ -1874,7 +1874,7 @@ const ChatSection = () => {
 
   return (
     <section className="py-16 bg-white border-t border-slate-100">
-      <div className="max-w-4xl mx-auto px-6 text-center">
+      <div className="w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 text-center">
 
         <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-12 uppercase tracking-tighter">
           {tx('kitchenTitle')} <span className="text-blue-600">{tx('kitchenTitle2')}</span>
@@ -1995,7 +1995,7 @@ const CasosDeExito = ({ showMachinesModal, setShowMachinesModal }: { showMachine
 
   return (
     <section className="py-16 px-6 bg-white border-t border-slate-100">
-      <div className="max-w-6xl mx-auto">
+      <div className="w-full max-w-7xl mx-auto">
         <div className="mb-12 text-center">
           <p className="text-blue-600 uppercase tracking-[0.25em] text-[10px] font-black mb-2">{tx('successStories')}</p>
           <h2 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter leading-[0.9] uppercase">
@@ -2195,11 +2195,11 @@ export default function Home() {
             {t('whatWeDo')}
           </p>
           <h1 className="text-3xl md:text-5xl lg:text-6xl font-black leading-[1.05] tracking-tighter max-w-4xl text-white uppercase">
-  {tx('openLatam')}
-</h1>
-<h2 className="text-2xl md:text-4xl lg:text-5xl font-black leading-[1.05] tracking-tighter max-w-4xl text-blue-600 uppercase">
-  {tx('globalCompanies')}
-</h2>
+            {tx('openLatam')}
+          </h1>
+          <h2 className="text-2xl md:text-4xl lg:text-5xl font-black leading-[1.05] tracking-tighter max-w-4xl text-blue-600 uppercase">
+            {tx('globalCompanies')}
+          </h2>
           <p className="mt-3 text-white text-[10px] md:text-[12px] uppercase tracking-widest font-bold">{tx('subtagline')}</p>
           <div className="mt-5 flex flex-col sm:flex-row items-center gap-3">
             <a href="https://wa.me/593991358652?text=Hi!%20I%27d%20like%20to%20get%20in%20touch%20with%20the%20team." className="inline-block px-8 py-3 bg-[#FF6B00] text-white rounded-full font-bold shadow-lg uppercase tracking-widest text-[10px] transition-transform active:scale-95">
@@ -2221,7 +2221,7 @@ export default function Home() {
 
       {/* 4. MITTELSTAND */}
       <section id="mittelstand" className="py-12 md:py-24 px-6 bg-slate-50 border-y border-slate-200">
-        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-20 items-center">
+        <div className="w-full max-w-7xl mx-auto grid md:grid-cols-2 gap-20 items-center">
 
           {/* COLUMNA IZQUIERDA (antes derecha) */}
 
@@ -2283,69 +2283,144 @@ export default function Home() {
           </div>
 
         </div>
-       {/* QUOTE CARD — CHARLOTTE */}
-<div className="max-w-3xl mx-auto px-6 mt-10 md:mt-6 mb-16">
-  <div className="relative bg-white border border-slate-100 rounded-3xl shadow-xl p-8 md:p-10">
-          <div className="flex items-center gap-4 mb-6">
-            <div className="relative w-14 h-14 rounded-full overflow-hidden border-2 border-slate-100 flex-shrink-0 bg-blue-50">
-              <Image src="/charlotte.jpeg" alt="Charlotte Götz" fill className="object-cover" sizes="56px" />
-            </div>
-            <div className="flex-1 min-w-0">
-              <p className="text-slate-900 font-black text-sm">Charlotte Götz</p>
-              <p className="text-blue-600 font-black uppercase tracking-[0.1em] text-[10px] mt-0.5">
-                {tx('charlotteQuoteTitle')}
-              </p>
-            </div>
+        {/* QUOTE CARD — CHARLOTTE */}
+        <div className="w-full max-w-7xl mx-auto px-6 mt-10 md:mt-6 mb-16">
+          <div className="relative bg-white border border-slate-100 rounded-3xl shadow-xl p-8 md:p-10">
+            <div className="flex items-center gap-4 mb-6">
+              <div className="relative w-14 h-14 rounded-full overflow-hidden border-2 border-slate-100 flex-shrink-0 bg-blue-50">
+                <Image src="/charlotte.jpeg" alt="Charlotte Götz" fill className="object-cover" sizes="56px" />
+              </div>
+              <div className="flex-1 min-w-0">
+                <p className="text-slate-900 font-black text-sm">Charlotte Götz</p>
+                <p className="text-blue-600 font-black uppercase tracking-[0.1em] text-[10px] mt-0.5">
+                  {tx('charlotteQuoteTitle')}
+                </p>
+              </div>
 
-            <a href="https://www.linkedin.com/in/charlotte-goetz-public/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-1.5 border border-slate-200 rounded-full px-3 py-1.5 hover:border-blue-600 hover:bg-blue-50 transition-all flex-shrink-0">
-              <LinkedInIcon />
-              <span className="text-[9px] font-black uppercase tracking-widest text-slate-500">LinkedIn</span>
-            </a>
+              <a href="https://www.linkedin.com/in/charlotte-goetz-public/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-1.5 border border-slate-200 rounded-full px-3 py-1.5 hover:border-blue-600 hover:bg-blue-50 transition-all flex-shrink-0">
+                <LinkedInIcon />
+                <span className="text-[9px] font-black uppercase tracking-widest text-slate-500">LinkedIn</span>
+              </a>
+            </div>
+            <p className="text-slate-800 text-lg md:text-xl leading-relaxed font-medium">
+              "<mark className="bg-orange-200/70 px-1 rounded">{tx('problemQuote')}</mark>"
+            </p>
           </div>
-          <p className="text-slate-800 text-lg md:text-xl leading-relaxed font-medium">
-            "<mark className="bg-orange-200/70 px-1 rounded">{tx('problemQuote')}</mark>"
-          </p>
         </div>
-      </div>
-        {/* CIERRE THE PROBLEM — full width */}
-<div className="max-w-4xl mx-auto mt-16">
-  <div className="bg-white rounded-3xl border border-slate-200 shadow-sm p-8 md:p-14 text-center">
-    <h2 className="text-2xl md:text-3xl font-black text-orange-500 mb-1 tracking-tight">
-  {tx('problemSubscriptions')}
-</h2>
-    <p className="text-slate-400 text-sm md:text-base leading-relaxed mb-8">
-      {tx('problemTogether')}
-    </p>
+        {/* CIERRE THE PROBLEM — full width con animaciones e impacto */}
+        <div className="w-full max-w-7xl mx-auto mt-16 px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            whileHover={{ y: -4 }}
+            className="relative bg-gradient-to-b from-white via-slate-50/50 to-white rounded-3xl border border-slate-200 shadow-xl p-8 md:p-14 text-center overflow-hidden transition-all duration-300 hover:shadow-2xl hover:border-blue-500/30 group"
+          >
+            {/* Glows decorativos de fondo con colores de la marca */}
+            <div className="absolute -top-24 -left-24 w-72 h-72 rounded-full bg-orange-500/10 blur-3xl pointer-events-none group-hover:bg-orange-500/20 transition-all duration-500" />
+            <div className="absolute -bottom-24 -right-24 w-72 h-72 rounded-full bg-blue-600/10 blur-3xl pointer-events-none group-hover:bg-blue-600/20 transition-all duration-500" />
 
-    <div className="w-12 h-px bg-slate-200 mx-auto mb-8" />
+            <div className="relative z-10 max-w-4xl mx-auto">
+              {/* Subtítulo Naranja con entrada escalonada */}
+              <motion.h2
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.1 }}
+                className="text-2xl md:text-3xl font-black text-orange-500 mb-2 tracking-tight"
+              >
+                {tx('problemSubscriptions')}
+              </motion.h2>
 
-    <h3 className="text-2xl md:text-4xl font-black text-slate-900 mb-6 tracking-tight uppercase">
-      {tx('problemRentNet')}
-    </h3>
-    <p className="text-slate-600 text-lg leading-relaxed max-w-2xl mx-auto mb-2">
-      {tx('problemInfra')}
-    </p>
-    <p className="text-blue-600 font-bold text-base md:text-lg mb-8">
-      {tx('problemOwnership')}
-    </p>
-    <p className="text-slate-600 text-lg leading-relaxed max-w-2xl mx-auto mb-10">
-      {tx('problemConnects')}
-    </p>
+              <motion.p
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                className="text-slate-500 text-base md:text-lg leading-relaxed mb-8 font-medium"
+              >
+                {tx('problemTogether')}
+              </motion.p>
 
-        
-     <a href="https://calendar.app.google/Ntnv2PvHmPNgCnKZ6"
-      target="_blank"
-      rel="noopener noreferrer"
-      className="inline-flex items-center gap-2 bg-blue-600 text-white font-bold px-10 py-4 rounded-full hover:bg-blue-700 transition-colors shadow-lg shadow-blue-600/20"
-    >
-      {tx('chooseNextMove')}
-      <ArrowRight className="w-4 h-4" />
-    </a>
-  </div>
-</div>
+              {/* Línea divisora animada */}
+              <motion.div
+                initial={{ width: 0 }}
+                whileInView={{ width: "80px" }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                className="h-1 bg-gradient-to-r from-orange-500 to-blue-600 mx-auto mb-8 rounded-full"
+              />
+
+              {/* Título Principal */}
+              <motion.h3
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.3 }}
+                className="text-xl md:text-2xl font-black text-slate-900 mb-6 tracking-tight uppercase"
+              >
+                {tx('problemRentNet')}
+              </motion.h3>
+
+              <motion.p
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.4 }}
+                className="text-slate-600 text-lg leading-relaxed max-w-3xl mx-auto mb-3"
+              >
+                {tx('problemInfra')}
+              </motion.p>
+
+              {/* Frase Destacada Naranja / Azul */}
+              <motion.p
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.5 }}
+                className="text-blue-600 font-black text-lg md:text-xl mb-4 uppercase tracking-wide"
+              >
+                {tx('problemOwnership')}
+              </motion.p>
+
+              <motion.p
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.6 }}
+                className="text-slate-600 text-lg leading-relaxed max-w-3xl mx-auto mb-10"
+              >
+                {tx('problemConnects')}
+              </motion.p>
+
+              {/* Botón CTA con efecto interactivo */}
+              <motion.div
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.7 }}
+                className="flex justify-center"
+              >
+                <motion.a
+                  href="https://calendar.app.google/Ntnv2PvHmPNgCnKZ6"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.97 }}
+                  className="inline-flex items-center gap-3 bg-blue-600 text-white font-black text-xs md:text-sm uppercase tracking-widest px-10 py-5 rounded-full hover:bg-blue-700 transition-colors shadow-lg shadow-blue-600/25 border border-blue-500"
+                >
+                  {tx('chooseNextMove')}
+                  <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                </motion.a>
+              </motion.div>
+            </div>
+          </motion.div>
+        </div>
+
         {/* MODAL THE PACK */}
         {isPackModalOpen && (
           <div
@@ -2437,18 +2512,16 @@ export default function Home() {
         )}
       </section>
 
-     <div id="leadership-leagues">
-        <LeadershipLeagues tx={tx} />
-      </div>
-    
+
+
       <BetterEcosystemSection locale={locale} />
-      
+
       <GrowthCapabilities tx={tx} />
       <ScholarshipsPartnerships tx={tx} />
-      
+
 
       <div className="py-16 px-6 bg-white text-center">
-        <div className="max-w-4xl mx-auto">
+        <div className="w-full max-w-7xl mx-auto">
           <h2 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter uppercase mb-2">
             {tx('lets')}
             <span className="text-blue-600">{tx('startToday')}</span>
@@ -2461,7 +2534,7 @@ export default function Home() {
       </div>
       {/* 6. EQUIPO */}
       <section id="about" className="py-16 px-6 bg-white border-t border-slate-100">
-        <div className="max-w-4xl mx-auto">
+        <div className="w-full max-w-7xl mx-auto">
 
 
           <p className="text-blue-600 uppercase tracking-[0.25em] text-[10px] font-black mb-2">{tx('aboutTeam')}</p>
@@ -2522,7 +2595,7 @@ export default function Home() {
         </div>
       </div>
 
-      
+
 
 
       {/*  NEWS FEED */}
@@ -2571,7 +2644,7 @@ export default function Home() {
 
 
 
-      
+
       {/* FOOTER */}
       <footer className="py-16 text-center bg-white border-t border-slate-100">
         <p className="text-slate-400 text-[9px] font-black uppercase tracking-[0.3em] mb-4">{tx('dontMiss')}</p>
@@ -2589,9 +2662,9 @@ export default function Home() {
       </footer>
 
 
-     
-        
-      
+
+
+
     </main >
   );
 };

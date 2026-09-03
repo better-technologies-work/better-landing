@@ -2,47 +2,10 @@
 
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { Search, Sparkles, Cpu, Handshake, LucideIcon } from "lucide-react";
 import Image from "next/image";
-
-type CajaKey = "caja1" | "caja2" | "caja3" | "caja4";
-
-type Caja = {
-  key: CajaKey;
-  icon: LucideIcon;
-};
-// Agregar estas keys al diccionario de tx() existente, dentro de cada locale.
 
 export const ecosystemTranslations = {
   en: {
-    ecosystemEyebrow: "BEYOND TECH",
-    ecosystemTitle: "The Better",
-    ecosystemTitleEm: "Ecosystem",
-    ecosystemTitleSuffix: "(The Core Value / Beyond Tech)",
-    ecosystemQuote: "We don't build tech to compete.",
-    ecosystemQuoteEm: "We engineer systems to lead.",
-    ecosystemCoreBadge: "Core",
-
-    caja1Name: "AUTHORITY",
-    caja1Title: "Digital Presence & Authority",
-    caja1Desc:
-      "Dominate the Narrative. SEO, GEO, and AI visibility. We build AI trust and transform organizations into the ultimate digital authority in their category.",
-
-    caja2Name: "EXPERIENCES",
-    caja2Title: "Better Experiences™",
-    caja2Desc:
-      "Make them feel it. People forget ads, but they remember experiences. From corporate activations to innovation workshops, we build moments that create cultural relevance.",
-
-    caja3Name: "AI SYSTEMS",
-    caja3Title: "Growth & AI Systems™",
-    caja3Desc:
-      "Scale predictably. CRM, automation, and AI agents. We implement knowledge systems that ensure operational resilience and give your team an unfair advantage.",
-
-    caja4Name: "ECOSYSTEMS",
-    caja4Title: "Better Ecosystems™",
-    caja4Desc:
-      "We open the right doors. You don't grow alone. We source strategic partners and engineer the introductions your business needs to leap forward.",
-
     faqTitle: "FAQ — The Better Ecosystem",
     faqQ1: "What do I own?",
     faqA1: "A Quanto. A small digital capability that does one job exceptionally well.",
@@ -59,34 +22,6 @@ export const ecosystemTranslations = {
   },
 
   es: {
-    ecosystemEyebrow: "MÁS ALLÁ DE LA TECNOLOGÍA",
-    ecosystemTitle: "El Mejor",
-    ecosystemTitleEm: "Ecosistema",
-    ecosystemTitleSuffix: "(El Valor Central / Más Allá de la Tecnología)",
-    ecosystemQuote: "No construimos tecnología para competir.",
-    ecosystemQuoteEm: "Ingeniamos sistemas para liderar.",
-    ecosystemCoreBadge: "Núcleo",
-
-    caja1Name: "AUTORIDAD",
-    caja1Title: "Presencia Digital & Autoridad",
-    caja1Desc:
-      "Dominá el relato. SEO, GEO y visibilidad en IA. Construimos confianza en los motores de IA y transformamos organizaciones en la máxima autoridad digital de su categoría.",
-
-    caja2Name: "EXPERIENCIAS",
-    caja2Title: "Better Experiences™",
-    caja2Desc:
-      "Que lo sientan. La gente olvida los anuncios, pero recuerda las experiencias. Desde activaciones corporativas hasta workshops de innovación, construimos momentos que generan relevancia cultural.",
-
-    caja3Name: "SISTEMAS IA",
-    caja3Title: "Growth & AI Systems™",
-    caja3Desc:
-      "Escalá de forma predecible. CRM, automatización y agentes de IA. Implementamos sistemas de conocimiento que garantizan resiliencia operativa y le dan a tu equipo una ventaja injusta.",
-
-    caja4Name: "ECOSISTEMAS",
-    caja4Title: "Better Ecosystems™",
-    caja4Desc:
-      "Abrimos las puertas correctas. No creces solo. Conseguimos socios estratégicos e ingeniamos las presentaciones que tu negocio necesita para dar el salto.",
-
     faqTitle: "FAQ — El Mejor Ecosistema",
     faqQ1: "¿Qué es lo que soy dueño?",
     faqA1: "Un Quanto. Una pequeña capacidad digital que hace un trabajo excepcionalmente bien.",
@@ -103,34 +38,6 @@ export const ecosystemTranslations = {
   },
 
   pt: {
-    ecosystemEyebrow: "ALÉM DA TECNOLOGIA",
-    ecosystemTitle: "O Melhor",
-    ecosystemTitleEm: "Ecossistema",
-    ecosystemTitleSuffix: "(O Valor Central / Além da Tecnologia)",
-    ecosystemQuote: "Não construímos tecnologia para competir.",
-    ecosystemQuoteEm: "Projetamos sistemas para liderar.",
-    ecosystemCoreBadge: "Núcleo",
-
-    caja1Name: "AUTORIDADE",
-    caja1Title: "Presença Digital & Autoridade",
-    caja1Desc:
-      "Domine a narrativa. SEO, GEO e visibilidade em IA. Construímos confiança nos mecanismos de IA e transformamos organizações na máxima autoridade digital de sua categoria.",
-
-    caja2Name: "EXPERIÊNCIAS",
-    caja2Title: "Better Experiences™",
-    caja2Desc:
-      "Faça-os sentir. As pessoas esquecem os anúncios, mas lembram das experiências. De ativações corporativas a workshops de inovação, criamos momentos que geram relevância cultural.",
-
-    caja3Name: "SISTEMAS DE IA",
-    caja3Title: "Growth & AI Systems™",
-    caja3Desc:
-      "Escale de forma previsível. CRM, automação e agentes de IA. Implementamos sistemas de conhecimento que garantem resiliência operacional e dão à sua equipe uma vantagem injusta.",
-
-    caja4Name: "ECOSSISTEMAS",
-    caja4Title: "Better Ecosystems™",
-    caja4Desc:
-      "Abrimos as portas certas. Você não cresce sozinho. Buscamos parceiros estratégicos e viabilizamos as apresentações que o seu negócio precisa para dar o próximo salto.",
-
     faqTitle: "FAQ — O Melhor Ecossistema",
     faqQ1: "O que eu possuo?",
     faqA1: "Um Quanto. Uma pequena capacidade digital que faz um trabalho excepcionalmente bem.",
@@ -147,34 +54,6 @@ export const ecosystemTranslations = {
   },
 
   de: {
-    ecosystemEyebrow: "MEHR ALS TECHNOLOGIE",
-    ecosystemTitle: "Das bessere",
-    ecosystemTitleEm: "Ökosystem",
-    ecosystemTitleSuffix: "(Der Kernwert / Mehr als Technologie)",
-    ecosystemQuote: "Wir bauen keine Technologie, um zu konkurrieren.",
-    ecosystemQuoteEm: "Wir entwickeln Systeme, die führen.",
-    ecosystemCoreBadge: "Kern",
-
-    caja1Name: "AUTORITÄT",
-    caja1Title: "Digitale Präsenz & Autorität",
-    caja1Desc:
-      "Bestimmen Sie die Erzählung. SEO, GEO und KI-Sichtbarkeit. Wir bauen Vertrauen bei KI-Systemen auf und machen Organisationen zur führenden digitalen Autorität ihrer Branche.",
-
-    caja2Name: "ERLEBNISSE",
-    caja2Title: "Better Experiences™",
-    caja2Desc:
-      "Lassen Sie es sie spüren. Werbung wird vergessen, Erlebnisse bleiben. Von Firmenaktivierungen bis zu Innovationsworkshops schaffen wir Momente mit kultureller Relevanz.",
-
-    caja3Name: "KI-SYSTEME",
-    caja3Title: "Growth & AI Systems™",
-    caja3Desc:
-      "Planbar skalieren. CRM, Automatisierung und KI-Agenten. Wir implementieren Wissenssysteme, die operative Resilienz sichern und Ihrem Team einen unfairen Vorteil verschaffen.",
-
-    caja4Name: "ÖKOSYSTEME",
-    caja4Title: "Better Ecosystems™",
-    caja4Desc:
-      "Wir öffnen die richtigen Türen. Sie wachsen nicht allein. Wir finden strategische Partner und ermöglichen die Vorstellungen, die Ihr Unternehmen für den nächsten Sprung braucht.",
-
     faqTitle: "FAQ — Das bessere Ökosystem",
     faqQ1: "Was besitze ich?",
     faqA1: "Ein Quanto. Eine kleine digitale Fähigkeit, die eine Aufgabe außergewöhnlich gut erfüllt.",
@@ -191,126 +70,75 @@ export const ecosystemTranslations = {
   },
 };
 
-const cajaData: Caja[] = [
-  { key: "caja1", icon: Search },
-  { key: "caja2", icon: Sparkles },
-  { key: "caja3", icon: Cpu },
-  { key: "caja4", icon: Handshake },
+// Componentes SVG Profesionales
+const QuestionIcons = [
+  <svg key="1" className="w-4 h-4 text-orange-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+    <path strokeLinecap="round" strokeLinejoin="round" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+  </svg>,
+  <svg key="2" className="w-4 h-4 text-orange-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+    <path strokeLinecap="round" strokeLinejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+    <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+  </svg>,
+  <svg key="3" className="w-4 h-4 text-orange-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+    <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+  </svg>,
+  <svg key="4" className="w-4 h-4 text-orange-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+    <path strokeLinecap="round" strokeLinejoin="round" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+  </svg>
 ];
-
-// First pill (Digital Presence & Authority) open by default
-const DEFAULT_OPEN_INDEX = 0;
 
 type BetterEcosystemSectionProps = {
   locale: keyof typeof ecosystemTranslations;
 };
 
 export default function BetterEcosystemSection({ locale }: BetterEcosystemSectionProps) {
-  const [selected, setSelected] = useState<number | null>(DEFAULT_OPEN_INDEX);
-  const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const [openFaq, setOpenFaq] = useState<number | null>(1);
   const translations = ecosystemTranslations[locale] ?? ecosystemTranslations.en;
   const tx = (key: string) => translations[key as keyof typeof translations] ?? "";
 
   return (
-    <section id="ecosystem" className="py-16 px-6 bg-white border-t border-slate-100">
-      <div className="max-w-4xl mx-auto">
-
-        <p className="text-orange-600 uppercase tracking-[0.25em] text-[10px] font-black mb-2">
-          {tx('ecosystemEyebrow')}
-        </p>
-        <h2 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter leading-[0.9] uppercase mb-6">
-          {tx('ecosystemTitle')} <em className="italic underline decoration-orange-100">{tx('ecosystemTitleEm')}</em>
-        </h2>
-
-        <div className="border-l-[3px] border-orange-500 pl-5 bg-slate-50 py-4 pr-5 rounded-r-2xl mb-8">
-          <p className="text-slate-900 font-black italic text-sm leading-relaxed tracking-tight">
-            {tx('ecosystemQuote')} <br />
-            <span className="text-orange-600">{tx('ecosystemQuoteEm')}</span>
-          </p>
-        </div>
-
-        <AnimatePresence mode="wait">
-          {selected !== null && (
-            <motion.div
-              key={selected}
-              initial={{ opacity: 0, y: -8 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -8 }}
-              transition={{ duration: 0.2 }}
-              className="flex items-center gap-5 border border-slate-100 rounded-3xl p-5 mb-6 hover:border-blue-600/30 transition-colors"
-            >
-              <IconBadge icon={cajaData[selected].icon} isDefault={selected === DEFAULT_OPEN_INDEX} />
-              <div className="flex-1 min-w-0">
-                <div className="flex items-start justify-between gap-3">
-                  <div>
-                    <p className="text-slate-900 font-black uppercase tracking-tight text-sm">
-                      {tx(`${cajaData[selected].key}Title`)}
-                    </p>
-                    <div className="flex items-center gap-2 mt-0.5 mb-2">
-                      <p className="text-blue-600 font-black uppercase tracking-[0.15em] text-[10px]">
-                        {tx(`${cajaData[selected].key}Name`)}
-                      </p>
-                      {selected === DEFAULT_OPEN_INDEX && (
-                        <span className="text-orange-600 font-black uppercase tracking-widest text-[8px] border border-orange-200 bg-orange-50 rounded-full px-2 py-0.5">
-                          {tx('ecosystemCoreBadge')}
-                        </span>
-                      )}
-                    </div>
-                  </div>
-                </div>
-                <p className="text-slate-500 text-xs leading-relaxed font-medium">
-                  {tx(`${cajaData[selected].key}Desc`)}
-                </p>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-
-        <div className="flex flex-wrap gap-2">
-          {cajaData.map((caja, i) => (
-            <button
-              key={i}
-              type="button"
-              onClick={() => setSelected(selected === i ? null : i)}
-              className={`relative px-4 py-2 rounded-full text-[10px] font-black uppercase tracking-widest border transition-all ${
-                selected === i
-                  ? "bg-blue-600 border-blue-600 text-white shadow-lg"
-                  : "bg-white border-slate-200 text-slate-400 hover:border-blue-600 hover:text-blue-600"
-              }`}
-            >
-              {i === DEFAULT_OPEN_INDEX && (
-                <span className="absolute -top-1 -right-1 h-2 w-2 rounded-full bg-orange-500 ring-2 ring-white" />
-              )}
-              {tx(`${caja.key}Name`)}
-            </button>
-          ))}
-        </div>
-
-        {/* FAQ — THE BETTER ECOSYSTEM */}
-        <div className="mt-16">
-          <h3 className="text-blue-600 uppercase tracking-[0.25em] text-[10px] font-black mb-6">
+    <section id="ecosystem" className="py-20 px-6 lg:px-12 bg-white border-t border-slate-100">
+      <div className="max-w-7xl mx-auto">
+        
+        {/* Encabezado Seccion */}
+        <div className="mb-8 flex items-center gap-3">
+          <div className="w-8 h-8 rounded-lg bg-orange-50 flex items-center justify-center border border-orange-200">
+            <svg className="w-4 h-4 text-orange-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <h2 className="text-2xl md:text-3xl font-black text-slate-900 tracking-tight uppercase">
             {tx('faqTitle')}
-          </h3>
-          <div className="border border-slate-200 rounded-2xl overflow-hidden">
+          </h2>
+        </div>
+
+        {/* Grid alineada perfectamente en la parte superior (items-start) */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+          
+          {/* Columna Izquierda: Acordeón FAQ */}
+          <div className="border border-slate-200/80 rounded-2xl overflow-hidden bg-white shadow-sm">
             {[1, 2, 3, 4].map((n) => (
               <div key={n} className="border-b border-slate-100 last:border-b-0">
                 <button
                   type="button"
                   onClick={() => setOpenFaq(openFaq === n ? null : n)}
-                  className="w-full flex items-center justify-between gap-4 p-5 text-left hover:bg-slate-50 transition-colors"
+                  className="w-full flex items-center justify-between gap-4 p-5 text-left hover:bg-slate-50/80 transition-colors"
                 >
-                  <span className="font-black text-slate-900 text-sm">
+                  <span className="font-bold text-slate-900 text-sm md:text-base flex items-center gap-3">
+                    <span className="p-1.5 rounded-md bg-slate-50 border border-slate-100 flex-shrink-0">
+                      {QuestionIcons[n - 1]}
+                    </span>
                     {tx(`faqQ${n}`)}
                   </span>
                   <span
-                    className={`flex-shrink-0 text-blue-600 font-black text-lg transition-transform ${
-                      openFaq === n ? "rotate-45" : ""
+                    className={`flex-shrink-0 font-bold text-lg transition-transform duration-200 ${
+                      openFaq === n ? "rotate-45 text-orange-500" : "text-slate-400"
                     }`}
                   >
                     +
                   </span>
                 </button>
-                <AnimatePresence>
+                <AnimatePresence initial={false}>
                   {openFaq === n && (
                     <motion.div
                       initial={{ height: 0, opacity: 0 }}
@@ -319,7 +147,7 @@ export default function BetterEcosystemSection({ locale }: BetterEcosystemSectio
                       transition={{ duration: 0.2 }}
                       className="overflow-hidden"
                     >
-                      <div className="px-5 pb-5 text-slate-600 text-sm leading-relaxed">
+                      <div className="px-5 pb-5 pl-14 text-slate-600 text-sm leading-relaxed border-l-2 border-orange-500/40 ml-5 my-1">
                         {tx(`faqA${n}`)}
                       </div>
                     </motion.div>
@@ -329,8 +157,8 @@ export default function BetterEcosystemSection({ locale }: BetterEcosystemSectio
             ))}
           </div>
 
-          {/* CARD DIEGO — CORE FORMULA */}
-          <div className="mt-10 relative bg-white border border-slate-100 rounded-3xl shadow-xl p-8 md:p-10">
+          {/* Columna Derecha: Tarjeta Diego (Alineada al mismo nivel superior) */}
+          <div className="relative bg-white border border-slate-100 rounded-3xl shadow-xl p-8 md:p-10 border-t-4 border-t-orange-500">
             <div className="flex items-center gap-4 mb-6">
               <div className="relative w-14 h-14 rounded-full overflow-hidden border-2 border-slate-100 flex-shrink-0 bg-blue-50">
                 <Image src="/diego.jpeg" alt="Diego Vargas" fill className="object-cover" sizes="56px" />
@@ -363,20 +191,9 @@ export default function BetterEcosystemSection({ locale }: BetterEcosystemSectio
               {tx('faqClosing')}
             </p>
           </div>
+
         </div>
       </div>
     </section>
-  );
-}
-
-function IconBadge({ icon: Icon, isDefault }: { icon: LucideIcon; isDefault: boolean }) {
-  return (
-    <div
-      className={`flex-shrink-0 h-14 w-14 rounded-2xl flex items-center justify-center bg-blue-50 ${
-        isDefault ? "ring-2 ring-orange-400" : ""
-      }`}
-    >
-      <Icon className="h-6 w-6 text-blue-600" strokeWidth={2.25} />
-    </div>
   );
 }

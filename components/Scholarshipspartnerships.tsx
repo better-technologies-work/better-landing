@@ -60,7 +60,7 @@ export default function ScholarshipsPartnerships({ tx }: Props) {
     return (
         <section className="py-28 px-6 bg-white border-t border-slate-100">
 
-            <div className="max-w-6xl mx-auto">
+            <div className="w-full max-w-7xl mx-auto">
 
                 {/* HEADER */}
                 <div className="text-center mb-14">
@@ -114,7 +114,7 @@ export default function ScholarshipsPartnerships({ tx }: Props) {
                 </div>
 
                 {/* TRACK CONTENT */}
-                <div className="max-w-4xl mx-auto">
+                <div className="w-full max-w-7xl mx-auto">
 
                     <AnimatePresence mode="wait">
 
