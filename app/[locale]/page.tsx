@@ -2177,7 +2177,7 @@ export default function Home() {
       <Header />
 
       {/* 1. HERO */}
-      <section className="relative w-full h-[100dvh] overflow-hidden" id="top">
+      <section className="relative w-full h-[100dvh] overflow-hidden bg-slate-950" id="top">
         <video
           ref={heroVideoRef}
           className="absolute top-1/2 left-1/2 min-w-full min-h-full w-auto h-auto -translate-x-1/2 -translate-y-1/2 object-cover"
@@ -2189,7 +2189,7 @@ export default function Home() {
         >
           <source src="/hero.mp4" type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-white/10 z-[1]" />
+        <div className="absolute inset-0 bg-slate-950/60 z-[1]" />
         <div className="absolute inset-0 z-[2] flex flex-col items-center justify-center px-6 text-center">
           <p className="text-blue-600 uppercase tracking-[0.4em] mb-3 text-[10px] font-black">
             {t('whatWeDo')}
@@ -2197,9 +2197,7 @@ export default function Home() {
           <h1 className="text-3xl md:text-5xl lg:text-6xl font-black leading-[1.05] tracking-tighter max-w-4xl text-white uppercase">
             {tx('openLatam')}
           </h1>
-          <h2 className="text-2xl md:text-4xl lg:text-5xl font-black leading-[1.05] tracking-tighter max-w-4xl text-blue-600 uppercase">
-            {tx('globalCompanies')}
-          </h2>
+          
           <p className="mt-3 text-white text-[10px] md:text-[12px] uppercase tracking-widest font-bold">{tx('subtagline')}</p>
           <div className="mt-5 flex flex-col sm:flex-row items-center gap-3">
             <a href="https://wa.me/593991358652?text=Hi!%20I%27d%20like%20to%20get%20in%20touch%20with%20the%20team." className="inline-block px-8 py-3 bg-[#FF6B00] text-white rounded-full font-bold shadow-lg uppercase tracking-widest text-[10px] transition-transform active:scale-95">
@@ -2210,14 +2208,29 @@ export default function Home() {
             </a>
           </div>
         </div>
+        {/*  CINTA DE TEXTO EN MOVIMIENTO  */}
+        <div className="absolute bottom-0 left-0 right-0 z-[3] py-3 bg-black/40 backdrop-blur-md border-t border-white/10 overflow-hidden pointer-events-none">
+          <div className="animate-marquee whitespace-nowrap flex items-center gap-8 text-[11px] font-black uppercase tracking-[0.25em] text-blue-500">
+            <span>{tx('globalCompanies')}</span>
+            <span className="text-orange-500">•</span>
+            <span>{tx('globalCompanies')}</span>
+            <span className="text-orange-500">•</span>
+            <span>{tx('globalCompanies')}</span>
+            <span className="text-orange-500">•</span>
+
+            {/* Repetición para bucle continuo fluido */}
+            <span>{tx('globalCompanies')}</span>
+            <span className="text-orange-500">•</span>
+            <span>{tx('globalCompanies')}</span>
+            <span className="text-orange-500">•</span>
+            <span>{tx('globalCompanies')}</span>
+            <span className="text-orange-500">•</span>
+          </div>
+        </div>
       </section>
-
-
 
       {/* 3. CHAT */}
       <ChatSection />
-
-
 
       {/* 4. MITTELSTAND */}
       <section id="mittelstand" className="py-12 md:py-24 px-6 bg-slate-50 border-y border-slate-200">

@@ -1,3 +1,5 @@
+/* vscode-disable-next-line */
+/* css-disable unknownAtRules */
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;500;600;700;800;900&display=swap');
 @import "tailwindcss";
 
@@ -136,4 +138,16 @@ article table th {
   background: #0f172a;
   color: #f1f5f9;
   text-align: center;
+}
+
+/* Marquee / Cinta deslizante continua */
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 25s linear infinite;
 }
