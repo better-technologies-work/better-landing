@@ -440,7 +440,19 @@ export const ui = {
     pt: "COTAR A SUA",
   },
   // Mittelstand
-
+  why: { en: "Why?", es: "¿Por qué?", de: "Warum?", pt: "Por quê?" },
+  problemPoint1Title: {
+    en: "You rent, you don't own",
+    es: "Alquilás, no sos dueño",
+    de: "Sie mieten, Sie besitzen nicht",
+    pt: "Você aluga, não é dono",
+  },
+  problemPoint2Title: {
+    en: "One-size-fits-all tech",
+    es: "Tecnología para todos, no para vos",
+    de: "Einheitstechnologie für alle",
+    pt: "Tecnologia genérica para todos",
+  },
   typicalTickets: { en: "Typical tickets:", es: "Tickets típicos:", de: "Typische Tickets:", pt: "Tickets típicos:" },
   ourCustomers: { en: "THE PROBLEM", es: "EL PROBLEMA", de: "DAS PROBLEM", pt: "O PROBLEMA" },
   problemHeadline: {
@@ -450,10 +462,10 @@ export const ui = {
     pt: "O seu negócio é invisível?",
   },
   problemIntro: {
-    en: "The best tools and practices 2 years ago no longer work in today's markets. Why?",
-    es: "Las mejores herramientas y prácticas de hace 2 años ya no funcionan en los mercados actuales. ¿Por qué?",
-    de: "Die besten Tools und Praktiken von vor 2 Jahren funktionieren in den heutigen Märkten nicht mehr. Warum?",
-    pt: "As melhores ferramentas e práticas de 2 anos atrás não funcionam mais nos mercados de hoje. Por quê?",
+    en: "The best tools and practices 2 years ago no longer work in today's markets.",
+    es: "Las mejores herramientas y prácticas de hace 2 años ya no funcionan en los mercados actuales.",
+    de: "Die besten Tools und Praktiken von vor 2 Jahren funktionieren in den heutigen Märkten nicht mehr.",
+    pt: "As melhores ferramentas e práticas de 2 anos atrás não funcionam mais nos mercados de hoje. ",
   },
   problemPoint1: {
     en: "If you rent your digital infrastructure you are captive to the standard.",
@@ -1796,8 +1808,60 @@ const NewsSection = () => {
   );
 };
 
+const ProblemDropdownColumns = ({ tx }: { tx: (key: string) => string }) => {
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
 
+  const items = [
+    { title: tx('problemPoint1Title'), body: tx('problemPoint1') },
+    { title: tx('problemPoint2Title'), body: tx('problemPoint2') },
+  ];
+
+  return (
+    <div className="grid sm:grid-cols-2 gap-4">
+      {items.map((item, i) => {
+        const isOpen = openIndex === i;
+        return (
+          <div
+            key={i}
+            role="button"
+            tabIndex={0}
+            onClick={() => setOpenIndex(isOpen ? null : i)}
+            onKeyDown={(e) => e.key === "Enter" && setOpenIndex(isOpen ? null : i)}
+            className={`cursor-pointer text-left border-2 rounded-2xl p-5 bg-slate-50 transition-colors duration-200 ${isOpen ? "border-orange-500 bg-orange-50/40" : "border-slate-200 hover:border-orange-300"
+              }`}
+          >
+            <div className="flex items-center justify-between gap-3">
+              <span className="font-black text-sm md:text-base text-slate-900">{item.title}</span>
+              <motion.span
+                animate={{ rotate: isOpen ? 45 : 0 }}
+                transition={{ duration: 0.2 }}
+                className={`flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-base font-black ${isOpen ? "bg-orange-500 text-white" : "bg-slate-200 text-slate-500"
+                  }`}
+              >
+                +
+              </motion.span>
+            </div>
+            <AnimatePresence initial={false}>
+              {isOpen && (
+                <motion.div
+                  initial={{ height: 0, opacity: 0 }}
+                  animate={{ height: "auto", opacity: 1 }}
+                  exit={{ height: 0, opacity: 0 }}
+                  transition={{ duration: 0.25 }}
+                  className="overflow-hidden"
+                >
+                  <p className="text-slate-600 text-sm md:text-base leading-relaxed pt-2">{item.body}</p>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+        );
+      })}
+    </div>
+  );
+};
 // CHAT SECTION 
+
 const ChatSection = () => {
   const locale = useLocale() as Locale;
   const tx = (key: string) => ((ui as any)[key]?.[locale] ?? (ui as any)[key]?.['en'] ?? '');
@@ -2105,15 +2169,13 @@ export default function Home() {
         />
         <div className="absolute inset-0 z-[2] flex flex-col items-center justify-center px-6 text-center">
 
-          <p className="text-orange-500 uppercase tracking-[0.4em] mb-3 text-[10px] font-black animate-hero-fadein relative z-[3]">
-            {t('whatWeDo')}
-          </p>
+
           <div className="relative z-[3] animate-hero-fadein-delay">
             <h1 className="relative text-3xl md:text-5xl lg:text-6xl font-black leading-[1.05] tracking-tighter max-w-4xl uppercase bg-gradient-to-r from-slate-900 via-orange-500 to-blue-600 bg-clip-text text-transparent animate-shimmer z-10">
               {tx('openLatam')}
             </h1>
           </div>
-          
+
           <p className="mt-3 text-slate-500 text-[10px] md:text-[12px] uppercase tracking-widest font-bold animate-hero-fadein-delay-2 relative z-[3]">{tx('subtagline')}</p>
           <div className="mt-5 flex flex-col sm:flex-row items-center gap-3 animate-hero-fadein-delay-2 relative z-[3]">
             <a href="https://wa.me/593991358652?text=Hi!%20I%27d%20like%20to%20get%20in%20touch%20with%20the%20team." className="inline-block px-8 py-3 bg-[#FF6B00] text-white rounded-full font-bold shadow-lg uppercase tracking-widest text-[10px] transition-transform active:scale-95">
@@ -2167,25 +2229,38 @@ export default function Home() {
               {tx('problemHeadline')}
             </h2>
 
-            <p className="text-lg text-slate-600 font-medium leading-relaxed mb-4 text-balance">
+
+            <p className="text-lg text-slate-600 font-medium leading-relaxed mb-2 text-balance">
               {tx('problemIntro')}
             </p>
-            <ul className="mt-4 space-y-3 list-disc list-inside marker:text-orange-500">
-              <li className="text-slate-600 text-base leading-relaxed">
-                {tx('problemPoint1')}
-              </li>
-              <li className="text-slate-600 text-base leading-relaxed">
-                {tx('problemPoint2')}
-              </li>
-            </ul>
 
-            <h3 className="text-2xl md:text-3xl font-bold text-blue-600 mb-4 leading-tight">
+            <motion.p
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="text-center text-3xl md:text-4xl font-black italic my-6"
+            >
+              <motion.span
+                animate={{ scale: [1, 1.08, 1] }}
+                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                className="inline-block text-orange-500"
+              >
+                {tx('why')}
+              </motion.span>
+            </motion.p>
+
+            <ProblemDropdownColumns tx={tx} />
+
+
+
+            <h3 className="text-2xl md:text-3xl font-bold text-blue-600 mb-4 mt-8 leading-tight">
               {tx('problemHighlight')}
             </h3>
             <p className="text-lg text-slate-600 font-medium leading-relaxed mb-8 text-balance">
               {tx('problemBody')}
             </p>
-           </motion.div>
+          </motion.div>
 
         </div>
 
@@ -2395,7 +2470,8 @@ export default function Home() {
           </p>
         </div>
       </div>
-      {/* 6. EQUIPO */ }
+
+      {/* 6. EQUIPO */}
       <section id="about" className="py-16 px-6 bg-white border-t border-slate-100">
         <div className="w-full max-w-7xl mx-auto">
 
@@ -2416,15 +2492,29 @@ export default function Home() {
           </div>
           <AnimatePresence mode="wait">
             {selected !== null && (
-              <motion.div key={selected} initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }} transition={{ duration: 0.2 }} className="flex items-center gap-5 border border-slate-100 rounded-3xl p-5 mb-6 hover:border-blue-600/30 transition-colors">
-                <Avatar member={teamData[selected]} />
-                <div className="flex-1 min-w-0">
-                  <div className="flex items-start justify-between gap-3">
+              <motion.div
+                key={selected}
+                initial={{ opacity: 0, y: -8 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -8 }}
+                transition={{ duration: 0.2 }}
+                className="flex flex-col sm:flex-row items-center sm:items-center gap-4 sm:gap-5 border border-slate-100 rounded-3xl p-5 mb-6 hover:border-blue-600/30 transition-colors text-center sm:text-left"
+              >
+                <div className="w-24 h-24 sm:w-16 sm:h-16 flex-shrink-0">
+                  <Avatar member={teamData[selected]} />
+                </div>
+                <div className="flex-1 min-w-0 w-full">
+                  <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 sm:gap-3">
                     <div>
                       <p className="text-slate-900 font-black uppercase tracking-tight text-sm">{teamData[selected].name}</p>
                       <p className="text-blue-600 font-black uppercase tracking-[0.15em] text-[10px] mt-0.5 mb-2">{teamData[selected].role}</p>
                     </div>
-                    <a href={teamData[selected].linkedin} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 border border-slate-200 rounded-full px-3 py-1.5 hover:border-blue-600 hover:bg-blue-50 transition-all flex-shrink-0">
+
+                    <a href={teamData[selected].linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-center sm:justify-start gap-1.5 border border-slate-200 rounded-full px-3 py-1.5 hover:border-blue-600 hover:bg-blue-50 transition-all flex-shrink-0 mx-auto sm:mx-0"
+                    >
                       <LinkedInIcon /><span className="text-[9px] font-black uppercase tracking-widest text-slate-500">LinkedIn</span>
                     </a>
                   </div>
@@ -2433,96 +2523,81 @@ export default function Home() {
               </motion.div>
             )}
           </AnimatePresence>
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap justify-center gap-2">
             {teamData.map((member, i) => (
-              <button key={i} type="button" onClick={() => setSelected(selected === i ? null : i)} className={`px-4 py-2 rounded-full text-[10px] font-black uppercase tracking-widest border transition-all ${selected === i ? "bg-blue-600 border-blue-600 text-white shadow-lg" : "bg-white border-slate-200 text-slate-400 hover:border-blue-600 hover:text-blue-600"}`}>
+              <button
+                key={i}
+                type="button"
+                onClick={() => setSelected(selected === i ? null : i)}
+                className={`px-3 py-1.5 sm:px-4 sm:py-2 rounded-full text-[9px] sm:text-[10px] font-black uppercase tracking-wide sm:tracking-widest border transition-all ${selected === i ? "bg-blue-600 border-blue-600 text-white shadow-lg" : "bg-white border-slate-200 text-slate-400 hover:border-blue-600 hover:text-blue-600"}`}
+              >
                 {member.name}
               </button>
             ))}
           </div>
         </div>
       </section>
+      {/*  NEWS FEED 
+      <NewsSection />
+      */}
+      
+      {/* LATEST INSIGHTS */}
+      <section className="py-16 bg-slate-50">
+        <div className="container mx-auto px-6 text-center">
+
+          <p className="text-blue-600 uppercase tracking-[0.25em] text-[10px] font-black mb-4">{tx('stayUpdated')}</p>
+          <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-6 uppercase">{tx('latestInsights')}</h2>
+          <p className="text-slate-500 max-w-lg mx-auto mb-10">{tx('blogDesc')}</p>
+          {posts && posts.length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12 text-left">
+              {posts.map((post) => (
+                <ArticleCard
+                  key={post.id}
+                  title={post.title}
+                  description={post.description}
+                  cover_url={post.cover_url}
+                  category={post.category}
+                  slug={post.slug}
+                  post_url={post.post_url}
+                  published_at={post.published_at}
+                  updated_at={post.updated_at}
+                  video_url={post.video_url}
+                  locale={locale}
+                  readMoreText={tx('readMore')}
+                  publishedText={tx('published')}
+                  updatedText={tx('updated')}
+                  noImageText={tx('noImage')}
+                  noDescText={tx('noDesc') as string}
+                />
+              ))}
+            </div>
+          ) : (
+            <div className="py-12 text-center"><p className="text-slate-400 text-sm">{tx('noPostsYet')}</p></div>
+          )}
+          <a href={`${localeBase}/blog`} className="inline-block bg-slate-900 text-white px-10 py-4 rounded-full font-black text-xs uppercase tracking-widest hover:bg-blue-600 transition-colors">
+            {t('viewAllPosts')}
+          </a>
+        </div>
+      </section>
 
 
 
-      <div className="py-10 border-t border-slate-100 text-center">
+
+      {/* FOOTER */}
+      <footer className="py-16 text-center bg-white border-t border-slate-100">
+        <p className="text-slate-400 text-[9px] font-black uppercase tracking-[0.3em] mb-4">{tx('dontMiss')}</p>
         <h3 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter uppercase mb-10">
           {tx('followJourney')}{" "}
           <span className="text-blue-600">
             {tx('journey')}
           </span>
         </h3>
-        <div className="flex justify-center gap-6">
+        <div className="flex justify-center gap-6 mb-12">
           <a href="https://www.linkedin.com/company/bettertechnologies/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-6 py-3 rounded-full border-2 border-slate-200 text-slate-900 font-black text-[11px] uppercase tracking-widest hover:border-blue-600 hover:text-blue-600 transition-all"><LinkedInIcon /> LinkedIn</a>
           <a href="https://www.instagram.com/better_technologies?igsh=MWUwYmkyYXVhdWRucA==" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-6 py-3 rounded-full border-2 border-slate-200 text-slate-900 font-black text-[11px] uppercase tracking-widest hover:border-[#d6249f] hover:text-[#d6249f] transition-all"><InstagramIcon /> Instagram</a>
         </div>
-      </div>
-
-
-
-
-  {/*  NEWS FEED */ }
-  <NewsSection />
-
-
-
-  {/* LATEST INSIGHTS */ }
-  <section className="py-16 bg-slate-50">
-    <div className="container mx-auto px-6 text-center">
-
-      <p className="text-blue-600 uppercase tracking-[0.25em] text-[10px] font-black mb-4">{tx('stayUpdated')}</p>
-      <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-6 uppercase">{tx('latestInsights')}</h2>
-      <p className="text-slate-500 max-w-lg mx-auto mb-10">{tx('blogDesc')}</p>
-      {posts && posts.length > 0 ? (
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12 text-left">
-          {posts.map((post) => (
-            <ArticleCard
-              key={post.id}
-              title={post.title}
-              description={post.description}
-              cover_url={post.cover_url}
-              category={post.category}
-              slug={post.slug}
-              post_url={post.post_url}
-              published_at={post.published_at}
-              updated_at={post.updated_at}
-              video_url={post.video_url}
-              locale={locale}
-              readMoreText={tx('readMore')}
-              publishedText={tx('published')}
-              updatedText={tx('updated')}
-              noImageText={tx('noImage')}
-              noDescText={tx('noDesc') as string}
-            />
-          ))}
-        </div>
-      ) : (
-        <div className="py-12 text-center"><p className="text-slate-400 text-sm">{tx('noPostsYet')}</p></div>
-      )}
-      <a href={`${localeBase}/blog`} className="inline-block bg-slate-900 text-white px-10 py-4 rounded-full font-black text-xs uppercase tracking-widest hover:bg-blue-600 transition-colors">
-        {t('viewAllPosts')}
-      </a>
-    </div>
-  </section>
-
-
-
-
-  {/* FOOTER */ }
-  <footer className="py-16 text-center bg-white border-t border-slate-100">
-    <p className="text-slate-400 text-[9px] font-black uppercase tracking-[0.3em] mb-4">{tx('dontMiss')}</p>
-    <h3 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter uppercase mb-10">
-      {tx('followJourney')}{" "}
-      <span className="text-blue-600">
-        {tx('journey')}
-      </span>
-    </h3>
-    <div className="flex justify-center gap-6 mb-12">
-      <a href="https://www.linkedin.com/company/bettertechnologies/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-6 py-3 rounded-full border-2 border-slate-200 text-slate-900 font-black text-[11px] uppercase tracking-widest hover:border-blue-600 hover:text-blue-600 transition-all"><LinkedInIcon /> LinkedIn</a>
-      <a href="https://www.instagram.com/better_technologies?igsh=MWUwYmkyYXVhdWRucA==" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-6 py-3 rounded-full border-2 border-slate-200 text-slate-900 font-black text-[11px] uppercase tracking-widest hover:border-[#d6249f] hover:text-[#d6249f] transition-all"><InstagramIcon /> Instagram</a>
-    </div>
-    <p className="text-slate-400 text-[9px] font-black uppercase tracking-[0.3em]">&copy; 2026 Better Technologies.</p>
-  </footer>
+        <p className="text-slate-400 text-[9px] font-black uppercase tracking-[0.3em]">&copy; 2026 Better Technologies.</p>
+      </footer>
 
 
 

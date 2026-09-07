@@ -1,7 +1,8 @@
 'use client'
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import { ChevronDown } from "lucide-react";
 
 type Props = {
     tx: (key: string) => string;
@@ -9,6 +10,13 @@ type Props = {
 
 export default function GrowthCapabilities({ tx }: Props) {
     const [selected, setSelected] = useState(0);
+    const [isSystemOpen, setIsSystemOpen] = useState(false);
+
+    // Opcional: colapsar de nuevo al cambiar de píldora
+    useEffect(() => {
+        setIsSystemOpen(false);
+    }, [selected]);
+
     const deployments = [
         {
             color: "blue",
@@ -70,26 +78,6 @@ export default function GrowthCapabilities({ tx }: Props) {
 
             <div className="max-w-6xl mx-auto relative z-10">
 
-                {/* HEADER */}
-                <motion.div 
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6 }}
-                    className="text-center mb-14"
-                >
-                    <p className="text-[10px] uppercase tracking-[0.35em] font-black text-blue-600 mb-4">
-                        {tx('growthCapabilities')}
-                    </p>
-
-                    <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter text-slate-900 leading-[0.95]">
-                        {tx('customArsenal')}
-                    </h2>
-
-                    <p className="mt-8 max-w-3xl mx-auto text-slate-600 text-lg leading-8 font-medium text-balance">
-                        {tx('growthIntro')}
-                    </p>
-                </motion.div>
 
                 {/* LEVEL LABELS (Pills interactivas) */}
                 <motion.div 
@@ -103,7 +91,7 @@ export default function GrowthCapabilities({ tx }: Props) {
                         <button
                             key={index}
                             onClick={() => setSelected(index)}
-                            className={`px-5 py-2.5 rounded-full text-[10px] font-black uppercase tracking-[0.25em] border transition-all duration-300 shadow-sm active:scale-95 ${selected === index
+                            className={`px-7 py-3.5 rounded-full text-xs md:text-sm font-black uppercase tracking-[0.2em] border transition-all duration-300 shadow-sm active:scale-95 ${selected === index
                                 ? item.color === "blue"
                                     ? "bg-blue-600 text-white border-blue-600 shadow-blue-600/20 shadow-md"
                                     : "bg-orange-500 text-white border-orange-500 shadow-orange-500/20 shadow-md"
@@ -166,53 +154,80 @@ export default function GrowthCapabilities({ tx }: Props) {
                                     </div>
                                 </div>
 
-                                <div className="bg-white/60 p-6 rounded-2xl border border-slate-100">
-                                    <p className="font-black text-slate-900 text-base mb-5 uppercase tracking-tight flex items-center gap-2">
-                                        <span className={`w-2 h-2 rounded-full ${current.color === "blue" ? "bg-blue-600" : "bg-orange-500"}`} />
-                                        {current.systemTitle}
-                                    </p>
+                                <div className="bg-white/60 rounded-2xl border border-slate-100 overflow-hidden">
+                                    <button
+                                        type="button"
+                                        onClick={() => setIsSystemOpen((prev) => !prev)}
+                                        className="w-full flex items-center justify-between gap-2 p-6 text-left"
+                                    >
+                                        <p className="font-black text-slate-900 text-base uppercase tracking-tight flex items-center gap-2">
+                                            <span className={`w-2 h-2 rounded-full ${current.color === "blue" ? "bg-blue-600" : "bg-orange-500"}`} />
+                                            {current.systemTitle}
+                                        </p>
+                                        <motion.span
+                                            animate={{ rotate: isSystemOpen ? 180 : 0 }}
+                                            transition={{ duration: 0.2 }}
+                                            className={`flex-shrink-0 w-7 h-7 rounded-full flex items-center justify-center ${
+                                                current.color === "blue" ? "bg-blue-600 text-white" : "bg-orange-500 text-white"
+                                            }`}
+                                        >
+                                            <ChevronDown className="w-4 h-4" />
+                                        </motion.span>
+                                    </button>
 
-                                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                                        <div className="p-4 rounded-xl bg-white border border-slate-100 shadow-sm">
-                                            <p className="font-black text-slate-900 text-xs uppercase tracking-wider mb-1 text-blue-600 flex items-center gap-1.5">
-                                                <span className="grayscale opacity-60 text-[11px]">🎯</span>
-                                                Your Quantos
-                                            </p>
-                                            <p className="text-slate-600 text-xs font-medium leading-relaxed">
-                                                {current.quantos}
-                                            </p>
-                                        </div>
+                                    <AnimatePresence initial={false}>
+                                        {isSystemOpen && (
+                                            <motion.div
+                                                initial={{ height: 0, opacity: 0 }}
+                                                animate={{ height: "auto", opacity: 1 }}
+                                                exit={{ height: 0, opacity: 0 }}
+                                                transition={{ duration: 0.3, ease: "easeOut" }}
+                                                className="overflow-hidden"
+                                            >
+                                                <div className="px-6 pb-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                                                    <div className="p-4 rounded-xl bg-white border border-slate-100 shadow-sm">
+                                                        <p className="font-black text-slate-900 text-xs uppercase tracking-wider mb-1 text-blue-600 flex items-center gap-1.5">
+                                                            <span className="grayscale opacity-60 text-[11px]">🎯</span>
+                                                            Your Quantos
+                                                        </p>
+                                                        <p className="text-slate-600 text-xs font-medium leading-relaxed">
+                                                            {current.quantos}
+                                                        </p>
+                                                    </div>
 
-                                        <div className="p-4 rounded-xl bg-white border border-slate-100 shadow-sm">
-                                            <p className="font-black text-slate-900 text-xs uppercase tracking-wider mb-1 text-orange-500 flex items-center gap-1.5">
-                                                <span className="grayscale opacity-60 text-[11px]">🎯</span>
-                                                Your Hack
-                                            </p>
-                                            <p className="text-slate-600 text-xs font-medium leading-relaxed">
-                                                {current.hack}
-                                            </p>
-                                        </div>
+                                                    <div className="p-4 rounded-xl bg-white border border-slate-100 shadow-sm">
+                                                        <p className="font-black text-slate-900 text-xs uppercase tracking-wider mb-1 text-orange-500 flex items-center gap-1.5">
+                                                            <span className="grayscale opacity-60 text-[11px]">🎯</span>
+                                                            Your Hack
+                                                        </p>
+                                                        <p className="text-slate-600 text-xs font-medium leading-relaxed">
+                                                            {current.hack}
+                                                        </p>
+                                                    </div>
 
-                                        <div className="p-4 rounded-xl bg-white border border-slate-100 shadow-sm">
-                                            <p className="font-black text-slate-900 text-xs uppercase tracking-wider mb-1 text-blue-600 flex items-center gap-1.5">
-                                                <span className="grayscale opacity-60 text-[11px]">🎯</span>
-                                                Your Power Units
-                                            </p>
-                                            <p className="text-slate-600 text-xs font-medium leading-relaxed">
-                                                {current.powerUnits}
-                                            </p>
-                                        </div>
+                                                    <div className="p-4 rounded-xl bg-white border border-slate-100 shadow-sm">
+                                                        <p className="font-black text-slate-900 text-xs uppercase tracking-wider mb-1 text-blue-600 flex items-center gap-1.5">
+                                                            <span className="grayscale opacity-60 text-[11px]">🎯</span>
+                                                            Your Power Units
+                                                        </p>
+                                                        <p className="text-slate-600 text-xs font-medium leading-relaxed">
+                                                            {current.powerUnits}
+                                                        </p>
+                                                    </div>
 
-                                        <div className="p-4 rounded-xl bg-white border border-slate-100 shadow-sm">
-                                            <p className="font-black text-slate-900 text-xs uppercase tracking-wider mb-1 text-orange-500 flex items-center gap-1.5">
-                                                <span className="grayscale opacity-60 text-[11px]">🎯</span>
-                                                Your Sovereign Node
-                                            </p>
-                                            <p className="text-slate-600 text-xs font-medium leading-relaxed">
-                                                {current.sovereignNode}
-                                            </p>
-                                        </div>
-                                    </div>
+                                                    <div className="p-4 rounded-xl bg-white border border-slate-100 shadow-sm">
+                                                        <p className="font-black text-slate-900 text-xs uppercase tracking-wider mb-1 text-orange-500 flex items-center gap-1.5">
+                                                            <span className="grayscale opacity-60 text-[11px]">🎯</span>
+                                                            Your Sovereign Node
+                                                        </p>
+                                                        <p className="text-slate-600 text-xs font-medium leading-relaxed">
+                                                            {current.sovereignNode}
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </motion.div>
+                                        )}
+                                    </AnimatePresence>
                                 </div>
 
                                 <div className="pt-6 border-t border-slate-200/80 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
