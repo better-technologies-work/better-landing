@@ -1168,12 +1168,12 @@ export const ui = {
     pt: "1.500 USD",
   },
 
-  foundationScholarship: {
-    en: "Underdog Scholarship: Up to 50% co-investment (bringing it down to ~$750–$1,250).",
-    es: "Beca Underdog: hasta 50% de coinversión (quedando en ~$750–$1.250).",
-    de: "Underdog-Stipendium: bis zu 50% Co-Investition (reduziert auf ~$750–$1.250).",
-    pt: "Bolsa Underdog: até 50% de coinvestimento (reduzindo para ~$750–$1.250).",
-  },
+foundationScholarship: {
+  en: "Up to 50% co-investment (bringing it down to ~$750–$1,250).",
+  es: "Hasta 50% de coinversión (quedando en ~$750–$1.250).",
+  de: "Bis zu 50% Co-Investition (reduziert auf ~$750–$1.250).",
+  pt: "Até 50% de coinvestimento (reduzindo para ~$750–$1.250).",
+},
 
   foundationCta: {
     en: "Build Your Foundation",
@@ -1260,11 +1260,11 @@ export const ui = {
   },
 
   relevanceScholarship: {
-    en: "Underdog Scholarship: Up to 50% co-investment (bringing it down to ~$1,750–$2,750).",
-    es: "Beca Underdog: hasta 50% de coinversión (quedando en ~$1.750–$2.750).",
-    de: "Underdog-Stipendium: bis zu 50% Co-Investition (reduziert auf ~$1.750–$2.750).",
-    pt: "Bolsa Underdog: até 50% de coinvestimento (reduzindo para ~$1.750–$2.750).",
-  },
+  en: "Up to 50% co-investment (bringing it down to ~$1,750–$2,750).",
+  es: "Hasta 50% de coinversión (quedando en ~$1.750–$2.750).",
+  de: "Bis zu 50% Co-Investition (reduziert auf ~$1.750–$2.750).",
+  pt: "Até 50% de coinvestimento (reduzindo para ~$1.750–$2.750).",
+},
 
   relevanceCta: {
     en: "Build Your Relevance System",
@@ -1350,12 +1350,12 @@ export const ui = {
     pt: "10.000 USD",
   },
 
-  dominanceScholarship: {
-    en: "Underdog Scholarship: Tailor-made (Custom-structured, strictly for Enterprise-level operations or Whales).",
-    es: "Beca Underdog: a medida (estructurada de forma personalizada, estrictamente para operaciones nivel Enterprise o Whales).",
-    de: "Underdog-Stipendium: maßgeschneidert (individuell strukturiert, ausschließlich für Enterprise-Betriebe oder Whales).",
-    pt: "Bolsa Underdog: sob medida (estruturada individualmente, estritamente para operações nível Enterprise ou Whales).",
-  },
+ dominanceScholarship: {
+  en: "Tailor-made (Custom-structured, strictly for Enterprise-level operations or Whales).",
+  es: "A medida (estructurada de forma personalizada, estrictamente para operaciones nivel Enterprise o Whales).",
+  de: "Maßgeschneidert (individuell strukturiert, ausschließlich für Enterprise-Betriebe oder Whales).",
+  pt: "Sob medida (estruturada individualmente, estritamente para operações nível Enterprise ou Whales).",
+},
 
   dominanceCta: {
     en: "Build Your Sovereign Infrastructure",
@@ -2293,7 +2293,7 @@ export default function Home() {
               </a>
             </div>
             <p className="text-slate-800 text-lg md:text-xl leading-relaxed font-medium">
-              "<mark className="bg-orange-200/70 px-1 rounded">{tx('problemQuote')}</mark>"
+              "{tx('problemQuote')}"
             </p>
           </div>
         </motion.div>
