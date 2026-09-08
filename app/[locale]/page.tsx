@@ -2209,7 +2209,7 @@ export default function Home() {
 
       {/* 3. CHAT */}
       <ChatSection />
-
+    
       {/* 4. MITTELSTAND */}
       <section id="mittelstand" className="py-12 md:py-24 px-6 bg-slate-50 border-y border-slate-200">
         <div className="w-full max-w-7xl mx-auto grid md:grid-cols-1 gap-20 items-center">
@@ -2449,14 +2449,86 @@ export default function Home() {
           </div>
         )}
 
+        {/* MODAL VIEW MACHINES */}
+{showMachinesModal && (
+  <div
+    className="fixed inset-0 bg-black/60 flex items-center justify-center z-50 px-4"
+    onClick={() => setShowMachinesModal(false)}
+  >
+    <div
+      className="bg-white rounded-3xl max-w-3xl w-full p-0 relative max-h-[85vh] overflow-y-auto overflow-hidden grid md:grid-cols-2"
+      onClick={(e) => e.stopPropagation()}
+    >
+      <button
+        onClick={() => setShowMachinesModal(false)}
+        className="absolute top-6 right-6 text-white md:text-slate-400 hover:text-slate-900 transition-colors text-2xl leading-none z-10"
+        aria-label={ui.closeButton[locale]}
+      >
+        ×
+      </button>
 
+     {/* Imagen de la máquina */}
+<div className="relative h-48 md:h-full bg-white flex items-center justify-center p-6 md:p-10">
+  <div className="relative w-full h-full max-w-[220px] max-h-[280px] mx-auto">
+    <Image
+      src="/maquina-beland.png"
+      alt="Beland Recycling Machine"
+      fill
+      className="object-contain"
+      sizes="(max-width: 768px) 100vw, 50vw"
+    />
+  </div>
+</div>
+
+      {/* Contenido */}
+      <div className="p-8 md:p-10 flex flex-col justify-center">
+        <p className="text-blue-600 uppercase tracking-[0.25em] text-[10px] font-black mb-3">
+          {ui.belandTitle[locale]}
+        </p>
+        <h3 className="text-3xl md:text-4xl font-black text-slate-900 uppercase tracking-tight leading-[0.95] mb-4">
+          {ui.belandHeading1[locale]}<br />
+          {ui.belandHeading2[locale]}<br />
+          {ui.belandHeading3[locale]}
+        </h3>
+        <p className="text-slate-600 text-sm leading-relaxed mb-6">
+          {ui.belandDesc[locale]}
+        </p>
+
+        <ul className="space-y-3 mb-8">
+          <li className="flex items-start gap-3 text-sm text-slate-700 font-medium">
+            <span>♻️</span> {ui.belandFeature1[locale]}
+          </li>
+          <li className="flex items-start gap-3 text-sm text-slate-700 font-medium">
+            <span>📸</span> {ui.belandFeature2[locale]}
+          </li>
+          <li className="flex items-start gap-3 text-sm text-slate-700 font-medium">
+            <span>💰</span> {ui.belandFeature3[locale]}
+          </li>
+          <li className="flex items-start gap-3 text-sm text-slate-700 font-medium">
+            <span>📊</span> {ui.belandFeature4[locale]}
+          </li>
+        </ul>
+
+        
+         <a href="https://wa.me/593991358652?text=Hi!%20I%20would%20like%20to%20quote%20a%20recycling%20machine%20for%20my%20business."
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center justify-center gap-2 bg-blue-600 text-white px-6 py-3 rounded-full font-black text-[11px] uppercase tracking-[0.15em] shadow-lg shadow-blue-600/20 hover:bg-blue-700 transition-colors"
+        >
+          {ui.belandQuote[locale]}
+          <ArrowRight className="w-4 h-4" />
+        </a>
+      </div>
+    </div>
+  </div>
+)}
       </section>
-
+      <LeadershipLeagues tx={tx} />
       <BetterEcosystemSection locale={locale} />
 
       <GrowthCapabilities tx={tx} />
       <ScholarshipsPartnerships tx={tx} />
-
+      <FinalChallenge tx={tx} />
 
       <div className="py-16 px-6 bg-white text-center">
         <div className="w-full max-w-7xl mx-auto">
@@ -2470,7 +2542,10 @@ export default function Home() {
           </p>
         </div>
       </div>
-
+          <CasosDeExito 
+  showMachinesModal={showMachinesModal} 
+  setShowMachinesModal={setShowMachinesModal} 
+/>
       {/* 6. EQUIPO */}
       <section id="about" className="py-16 px-6 bg-white border-t border-slate-100">
         <div className="w-full max-w-7xl mx-auto">
@@ -2478,7 +2553,7 @@ export default function Home() {
 
           <p className="text-blue-600 uppercase tracking-[0.25em] text-[10px] font-black mb-2">{tx('aboutTeam')}</p>
           <h2 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter leading-[0.9] uppercase mb-6">
-            {tx('highPerf')}{" "}
+            
             <em className="italic underline decoration-blue-100">
               {tx('highPerfEm')}
             </em>{" "}
@@ -2537,9 +2612,9 @@ export default function Home() {
           </div>
         </div>
       </section>
-      {/*  NEWS FEED 
+      {/*  NEWS FEED */}
       <NewsSection />
-      */}
+      
       
       {/* LATEST INSIGHTS */}
       <section className="py-16 bg-slate-50">
