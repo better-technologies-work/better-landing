@@ -2528,7 +2528,7 @@ export default function Home() {
 
       <GrowthCapabilities tx={tx} />
       <ScholarshipsPartnerships tx={tx} />
-      <FinalChallenge tx={tx} />
+      
 
       <div className="py-16 px-6 bg-white text-center">
         <div className="w-full max-w-7xl mx-auto">
@@ -2656,7 +2656,7 @@ export default function Home() {
       </section>
 
 
-
+          <FinalChallenge tx={tx} />
 
       {/* FOOTER */}
       <footer className="py-16 text-center bg-white border-t border-slate-100">
