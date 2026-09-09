@@ -166,7 +166,7 @@ export default function BetterEcosystemSection({ locale }: BetterEcosystemSectio
               <div className="flex-1 min-w-0">
                 <p className="text-slate-900 font-black text-sm">Diego Vargas</p>
                 <p className="text-blue-600 font-black uppercase tracking-[0.1em] text-[10px] mt-0.5">
-                  Chief Business Engineering Operator
+                  Founder & Chief Product Engineer
                 </p>
               </div>
               <a

@@ -20,7 +20,7 @@ export default function ScholarshipsPartnerships({ tx }: Props) {
             title: tx("scholarshipsTitle"),
             intro: tx("scholarshipsIntro"),
             cta: tx("scholarshipsCta"),
-            ctaHref: "https://wa.me/593991358652?text=" + encodeURIComponent(tx("scholarshipsWhatsappMessage")),
+            ctaHref: "https://wa.me/593995269974?text=" + encodeURIComponent(tx("scholarshipsWhatsappMessage")),
             faq: [
                 { q: tx("scholarshipQ1"), a: tx("scholarshipA1") },
                 { q: tx("scholarshipQ2"), a: tx("scholarshipA2") },
@@ -36,7 +36,7 @@ export default function ScholarshipsPartnerships({ tx }: Props) {
             title: tx("partnershipsTitle"),
             intro: tx("partnershipsIntro"),
             cta: tx("partnershipsCta"),
-            ctaHref: "https://wa.me/593991358652?text=" + encodeURIComponent(tx("partnershipsWhatsappMessage")),
+            ctaHref: "https://wa.me/593995269974?text=" + encodeURIComponent(tx("partnershipsWhatsappMessage")),
             faq: [
                 { q: tx("partnershipQ1"), a: tx("partnershipA1") },
                 { q: tx("partnershipQ2"), a: tx("partnershipA2") },

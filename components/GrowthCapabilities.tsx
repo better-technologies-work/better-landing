@@ -33,6 +33,7 @@ export default function GrowthCapabilities({ tx }: Props) {
             investment: tx("foundationInvestment"),
             scholarship: tx("foundationScholarship"),
             cta: tx("foundationCta"),
+            ctaHref: "https://wa.me/593995269974?text=" + encodeURIComponent(tx("foundationWhatsappMessage")),
         },
         {
             color: "orange",
@@ -49,6 +50,7 @@ export default function GrowthCapabilities({ tx }: Props) {
             investment: tx("relevanceInvestment"),
             scholarship: tx("relevanceScholarship"),
             cta: tx("relevanceCta"),
+            ctaHref: "https://wa.me/593995269974?text=" + encodeURIComponent(tx("relevanceWhatsappMessage")),
         },
         {
             color: "orange",
@@ -65,6 +67,7 @@ export default function GrowthCapabilities({ tx }: Props) {
             investment: tx("dominanceInvestment"),
             scholarship: tx("dominanceScholarship"),
             cta: tx("dominanceCta"),
+            ctaHref: "https://wa.me/593995269974?text=" + encodeURIComponent(tx("dominanceWhatsappMessage")),
         },
     ];
 
@@ -246,7 +249,12 @@ export default function GrowthCapabilities({ tx }: Props) {
                                         </p>
                                     </div>
 
-                                    <button
+                                    <motion.a
+                                        href={current.ctaHref}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        whileHover={{ scale: 1.04 }}
+                                        whileTap={{ scale: 0.96 }}
                                         className={`px-8 py-4 rounded-full text-white text-xs font-black uppercase tracking-widest transition-all duration-300 hover:shadow-lg active:scale-95 ${
                                             current.color === "blue"
                                                 ? "bg-blue-600 hover:bg-blue-700 shadow-blue-600/25"
@@ -254,7 +262,7 @@ export default function GrowthCapabilities({ tx }: Props) {
                                         }`}
                                     >
                                         {current.cta}
-                                    </button>
+                                    </motion.a>
                                 </div>
 
                             </div>

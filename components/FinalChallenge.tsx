@@ -44,7 +44,7 @@ export default function FinalChallenge({ tx }: Props) {
 
                             {/* CARGO */}
                             <p className="mt-3 text-[11px] font-black uppercase tracking-[0.28em] text-blue-600 max-w-[240px] leading-relaxed">
-                                Chief Business Engineering Operator
+                                Founder & Chief Product Engineer
                             </p>
 
                             {/* LINKEDIN CTA */}

@@ -44,7 +44,7 @@ const team = [
     desc: "Ezequiel is the engine room of every product we ship. He architects scalable, production-ready systems at startup speed — writing clean, fast, reliable code that makes the impossible 72h timelines actually possible.",
     initials: "EA",
     photo: "/ezequiel.jpeg",
-    linkedin: "https://linkedin.com/",
+    linkedin: "https://www.linkedin.com/in/eaezequielalonso",
   },
   {
     name: "Victor Menendez",
@@ -87,7 +87,7 @@ const teamEs = [
     desc: "Ezequiel es la sala de maquinas de cada producto que lanzamos. Arquitecta sistemas escalables listos para produccion a velocidad startup, escribiendo codigo limpio, rapido y confiable para hacer posible lo que parece imposible en 72h.",
     initials: "EA",
     photo: "/ezequiel.jpeg",
-    linkedin: "https://linkedin.com/",
+    linkedin: "https://www.linkedin.com/in/eaezequielalonso",
   },
   {
     name: "Victor Menendez",
@@ -130,7 +130,7 @@ const teamDe = [
     desc: "Ezequiel ist der Maschinenraum jedes Produkts, das wir liefern. Er entwirft skalierbare, produktionsreife Systeme in Startup-Geschwindigkeit — mit sauberem, schnellem, zuverlässigem Code, der die unmöglichen 72h-Zeitpläne tatsächlich möglich macht.",
     initials: "EA",
     photo: "/ezequiel.jpeg",
-    linkedin: "https://linkedin.com/",
+    linkedin: "https://www.linkedin.com/in/eaezequielalonso",
   },
   {
     name: "Victor Menendez",
@@ -173,7 +173,7 @@ const teamPt = [
     desc: "Ezequiel é a sala de máquinas de cada produto que lançamos. Ele arquiteta sistemas escaláveis e prontos para produção em velocidade de startup — escrevendo código limpo, rápido e confiável que torna os impossíveis prazos de 72h realmente possíveis.",
     initials: "EA",
     photo: "/ezequiel.jpeg",
-    linkedin: "https://linkedin.com/",
+    linkedin: "https://www.linkedin.com/in/eaezequielalonso",
   },
   {
     name: "Victor Menendez",
@@ -1181,6 +1181,12 @@ foundationScholarship: {
     de: "Bauen Sie Ihre Foundation auf",
     pt: "Construa seu Foundation",
   },
+  foundationWhatsappMessage: {
+    en: "Hi! I'm interested in the Better Foundation level.",
+    es: "¡Hola! Estoy interesado en el nivel Better Foundation.",
+    de: "Hallo! Ich interessiere mich für die Better Foundation Stufe.",
+    pt: "Olá! Tenho interesse no nível Better Foundation.",
+  },
 
   relevanceTitle: {
     en: "DIGITAL RELEVANCE",
@@ -1272,6 +1278,12 @@ foundationScholarship: {
     de: "Bauen Sie Ihr Relevance System auf",
     pt: "Construa seu Relevance System",
   },
+  relevanceWhatsappMessage: {
+    en: "Hi! I'm interested in the Digital Relevance level.",
+    es: "¡Hola! Estoy interesado en el nivel Digital Relevance.",
+    de: "Hallo! Ich interessiere mich für die Digital Relevance Stufe.",
+    pt: "Olá! Tenho interesse no nível Digital Relevance.",
+  },
 
   dominanceTitle: {
     en: "DIGITAL DOMINANCE",
@@ -1362,6 +1374,12 @@ foundationScholarship: {
     es: "Construí tu Sovereign Infrastructure",
     de: "Bauen Sie Ihre Sovereign Infrastructure auf",
     pt: "Construa sua Sovereign Infrastructure",
+  },
+  dominanceWhatsappMessage: {
+    en: "Hi! I'm interested in the Digital Dominance level.",
+    es: "¡Hola! Estoy interesado en el nivel Digital Dominance.",
+    de: "Hallo! Ich interessiere mich für die Digital Dominance Stufe.",
+    pt: "Olá! Tenho interesse no nível Digital Dominance.",
   },
 
   painPoint: {
@@ -2178,7 +2196,7 @@ export default function Home() {
 
           <p className="mt-3 text-slate-500 text-[10px] md:text-[12px] uppercase tracking-widest font-bold animate-hero-fadein-delay-2 relative z-[3]">{tx('subtagline')}</p>
           <div className="mt-5 flex flex-col sm:flex-row items-center gap-3 animate-hero-fadein-delay-2 relative z-[3]">
-            <a href="https://wa.me/593991358652?text=Hi!%20I%27d%20like%20to%20get%20in%20touch%20with%20the%20team." className="inline-block px-8 py-3 bg-[#FF6B00] text-white rounded-full font-bold shadow-lg uppercase tracking-widest text-[10px] transition-transform active:scale-95">
+            <a href="https://wa.me/593995269974?text=Hi!%20I%27d%20like%20to%20get%20in%20touch%20with%20the%20team." className="inline-block px-8 py-3 bg-[#FF6B00] text-white rounded-full font-bold shadow-lg uppercase tracking-widest text-[10px] transition-transform active:scale-95">
               {tx('heroCtaPrimary')}
             </a>
             <a href="#mittelstand" className="inline-block px-8 py-3 border-2 border-slate-300 text-slate-700 rounded-full font-bold uppercase tracking-widest text-[10px] transition-colors hover:bg-slate-900 hover:text-white hover:border-slate-900">
@@ -2510,7 +2528,7 @@ export default function Home() {
         </ul>
 
         
-         <a href="https://wa.me/593991358652?text=Hi!%20I%20would%20like%20to%20quote%20a%20recycling%20machine%20for%20my%20business."
+         <a href="https://wa.me/593995269974?text=Hi!%20I%20would%20like%20to%20quote%20a%20recycling%20machine%20for%20my%20business."
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center justify-center gap-2 bg-blue-600 text-white px-6 py-3 rounded-full font-black text-[11px] uppercase tracking-[0.15em] shadow-lg shadow-blue-600/20 hover:bg-blue-700 transition-colors"
