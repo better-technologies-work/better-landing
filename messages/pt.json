@@ -1,13 +1,12 @@
 {
   "Header": {
     "home": "Início",
-    "whatWeAre": "Quem somos",
     "mittelstand": "O que fazemos",
-    "pricing": "Preços",
+    "successStories": "Casos de Sucesso",
     "about": "Equipa",
     "blog": "Blog",
     "backToHome": "Voltar ao início"
-  },
+},
 
   "Home": {
     "whatWeDo": "O que fazemos?",

@@ -117,13 +117,11 @@ export default function Header({ showBackButton = false }: HeaderProps) {
 
   const menuItems = [
     { name: t("home"), href: `/${locale}` },
-    { name: t("whatWeAre"), href: `/${locale}/#what-we-are` },
-    { name: t("mittelstand"), href: `/${locale}/#mittelstand` },
-    { name: t("pricing"), href: `/${locale}/#pricing` },
+    { name: t("mittelstand"), href: `/${locale}/#leadership-leagues` },
+    { name: t("successStories"), href: `/${locale}/#success-stories` },
     { name: t("about"), href: `/${locale}/#about` },
     { name: t("blog"), href: `/${locale}/blog` },
-  ];
-
+];
   // 2. Lógica de cambio de idioma actualizada para 4 idiomas
   const handleLanguageChange = (newLocale: string) => {
     // Regex actualizada para incluir de y pt

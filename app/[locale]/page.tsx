@@ -2006,7 +2006,7 @@ const CasosDeExito = ({ showMachinesModal, setShowMachinesModal }: { showMachine
   };
 
   return (
-    <section className="py-16 px-6 bg-white border-t border-slate-100">
+    <section id="success-stories" className="py-16 px-6 bg-white border-t border-slate-100">
       <div className="w-full max-w-7xl mx-auto">
         <div className="mb-12 text-center">
           <p className="text-blue-600 uppercase tracking-[0.25em] text-[10px] font-black mb-2">{tx('successStories')}</p>
@@ -2090,7 +2090,7 @@ export default function Home() {
   const tx = (key: string) => (ui[key as keyof typeof ui] as any)?.[locale] ?? (ui[key as keyof typeof ui] as any)?.['en'] ?? '';
 
   const [posts, setPosts] = useState<any[]>([]);
-  const [selected, setSelected] = useState<number | null>(1);
+  const [selected, setSelected] = useState<number | null>(0);
   const [showMachinesModal, setShowMachinesModal] = useState(false);
   const [isPackModalOpen, setIsPackModalOpen] = useState(false);
   const [mousePos, setMousePos] = useState({ x: 0.5, y: 0.5 });

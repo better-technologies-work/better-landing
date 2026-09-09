@@ -74,8 +74,8 @@ export default function GrowthCapabilities({ tx }: Props) {
     const current = deployments[selected];
 
     return (
-        <section className="py-24 px-6 bg-white border-t border-slate-100 relative overflow-hidden">
-            {/* Glows ambientales sutiles de fondo */}
+        <section id="leadership-leagues" className="py-24 px-6 bg-white border-t border-slate-100 relative overflow-hidden">
+            {/* Glows  */}
             <div className="absolute top-1/3 -left-32 w-96 h-96 rounded-full bg-blue-500/5 blur-3xl pointer-events-none" />
             <div className="absolute bottom-1/3 -right-32 w-96 h-96 rounded-full bg-orange-500/5 blur-3xl pointer-events-none" />
 

@@ -47,7 +47,7 @@ export default function LeadershipLeagues({ tx }: Props) {
     const current = leagues[selected]
 
     return (
-        <section className="py-24 px-6 bg-white border-t border-slate-100">
+    <section id="leadership-leagues" className="py-24 px-6 bg-white border-t border-slate-100">
 
             <div className="max-w-6xl mx-auto">
 
