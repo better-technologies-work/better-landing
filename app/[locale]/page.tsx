@@ -1120,7 +1120,7 @@ export const ui = {
   },
 
   foundationIncluded: {
-    en: "• Better Business Blueprint™\n• Website optimised for AI and GEO\n• Basic CRM setup\n• Lead capture ecosystem",
+    en: "• Better Business Blueprint™\n• Website optimized for AI and GEO\n• Basic CRM setup\n• Lead capture ecosystem",
     es: "• Better Business Blueprint™\n• Sitio web optimizado para IA y GEO\n• Configuración básica de CRM\n• Ecosistema de captación de leads",
     de: "Better Business Blueprint™, für KI und GEO optimierte Website, grundlegendes CRM-Setup, Lead-Erfassungs-Ökosystem.",
     pt: "• Better Business Blueprint™\n• Site otimizado para IA e GEO\n• Configuração básica de CRM\n• Ecossistema de captação de leads",
