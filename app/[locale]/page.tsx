@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
+import dynamic from "next/dynamic";
 import { motion, AnimatePresence } from 'framer-motion';
 import { createClient } from '@/lib/supabase/client'
 import { type VideoSource } from '@/lib/video-utils'
@@ -15,6 +16,14 @@ import GlobalAccessMechanism from "@/components/GlobalAccessMechanism";
 import GrowthCapabilities from "@/components/GrowthCapabilities";
 import ScholarshipsPartnerships from "@/components/Scholarshipspartnerships";
 import LeadershipLeagues from "@/components/LeadershipLeagues"
+const FullScreenBackground = dynamic(
+  () => import("@/components/FullScreenBackground"),
+  { ssr: false },
+);
+const ParticleWolfBackground = dynamic(
+  () => import("@/components/ParticleWolfBackground"),
+  { ssr: false },
+);
 
 
 // ─── TYPES ───────────────────────────────────────────────────────────────────
@@ -2143,7 +2152,10 @@ export default function Home() {
 
   return (
 
-    <main className="relative w-full bg-white">
+    <main className="relative isolate w-full bg-white">
+
+      {/* GLOBAL BACKGROUND */}
+      <FullScreenBackground />
 
       {/* SHARED HEADER */}
       <Header />
@@ -2160,24 +2172,7 @@ export default function Home() {
           });
         }}
       >
-        {/* Blue glow */}
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0">
-          <div className="w-[500px] h-[300px] bg-blue-500/15 blur-[120px] rounded-full" />
-        </div>
-        {/* Blue wave SVG */}
-        <svg
-          className="absolute w-full h-full left-0 top-0 opacity-80 z-0 pointer-events-none"
-          viewBox="0 0 1400 600"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <g className="animate-pulse" style={{ animationDuration: '6s' }}>
-            <path d="M-100 300 C 300 100, 700 500, 1500 200" stroke="#3b82f6" strokeWidth="2" strokeOpacity="0.4" />
-            <path d="M-100 280 C 350 120, 680 480, 1500 220" stroke="#2563eb" strokeWidth="2" strokeOpacity="0.3" />
-            <path d="M-100 320 C 280 80, 720 520, 1500 180" stroke="#60a5fa" strokeWidth="2" strokeOpacity="0.3" />
-            <path d="M-100 260 C 380 140, 650 460, 1500 240" stroke="#1d4ed8" strokeWidth="2" strokeOpacity="0.25" />
-          </g>
-        </svg>
+        <ParticleWolfBackground />
         {/* Mouse spotlight */}
         <div
           className="absolute inset-0 z-[1] pointer-events-none transition-opacity duration-300"

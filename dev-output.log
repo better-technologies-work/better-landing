@@ -1,0 +1,137 @@
+
+> better-technologies@0.1.0 dev
+> next dev
+
+▲ Next.js 16.2.4 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://192.168.0.9:3000
+- Environments: .env.local
+✓ Ready in 2.7s
+⚠ The "middleware" file convention is deprecated. Please use "proxy" instead. Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
+
+ GET / 200 in 5.9s (next.js: 3.9s, proxy.ts: 436ms, generate-params: 3.0s, application-code: 1613ms)
+ GET / 200 in 817ms (next.js: 191ms, proxy.ts: 32ms, generate-params: 20ms, application-code: 594ms)
+ GET / 200 in 1451ms (next.js: 111ms, proxy.ts: 11ms, generate-params: 99µs, application-code: 1329ms)
+ GET /api/news 200 in 8.1s (next.js: 7.7s, application-code: 388ms)
+ GET /api/local-news 200 in 9.0s (next.js: 6.4s, application-code: 2.6s)
+ GET / 200 in 1133ms (next.js: 119ms, proxy.ts: 27ms, generate-params: 31ms, application-code: 987ms)
+ GET / 200 in 2.4s (next.js: 113ms, proxy.ts: 23ms, generate-params: 29ms, application-code: 2.2s)
+ GET /api/news 200 in 213ms (next.js: 47ms, application-code: 166ms)
+ GET /api/local-news 200 in 2.1s (next.js: 322ms, application-code: 1785ms)
+ GET / 200 in 1470ms (next.js: 133ms, proxy.ts: 23ms, generate-params: 27ms, application-code: 1313ms)
+ GET /api/news 200 in 231ms (next.js: 169ms, application-code: 62ms)
+ GET /api/local-news 200 in 2.1s (next.js: 522ms, application-code: 1599ms)
+✓ Compiled in 22.6s
+ GET / 200 in 21.6s (next.js: 17.7s, proxy.ts: 862ms, generate-params: 30ms, application-code: 3.0s)
+ GET /api/news 200 in 186ms (next.js: 139ms, application-code: 47ms)
+ GET /api/local-news 200 in 2.2s (next.js: 338ms, application-code: 1814ms)
+[browser] @supabase/gotrue-js: Lock "lock:sb-cokzlqlsnxiiutmgrnfd-auth-token" was not released within 5000ms. This may indicate an orphaned lock from a component unmount (e.g., React Strict Mode). Forcefully acquiring the lock to recover.
+ GET / 200 in 10.6s (next.js: 2.5s, proxy.ts: 1197ms, generate-params: 434ms, application-code: 7.0s)
+ GET /api/news 200 in 419ms (next.js: 358ms, application-code: 61ms)
+ GET /api/local-news 200 in 1361ms (next.js: 211ms, application-code: 1150ms)
+ GET / 200 in 1988ms (next.js: 265ms, proxy.ts: 17ms, generate-params: 30ms, application-code: 1706ms)
+ GET /api/news 200 in 45ms (next.js: 14ms, application-code: 31ms)
+ GET /api/local-news 200 in 5.9s (next.js: 241ms, application-code: 5.6s)
+✓ Compiled in 11s
+⚠ Fast Refresh had to perform a full reload when ./app/[locale]/page.tsx changed. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ GET / 200 in 9.4s (next.js: 3.3s, proxy.ts: 632ms, generate-params: 196µs, application-code: 5.5s)
+ GET / 200 in 7.8s (next.js: 1372ms, proxy.ts: 22ms, generate-params: 99ms, application-code: 6.4s)
+ GET /api/news 200 in 801ms (next.js: 589ms, application-code: 211ms)
+ GET /api/local-news 200 in 2.3s (next.js: 1221ms, application-code: 1045ms)
+✓ Compiled in 1656ms
+ GET / 200 in 4.3s (next.js: 2.3s, proxy.ts: 1258ms, generate-params: 136ms, application-code: 690ms)
+✓ Compiled in 438ms
+ GET / 200 in 1477ms (next.js: 1152ms, proxy.ts: 82ms, generate-params: 16ms, application-code: 243ms)
+ GET / 200 in 7.0s (next.js: 128ms, proxy.ts: 24ms, generate-params: 38ms, application-code: 6.9s)
+ GET /api/news 200 in 1703ms (next.js: 1590ms, application-code: 113ms)
+ GET /api/local-news 200 in 3.4s (next.js: 2.3s, application-code: 1084ms)
+ GET / 200 in 3.5s (next.js: 1163ms, proxy.ts: 142ms, generate-params: 82ms, application-code: 2.2s)
+ GET /api/news 200 in 298ms (next.js: 54ms, application-code: 243ms)
+ GET /api/local-news 200 in 1809ms (next.js: 402ms, application-code: 1407ms)
+ GET / 200 in 4.8s (next.js: 419ms, proxy.ts: 281ms, generate-params: 105ms, application-code: 4.1s)
+ GET /api/news 200 in 120ms (next.js: 52ms, application-code: 69ms)
+ GET /api/local-news 200 in 1693ms (next.js: 292ms, application-code: 1401ms)
+✓ Compiled in 10.8s
+ GET / 200 in 4.1s (next.js: 1242ms, proxy.ts: 1205ms, generate-params: 128ms, application-code: 1689ms)
+ GET / 200 in 9.0s (next.js: 456ms, proxy.ts: 664ms, generate-params: 116ms, application-code: 7.9s)
+ GET /api/news 200 in 907ms (next.js: 826ms, application-code: 82ms)
+ GET /api/local-news 200 in 2.3s (next.js: 1241ms, application-code: 1064ms)
+ GET / 200 in 2.5s (next.js: 384ms, proxy.ts: 92ms, generate-params: 32ms, application-code: 2.0s)
+ GET /api/news 200 in 131ms (next.js: 47ms, application-code: 84ms)
+ GET /api/local-news 200 in 1903ms (next.js: 175ms, application-code: 1727ms)
+ GET / 200 in 2.8s (next.js: 730ms, proxy.ts: 20ms, generate-params: 57ms, application-code: 2.0s)
+ GET /api/news 200 in 1003ms (next.js: 636ms, application-code: 367ms)
+ GET /api/local-news 200 in 2.5s (next.js: 1453ms, application-code: 1075ms)
+✓ Compiled in 10.5s
+ GET / 200 in 12.2s (next.js: 4.5s, proxy.ts: 2.6s, generate-params: 824ms, application-code: 5.1s)
+ GET / 200 in 14.6s (next.js: 1420ms, proxy.ts: 1562ms, generate-params: 465ms, application-code: 11.6s)
+ GET /api/news 200 in 1222ms (next.js: 817ms, application-code: 405ms)
+ GET /api/local-news 200 in 3.6s (next.js: 2.6s, application-code: 1051ms)
+ GET / 200 in 3.5s (next.js: 97ms, proxy.ts: 21ms, generate-params: 37ms, application-code: 3.4s)
+ GET /api/news 200 in 179ms (next.js: 132ms, application-code: 47ms)
+ GET /api/local-news 200 in 1049ms (next.js: 48ms, application-code: 1001ms)
+ GET / 200 in 2.5s (next.js: 618ms, proxy.ts: 18ms, generate-params: 159µs, application-code: 1847ms)
+ GET /api/news 200 in 337ms (next.js: 116ms, application-code: 221ms)
+ GET /api/local-news 200 in 979ms (next.js: 350ms, application-code: 629ms)
+ GET / 200 in 3.1s (next.js: 402ms, proxy.ts: 26ms, generate-params: 21ms, application-code: 2.7s)
+ GET /api/news 200 in 607ms (next.js: 524ms, application-code: 83ms)
+ GET /api/local-news 200 in 1512ms (next.js: 719ms, application-code: 793ms)
+ GET / 200 in 2.2s (next.js: 461ms, proxy.ts: 184ms, generate-params: 26ms, application-code: 1542ms)
+ GET /api/news 200 in 280ms (next.js: 41ms, application-code: 238ms)
+ GET /api/local-news 200 in 2.8s (next.js: 30ms, application-code: 2.7s)
+ GET / 200 in 2.7s (next.js: 65ms, proxy.ts: 19ms, generate-params: 144µs, application-code: 2.6s)
+ GET /api/news 200 in 48ms (next.js: 25ms, application-code: 24ms)
+ GET /api/local-news 200 in 2.0s (next.js: 61ms, application-code: 1948ms)
+✓ Compiled in 3s
+ GET / 200 in 4.3s (next.js: 1760ms, proxy.ts: 837ms, generate-params: 37ms, application-code: 1716ms)
+✓ Compiled in 1468ms
+ GET / 200 in 2.9s (next.js: 1714ms, proxy.ts: 288ms, generate-params: 47ms, application-code: 908ms)
+✓ Compiled in 1470ms
+ GET / 200 in 2.7s (next.js: 1647ms, proxy.ts: 265ms, generate-params: 21ms, application-code: 802ms)
+✓ Compiled in 1083ms
+ GET / 200 in 2.1s (next.js: 1031ms, proxy.ts: 180ms, generate-params: 43ms, application-code: 855ms)
+✓ Compiled in 1114ms
+ GET / 200 in 2.8s (next.js: 1945ms, proxy.ts: 182ms, generate-params: 60ms, application-code: 653ms)
+✓ Compiled in 2.2s
+ GET / 200 in 8.4s (next.js: 4.9s, proxy.ts: 2.0s, generate-params: 41ms, application-code: 1407ms)
+✓ Compiled in 624ms
+ GET / 200 in 3.1s (next.js: 1978ms, proxy.ts: 76ms, generate-params: 97ms, application-code: 1067ms)
+✓ Compiled in 2.6s
+ GET / 200 in 7.1s (next.js: 4.7s, proxy.ts: 899ms, generate-params: 213µs, application-code: 1461ms)
+ GET / 200 in 4.7s (next.js: 386ms, proxy.ts: 16ms, generate-params: 149µs, application-code: 4.3s)
+ GET /api/news 200 in 1589ms (next.js: 1507ms, application-code: 82ms)
+ GET /api/local-news 200 in 2.5s (next.js: 1001ms, application-code: 1527ms)
+✓ Compiled in 6.3s
+ GET / 200 in 4.0s (next.js: 1942ms, proxy.ts: 457ms, generate-params: 84ms, application-code: 1593ms)
+✓ Compiled in 1314ms
+ GET / 200 in 8.6s (next.js: 7.1s, proxy.ts: 221ms, generate-params: 66ms, application-code: 1271ms)
+ GET / 200 in 13.3s (next.js: 1114ms, proxy.ts: 187ms, generate-params: 212ms, application-code: 12.0s)
+ GET /api/news 200 in 3.3s (next.js: 3.2s, application-code: 151ms)
+ GET /api/local-news 200 in 4.2s (next.js: 2.2s, application-code: 1913ms)
+ GET / 200 in 8.9s (next.js: 1044ms, proxy.ts: 208ms, generate-params: 118ms, application-code: 7.7s)
+ GET /api/news 200 in 658ms (next.js: 57ms, application-code: 602ms)
+ GET /api/local-news 200 in 1391ms (next.js: 117ms, application-code: 1274ms)
+ GET / 200 in 2.5s (next.js: 203ms, proxy.ts: 24ms, generate-params: 34ms, application-code: 2.2s)
+ GET /api/news 200 in 59ms (next.js: 24ms, application-code: 35ms)
+ GET /api/local-news 200 in 1177ms (next.js: 19ms, application-code: 1159ms)
+ GET / 200 in 2.4s (next.js: 986ms, proxy.ts: 17ms, generate-params: 480ms, application-code: 1420ms)
+ GET /api/news 200 in 107ms (next.js: 35ms, application-code: 72ms)
+ GET /api/local-news 200 in 1251ms (next.js: 119ms, application-code: 1131ms)
+✓ Compiled in 14.8s
+ GET / 200 in 22.0s (next.js: 16.8s, proxy.ts: 3.3s, generate-params: 182ms, application-code: 1883ms)
+✓ Compiled in 13.6s
+✓ Compiled in 2.3s
+✓ Compiled in 1401ms
+ GET / 200 in 16.6s (next.js: 11.9s, proxy.ts: 445ms, generate-params: 88ms, application-code: 4.2s)
+ GET / 200 in 907ms (next.js: 80ms, proxy.ts: 21ms, generate-params: 21ms, application-code: 805ms)
+ GET / 200 in 1000ms (next.js: 53ms, proxy.ts: 14ms, generate-params: 18ms, application-code: 934ms)
+ GET / 200 in 591ms (next.js: 55ms, proxy.ts: 12ms, generate-params: 16ms, application-code: 523ms)
+ GET / 200 in 1029ms (next.js: 50ms, proxy.ts: 15ms, generate-params: 18ms, application-code: 964ms)
+ GET / 200 in 1846ms (next.js: 193ms, proxy.ts: 134ms, generate-params: 51ms, application-code: 1520ms)
+ GET /api/news 200 in 14.6s (next.js: 12.9s, application-code: 1741ms)
+✓ Finished writing to filesystem cache in 17.2s
+ GET /api/local-news 200 in 30.3s (next.js: 25.7s, application-code: 4.6s)
+ GET / 200 in 12.7s (next.js: 2.1s, proxy.ts: 37ms, generate-params: 1225ms, application-code: 10.6s)
+ GET /api/news 200 in 737ms (next.js: 260ms, application-code: 477ms)
+ GET /api/local-news 200 in 3.8s (next.js: 1777ms, application-code: 1991ms)
+✓ Finished writing to filesystem cache in 15.4s
