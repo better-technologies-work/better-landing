@@ -34,6 +34,8 @@ interface Rocket {
   p2: { x: number; y: number };
   p3: { x: number; y: number };
   headSize: number;
+  headX: number;
+  headY: number;
   trail: { x: number; y: number; size: number; opacity: number }[];
   done: boolean;
 }
@@ -117,6 +119,7 @@ export default function ParticleWolfBackground() {
     h: number;
     dpr: number;
     initialized: boolean;
+    meetPoint: { x: number; y: number };
   }>({
     particles: [],
     rockets: [],
@@ -132,6 +135,7 @@ export default function ParticleWolfBackground() {
     h: 0,
     dpr: 1,
     initialized: false,
+    meetPoint: { x: 0, y: 0 },
   });
 
   useEffect(() => {
@@ -235,27 +239,102 @@ export default function ParticleWolfBackground() {
     parent?.addEventListener('touchmove', onTouchMove, { passive: true });
     parent?.addEventListener('touchend', onTouchEnd);
 
-    st.phase = 'rest';
-    st.phaseStart = performance.now();
     st.lastTime = performance.now();
     {
-      const cycle = REST_DUR + FORM_DUR + HOLD_DUR + DISSOLVE_DUR;
-      const offset = Math.random() * cycle;
+      const activeDur = FORM_DUR + HOLD_DUR + DISSOLVE_DUR;
+      const offset = Math.random() * activeDur;
       let acc = 0;
-      if (offset < REST_DUR) {
-        st.phase = 'rest';
-        acc = offset;
-      } else if (offset < REST_DUR + FORM_DUR) {
+      if (offset < FORM_DUR) {
         st.phase = 'form';
-        acc = REST_DUR;
-      } else if (offset < REST_DUR + FORM_DUR + HOLD_DUR) {
+        acc = 0;
+      } else if (offset < FORM_DUR + HOLD_DUR) {
         st.phase = 'hold';
-        acc = REST_DUR + FORM_DUR;
+        acc = FORM_DUR;
       } else {
         st.phase = 'dissolve';
-        acc = REST_DUR + FORM_DUR + HOLD_DUR;
+        acc = FORM_DUR + HOLD_DUR;
       }
       st.phaseStart = performance.now() - (offset - acc);
+
+      const mkRocket = (fromLeft: boolean): Rocket => {
+        const sx = fromLeft ? st.w * 0.88 : st.w * 0.12;
+        const sy = fromLeft ? st.h * 0.12 : st.h * 0.88;
+        const mx = st.w * 0.5 + (Math.random() - 0.5) * st.w * 0.12;
+        const my = st.h * 0.35 + Math.random() * st.h * 0.2;
+        const cx1 = sx + (mx - sx) * 0.3 + (Math.random() - 0.5) * st.w * 0.18;
+        const cy1 = sy + (my - sy) * 0.3 + (Math.random() - 0.5) * st.h * 0.2;
+        const cx2 = sx + (mx - sx) * 0.7 + (Math.random() - 0.5) * st.w * 0.12;
+        const cy2 = sy + (my - sy) * 0.7 + (Math.random() - 0.5) * st.h * 0.15;
+        const r: Rocket = {
+          t: 0,
+          speed: 1.8 + Math.random() * 0.5,
+          p0: { x: sx, y: sy },
+          p1: { x: cx1, y: cy1 },
+          p2: { x: cx2, y: cy2 },
+          p3: { x: mx, y: my },
+          headSize: 4 + Math.random() * 2.5,
+          headX: sx,
+          headY: sy,
+          trail: [],
+          done: false,
+        };
+        return r;
+      };
+
+      if (st.phase === 'form') {
+        const elapsed = offset;
+        const r0 = mkRocket(true);
+        const r1 = mkRocket(false);
+        st.meetPoint = { x: r0.p3.x, y: r0.p3.y };
+        r0.t = Math.min(0.98, (elapsed / 1000) * r0.speed);
+        r1.t = Math.min(0.98, (elapsed / 1000) * r1.speed);
+        for (const r of [r0, r1]) {
+          const pos = cubic(r.t, r.p0.x, r.p1.x, r.p2.x, r.p3.x);
+          const posY = cubic(r.t, r.p0.y, r.p1.y, r.p2.y, r.p3.y);
+          r.headX = pos;
+          r.headY = posY;
+          const trailLen = Math.floor(r.t * 30);
+          for (let i = 0; i <= trailLen; i++) {
+            const tt = i / 30;
+            if (tt > r.t) break;
+            r.trail.push({
+              x: cubic(tt, r.p0.x, r.p1.x, r.p2.x, r.p3.x),
+              y: cubic(tt, r.p0.y, r.p1.y, r.p2.y, r.p3.y),
+              size: r.headSize * 0.5,
+              opacity: 1,
+            });
+          }
+        }
+        st.rockets = [r0, r1];
+        for (const p of st.particles) {
+          const rocket = st.rockets[p.cluster];
+          const spread = Math.min(st.w, st.h) * 0.06;
+          p.x = rocket.headX + Math.cos(p.phase) * spread;
+          p.y = rocket.headY + Math.sin(p.phase) * spread;
+        }
+      } else {
+        st.rockets = [];
+        for (const p of st.particles) {
+          const sp = spinePoint(p.cluster === 0 ? 0.15 : 0.85, st.w, st.h);
+          const widthFactor = p.cluster === 0 ? 0.15 : 0.12;
+          const perpOff = (Math.random() - 0.5) * 2 * Math.min(st.w, st.h) * widthFactor;
+          p.x = sp.x + sp.nx * perpOff;
+          p.y = sp.y + sp.ny * perpOff;
+        }
+        if (st.phase === 'dissolve') {
+          for (let i = 0; i < 15; i++) {
+            st.sparks.push({
+              x: Math.random() * st.w,
+              y: Math.random() * st.h,
+              vx: (Math.random() - 0.5) * 60,
+              vy: (Math.random() - 0.5) * 60,
+              life: Math.random() * 0.4,
+              maxLife: 0.5 + Math.random() * 0.6,
+              size: 1 + Math.random() * 2,
+            });
+          }
+        }
+      }
     }
 
     const update = (now: number) => {
@@ -271,6 +350,7 @@ export default function ParticleWolfBackground() {
         st.phaseStart = now;
         const meetX = st.w * 0.5 + (Math.random() - 0.5) * st.w * 0.12;
         const meetY = st.h * 0.35 + Math.random() * st.h * 0.2;
+        st.meetPoint = { x: meetX, y: meetY };
         const makeRocket = (fromLeft: boolean): Rocket => {
           const sx = fromLeft ? st.w * 0.88 : st.w * 0.12;
           const sy = fromLeft ? st.h * 0.12 : st.h * 0.88;
@@ -286,6 +366,8 @@ export default function ParticleWolfBackground() {
             p2: { x: cx2, y: cy2 },
             p3: { x: meetX, y: meetY },
             headSize: 4 + Math.random() * 2.5,
+            headX: sx,
+            headY: sy,
             trail: [],
             done: false,
           };
@@ -305,10 +387,33 @@ export default function ParticleWolfBackground() {
         st.rockets = [];
       }
 
-      const formProg = st.phase === 'form' ? easeInOut(Math.min(elapsed / FORM_DUR, 1)) : st.phase === 'hold' || st.phase === 'dissolve' ? 1 : 0;
+      if (st.phase === 'form') {
+        for (const r of st.rockets) {
+          if (r.done) continue;
+          r.t = Math.min(1, r.t + r.speed * dt);
+          r.headX = cubic(r.t, r.p0.x, r.p1.x, r.p2.x, r.p3.x);
+          r.headY = cubic(r.t, r.p0.y, r.p1.y, r.p2.y, r.p3.y);
+          r.trail.unshift({ x: r.headX, y: r.headY, size: r.headSize * 0.5, opacity: 1 });
+          if (r.trail.length > 30) r.trail.pop();
+          for (let i = 0; i < r.trail.length; i++) {
+            r.trail[i].opacity = 1 - i / r.trail.length;
+          }
+          if (r.t >= 1) r.done = true;
+        }
+      }
+
+      const formProg = (st.phase === 'hold' || st.phase === 'dissolve') ? 1 : 0;
 
       for (const p of st.particles) {
-        if (formProg > 0) {
+        if (st.phase === 'form' && st.rockets.length > 0) {
+          const rocket = st.rockets[p.cluster];
+          const spread = Math.min(st.w, st.h) * 0.06;
+          const tx = rocket.headX + Math.cos(p.phase) * spread;
+          const ty = rocket.headY + Math.sin(p.phase) * spread;
+          const pull = rocket.done ? 0.06 : 0.1;
+          p.x += (tx - p.x) * pull * dt * 60;
+          p.y += (ty - p.y) * pull * dt * 60;
+        } else if (formProg > 0) {
           const sp = spinePoint(p.cluster === 0 ? 0.15 : 0.85, st.w, st.h);
           const widthFactor = p.cluster === 0 ? 0.15 : 0.12;
           const perpOff = (Math.random() - 0.5) * 2 * Math.min(st.w, st.h) * widthFactor;
@@ -414,6 +519,31 @@ export default function ParticleWolfBackground() {
         ctx.arc(mt.x, mt.y, radius, 0, Math.PI * 2);
         ctx.fillStyle = `rgba(130, 145, 165, ${alpha})`;
         ctx.fill();
+      }
+
+      for (const r of st.rockets) {
+        for (let i = 0; i < r.trail.length; i++) {
+          const tp = r.trail[i];
+          const a = tp.opacity * 0.55;
+          ctx.beginPath();
+          ctx.arc(tp.x, tp.y, r.headSize * 0.45, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(160, 165, 175, ${a})`;
+          ctx.fill();
+        }
+        if (!r.done) {
+          ctx.beginPath();
+          ctx.arc(r.headX, r.headY, r.headSize * 1.8, 0, Math.PI * 2);
+          ctx.fillStyle = 'rgba(255, 240, 200, 0.1)';
+          ctx.fill();
+          ctx.beginPath();
+          ctx.arc(r.headX, r.headY, r.headSize, 0, Math.PI * 2);
+          ctx.fillStyle = 'rgba(255, 248, 230, 0.92)';
+          ctx.fill();
+          ctx.beginPath();
+          ctx.arc(r.headX, r.headY, r.headSize * 0.5, 0, Math.PI * 2);
+          ctx.fillStyle = 'rgba(255, 255, 250, 1)';
+          ctx.fill();
+        }
       }
 
       for (const p of st.particles) {
