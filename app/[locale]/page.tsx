@@ -252,12 +252,12 @@ const belandTags = ["React Native", "Payments", "Delivery", "Circular Economy"];
 // ─── DICCIONARIO MULTI-IDIOMA ─────────────────────────────────────────────────
 export const ui = {
   // Heroke 
-  openLatam: {
-    en: "Make your business visible. Stop renting the tools that run it. Own the capabilities to grow it.",
-    es: "Haz visible tu negocio. Deja de alquilar las herramientas que lo hacen funcionar. Adquiere las capacidades para hacerlo crecer.",
-    de: "Mach dein Unternehmen sichtbar. Hör auf, die Tools zu mieten, die es am Laufen halten. Baue die Fähigkeiten auf, die du für weiteres Wachstum brauchst.",
-    pt: "Dê visibilidade ao seu negócio. Pare de alugar as ferramentas que o fazem funcionar. Desenvolva as capacidades necessárias para fazê-lo crescer.",
-  },
+ openLatam: {
+en: "Own the System.",
+es: "Domina el sistema.",
+de: "Besitze das System.",
+pt: "Domine o sistema.",
+},
   globalCompanies: {
     en: "Better Technologies engineers modular software capabilities you can own, combine and scale.",
     es: "Better Technologies desarrolla capacidades de software modulares que puedes adquirir, combinar y escalar.",
@@ -270,6 +270,13 @@ export const ui = {
     de: "Der Markt gehört nicht denen mit den meisten Tools. Er gehört denen, die das System besitzen.",
     pt: "O mercado não pertence a quem tem mais ferramentas. Ele pertence a quem possui o sistema.",
   },
+  
+heroSubtitle: {
+  en: "Make your business visible. Stop renting the tools that run it. Own the capabilities to grow it.",
+  es: "Haz visible tu negocio. Deja de alquilar las herramientas que lo manejan. Sé dueño de las capacidades para hacerlo crecer.",
+  de: "Mach dein Unternehmen sichtbar. Hör auf, die Tools zu mieten, die es betreiben. Besitze die Fähigkeiten, um es wachsen zu lassen.",
+  pt: "Torne seu negócio visível. Pare de alugar as ferramentas que o administram. Seja dono das capacidades para fazê-lo crescer.",
+},
   getInTouch: { en: "Get in touch", es: "Contactar ahora", de: "Kontakt aufnehmen", pt: "Entre em contato" },
   heroCtaPrimary: {
     en: "Build Your First Capability",
@@ -2183,13 +2190,17 @@ export default function Home() {
         <div className="absolute inset-0 z-[2] flex flex-col items-center justify-center px-6 text-center">
 
 
-          <div className="relative z-[3] animate-hero-fadein-delay">
-            <h1 className="relative text-3xl md:text-5xl lg:text-6xl font-black leading-[1.05] tracking-tighter max-w-4xl uppercase bg-gradient-to-r from-slate-900 via-orange-500 to-blue-600 bg-clip-text text-transparent animate-shimmer z-10">
-              {tx('openLatam')}
-            </h1>
-          </div>
-
-          <p className="mt-3 text-slate-500 text-[10px] md:text-[12px] uppercase tracking-widest font-bold animate-hero-fadein-delay-2 relative z-[3]">{tx('subtagline')}</p>
+         <div className="relative z-[3] animate-hero-fadein-delay">
+  <h1 className="relative text-5xl md:text-7xl lg:text-8xl font-black leading-[1] tracking-tighter max-w-5xl uppercase bg-gradient-to-r from-slate-900 via-orange-500 to-blue-600 bg-clip-text text-transparent animate-shimmer z-10">
+    {tx('openLatam')}
+  </h1>
+</div>
+          <p className="mt-4 text-slate-900 text-sm md:text-base font-bold max-w-2xl animate-hero-fadein-delay-2 relative z-[3]">
+  {tx('heroSubtitle')}
+</p>
+          {/* Comentado por ahora — no visible aún
+<p className="mt-3 text-slate-500 text-[10px] md:text-[12px] uppercase tracking-widest font-bold animate-hero-fadein-delay-2 relative z-[3]">{tx('subtagline')}</p>
+*/}
           <div className="mt-5 flex flex-col sm:flex-row items-center gap-3 animate-hero-fadein-delay-2 relative z-[3]">
             <a href="https://wa.me/593995269974?text=Hi!%20I%27d%20like%20to%20get%20in%20touch%20with%20the%20team." className="inline-block px-8 py-3 bg-[#FF6B00] text-white rounded-full font-bold shadow-lg uppercase tracking-widest text-[10px] transition-transform active:scale-95">
               {tx('heroCtaPrimary')}
