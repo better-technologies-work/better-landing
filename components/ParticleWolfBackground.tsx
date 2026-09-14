@@ -26,6 +26,18 @@ interface Spark {
   size: number;
 }
 
+interface Rocket {
+  t: number;
+  speed: number;
+  p0: { x: number; y: number };
+  p1: { x: number; y: number };
+  p2: { x: number; y: number };
+  p3: { x: number; y: number };
+  headSize: number;
+  trail: { x: number; y: number; size: number; opacity: number }[];
+  done: boolean;
+}
+
 interface MouseTrail {
   x: number;
   y: number;
@@ -36,7 +48,7 @@ const PARTICLE_COUNT_DESKTOP = 140;
 const PARTICLE_COUNT_MOBILE = 60;
 const MOUSE_TRAIL_MAX = 20;
 const REST_DUR = 10000;
-const FORM_DUR = 3000;
+const FORM_DUR = 800;
 const HOLD_DUR = 1800;
 const DISSOLVE_DUR = 2800;
 
@@ -92,6 +104,7 @@ export default function ParticleWolfBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const stRef = useRef<{
     particles: Particle[];
+    rockets: Rocket[];
     sparks: Spark[];
     mouseTrail: MouseTrail[];
     mouse: { x: number; y: number; active: boolean };
@@ -106,6 +119,7 @@ export default function ParticleWolfBackground() {
     initialized: boolean;
   }>({
     particles: [],
+    rockets: [],
     sparks: [],
     mouseTrail: [],
     mouse: { x: 0.5, y: 0.5, active: false },
@@ -224,6 +238,25 @@ export default function ParticleWolfBackground() {
     st.phase = 'rest';
     st.phaseStart = performance.now();
     st.lastTime = performance.now();
+    {
+      const cycle = REST_DUR + FORM_DUR + HOLD_DUR + DISSOLVE_DUR;
+      const offset = Math.random() * cycle;
+      let acc = 0;
+      if (offset < REST_DUR) {
+        st.phase = 'rest';
+        acc = offset;
+      } else if (offset < REST_DUR + FORM_DUR) {
+        st.phase = 'form';
+        acc = REST_DUR;
+      } else if (offset < REST_DUR + FORM_DUR + HOLD_DUR) {
+        st.phase = 'hold';
+        acc = REST_DUR + FORM_DUR;
+      } else {
+        st.phase = 'dissolve';
+        acc = REST_DUR + FORM_DUR + HOLD_DUR;
+      }
+      st.phaseStart = performance.now() - (offset - acc);
+    }
 
     const update = (now: number) => {
       const rawDt = (now - st.lastTime) / 1000;
@@ -236,15 +269,40 @@ export default function ParticleWolfBackground() {
       if (st.phase === 'rest' && elapsed > REST_DUR) {
         st.phase = 'form';
         st.phaseStart = now;
+        const meetX = st.w * 0.5 + (Math.random() - 0.5) * st.w * 0.12;
+        const meetY = st.h * 0.35 + Math.random() * st.h * 0.2;
+        const makeRocket = (fromLeft: boolean): Rocket => {
+          const sx = fromLeft ? st.w * 0.88 : st.w * 0.12;
+          const sy = fromLeft ? st.h * 0.12 : st.h * 0.88;
+          const cx1 = sx + (meetX - sx) * 0.3 + (Math.random() - 0.5) * st.w * 0.18;
+          const cy1 = sy + (meetY - sy) * 0.3 + (Math.random() - 0.5) * st.h * 0.2;
+          const cx2 = sx + (meetX - sx) * 0.7 + (Math.random() - 0.5) * st.w * 0.12;
+          const cy2 = sy + (meetY - sy) * 0.7 + (Math.random() - 0.5) * st.h * 0.15;
+          return {
+            t: 0,
+            speed: 1.8 + Math.random() * 0.5,
+            p0: { x: sx, y: sy },
+            p1: { x: cx1, y: cy1 },
+            p2: { x: cx2, y: cy2 },
+            p3: { x: meetX, y: meetY },
+            headSize: 4 + Math.random() * 2.5,
+            trail: [],
+            done: false,
+          };
+        };
+        st.rockets = [makeRocket(true), makeRocket(false)];
       } else if (st.phase === 'form' && elapsed > FORM_DUR) {
         st.phase = 'hold';
         st.phaseStart = now;
+        st.rockets = [];
       } else if (st.phase === 'hold' && elapsed > HOLD_DUR) {
         st.phase = 'dissolve';
         st.phaseStart = now;
+        st.rockets = [];
       } else if (st.phase === 'dissolve' && elapsed > DISSOLVE_DUR) {
         st.phase = 'rest';
         st.phaseStart = now;
+        st.rockets = [];
       }
 
       const formProg = st.phase === 'form' ? easeInOut(Math.min(elapsed / FORM_DUR, 1)) : st.phase === 'hold' || st.phase === 'dissolve' ? 1 : 0;
